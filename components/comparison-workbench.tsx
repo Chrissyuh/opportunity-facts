@@ -324,7 +324,7 @@ export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityC
           <span aria-hidden="true">02–03</span>
           <div>
             <h2 id="comparison-empty-title">The comparison is waiting for cards.</h2>
-            <p>Add two fictional samples above, import local JSON, or add cards from their facts pages.</p>
+            <p>Add two public cards above, import local JSON, or add cards from their facts pages.</p>
           </div>
         </section>
       )}

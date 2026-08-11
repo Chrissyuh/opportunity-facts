@@ -17,7 +17,7 @@ Opportunity Facts is release-gated by repository tests, deterministic public art
 
 - Checkpoint 2: independent UX/accessibility and security/data reviews found no remaining material source/contract defect after the main repair pass.
 - Checkpoint 3: the UX audit found one P1 in the populated mobile builder (`421px` document width at a `390px` viewport). The builder grid/source list now uses zero-minimum tracks and wraps long source URLs; the regression verifies both a fresh mobile import and a 1440-to-390 resize.
-- Checkpoint 4: both independent auditors returned **CLEAN — no material P0/P1 remains** against the rebuilt production bundle. Security rechecked acquisition/privacy/publication boundaries and 90 focused assertions. UX reproduced the prior failure at 390×844 and after live resize; both measured `scrollWidth=390`, with no console/network failure.
+- Checkpoint 4: both independent auditors returned **CLEAN — no material P0/P1 implementation issue remains** against the rebuilt production bundle. Security rechecked acquisition/privacy/publication boundaries and 90 focused assertions. UX reproduced the prior failure at 390×844 and after live resize; both measured `scrollWidth=390`, with no console/network failure. The later real-data modeling P1s are evidence-driven product-model findings documented in `REALITY_STRESS_TEST.md`, not regressions in those implementation gates.
 
 ## Final release gate
 
@@ -26,21 +26,22 @@ Opportunity Facts is release-gated by repository tests, deterministic public art
 | `npm run lint` | Pass |
 | `npm run typecheck` | Pass |
 | `npm test` | 16 files, 138 tests passed |
-| `npm run export:data` | Exported 7 cards and the JSON Schema |
-| `npm run validate:data` | 7 public demo cards, 0 drafts, both artifacts valid and current |
+| `npm run export:data` | Exported 10 cards (7 demo, 3 human reviewed) and the JSON Schema |
+| `npm run validate:data` | 10 public cards (7 demo), 0 drafts, both artifacts valid and current |
 | `npm run test:e2e` | 62 total: 60 passed, 2 intentional project-inapplicable skips, 0 failed |
-| `npm run build` | Pass; data validation ran first and Next generated 20 pages |
+| `npm run build` | Pass; data validation ran first and Next generated 23 pages |
 | `npm audit --audit-level=high` | 0 vulnerabilities |
 | Production route matrix | 27 route/viewport combinations at 1440×900, 390×844, and 720×900; all 200, exactly one `h1`, no page overflow or browser/runtime/network diagnostics |
 | Populated mobile builder | Fresh import and 1440-to-390 resize both remained 390px wide; 0 serious/critical axe violations |
 | Production security | Strict CSP without `unsafe-eval`, nosniff, referrer, frame, COOP, permissions, HSTS, and analysis `no-store`; no API-key identifier or key-shaped value in client static bundles |
 | Research publication | All 7 public research files are SHA-256 identical to their source copies; templates remain empty/not-run and the site says “Study not yet published” |
+| First real-card render | TechRise, Lumiere, and Diamond passed expanded-evidence inspection at 1440×900 and 390×844 with exact viewport-width documents, Human reviewed badges, no demo markers, and no console warnings/errors |
 
-Verification ran locally on Windows 11 Home with Node.js 25.2.1, npm 11.6.2, Next.js 16.3.0, and Playwright 1.58.2. The final production process used `next start` on `127.0.0.1:4407` solely for local verification.
+Verification ran locally on Windows 11 Home with Node.js 25.2.1, npm 11.6.2, Next.js 16.3.0, and Playwright 1.58.2. The final production process used `next start` on `127.0.0.1:4410` solely for local verification.
 
 ## Honest remaining boundaries
 
-- The repository contains fictional demo data only. A real public card still requires line-by-line human source review and the review checklist.
+- The repository now contains three real cards completed through line-by-line human source review plus seven visibly fictional demo cards. Additional real cards still require the same checklist and independent evidence review.
 - No live OpenAI request was made because no API key was supplied. Model behavior is covered by deterministic mocks and adversarial post-processing tests, not a provider smoke call.
 - Nothing was deployed. Aggregate rate limiting, concurrency/spend caps, outbound egress controls, provider/host log retention, and secret governance remain deployment responsibilities.
 - No study or benchmark result is claimed. Protocols and empty templates are ready for consented research.

@@ -1,0 +1,1188 @@
+{
+  "schemaVersion": "1.0.0",
+  "cardVersion": 1,
+  "slug": "nasa-techrise-student-challenge-2026-2027",
+  "summary": "The announced 2026–2027 cycle is a grades 6–12 U.S. school-team experiment competition, expected to open in September 2026, with 60 teams slated for build funding, technical support, and a NASA-sponsored high-altitude-balloon flight spot.",
+  "reviewState": "human_reviewed",
+  "reviewedAt": "2026-08-11T22:27:39.286Z",
+  "sourcePagesChecked": [
+    {
+      "id": "techrise-program",
+      "url": "https://www.futureengineers.org/nasatechrise",
+      "title": "Future Engineers :: NASA TechRise Challenge",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-11T22:22:30.686Z"
+    },
+    {
+      "id": "nasa-techrise",
+      "url": "https://www.nasa.gov/stmd-flight-opportunities/access-flight-tests/techrise/",
+      "title": "NASA TechRise Student Challenge",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-11T22:22:30.686Z"
+    },
+    {
+      "id": "future-engineers-rules",
+      "url": "https://www.futureengineers.org/Pdfs/OfficialRules.pdf?v=250829",
+      "title": "Future Engineers Challenge Official Rules",
+      "pageType": "official_rules",
+      "accessedAt": "2026-08-11T22:22:30.686Z"
+    },
+    {
+      "id": "future-engineers-privacy",
+      "url": "https://www.futureengineers.org/Pdfs/PrivacyPolicy.pdf?v=250829",
+      "title": "Future Engineers Platform Privacy Policy",
+      "pageType": "official_privacy_policy",
+      "accessedAt": "2026-08-11T22:22:30.686Z"
+    },
+    {
+      "id": "future-engineers-terms",
+      "url": "https://www.futureengineers.org/Pdfs/TermsofService.pdf?v=250829",
+      "title": "Future Engineers Terms of Service",
+      "pageType": "official_terms",
+      "accessedAt": "2026-08-11T22:22:30.686Z"
+    },
+    {
+      "id": "techrise-flyer",
+      "url": "https://festagestorage.blob.core.windows.net/nasatechrise2026/files/evergreennasatechriseflyer.pdf",
+      "title": "NASA TechRise Student Challenge Flyer",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-11T22:22:30.686Z"
+    }
+  ],
+  "conflicts": [],
+  "facts": {
+    "opportunity_name": {
+      "status": "disclosed",
+      "value": "NASA TechRise Student Challenge",
+      "displayValue": "NASA TechRise Student Challenge",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "NASA TechRise Student Challenge"
+      },
+      "sources": [
+        {
+          "id": "nasa-techrise",
+          "url": "https://www.nasa.gov/stmd-flight-opportunities/access-flight-tests/techrise/",
+          "title": "NASA TechRise Student Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "NASA TechRise Student Challenge"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "opportunity_category": {
+      "status": "disclosed",
+      "value": "Student competition",
+      "displayValue": "Student competition",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Student competition"
+      },
+      "sources": [
+        {
+          "id": "nasa-techrise",
+          "url": "https://www.nasa.gov/stmd-flight-opportunities/access-flight-tests/techrise/",
+          "title": "NASA TechRise Student Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "This nationwide contest invites students in sixth through 12th grades attending U.S. public, private, or charter schools"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "official_url": {
+      "status": "disclosed",
+      "value": "https://www.futureengineers.org/nasatechrise",
+      "displayValue": "https://www.futureengineers.org/nasatechrise",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "https://www.futureengineers.org/nasatechrise"
+      },
+      "sources": [
+        {
+          "id": "techrise-program",
+          "url": "https://www.futureengineers.org/nasatechrise",
+          "title": "Future Engineers :: NASA TechRise Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "The NASA TechRise Student Challenge empowers teams of sixth to 12th-grade students to design, build, and launch experiments"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "operating_organization": {
+      "status": "disclosed",
+      "value": [
+        "NASA Flight Opportunities",
+        "Future Engineers"
+      ],
+      "displayValue": "NASA Flight Opportunities (manager); Future Engineers (administrator)",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "NASA Flight Opportunities (manager); Future Engineers (administrator)"
+      },
+      "sources": [
+        {
+          "id": "techrise-program",
+          "url": "https://www.futureengineers.org/nasatechrise",
+          "title": "Future Engineers :: NASA TechRise Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "Managed by NASA’s Flight Opportunities program at the agency’s Armstrong Flight Research Center in Edwards, California, and administered by Future Engineers"
+        }
+      ],
+      "note": "The current schema has one operating-organization field, so both official roles are preserved in one value.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "organization_type": {
+      "status": "disclosed",
+      "value": [
+        "U.S. federal agency program",
+        "Limited liability company administrator"
+      ],
+      "displayValue": "NASA program management with Future Engineers LLC administration",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "NASA program management with Future Engineers LLC administration"
+      },
+      "sources": [
+        {
+          "id": "techrise-program",
+          "url": "https://www.futureengineers.org/nasatechrise",
+          "title": "Future Engineers :: NASA TechRise Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "Managed by NASA’s Flight Opportunities program at the agency’s Armstrong Flight Research Center in Edwards, California, and administered by Future Engineers"
+        },
+        {
+          "id": "future-engineers-rules",
+          "url": "https://www.futureengineers.org/Pdfs/OfficialRules.pdf?v=250829",
+          "title": "Future Engineers Challenge Official Rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "Future Engineers, LLC, 177 E. Colorado Blvd Suite 200, Pasadena, CA 91105"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "named_institution": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No college, university, or other educational institution is identified as the operator, sponsor, partner, or host for this national challenge.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "institution_relationship": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "NASA and Future Engineers are not educational institutions; their distinct management and administration roles are captured under operating organization.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "relationship_explanation": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "There is no claimed institutional relationship to explain for the announced 2026–2027 cycle.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "grade_levels": {
+      "status": "disclosed",
+      "value": [
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "displayValue": "Grades 6–12",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12"
+        ]
+      },
+      "sources": [
+        {
+          "id": "techrise-program",
+          "url": "https://www.futureengineers.org/nasatechrise",
+          "title": "Future Engineers :: NASA TechRise Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "teams of sixth to 12th-grade students"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "ages": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The announced 2026–2027 page states grade levels but does not publish a numeric age range.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "geographic_restrictions": {
+      "status": "disclosed",
+      "value": "Students attending U.S. public, private, or charter schools, including U.S. territories",
+      "displayValue": "U.S. public, private, or charter schools, including U.S. territories",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "United States and U.S. territories"
+      },
+      "sources": [
+        {
+          "id": "nasa-techrise",
+          "url": "https://www.nasa.gov/stmd-flight-opportunities/access-flight-tests/techrise/",
+          "title": "NASA TechRise Student Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "attending U.S. public, private, or charter schools — including those in U.S. territories"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "citizenship_restrictions": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The reviewed current-cycle pages do not state a citizenship requirement.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "prerequisite_skills": {
+      "status": "disclosed",
+      "value": "No experience necessary",
+      "displayValue": "No experience necessary",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "No experience necessary"
+        ]
+      },
+      "sources": [
+        {
+          "id": "nasa-techrise",
+          "url": "https://www.nasa.gov/stmd-flight-opportunities/access-flight-tests/techrise/",
+          "title": "NASA TechRise Student Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "No experience is necessary to join the NASA TechRise Challenge."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "entry_format": {
+      "status": "disclosed",
+      "value": "Schoolmate team experiment proposal",
+      "displayValue": "Schoolmate team experiment proposal",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Schoolmate team experiment proposal"
+      },
+      "sources": [
+        {
+          "id": "nasa-techrise",
+          "url": "https://www.nasa.gov/stmd-flight-opportunities/access-flight-tests/techrise/",
+          "title": "NASA TechRise Student Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "team up with their schoolmates to design an experiment under the guidance of an educator"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "sponsor_requirement": {
+      "status": "disclosed",
+      "value": "Educator guidance required",
+      "displayValue": "Educator guidance required",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Educator guidance required"
+      },
+      "sources": [
+        {
+          "id": "techrise-program",
+          "url": "https://www.futureengineers.org/nasatechrise",
+          "title": "Future Engineers :: NASA TechRise Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "Guided by an educator, student teams affiliated with U.S. public, private, and charter schools can submit experiment ideas for flight testing."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_deadline": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "As reviewed, the 2026–2027 page says the challenge is expected to open in September 2026 but publishes no application close date.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "decision_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No 2026–2027 winner-notification date is published on the reviewed pages.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "start_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The expected September 2026 opening is an application opening, not a published participation start date.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "end_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No 2026–2027 participation end date is published on the reviewed pages.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "duration": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No 2026–2027 build or participation duration is published on the reviewed pages.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "weekly_hours": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No weekly time commitment is published for the announced 2026–2027 cycle.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "required_live_hours": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No required live-session hours are published for the announced 2026–2027 cycle.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "participation_format": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "nasa-techrise",
+          "url": "https://www.nasa.gov/stmd-flight-opportunities/access-flight-tests/techrise/",
+          "title": "NASA TechRise Student Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "Competition winners receive $1,500 and virtual mentorship to build their payloads."
+        }
+      ],
+      "note": "The sources establish virtual mentorship, school-based team building, and a physical payload flight, but do not define a participant attendance format that maps cleanly to the available enum.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "location": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "techrise-program",
+          "url": "https://www.futureengineers.org/nasatechrise",
+          "title": "Future Engineers :: NASA TechRise Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "The 2026-27 NASA TechRise Student Challenge suborbital vehicle will be the high-altitude balloon."
+        }
+      ],
+      "note": "The 2026–2027 experiment vehicle is a high-altitude balloon, but the reviewed pages do not publish participant meeting or attendance locations.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "travel_requirements": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The reviewed pages do not state that students or educators must travel.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_fee": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The reviewed current-cycle pages do not state an application fee or explicitly say that entry is free.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "deposit": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The opportunity is a student challenge, not a seat-reservation program.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The opportunity is a competition, not a tuition-based course or program.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_mandatory_costs": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The reviewed pages do not state whether teams must spend beyond the supplied build funding.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "estimated_total_mandatory_cost": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "Published project funding is not evidence of a participant's total mandatory cost.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "travel_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No participant travel benefit is stated for the 2026–2027 cycle.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "lodging_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No participant lodging benefit is stated for the 2026–2027 cycle.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "meals_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No participant meal benefit is stated for the 2026–2027 cycle.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "financial_aid": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No participant financial-aid policy is published for the announced cycle.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "refund_policy": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No participant payment or refund policy is published for the announced cycle.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_policy": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No participant withdrawal or cancellation policy is published for the announced cycle.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_process": {
+      "status": "disclosed",
+      "value": "60 teams selected; judge panel uses weighted criteria in cycle-specific rules",
+      "displayValue": "60 teams; judge panel and cycle-specific weighted criteria",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "60 teams selected by an appointed judge panel using cycle-specific weighted criteria"
+      },
+      "sources": [
+        {
+          "id": "techrise-program",
+          "url": "https://www.futureengineers.org/nasatechrise",
+          "title": "Future Engineers :: NASA TechRise Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "Sixty winning teams will be selected"
+        },
+        {
+          "id": "future-engineers-rules",
+          "url": "https://www.futureengineers.org/Pdfs/OfficialRules.pdf?v=250829",
+          "title": "Future Engineers Challenge Official Rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "A panel of judges (the “Challenge Judges”) appointed by the Sponsor will judge eligible Submissions"
+        }
+      ],
+      "note": "The 2026–2027 challenge-specific criteria were not published when this review was completed.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "applicant_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No applicant or proposal count is published for the announced 2026–2027 cycle.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_count": {
+      "status": "disclosed",
+      "value": 60,
+      "displayValue": "60 winning teams",
+      "normalizedValue": {
+        "kind": "number",
+        "value": 60,
+        "unit": "teams"
+      },
+      "sources": [
+        {
+          "id": "techrise-program",
+          "url": "https://www.futureengineers.org/nasatechrise",
+          "title": "Future Engineers :: NASA TechRise Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "Sixty winning teams will be selected"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_rate_claim": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No organizer-stated acceptance rate is published for the announced cycle.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "calculated_acceptance_rate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No current-cycle applicant count is available, so a compatible rate cannot be calculated.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_evidence": {
+      "status": "disclosed",
+      "value": "60 selected teams are stated; 2026–2027 weighted criteria are not yet published",
+      "displayValue": "Numerical team count; current-cycle criteria pending",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Numerical team count; current-cycle criteria pending"
+      },
+      "sources": [
+        {
+          "id": "techrise-program",
+          "url": "https://www.futureengineers.org/nasatechrise",
+          "title": "Future Engineers :: NASA TechRise Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "Sixty winning teams will be selected"
+        },
+        {
+          "id": "future-engineers-rules",
+          "url": "https://www.futureengineers.org/Pdfs/OfficialRules.pdf?v=250829",
+          "title": "Future Engineers Challenge Official Rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "on the basis of weighted criteria described in the applicable Challenge Rules"
+        }
+      ],
+      "note": "The count is current-cycle; the judging-process source is the general rule that defers details to unpublished challenge-specific rules.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cash_award": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "techrise-program",
+          "url": "https://www.futureengineers.org/nasatechrise",
+          "title": "Future Engineers :: NASA TechRise Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "Sixty winning teams will be selected to receive $1500 to build their experiment"
+        }
+      ],
+      "note": "The official page describes $1,500 for each selected team to build its experiment. It does not establish unrestricted personal prize money, and the current schema has no project-funding category.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "stipend": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The $1,500 is described as experiment-build funding, not as a participant stipend.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition_waiver": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No tuition is charged or waived for this competition in the reviewed materials.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "program_seat": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "Selection awards an experiment flight spot rather than admission to a course or cohort.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "in_kind_value": {
+      "status": "disclosed",
+      "value": "Technical support and an experiment spot on a NASA-sponsored high-altitude-balloon flight; monetary value not published",
+      "displayValue": "Technical support + NASA-sponsored high-altitude-balloon experiment flight spot",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "techrise-program",
+          "url": "https://www.futureengineers.org/nasatechrise",
+          "title": "Future Engineers :: NASA TechRise Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "technical support from Future Engineers, and an assigned spot for their experiment on a NASA-sponsored flight with an industry provider"
+        }
+      ],
+      "note": "The official source does not publish an approximate retail value.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "certificate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No certificate is promised on the reviewed current-cycle pages.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "college_credit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No college credit is promised on the reviewed current-cycle pages.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "mentorship": {
+      "status": "disclosed",
+      "value": "Virtual mentorship and Future Engineers technical support",
+      "displayValue": "Virtual mentorship and technical support",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Virtual mentorship and Future Engineers technical support"
+      },
+      "sources": [
+        {
+          "id": "nasa-techrise",
+          "url": "https://www.nasa.gov/stmd-flight-opportunities/access-flight-tests/techrise/",
+          "title": "NASA TechRise Student Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "Competition winners receive $1,500 and virtual mentorship to build their payloads."
+        },
+        {
+          "id": "techrise-program",
+          "url": "https://www.futureengineers.org/nasatechrise",
+          "title": "Future Engineers :: NASA TechRise Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "technical support from Future Engineers"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_benefits": {
+      "status": "disclosed",
+      "value": [
+        "$1,500 per selected team for experiment build",
+        "Future Engineers technical support",
+        "NASA-sponsored high-altitude-balloon experiment flight spot"
+      ],
+      "displayValue": "$1,500 team build funding, technical support, and a NASA-sponsored balloon flight spot",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "$1,500 team experiment-build funding",
+          "Technical support",
+          "NASA-sponsored high-altitude-balloon experiment flight spot"
+        ]
+      },
+      "sources": [
+        {
+          "id": "techrise-program",
+          "url": "https://www.futureengineers.org/nasatechrise",
+          "title": "Future Engineers :: NASA TechRise Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "Sixty winning teams will be selected to receive $1500 to build their experiment, technical support from Future Engineers"
+        },
+        {
+          "id": "techrise-program",
+          "url": "https://www.futureengineers.org/nasatechrise",
+          "title": "Future Engineers :: NASA TechRise Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "an assigned spot for their experiment on a NASA-sponsored flight with an industry provider"
+        },
+        {
+          "id": "techrise-program",
+          "url": "https://www.futureengineers.org/nasatechrise",
+          "title": "Future Engineers :: NASA TechRise Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "The 2026-27 NASA TechRise Student Challenge suborbital vehicle will be the high-altitude balloon."
+        }
+      ],
+      "note": "The money is described as team project funding, not personal cash; the flight spot has no published monetary value.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "personal_information": {
+      "status": "disclosed",
+      "value": "Student identity, contact, account, school, grade, demographic, submission-media, and eligibility information",
+      "displayValue": "Student identity, contact, school, demographic, submission-media, and eligibility data",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "Identity",
+          "Contact",
+          "Account",
+          "School",
+          "Grade",
+          "Demographic",
+          "Submission media",
+          "Eligibility documentation"
+        ]
+      },
+      "sources": [
+        {
+          "id": "future-engineers-privacy",
+          "url": "https://www.futureengineers.org/Pdfs/PrivacyPolicy.pdf?v=250829",
+          "title": "Future Engineers Platform Privacy Policy",
+          "pageType": "official_privacy_policy",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "Student information may include first and last name, birthdate, username and password associated with the Platform account, email address"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "data_sharing": {
+      "status": "disclosed",
+      "value": "Selected judges and challenge-administration consultants may receive personal information",
+      "displayValue": "Selected judges and challenge-administration consultants",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Selected judges and challenge-administration consultants"
+      },
+      "sources": [
+        {
+          "id": "future-engineers-privacy",
+          "url": "https://www.futureengineers.org/Pdfs/PrivacyPolicy.pdf?v=250829",
+          "title": "Future Engineers Platform Privacy Policy",
+          "pageType": "official_privacy_policy",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "Selected judges or Challenge administration consultants who may assist with an internally conducted entry review process."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_ownership": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "future-engineers-rules",
+          "url": "https://www.futureengineers.org/Pdfs/OfficialRules.pdf?v=250829",
+          "title": "Future Engineers Challenge Official Rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "All Submission materials remain the property of the Entrants (unless otherwise stated in connection with a specific Challenge)"
+        }
+      ],
+      "note": "The general rules say submissions remain entrants' property unless challenge-specific rules say otherwise; the 2026–2027 specific rules were not published at review time.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_license": {
+      "status": "disclosed",
+      "value": "Perpetual, irrevocable, worldwide, royalty-free, assignable, sublicensable license with commercialization and derivative-work rights",
+      "displayValue": "Broad perpetual, irrevocable, assignable, sublicensable license",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Broad perpetual, irrevocable, worldwide, royalty-free, assignable, sublicensable license"
+      },
+      "sources": [
+        {
+          "id": "future-engineers-rules",
+          "url": "https://www.futureengineers.org/Pdfs/OfficialRules.pdf?v=250829",
+          "title": "Future Engineers Challenge Official Rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "a perpetual, irrevocable, unlimited, worldwide, royalty-fee, assignable, and sublicensable right and license to use, distribute, display, exploit, commercialize, create derivative works"
+        }
+      ],
+      "note": "This is the currently posted general rule; unpublished 2026–2027 challenge-specific rules may add or change prize conditions.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "publicity_rights": {
+      "status": "disclosed",
+      "value": "Perpetual non-exclusive right to publish, display, reproduce, modify, edit, or otherwise use submissions",
+      "displayValue": "Perpetual publication, display, reproduction, modification, and promotional-use rights",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Perpetual publication, display, reproduction, modification, and promotional-use rights"
+      },
+      "sources": [
+        {
+          "id": "future-engineers-rules",
+          "url": "https://www.futureengineers.org/Pdfs/OfficialRules.pdf?v=250829",
+          "title": "Future Engineers Challenge Official Rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "in perpetuity, a non-exclusive license to publish, display, reproduce, modify, edit, use in composite form, or otherwise use his/her Submission"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "confidentiality": {
+      "status": "disclosed",
+      "value": "Submissions may be made publicly available",
+      "displayValue": "Do not assume submission confidentiality",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Submissions may be made publicly available"
+      },
+      "sources": [
+        {
+          "id": "future-engineers-terms",
+          "url": "https://www.futureengineers.org/Pdfs/TermsofService.pdf?v=250829",
+          "title": "Future Engineers Terms of Service",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "the User Content may be made publicly available"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_rights": {
+      "status": "disclosed",
+      "value": "Future Engineers may cancel, amend, or suspend a challenge or any portion of it",
+      "displayValue": "Organizer may cancel, amend, or suspend the challenge",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Organizer may cancel, amend, or suspend the challenge"
+      },
+      "sources": [
+        {
+          "id": "future-engineers-rules",
+          "url": "https://www.futureengineers.org/Pdfs/OfficialRules.pdf?v=250829",
+          "title": "Future Engineers Challenge Official Rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "The Sponsor reserves the right, at its sole discretion, to cancel, amend or suspend the Challenge, or any specific Challenge or any portion thereof"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "material_terms": {
+      "status": "disclosed",
+      "value": [
+        "2026–2027 challenge-specific rules not yet published",
+        "Broad submission license",
+        "Substantive AI-generated entry content prohibited by general rules",
+        "Organizer cancellation and amendment rights"
+      ],
+      "displayValue": "Specific cycle rules pending; broad license, AI-content restriction, and organizer cancellation rights",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "Cycle-specific rules pending",
+          "Broad submission license",
+          "Substantive AI-generated entry content prohibited",
+          "Organizer cancellation and amendment rights"
+        ]
+      },
+      "sources": [
+        {
+          "id": "future-engineers-rules",
+          "url": "https://www.futureengineers.org/Pdfs/OfficialRules.pdf?v=250829",
+          "title": "Future Engineers Challenge Official Rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "Each Challenge will have its own unique requirements and will be governed by two different sets of rules"
+        },
+        {
+          "id": "future-engineers-rules",
+          "url": "https://www.futureengineers.org/Pdfs/OfficialRules.pdf?v=250829",
+          "title": "Future Engineers Challenge Official Rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "The substantive content of a Submission must not have been generated or created with the assistance of artificial intelligence tools"
+        },
+        {
+          "id": "future-engineers-rules",
+          "url": "https://www.futureengineers.org/Pdfs/OfficialRules.pdf?v=250829",
+          "title": "Future Engineers Challenge Official Rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:22:30.686Z",
+          "excerpt": "The Sponsor reserves the right, at its sole discretion, to cancel, amend or suspend the Challenge"
+        }
+      ],
+      "note": "The general rules are current, but the announced 2026–2027 challenge-specific rules were not available when this review was completed.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    }
+  }
+}

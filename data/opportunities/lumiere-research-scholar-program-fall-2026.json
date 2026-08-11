@@ -1,0 +1,1381 @@
+{
+  "schemaVersion": "1.0.0",
+  "cardVersion": 1,
+  "slug": "lumiere-research-scholar-program-fall-2026",
+  "summary": "A selective online Fall 2026 research mentorship operated by Lumiere Education, with four current application price tiers, one-to-one mentorship, and eligibility after successful completion for three UC San Diego Extended Studies post-baccalaureate credits.",
+  "reviewState": "human_reviewed",
+  "reviewedAt": "2026-08-11T22:36:52.663Z",
+  "sourcePagesChecked": [
+    {
+      "id": "lumiere-programs",
+      "url": "https://www.lumiere-education.com/lumiere-programs",
+      "title": "Programs | Lumiere Education",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-11T22:32:46.281Z"
+    },
+    {
+      "id": "lumiere-application-process",
+      "url": "https://www.lumiere-education.com/students-application-form",
+      "title": "Student Application | Lumiere Education",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-11T22:32:46.281Z"
+    },
+    {
+      "id": "lumiere-current-application",
+      "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+      "title": "Lumiere Research Scholar Application",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-11T22:32:46.281Z"
+    },
+    {
+      "id": "lumiere-faq",
+      "url": "https://www.lumiere-education.com/faqs",
+      "title": "FAQS | Lumiere Education",
+      "pageType": "official_faq",
+      "accessedAt": "2026-08-11T22:32:46.281Z"
+    },
+    {
+      "id": "lumiere-about",
+      "url": "https://www.lumiere-education.com/about",
+      "title": "Who Are We? | Lumiere Education",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-11T22:32:46.281Z"
+    },
+    {
+      "id": "lumiere-academic-principles",
+      "url": "https://www.lumiere-education.com/our-academic-principles",
+      "title": "Our Academic Principles | Lumiere Education",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-11T22:32:46.281Z"
+    },
+    {
+      "id": "lumiere-press-release",
+      "url": "https://www.lumiere-education.com/press-releases",
+      "title": "Press Releases | Lumiere Education",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-11T22:32:46.281Z"
+    },
+    {
+      "id": "lumiere-older-cost-article",
+      "url": "https://www.lumiere-education.com/post/online-research-summer-programs-for-high-school-students",
+      "title": "12 Online Research Summer Programs for High School Students",
+      "pageType": "official_cost_page",
+      "accessedAt": "2026-08-11T22:32:46.281Z"
+    }
+  ],
+  "conflicts": [],
+  "facts": {
+    "opportunity_name": {
+      "status": "disclosed",
+      "value": "Lumiere Research Scholar Program",
+      "displayValue": "Lumiere Research Scholar Program",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Lumiere Research Scholar Program"
+      },
+      "sources": [
+        {
+          "id": "lumiere-programs",
+          "url": "https://www.lumiere-education.com/lumiere-programs",
+          "title": "Programs | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "In the Lumiere Research Scholar Program, students work 1-1 with a researcher from a top university to produce an independent research project."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "opportunity_category": {
+      "status": "disclosed",
+      "value": "Online research mentorship program",
+      "displayValue": "Online research mentorship program",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Online research mentorship program"
+      },
+      "sources": [
+        {
+          "id": "lumiere-faq",
+          "url": "https://www.lumiere-education.com/faqs",
+          "title": "FAQS | Lumiere Education",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Lumiere Education provides a selective online research mentorship program for high school students."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "official_url": {
+      "status": "disclosed",
+      "value": "https://www.lumiere-education.com/lumiere-programs",
+      "displayValue": "https://www.lumiere-education.com/lumiere-programs",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "https://www.lumiere-education.com/lumiere-programs"
+      },
+      "sources": [
+        {
+          "id": "lumiere-programs",
+          "url": "https://www.lumiere-education.com/lumiere-programs",
+          "title": "Programs | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "In the Lumiere Research Scholar Program, students work 1-1 with a researcher from a top university"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "operating_organization": {
+      "status": "disclosed",
+      "value": "Lumiere Education",
+      "displayValue": "Lumiere Education",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Lumiere Education"
+      },
+      "sources": [
+        {
+          "id": "lumiere-press-release",
+          "url": "https://www.lumiere-education.com/press-releases",
+          "title": "Press Releases | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Lumiere Education will continue to operate virtually, under co-founders Stephen Turban and Dhruva Bhat."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "organization_type": {
+      "status": "disclosed",
+      "value": "U.S.-based provider of online enrichment programs",
+      "displayValue": "U.S.-based online enrichment provider",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "U.S.-based online enrichment provider"
+      },
+      "sources": [
+        {
+          "id": "lumiere-press-release",
+          "url": "https://www.lumiere-education.com/press-releases",
+          "title": "Press Releases | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Lumiere Education Group, a US-based provider of online enrichment programs for high school students"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "named_institution": {
+      "status": "disclosed",
+      "value": "University of California, San Diego Extended Studies",
+      "displayValue": "UC San Diego Extended Studies",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "University of California, San Diego Extended Studies"
+      },
+      "sources": [
+        {
+          "id": "lumiere-programs",
+          "url": "https://www.lumiere-education.com/lumiere-programs",
+          "title": "Programs | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Lumiere has a credit partnership with the University of California, San Diego Extended Studies."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "institution_relationship": {
+      "status": "disclosed",
+      "value": "institution_partnered",
+      "displayValue": "Institution partnered",
+      "normalizedValue": {
+        "kind": "relationship",
+        "value": "institution_partnered"
+      },
+      "sources": [
+        {
+          "id": "lumiere-programs",
+          "url": "https://www.lumiere-education.com/lumiere-programs",
+          "title": "Programs | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Lumiere has a credit partnership with the University of California, San Diego Extended Studies."
+        }
+      ],
+      "note": "The partnership is expressly stated by Lumiere; no separate UC San Diego public page naming Lumiere was located during this review.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "relationship_explanation": {
+      "status": "disclosed",
+      "value": "UC San Diego Extended Studies is the stated credit partner; Harvard, Oxford, Stanford, MIT, and other universities appear only through founder or mentor affiliations.",
+      "displayValue": "UCSD Extended Studies: credit partner; other university names: personal affiliations",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "UC San Diego Extended Studies is the stated credit partner; other university names are founder or mentor affiliations only"
+      },
+      "sources": [
+        {
+          "id": "lumiere-programs",
+          "url": "https://www.lumiere-education.com/lumiere-programs",
+          "title": "Programs | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Lumiere has a credit partnership with the University of California, San Diego Extended Studies."
+        },
+        {
+          "id": "lumiere-about",
+          "url": "https://www.lumiere-education.com/about",
+          "title": "Who Are We? | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Founded by Harvard and Oxford researchers, Lumiere Education enables ambitious high school and middle school students"
+        },
+        {
+          "id": "lumiere-faq",
+          "url": "https://www.lumiere-education.com/faqs",
+          "title": "FAQS | Lumiere Education",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Our mentors are Ph.D. researchers, postdoctoral scholars, and professors from prestigious universities like Harvard, Stanford, Oxford, and MIT."
+        }
+      ],
+      "note": "No operating, sponsorship, partnership, or endorsement claim is made for Harvard, Oxford, Stanford, MIT, or a mentor's home institution.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "grade_levels": {
+      "status": "disclosed",
+      "value": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "displayValue": "Grades 9–12 (university students may also apply)",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "9",
+          "10",
+          "11",
+          "12"
+        ]
+      },
+      "sources": [
+        {
+          "id": "lumiere-faq",
+          "url": "https://www.lumiere-education.com/faqs",
+          "title": "FAQS | Lumiere Education",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "We welcome applications from high school students (grades 9-12) and university students worldwide, regardless of their research experience."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "ages": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The current program pages and application do not publish a numeric age range for grades 9–12 applicants.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "geographic_restrictions": {
+      "status": "disclosed",
+      "value": "Worldwide",
+      "displayValue": "Worldwide",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Worldwide"
+      },
+      "sources": [
+        {
+          "id": "lumiere-faq",
+          "url": "https://www.lumiere-education.com/faqs",
+          "title": "FAQS | Lumiere Education",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "We welcome applications from high school students (grades 9-12) and university students worldwide"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "citizenship_restrictions": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The application asks for citizenship but the reviewed pages do not publish a citizenship-based eligibility restriction.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "prerequisite_skills": {
+      "status": "disclosed",
+      "value": [
+        "Academic excellence",
+        "Curiosity",
+        "Ability to work independently and diligently",
+        "No prior field experience required"
+      ],
+      "displayValue": "Academic strength, curiosity, and independent work; prior field experience not required",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "Academic excellence",
+          "Curiosity",
+          "Independent and diligent work",
+          "No prior field experience required"
+        ]
+      },
+      "sources": [
+        {
+          "id": "lumiere-application-process",
+          "url": "https://www.lumiere-education.com/students-application-form",
+          "title": "Student Application | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Academic excellence Curiosity about the world and a desire to answer big questions Ability to work independently and diligently Not-required: experience in the field of your interest"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "entry_format": {
+      "status": "disclosed",
+      "value": "Individual online application, interview if shortlisted, then mentor matching",
+      "displayValue": "Individual application → shortlist interview → mentor matching",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Individual application, shortlist interview, and mentor matching"
+      },
+      "sources": [
+        {
+          "id": "lumiere-application-process",
+          "url": "https://www.lumiere-education.com/students-application-form",
+          "title": "Student Application | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Stage 1: Online Application"
+        },
+        {
+          "id": "lumiere-application-process",
+          "url": "https://www.lumiere-education.com/students-application-form",
+          "title": "Student Application | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "If your application is shortlisted, you move to the interview round"
+        },
+        {
+          "id": "lumiere-application-process",
+          "url": "https://www.lumiere-education.com/students-application-form",
+          "title": "Student Application | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "the Lumiere team will work on finding you the best mentor match based on your interests and aims"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "sponsor_requirement": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The reviewed application is individual and does not require an educator, adviser, or adult sponsor.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_deadline": {
+      "status": "disclosed",
+      "value": "2026-08-23",
+      "displayValue": "August 23, 2026",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2026-08-23"
+      },
+      "sources": [
+        {
+          "id": "lumiere-programs",
+          "url": "https://www.lumiere-education.com/lumiere-programs",
+          "title": "Programs | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Our Fall Cohort Admission Deadline is August 23"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "decision_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The current Fall 2026 pages do not publish a decision-notification date.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "start_date": {
+      "status": "disclosed",
+      "value": "2026-09-14",
+      "displayValue": "September 14, 2026",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2026-09-14"
+      },
+      "sources": [
+        {
+          "id": "lumiere-programs",
+          "url": "https://www.lumiere-education.com/lumiere-programs",
+          "title": "Programs | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Fall Cohort 2026 — August 23, 2026 — September 14, 2026"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "end_date": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "lumiere-programs",
+          "url": "https://www.lumiere-education.com/lumiere-programs",
+          "title": "Programs | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Fall Cohort 2026 — August 23, 2026 — September 14, 2026"
+        }
+      ],
+      "note": "Fall 2026 starts September 14, but the four program tiers have different durations and the page does not publish tier-specific end dates.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "duration": {
+      "status": "disclosed",
+      "value": [
+        "Individual Research Program: 12 weeks",
+        "Premium Research & Publication Program: 3–4 months research plus 1–4 months publication",
+        "Research Fellowship: 6–12 months",
+        "Professor Premium Publication Program: 3–4 months research plus 1–4 months publication"
+      ],
+      "displayValue": "By tier: 12 weeks; 3–4 + 1–4 months; 6–12 months; 3–4 + 1–4 months",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "lumiere-programs",
+          "url": "https://www.lumiere-education.com/lumiere-programs",
+          "title": "Programs | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Duration — 12 weeks | 3-4 months research time, 1-4 months publication time | 6-12 months | 3-4 months research time, 1-4 months publication time"
+        }
+      ],
+      "note": "The single duration field preserves the complete tier matrix as text; no single normalized duration is selected.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "weekly_hours": {
+      "status": "disclosed",
+      "value": "5–10 hours per week outside mentor sessions",
+      "displayValue": "5–10 hours/week outside mentor sessions",
+      "normalizedValue": {
+        "kind": "hours",
+        "minimum": 5,
+        "maximum": 10,
+        "period": "week"
+      },
+      "sources": [
+        {
+          "id": "lumiere-academic-principles",
+          "url": "https://www.lumiere-education.com/our-academic-principles",
+          "title": "Our Academic Principles | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Outside the sessions with them you are expected to put in 5-10 hours of work into your project every week."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "required_live_hours": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "lumiere-programs",
+          "url": "https://www.lumiere-education.com/lumiere-programs",
+          "title": "Programs | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Individual sessions with mentor — 9 | 15 | 30 | 10"
+        }
+      ],
+      "note": "The current program comparison publishes tier-specific counts of mentor, writing-coach, and publication-specialist sessions but not their duration, so required live hours cannot be calculated.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "participation_format": {
+      "status": "disclosed",
+      "value": "online",
+      "displayValue": "Online",
+      "normalizedValue": {
+        "kind": "participation_format",
+        "value": "online"
+      },
+      "sources": [
+        {
+          "id": "lumiere-faq",
+          "url": "https://www.lumiere-education.com/faqs",
+          "title": "FAQS | Lumiere Education",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Lumiere Education provides a selective online research mentorship program"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "location": {
+      "status": "disclosed",
+      "value": "Online; worldwide",
+      "displayValue": "Online — worldwide",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Online; worldwide"
+      },
+      "sources": [
+        {
+          "id": "lumiere-faq",
+          "url": "https://www.lumiere-education.com/faqs",
+          "title": "FAQS | Lumiere Education",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "high school students (grades 9-12) and university students worldwide"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "travel_requirements": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The reviewed program is online and publishes no required participant travel.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_fee": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The public application does not state an application fee or expressly say the application is free.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "deposit": {
+      "status": "disclosed",
+      "value": 200,
+      "displayValue": "$200 conditional-acceptance deposit, credited to tuition",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 200,
+        "currency": "USD",
+        "classification": "deposit"
+      },
+      "sources": [
+        {
+          "id": "lumiere-current-application",
+          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+          "title": "Lumiere Research Scholar Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "If you are conditionally accepted after the interview, you are required to make a deposit of 200 USD, which will then go towards your tuition fee"
+        }
+      ],
+      "note": "The application says it is reimbursed if Lumiere cannot find an appropriate mentor match.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition": {
+      "status": "disclosed",
+      "value": [
+        "Individual Research Program: $3,190",
+        "Premium Research & Publication Program: $6,450",
+        "Research Fellowship: $9,900",
+        "Professor Premium Publication Program: $9,900"
+      ],
+      "displayValue": "Individual $3,190; Premium $6,450; Fellowship $9,900; Professor Premium $9,900",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "lumiere-current-application",
+          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+          "title": "Lumiere Research Scholar Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "The programs we offer are the Individual Research Program (12 weeks; 3190 USD), the Premium Research & Publication Program (16-20 weeks; 6450 USD), the Research Fellowship (6-12 months, 9900 USD)."
+        },
+        {
+          "id": "lumiere-current-application",
+          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+          "title": "Lumiere Research Scholar Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Professor Premium Publication Program – 9900 USD"
+        }
+      ],
+      "note": "Current application prices supersede older prices still visible in a dated October 2025 Lumiere blog article. A single normalized tuition amount would discard the tier structure.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_mandatory_costs": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The reviewed current application does not publish any mandatory charge beyond tier tuition and the deposit credited toward tuition.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "estimated_total_mandatory_cost": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "lumiere-current-application",
+          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+          "title": "Lumiere Research Scholar Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Individual Research Program – 3190 USD 2. Premium Research & Publication Program – 6450 USD 3. Research Fellowship – 9900 USD 4. Professor Premium Publication Program – 9900 USD"
+        }
+      ],
+      "note": "The required total depends on the selected tier; the current schema cannot normalize the four-price matrix, and no complete terms page was found to rule out every additional charge.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "travel_included": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The program is online and no participant travel is required.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "lodging_included": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The program is online and has no residential component.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "meals_included": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The program is online and has no meal component.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "financial_aid": {
+      "status": "disclosed",
+      "value": "Competitive need-based scholarship for Individual Research Program applicants only; published household-income thresholds apply",
+      "displayValue": "Need-based aid: competitive, income-limited, Individual Research tier only",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Competitive need-based scholarship for Individual Research Program applicants subject to published household-income thresholds"
+      },
+      "sources": [
+        {
+          "id": "lumiere-current-application",
+          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+          "title": "Lumiere Research Scholar Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Lumiere only gives financial aid to students whose families make less than $80,000 per year (applicants from the US and other high income countries) or $20,000 per year per year (non-US applicants from low-income countries)."
+        },
+        {
+          "id": "lumiere-current-application",
+          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+          "title": "Lumiere Research Scholar Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "you are only eligible for financial aid if you have applied for the Individual Research Program"
+        }
+      ],
+      "note": "The application does not publish award amounts or guarantee full need coverage.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "refund_policy": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "lumiere-current-application",
+          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+          "title": "Lumiere Research Scholar Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "will be reimbursed if there is not an appropriate match"
+        }
+      ],
+      "note": "The only public reimbursement term found covers the $200 deposit if no appropriate mentor match is found; no participant-withdrawal or tuition-refund schedule was located.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_policy": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No public participant withdrawal or cancellation policy was located on the reviewed pages or current application.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_process": {
+      "status": "disclosed",
+      "value": "Online application, shortlist interview, mentor matching, decision, and logistical completion",
+      "displayValue": "Application → shortlist interview → mentor match/decision → logistics",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Online application, shortlist interview, mentor matching, decision, and logistical completion"
+      },
+      "sources": [
+        {
+          "id": "lumiere-application-process",
+          "url": "https://www.lumiere-education.com/students-application-form",
+          "title": "Student Application | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Stage 1: Online Application"
+        },
+        {
+          "id": "lumiere-application-process",
+          "url": "https://www.lumiere-education.com/students-application-form",
+          "title": "Student Application | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "If your application is shortlisted, you move to the interview round"
+        },
+        {
+          "id": "lumiere-application-process",
+          "url": "https://www.lumiere-education.com/students-application-form",
+          "title": "Student Application | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "You will also be notified of your application decision at this stage."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "applicant_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No Fall 2026 applicant count is published on the reviewed pages.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No Fall 2026 acceptance count is published on the reviewed pages.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_rate_claim": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No organizer-stated Fall 2026 acceptance rate is published on the reviewed pages.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "calculated_acceptance_rate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "Compatible current-cycle applicant and acceptance counts are absent.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_evidence": {
+      "status": "disclosed",
+      "value": "Descriptive selection process only; no current-cycle counts or rate",
+      "displayValue": "Descriptive: shortlist interview and mentor matching; no Fall 2026 counts",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Descriptive shortlist interview and mentor matching; no current-cycle counts"
+      },
+      "sources": [
+        {
+          "id": "lumiere-application-process",
+          "url": "https://www.lumiere-education.com/students-application-form",
+          "title": "Student Application | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "The Lumiere Research Scholar Program is selective in its process."
+        },
+        {
+          "id": "lumiere-application-process",
+          "url": "https://www.lumiere-education.com/students-application-form",
+          "title": "Student Application | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "If your application is shortlisted, you move to the interview round"
+        },
+        {
+          "id": "lumiere-application-process",
+          "url": "https://www.lumiere-education.com/students-application-form",
+          "title": "Student Application | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "the Lumiere team will work on finding you the best mentor match"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cash_award": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The opportunity is a paid research program, not a prize competition.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "stipend": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No participant stipend is part of the paid program described in the reviewed materials.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition_waiver": {
+      "status": "disclosed",
+      "value": "Need-based financial-aid scholarship for eligible Individual Research Program applicants; amount not published",
+      "displayValue": "Need-based tuition aid for eligible Individual Research applicants",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "lumiere-current-application",
+          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+          "title": "Lumiere Research Scholar Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "you are only eligible for financial aid if you have applied for the Individual Research Program"
+        }
+      ],
+      "note": "The application does not publish the scholarship amount, percentage, or a guarantee of an award.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "program_seat": {
+      "status": "disclosed",
+      "value": "Conditional acceptance after interview and successful mentor matching",
+      "displayValue": "Conditional program admission after interview and mentor matching",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Conditional admission after interview and mentor matching"
+      },
+      "sources": [
+        {
+          "id": "lumiere-current-application",
+          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+          "title": "Lumiere Research Scholar Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "If you are conditionally accepted after the interview"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "in_kind_value": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The mentorship and writing support are the purchased program service, not a separately valued in-kind award.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "certificate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The reviewed current program pages do not promise a Lumiere certificate.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "college_credit": {
+      "status": "disclosed",
+      "value": "Eligibility after successful completion for 3 post-baccalaureate credits and a digital transcript from UC San Diego Extended Studies",
+      "displayValue": "Eligible after completion for 3 UCSD Extended Studies post-baccalaureate credits + transcript",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Eligibility after successful completion for 3 UC San Diego Extended Studies post-baccalaureate credits and a digital transcript"
+      },
+      "sources": [
+        {
+          "id": "lumiere-programs",
+          "url": "https://www.lumiere-education.com/lumiere-programs",
+          "title": "Programs | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "If you successfully complete any one of our programs, you will also be eligible to receive 3 post-baccalaureate credits and a digital transcript from UCSD Extended Studies!"
+        }
+      ],
+      "note": "The official wording is eligibility to receive credit, not automatic conferral; a separate UCSD page naming Lumiere was not located.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "mentorship": {
+      "status": "disclosed",
+      "value": "One-to-one mentorship; mentor type and session count depend on program tier",
+      "displayValue": "1:1 research mentorship; tier-specific mentor type and session count",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "One-to-one research mentorship with tier-specific mentor type and session count"
+      },
+      "sources": [
+        {
+          "id": "lumiere-programs",
+          "url": "https://www.lumiere-education.com/lumiere-programs",
+          "title": "Programs | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "students work 1-1 with a researcher from a top university to produce an independent research project"
+        },
+        {
+          "id": "lumiere-programs",
+          "url": "https://www.lumiere-education.com/lumiere-programs",
+          "title": "Programs | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Individual sessions with mentor — 9 | 15 | 30 | 10"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_benefits": {
+      "status": "disclosed",
+      "value": [
+        "Independent research project/paper",
+        "Writing-coach support",
+        "Tier-dependent publication support",
+        "UCSD Extended Studies credit eligibility"
+      ],
+      "displayValue": "Research paper, writing support, tier-dependent publication support, and credit eligibility",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "Independent research paper",
+          "Writing support",
+          "Tier-dependent publication support",
+          "UCSD Extended Studies credit eligibility"
+        ]
+      },
+      "sources": [
+        {
+          "id": "lumiere-faq",
+          "url": "https://www.lumiere-education.com/faqs",
+          "title": "FAQS | Lumiere Education",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Students gain experience with academic research, mentorship from top researchers, and a completed research paper."
+        },
+        {
+          "id": "lumiere-faq",
+          "url": "https://www.lumiere-education.com/faqs",
+          "title": "FAQS | Lumiere Education",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Lumiere assists with up to 3 rounds of submission. Please note that we cannot guarantee publication."
+        },
+        {
+          "id": "lumiere-programs",
+          "url": "https://www.lumiere-education.com/lumiere-programs",
+          "title": "Programs | Lumiere Education",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "eligible to receive 3 post-baccalaureate credits and a digital transcript from UCSD Extended Studies"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "personal_information": {
+      "status": "disclosed",
+      "value": [
+        "Name and preferred name",
+        "Gender and birthdate",
+        "School, grade, graduation year, GPA, and test scores",
+        "Email, phone, country, citizenship, city, and timezone",
+        "Counselor details",
+        "Research interests and prior experience",
+        "Disability information",
+        "Household income eligibility for aid"
+      ],
+      "displayValue": "Identity, contact, location/citizenship, school, academic, counselor, disability, and aid-eligibility data",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "Identity",
+          "Contact",
+          "Location",
+          "Citizenship",
+          "School",
+          "Academic record",
+          "Counselor",
+          "Disability",
+          "Aid eligibility"
+        ]
+      },
+      "sources": [
+        {
+          "id": "lumiere-current-application",
+          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+          "title": "Lumiere Research Scholar Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "What is your full name? What is your preferred first name? What gender do you most identify with? What is your birthdate?"
+        },
+        {
+          "id": "lumiere-current-application",
+          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+          "title": "Lumiere Research Scholar Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "What is your most recent GPA/grade/percentage?"
+        },
+        {
+          "id": "lumiere-current-application",
+          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+          "title": "Lumiere Research Scholar Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Do you have any physical, mental, or learning disabilities that we should be aware of?"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "data_sharing": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No public student privacy policy or program-specific data-sharing disclosure was located on the reviewed Lumiere pages or linked application.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_ownership": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No public term allocating ownership of a student's research project or paper was located.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_license": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No public license governing Lumiere's use of a student's research project or paper was located.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "publicity_rights": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No public program-specific name, image, testimonial, or publicity-rights term was located.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "confidentiality": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No public confidentiality or proprietary-information policy for student research was located.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_rights": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No public organizer cancellation or unilateral modification term was located.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "material_terms": {
+      "status": "disclosed",
+      "value": [
+        "Four current application price tiers from $3,190 to $9,900",
+        "$200 conditional-acceptance deposit credited to tuition and reimbursed if no appropriate match",
+        "Financial aid restricted to eligible Individual Research Program applicants",
+        "Publication support does not guarantee publication"
+      ],
+      "displayValue": "Four price tiers; conditional $200 deposit; restricted aid; no publication guarantee",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "Four price tiers",
+          "$200 conditional deposit",
+          "Aid restricted to eligible Individual Research applicants",
+          "Publication not guaranteed"
+        ]
+      },
+      "sources": [
+        {
+          "id": "lumiere-current-application",
+          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+          "title": "Lumiere Research Scholar Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Individual Research Program – 3190 USD 2. Premium Research & Publication Program – 6450 USD 3. Research Fellowship – 9900 USD 4. Professor Premium Publication Program – 9900 USD"
+        },
+        {
+          "id": "lumiere-current-application",
+          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+          "title": "Lumiere Research Scholar Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "deposit of 200 USD, which will then go towards your tuition fee or will be reimbursed if there is not an appropriate match"
+        },
+        {
+          "id": "lumiere-current-application",
+          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
+          "title": "Lumiere Research Scholar Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "you are only eligible for financial aid if you have applied for the Individual Research Program"
+        },
+        {
+          "id": "lumiere-faq",
+          "url": "https://www.lumiere-education.com/faqs",
+          "title": "FAQS | Lumiere Education",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-11T22:32:46.281Z",
+          "excerpt": "Lumiere assists with up to 3 rounds of submission. Please note that we cannot guarantee publication."
+        }
+      ],
+      "note": "No public general student terms, tuition-refund schedule, IP license, publicity term, or privacy policy was located.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    }
+  }
+}

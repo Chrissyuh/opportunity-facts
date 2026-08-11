@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Schema & data",
   description:
-    "Download the Opportunity Facts schema and fictional demonstration dataset.",
+    "Download the Opportunity Facts schema and public reviewed/demo dataset.",
 };
 
 export default function DataPage() {
@@ -30,9 +30,10 @@ export default function DataPage() {
             <h2 id="downloads-title">Use the same records we do.</h2>
           </div>
           <p>
-            The current public dataset contains fictional demonstration cards only.
-            Each `.example` record is visibly labeled and exists to exercise the
-            product—not to describe a real organization.
+            The current public dataset contains three human-reviewed real cards and
+            seven fictional demonstration cards. Each `.example` record remains
+            visibly labeled and exists to exercise the product—not to describe a real
+            organization.
           </p>
           <div className="button-row">
             <a className="button" href="/api/dataset" download>
@@ -79,7 +80,7 @@ export default function DataPage() {
           </p>
           <h2>Public data boundary</h2>
           <p>
-            Repository JSON under `data/demo` is fictional. Future checked records
+            Repository JSON under `data/demo` is fictional. Human-reviewed records
             belong under `data/opportunities`. Browser-created drafts are not added
             to the public dataset automatically, and the server does not provide a
             hidden permanent store.

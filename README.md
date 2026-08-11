@@ -4,7 +4,7 @@ Opportunity Facts turns public pages about student opportunities into standardiz
 
 The product reports what reviewed sources disclose. It does **not** rate legitimacy, quality, prestige, admissions impact, or value, and it does not independently audit an organizer's claims. `not_found`, `unclear`, and `conflicting` are intentional results.
 
-All bundled cards are clearly labeled fictional demo data and use reserved `.example` URLs.
+The bundled dataset contains seven clearly labeled fictional `.example` demo cards and three independently researched, human-reviewed real cards for the current NASA TechRise, Lumiere Research Scholar, and Diamond Challenge cycles. Human review verifies source alignment; it is not an organizer endorsement or independent legitimacy audit.
 
 ## Screenshots
 
@@ -116,8 +116,8 @@ app/                    App Router pages and bounded API routes
 components/             Facts card, comparison, builder, analysis, and correction UI
 data/demo/              Seven fictional demo cards
 data/drafts/            Private repository drafts excluded from public exports
-data/opportunities/     Human-reviewed or organizer-confirmed public JSON
-docs/                   Schema, review, threat model, and release screenshots
+data/opportunities/     Three human-reviewed public records
+docs/                   Schema, review records, threat model, and release screenshots
 lib/opportunity/        Authoritative schema, registry, normalization, and serialization
 lib/analysis/           URL safety, pinned fetching, extraction, model, and evidence pipeline
 public/data/            Deterministic downloadable dataset

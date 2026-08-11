@@ -124,7 +124,7 @@ test("a blocked clipboard reports a usable correction fallback", async ({ page }
 test("the opportunity library combines search and disclosure filters", async ({ page }) => {
   await page.goto("/opportunities");
 
-  await expect(page.getByRole("heading", { level: 2, name: "7 cards" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "10 cards" })).toBeVisible();
   await expect(page.locator(".library-card .review-badge").filter({ hasText: "Demo data" })).toHaveCount(7);
   await page.getByRole("searchbox", { name: "Search" }).fill("Lantern Bay");
   await page.getByLabel("Category").selectOption({ label: "Summer program" });
@@ -137,7 +137,7 @@ test("the opportunity library combines search and disclosure filters", async ({ 
   await expect(page.getByRole("link", { name: "Cipher Finch Student Challenge", exact: true })).toHaveCount(0);
 
   await page.getByRole("button", { name: "Clear all", exact: true }).click();
-  await expect(page.getByRole("heading", { level: 2, name: "7 cards" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "10 cards" })).toBeVisible();
   await expect(page.getByRole("searchbox", { name: "Search" })).toHaveValue("");
 });
 
