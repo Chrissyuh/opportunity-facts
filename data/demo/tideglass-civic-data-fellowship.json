@@ -1,0 +1,1182 @@
+{
+  "schemaVersion": "1.0.0",
+  "cardVersion": 1,
+  "slug": "tideglass-civic-data-fellowship",
+  "summary": "A no-fee hybrid fellowship with a cash stipend, an organizer-stated rate that cannot be recalculated, an unclear university relationship, and conflicting weekly hours.",
+  "reviewState": "demo",
+  "reviewedAt": "2026-08-10T12:00:00Z",
+  "sourcePagesChecked": [
+    {
+      "id": "program",
+      "url": "https://tideglass.example/fellowship",
+      "title": "Tideglass Civic Data Fellowship",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    },
+    {
+      "id": "faq",
+      "url": "https://tideglass.example/fellowship/faq",
+      "title": "Fellowship FAQ",
+      "pageType": "official_faq",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    },
+    {
+      "id": "terms",
+      "url": "https://tideglass.example/fellowship/terms",
+      "title": "Fellowship terms",
+      "pageType": "official_terms",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    }
+  ],
+  "conflicts": [
+    {
+      "fieldId": "weekly_hours",
+      "summary": "The overview says five hours per week while the FAQ says eight."
+    }
+  ],
+  "facts": {
+    "opportunity_name": {
+      "status": "disclosed",
+      "value": "Tideglass Civic Data Fellowship",
+      "displayValue": "Tideglass Civic Data Fellowship",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The Tideglass Civic Data Fellowship is a twelve-week hybrid program."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "opportunity_category": {
+      "status": "disclosed",
+      "value": "fellowship",
+      "displayValue": "Fellowship",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The Tideglass Civic Data Fellowship is a twelve-week hybrid program."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "official_url": {
+      "status": "disclosed",
+      "value": "https://tideglass.example/fellowship",
+      "displayValue": "https://tideglass.example/fellowship",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "https://tideglass.example/fellowship"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Official page: https://tideglass.example/fellowship"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "operating_organization": {
+      "status": "disclosed",
+      "value": "Tideglass Civic Lab",
+      "displayValue": "Tideglass Civic Lab",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Tideglass Civic Lab operates the fellowship."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "organization_type": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Tideglass Civic Lab operates the fellowship."
+        }
+      ],
+      "note": "The reviewed pages call Tideglass a lab but do not state its legal or organizational type.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "named_institution": {
+      "status": "disclosed",
+      "value": "Sample Harbor University",
+      "displayValue": "Sample Harbor University",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Some sessions are listed at Sample Harbor University."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "institution_relationship": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Some sessions are listed at Sample Harbor University, and two faculty members appear as guest speakers."
+        }
+      ],
+      "note": "The pages list university classrooms and faculty speakers but do not state an operating, sponsorship, partnership, or hosting agreement.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "relationship_explanation": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Some sessions are listed at Sample Harbor University, and two faculty members appear as guest speakers."
+        }
+      ],
+      "note": "Location and speaker affiliations alone do not establish the institution's relationship to the operator.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "grade_levels": {
+      "status": "disclosed",
+      "value": [
+        "12"
+      ],
+      "displayValue": "Grade 12",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "12"
+        ]
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Current grade 12 students may apply."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "ages": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "geographic_restrictions": {
+      "status": "disclosed",
+      "value": "Within 40 miles of Sample Harbor",
+      "displayValue": "Within 40 miles of Sample Harbor",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Applicants must live or attend school within 40 miles of Sample Harbor."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "citizenship_restrictions": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "prerequisite_skills": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "entry_format": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "sponsor_requirement": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_deadline": {
+      "status": "disclosed",
+      "value": "November 20, 2026",
+      "displayValue": "November 20, 2026",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2026-11-20"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Applications close November 20, 2026."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "decision_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "start_date": {
+      "status": "disclosed",
+      "value": "January 9, 2027",
+      "displayValue": "January 9, 2027",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2027-01-09"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The fellowship runs January 9 through March 27, 2027."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "end_date": {
+      "status": "disclosed",
+      "value": "March 27, 2027",
+      "displayValue": "March 27, 2027",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2027-03-27"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The fellowship runs January 9 through March 27, 2027."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "duration": {
+      "status": "disclosed",
+      "value": "twelve weeks",
+      "displayValue": "12 weeks",
+      "normalizedValue": {
+        "kind": "duration",
+        "amount": 12,
+        "unit": "weeks"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The Tideglass Civic Data Fellowship is a twelve-week hybrid program."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "weekly_hours": {
+      "status": "conflicting",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The overview and FAQ publish different weekly commitments.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [
+        {
+          "value": 5,
+          "displayValue": "5 hours per week",
+          "normalizedValue": {
+            "kind": "hours",
+            "minimum": 5,
+            "maximum": null,
+            "period": "week"
+          },
+          "sources": [
+            {
+              "id": "program",
+              "url": "https://tideglass.example/fellowship",
+              "title": "Tideglass Civic Data Fellowship",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-10T12:00:00Z",
+              "excerpt": "The overview asks fellows to reserve five hours each week."
+            }
+          ],
+          "note": null
+        },
+        {
+          "value": 8,
+          "displayValue": "8 hours per week",
+          "normalizedValue": {
+            "kind": "hours",
+            "minimum": 8,
+            "maximum": null,
+            "period": "week"
+          },
+          "sources": [
+            {
+              "id": "faq",
+              "url": "https://tideglass.example/fellowship/faq",
+              "title": "Fellowship FAQ",
+              "pageType": "official_faq",
+              "accessedAt": "2026-08-10T12:00:00Z",
+              "excerpt": "The FAQ says fellows should plan for eight hours per week including project work."
+            }
+          ],
+          "note": null
+        }
+      ],
+      "calculation": null
+    },
+    "required_live_hours": {
+      "status": "disclosed",
+      "value": "3 hours per week",
+      "displayValue": "3 live hours per week",
+      "normalizedValue": {
+        "kind": "hours",
+        "minimum": 3,
+        "maximum": null,
+        "period": "week"
+      },
+      "sources": [
+        {
+          "id": "faq",
+          "url": "https://tideglass.example/fellowship/faq",
+          "title": "Fellowship FAQ",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Three hours each week are scheduled live sessions."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "participation_format": {
+      "status": "disclosed",
+      "value": "hybrid",
+      "displayValue": "Hybrid",
+      "normalizedValue": {
+        "kind": "participation_format",
+        "value": "hybrid"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The Tideglass Civic Data Fellowship is a twelve-week hybrid program."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "location": {
+      "status": "disclosed",
+      "value": "Online and listed Sample Harbor meeting rooms",
+      "displayValue": "Online and Sample Harbor meeting rooms",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Fellows meet online and at listed Sample Harbor meeting rooms."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "travel_requirements": {
+      "status": "disclosed",
+      "value": "Local travel to six in-person sessions",
+      "displayValue": "Travel to 6 local sessions",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "faq",
+          "url": "https://tideglass.example/fellowship/faq",
+          "title": "Fellowship FAQ",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Fellows arrange local travel to six in-person Saturday sessions."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_fee": {
+      "status": "disclosed",
+      "value": 0,
+      "displayValue": "$0",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 0,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "There is no fee to apply or participate."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "deposit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_mandatory_costs": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "estimated_total_mandatory_cost": {
+      "status": "disclosed",
+      "value": 0,
+      "displayValue": "$0",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 0,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "There is no fee to apply or participate."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "travel_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "lodging_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "meals_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "financial_aid": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The published mandatory program cost is $0; local travel remains the participant's responsibility.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "refund_policy": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No program payment is required.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_policy": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_process": {
+      "status": "disclosed",
+      "value": "Application essay, data exercise, and interview.",
+      "displayValue": "Essay, data exercise, and interview",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Selection uses a short essay, a data exercise, and a finalist interview."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "applicant_count": {
+      "status": "disclosed",
+      "value": 500,
+      "displayValue": "500 applicants",
+      "normalizedValue": {
+        "kind": "number",
+        "value": 500,
+        "unit": "people"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The organizer says last year's applicant pool included about 500 completed applications."
+        }
+      ],
+      "note": "The page gives an approximate organizer-stated count.",
+      "confidence": null,
+      "claimKind": "organizer_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_rate_claim": {
+      "status": "disclosed",
+      "value": 12,
+      "displayValue": "12% organizer-stated acceptance rate",
+      "normalizedValue": {
+        "kind": "percentage",
+        "value": 12
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The organizer describes the prior cohort as having a 12% acceptance rate but does not publish an accepted count."
+        }
+      ],
+      "note": "Organizer-stated rate; it cannot be recalculated because an acceptance count was not published.",
+      "confidence": null,
+      "claimKind": "organizer_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "calculated_acceptance_rate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_evidence": {
+      "status": "disclosed",
+      "value": "numerical and descriptive; accepted count absent",
+      "displayValue": "Numerical and descriptive; accepted count absent",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The organizer describes the prior cohort as having a 12% acceptance rate but does not publish an accepted count."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cash_award": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "stipend": {
+      "status": "disclosed",
+      "value": 1500,
+      "displayValue": "$1,500 stipend",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 1500,
+        "currency": "USD",
+        "classification": "cash"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Fellows who complete the program receive a $1,500 stipend."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition_waiver": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "program_seat": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "in_kind_value": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "certificate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "college_credit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "mentorship": {
+      "status": "disclosed",
+      "value": "weekly project mentor meeting",
+      "displayValue": "Weekly mentor meeting",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Each fellow meets weekly with a project mentor."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_benefits": {
+      "status": "disclosed",
+      "value": [
+        "project mentorship",
+        "public showcase"
+      ],
+      "displayValue": "Project mentorship and public showcase",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "project mentorship",
+          "public showcase"
+        ]
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://tideglass.example/fellowship",
+          "title": "Tideglass Civic Data Fellowship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Fellows receive project mentorship and present at a public showcase."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "personal_information": {
+      "status": "disclosed",
+      "value": [
+        "contact information",
+        "school",
+        "demographic questions",
+        "work sample"
+      ],
+      "displayValue": "Contact details, school, demographics, and work sample",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "contact information",
+          "school",
+          "optional demographic questions",
+          "work sample"
+        ]
+      },
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://tideglass.example/fellowship/terms",
+          "title": "Fellowship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The application asks for contact information, school, optional demographic questions, and a work sample."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "data_sharing": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://tideglass.example/fellowship/terms",
+          "title": "Fellowship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Application information may be shared with program partners."
+        }
+      ],
+      "note": "The terms permit sharing with partners but do not name those partners or limit their uses.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_ownership": {
+      "status": "disclosed",
+      "value": "Fellows retain project ownership.",
+      "displayValue": "Fellows retain ownership",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://tideglass.example/fellowship/terms",
+          "title": "Fellowship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Fellows retain ownership of their project work."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_license": {
+      "status": "disclosed",
+      "value": "Perpetual nonexclusive license to reproduce final reports for program purposes.",
+      "displayValue": "Perpetual nonexclusive program-use license",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://tideglass.example/fellowship/terms",
+          "title": "Fellowship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Fellows grant a perpetual, nonexclusive license to reproduce final reports for program purposes."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "publicity_rights": {
+      "status": "disclosed",
+      "value": "Organizer may use name, image, and recorded presentation unless the fellow opts out in writing.",
+      "displayValue": "Name, image, and recording use with written opt-out",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://tideglass.example/fellowship/terms",
+          "title": "Fellowship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Tideglass may use a fellow's name, image, and recorded presentation unless the fellow opts out in writing."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "confidentiality": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_rights": {
+      "status": "disclosed",
+      "value": "Organizer may move in-person meetings online.",
+      "displayValue": "May move meetings online",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://tideglass.example/fellowship/terms",
+          "title": "Fellowship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Tideglass may move an in-person meeting online when facilities are unavailable."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "material_terms": {
+      "status": "disclosed",
+      "value": [
+        "weekly-hours pages conflict",
+        "partners receiving data are unnamed",
+        "publicity use has written opt-out"
+      ],
+      "displayValue": "Hours conflict, unnamed data partners, and publicity opt-out",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "weekly hours conflict",
+          "unnamed data partners",
+          "written publicity opt-out"
+        ]
+      },
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://tideglass.example/fellowship/terms",
+          "title": "Fellowship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Tideglass may use a fellow's name, image, and recorded presentation unless the fellow opts out in writing."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    }
+  }
+}

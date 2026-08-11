@@ -1,0 +1,334 @@
+# Opportunity Facts threat model
+
+Last reviewed: 2026-08-11
+Scope: version-one public Next.js application, repository cards, local drafts, URL analysis, pasted-source analysis, and optional OpenAI extraction.
+
+## Security posture in one paragraph
+
+Opportunity Facts accepts hostile URLs, HTML, text, and imported JSON, then presents source excerpts to a browser. Its most important risks are server-side request forgery (SSRF), DNS rebinding and redirects, resource exhaustion, model prompt injection, unsupported model claims, cross-site scripting (XSS), accidental disclosure of submitted content, and product-language overclaiming. The design uses address-pinned public-only fetching, strict schema validation, nonexecuting text extraction, React text rendering, server-only model credentials, and deterministic excerpt matching. These controls reduce risk; they do not make arbitrary remote fetching, model interpretation, dependencies, hosting infrastructure, or reviewed source claims perfectly secure or true.
+
+## 1. Scope and security objectives
+
+The objectives are:
+
+1. prevent analysis requests from reaching local, private, link-local, metadata, or other non-public network targets;
+2. keep source-page code and instructions from executing or changing the application's task;
+3. never display a model-produced value as source-supported when its excerpt cannot be matched to the reviewed source text;
+4. keep server secrets out of browser code and user-visible errors;
+5. render source content and imported data as inert text rather than markup;
+6. bound server time, pages, redirects, headers, response bytes, and model work;
+7. avoid application-level permanent retention of submitted URLs/pages/text;
+8. preserve uncertainty and prevent security or disclosure signals from becoming legitimacy, scam, prestige, admissions-impact, or value verdicts.
+
+This model does not cover a compromised user device/browser, a compromised hosting provider or model provider, malicious changes by a repository maintainer, physical access, or the truth of statements made by source pages. It assumes the dependency lockfile and deployment configuration are reviewed and that HTTPS termination and operating-system security are provided by the deployment platform.
+
+## 2. Assets
+
+| Asset | Why it matters | Desired property |
+| --- | --- | --- |
+| OpenAI API key and server environment | Key misuse can leak data or incur cost | Confidentiality, restricted use |
+| Server network position | A fetch primitive could access internal services | Network isolation, destination integrity |
+| Submitted URL and pasted source text | May contain confidential data despite instructions | Confidentiality, minimal retention |
+| Fetched source text | Hostile content may target parser, model, or UI | Isolation, bounded processing |
+| Facts, excerpts, status, and provenance | Users rely on accurate source alignment | Integrity, traceability |
+| Schema, field registry, normalization rules | Define every displayed field and disclosure count | Integrity, versioning |
+| Public repository cards and dataset | Public durable records may be copied downstream | Integrity, correction history |
+| User drafts and compare selections | May reveal interests or contain pasted text | Device-local confidentiality and user control |
+| Service/model capacity | Public analysis can consume CPU, network, and model quota | Availability, cost bounds |
+| Product semantics | A misleading badge can create real decision harm | Honest uncertainty and non-verdict language |
+
+## 3. Actors and attacker capabilities
+
+- An unauthenticated visitor can submit an arbitrary URL, pasted source record, correction value, or imported card.
+- A malicious public site can control DNS, redirect responses, headers, byte stream, markup, visible text, links, and timing.
+- A malicious source author can place prompt-injection instructions and plausible false claims inside visible text.
+- A model can return malformed output, unsupported values, fabricated excerpts, wrong source IDs, or a correct quotation attached to the wrong interpretation.
+- A user can intentionally send expensive repeated analyses or huge inputs up to exposed limits.
+- A dependency or future rendering change can bypass expected parsing, encoding, or network invariants.
+
+An ordinary user is also a privacy-risk source: they may accidentally paste application materials, personal data, signed URLs, or account-only content. The interface must warn against this; public-source intent alone does not prevent mistakes.
+
+## 4. Trust boundaries and data flow
+
+```mermaid
+flowchart LR
+  B["Untrusted browser input"] -->|"URL or pasted records"| R["Next.js server route"]
+  R --> V["URL parser and public-address validation"]
+  V -->|"pinned IP, original Host and TLS name"| W["Untrusted public web server"]
+  W -->|"bounded headers and bytes"| P["HTML/text extraction"]
+  B -->|"pasted text"| P
+  P -->|"untrusted source records"| M["Optional extraction model"]
+  M -->|"untrusted structured candidate"| E["Schema and deterministic evidence validation"]
+  P --> E
+  E -->|"draft card JSON"| B
+  B -->|"explicit local save"| L["Browser storage on this device"]
+  D["Reviewed repository JSON"] --> S["Build/server data loader"]
+  S -->|"schema-validated card"| B
+```
+
+Key boundaries:
+
+1. **Browser to server:** all request bodies and imported values are untrusted, even if produced by this UI.
+2. **Server to DNS/network:** URL syntax is not proof that the resolved or connected address is public.
+3. **Remote response to parser:** headers, body, charset, links, and HTML are attacker-controlled.
+4. **Extracted text to model:** page text is data, never policy or instructions.
+5. **Model to application:** structured output is an untrusted candidate, not evidence.
+6. **JSON/text to browser:** schema validity is not HTML safety; output encoding is still required.
+7. **Browser to local storage/download:** data becomes persistent on the user's device and inherits that device's account/extension risks.
+8. **Repository to public dataset:** accepted public cards are durable and require review/version/correction controls.
+
+## 5. Implemented fetch envelope
+
+The production fetch path is designed around the following defaults:
+
+| Limit/control | Default |
+| --- | ---: |
+| URL length | 2,048 characters |
+| DNS answers accepted for inspection | At most 32; all must be public |
+| Whole fetch/redirect-chain timeout | 10,000 ms |
+| Response body | 1,500,000 bytes maximum |
+| Redirects | 5 maximum |
+| Response headers | 16,384 bytes maximum |
+| Accepted response media types | `text/html`, `text/plain` |
+| Content encoding | Identity only |
+| Extracted visible text | 200,000 characters per page by default |
+| Extracted links considered | 500 per page maximum |
+| Discovery scope | Submitted page plus at most 6 relevant same-origin pages |
+| Source-text characters sent in one model request | 120,000 aggregate maximum, excluding fixed instructions/metadata |
+| Model output | 24,000 tokens maximum |
+
+Relevant code is in `lib/analysis/url-safety.ts` and `lib/analysis/fetch.ts`. If a deployment changes these defaults, the deployed values and tests must be updated together. Per-call overrides are bounded by hard validation; an application route must not expose caller-controlled overrides.
+
+Requests use a descriptive Opportunity Facts user agent, request identity encoding, disable connection reuse for this transport, and send no application cookie, authorization header, or user credential. The route must not forward browser headers wholesale.
+
+## 6. Threats, controls, and residual risk
+
+### T1. SSRF through a submitted URL
+
+**Attack:** Submit `file:`, FTP, loopback, an alternate textual IP form, a private address, a metadata name/address, embedded credentials, or a public hostname that resolves to a non-public address.
+
+**Controls:**
+
+- Parse with the platform URL parser and accept only absolute `http:` or `https:` URLs.
+- Reject URL user-info, missing hostnames, single-label/local-use hostnames, known metadata hostnames and service addresses (including Azure `168.63.129.16`), overlong URLs, sensitive query or fragment parameter names, and invalid literal addresses.
+- Canonicalize bracketed/trailing-dot/lowercase hostnames before policy checks.
+- Parse IPv4, IPv6, and IPv4-mapped IPv6 with `ipaddr.js`; accept only its public unicast range.
+- Resolve all returned addresses (up to 32) and reject the hostname if **any** answer is non-public. Do not choose a convenient public answer from a mixed set.
+- Never inherit browser cookies, authentication, or an arbitrary request method/body.
+
+**Residual risk:** IP range libraries and reserved-range policy must be kept current. Plain HTTP exposes the fetched request/response on the network. A public server can itself proxy or publish internal material; destination filtering cannot determine how that server obtained its content. Deployment-level egress policy remains valuable defense in depth.
+
+### T2. DNS rebinding and time-of-check/time-of-use changes
+
+**Attack:** Resolve a hostname to a public IP during validation and a private IP when the HTTP client opens its socket.
+
+**Controls:**
+
+- Pass a previously validated address to the Node transport.
+- Pin the socket lookup to that address while preserving the original hostname for the HTTP `Host` header and TLS SNI/certificate validation.
+- Disable pooled-agent reuse for the fetch.
+- Compare the connected socket's remote address with the validated address and reject a mismatch.
+- Validate and pin each new redirect destination independently.
+
+**Residual risk:** This invariant can be lost if production swaps in global `fetch`, a proxy, custom transport, connection pool, or platform adapter that performs its own DNS resolution. Any transport change requires an integration test proving the connected address is the validated address. Network-layer egress restrictions should still block private and metadata ranges.
+
+### T3. Redirect pivot
+
+**Attack:** A public URL redirects to loopback, private IPv4/IPv6, link-local, metadata, a credential-bearing URL, a disallowed protocol, or an endless chain.
+
+**Controls:** Do not use automatic redirects. Resolve each `Location` against the current URL, re-run the full URL/DNS/public-address policy, pin the new connection, and stop after five redirects. Missing or malformed locations fail closed.
+
+**Residual risk:** Cross-origin redirects to another public host are permitted for the submitted page if they pass validation. That host sees the request. Query strings are retained across only the redirects constructed by the remote origin; users must not submit signed/private URLs.
+
+### T4. Oversized, slow, compressed, or malformed responses
+
+**Attack:** Hold sockets open, lie about `Content-Length`, stream beyond the limit, return giant headers, or send a compression bomb/unsupported binary type.
+
+**Controls:**
+
+- Apply the timeout to validation, redirects, headers, and body processing as one operation.
+- Cap response headers and check `Content-Length` when present.
+- Count streamed bytes and abort above 1,500,000 bytes even when length is absent or false.
+- Request `Accept-Encoding: identity` and reject a non-identity `Content-Encoding`, avoiding decompression expansion in the application.
+- Accept only HTML and plain text with a bounded syntactically valid charset declaration.
+- Bound page discovery, model input, and model output separately.
+
+**Residual risk:** Public endpoints can still consume DNS, connection, TLS, parsing, and model resources below each per-request limit. The application has no account identity with which to attribute abuse. Production needs platform request-body limits, concurrency/cost monitoring, and rate controls appropriate to its traffic; these should fail without exposing secrets or weakening deterministic tests.
+
+Identity-only transfer is intentionally conservative: a server that ignores `Accept-Encoding: identity` is rejected instead of decompressed. PDF and other binary documents are not fetched by this path. JavaScript-rendered pages are not executed. Users must use the pasted-source fallback for material that cannot be represented as accepted static HTML/plain text.
+
+### T5. Overbroad crawling and data exfiltration
+
+**Attack:** Use a page's links to make the server crawl unrelated hosts, private paths, logout/action URLs, or an unbounded site.
+
+**Controls:** Discover only relevant GET pages from the submitted page, require normalized same origin (scheme, hostname, and effective port), rank a fixed set of disclosure-related terms, revalidate every selected URL, and fetch no more than six additional pages. Do not execute JavaScript, submit forms, follow login flows, use credentials, or crawl external links.
+
+**Residual risk:** Same-origin links can still trigger poorly designed state-changing GET endpoints on the remote site. The descriptive user agent, GET-only behavior, page cap, and no-auth policy reduce but do not eliminate this remote-site design risk. Discovery should reject obvious action/logout paths and remain easy to disable.
+
+### T6. Prompt injection in fetched or pasted text
+
+**Attack:** A page says “ignore previous instructions,” imitates a system message, requests secrets, asks for a verdict, or embeds false output JSON.
+
+**Controls:**
+
+- Treat all extracted text as `untrusted_source_text`; visible and hidden prose never becomes a system/developer instruction.
+- Remove script, style, executable markup, repeated navigation, and identifiable boilerplate before model input, while assuming malicious instructions can remain in visible text.
+- Use one bounded extraction task with a fixed strict structured output; do not give the model network, file, shell, credential, or arbitrary tool access.
+- Send at most 120,000 aggregate characters of extracted source text and request at most 24,000 output tokens. The server uses `OPENAI_MODEL` when configured and otherwise the code's versioned default.
+- Divide the model-input budget across every acquired page before redistributing unused capacity; expose per-page model truncation in the analysis record.
+- Give model requests a 45-second SDK timeout, disable automatic retries, and propagate request cancellation to fetch and model work.
+- Treat automatically fetched, discovered, and pasted pages as `user_supplied`; topical URL/link terms never prove an `official_*` provenance category.
+- Instruct the model to extract only registered fields, preserve uncertainty/conflicts, and refuse legitimacy/value judgments.
+- Parse model output through the authoritative schema and allowed registry statuses.
+- Match every returned excerpt against normalized text from the cited source. An unmatched excerpt cannot support a displayed value and is removed or downgraded.
+- Test adversarial fixture text and hostile candidate outputs without live network/model dependencies.
+
+**Residual risk:** Prompt injection is not “solved.” A model may misunderstand a matching passage, select an irrelevant real quotation, omit a material disclosure, or normalize incorrectly. Exact matching proves presence, not semantic entailment or real-world truth. Analysis output remains `draft` until a human performs source/value alignment review.
+
+Static Cheerio extraction cannot reproduce every browser layout, shadow DOM, client-rendered state, or computed-CSS visibility rule. Hidden-text removal is a bounded heuristic, not a browser-equivalence or sanitization proof. A fetched shell with no extractable visible text is identified in the result and converts absence claims to durable uncertainty. Other omissions remain possible; the pasted-source fallback and human evidence review remain necessary.
+
+### T7. Fabricated, misattached, or conflicting evidence
+
+**Attack/failure:** A model invents an excerpt, cites source A for source B's text, attaches a genuine excerpt to the wrong value, drops a conflict, or turns in-kind value into cash.
+
+**Controls:** Use stable source IDs, exact source metadata, deterministic normalized-substring matching, field-type normalization, strict conflict representation, explicit calculation metadata, and separate cash/in-kind categories. A conflict keeps at least two distinct supported candidates rather than a chosen top-level value. Schema-invalid candidates fail closed.
+
+**Residual risk:** Automated validation does not establish that an organizer's claim is true or that a source is authoritative. Duplicate text across pages can complicate source attribution. Human review remains necessary for semantics, context, material omissions, and source identity.
+
+### T8. XSS and unsafe active content
+
+**Attack:** HTML, SVG, event handlers, `javascript:` links, Markdown/HTML fragments, imported strings, or source titles execute in the Opportunity Facts origin.
+
+**Controls:**
+
+- Parse remote HTML server-side only to extract text/links; never execute source scripts.
+- Never insert source HTML with `dangerouslySetInnerHTML`.
+- Render excerpts, titles, notes, and values through React text nodes, which escape markup by default.
+- Restrict source/card URLs to HTTP(S), validate imported JSON, and treat link text separately from destinations.
+- Use `rel="noopener noreferrer"` for new-tab external links.
+- Create JSON/text/Markdown downloads as data, not executable in-origin previews.
+- Keep schema errors and logs textual; never echo a raw HTML error response into the page.
+
+**Controls for portable correction output:** The correction generator validates public HTTP(S) destinations, escapes Markdown control characters, neutralizes `@` mentions, and quotes excerpts line by line. The application still treats the resulting packet as untrusted text rather than rendering it as HTML in-origin.
+
+**Residual risk:** A future rich-text renderer, MDX/Markdown feature, URL bypass, or third-party component could reintroduce XSS. The application sets a Content Security Policy and security headers, but their actual deployed response still requires verification. Downloaded files can be interpreted differently by other software; do not add HTML or spreadsheet exports from untrusted fields without format-specific escaping.
+
+### T9. Malicious JSON import and browser storage
+
+**Attack:** Import oversized, deeply nested, schema-invalid, prototype-shaped, or active-content values; poison a locally saved draft; exceed storage quota.
+
+**Controls:** Parse JSON as data, validate with the strict Zod schema, reject unknown/invalid shapes, and render only encoded text. Client imports are rejected before reading when they exceed 1 MB. Local-storage writes catch quota and security failures, report the failure, and do not treat an unsuccessful write as a saved action. Reset requires confirmation. Public repository data is validated at build/test time as well as load time.
+
+**Residual risk:** Browser extensions, another script compromised under the same origin, shared OS accounts, and developer tools can read local storage. Local drafts are convenience storage, not a secure vault. Users must avoid storing sensitive application materials.
+
+### T10. API key exposure and model-provider data flow
+
+**Attack/failure:** Bundle `OPENAI_API_KEY` into client code, leak it in an error/log, accept a user-supplied key, or send undisclosed content to the provider.
+
+**Controls:** Import model integration only from server-only modules. Read `OPENAI_API_KEY` and `OPENAI_MODEL` on the server. Never use a `NEXT_PUBLIC_` name for a secret, serialize environment values into props, or return provider errors verbatim. The Responses request sets `store: false`, uses strict Zod-backed structured parsing, and gives the model no application tools. The no-key path remains functional and makes no model request.
+
+**Residual risk:** When configured, approved source text is sent to OpenAI and is subject to the account/provider's then-current processing and retention terms. This application cannot promise provider-side zero retention. Operators must review those terms/settings, disclose the transfer, minimize input, and rotate/revoke a key exposed in logs or bundles.
+
+### T11. Accidental personal/confidential data disclosure
+
+**Attack/failure:** A user pastes student data, an application essay, contact details, or a URL with a bearer token in its query or fragment. It reaches the remote origin, host logs, model provider, local download, or shared browser storage.
+
+**Controls:** State that analysis is for public opportunity information only; prohibit credentials, private/signed URLs, applications, and personal information; reject common token/key/signature/auth/session names in query strings and parameter-like fragments before network, model, storage, or correction-export work; use a cleared session-storage handoff rather than putting homepage submissions in the page URL; limit body/input size; avoid application analytics and raw-content logging; do not persist submitted content in an application database; make local-save and provider use visible.
+
+**Residual risk:** Automated redaction cannot reliably find every secret or identifier and is not a substitute for user choice. Hosting infrastructure may retain request metadata, exception traces, and access logs. Remote origins and DNS resolvers observe requests. Browser history, downloads, backups, and local storage can persist data outside server control.
+
+### T12. Denial of service, model-cost abuse, and scraping
+
+**Attack:** Repeated valid public fetches or model calls exhaust function duration, sockets, memory, provider quota, or cost budget.
+
+**Controls:** Bound every stage, cap discovered pages, avoid autonomous loops/retries, keep analysis unauthenticated but stateless, and make missing/exhausted model configuration fail gracefully. Tests use mocked sources/model output and consume no external quota.
+
+**Residual risk:** Per-request limits do not create aggregate abuse protection. Platform-level rate limiting, concurrency caps, budget alerts, function-size/duration limits, and log-based anomaly detection are deployment responsibilities. Do not add invasive fingerprinting merely to control cost.
+
+### T13. Supply-chain and deployment compromise
+
+**Attack:** A compromised dependency, build step, environment, preview deployment, or maintainer injects code, steals keys, alters cards, or bypasses URL policy.
+
+**Controls:** Commit the dependency lockfile, keep dependencies lean, run deterministic lint/type/test/build gates, separate server-only modules, review diffs, protect deployment secrets, and use repository history for public card changes. Avoid exposing secrets to untrusted pull-request builds.
+
+**Residual risk:** The application does not provide code signing, reproducible builds, maintainer identity controls, or dependency sandboxing by itself. Repository/hosting access control, update review, secret scoping, and incident response remain necessary.
+
+### T14. Misleading security or product conclusions
+
+**Attack/failure:** Users interpret “disclosed,” “human reviewed,” completeness, or security controls as proof of legitimacy, correctness, safety, legal compliance, or value.
+
+**Controls:** Keep definitions visible: disclosed means a source states the fact; human reviewed means value/excerpt/source alignment was checked; organizer confirmed is not independent verification. Preserve `not_found`, `unclear`, and `conflicting`. Never produce a legitimacy, scam, prestige, worth, admissions-impact, or composite trust score.
+
+**Residual risk:** Users may still over-rely on a polished card. Neutral copy, visible sources, review dates, limitations, and correction/version history mitigate but cannot remove judgment risk.
+
+## 7. Retention and privacy behavior
+
+“Not permanently stored by the application server” is narrower and more accurate than “never stored anywhere.” Expected data handling is:
+
+| Data | Application behavior | Persistence outside the application |
+| --- | --- | --- |
+| Submitted URL | Homepage handoff uses short-lived session storage and clears it; the server uses the URL for one request and keeps no application database record | Remote host and DNS observe the request; host/runtime operational logs may retain request metadata. Common sensitive query/fragment parameter names are rejected, but users must still submit only public URLs. |
+| Fetched page bytes/text | Held transiently during bounded analysis; not written to repository/database | Remote host observes request; host/runtime may retain operational logs or crash artifacts |
+| Pasted source text | Processed transiently; not written to an application database | May reach the configured model provider; browser extensions/device memory remain out of scope |
+| Model request/output | Used transiently to make a draft; not a public card automatically | Provider handling depends on account, configuration, and current terms |
+| Analysis draft/result | Returned to the browser | Persists only if user saves/downloads it or the browser restores page state |
+| Saved draft/compare list | Browser storage on the current origin/device | Persists until reset, site-data clearing, browser policy, or device/account cleanup |
+| Downloaded JSON/correction packet | Created on explicit user action | Persists in downloads, backups, sync services, or later GitHub issue submission |
+| Demo/reviewed cards | Repository and public dataset | Intentionally durable in Git history, builds, mirrors, and downstream copies |
+
+The application adds no hidden product analytics or student-data collection. Hosting-provider operational telemetry is a separate deployment fact and must be inspected rather than assumed absent. Do not log full request bodies, fetched text, model prompts, source excerpts, API keys, authorization headers, or URL query strings. Log coarse error codes and timings only when operationally necessary.
+
+## 8. Required security verification
+
+Deterministic tests should cover at least:
+
+- localhost and hostname variants;
+- private, loopback, link-local, multicast, reserved, metadata, IPv4-mapped IPv6, Azure platform-service, and mixed DNS answers;
+- alternate/invalid IP representations, URL credentials, sensitive camel-case/separator/compact query and fragment names, single-label/local-use suffixes, and malformed hostnames;
+- DNS rebinding with proof that the socket uses the validated address;
+- every redirect destination revalidated, including public-to-private and redirect loops;
+- timeout, header, declared length, streamed byte, content encoding, charset, and media-type failures;
+- discovery page/origin limits and irrelevant external links;
+- malicious HTML, scripts/styles/hidden content, empty client-rendered shells, and prompt-injection text;
+- malformed structured output and missing API key behavior;
+- matching and nonmatching evidence, wrong-source/wrong-claim excerpts, conflicts, and calculations;
+- malicious/oversized imported JSON;
+- rendered source strings containing HTML/SVG/script payloads;
+- absence of secrets from client bundles, responses, and checked-in files;
+- no serious/critical automated accessibility findings on primary flows, while recognizing accessibility and security automation are incomplete proofs.
+
+Security-sensitive changes to `lib/analysis/`, schema/evidence validation, imports, rendering, response headers, logging, or model integration require focused tests plus the full release gate.
+
+## 9. Deployment checklist
+
+- Set secrets only in server-side environment storage; inspect client bundles for key/name/value leakage.
+- Apply HTTPS, HSTS where operationally safe, MIME sniffing protection, referrer policy, frame-ancestor protection, a restrictive Content Security Policy, and a minimal permissions policy; verify actual deployed headers.
+- Restrict outbound network access from the analysis runtime to public HTTP(S) and the configured model endpoint where the platform supports it; explicitly deny private/metadata ranges.
+- Set request-body, concurrency, function-duration, and spend limits outside the application as defense in depth.
+- Disable raw body/page/prompt logging and define short operational-log retention.
+- Keep preview deployments from receiving production keys when untrusted changes can run.
+- Run lint, strict typecheck, deterministic/security tests, Playwright checks, data validation, and production build.
+- Exercise the deployed no-key/error path and a controlled configured path without real personal data.
+- Review dependency advisories and URL-range/parser changes before release.
+- Document key rotation, incident owner, takedown/correction route, and rollback procedure.
+
+## 10. Incident response outline
+
+1. Disable the affected analysis/model route or revoke the key if active exploitation or exposure is plausible.
+2. Preserve minimal relevant metadata without copying submitted source contents unnecessarily.
+3. Determine affected versions, requests, destinations, data processors, and public cards.
+4. Rotate exposed credentials and patch the broken boundary; add a regression fixture.
+5. Correct or withdraw unsupported public cards through versioned repository history.
+6. Notify affected users/providers/authorities when required, using confirmed facts rather than speculative claims.
+7. Publish a concise post-incident note when appropriate, including scope, fix, remaining risk, and verification.
+
+## 11. Known limitations to keep visible
+
+- Remote fetching remains a high-risk feature even with address pinning; deployment egress controls are still recommended.
+- Aggregate abuse/cost control is deployment-specific and is not solved by per-request limits.
+- Deterministic excerpt matching proves text presence, not correct interpretation or source truth.
+- Models can omit, misclassify, or misunderstand disclosures and prompt injection remains an active risk.
+- “No permanent server storage” does not cover browser/device persistence, downloads, logs, backups, remote origins, DNS, or provider retention.
+- Public HTTP sources can change after review; dates, hashes where retained, versions, and corrections are necessary.
+- The application response includes CSP and security headers, but the policy permits the inline styles/scripts required by the current Next.js runtime and must be rechecked after framework or deployment changes; React escaping alone is not a complete XSS defense.
+- Opportunity Facts is not a legal, safety, legitimacy, admissions, or value determination.

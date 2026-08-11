@@ -1,0 +1,167 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Methodology",
+  description:
+    "How Opportunity Facts finds, labels, validates, and updates source-backed facts.",
+};
+
+const statuses = [
+  ["Disclosed", "An identified source states the information."],
+  ["Not found", "The fact was not located in the identified pages reviewed."],
+  ["Unclear", "Relevant wording exists, but it does not support one precise value."],
+  ["Conflicting", "Two or more reviewed sources support different current values."],
+  ["Not applicable", "The fact does not apply to this opportunity."],
+] as const;
+
+export default function MethodologyPage() {
+  return (
+    <main id="main-content" className="page-main">
+      <header className="page-header">
+        <div className="shell page-header-grid">
+          <div>
+            <p className="eyebrow">Methodology · Version 1.0</p>
+            <h1>Facts, with their uncertainty attached.</h1>
+          </div>
+          <p className="lede">
+            Opportunity Facts standardizes disclosures. It does not independently
+            audit organizations or turn missing information into a verdict.
+          </p>
+        </div>
+      </header>
+
+      <div className="narrow-shell section prose">
+        <div className="rule-box">
+          <p>
+            <strong>The short version:</strong> review identified sources, extract
+            only supported claims, match every excerpt back to its page, normalize
+            without replacing the original wording, and show gaps or conflicts.
+          </p>
+        </div>
+
+        <h2 id="language">What the labels mean</h2>
+        <p>
+          “Disclosed” means an identified source states a fact. It does not mean
+          Opportunity Facts independently proved the statement true. “Human
+          reviewed” means a reviewer checked that the value and excerpt match the
+          cited source; it is not an audit. “Organizer confirmed” means the
+          organization confirmed or supplied information, not that an independent
+          party verified it.
+        </p>
+        <dl className="definition-list">
+          {statuses.map(([term, description]) => (
+            <div key={term}>
+              <dt>{term}</dt>
+              <dd>{description}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <h2 id="process">The review process</h2>
+        <ol className="method-steps">
+          <li>
+            <strong>Identify the operator.</strong> Record who runs the opportunity
+            and separately classify any named institution relationship. Location,
+            alumni involvement, or branding alone never proves operation or
+            endorsement.
+          </li>
+          <li>
+            <strong>Review a bounded source set.</strong> Start with the submitted
+            page and relevant same-origin FAQ, cost, aid, eligibility,
+            rules, terms, privacy, refund, award, and schedule pages. Record every
+            page checked. Automated analysis labels these pages user supplied; URL
+            shape and same-origin discovery do not prove official provenance.
+          </li>
+          <li>
+            <strong>Attach evidence to values.</strong> A displayed factual value
+            needs a URL, page title, source type, excerpt, and access date unless
+            the status itself is not found, unclear, or not applicable.
+          </li>
+          <li>
+            <strong>Validate excerpts deterministically.</strong> Machine-assisted
+            citations are shown only when normalized excerpt text can be found in
+            the normalized source. A mismatch removes support and is reported as a
+            validation warning.
+          </li>
+          <li>
+            <strong>Normalize carefully.</strong> Dates, money, duration, hours,
+            counts, formats, and relationship categories receive comparable
+            representations while the source wording remains available.
+          </li>
+          <li>
+            <strong>Preserve disagreement.</strong> Supported conflicts stay on the
+            card. Calculated acceptance rates show their published numerator and
+            denominator and require a human to confirm both counts describe the same
+            population and cycle; organizer-stated rates remain labeled as such.
+          </li>
+        </ol>
+
+        <h2 id="core-facts">The 13 core disclosures</h2>
+        <p>
+          The completeness line reports how many of 13 high-priority dimensions
+          are disclosed. It is a count, not a trust, quality, or value score. A
+          conflict is visible but does not count as clean disclosure. The exact
+          dimensions and all supported fields are published in the{" "}
+          <Link href="/data">schema and data documentation</Link>.
+        </p>
+
+        <h2 id="automation">Where automation stops</h2>
+        <p>
+          Automated extraction is one bounded structured pass over fetched or
+          pasted source text. Source pages are treated as hostile data: instructions
+          inside them cannot change the extraction job. No model decides whether an
+          opportunity is legitimate, prestigious, worthwhile, safe, or likely to
+          affect admission. Automatic drafts do not derive an acceptance rate because
+          count population and cycle compatibility need human review.
+        </p>
+        <p>
+          The shared model-input budget is distributed across every reviewed page.
+          When any page is shortened for that budget, the analysis record says so.
+          Model requests use a fixed timeout and no automatic retries.
+        </p>
+        <p>
+          URL fetching uses public HTTP(S) only, validates DNS and every redirect,
+          limits time and bytes, avoids cookies and authentication, and never runs
+          page scripts. JavaScript-only, blocked, or inaccessible sites can instead
+          be reviewed through pasted source text.
+        </p>
+
+        <h2 id="limitations">Limitations</h2>
+        <ul>
+          <li>Official pages can be incomplete, outdated, changed, or inaccurate.</li>
+          <li>A “not found” result covers only the pages listed on that card.</li>
+          <li>Normalization cannot resolve ambiguous legal or financial language.</li>
+          <li>Automated link discovery is deliberately narrow and may miss a page.</li>
+          <li>Automated analysis does not verify that a submitted or discovered page is official.</li>
+          <li>Access dates do not create a permanent archive of source content.</li>
+          <li>Review states describe process, not the underlying organization.</li>
+          <li>This product is informational and is not legal or financial advice.</li>
+        </ul>
+
+        <h2 id="corrections">Correction policy</h2>
+        <p>
+          Anyone can generate a correction packet from a facts card without an
+          account. A useful correction identifies the field, proposed replacement,
+          source URL, exact excerpt, and reason. Packets can be downloaded as JSON
+          and Markdown or copied for another channel. When a repository address is
+          configured, the app can also prepare a GitHub issue; GitHub is optional.
+        </p>
+        <p>
+          Corrections do not silently overwrite public cards. A reviewer checks the
+          cited evidence, records the review date, updates conflicts if needed, and
+          increments the card version when the public facts change.
+        </p>
+
+        <h2 id="versioning">Versioning and retention</h2>
+        <p>
+          Schema changes increment the schema version. Material public-card changes
+          increment the card version and reviewed date. Public demo/reviewed cards
+          live in repository JSON; user-created drafts and comparison choices stay
+          in that browser. Submitted page text is processed for the response and is
+          not intentionally stored by Opportunity Facts.
+        </p>
+      </div>
+    </main>
+  );
+}

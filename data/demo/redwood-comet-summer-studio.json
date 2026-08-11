@@ -1,0 +1,1241 @@
+{
+  "schemaVersion": "1.0.0",
+  "cardVersion": 1,
+  "slug": "redwood-comet-summer-studio",
+  "summary": "A university-sponsored commuter studio where sponsorship funds waivers rather than operation; deposit and organizer-cancellation refunds are not stated.",
+  "reviewState": "demo",
+  "reviewedAt": "2026-08-10T12:00:00Z",
+  "sourcePagesChecked": [
+    {
+      "id": "program",
+      "url": "https://redwoodcomet.example/summer-studio",
+      "title": "Redwood Comet Summer Studio",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    },
+    {
+      "id": "costs",
+      "url": "https://redwoodcomet.example/summer-studio/costs",
+      "title": "Studio costs",
+      "pageType": "official_cost_page",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    },
+    {
+      "id": "terms",
+      "url": "https://redwoodcomet.example/summer-studio/terms",
+      "title": "Studio terms",
+      "pageType": "official_terms",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    }
+  ],
+  "conflicts": [],
+  "facts": {
+    "opportunity_name": {
+      "status": "disclosed",
+      "value": "Redwood Comet Summer Studio",
+      "displayValue": "Redwood Comet Summer Studio",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Redwood Comet Summer Studio is a three-week commuter fabrication program."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "opportunity_category": {
+      "status": "disclosed",
+      "value": "enrichment program",
+      "displayValue": "Enrichment program",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Redwood Comet Summer Studio is a three-week commuter fabrication program."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "official_url": {
+      "status": "disclosed",
+      "value": "https://redwoodcomet.example/summer-studio",
+      "displayValue": "https://redwoodcomet.example/summer-studio",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "https://redwoodcomet.example/summer-studio"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Official studio page: https://redwoodcomet.example/summer-studio"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "operating_organization": {
+      "status": "disclosed",
+      "value": "Redwood Comet Makers Association",
+      "displayValue": "Redwood Comet Makers Association",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Redwood Comet Makers Association operates the studio."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "organization_type": {
+      "status": "disclosed",
+      "value": "membership association",
+      "displayValue": "Membership association",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Redwood Comet Makers Association describes itself as a membership association."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "named_institution": {
+      "status": "disclosed",
+      "value": "Demonstration Valley University",
+      "displayValue": "Demonstration Valley University",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Demonstration Valley University sponsors ten tuition waivers but does not operate the studio."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "institution_relationship": {
+      "status": "disclosed",
+      "value": "institution_sponsored",
+      "displayValue": "Institution sponsored",
+      "normalizedValue": {
+        "kind": "relationship",
+        "value": "institution_sponsored"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Demonstration Valley University sponsors ten tuition waivers but does not operate the studio."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "relationship_explanation": {
+      "status": "disclosed",
+      "value": "The university funds ten tuition waivers; the association operates the studio.",
+      "displayValue": "University funds ten waivers; association operates the studio",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Demonstration Valley University sponsors ten tuition waivers but does not operate the studio."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "grade_levels": {
+      "status": "disclosed",
+      "value": [
+        "10",
+        "11",
+        "12"
+      ],
+      "displayValue": "Grades 10–12",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "10",
+          "11",
+          "12"
+        ]
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Students entering grades 10–12 may register."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "ages": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "geographic_restrictions": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "citizenship_restrictions": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "prerequisite_skills": {
+      "status": "disclosed",
+      "value": [
+        "shop safety orientation"
+      ],
+      "displayValue": "Shop safety orientation",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "shop safety orientation"
+        ]
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Participants must complete the online shop safety orientation before the first day."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "entry_format": {
+      "status": "disclosed",
+      "value": "individual",
+      "displayValue": "Individual registration",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Students register individually."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "sponsor_requirement": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_deadline": {
+      "status": "disclosed",
+      "value": "April 15, 2027",
+      "displayValue": "April 15, 2027",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2027-04-15"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Registration closes April 15, 2027 or when seats fill."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "decision_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "start_date": {
+      "status": "disclosed",
+      "value": "June 7, 2027",
+      "displayValue": "June 7, 2027",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2027-06-07"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The studio runs June 7–25, 2027."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "end_date": {
+      "status": "disclosed",
+      "value": "June 25, 2027",
+      "displayValue": "June 25, 2027",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2027-06-25"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The studio runs June 7–25, 2027."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "duration": {
+      "status": "disclosed",
+      "value": "three weeks",
+      "displayValue": "3 weeks",
+      "normalizedValue": {
+        "kind": "duration",
+        "amount": 3,
+        "unit": "weeks"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Redwood Comet Summer Studio is a three-week commuter fabrication program."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "weekly_hours": {
+      "status": "disclosed",
+      "value": "30 hours per week",
+      "displayValue": "30 hours per week",
+      "normalizedValue": {
+        "kind": "hours",
+        "minimum": 30,
+        "maximum": null,
+        "period": "week"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The scheduled commitment is 30 hours per week."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "required_live_hours": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "participation_format": {
+      "status": "disclosed",
+      "value": "commuter",
+      "displayValue": "Commuter",
+      "normalizedValue": {
+        "kind": "participation_format",
+        "value": "commuter"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Redwood Comet Summer Studio is a three-week commuter fabrication program."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "location": {
+      "status": "disclosed",
+      "value": "Redwood Comet Community Workshop",
+      "displayValue": "Redwood Comet Community Workshop",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Sessions meet at Redwood Comet Community Workshop."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "travel_requirements": {
+      "status": "disclosed",
+      "value": "Daily transportation is the participant's responsibility.",
+      "displayValue": "Participant arranges daily transportation",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "costs",
+          "url": "https://redwoodcomet.example/summer-studio/costs",
+          "title": "Studio costs",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Participants arrange daily transportation to the workshop."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_fee": {
+      "status": "disclosed",
+      "value": 0,
+      "displayValue": "$0",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 0,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "costs",
+          "url": "https://redwoodcomet.example/summer-studio/costs",
+          "title": "Studio costs",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "There is no application fee."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "deposit": {
+      "status": "disclosed",
+      "value": 250,
+      "displayValue": "$250 deposit",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 250,
+        "currency": "USD",
+        "classification": "deposit"
+      },
+      "sources": [
+        {
+          "id": "costs",
+          "url": "https://redwoodcomet.example/summer-studio/costs",
+          "title": "Studio costs",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "A $250 deposit holds a seat and is credited toward tuition."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition": {
+      "status": "disclosed",
+      "value": 3000,
+      "displayValue": "$3,000",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 3000,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "costs",
+          "url": "https://redwoodcomet.example/summer-studio/costs",
+          "title": "Studio costs",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Tuition is $3,000 including the deposit."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_mandatory_costs": {
+      "status": "disclosed",
+      "value": 75,
+      "displayValue": "$75 materials fee",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 75,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "costs",
+          "url": "https://redwoodcomet.example/summer-studio/costs",
+          "title": "Studio costs",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "A separate $75 materials fee is required."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "estimated_total_mandatory_cost": {
+      "status": "disclosed",
+      "value": 3075,
+      "displayValue": "$3,075",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 3075,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "costs",
+          "url": "https://redwoodcomet.example/summer-studio/costs",
+          "title": "Studio costs",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Tuition plus the materials fee totals $3,075."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "calculated",
+      "conflictingValues": [],
+      "calculation": {
+        "formula": "tuition + other_mandatory_costs",
+        "inputs": [
+          {
+            "fieldId": "tuition",
+            "value": 3000
+          },
+          {
+            "fieldId": "other_mandatory_costs",
+            "value": 75
+          }
+        ],
+        "explanation": "Calculated from published mandatory charges; the credited deposit is not added twice."
+      }
+    },
+    "travel_included": {
+      "status": "disclosed",
+      "value": false,
+      "displayValue": "No",
+      "normalizedValue": {
+        "kind": "boolean",
+        "value": false
+      },
+      "sources": [
+        {
+          "id": "costs",
+          "url": "https://redwoodcomet.example/summer-studio/costs",
+          "title": "Studio costs",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Participants arrange daily transportation to the workshop."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "lodging_included": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The program is commuter.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "meals_included": {
+      "status": "disclosed",
+      "value": false,
+      "displayValue": "No",
+      "normalizedValue": {
+        "kind": "boolean",
+        "value": false
+      },
+      "sources": [
+        {
+          "id": "costs",
+          "url": "https://redwoodcomet.example/summer-studio/costs",
+          "title": "Studio costs",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Meals are not provided."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "financial_aid": {
+      "status": "disclosed",
+      "value": "Ten full tuition waivers; materials fee remains due.",
+      "displayValue": "10 full tuition waivers; $75 materials fee remains",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "costs",
+          "url": "https://redwoodcomet.example/summer-studio/costs",
+          "title": "Studio costs",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Ten full tuition waivers are available; waiver recipients still pay the $75 materials fee."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "refund_policy": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "costs",
+          "url": "https://redwoodcomet.example/summer-studio/costs",
+          "title": "Studio costs",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "A $250 deposit holds a seat and is credited toward tuition."
+        }
+      ],
+      "note": "The cost page calls the deposit a seat hold but does not say whether or when it is refundable.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_policy": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://redwoodcomet.example/summer-studio/terms",
+          "title": "Studio terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The association may cancel a session if enrollment is too low."
+        }
+      ],
+      "note": "The reviewed terms reserve cancellation rights but do not state what payments would be returned.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_process": {
+      "status": "disclosed",
+      "value": "First complete registrations until seats fill; waivers separately reviewed for need and statement.",
+      "displayValue": "First complete registrations; separate waiver review",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Paid seats go to complete registrations in order received; waiver applications are reviewed for financial need and a short statement."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "applicant_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_rate_claim": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "calculated_acceptance_rate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_evidence": {
+      "status": "disclosed",
+      "value": "descriptive",
+      "displayValue": "Descriptive",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Paid seats go to complete registrations in order received; waiver applications are reviewed for financial need and a short statement."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cash_award": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "stipend": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition_waiver": {
+      "status": "disclosed",
+      "value": 3000,
+      "displayValue": "$3,000 tuition waiver (not cash)",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 3000,
+        "currency": "USD",
+        "classification": "tuition_waiver"
+      },
+      "sources": [
+        {
+          "id": "costs",
+          "url": "https://redwoodcomet.example/summer-studio/costs",
+          "title": "Studio costs",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Each full waiver covers the $3,000 tuition charge and is not a cash payment."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "program_seat": {
+      "status": "disclosed",
+      "value": "commuter fabrication studio seat",
+      "displayValue": "Program seat",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Registered students receive a seat in the fabrication studio."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "in_kind_value": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "certificate": {
+      "status": "disclosed",
+      "value": true,
+      "displayValue": "Safety and completion certificate",
+      "normalizedValue": {
+        "kind": "boolean",
+        "value": true
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Students completing required sessions receive a safety and completion certificate."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "college_credit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "mentorship": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_benefits": {
+      "status": "disclosed",
+      "value": [
+        "use of workshop equipment",
+        "completion certificate"
+      ],
+      "displayValue": "Workshop equipment access and certificate",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "workshop equipment access",
+          "completion certificate"
+        ]
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://redwoodcomet.example/summer-studio",
+          "title": "Redwood Comet Summer Studio",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Tuition includes supervised workshop equipment access and a completion certificate."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "personal_information": {
+      "status": "disclosed",
+      "value": [
+        "contact details",
+        "school",
+        "emergency contact",
+        "waiver financial information if requested"
+      ],
+      "displayValue": "Contact, school, emergency contact, and optional waiver financial information",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "contact details",
+          "school",
+          "emergency contact",
+          "waiver financial information"
+        ]
+      },
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://redwoodcomet.example/summer-studio/terms",
+          "title": "Studio terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Registration collects contact details, school, emergency contact, and financial information only from waiver applicants."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "data_sharing": {
+      "status": "disclosed",
+      "value": "Emergency information shared with instructors; waiver information restricted to review panel.",
+      "displayValue": "Emergency details to instructors; waiver data to review panel",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://redwoodcomet.example/summer-studio/terms",
+          "title": "Studio terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Emergency information is shared with instructors; waiver financial information is limited to the review panel."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_ownership": {
+      "status": "disclosed",
+      "value": "Students own completed physical projects.",
+      "displayValue": "Students own completed projects",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://redwoodcomet.example/summer-studio/terms",
+          "title": "Studio terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Students own the physical projects they complete."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_license": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No project license was found in the reviewed terms.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "publicity_rights": {
+      "status": "disclosed",
+      "value": "Optional photo permission selected during registration.",
+      "displayValue": "Optional photo permission",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://redwoodcomet.example/summer-studio/terms",
+          "title": "Studio terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Photo permission is optional and selected separately during registration."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "confidentiality": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_rights": {
+      "status": "disclosed",
+      "value": "Organizer may cancel for low enrollment.",
+      "displayValue": "May cancel for low enrollment",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://redwoodcomet.example/summer-studio/terms",
+          "title": "Studio terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The association may cancel a session if enrollment is too low."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "material_terms": {
+      "status": "disclosed",
+      "value": [
+        "deposit refundability not stated",
+        "organizer-cancellation reimbursement not stated",
+        "waiver excludes materials fee"
+      ],
+      "displayValue": "Unclear deposit and cancellation refunds; waiver excludes materials",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "deposit refundability not stated",
+          "cancellation reimbursement not stated",
+          "waiver excludes materials fee"
+        ]
+      },
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://redwoodcomet.example/summer-studio/terms",
+          "title": "Studio terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The association may cancel a session if enrollment is too low."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    }
+  }
+}

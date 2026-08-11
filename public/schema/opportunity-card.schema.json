@@ -1,0 +1,1090 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "$ref": "#/$defs/__schema0"
+    },
+    "cardVersion": {
+      "$ref": "#/$defs/__schema1"
+    },
+    "slug": {
+      "$ref": "#/$defs/__schema2"
+    },
+    "summary": {
+      "$ref": "#/$defs/__schema3"
+    },
+    "reviewState": {
+      "$ref": "#/$defs/__schema4"
+    },
+    "reviewedAt": {
+      "$ref": "#/$defs/__schema5"
+    },
+    "sourcePagesChecked": {
+      "$ref": "#/$defs/__schema7"
+    },
+    "conflicts": {
+      "$ref": "#/$defs/__schema12"
+    },
+    "facts": {
+      "$ref": "#/$defs/__schema14"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "cardVersion",
+    "slug",
+    "summary",
+    "reviewState",
+    "reviewedAt",
+    "sourcePagesChecked",
+    "conflicts",
+    "facts"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "__schema0": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "__schema1": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "__schema2": {
+      "type": "string",
+      "maxLength": 100,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "__schema3": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "__schema4": {
+      "type": "string",
+      "enum": [
+        "demo",
+        "draft",
+        "human_reviewed",
+        "organizer_confirmed"
+      ]
+    },
+    "__schema5": {
+      "default": null,
+      "anyOf": [
+        {
+          "$ref": "#/$defs/__schema6"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "__schema6": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+      "description": "An RFC 3339 timestamp with an explicit UTC offset."
+    },
+    "__schema7": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/__schema8"
+          },
+          "url": {
+            "$ref": "#/$defs/__schema9"
+          },
+          "title": {
+            "$ref": "#/$defs/__schema10"
+          },
+          "pageType": {
+            "$ref": "#/$defs/__schema11"
+          },
+          "accessedAt": {
+            "$ref": "#/$defs/__schema6"
+          }
+        },
+        "required": [
+          "id",
+          "url",
+          "title",
+          "pageType",
+          "accessedAt"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "__schema8": {
+      "type": "string",
+      "maxLength": 100,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "__schema9": {
+      "type": "string",
+      "maxLength": 2048,
+      "format": "uri"
+    },
+    "__schema10": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "__schema11": {
+      "type": "string",
+      "enum": [
+        "official_program_page",
+        "official_faq",
+        "official_cost_page",
+        "official_financial_aid_page",
+        "official_rules",
+        "official_terms",
+        "official_privacy_policy",
+        "public_record",
+        "user_supplied"
+      ]
+    },
+    "__schema12": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "fieldId": {
+            "$ref": "#/$defs/__schema13"
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "required": [
+          "fieldId",
+          "summary"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "__schema13": {
+      "type": "string",
+      "enum": [
+        "opportunity_name",
+        "opportunity_category",
+        "official_url",
+        "operating_organization",
+        "organization_type",
+        "named_institution",
+        "institution_relationship",
+        "relationship_explanation",
+        "grade_levels",
+        "ages",
+        "geographic_restrictions",
+        "citizenship_restrictions",
+        "prerequisite_skills",
+        "entry_format",
+        "sponsor_requirement",
+        "application_deadline",
+        "decision_date",
+        "start_date",
+        "end_date",
+        "duration",
+        "weekly_hours",
+        "required_live_hours",
+        "participation_format",
+        "location",
+        "travel_requirements",
+        "application_fee",
+        "deposit",
+        "tuition",
+        "other_mandatory_costs",
+        "estimated_total_mandatory_cost",
+        "travel_included",
+        "lodging_included",
+        "meals_included",
+        "financial_aid",
+        "refund_policy",
+        "cancellation_policy",
+        "selection_process",
+        "applicant_count",
+        "acceptance_count",
+        "acceptance_rate_claim",
+        "calculated_acceptance_rate",
+        "selection_evidence",
+        "cash_award",
+        "stipend",
+        "tuition_waiver",
+        "program_seat",
+        "in_kind_value",
+        "certificate",
+        "college_credit",
+        "mentorship",
+        "other_benefits",
+        "personal_information",
+        "data_sharing",
+        "project_ownership",
+        "project_license",
+        "publicity_rights",
+        "confidentiality",
+        "cancellation_rights",
+        "material_terms"
+      ]
+    },
+    "__schema14": {
+      "type": "object",
+      "properties": {
+        "opportunity_name": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "opportunity_category": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "official_url": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "operating_organization": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "organization_type": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "named_institution": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "institution_relationship": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "relationship_explanation": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "grade_levels": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "ages": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "geographic_restrictions": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "citizenship_restrictions": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "prerequisite_skills": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "entry_format": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "sponsor_requirement": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "application_deadline": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "decision_date": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "start_date": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "end_date": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "duration": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "weekly_hours": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "required_live_hours": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "participation_format": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "location": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "travel_requirements": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "application_fee": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "deposit": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "tuition": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "other_mandatory_costs": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "estimated_total_mandatory_cost": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "travel_included": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "lodging_included": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "meals_included": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "financial_aid": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "refund_policy": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "cancellation_policy": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "selection_process": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "applicant_count": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "acceptance_count": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "acceptance_rate_claim": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "calculated_acceptance_rate": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "selection_evidence": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "cash_award": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "stipend": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "tuition_waiver": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "program_seat": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "in_kind_value": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "certificate": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "college_credit": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "mentorship": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "other_benefits": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "personal_information": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "data_sharing": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "project_ownership": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "project_license": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "publicity_rights": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "confidentiality": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "cancellation_rights": {
+          "$ref": "#/$defs/__schema15"
+        },
+        "material_terms": {
+          "$ref": "#/$defs/__schema15"
+        }
+      },
+      "required": [
+        "opportunity_name",
+        "opportunity_category",
+        "official_url",
+        "operating_organization",
+        "organization_type",
+        "named_institution",
+        "institution_relationship",
+        "relationship_explanation",
+        "grade_levels",
+        "ages",
+        "geographic_restrictions",
+        "citizenship_restrictions",
+        "prerequisite_skills",
+        "entry_format",
+        "sponsor_requirement",
+        "application_deadline",
+        "decision_date",
+        "start_date",
+        "end_date",
+        "duration",
+        "weekly_hours",
+        "required_live_hours",
+        "participation_format",
+        "location",
+        "travel_requirements",
+        "application_fee",
+        "deposit",
+        "tuition",
+        "other_mandatory_costs",
+        "estimated_total_mandatory_cost",
+        "travel_included",
+        "lodging_included",
+        "meals_included",
+        "financial_aid",
+        "refund_policy",
+        "cancellation_policy",
+        "selection_process",
+        "applicant_count",
+        "acceptance_count",
+        "acceptance_rate_claim",
+        "calculated_acceptance_rate",
+        "selection_evidence",
+        "cash_award",
+        "stipend",
+        "tuition_waiver",
+        "program_seat",
+        "in_kind_value",
+        "certificate",
+        "college_credit",
+        "mentorship",
+        "other_benefits",
+        "personal_information",
+        "data_sharing",
+        "project_ownership",
+        "project_license",
+        "publicity_rights",
+        "confidentiality",
+        "cancellation_rights",
+        "material_terms"
+      ],
+      "additionalProperties": false
+    },
+    "__schema15": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/__schema16"
+        },
+        "value": {
+          "$ref": "#/$defs/__schema17"
+        },
+        "displayValue": {
+          "$ref": "#/$defs/__schema20"
+        },
+        "normalizedValue": {
+          "$ref": "#/$defs/__schema21"
+        },
+        "sources": {
+          "$ref": "#/$defs/__schema28"
+        },
+        "note": {
+          "$ref": "#/$defs/__schema30"
+        },
+        "confidence": {
+          "$ref": "#/$defs/__schema31"
+        },
+        "claimKind": {
+          "$ref": "#/$defs/__schema32"
+        },
+        "conflictingValues": {
+          "$ref": "#/$defs/__schema33"
+        },
+        "calculation": {
+          "$ref": "#/$defs/__schema34"
+        }
+      },
+      "required": [
+        "status",
+        "value",
+        "displayValue",
+        "normalizedValue",
+        "sources",
+        "note",
+        "confidence",
+        "claimKind",
+        "conflictingValues",
+        "calculation"
+      ],
+      "additionalProperties": false
+    },
+    "__schema16": {
+      "type": "string",
+      "enum": [
+        "disclosed",
+        "not_found",
+        "unclear",
+        "conflicting",
+        "not_applicable"
+      ]
+    },
+    "__schema17": {
+      "default": null,
+      "anyOf": [
+        {
+          "$ref": "#/$defs/__schema18"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "__schema18": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/__schema19"
+          }
+        }
+      ]
+    },
+    "__schema19": {
+      "type": "string",
+      "minLength": 1
+    },
+    "__schema20": {
+      "default": null,
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "__schema21": {
+      "default": null,
+      "anyOf": [
+        {
+          "$ref": "#/$defs/__schema22"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "__schema22": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "text"
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "text_list"
+            },
+            "values": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/__schema23"
+              }
+            }
+          },
+          "required": [
+            "kind",
+            "values"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "date"
+            },
+            "isoDate": {
+              "type": "string",
+              "format": "date",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+            }
+          },
+          "required": [
+            "kind",
+            "isoDate"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "money"
+            },
+            "amount": {
+              "type": "number",
+              "minimum": 0
+            },
+            "currency": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$"
+            },
+            "classification": {
+              "type": "string",
+              "enum": [
+                "fee",
+                "deposit",
+                "cash",
+                "in_kind",
+                "tuition_waiver"
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "amount",
+            "currency",
+            "classification"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "number"
+            },
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "default": null,
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "boolean"
+            },
+            "value": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "percentage"
+            },
+            "value": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "duration"
+            },
+            "amount": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "hours",
+                "days",
+                "weeks",
+                "months"
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "amount",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "$ref": "#/$defs/__schema24"
+            },
+            "minimum": {
+              "$ref": "#/$defs/__schema25"
+            },
+            "maximum": {
+              "$ref": "#/$defs/__schema26"
+            },
+            "period": {
+              "$ref": "#/$defs/__schema27"
+            }
+          },
+          "required": [
+            "kind",
+            "minimum",
+            "maximum",
+            "period"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "relationship"
+            },
+            "value": {
+              "type": "string",
+              "enum": [
+                "institution_operated",
+                "institution_sponsored",
+                "institution_partnered",
+                "hosted_at_institution",
+                "founded_by_affiliates",
+                "independent",
+                "unclear"
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "participation_format"
+            },
+            "value": {
+              "type": "string",
+              "enum": [
+                "online",
+                "commuter",
+                "residential",
+                "hybrid",
+                "in_person"
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "__schema23": {
+      "type": "string",
+      "minLength": 1
+    },
+    "__schema24": {
+      "type": "string",
+      "const": "hours"
+    },
+    "__schema25": {
+      "type": "number",
+      "minimum": 0
+    },
+    "__schema26": {
+      "default": null,
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "__schema27": {
+      "type": "string",
+      "enum": [
+        "total",
+        "day",
+        "week"
+      ]
+    },
+    "__schema28": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/__schema29"
+      }
+    },
+    "__schema29": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/__schema8"
+        },
+        "url": {
+          "$ref": "#/$defs/__schema9"
+        },
+        "title": {
+          "$ref": "#/$defs/__schema10"
+        },
+        "pageType": {
+          "$ref": "#/$defs/__schema11"
+        },
+        "accessedAt": {
+          "$ref": "#/$defs/__schema6"
+        },
+        "excerpt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        }
+      },
+      "required": [
+        "id",
+        "url",
+        "title",
+        "pageType",
+        "accessedAt",
+        "excerpt"
+      ],
+      "additionalProperties": false
+    },
+    "__schema30": {
+      "default": null,
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "__schema31": {
+      "default": null,
+      "anyOf": [
+        {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "__schema32": {
+      "default": null,
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "source_stated",
+            "organizer_stated",
+            "calculated"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "__schema33": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "$ref": "#/$defs/__schema18"
+          },
+          "displayValue": {
+            "type": "string",
+            "minLength": 1
+          },
+          "normalizedValue": {
+            "default": null,
+            "anyOf": [
+              {
+                "$ref": "#/$defs/__schema22"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "sources": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/__schema29"
+            }
+          },
+          "note": {
+            "default": null,
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "value",
+          "displayValue",
+          "normalizedValue",
+          "sources",
+          "note"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "__schema34": {
+      "default": null,
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "formula": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240
+            },
+            "inputs": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/__schema35"
+              }
+            },
+            "explanation": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500
+            }
+          },
+          "required": [
+            "formula",
+            "inputs",
+            "explanation"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "__schema35": {
+      "type": "object",
+      "properties": {
+        "fieldId": {
+          "$ref": "#/$defs/__schema13"
+        },
+        "value": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "fieldId",
+        "value"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$id": "https://opportunityfacts.example/schema/opportunity-card.schema.json",
+  "title": "Opportunity Facts card",
+  "description": "Machine-readable shape for an Opportunity Facts card. Cross-field evidence and conflict invariants are additionally enforced by the authoritative Zod schema."
+}

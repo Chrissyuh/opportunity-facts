@@ -1,0 +1,82 @@
+{
+  "template_only": true,
+  "results_status": "not_run",
+  "notice": "Empty template. Null metrics are not observations and must not be published as results.",
+  "benchmark": {
+    "benchmark_id": "",
+    "protocol_version": "1.0-draft",
+    "corpus_version": "",
+    "split": "",
+    "started_at_utc": null,
+    "completed_at_utc": null
+  },
+  "artifact": {
+    "application_commit": "",
+    "schema_version": "",
+    "schema_sha256": "",
+    "field_registry_sha256": "",
+    "dependency_lock_sha256": "",
+    "runtime": "",
+    "operating_system": ""
+  },
+  "system_under_test": {
+    "track": "",
+    "extractor_version": "",
+    "provider": null,
+    "model_identifier": null,
+    "model_snapshot": null,
+    "prompt_sha256": null,
+    "structured_output_schema_sha256": "",
+    "normalizer_version": "",
+    "evidence_validator_version": "",
+    "configuration": {
+      "max_pages": null,
+      "max_redirects": null,
+      "max_response_bytes": null,
+      "timeout_ms": null,
+      "max_model_input_characters": null,
+      "max_model_output_tokens": null
+    }
+  },
+  "corpus": {
+    "manifest_sha256": "",
+    "case_count": 0,
+    "cases": []
+  },
+  "metrics": {
+    "relevant_page_recall": null,
+    "irrelevant_page_fetch_count": null,
+    "text_evidence_retention": null,
+    "status_confusion_matrix": null,
+    "status_macro_f1": null,
+    "normalized_value_precision": null,
+    "normalized_value_recall": null,
+    "normalized_value_f1": null,
+    "grounded_claim_precision": null,
+    "grounded_claim_recall": null,
+    "unsupported_support_count": null,
+    "evidence_source_accuracy": null,
+    "conflict_preservation": null,
+    "calculation_integrity": null,
+    "mismatched_excerpt_rejection": null,
+    "valid_excerpt_retention": null,
+    "wrong_claim_excerpt_rejection": null,
+    "schema_valid_case_count": null,
+    "error_case_count": null,
+    "timeout_case_count": null,
+    "latency_ms_summary": null,
+    "model_usage_summary": null,
+    "estimated_cost_summary": null
+  },
+  "thresholds_frozen_before_run": {},
+  "failures": [],
+  "protocol_deviations": [],
+  "limitations": [],
+  "review": {
+    "annotation_reviewer_count": null,
+    "adjudication_complete": false,
+    "metrics_computed_by": "",
+    "metrics_independently_checked_by": "",
+    "checked_at_utc": null
+  }
+}

@@ -1,0 +1,1138 @@
+{
+  "schemaVersion": "1.0.0",
+  "cardVersion": 1,
+  "slug": "paper-crane-student-design-award",
+  "summary": "A partnered design award with a submission fee, fee waivers, cash and separately labeled in-kind benefits, and a broad five-year project license.",
+  "reviewState": "demo",
+  "reviewedAt": "2026-08-10T12:00:00Z",
+  "sourcePagesChecked": [
+    {
+      "id": "award",
+      "url": "https://papercrane.example/design-award",
+      "title": "Paper Crane Design Award",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    },
+    {
+      "id": "rules",
+      "url": "https://papercrane.example/design-award/rules",
+      "title": "Award rules",
+      "pageType": "official_rules",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    },
+    {
+      "id": "privacy",
+      "url": "https://papercrane.example/privacy",
+      "title": "Privacy",
+      "pageType": "official_privacy_policy",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    }
+  ],
+  "conflicts": [],
+  "facts": {
+    "opportunity_name": {
+      "status": "disclosed",
+      "value": "Paper Crane Student Design Award",
+      "displayValue": "Paper Crane Student Design Award",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "award",
+          "url": "https://papercrane.example/design-award",
+          "title": "Paper Crane Design Award",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The Paper Crane Student Design Award recognizes student-designed assistive objects."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "opportunity_category": {
+      "status": "disclosed",
+      "value": "award",
+      "displayValue": "Award",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "award",
+          "url": "https://papercrane.example/design-award",
+          "title": "Paper Crane Design Award",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The Paper Crane Student Design Award recognizes student-designed assistive objects."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "official_url": {
+      "status": "disclosed",
+      "value": "https://papercrane.example/design-award",
+      "displayValue": "https://papercrane.example/design-award",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "https://papercrane.example/design-award"
+      },
+      "sources": [
+        {
+          "id": "award",
+          "url": "https://papercrane.example/design-award",
+          "title": "Paper Crane Design Award",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Official award page: https://papercrane.example/design-award"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "operating_organization": {
+      "status": "disclosed",
+      "value": "Paper Crane Design Guild",
+      "displayValue": "Paper Crane Design Guild",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "award",
+          "url": "https://papercrane.example/design-award",
+          "title": "Paper Crane Design Award",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Paper Crane Design Guild operates the award."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "organization_type": {
+      "status": "disclosed",
+      "value": "independent membership association",
+      "displayValue": "Independent membership association",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "award",
+          "url": "https://papercrane.example/design-award",
+          "title": "Paper Crane Design Award",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The guild describes itself as an independent membership association."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "named_institution": {
+      "status": "disclosed",
+      "value": "Model Prairie College of Art",
+      "displayValue": "Model Prairie College of Art",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "award",
+          "url": "https://papercrane.example/design-award",
+          "title": "Paper Crane Design Award",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The guild and Model Prairie College of Art jointly provide the jury."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "institution_relationship": {
+      "status": "disclosed",
+      "value": "institution_partnered",
+      "displayValue": "Institution partnered",
+      "normalizedValue": {
+        "kind": "relationship",
+        "value": "institution_partnered"
+      },
+      "sources": [
+        {
+          "id": "award",
+          "url": "https://papercrane.example/design-award",
+          "title": "Paper Crane Design Award",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The guild and Model Prairie College of Art jointly provide the jury, while the guild administers entries and prizes."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "relationship_explanation": {
+      "status": "disclosed",
+      "value": "The guild administers entries and prizes; both organizations provide jurors.",
+      "displayValue": "Guild administers entries and prizes; both provide jurors",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "award",
+          "url": "https://papercrane.example/design-award",
+          "title": "Paper Crane Design Award",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The guild and Model Prairie College of Art jointly provide the jury, while the guild administers entries and prizes."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "grade_levels": {
+      "status": "disclosed",
+      "value": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "displayValue": "Grades 9–12",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "9",
+          "10",
+          "11",
+          "12"
+        ]
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Students in grades 9–12 may enter."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "ages": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "geographic_restrictions": {
+      "status": "disclosed",
+      "value": "United States and territories",
+      "displayValue": "United States and territories",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Entrants must attend school in the United States or its territories."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "citizenship_restrictions": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "prerequisite_skills": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "entry_format": {
+      "status": "disclosed",
+      "value": "individual",
+      "displayValue": "Individual entry",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Entries must be submitted by one student designer."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "sponsor_requirement": {
+      "status": "disclosed",
+      "value": "teacher verification",
+      "displayValue": "Teacher verification",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "A teacher must verify student status but does not own or submit the work."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_deadline": {
+      "status": "disclosed",
+      "value": "March 2, 2027",
+      "displayValue": "March 2, 2027",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2027-03-02"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Entries close March 2, 2027."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "decision_date": {
+      "status": "disclosed",
+      "value": "May 5, 2027",
+      "displayValue": "May 5, 2027",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2027-05-05"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Finalists will be notified May 5, 2027."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "start_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "end_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "duration": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "This is a submission-based award, not a scheduled program.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "weekly_hours": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "required_live_hours": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "participation_format": {
+      "status": "disclosed",
+      "value": "online",
+      "displayValue": "Online submission",
+      "normalizedValue": {
+        "kind": "participation_format",
+        "value": "online"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Entries are submitted online."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "location": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "travel_requirements": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_fee": {
+      "status": "disclosed",
+      "value": 25,
+      "displayValue": "$25",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 25,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Each entry requires a $25 submission fee."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "deposit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_mandatory_costs": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "estimated_total_mandatory_cost": {
+      "status": "disclosed",
+      "value": 25,
+      "displayValue": "$25",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 25,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Each entry requires a $25 submission fee and no other purchase is required."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "travel_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "lodging_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "meals_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "financial_aid": {
+      "status": "disclosed",
+      "value": "Fee waivers available through a teacher request.",
+      "displayValue": "Teacher-requested fee waivers",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Teachers may request a submission-fee waiver for a student with financial need."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "refund_policy": {
+      "status": "disclosed",
+      "value": "Submission fees are nonrefundable after upload.",
+      "displayValue": "Nonrefundable after upload",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Submission fees are nonrefundable after a file is uploaded."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_policy": {
+      "status": "disclosed",
+      "value": "If the award is cancelled, submission fees are returned.",
+      "displayValue": "Fees returned if award is cancelled",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "If the guild cancels the award, paid submission fees will be returned."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_process": {
+      "status": "disclosed",
+      "value": "Blind preliminary jury followed by finalist review against four published criteria.",
+      "displayValue": "Blind preliminary jury, then finalist review",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "A blind preliminary jury selects finalists, followed by review against four published criteria."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "applicant_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_count": {
+      "status": "disclosed",
+      "value": 12,
+      "displayValue": "12 finalists",
+      "normalizedValue": {
+        "kind": "number",
+        "value": 12,
+        "unit": "people"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The rules name twelve finalist places."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_rate_claim": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "calculated_acceptance_rate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_evidence": {
+      "status": "disclosed",
+      "value": "numerical and descriptive; applicant count absent",
+      "displayValue": "Numerical and descriptive; applicant count absent",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The rules name twelve finalist places but do not publish a prior applicant count."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cash_award": {
+      "status": "disclosed",
+      "value": 500,
+      "displayValue": "$500 cash for each finalist",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 500,
+        "currency": "USD",
+        "classification": "cash"
+      },
+      "sources": [
+        {
+          "id": "award",
+          "url": "https://papercrane.example/design-award",
+          "title": "Paper Crane Design Award",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Each finalist receives $500 cash."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "stipend": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition_waiver": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "program_seat": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "in_kind_value": {
+      "status": "disclosed",
+      "value": 300,
+      "displayValue": "$300 organizer-stated exhibit-production value (in kind)",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 300,
+        "currency": "USD",
+        "classification": "in_kind"
+      },
+      "sources": [
+        {
+          "id": "award",
+          "url": "https://papercrane.example/design-award",
+          "title": "Paper Crane Design Award",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The guild describes finalist exhibit production as a $300 in-kind benefit."
+        }
+      ],
+      "note": "Organizer-stated production value; not a cash payment.",
+      "confidence": null,
+      "claimKind": "organizer_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "certificate": {
+      "status": "disclosed",
+      "value": true,
+      "displayValue": "Finalist certificate",
+      "normalizedValue": {
+        "kind": "boolean",
+        "value": true
+      },
+      "sources": [
+        {
+          "id": "award",
+          "url": "https://papercrane.example/design-award",
+          "title": "Paper Crane Design Award",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Each finalist receives a certificate."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "college_credit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "mentorship": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_benefits": {
+      "status": "disclosed",
+      "value": [
+        "finalist exhibition",
+        "jury feedback"
+      ],
+      "displayValue": "Finalist exhibition and jury feedback",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "finalist exhibition",
+          "jury feedback"
+        ]
+      },
+      "sources": [
+        {
+          "id": "award",
+          "url": "https://papercrane.example/design-award",
+          "title": "Paper Crane Design Award",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Finalists receive exhibition placement and written jury feedback."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "personal_information": {
+      "status": "disclosed",
+      "value": [
+        "name",
+        "school",
+        "grade",
+        "teacher contact",
+        "project files"
+      ],
+      "displayValue": "Name, school, grade, teacher contact, and project files",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "name",
+          "school",
+          "grade",
+          "teacher contact",
+          "project files"
+        ]
+      },
+      "sources": [
+        {
+          "id": "privacy",
+          "url": "https://papercrane.example/privacy",
+          "title": "Privacy",
+          "pageType": "official_privacy_policy",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The entry form collects name, school, grade, teacher contact, and project files."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "data_sharing": {
+      "status": "disclosed",
+      "value": "Finalist details shared with exhibit fabricator; not used for targeted ads.",
+      "displayValue": "Finalist details shared with exhibit fabricator; no targeted ads",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "privacy",
+          "url": "https://papercrane.example/privacy",
+          "title": "Privacy",
+          "pageType": "official_privacy_policy",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Finalist details are shared with the exhibit fabricator and are not used for targeted advertising."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_ownership": {
+      "status": "disclosed",
+      "value": "Entrants retain ownership.",
+      "displayValue": "Entrants retain ownership",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Entrants retain ownership of submitted designs."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_license": {
+      "status": "disclosed",
+      "value": "Broad five-year license to reproduce, adapt, display, and promote entries.",
+      "displayValue": "Five-year reproduction, adaptation, display, and promotion license",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Entrants grant the guild a five-year, worldwide, nonexclusive license to reproduce, adapt, display, and promote the entry."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "publicity_rights": {
+      "status": "disclosed",
+      "value": "Finalist name, school, photo, and interview may be used for award publicity.",
+      "displayValue": "Finalist name, school, photo, and interview may be used",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Finalists grant permission to use their name, school, photo, and recorded interview for award publicity."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "confidentiality": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_rights": {
+      "status": "disclosed",
+      "value": "Guild may cancel or change dates; fees returned only if the award is cancelled.",
+      "displayValue": "May cancel or change dates; cancellation returns fees",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The guild may cancel the award or change dates; fees are returned only if the award is cancelled."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "material_terms": {
+      "status": "disclosed",
+      "value": [
+        "five-year adaptation license",
+        "finalist publicity permission",
+        "fee becomes nonrefundable after upload"
+      ],
+      "displayValue": "Adaptation license, finalist publicity, and upload refund cutoff",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "five-year adaptation license",
+          "finalist publicity permission",
+          "fee nonrefundable after upload"
+        ]
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://papercrane.example/design-award/rules",
+          "title": "Award rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Entrants grant the guild a five-year, worldwide, nonexclusive license to reproduce, adapt, display, and promote the entry."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    }
+  }
+}

@@ -1,0 +1,1124 @@
+{
+  "schemaVersion": "1.0.0",
+  "cardVersion": 1,
+  "slug": "cipher-finch-student-challenge",
+  "summary": "A free worldwide online team competition that distinguishes its cash prize from an organizer-valued equipment package.",
+  "reviewState": "demo",
+  "reviewedAt": "2026-08-10T12:00:00Z",
+  "sourcePagesChecked": [
+    {
+      "id": "rules",
+      "url": "https://cipherfinch.example/challenge/rules",
+      "title": "Cipher Finch Challenge rules",
+      "pageType": "official_rules",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    },
+    {
+      "id": "prizes",
+      "url": "https://cipherfinch.example/challenge/prizes",
+      "title": "Prizes",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    },
+    {
+      "id": "privacy",
+      "url": "https://cipherfinch.example/privacy",
+      "title": "Privacy notice",
+      "pageType": "official_privacy_policy",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    }
+  ],
+  "conflicts": [],
+  "facts": {
+    "opportunity_name": {
+      "status": "disclosed",
+      "value": "Cipher Finch Student Challenge",
+      "displayValue": "Cipher Finch Student Challenge",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The Cipher Finch Student Challenge is an online team cryptography competition."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "opportunity_category": {
+      "status": "disclosed",
+      "value": "competition",
+      "displayValue": "Competition",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The Cipher Finch Student Challenge is an online team cryptography competition."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "official_url": {
+      "status": "disclosed",
+      "value": "https://cipherfinch.example/challenge/rules",
+      "displayValue": "https://cipherfinch.example/challenge/rules",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "https://cipherfinch.example/challenge/rules"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Official rules: https://cipherfinch.example/challenge/rules"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "operating_organization": {
+      "status": "disclosed",
+      "value": "Cipher Finch Foundation",
+      "displayValue": "Cipher Finch Foundation",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The independent Cipher Finch Foundation operates and judges the challenge."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "organization_type": {
+      "status": "disclosed",
+      "value": "independent foundation",
+      "displayValue": "Independent foundation",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The independent Cipher Finch Foundation operates and judges the challenge."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "named_institution": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "institution_relationship": {
+      "status": "disclosed",
+      "value": "independent",
+      "displayValue": "Independent",
+      "normalizedValue": {
+        "kind": "relationship",
+        "value": "independent"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "No school or university operates, sponsors, or hosts the challenge."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "relationship_explanation": {
+      "status": "disclosed",
+      "value": "No school or university operates, sponsors, or hosts the challenge.",
+      "displayValue": "No school or university operates, sponsors, or hosts the challenge",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "No school or university operates, sponsors, or hosts the challenge."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "grade_levels": {
+      "status": "disclosed",
+      "value": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "displayValue": "Grades 9–12",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "9",
+          "10",
+          "11",
+          "12"
+        ]
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Teams may include students in grades 9 through 12."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "ages": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "geographic_restrictions": {
+      "status": "disclosed",
+      "value": "Open worldwide where permitted",
+      "displayValue": "Worldwide where permitted",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The challenge is open worldwide where participation is permitted by local law."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "citizenship_restrictions": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "prerequisite_skills": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "entry_format": {
+      "status": "disclosed",
+      "value": "teams of 2–4",
+      "displayValue": "Teams of 2–4",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Each team must have two to four students."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "sponsor_requirement": {
+      "status": "disclosed",
+      "value": "one adult coach",
+      "displayValue": "One adult coach",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Each team must identify one adult coach."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_deadline": {
+      "status": "disclosed",
+      "value": "October 6, 2026",
+      "displayValue": "October 6, 2026",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2026-10-06"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Team registration closes October 6, 2026."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "decision_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "start_date": {
+      "status": "disclosed",
+      "value": "October 17, 2026",
+      "displayValue": "October 17, 2026",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2026-10-17"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The timed challenge runs online on October 17, 2026."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "end_date": {
+      "status": "disclosed",
+      "value": "October 17, 2026",
+      "displayValue": "October 17, 2026",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2026-10-17"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The timed challenge runs online on October 17, 2026."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "duration": {
+      "status": "disclosed",
+      "value": "6 hours",
+      "displayValue": "6 hours",
+      "normalizedValue": {
+        "kind": "duration",
+        "amount": 6,
+        "unit": "hours"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Teams have six hours after opening the problem packet."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "weekly_hours": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "required_live_hours": {
+      "status": "disclosed",
+      "value": "6 hours total",
+      "displayValue": "6 live hours total",
+      "normalizedValue": {
+        "kind": "hours",
+        "minimum": 6,
+        "maximum": null,
+        "period": "total"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Teams have six hours after opening the problem packet."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "participation_format": {
+      "status": "disclosed",
+      "value": "online",
+      "displayValue": "Online",
+      "normalizedValue": {
+        "kind": "participation_format",
+        "value": "online"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The Cipher Finch Student Challenge is an online team cryptography competition."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "location": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "travel_requirements": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_fee": {
+      "status": "disclosed",
+      "value": 0,
+      "displayValue": "$0",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 0,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Registration is free."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "deposit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_mandatory_costs": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "estimated_total_mandatory_cost": {
+      "status": "disclosed",
+      "value": 0,
+      "displayValue": "$0",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 0,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Registration is free and no purchase is required."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "travel_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "lodging_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "meals_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "financial_aid": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The published mandatory cost is $0.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "refund_policy": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No payment is required.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_policy": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_process": {
+      "status": "disclosed",
+      "value": "Automated answer checks followed by manual tie-break review.",
+      "displayValue": "Automated checks with manual tie-break review",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Scores use automated answer checks; judges manually review tied teams using the written-method explanation."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "applicant_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_rate_claim": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "calculated_acceptance_rate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_evidence": {
+      "status": "disclosed",
+      "value": "descriptive",
+      "displayValue": "Descriptive",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Scores use automated answer checks; judges manually review tied teams using the written-method explanation."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cash_award": {
+      "status": "disclosed",
+      "value": 2500,
+      "displayValue": "$2,500 cash to the first-place team",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 2500,
+        "currency": "USD",
+        "classification": "cash"
+      },
+      "sources": [
+        {
+          "id": "prizes",
+          "url": "https://cipherfinch.example/challenge/prizes",
+          "title": "Prizes",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The first-place team receives a $2,500 cash award divided equally among student members."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "stipend": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition_waiver": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "program_seat": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "in_kind_value": {
+      "status": "disclosed",
+      "value": 800,
+      "displayValue": "$800 organizer-stated equipment value (in kind)",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 800,
+        "currency": "USD",
+        "classification": "in_kind"
+      },
+      "sources": [
+        {
+          "id": "prizes",
+          "url": "https://cipherfinch.example/challenge/prizes",
+          "title": "Prizes",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The first-place team also receives equipment described by the organizer as an $800 retail value."
+        }
+      ],
+      "note": "Organizer-stated retail value; not cash.",
+      "confidence": null,
+      "claimKind": "organizer_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "certificate": {
+      "status": "disclosed",
+      "value": true,
+      "displayValue": "Digital participation certificate",
+      "normalizedValue": {
+        "kind": "boolean",
+        "value": true
+      },
+      "sources": [
+        {
+          "id": "prizes",
+          "url": "https://cipherfinch.example/challenge/prizes",
+          "title": "Prizes",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Every team that submits before time expires receives a digital participation certificate."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "college_credit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "mentorship": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_benefits": {
+      "status": "disclosed",
+      "value": [
+        "digital certificate",
+        "published solution review"
+      ],
+      "displayValue": "Digital certificate and published solution review",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "digital certificate",
+          "published solution review"
+        ]
+      },
+      "sources": [
+        {
+          "id": "prizes",
+          "url": "https://cipherfinch.example/challenge/prizes",
+          "title": "Prizes",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Participants receive a digital certificate and access to the published solution review."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "personal_information": {
+      "status": "disclosed",
+      "value": [
+        "student name",
+        "email",
+        "grade",
+        "coach contact"
+      ],
+      "displayValue": "Name, email, grade, and coach contact",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "student name",
+          "email",
+          "grade",
+          "coach contact"
+        ]
+      },
+      "sources": [
+        {
+          "id": "privacy",
+          "url": "https://cipherfinch.example/privacy",
+          "title": "Privacy notice",
+          "pageType": "official_privacy_policy",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Registration collects each student's name, email, grade, and coach contact."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "data_sharing": {
+      "status": "disclosed",
+      "value": "Service providers process registration; data is not sold.",
+      "displayValue": "Service providers process registration; data not sold",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "privacy",
+          "url": "https://cipherfinch.example/privacy",
+          "title": "Privacy notice",
+          "pageType": "official_privacy_policy",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Registration data is shared with service providers that run the event and is not sold."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_ownership": {
+      "status": "disclosed",
+      "value": "Teams retain ownership of submitted explanations.",
+      "displayValue": "Teams retain ownership",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Teams retain ownership of their written explanations."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_license": {
+      "status": "disclosed",
+      "value": "Nonexclusive license to publish submitted explanations with team attribution.",
+      "displayValue": "Nonexclusive publication license",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Teams grant a nonexclusive license to publish submitted explanations with team attribution."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "publicity_rights": {
+      "status": "disclosed",
+      "value": "Winning team names may be published; student images require separate consent.",
+      "displayValue": "Winner names may be published; images need separate consent",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The foundation may publish winning team names; student images require separate consent."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "confidentiality": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_rights": {
+      "status": "disclosed",
+      "value": "Organizer may reschedule for platform failure.",
+      "displayValue": "May reschedule after platform failure",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The foundation may pause or reschedule the challenge after a material platform failure."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "material_terms": {
+      "status": "disclosed",
+      "value": [
+        "cash award divided among student team members",
+        "submission publication license"
+      ],
+      "displayValue": "Team award division and publication license",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "cash award divided among team",
+          "publication license"
+        ]
+      },
+      "sources": [
+        {
+          "id": "rules",
+          "url": "https://cipherfinch.example/challenge/rules",
+          "title": "Cipher Finch Challenge rules",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Teams grant a nonexclusive license to publish submitted explanations with team attribution."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    }
+  }
+}

@@ -1,0 +1,1128 @@
+{
+  "schemaVersion": "1.0.0",
+  "cardVersion": 1,
+  "slug": "orchard-sky-research-week",
+  "summary": "A university-operated residential research week with itemized charges, need-based grants, and an unclear media-form choice.",
+  "reviewState": "demo",
+  "reviewedAt": "2026-08-10T12:00:00Z",
+  "sourcePagesChecked": [
+    {
+      "id": "program",
+      "url": "https://orchardsky.example/research-week",
+      "title": "Orchard Sky Research Week",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    },
+    {
+      "id": "cost",
+      "url": "https://orchardsky.example/research-week/cost",
+      "title": "Research Week cost",
+      "pageType": "official_cost_page",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    },
+    {
+      "id": "aid",
+      "url": "https://orchardsky.example/research-week/aid",
+      "title": "Research Week aid",
+      "pageType": "official_financial_aid_page",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    },
+    {
+      "id": "terms",
+      "url": "https://orchardsky.example/research-week/terms",
+      "title": "Research Week terms",
+      "pageType": "official_terms",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    }
+  ],
+  "conflicts": [],
+  "facts": {
+    "opportunity_name": {
+      "status": "disclosed",
+      "value": "Orchard Sky Research Week",
+      "displayValue": "Orchard Sky Research Week",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Orchard Sky Research Week is a seven-day residential environmental research program."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "opportunity_category": {
+      "status": "disclosed",
+      "value": "research program",
+      "displayValue": "Research program",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Orchard Sky Research Week is a seven-day residential environmental research program."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "official_url": {
+      "status": "disclosed",
+      "value": "https://orchardsky.example/research-week",
+      "displayValue": "https://orchardsky.example/research-week",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "https://orchardsky.example/research-week"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Official page: https://orchardsky.example/research-week"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "operating_organization": {
+      "status": "disclosed",
+      "value": "Orchard Sky University Extension",
+      "displayValue": "Orchard Sky University Extension",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Orchard Sky University Extension operates the program and employs its instructional staff."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "organization_type": {
+      "status": "disclosed",
+      "value": "university extension division",
+      "displayValue": "University extension division",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Orchard Sky University Extension operates the program and employs its instructional staff."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "named_institution": {
+      "status": "disclosed",
+      "value": "Orchard Sky University",
+      "displayValue": "Orchard Sky University",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The program is an Orchard Sky University Extension offering."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "institution_relationship": {
+      "status": "disclosed",
+      "value": "institution_operated",
+      "displayValue": "Institution operated",
+      "normalizedValue": {
+        "kind": "relationship",
+        "value": "institution_operated"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Orchard Sky University Extension operates the program and employs its instructional staff."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "relationship_explanation": {
+      "status": "disclosed",
+      "value": "The university extension division operates the program and employs its instructional staff.",
+      "displayValue": "University Extension operates the program and employs its staff",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Orchard Sky University Extension operates the program and employs its instructional staff."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "grade_levels": {
+      "status": "disclosed",
+      "value": [
+        "11",
+        "12"
+      ],
+      "displayValue": "Grades 11–12",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "11",
+          "12"
+        ]
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Students entering grades 11 or 12 are eligible."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "ages": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "geographic_restrictions": {
+      "status": "disclosed",
+      "value": "Residents of the fictional Tri-County region",
+      "displayValue": "Tri-County residents",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Applicants must live in the Tri-County region."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "citizenship_restrictions": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "prerequisite_skills": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "entry_format": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "sponsor_requirement": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_deadline": {
+      "status": "disclosed",
+      "value": "February 12, 2027",
+      "displayValue": "February 12, 2027",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2027-02-12"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Applications are due February 12, 2027."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "decision_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "start_date": {
+      "status": "disclosed",
+      "value": "July 11, 2027",
+      "displayValue": "July 11, 2027",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2027-07-11"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The program runs July 11–17, 2027."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "end_date": {
+      "status": "disclosed",
+      "value": "July 17, 2027",
+      "displayValue": "July 17, 2027",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2027-07-17"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The program runs July 11–17, 2027."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "duration": {
+      "status": "disclosed",
+      "value": "seven days",
+      "displayValue": "7 days",
+      "normalizedValue": {
+        "kind": "duration",
+        "amount": 7,
+        "unit": "days"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Orchard Sky Research Week is a seven-day residential environmental research program."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "weekly_hours": {
+      "status": "disclosed",
+      "value": "42 scheduled hours",
+      "displayValue": "42 scheduled hours",
+      "normalizedValue": {
+        "kind": "hours",
+        "minimum": 42,
+        "maximum": null,
+        "period": "total"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The schedule contains 42 instructional and field hours."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "required_live_hours": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "participation_format": {
+      "status": "disclosed",
+      "value": "residential",
+      "displayValue": "Residential",
+      "normalizedValue": {
+        "kind": "participation_format",
+        "value": "residential"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Orchard Sky Research Week is a seven-day residential environmental research program."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "location": {
+      "status": "disclosed",
+      "value": "Orchard Sky University field station",
+      "displayValue": "Orchard Sky University field station",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Students stay and study at the university field station."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "travel_requirements": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_fee": {
+      "status": "disclosed",
+      "value": 15,
+      "displayValue": "$15",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 15,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "cost",
+          "url": "https://orchardsky.example/research-week/cost",
+          "title": "Research Week cost",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "A nonrefundable $15 application fee is required."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "deposit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition": {
+      "status": "disclosed",
+      "value": 1200,
+      "displayValue": "$1,200",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 1200,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "cost",
+          "url": "https://orchardsky.example/research-week/cost",
+          "title": "Research Week cost",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Program tuition is $1,200."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_mandatory_costs": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "estimated_total_mandatory_cost": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "cost",
+          "url": "https://orchardsky.example/research-week/cost",
+          "title": "Research Week cost",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The application fee and tuition total $1,215 before travel."
+        }
+      ],
+      "note": "The published application-fee and tuition subtotal is $1,215 before travel, but no deposit or other mandatory-cost disclosure was found, so a complete total cannot be stated.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "travel_included": {
+      "status": "disclosed",
+      "value": false,
+      "displayValue": "No",
+      "normalizedValue": {
+        "kind": "boolean",
+        "value": false
+      },
+      "sources": [
+        {
+          "id": "cost",
+          "url": "https://orchardsky.example/research-week/cost",
+          "title": "Research Week cost",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Travel to the field station is not included."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "lodging_included": {
+      "status": "disclosed",
+      "value": true,
+      "displayValue": "Yes",
+      "normalizedValue": {
+        "kind": "boolean",
+        "value": true
+      },
+      "sources": [
+        {
+          "id": "cost",
+          "url": "https://orchardsky.example/research-week/cost",
+          "title": "Research Week cost",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Tuition includes lodging and all meals."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "meals_included": {
+      "status": "disclosed",
+      "value": true,
+      "displayValue": "Yes",
+      "normalizedValue": {
+        "kind": "boolean",
+        "value": true
+      },
+      "sources": [
+        {
+          "id": "cost",
+          "url": "https://orchardsky.example/research-week/cost",
+          "title": "Research Week cost",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Tuition includes lodging and all meals."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "financial_aid": {
+      "status": "disclosed",
+      "value": "Full and half tuition grants; application fee waivers on request.",
+      "displayValue": "Full and half tuition grants; fee waivers",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "aid",
+          "url": "https://orchardsky.example/research-week/aid",
+          "title": "Research Week aid",
+          "pageType": "official_financial_aid_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Need-based full and half tuition grants are available, and applicants may request an application-fee waiver."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "refund_policy": {
+      "status": "disclosed",
+      "value": "Tuition refundable through June 1; application fee nonrefundable.",
+      "displayValue": "Tuition refundable through June 1; application fee nonrefundable",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "cost",
+          "url": "https://orchardsky.example/research-week/cost",
+          "title": "Research Week cost",
+          "pageType": "official_cost_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Tuition is refundable through June 1; the application fee is nonrefundable."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_policy": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_process": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No selection process was found on the reviewed program, cost, aid, or terms pages.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "applicant_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_rate_claim": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "calculated_acceptance_rate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_evidence": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The reviewed pages publish neither numerical nor descriptive selection evidence.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cash_award": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "stipend": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition_waiver": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "program_seat": {
+      "status": "disclosed",
+      "value": "residential research-week seat",
+      "displayValue": "Program seat",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Selected students receive a seat in the residential research week."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "in_kind_value": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "certificate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "college_credit": {
+      "status": "disclosed",
+      "value": "one elective credit after completion and assessment",
+      "displayValue": "1 elective credit after completion and assessment",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Students who complete the assessment may earn one Orchard Sky elective credit."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "mentorship": {
+      "status": "disclosed",
+      "value": "faculty and graduate mentor groups",
+      "displayValue": "Faculty and graduate mentor groups",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Each student joins a faculty and graduate mentor group."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_benefits": {
+      "status": "disclosed",
+      "value": [
+        "field notebook",
+        "one elective credit when assessment requirements are met"
+      ],
+      "displayValue": "Field notebook and possible elective credit",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "field notebook",
+          "one elective credit after assessment"
+        ]
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://orchardsky.example/research-week",
+          "title": "Orchard Sky Research Week",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Students keep a field notebook and may earn one elective credit after assessment."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "personal_information": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "data_sharing": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_ownership": {
+      "status": "disclosed",
+      "value": "Students retain ownership of field notes and reports.",
+      "displayValue": "Students retain ownership",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://orchardsky.example/research-week/terms",
+          "title": "Research Week terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Students retain ownership of their field notes and reports."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_license": {
+      "status": "disclosed",
+      "value": "University may archive final reports for teaching with attribution.",
+      "displayValue": "Archival teaching license with attribution",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://orchardsky.example/research-week/terms",
+          "title": "Research Week terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Students grant the university permission to archive final reports for teaching with attribution."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "publicity_rights": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://orchardsky.example/research-week/terms",
+          "title": "Research Week terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Participants receive a media form before arrival."
+        }
+      ],
+      "note": "The terms refer to a separate media form, but the reviewed pages do not say whether it is optional.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "confidentiality": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_rights": {
+      "status": "disclosed",
+      "value": "University may cancel for field conditions and refund tuition.",
+      "displayValue": "May cancel for field conditions with tuition refund",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://orchardsky.example/research-week/terms",
+          "title": "Research Week terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The university may cancel for unsafe field conditions and will refund tuition paid."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "material_terms": {
+      "status": "disclosed",
+      "value": [
+        "application fee is nonrefundable",
+        "media-form choice is not stated"
+      ],
+      "displayValue": "Nonrefundable application fee; unclear media form",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "application fee nonrefundable",
+          "media form optionality unclear"
+        ]
+      },
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://orchardsky.example/research-week/terms",
+          "title": "Research Week terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Participants receive a media form before arrival."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    }
+  }
+}

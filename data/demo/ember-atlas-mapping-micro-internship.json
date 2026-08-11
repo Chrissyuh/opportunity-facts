@@ -1,0 +1,1180 @@
+{
+  "schemaVersion": "1.0.0",
+  "cardVersion": 1,
+  "slug": "ember-atlas-mapping-micro-internship",
+  "summary": "A paid remote micro-internship whose college connection is limited to founder alumni status, with explicit wages, ownership, and confidentiality terms.",
+  "reviewState": "demo",
+  "reviewedAt": "2026-08-10T12:00:00Z",
+  "sourcePagesChecked": [
+    {
+      "id": "program",
+      "url": "https://emberatlas.example/micro-internship",
+      "title": "Ember Atlas Micro-Internship",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    },
+    {
+      "id": "faq",
+      "url": "https://emberatlas.example/micro-internship/faq",
+      "title": "Micro-Internship FAQ",
+      "pageType": "official_faq",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    },
+    {
+      "id": "terms",
+      "url": "https://emberatlas.example/micro-internship/terms",
+      "title": "Micro-Internship terms",
+      "pageType": "official_terms",
+      "accessedAt": "2026-08-10T12:00:00Z"
+    }
+  ],
+  "conflicts": [],
+  "facts": {
+    "opportunity_name": {
+      "status": "disclosed",
+      "value": "Ember Atlas Mapping Micro-Internship",
+      "displayValue": "Ember Atlas Mapping Micro-Internship",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Ember Atlas Mapping Micro-Internship is an eight-week remote paid internship."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "opportunity_category": {
+      "status": "disclosed",
+      "value": "internship",
+      "displayValue": "Internship",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Ember Atlas Mapping Micro-Internship is an eight-week remote paid internship."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "official_url": {
+      "status": "disclosed",
+      "value": "https://emberatlas.example/micro-internship",
+      "displayValue": "https://emberatlas.example/micro-internship",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "https://emberatlas.example/micro-internship"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Official page: https://emberatlas.example/micro-internship"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "operating_organization": {
+      "status": "disclosed",
+      "value": "Ember Atlas Cartography Studio",
+      "displayValue": "Ember Atlas Cartography Studio",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Ember Atlas Cartography Studio operates and supervises the internship."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "organization_type": {
+      "status": "disclosed",
+      "value": "privately held studio",
+      "displayValue": "Privately held studio",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The operator describes itself as a privately held cartography studio."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "named_institution": {
+      "status": "disclosed",
+      "value": "Placeholder Ridge College",
+      "displayValue": "Placeholder Ridge College",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "faq",
+          "url": "https://emberatlas.example/micro-internship/faq",
+          "title": "Micro-Internship FAQ",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The studio was founded by two Placeholder Ridge College alumni."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "institution_relationship": {
+      "status": "disclosed",
+      "value": "founded_by_affiliates",
+      "displayValue": "Founded by affiliates",
+      "normalizedValue": {
+        "kind": "relationship",
+        "value": "founded_by_affiliates"
+      },
+      "sources": [
+        {
+          "id": "faq",
+          "url": "https://emberatlas.example/micro-internship/faq",
+          "title": "Micro-Internship FAQ",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The studio was founded by two Placeholder Ridge College alumni; the college has no role in the internship."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "relationship_explanation": {
+      "status": "disclosed",
+      "value": "Two founders are alumni; the college has no role in the internship.",
+      "displayValue": "Founders are alumni; college has no program role",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "faq",
+          "url": "https://emberatlas.example/micro-internship/faq",
+          "title": "Micro-Internship FAQ",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The studio was founded by two Placeholder Ridge College alumni; the college has no role in the internship."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "grade_levels": {
+      "status": "disclosed",
+      "value": [
+        "11",
+        "12"
+      ],
+      "displayValue": "Grades 11–12",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "11",
+          "12"
+        ]
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Students currently in grades 11 or 12 may apply."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "ages": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "geographic_restrictions": {
+      "status": "disclosed",
+      "value": "United States, excluding locations where youth employment arrangement is unavailable",
+      "displayValue": "United States where youth employment arrangement is available",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Applicants must reside in a U.S. location where the studio can arrange youth employment."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "citizenship_restrictions": {
+      "status": "disclosed",
+      "value": "Must already be authorized for paid work in the United States",
+      "displayValue": "Must be authorized for paid U.S. work",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Applicants must already be authorized for paid work in the United States; sponsorship is not offered."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "prerequisite_skills": {
+      "status": "disclosed",
+      "value": [
+        "spreadsheet basics",
+        "one GIS or mapping sample"
+      ],
+      "displayValue": "Spreadsheet basics and a GIS or mapping sample",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "spreadsheet basics",
+          "GIS or mapping sample"
+        ]
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Applicants need spreadsheet basics and one GIS or mapping sample."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "entry_format": {
+      "status": "disclosed",
+      "value": "individual",
+      "displayValue": "Individual application",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Applications are individual."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "sponsor_requirement": {
+      "status": "disclosed",
+      "value": "parent or guardian signature if under 18",
+      "displayValue": "Guardian signature if under 18",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://emberatlas.example/micro-internship/terms",
+          "title": "Micro-Internship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "A parent or guardian must sign the employment forms for an intern under 18."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_deadline": {
+      "status": "disclosed",
+      "value": "September 18, 2026",
+      "displayValue": "September 18, 2026",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2026-09-18"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Applications close September 18, 2026."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "decision_date": {
+      "status": "disclosed",
+      "value": "October 9, 2026",
+      "displayValue": "October 9, 2026",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2026-10-09"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Offers are scheduled by October 9, 2026."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "start_date": {
+      "status": "disclosed",
+      "value": "October 26, 2026",
+      "displayValue": "October 26, 2026",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2026-10-26"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The internship runs October 26 through December 18, 2026."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "end_date": {
+      "status": "disclosed",
+      "value": "December 18, 2026",
+      "displayValue": "December 18, 2026",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2026-12-18"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The internship runs October 26 through December 18, 2026."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "duration": {
+      "status": "disclosed",
+      "value": "eight weeks",
+      "displayValue": "8 weeks",
+      "normalizedValue": {
+        "kind": "duration",
+        "amount": 8,
+        "unit": "weeks"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Ember Atlas Mapping Micro-Internship is an eight-week remote paid internship."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "weekly_hours": {
+      "status": "disclosed",
+      "value": "6–8 hours per week",
+      "displayValue": "6–8 hours per week",
+      "normalizedValue": {
+        "kind": "hours",
+        "minimum": 6,
+        "maximum": 8,
+        "period": "week"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Interns work six to eight hours per week."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "required_live_hours": {
+      "status": "disclosed",
+      "value": "1 hour per week",
+      "displayValue": "1 live hour per week",
+      "normalizedValue": {
+        "kind": "hours",
+        "minimum": 1,
+        "maximum": null,
+        "period": "week"
+      },
+      "sources": [
+        {
+          "id": "faq",
+          "url": "https://emberatlas.example/micro-internship/faq",
+          "title": "Micro-Internship FAQ",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "A one-hour weekly team meeting is required live."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "participation_format": {
+      "status": "disclosed",
+      "value": "online",
+      "displayValue": "Online",
+      "normalizedValue": {
+        "kind": "participation_format",
+        "value": "online"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Ember Atlas Mapping Micro-Internship is an eight-week remote paid internship."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "location": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "travel_requirements": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "application_fee": {
+      "status": "disclosed",
+      "value": 0,
+      "displayValue": "$0",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 0,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "There is no application or participation fee."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "deposit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_mandatory_costs": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "estimated_total_mandatory_cost": {
+      "status": "disclosed",
+      "value": 0,
+      "displayValue": "$0",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 0,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "There is no application or participation fee."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "travel_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "lodging_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "meals_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "financial_aid": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No fee is charged and this is a paid internship.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "refund_policy": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "No participant payment is required.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_policy": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_process": {
+      "status": "disclosed",
+      "value": "Portfolio screen, structured interview, and paid trial task.",
+      "displayValue": "Portfolio screen, structured interview, and paid trial task",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Selection includes a portfolio screen, structured interview, and a two-hour paid trial task."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "applicant_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "acceptance_rate_claim": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "calculated_acceptance_rate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "selection_evidence": {
+      "status": "disclosed",
+      "value": "descriptive",
+      "displayValue": "Descriptive",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Selection includes a portfolio screen, structured interview, and a two-hour paid trial task."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cash_award": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "stipend": {
+      "status": "disclosed",
+      "value": 1200,
+      "displayValue": "$1,200 total wages",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 1200,
+        "currency": "USD",
+        "classification": "cash"
+      },
+      "sources": [
+        {
+          "id": "program",
+          "url": "https://emberatlas.example/micro-internship",
+          "title": "Ember Atlas Micro-Internship",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Interns are paid $1,200 in total wages across the eight weeks."
+        }
+      ],
+      "note": "Presented as cash wages, not an in-kind valuation.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "tuition_waiver": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "program_seat": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "in_kind_value": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "certificate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "college_credit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "mentorship": {
+      "status": "disclosed",
+      "value": "weekly supervisor feedback",
+      "displayValue": "Weekly supervisor feedback",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "faq",
+          "url": "https://emberatlas.example/micro-internship/faq",
+          "title": "Micro-Internship FAQ",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Interns receive weekly feedback from a mapping supervisor."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "other_benefits": {
+      "status": "disclosed",
+      "value": [
+        "paid trial task",
+        "weekly supervisor feedback",
+        "portfolio-ready map with client permission"
+      ],
+      "displayValue": "Paid trial, feedback, and permission-based portfolio work",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "paid trial task",
+          "weekly supervisor feedback",
+          "permission-based portfolio work"
+        ]
+      },
+      "sources": [
+        {
+          "id": "faq",
+          "url": "https://emberatlas.example/micro-internship/faq",
+          "title": "Micro-Internship FAQ",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The studio pays for the trial task, provides weekly feedback, and may permit a sanitized final map in a portfolio."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "personal_information": {
+      "status": "disclosed",
+      "value": [
+        "contact details",
+        "school",
+        "work authorization",
+        "portfolio",
+        "payment forms after offer"
+      ],
+      "displayValue": "Contact, school, work authorization, portfolio, and post-offer payment forms",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "contact details",
+          "school",
+          "work authorization",
+          "portfolio",
+          "post-offer payment forms"
+        ]
+      },
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://emberatlas.example/micro-internship/terms",
+          "title": "Micro-Internship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The application requests contact details, school, work authorization, and a portfolio; payment forms are collected only after an offer."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "data_sharing": {
+      "status": "disclosed",
+      "value": "Hiring platform and payroll provider process applicant or employee data.",
+      "displayValue": "Hiring platform and payroll provider",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://emberatlas.example/micro-internship/terms",
+          "title": "Micro-Internship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Applicant and employee data is processed by the studio's hiring platform and payroll provider."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_ownership": {
+      "status": "disclosed",
+      "value": "Client owns commissioned map outputs; interns retain pre-existing portfolio materials.",
+      "displayValue": "Client owns commissioned outputs; intern retains pre-existing materials",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://emberatlas.example/micro-internship/terms",
+          "title": "Micro-Internship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The client owns commissioned map outputs; interns retain their pre-existing portfolio materials."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "project_license": {
+      "status": "disclosed",
+      "value": "Intern grants license to incorporated pre-existing material only as needed for the client output.",
+      "displayValue": "Limited license for incorporated pre-existing material",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://emberatlas.example/micro-internship/terms",
+          "title": "Micro-Internship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "An intern licenses incorporated pre-existing material only as needed to use the commissioned client output."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "publicity_rights": {
+      "status": "disclosed",
+      "value": "No publicity permission in employment terms.",
+      "displayValue": "No publicity permission stated",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://emberatlas.example/micro-internship/terms",
+          "title": "Micro-Internship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The employment terms do not request permission to use an intern's name, image, or video."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "confidentiality": {
+      "status": "disclosed",
+      "value": "Client data and unreleased maps are confidential.",
+      "displayValue": "Client data and unreleased maps confidential",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://emberatlas.example/micro-internship/terms",
+          "title": "Micro-Internship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Interns must keep client data and unreleased maps confidential."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "cancellation_rights": {
+      "status": "disclosed",
+      "value": "Either side may end employment subject to applicable youth-employment rules; completed hours are paid.",
+      "displayValue": "Either side may end; completed hours paid",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://emberatlas.example/micro-internship/terms",
+          "title": "Micro-Internship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "Either side may end employment subject to applicable youth-employment rules, and all completed hours will be paid."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    },
+    "material_terms": {
+      "status": "disclosed",
+      "value": [
+        "client ownership of commissioned output",
+        "confidential client data",
+        "work authorization required"
+      ],
+      "displayValue": "Client ownership, confidentiality, and work authorization",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "client owns commissioned output",
+          "client data confidential",
+          "work authorization required"
+        ]
+      },
+      "sources": [
+        {
+          "id": "terms",
+          "url": "https://emberatlas.example/micro-internship/terms",
+          "title": "Micro-Internship terms",
+          "pageType": "official_terms",
+          "accessedAt": "2026-08-10T12:00:00Z",
+          "excerpt": "The client owns commissioned map outputs; interns retain their pre-existing portfolio materials."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null
+    }
+  }
+}
