@@ -1,0 +1,276 @@
+{
+  "artifactVersion": 1,
+  "developmentSet": false,
+  "preregistered": true,
+  "primaryRun": "polygence-core-program-fall-2026-run-01.json",
+  "groundTruthCard": "polygence-core-program-fall-2026.json",
+  "completedDraft": true,
+  "semanticReview": {
+    "reviewer": "human_manual_review",
+    "claims": [
+      {
+        "fieldId": "opportunity_name",
+        "displayValue": "Polygence Core Program",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "opportunity_category",
+        "displayValue": "Online research mentorship program",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "operating_organization",
+        "displayValue": "Polygence, Inc.",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "organization_type",
+        "displayValue": "Education company",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "grade_levels",
+        "displayValue": "High school students",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "ages",
+        "displayValue": "At least 13; parent/legal-guardian supervision required under 18",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": false,
+        "judgment": "Platform-use age in the Terms is not Core Program admissions eligibility."
+      },
+      {
+        "fieldId": "geographic_restrictions",
+        "displayValue": "Globally available; access may be prohibited in some jurisdictions",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": false,
+        "judgment": "Service-access legal restrictions are not program geographic eligibility."
+      },
+      {
+        "fieldId": "sponsor_requirement",
+        "displayValue": "Parent/legal-guardian supervision required under 18",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": false,
+        "judgment": "Parent supervision for platform use is not a program application sponsor requirement."
+      },
+      {
+        "fieldId": "weekly_hours",
+        "displayValue": "3–5 hours per week between sessions",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "required_live_hours",
+        "displayValue": "10 hour-long one-on-one mentor sessions",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "participation_format",
+        "displayValue": "Online (Zoom mentor meetings)",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "location",
+        "displayValue": "Zoom",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "financial_aid",
+        "displayValue": "Financial Aid may be available",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "refund_policy",
+        "displayValue": "No general obligation to provide refunds or credits, subject to express Platform terms and discretion",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "selection_process",
+        "displayValue": "Application → Interview → Core Program",
+        "evidenceAttachments": 3,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "selection_evidence",
+        "displayValue": "Descriptive selection steps published; no numerical selection data found",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "program_seat",
+        "displayValue": "Program enrollment upon acceptance",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": false,
+        "judgment": "Enrollment in a paid service was treated as a participant outcome."
+      },
+      {
+        "fieldId": "personal_information",
+        "displayValue": "Name, age, contact information, parent/guardian information (if under 18), and school",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "data_sharing",
+        "displayValue": "Information may be shared with assigned mentors; contact information may be shared with admissions counselors for marketing; some sharing with educational institutions requires consent",
+        "evidenceAttachments": 3,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "project_license",
+        "displayValue": "Broad perpetual license to User Content and Individual Data",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "cancellation_rights",
+        "displayValue": "Polygence may alter, suspend, or discontinue services without notice",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "material_terms",
+        "displayValue": "Arbitration/class-action waiver; AI-training opt-out distinction",
+        "evidenceAttachments": 2,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      }
+    ]
+  },
+  "acquisition": {
+    "exactReviewedUrls": {
+      "acquired": 5,
+      "reviewed": 6
+    },
+    "sourceCategories": {
+      "acquired": 4,
+      "reviewed": 4
+    },
+    "irrelevantPages": 0,
+    "acquiredPages": 6,
+    "fetchFailures": 0
+  },
+  "metrics": {
+    "supportedClaimPrecision": {
+      "numerator": 11,
+      "denominator": 22,
+      "value": 0.5
+    },
+    "supportedSummaryRecall": {
+      "numerator": 11,
+      "denominator": 21,
+      "value": 0.5238095238095238
+    },
+    "statusAgreement": {
+      "numerator": 36,
+      "denominator": 59,
+      "value": 0.6101694915254238
+    },
+    "semanticEvidenceCorrectness": {
+      "numerator": 23,
+      "denominator": 27,
+      "value": 0.8518518518518519
+    },
+    "structuredEntityPrecision": {
+      "numerator": 2,
+      "denominator": 4,
+      "value": 0.5
+    },
+    "structuredEntityRecall": {
+      "numerator": 2,
+      "denominator": 11,
+      "value": 0.18181818181818182
+    },
+    "cycleModeled": {
+      "numerator": 0,
+      "denominator": 1,
+      "value": 0
+    },
+    "correctionBurden": {
+      "missingClaim": 10,
+      "unsupportedClaimRemoval": 11,
+      "statusCorrection": 23,
+      "valueCorrection": 3,
+      "relationshipOrScopeCorrection": 4,
+      "evidenceCorrection": 4,
+      "structuralCorrection": 11,
+      "total": 66
+    },
+    "criticalMisleadingErrors": {
+      "count": 3,
+      "errors": [
+        "Platform minimum-use age was presented as Core Program eligibility.",
+        "Terms-of-service jurisdiction access language was presented as program geographic eligibility.",
+        "Minor supervision for platform use was presented as a program sponsor requirement."
+      ]
+    }
+  },
+  "provider": {
+    "usage": {
+      "inputTokens": 65617,
+      "cachedInputTokens": 44150,
+      "outputTokens": 10097,
+      "reasoningTokens": 170,
+      "totalTokens": 75714
+    },
+    "estimatedCostUsd": 0.172928,
+    "pricing": {
+      "inputPerMillionUsd": 2,
+      "cachedInputPerMillionUsd": 0.2,
+      "outputPerMillionUsd": 12,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra"
+    },
+    "usageUnavailableAfterProviderFailure": false
+  },
+  "runtimeMs": 77004,
+  "failure": null
+}

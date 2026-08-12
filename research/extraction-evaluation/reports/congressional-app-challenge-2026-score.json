@@ -1,0 +1,272 @@
+{
+  "artifactVersion": 1,
+  "developmentSet": false,
+  "preregistered": true,
+  "primaryRun": "congressional-app-challenge-2026-run-01.json",
+  "groundTruthCard": "congressional-app-challenge-2026.json",
+  "completedDraft": true,
+  "semanticReview": {
+    "reviewer": "human_manual_review",
+    "claims": [
+      {
+        "fieldId": "opportunity_name",
+        "displayValue": "Congressional App Challenge",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "opportunity_category",
+        "displayValue": "District-specific student app competition",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "official_url",
+        "displayValue": "https://www.congressionalappchallenge.us/students/rules/",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "operating_organization",
+        "displayValue": "Internet Education Foundation (administrator)",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "organization_type",
+        "displayValue": "Non-profit",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "grade_levels",
+        "displayValue": "Middle or high school students",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "geographic_restrictions",
+        "displayValue": "Residence or school district; team district rule applies",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "citizenship_restrictions",
+        "displayValue": "U.S. residents; no citizenship requirement",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "entry_format",
+        "displayValue": "Individual or team (maximum 4 students)",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "participation_format",
+        "displayValue": "Scoped by stage/pathway — see details",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "location",
+        "displayValue": "Student's residence or school congressional district",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": false,
+        "judgment": "District residence/school eligibility was attached to the participation-location field."
+      },
+      {
+        "fieldId": "travel_requirements",
+        "displayValue": "Travel to #HouseOfCode is the student's responsibility",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "travel_included",
+        "displayValue": "No, student travel is not included for #HouseOfCode",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "selection_process",
+        "displayValue": "Student pre-registration → App submission → Judging period → Winner announcement",
+        "evidenceAttachments": 4,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "selection_evidence",
+        "displayValue": "Descriptive selection-process information is published",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "in_kind_value",
+        "displayValue": "Multiple outcomes — see details",
+        "evidenceAttachments": 3,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "other_benefits",
+        "displayValue": "Potential Capitol/House.gov features, #HouseOfCode invitation, and waived copyright application fees",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "personal_information",
+        "displayValue": "Email PII, registration-form information, optional mobile number, and Google Analytics IP address",
+        "evidenceAttachments": 4,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "data_sharing",
+        "displayValue": "No sale/rental of stated PII; limited SMS service-provider sharing",
+        "evidenceAttachments": 2,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "confidentiality",
+        "displayValue": "Registration-form information held confidentially by named entities",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "cancellation_rights",
+        "displayValue": "IEF may change or discontinue the text-message program",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": false,
+        "judgment": "A right to change the optional SMS program was attached as challenge cancellation rights."
+      },
+      {
+        "fieldId": "material_terms",
+        "displayValue": "Optional SMS consent; message/data rates; STOP opt-out",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": false,
+        "judgment": "Optional SMS rates and opt-out text were presented as material participation terms."
+      }
+    ]
+  },
+  "acquisition": {
+    "exactReviewedUrls": {
+      "acquired": 4,
+      "reviewed": 5
+    },
+    "sourceCategories": {
+      "acquired": 4,
+      "reviewed": 4
+    },
+    "irrelevantPages": 0,
+    "acquiredPages": 4,
+    "fetchFailures": 0
+  },
+  "metrics": {
+    "supportedClaimPrecision": {
+      "numerator": 11,
+      "denominator": 22,
+      "value": 0.5
+    },
+    "supportedSummaryRecall": {
+      "numerator": 11,
+      "denominator": 17,
+      "value": 0.6470588235294118
+    },
+    "statusAgreement": {
+      "numerator": 45,
+      "denominator": 59,
+      "value": 0.7627118644067796
+    },
+    "semanticEvidenceCorrectness": {
+      "numerator": 28,
+      "denominator": 31,
+      "value": 0.9032258064516129
+    },
+    "structuredEntityPrecision": {
+      "numerator": 6,
+      "denominator": 10,
+      "value": 0.6
+    },
+    "structuredEntityRecall": {
+      "numerator": 6,
+      "denominator": 10,
+      "value": 0.6
+    },
+    "cycleModeled": {
+      "numerator": 0,
+      "denominator": 1,
+      "value": 0
+    },
+    "correctionBurden": {
+      "missingClaim": 6,
+      "unsupportedClaimRemoval": 11,
+      "statusCorrection": 14,
+      "valueCorrection": 2,
+      "relationshipOrScopeCorrection": 2,
+      "evidenceCorrection": 3,
+      "structuralCorrection": 6,
+      "total": 44
+    },
+    "criticalMisleadingErrors": {
+      "count": 0,
+      "errors": []
+    }
+  },
+  "provider": {
+    "usage": {
+      "inputTokens": 48385,
+      "cachedInputTokens": 0,
+      "outputTokens": 12549,
+      "reasoningTokens": 332,
+      "totalTokens": 60934
+    },
+    "estimatedCostUsd": 0.247358,
+    "pricing": {
+      "inputPerMillionUsd": 2,
+      "cachedInputPerMillionUsd": 0.2,
+      "outputPerMillionUsd": 12,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra"
+    },
+    "usageUnavailableAfterProviderFailure": false
+  },
+  "runtimeMs": 89888,
+  "failure": null
+}

@@ -30,7 +30,7 @@ export default function DataPage() {
             <h2 id="downloads-title">Use the same records we do.</h2>
           </div>
           <p>
-            The current public dataset contains three human-reviewed real cards and
+            The current public dataset contains ten human-reviewed real cards and
             seven fictional demonstration cards. Each `.example` record remains
             visibly labeled and exists to exercise the product—not to describe a real
             organization.
@@ -88,6 +88,12 @@ export default function DataPage() {
             belong under `data/opportunities`. Browser-created drafts are not added
             to the public dataset automatically, and the server does not provide a
             hidden permanent store.
+          </p>
+          <p>
+            Three reviewed cards formed the extraction development set. Seven more
+            were selected before inference and evaluated once as a preregistered
+            out-of-sample set. Their reviewed cards are public records; the automated
+            outputs remain separate evaluation artifacts and never replace them.
           </p>
           <div className="button-row no-print">
             <Link className="button" href="/build">

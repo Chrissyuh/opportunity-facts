@@ -1,0 +1,336 @@
+{
+  "artifactVersion": 1,
+  "developmentSet": false,
+  "preregistered": true,
+  "primaryRun": "breakthrough-junior-challenge-2026-run-01.json",
+  "groundTruthCard": "breakthrough-junior-challenge-2026.json",
+  "completedDraft": true,
+  "semanticReview": {
+    "reviewer": "human_manual_review",
+    "claims": [
+      {
+        "fieldId": "opportunity_name",
+        "displayValue": "Breakthrough Junior Challenge",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "opportunity_category",
+        "displayValue": "Annual global science video competition",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "official_url",
+        "displayValue": "https://breakthroughjuniorchallenge.org/",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "operating_organization",
+        "displayValue": "Breakthrough Prize Foundation",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "organization_type",
+        "displayValue": "Nonprofit organization",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "named_institution",
+        "displayValue": "Cold Spring Harbor Laboratory",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "institution_relationship",
+        "displayValue": "Partnered with Cold Spring Harbor Laboratory for the Breakthrough Science Lab",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "relationship_explanation",
+        "displayValue": "Breakthrough Science Lab designed by and in partnership with CSHL",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "ages",
+        "displayValue": "13–18",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "geographic_restrictions",
+        "displayValue": "Excludes comprehensively sanctioned countries/regions and otherwise prohibited transactions",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "prerequisite_skills",
+        "displayValue": "Original science-explanation video; peer review of at least five entries",
+        "evidenceAttachments": 2,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "entry_format",
+        "displayValue": "Individual only",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "sponsor_requirement",
+        "displayValue": "Parent/legal-guardian permission required for minors",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "participation_format",
+        "displayValue": "Online submission and review",
+        "evidenceAttachments": 2,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "location",
+        "displayValue": "Online",
+        "evidenceAttachments": 2,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "application_fee",
+        "displayValue": "No purchase or payment necessary",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "estimated_total_mandatory_cost",
+        "displayValue": "$0 stated participation cost",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "cancellation_policy",
+        "displayValue": "Entry withdrawal within 48 hours after close",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "selection_process",
+        "displayValue": "Multi-phase peer, panel, committee, and sponsor selection",
+        "evidenceAttachments": 2,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "selection_evidence",
+        "displayValue": "Descriptive selection process with numerical stage limits",
+        "evidenceAttachments": 2,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "in_kind_value",
+        "displayValue": "Up to $100,000 Breakthrough Science Lab renovation for the winner's school",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "other_benefits",
+        "displayValue": "$50,000 teacher prize",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": false,
+        "judgment": "The teacher's cash prize was placed in the participant other-benefits field instead of a teacher-scoped outcome."
+      },
+      {
+        "fieldId": "personal_information",
+        "displayValue": "Name, email, mailing address, phone number, and age/nationality verification documentation",
+        "evidenceAttachments": 2,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "data_sharing",
+        "displayValue": "Disclosures to competitors, service providers, legal/safety recipients; promotional communications",
+        "evidenceAttachments": 3,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "project_ownership",
+        "displayValue": "Entrant represents ownership; submitted entry becomes sponsor's exclusive property",
+        "evidenceAttachments": 2,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "project_license",
+        "displayValue": "Royalty-free, perpetual, irrevocable, sublicensable non-exclusive license",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "publicity_rights",
+        "displayValue": "Use of entrant identity and materials for promotion without further permission or compensation",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "confidentiality",
+        "displayValue": "Entries and content are not required to be treated as confidential",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "cancellation_rights",
+        "displayValue": "Foundation reserves modification, disqualification, termination, and suspension rights",
+        "evidenceAttachments": 2,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "material_terms",
+        "displayValue": "Arbitration/class-action waiver; winner documentation; possible award-ceremony attendance",
+        "evidenceAttachments": 3,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      }
+    ]
+  },
+  "acquisition": {
+    "exactReviewedUrls": {
+      "acquired": 5,
+      "reviewed": 5
+    },
+    "sourceCategories": {
+      "acquired": 5,
+      "reviewed": 5
+    },
+    "irrelevantPages": 0,
+    "acquiredPages": 7,
+    "fetchFailures": 0
+  },
+  "metrics": {
+    "supportedClaimPrecision": {
+      "numerator": 16,
+      "denominator": 30,
+      "value": 0.5333333333333333
+    },
+    "supportedSummaryRecall": {
+      "numerator": 16,
+      "denominator": 20,
+      "value": 0.8
+    },
+    "statusAgreement": {
+      "numerator": 16,
+      "denominator": 59,
+      "value": 0.2711864406779661
+    },
+    "semanticEvidenceCorrectness": {
+      "numerator": 41,
+      "denominator": 42,
+      "value": 0.9761904761904762
+    },
+    "structuredEntityPrecision": {
+      "numerator": 0,
+      "denominator": 0,
+      "value": null
+    },
+    "structuredEntityRecall": {
+      "numerator": 0,
+      "denominator": 10,
+      "value": 0
+    },
+    "cycleModeled": {
+      "numerator": 0,
+      "denominator": 1,
+      "value": 0
+    },
+    "correctionBurden": {
+      "missingClaim": 4,
+      "unsupportedClaimRemoval": 14,
+      "statusCorrection": 43,
+      "valueCorrection": 0,
+      "relationshipOrScopeCorrection": 1,
+      "evidenceCorrection": 1,
+      "structuralCorrection": 10,
+      "total": 73
+    },
+    "criticalMisleadingErrors": {
+      "count": 0,
+      "errors": []
+    }
+  },
+  "provider": {
+    "usage": {
+      "inputTokens": 68605,
+      "cachedInputTokens": 44150,
+      "outputTokens": 15793,
+      "reasoningTokens": 345,
+      "totalTokens": 84398
+    },
+    "estimatedCostUsd": 0.247256,
+    "pricing": {
+      "inputPerMillionUsd": 2,
+      "cachedInputPerMillionUsd": 0.2,
+      "outputPerMillionUsd": 12,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra"
+    },
+    "usageUnavailableAfterProviderFailure": false
+  },
+  "runtimeMs": 113324,
+  "failure": null
+}

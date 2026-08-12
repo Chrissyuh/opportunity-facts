@@ -1,0 +1,296 @@
+{
+  "artifactVersion": 1,
+  "developmentSet": false,
+  "preregistered": true,
+  "primaryRun": "mites-summer-2027-run-01.json",
+  "groundTruthCard": "mites-summer-2027.json",
+  "completedDraft": true,
+  "semanticReview": {
+    "reviewer": "human_manual_review",
+    "claims": [
+      {
+        "fieldId": "opportunity_name",
+        "displayValue": "MITES Summer",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "opportunity_category",
+        "displayValue": "Six-week residential STEM program",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "official_url",
+        "displayValue": "https://mites.mit.edu/discover-mites/mites-summer/",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "organization_type",
+        "displayValue": "MIT School of Engineering program",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "named_institution",
+        "displayValue": "Massachusetts Institute of Technology (MIT)",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "institution_relationship",
+        "displayValue": "MITES is an integral part of MIT’s School of Engineering.",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "grade_levels",
+        "displayValue": "11th graders / high school juniors",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "geographic_restrictions",
+        "displayValue": "National program; students travel to MIT for MITES Summer.",
+        "evidenceAttachments": 2,
+        "groundMatch": false,
+        "evidenceCorrect": false,
+        "judgment": "Calling the program national does not establish a geographic-eligibility restriction."
+      },
+      {
+        "fieldId": "citizenship_restrictions",
+        "displayValue": "U.S. citizens or permanent residents with a current U.S. green card",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "sponsor_requirement",
+        "displayValue": "3 required recommendations",
+        "evidenceAttachments": 4,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "participation_format",
+        "displayValue": "Scoped by stage/pathway — see details",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "location",
+        "displayValue": "Scoped by stage/pathway — see details",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "travel_requirements",
+        "displayValue": "Transportation to and from MIT is paid by students",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "tuition",
+        "displayValue": "Free of charge",
+        "evidenceAttachments": 2,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "travel_included",
+        "displayValue": "Not included",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "lodging_included",
+        "displayValue": "Included",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "meals_included",
+        "displayValue": "Included",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "selection_process",
+        "displayValue": "MITES Summer program",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": false,
+        "judgment": "The program description was attached as a selection process without selection steps."
+      },
+      {
+        "fieldId": "selection_evidence",
+        "displayValue": "Descriptive selection criteria published",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "program_seat",
+        "displayValue": "Admission to one MITES program",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "mentorship",
+        "displayValue": "Mentorship from a current undergraduate student",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "other_benefits",
+        "displayValue": "Courses, admissions counseling, lab tours/social events, and instructor evaluation",
+        "evidenceAttachments": 2,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "personal_information",
+        "displayValue": "Contact, demographic, application-activity, household-income, and citizenship information",
+        "evidenceAttachments": 2,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "data_sharing",
+        "displayValue": "May share with named MIT and program-related recipient categories",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "material_terms",
+        "displayValue": "Data retention, eligibility-verification, and no-credit terms",
+        "evidenceAttachments": 3,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      }
+    ]
+  },
+  "acquisition": {
+    "exactReviewedUrls": {
+      "acquired": 4,
+      "reviewed": 5
+    },
+    "sourceCategories": {
+      "acquired": 2,
+      "reviewed": 2
+    },
+    "irrelevantPages": 0,
+    "acquiredPages": 5,
+    "fetchFailures": 0
+  },
+  "metrics": {
+    "supportedClaimPrecision": {
+      "numerator": 15,
+      "denominator": 25,
+      "value": 0.6
+    },
+    "supportedSummaryRecall": {
+      "numerator": 15,
+      "denominator": 23,
+      "value": 0.6521739130434783
+    },
+    "statusAgreement": {
+      "numerator": 35,
+      "denominator": 59,
+      "value": 0.5932203389830508
+    },
+    "semanticEvidenceCorrectness": {
+      "numerator": 31,
+      "denominator": 34,
+      "value": 0.9117647058823529
+    },
+    "structuredEntityPrecision": {
+      "numerator": 4,
+      "denominator": 4,
+      "value": 1
+    },
+    "structuredEntityRecall": {
+      "numerator": 4,
+      "denominator": 15,
+      "value": 0.26666666666666666
+    },
+    "cycleModeled": {
+      "numerator": 0,
+      "denominator": 1,
+      "value": 0
+    },
+    "correctionBurden": {
+      "missingClaim": 8,
+      "unsupportedClaimRemoval": 10,
+      "statusCorrection": 24,
+      "valueCorrection": 1,
+      "relationshipOrScopeCorrection": 2,
+      "evidenceCorrection": 3,
+      "structuralCorrection": 11,
+      "total": 59
+    },
+    "criticalMisleadingErrors": {
+      "count": 0,
+      "errors": []
+    }
+  },
+  "provider": {
+    "usage": {
+      "inputTokens": 53200,
+      "cachedInputTokens": 44150,
+      "outputTokens": 14090,
+      "reasoningTokens": 254,
+      "totalTokens": 67290
+    },
+    "estimatedCostUsd": 0.19601,
+    "pricing": {
+      "inputPerMillionUsd": 2,
+      "cachedInputPerMillionUsd": 0.2,
+      "outputPerMillionUsd": 12,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra"
+    },
+    "usageUnavailableAfterProviderFailure": false
+  },
+  "runtimeMs": 105786,
+  "failure": null
+}

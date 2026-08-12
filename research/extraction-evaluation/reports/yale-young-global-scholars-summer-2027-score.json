@@ -1,0 +1,352 @@
+{
+  "artifactVersion": 1,
+  "developmentSet": false,
+  "preregistered": true,
+  "primaryRun": "yale-young-global-scholars-summer-2027-run-01.json",
+  "groundTruthCard": "yale-young-global-scholars-summer-2027.json",
+  "completedDraft": true,
+  "semanticReview": {
+    "reviewer": "human_manual_review",
+    "claims": [
+      {
+        "fieldId": "opportunity_name",
+        "displayValue": "Yale Young Global Scholars (YYGS)",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "opportunity_category",
+        "displayValue": "Academic enrichment program",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "named_institution",
+        "displayValue": "Yale University",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "institution_relationship",
+        "displayValue": "Hosted at Yale University",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "relationship_explanation",
+        "displayValue": "Students participate in sessions at Yale’s historic campus and in a learning community at Yale University.",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "grade_levels",
+        "displayValue": "Current high school sophomores or juniors (or international equivalent)",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "ages",
+        "displayValue": "16–18 years old by July 19, 2027",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "geographic_restrictions",
+        "displayValue": "Applications accepted from all countries",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "prerequisite_skills",
+        "displayValue": "English fluency sufficient to participate in a rigorous academic curriculum",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "sponsor_requirement",
+        "displayValue": "Contact information for a parent/guardian, teacher, and/or school official required",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "duration",
+        "displayValue": "Two weeks per session",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "participation_format",
+        "displayValue": "Residential",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "location",
+        "displayValue": "Yale's historic campus / Yale University",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "travel_requirements",
+        "displayValue": "Travel is not covered",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "application_fee",
+        "displayValue": "Varies by program/cohort",
+        "evidenceAttachments": 2,
+        "groundMatch": false,
+        "evidenceCorrect": false,
+        "judgment": "Two application-plan fees were flattened as program/cohort variation."
+      },
+      {
+        "fieldId": "tuition",
+        "displayValue": "$7,500 USD",
+        "evidenceAttachments": 3,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "travel_included",
+        "displayValue": "No",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "lodging_included",
+        "displayValue": "Yes, housing is covered by tuition",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "meals_included",
+        "displayValue": "Yes, meals are covered by tuition",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "financial_aid",
+        "displayValue": "Need-based tuition discount up to 100%",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "refund_policy",
+        "displayValue": "Non-refundable except documented extreme circumstances",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "selection_process",
+        "displayValue": "Application submission, fee/waiver review, then Early Action or Regular Decision notification",
+        "evidenceAttachments": 2,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "selection_evidence",
+        "displayValue": "Descriptive",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "tuition_waiver",
+        "displayValue": "Need-based tuition discount — Up to $7,500 USD for one session/individual",
+        "evidenceAttachments": 4,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "program_seat",
+        "displayValue": "Admission to one two-week session",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "certificate",
+        "displayValue": "Certificate of Participation",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "other_benefits",
+        "displayValue": "Housing, meals, curriculum materials, and air chilled rooms",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "personal_information",
+        "displayValue": "Parent/guardian, teacher/school-official contact information; financial-aid application information",
+        "evidenceAttachments": 2,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "data_sharing",
+        "displayValue": "Financial-aid information kept confidential",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "confidentiality",
+        "displayValue": "Financial-aid information kept confidential",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "cancellation_rights",
+        "displayValue": "YYGS may implement new safety measures",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": false,
+        "judgment": "A health-protocol modification right was attached as program cancellation rights."
+      },
+      {
+        "fieldId": "material_terms",
+        "displayValue": "Attendance, non-refundability, and recording restrictions",
+        "evidenceAttachments": 3,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      }
+    ]
+  },
+  "acquisition": {
+    "exactReviewedUrls": {
+      "acquired": 3,
+      "reviewed": 4
+    },
+    "sourceCategories": {
+      "acquired": 3,
+      "reviewed": 3
+    },
+    "irrelevantPages": 0,
+    "acquiredPages": 7,
+    "fetchFailures": 0
+  },
+  "metrics": {
+    "supportedClaimPrecision": {
+      "numerator": 10,
+      "denominator": 32,
+      "value": 0.3125
+    },
+    "supportedSummaryRecall": {
+      "numerator": 10,
+      "denominator": 19,
+      "value": 0.5263157894736842
+    },
+    "statusAgreement": {
+      "numerator": 27,
+      "denominator": 59,
+      "value": 0.4576271186440678
+    },
+    "semanticEvidenceCorrectness": {
+      "numerator": 39,
+      "denominator": 42,
+      "value": 0.9285714285714286
+    },
+    "structuredEntityPrecision": {
+      "numerator": 4,
+      "denominator": 8,
+      "value": 0.5
+    },
+    "structuredEntityRecall": {
+      "numerator": 4,
+      "denominator": 9,
+      "value": 0.4444444444444444
+    },
+    "cycleModeled": {
+      "numerator": 0,
+      "denominator": 1,
+      "value": 0
+    },
+    "correctionBurden": {
+      "missingClaim": 9,
+      "unsupportedClaimRemoval": 22,
+      "statusCorrection": 32,
+      "valueCorrection": 2,
+      "relationshipOrScopeCorrection": 2,
+      "evidenceCorrection": 3,
+      "structuralCorrection": 9,
+      "total": 79
+    },
+    "criticalMisleadingErrors": {
+      "count": 0,
+      "errors": []
+    }
+  },
+  "provider": {
+    "usage": {
+      "inputTokens": 49607,
+      "cachedInputTokens": 44150,
+      "outputTokens": 15811,
+      "reasoningTokens": 516,
+      "totalTokens": 65418
+    },
+    "estimatedCostUsd": 0.209476,
+    "pricing": {
+      "inputPerMillionUsd": 2,
+      "cachedInputPerMillionUsd": 0.2,
+      "outputPerMillionUsd": 12,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra"
+    },
+    "usageUnavailableAfterProviderFailure": false
+  },
+  "runtimeMs": 111357,
+  "failure": null
+}

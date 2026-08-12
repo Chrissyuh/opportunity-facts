@@ -139,3 +139,10 @@ The first live-provider extraction development benchmark is preserved locally in
 [`EXTRACTION_BENCHMARK.md`](./EXTRACTION_BENCHMARK.md). It uses the three existing
 human-reviewed cards as a tuning set and is explicitly not independent or
 out-of-sample accuracy evidence.
+
+The subsequent [`OUT_OF_SAMPLE_EVALUATION.md`](./OUT_OF_SAMPLE_EVALUATION.md)
+preserves one frozen production run on each of seven preregistered opportunities.
+The public library now contains all ten independently assembled human-reviewed
+cards plus seven clearly fictional demos. The evaluation found four critical
+misleading automated claims, so automated output remains a draft requiring human
+source review; it is not suitable for unattended publication.

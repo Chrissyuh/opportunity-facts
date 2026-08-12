@@ -38,6 +38,8 @@ The server accepts only public HTTP(S) URLs without credentials. It rejects loop
 
 Fetched and pasted text is untrusted data. The optional OpenAI Responses API integration is server-only, uses strict structured output, bounded input/output, and a prompt that prohibits obeying source-page instructions or inventing unsupported claims. Every returned excerpt is deterministically matched against normalized source text; unmatched support is removed or downgraded before display. The application remains fully useful without `OPENAI_API_KEY`.
 
+Automated output is always a draft. The product must explain that pages were collected automatically, missed or inaccessible sources can cause omissions, evidence still requires human checking, and analysis does not establish truth, legitimacy, quality, prestige, or value. Extraction evaluation keeps tuned development programs separate from preregistered out-of-sample programs and never promotes an automated draft into the reviewed public record.
+
 ## Design and accessibility
 
 The visual language is calm public-interest infrastructure: warm neutral paper, deep ink, one deliberate accent, strong editorial typography, compact rules and status labels, and information-dense layouts. No gradients, glass, AI sparkles, fake testimonials, stock imagery, decorative charts, oversized rounded cards, or dead controls.

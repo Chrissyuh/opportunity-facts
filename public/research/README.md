@@ -2,7 +2,7 @@
 
 ## Current evidence status
 
-**Comprehension study not yet published.** This directory contains protocols and empty study templates, not participant results, organizer responses, or evidence that Opportunity Facts improves decisions. The repository separately preserves a three-card live-provider development benchmark; it is not independent accuracy evidence.
+**Comprehension study not yet published.** This directory contains protocols and empty study templates, not participant results, organizer responses, or evidence that Opportunity Facts improves decisions. The repository separately preserves a three-card live-provider development benchmark and a preregistered seven-card out-of-sample extraction evaluation. Neither is a comprehension result or a population-level accuracy claim.
 
 The kit supports two different evaluations:
 

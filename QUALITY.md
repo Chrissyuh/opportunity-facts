@@ -27,11 +27,11 @@ Opportunity Facts is release-gated by repository tests, deterministic public art
 | --- | --- |
 | `npm run lint` | Pass |
 | `npm run typecheck` | Pass |
-| `npm test` | 23 files, 196 tests passed |
-| `npm run export:data` | Exported 10 cards (7 demo, 3 human reviewed) and the JSON Schema |
-| `npm run validate:data` | 10 public cards (7 demo), 0 drafts, both artifacts valid and current |
+| `npm test` | 24 files, 203 tests passed |
+| `npm run export:data` | Exported 17 cards (7 demo, 10 human reviewed) and the JSON Schema |
+| `npm run validate:data` | 17 public cards (7 demo), 0 drafts, both artifacts valid and current |
 | `npm run test:e2e` | 84 total: 80 passed, 4 intentional project-inapplicable skips, 0 failed |
-| `npm run build` | Pass; data validation ran first and Next generated 23 pages |
+| `npm run build` | Pass; data validation ran first and Next generated 30 pages |
 | `npm audit --audit-level=high` | 0 vulnerabilities |
 | Final V2 production browser audit | Homepage, three real cards, three-way comparison, populated V2 builder, and methodology at 1440×900 and 390×844; all 14 surface/viewport checks had exactly one `h1`, no page overflow, and no browser diagnostics |
 | Populated mobile builder | Fresh import and 1440-to-390 resize both remained 390px wide; 0 serious/critical axe violations |
@@ -40,14 +40,16 @@ Opportunity Facts is release-gated by repository tests, deterministic public art
 | First real-card render | TechRise, Lumiere, and Diamond passed expanded-evidence inspection at 1440×900 and 390×844 with exact viewport-width documents, Human reviewed badges, no demo markers, and no console warnings/errors |
 | Live extraction benchmark | Production-path smoke and three final development runs completed on exact model `gpt-5.6-terra`; 52/54 supported claims and 70/72 evidence attachments were semantically correct, with zero known critical misleading claims after validation |
 | Analyzer state audit | Pre-run, loading, provider failure, successful partial-source draft, explicit non-human-review warning, and expanded evidence inspected at 1440×900 and 390×844 without horizontal overflow; the intentional mocked 502 produced only the expected browser failed-resource diagnostic |
+| Preregistered out-of-sample extraction | Frozen seven-card set, one run per card, no replacement runs or tuning; 82/154 ground-truth claim precision, 188/203 semantic evidence correctness, 16/82 structured recall, and 4 critical misleading claims. Machine ledgers and full limitations are preserved under `research/extraction-evaluation/`. |
+| Expanded real-card browser audit | The 17-card library, Congressional App Challenge, Yale, QuestBridge, a Yale/Breakthrough/QuestBridge comparison, methodology, partial-source draft, and expanded evidence were checked at 1440×900 and 390×844 with exact viewport-width documents and no non-failure browser diagnostics. |
 
 Verification ran locally on Windows 11 Home with Node.js 25.2.1, npm 11.6.2, Next.js 16.3.0, and Playwright 1.58.2. The final production process used `next start` on `127.0.0.1:4410` solely for local verification.
 
 ## Honest remaining boundaries
 
-- The repository now contains three real cards completed through line-by-line human source review plus seven visibly fictional demo cards. Additional real cards still require the same checklist and independent evidence review.
+- The repository now contains ten real cards completed through line-by-line human source review plus seven visibly fictional demo cards. Scoring exposed incomplete frozen human ground truth on some claims, especially Yale; future evaluations require a second blind review and adjudication before inference.
 - Schema V2 is grounded in those three reviewed cards. The age-band limitation remains a non-gating P2; broader ontologies, workflow engines, generalized recurrence, and currency conversion remain intentionally out of scope until evidence justifies them.
-- Live OpenAI Responses requests were made only for the controlled three-card development benchmark. The exact model, settings, acquired pages, usage, drafts, warnings, and human semantic ledgers are preserved under `research/extraction-benchmark/`; no key or authorization header is retained.
+- Live OpenAI Responses requests were made for the controlled three-card development benchmark and exactly seven preregistered out-of-sample primary runs. Exact settings, acquired pages, usage, drafts/failure, warnings, and semantic ledgers are preserved under `research/extraction-benchmark/` and `research/extraction-evaluation/`; no key or authorization header is retained.
 - Nothing was deployed. Aggregate rate limiting, concurrency/spend caps, outbound egress controls, provider/host log retention, and secret governance remain deployment responsibilities.
-- No comprehension/user study result is claimed. The extraction report is a tuned three-card development benchmark, not independent validation or generalization accuracy.
+- No comprehension/user study result is claimed. The seven-card evaluation is independent of extraction tuning for its reported run, but is too small and has a documented ground-truth-completeness limitation; it is not population-level accuracy.
 - Non-gating P2 boundaries: the compact builder directly edits the first repeated atomic subclaim while preserving and labeling imported tails; Diamond topical-prize names remain omitted until exact excerpts are reviewed; natural-language numbers and abbreviated dates are intentionally conservative in automated extraction; and age-band structure remains deferred until a broader reviewed sample justifies it.

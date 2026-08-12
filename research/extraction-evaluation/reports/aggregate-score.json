@@ -1,0 +1,87 @@
+{
+  "artifactVersion": 1,
+  "developmentSet": false,
+  "preregistered": true,
+  "cases": [
+    "congressional-app-challenge-2026",
+    "coca-cola-scholars-program-2027",
+    "yale-young-global-scholars-summer-2027",
+    "polygence-core-program-fall-2026",
+    "mites-summer-2027",
+    "breakthrough-junior-challenge-2026",
+    "questbridge-national-college-match-2026"
+  ],
+  "metrics": {
+    "supportedClaimPrecision": {
+      "numerator": 82,
+      "denominator": 154,
+      "value": 0.5324675324675324
+    },
+    "supportedSummaryRecall": {
+      "numerator": 82,
+      "denominator": 146,
+      "value": 0.5616438356164384
+    },
+    "statusAgreement": {
+      "numerator": 198,
+      "denominator": 413,
+      "value": 0.4794188861985472
+    },
+    "semanticEvidenceCorrectness": {
+      "numerator": 188,
+      "denominator": 203,
+      "value": 0.9261083743842364
+    },
+    "structuredEntityPrecision": {
+      "numerator": 16,
+      "denominator": 26,
+      "value": 0.6153846153846154
+    },
+    "structuredEntityRecall": {
+      "numerator": 16,
+      "denominator": 82,
+      "value": 0.1951219512195122
+    },
+    "cycleModeled": {
+      "numerator": 0,
+      "denominator": 7,
+      "value": 0
+    },
+    "exactReviewedUrlAcquisition": {
+      "numerator": 27,
+      "denominator": 35,
+      "value": 0.7714285714285715
+    },
+    "reviewedSourceCategoryAcquisition": {
+      "numerator": 22,
+      "denominator": 24,
+      "value": 0.9166666666666666
+    },
+    "acquiredPages": 43,
+    "irrelevantPages": 6,
+    "fetchFailures": 0,
+    "correctionBurden": {
+      "missingClaim": 64,
+      "unsupportedClaimRemoval": 72,
+      "statusCorrection": 215,
+      "valueCorrection": 10,
+      "relationshipOrScopeCorrection": 12,
+      "evidenceCorrection": 15,
+      "structuralCorrection": 74,
+      "total": 462
+    },
+    "criticalMisleadingErrors": 4
+  },
+  "provider": {
+    "usage": {
+      "inputTokens": 342404,
+      "cachedInputTokens": 220750,
+      "outputTokens": 79563,
+      "reasoningTokens": 1954,
+      "totalTokens": 421967
+    },
+    "recordedUsageEstimatedCostUsd": 1.242214,
+    "billedTotalUnknownBecauseFailedRunReportedZeroUsage": true
+  },
+  "totalRuntimeMs": 652404
+}

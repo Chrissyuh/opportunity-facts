@@ -1,0 +1,108 @@
+{
+  "artifactVersion": 1,
+  "developmentSet": false,
+  "preregistered": true,
+  "primaryRun": "coca-cola-scholars-program-2027-run-01.json",
+  "groundTruthCard": "coca-cola-scholars-program-2027.json",
+  "completedDraft": false,
+  "semanticReview": {
+    "reviewer": "human_manual_review",
+    "claims": []
+  },
+  "acquisition": {
+    "exactReviewedUrls": {
+      "acquired": 2,
+      "reviewed": 3
+    },
+    "sourceCategories": {
+      "acquired": 2,
+      "reviewed": 2
+    },
+    "irrelevantPages": 3,
+    "acquiredPages": 7,
+    "fetchFailures": 0
+  },
+  "metrics": {
+    "supportedClaimPrecision": {
+      "numerator": 0,
+      "denominator": 0,
+      "value": null
+    },
+    "supportedSummaryRecall": {
+      "numerator": 0,
+      "denominator": 18,
+      "value": 0
+    },
+    "statusAgreement": {
+      "numerator": 0,
+      "denominator": 59,
+      "value": 0
+    },
+    "semanticEvidenceCorrectness": {
+      "numerator": 0,
+      "denominator": 0,
+      "value": null
+    },
+    "structuredEntityPrecision": {
+      "numerator": 0,
+      "denominator": 0,
+      "value": null
+    },
+    "structuredEntityRecall": {
+      "numerator": 0,
+      "denominator": 11,
+      "value": 0
+    },
+    "cycleModeled": {
+      "numerator": 0,
+      "denominator": 1,
+      "value": 0
+    },
+    "correctionBurden": {
+      "missingClaim": 18,
+      "unsupportedClaimRemoval": 0,
+      "statusCorrection": 59,
+      "valueCorrection": 0,
+      "relationshipOrScopeCorrection": 0,
+      "evidenceCorrection": 0,
+      "structuralCorrection": 11,
+      "total": 88
+    },
+    "criticalMisleadingErrors": {
+      "count": 0,
+      "errors": []
+    }
+  },
+  "provider": {
+    "usage": {
+      "inputTokens": 0,
+      "cachedInputTokens": 0,
+      "outputTokens": 0,
+      "reasoningTokens": 0,
+      "totalTokens": 0
+    },
+    "estimatedCostUsd": 0,
+    "pricing": {
+      "inputPerMillionUsd": 2,
+      "cachedInputPerMillionUsd": 0.2,
+      "outputPerMillionUsd": 12,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra"
+    },
+    "usageUnavailableAfterProviderFailure": true
+  },
+  "runtimeMs": 71621,
+  "failure": {
+    "name": "ModelExtractionError",
+    "message": "The extraction model returned invalid structured JSON.",
+    "code": null,
+    "status": null,
+    "type": null,
+    "cause": {
+      "name": "SyntaxError",
+      "message": "Unterminated string in JSON at position 34492 (line 1 column 34493)",
+      "code": null,
+      "status": null,
+      "type": null
+    }
+  }
+}

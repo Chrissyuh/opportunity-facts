@@ -141,6 +141,32 @@ export default function MethodologyPage() {
           page scripts. JavaScript-only, blocked, or inaccessible sites can instead
           be reviewed through pasted source text.
         </p>
+        <p>
+          Automated results are drafts. Sources were collected automatically,
+          inaccessible or missed pages can create omissions, and every excerpt still
+          needs human checking. A draft cannot establish truth, legitimacy, quality,
+          prestige, or value. The <em>human reviewed</em> label is reserved for a
+          separate source-by-source review.
+        </p>
+
+        <h2 id="evaluation">Development and out-of-sample evaluation</h2>
+        <p>
+          TechRise, Lumiere, and Diamond Challenge formed a three-card development
+          set used to diagnose and repair extraction failures. A separate set of
+          seven opportunities was then selected and preregistered before inference;
+          its reviewed cards were frozen before one production extraction run per
+          opportunity. The extractor was not tuned on those seven before their
+          reported results were frozen.
+        </p>
+        <p>
+          On that small preregistered set, evidence attachments were usually
+          semantically relevant, but claim agreement and structured recall were much
+          weaker and four materially misleading claims survived. These results do
+          not establish population-level accuracy. They support only the narrower
+          conclusion that automation can prepare a partial draft for mandatory human
+          review. Full denominators, failures, and limitations are published in the
+          repository evaluation report.
+        </p>
 
         <h2 id="structured-model">Why the card has structured detail</h2>
         <p>

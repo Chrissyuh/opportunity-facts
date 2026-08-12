@@ -1,0 +1,282 @@
+{
+  "artifactVersion": 1,
+  "developmentSet": false,
+  "preregistered": true,
+  "primaryRun": "questbridge-national-college-match-2026-run-01.json",
+  "groundTruthCard": "questbridge-national-college-match-2026.json",
+  "completedDraft": true,
+  "semanticReview": {
+    "reviewer": "human_manual_review",
+    "claims": [
+      {
+        "fieldId": "opportunity_name",
+        "displayValue": "National College Match",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "opportunity_category",
+        "displayValue": "College admission and scholarship matching program",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "official_url",
+        "displayValue": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "operating_organization",
+        "displayValue": "QuestBridge",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "institution_relationship",
+        "displayValue": "Partnered with 55 college partners",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "relationship_explanation",
+        "displayValue": "Applicants can apply through QuestBridge for early admission and full four-year scholarships at its 55 college partners.",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "grade_levels",
+        "displayValue": "High school seniors",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "geographic_restrictions",
+        "displayValue": "High school seniors in the U.S.; U.S. citizens and permanent residents abroad; international students outside the U.S. are ineligible",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "citizenship_restrictions",
+        "displayValue": "U.S. citizens and permanent residents abroad eligible; international students outside the U.S. ineligible",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "entry_format",
+        "displayValue": "Individual application",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "sponsor_requirement",
+        "displayValue": "Applicant, parent/guardian, and school counselor signatures required for Match Agreement Form",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "application_fee",
+        "displayValue": "Free",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "estimated_total_mandatory_cost",
+        "displayValue": "$0 to apply",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "financial_aid",
+        "displayValue": "Full four-year scholarship for matched Finalists",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "selection_process",
+        "displayValue": "Holistic review; Finalists may rank up to 15 colleges and submit additional requirements",
+        "evidenceAttachments": 2,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "acceptance_count",
+        "displayValue": "2,550 Finalists matched to a college partner in 2025",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": false,
+        "judgment": "The cited number is explicitly a 2025 result, not a 2026-cycle acceptance count."
+      },
+      {
+        "fieldId": "selection_evidence",
+        "displayValue": "Descriptive and numerical",
+        "evidenceAttachments": 2,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "program_seat",
+        "displayValue": "Early admission to matched college",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "other_benefits",
+        "displayValue": "Supportive Scholar and Alumni community, lifelong opportunities, and networking",
+        "evidenceAttachments": 1,
+        "groundMatch": false,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim does not match a supported summary dimension in the frozen human-reviewed card."
+      },
+      {
+        "fieldId": "personal_information",
+        "displayValue": "Biographical, academic, household-income, financial-status, citizenship-status, essay, and other personal details",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "data_sharing",
+        "displayValue": "Opt-in sharing with Associates; sensitive application data may be shared with QB partners",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "publicity_rights",
+        "displayValue": "Permission requested for selected participants' information and photographs for publicity",
+        "evidenceAttachments": 1,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      },
+      {
+        "fieldId": "material_terms",
+        "displayValue": "Binding agreement and early-application restrictions for college-ranking applicants",
+        "evidenceAttachments": 3,
+        "groundMatch": true,
+        "evidenceCorrect": true,
+        "judgment": "The displayed claim matches the frozen human-reviewed summary and its attached evidence supports the same object and scope."
+      }
+    ]
+  },
+  "acquisition": {
+    "exactReviewedUrls": {
+      "acquired": 4,
+      "reviewed": 7
+    },
+    "sourceCategories": {
+      "acquired": 2,
+      "reviewed": 4
+    },
+    "irrelevantPages": 3,
+    "acquiredPages": 7,
+    "fetchFailures": 0
+  },
+  "metrics": {
+    "supportedClaimPrecision": {
+      "numerator": 19,
+      "denominator": 23,
+      "value": 0.8260869565217391
+    },
+    "supportedSummaryRecall": {
+      "numerator": 19,
+      "denominator": 28,
+      "value": 0.6785714285714286
+    },
+    "statusAgreement": {
+      "numerator": 39,
+      "denominator": 59,
+      "value": 0.6610169491525424
+    },
+    "semanticEvidenceCorrectness": {
+      "numerator": 26,
+      "denominator": 27,
+      "value": 0.9629629629629629
+    },
+    "structuredEntityPrecision": {
+      "numerator": 0,
+      "denominator": 0,
+      "value": null
+    },
+    "structuredEntityRecall": {
+      "numerator": 0,
+      "denominator": 16,
+      "value": 0
+    },
+    "cycleModeled": {
+      "numerator": 0,
+      "denominator": 1,
+      "value": 0
+    },
+    "correctionBurden": {
+      "missingClaim": 9,
+      "unsupportedClaimRemoval": 4,
+      "statusCorrection": 20,
+      "valueCorrection": 2,
+      "relationshipOrScopeCorrection": 1,
+      "evidenceCorrection": 1,
+      "structuralCorrection": 16,
+      "total": 53
+    },
+    "criticalMisleadingErrors": {
+      "count": 1,
+      "errors": [
+        "A 2025 matched-finalist count was presented as the 2026 cycle's acceptance count."
+      ]
+    }
+  },
+  "provider": {
+    "usage": {
+      "inputTokens": 56990,
+      "cachedInputTokens": 44150,
+      "outputTokens": 11223,
+      "reasoningTokens": 337,
+      "totalTokens": 68213
+    },
+    "estimatedCostUsd": 0.169186,
+    "pricing": {
+      "inputPerMillionUsd": 2,
+      "cachedInputPerMillionUsd": 0.2,
+      "outputPerMillionUsd": 12,
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.6-terra"
+    },
+    "usageUnavailableAfterProviderFailure": false
+  },
+  "runtimeMs": 83424,
+  "failure": null
+}
