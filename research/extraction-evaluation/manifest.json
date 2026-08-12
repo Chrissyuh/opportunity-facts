@@ -1,0 +1,79 @@
+{
+  "artifactVersion": 1,
+  "evaluationKind": "preregistered_out_of_sample",
+  "preregisteredAt": "2026-08-12T06:10:49.555Z",
+  "selectionObservedAutomatedResults": false,
+  "frozenExtractor": {
+    "gitCommit": "f5def78cc581b3c0896662c62c2503d173793a43",
+    "gitTag": "evaluation-v2-frozen",
+    "schemaVersion": "2.0.0",
+    "model": "gpt-5.6-terra",
+    "endpoint": "responses",
+    "settings": {
+      "store": false,
+      "reasoningEffort": "low",
+      "maxOutputTokens": 24000,
+      "requestTimeoutMs": 120000,
+      "maximumRetries": 0
+    },
+    "publicSchemaSha256": "16fa74eb4af5348c1f1728b1903f1dc7470a6d01520d342f8e741527a98039ef",
+    "lockfileSha256": "17bdca5e7012a0ffa5a756a2385945411cb473cfc5797fc0ae99306e5a1a9a9c"
+  },
+  "excludedPrograms": [
+    "NASA TechRise Student Challenge — 2026–2027",
+    "Lumiere Research Scholar Program — Fall 2026",
+    "Diamond Challenge — 2027",
+    "Lumos Fellows"
+  ],
+  "cases": [
+    {
+      "runOrder": 1,
+      "slug": "congressional-app-challenge-2026",
+      "label": "Congressional App Challenge — 2026",
+      "startingUrl": "https://www.congressionalappchallenge.us/students/rules/",
+      "category": "government_civic_competition"
+    },
+    {
+      "runOrder": 2,
+      "slug": "coca-cola-scholars-program-2027",
+      "label": "Coca-Cola Scholars Program — 2027",
+      "startingUrl": "https://www.coca-colascholarsfoundation.org/apply/",
+      "category": "multi_stage_scholarship"
+    },
+    {
+      "runOrder": 3,
+      "slug": "yale-young-global-scholars-summer-2027",
+      "label": "Yale Young Global Scholars — Summer 2027",
+      "startingUrl": "https://globalscholars.yale.edu/",
+      "category": "university_operated_paid_program"
+    },
+    {
+      "runOrder": 4,
+      "slug": "polygence-core-program-fall-2026",
+      "label": "Polygence Core Program — rolling / Fall 2026 entry",
+      "startingUrl": "https://www.polygence.org/core-program",
+      "category": "independent_paid_research_program"
+    },
+    {
+      "runOrder": 5,
+      "slug": "mites-summer-2027",
+      "label": "MITES Summer — Summer 2027",
+      "startingUrl": "https://mites.mit.edu/discover-mites/mites-summer/",
+      "category": "free_selective_stem_program"
+    },
+    {
+      "runOrder": 6,
+      "slug": "breakthrough-junior-challenge-2026",
+      "label": "Breakthrough Junior Challenge — 2026",
+      "startingUrl": "https://breakthroughjuniorchallenge.org/",
+      "category": "multi_recipient_prize_competition"
+    },
+    {
+      "runOrder": 7,
+      "slug": "questbridge-national-college-match-2026",
+      "label": "QuestBridge National College Match — 2026 Match / Fall 2027 enrollment",
+      "startingUrl": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+      "category": "ranked_multi_institution_match"
+    }
+  ]
+}
