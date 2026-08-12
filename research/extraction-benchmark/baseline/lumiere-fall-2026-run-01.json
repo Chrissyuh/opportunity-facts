@@ -1,0 +1,148 @@
+{
+  "artifactVersion": 1,
+  "benchmarkStage": "baseline",
+  "developmentSet": true,
+  "run": 1,
+  "program": {
+    "slug": "lumiere-fall-2026",
+    "label": "Lumiere Research Scholar Program — Fall 2026"
+  },
+  "repository": {
+    "gitCommit": "d842f1a39fd8e26cdc5931b5f82367b64e8a323d",
+    "workingTreeDirty": true,
+    "extractionCodeHash": {
+      "algorithm": "sha256",
+      "value": "9719cd2d6c0fc22255d0cf7eb77aea83084d642c32698d48464e47d532d97431",
+      "files": [
+        "lib/analysis/fetch.ts",
+        "lib/analysis/html-extraction.ts",
+        "lib/analysis/link-discovery.ts",
+        "lib/analysis/model-extraction.ts",
+        "lib/analysis/pipeline.ts",
+        "lib/analysis/types.ts",
+        "lib/analysis/url-safety.ts",
+        "lib/opportunity/projection.ts",
+        "lib/opportunity/schema-v2.ts",
+        "lib/opportunity/structured-schema.ts"
+      ]
+    }
+  },
+  "schemaVersion": "2.0.0",
+  "provider": {
+    "name": "openai",
+    "endpoint": "responses",
+    "model": "gpt-5.6-terra",
+    "settings": {
+      "store": false,
+      "maxOutputTokens": 24000,
+      "requestTimeoutMs": 45000,
+      "maximumRetries": 0
+    },
+    "telemetry": null
+  },
+  "input": {
+    "mode": "url",
+    "startingUrl": "https://www.lumiere-education.com/lumiere-programs"
+  },
+  "timing": {
+    "startedAt": "2026-08-12T03:34:10.573Z",
+    "modelStartedAt": "2026-08-12T03:34:13.618Z",
+    "modelFinishedAt": "2026-08-12T03:34:58.757Z",
+    "finishedAt": "2026-08-12T03:34:58.758Z",
+    "totalRuntimeMs": 48185,
+    "acquisitionRuntimeMs": 3045,
+    "modelRuntimeMs": 45139
+  },
+  "acquisition": {
+    "submittedUrl": "https://www.lumiere-education.com/lumiere-programs",
+    "successfullyAcquired": [
+      {
+        "role": "submitted",
+        "id": "page-a246af8ea2046bdc",
+        "url": "https://www.lumiere-education.com/lumiere-programs",
+        "title": "Programs | Lumiere Education",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T03:34:11.050Z",
+        "extractedCharacters": 2275,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 2275,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-445fe2c5a357652a",
+        "url": "https://www.lumiere-education.com/admissions-results",
+        "title": "Our Admissions Results | Lumiere Education",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T03:34:11.559Z",
+        "extractedCharacters": 974,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 974,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-92d8e2ad31712157",
+        "url": "https://www.lumiere-education.com/students-application-form",
+        "title": "Student Application | Lumiere Education",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T03:34:12.048Z",
+        "extractedCharacters": 1875,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 1875,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-f2737e6af27d1783",
+        "url": "https://www.lumiere-education.com/admission-officer-sessions",
+        "title": "Admissions Officer Sessions | Lumiere Education",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T03:34:12.982Z",
+        "extractedCharacters": 1580,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 1580,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-ce6fd0c780cd6f00",
+        "url": "https://www.lumiere-education.com/excellence-in-counseling",
+        "title": "Excellence in Counseling | Lumiere Education",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T03:34:13.478Z",
+        "extractedCharacters": 6976,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 6976,
+        "truncatedForModel": false
+      }
+    ],
+    "failures": []
+  },
+  "modelOutput": {
+    "rawStructuredCandidate": null
+  },
+  "deterministicValidation": {
+    "completed": false,
+    "evidenceWarnings": []
+  },
+  "result": {
+    "draftCard": null,
+    "reviewedPages": []
+  },
+  "failure": {
+    "name": "ModelExtractionError",
+    "message": "The extraction service could not produce a structured facts card.",
+    "code": null,
+    "status": null,
+    "type": null,
+    "cause": {
+      "name": "Error",
+      "message": "Request timed out.",
+      "code": null,
+      "status": null,
+      "type": null
+    }
+  },
+  "secretsRetained": false
+}

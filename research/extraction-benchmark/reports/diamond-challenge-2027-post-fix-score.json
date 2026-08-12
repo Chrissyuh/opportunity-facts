@@ -1,0 +1,264 @@
+{
+  "artifactVersion": 1,
+  "developmentSet": true,
+  "runArtifact": "diamond-challenge-2027-run-03.json",
+  "groundTruthCard": "diamond-challenge-2027.json",
+  "semanticReview": {
+    "reviewer": "human_manual_review",
+    "claims": [
+      {
+        "id": "opportunity_name",
+        "fieldId": "opportunity_name",
+        "displayedValue": "Diamond Challenge",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "opportunity_category",
+        "fieldId": "opportunity_category",
+        "displayedValue": "Competition",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "operating_organization",
+        "fieldId": "operating_organization",
+        "displayedValue": "Horn Entrepreneurship at the University of Delaware",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "organization_type",
+        "fieldId": "organization_type",
+        "displayedValue": "Philanthropic education initiative",
+        "evidenceAttachments": 1,
+        "semanticallySupported": false,
+        "correctEvidenceAttachments": 0,
+        "judgment": "The excerpt describes the Diamond Challenge as an initiative; it does not establish Horn Entrepreneurship's organization type."
+      },
+      {
+        "id": "named_institution",
+        "fieldId": "named_institution",
+        "displayedValue": "University of Delaware",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "institution_relationship",
+        "fieldId": "institution_relationship",
+        "displayedValue": "Initiative by Horn Entrepreneurship at the University of Delaware",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "relationship_explanation",
+        "fieldId": "relationship_explanation",
+        "displayedValue": "Initiative by Horn Entrepreneurship at the University of Delaware",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "grade_levels",
+        "fieldId": "grade_levels",
+        "displayedValue": "High school students",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "ages",
+        "fieldId": "ages",
+        "displayedValue": "Ages 14–18 at the submission deadline",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "geographic_restrictions",
+        "fieldId": "geographic_restrictions",
+        "displayedValue": "Any country",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "entry_format",
+        "fieldId": "entry_format",
+        "displayedValue": "Teams of 2–4 students",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "sponsor_requirement",
+        "fieldId": "sponsor_requirement",
+        "displayedValue": "One adult advisor aged 21+ required",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "participation_format",
+        "fieldId": "participation_format",
+        "displayedValue": "Varies by stage/pathway",
+        "evidenceAttachments": 2,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 2,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "travel_requirements",
+        "fieldId": "travel_requirements",
+        "displayedValue": "In-person travel required for final-round competition",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "selection_process",
+        "fieldId": "selection_process",
+        "displayedValue": "Concept Development → Submission Round → Pitching Round → Limitless World Summit",
+        "evidenceAttachments": 4,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 4,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "selection_evidence",
+        "fieldId": "selection_evidence",
+        "displayedValue": "Descriptive selection evidence",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "other_benefits",
+        "fieldId": "other_benefits",
+        "displayedValue": "Network growth, valuable feedback, and potential future collaborations",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "personal_information",
+        "fieldId": "personal_information",
+        "displayedValue": "Email/contact information; certain nonparticipant contributors' full legal names",
+        "evidenceAttachments": 2,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 2,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "project_license",
+        "fieldId": "project_license",
+        "displayedValue": "Organizer may publish team content for promotional and philanthropic educational purposes",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "publicity_rights",
+        "fieldId": "publicity_rights",
+        "displayedValue": "Limited promotional use of concept references and associated images/pictures",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "confidentiality",
+        "fieldId": "confidentiality",
+        "displayedValue": "Confidentiality obligation for judging/mentoring volunteers",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "cancellation_rights",
+        "fieldId": "cancellation_rights",
+        "displayedValue": "Leadership may modify or eliminate competition rules at any time",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "material_terms",
+        "fieldId": "material_terms",
+        "displayedValue": "One team/concept per student; revenue cap; school-name restriction; possible disqualification",
+        "evidenceAttachments": 4,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 4,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      }
+    ]
+  },
+  "metrics": {
+    "supportedClaimPrecision": {
+      "numerator": 22,
+      "denominator": 23,
+      "value": 0.9565217391304348
+    },
+    "supportedSummaryRecall": {
+      "numerator": 22,
+      "denominator": 35,
+      "value": 0.6285714285714286
+    },
+    "statusAgreement": {
+      "numerator": 38,
+      "denominator": 59,
+      "value": 0.6440677966101694
+    },
+    "semanticEvidenceCorrectness": {
+      "numerator": 30,
+      "denominator": 31,
+      "value": 0.967741935483871
+    },
+    "structuredEntityPrecision": {
+      "numerator": 7,
+      "denominator": 7,
+      "value": 1
+    },
+    "structuredEntityRecall": {
+      "numerator": 7,
+      "denominator": 23,
+      "value": 0.30434782608695654
+    },
+    "correctionBurden": {
+      "missingClaim": 13,
+      "unsupportedClaimRemoval": 1,
+      "statusCorrection": 9,
+      "valueCorrection": 0,
+      "relationshipOrScopeCorrection": 4,
+      "evidenceCorrection": 1,
+      "structuralCorrection": 16,
+      "total": 44
+    },
+    "criticalMisleadingErrors": {
+      "count": 0,
+      "errors": []
+    }
+  }
+}

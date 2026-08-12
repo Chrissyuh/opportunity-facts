@@ -1,0 +1,149 @@
+{
+  "artifactVersion": 1,
+  "benchmarkStage": "post-fix",
+  "developmentSet": true,
+  "run": 1,
+  "program": {
+    "slug": "nasa-techrise-2026-2027",
+    "label": "NASA TechRise Student Challenge — 2026–2027"
+  },
+  "repository": {
+    "gitCommit": "d842f1a39fd8e26cdc5931b5f82367b64e8a323d",
+    "workingTreeDirty": true,
+    "extractionCodeHash": {
+      "algorithm": "sha256",
+      "value": "544bb0fa4a12067bf8f64c8297cd53241b1c488d1ff75af69f459d413804990b",
+      "files": [
+        "lib/analysis/fetch.ts",
+        "lib/analysis/html-extraction.ts",
+        "lib/analysis/link-discovery.ts",
+        "lib/analysis/model-extraction.ts",
+        "lib/analysis/pipeline.ts",
+        "lib/analysis/types.ts",
+        "lib/analysis/url-safety.ts",
+        "lib/opportunity/projection.ts",
+        "lib/opportunity/schema-v2.ts",
+        "lib/opportunity/structured-schema.ts"
+      ]
+    }
+  },
+  "schemaVersion": "2.0.0",
+  "provider": {
+    "name": "openai",
+    "endpoint": "responses",
+    "model": "gpt-5.6-terra",
+    "settings": {
+      "store": false,
+      "reasoningEffort": "low",
+      "maxOutputTokens": 24000,
+      "requestTimeoutMs": 120000,
+      "maximumRetries": 0
+    },
+    "telemetry": null
+  },
+  "input": {
+    "mode": "url",
+    "startingUrl": "https://www.futureengineers.org/nasatechrise"
+  },
+  "timing": {
+    "startedAt": "2026-08-12T03:41:34.444Z",
+    "modelStartedAt": "2026-08-12T03:41:44.583Z",
+    "modelFinishedAt": "2026-08-12T03:43:02.278Z",
+    "finishedAt": "2026-08-12T03:43:02.279Z",
+    "totalRuntimeMs": 87835,
+    "acquisitionRuntimeMs": 10139,
+    "modelRuntimeMs": 77695
+  },
+  "acquisition": {
+    "submittedUrl": "https://www.futureengineers.org/nasatechrise",
+    "successfullyAcquired": [
+      {
+        "role": "submitted",
+        "id": "page-130ac6180bd508a9",
+        "url": "https://www.futureengineers.org/nasatechrise",
+        "title": "Future Engineers :: NASA TechRise Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T03:41:36.331Z",
+        "extractedCharacters": 2872,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 2872,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-1c26ec6edf981dad",
+        "url": "https://www.futureengineers.org/legal/privacy-policy",
+        "title": "Future Engineers :: Privacy Policy",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T03:41:38.111Z",
+        "extractedCharacters": 8333,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 8333,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-2c663b0d5fcbf6c8",
+        "url": "https://www.futureengineers.org/legal/official-rules",
+        "title": "Future Engineers :: Official Rules",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T03:41:39.710Z",
+        "extractedCharacters": 28881,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 28881,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-3345cd2e517929d2",
+        "url": "https://www.futureengineers.org/legal/terms-of-service",
+        "title": "Future Engineers :: Terms of Service",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T03:41:42.406Z",
+        "extractedCharacters": 5874,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 5874,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-23999fb82aab25c0",
+        "url": "https://www.futureengineers.org/Home/About",
+        "title": "Future Engineers :: About",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T03:41:44.518Z",
+        "extractedCharacters": 3519,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 3519,
+        "truncatedForModel": false
+      }
+    ],
+    "failures": []
+  },
+  "modelOutput": {
+    "rawStructuredCandidate": null
+  },
+  "deterministicValidation": {
+    "completed": false,
+    "evidenceWarnings": []
+  },
+  "result": {
+    "draftCard": null,
+    "reviewedPages": []
+  },
+  "failure": {
+    "name": "ModelExtractionError",
+    "message": "The extraction model returned a result outside the extraction contract.",
+    "code": null,
+    "status": null,
+    "type": null,
+    "cause": {
+      "name": "ZodError",
+      "message": "[\n  {\n    \"code\": \"custom\",\n    \"message\": \"not_applicable facts cannot carry a displayed value or evidence.\",\n    \"path\": [\n      \"facts\",\n      \"tuition\"\n    ]\n  },\n  {\n    \"code\": \"custom\",\n    \"message\": \"not_applicable facts cannot carry a displayed value or evidence.\",\n    \"path\": [\n      \"facts\",\n      \"cash_award\"\n    ]\n  }\n]",
+      "code": null,
+      "status": null,
+      "type": null
+    }
+  },
+  "secretsRetained": false
+}

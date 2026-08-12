@@ -527,6 +527,8 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
   await expect(page.getByRole("heading", { level: 3, name: "Mocked Analysis Draft" })).toBeVisible();
   await expect(page.getByText("Mocked source page")).toBeVisible();
   await expect(page.getByText("Draft ready", { exact: false })).toBeVisible();
+  await expect(page.getByText("This is not human reviewed.", { exact: false })).toBeVisible();
+  await expect(page.getByText("Missing or inaccessible pages can cause omissions.", { exact: false })).toBeVisible();
   await expect(page.getByRole("button", { name: "Save locally" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Edit in builder" })).toBeVisible();
   await expect(

@@ -1,0 +1,174 @@
+{
+  "artifactVersion": 1,
+  "developmentSet": true,
+  "runArtifact": "lumiere-fall-2026-run-02.json",
+  "groundTruthCard": "lumiere-research-scholar-program-fall-2026.json",
+  "semanticReview": {
+    "reviewer": "human_manual_review",
+    "claims": [
+      {
+        "id": "opportunity_name",
+        "fieldId": "opportunity_name",
+        "displayedValue": "Lumiere Research Scholar Program",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "opportunity_category",
+        "fieldId": "opportunity_category",
+        "displayedValue": "Research mentorship program",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "official_url",
+        "fieldId": "official_url",
+        "displayedValue": "https://www.lumiere-education.com/lumiere-programs",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "operating_organization",
+        "fieldId": "operating_organization",
+        "displayedValue": "Lumiere Education",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "named_institution",
+        "fieldId": "named_institution",
+        "displayedValue": "University of California, San Diego Extended Studies",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "institution_relationship",
+        "fieldId": "institution_relationship",
+        "displayedValue": "Credit partnership with University of California, San Diego Extended Studies",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "relationship_explanation",
+        "fieldId": "relationship_explanation",
+        "displayedValue": "Students who successfully complete a Lumiere program are eligible to receive 3 post-baccalaureate credits and a digital transcript from UCSD Extended Studies.",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "prerequisite_skills",
+        "fieldId": "prerequisite_skills",
+        "displayedValue": "No experience in the field of interest required",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "financial_aid",
+        "fieldId": "financial_aid",
+        "displayedValue": "Financial aid and scholarships are offered; students may indicate need in the application form.",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "selection_process",
+        "fieldId": "selection_process",
+        "displayedValue": "Online application → interview → mentor matching/decision → research start",
+        "evidenceAttachments": 3,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 3,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "college_credit",
+        "fieldId": "college_credit",
+        "displayedValue": "3 post-baccalaureate credits and a UCSD Extended Studies digital transcript, upon successful completion",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "mentorship",
+        "fieldId": "mentorship",
+        "displayedValue": "1:1 mentorship from researchers",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "other_benefits",
+        "fieldId": "other_benefits",
+        "displayedValue": "Support for 3 rounds of submission to selective high-school or college-level journals",
+        "evidenceAttachments": 1,
+        "semanticallySupported": false,
+        "correctEvidenceAttachments": 0,
+        "judgment": "Journal-submission support is tier-scoped, but the flat display made it appear universal."
+      }
+    ]
+  },
+  "metrics": {
+    "supportedClaimPrecision": {
+      "numerator": 12,
+      "denominator": 13,
+      "value": 0.9230769230769231
+    },
+    "supportedSummaryRecall": {
+      "numerator": 12,
+      "denominator": 30,
+      "value": 0.4
+    },
+    "statusAgreement": {
+      "numerator": 17,
+      "denominator": 59,
+      "value": 0.288135593220339
+    },
+    "semanticEvidenceCorrectness": {
+      "numerator": 14,
+      "denominator": 15,
+      "value": 0.9333333333333333
+    },
+    "structuredEntityPrecision": {
+      "numerator": 0,
+      "denominator": 0,
+      "value": null
+    },
+    "structuredEntityRecall": {
+      "numerator": 0,
+      "denominator": 33,
+      "value": 0
+    },
+    "correctionBurden": {
+      "missingClaim": 18,
+      "unsupportedClaimRemoval": 1,
+      "statusCorrection": 24,
+      "valueCorrection": 0,
+      "relationshipOrScopeCorrection": 1,
+      "evidenceCorrection": 1,
+      "structuralCorrection": 33,
+      "total": 78
+    },
+    "criticalMisleadingErrors": {
+      "count": 0,
+      "errors": []
+    }
+  }
+}

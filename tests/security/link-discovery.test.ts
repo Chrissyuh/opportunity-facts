@@ -72,6 +72,31 @@ describe("same-origin relevant-page discovery", () => {
     );
   });
 
+  it("recognizes plural FAQ labels and organization background pages", () => {
+    const candidates = rankSameOriginLinks("https://program.example/program", [
+      link("https://program.example/faqs", "FAQs"),
+      link("https://program.example/about", "About us"),
+    ]);
+
+    expect(candidates).toEqual([
+      expect.objectContaining({ topic: "faq" }),
+      expect.objectContaining({ topic: "other" }),
+    ]);
+  });
+
+  it("penalizes generic admissions marketing and counseling pages", () => {
+    const candidates = rankSameOriginLinks("https://program.example/program", [
+      link("https://program.example/admissions-results", "Our admissions results"),
+      link("https://program.example/admission-officer-sessions", "Admissions officer sessions"),
+      link("https://program.example/counseling", "Excellence in counseling"),
+      link("https://program.example/application", "Application"),
+    ]);
+
+    expect(candidates.map((candidate) => candidate.url)).toEqual([
+      "https://program.example/application",
+    ]);
+  });
+
   it("hard-rejects account and destructive action links", () => {
     const candidates = rankSameOriginLinks("https://program.example/", [
       link("https://program.example/logout?next=faq", "FAQ after logout"),

@@ -1,0 +1,100 @@
+{
+  "artifactVersion": 1,
+  "benchmarkStage": "baseline",
+  "developmentSet": true,
+  "run": 1,
+  "program": {
+    "slug": "diamond-challenge-2027",
+    "label": "Diamond Challenge — 2027"
+  },
+  "repository": {
+    "gitCommit": "d842f1a39fd8e26cdc5931b5f82367b64e8a323d",
+    "workingTreeDirty": true,
+    "extractionCodeHash": {
+      "algorithm": "sha256",
+      "value": "9719cd2d6c0fc22255d0cf7eb77aea83084d642c32698d48464e47d532d97431",
+      "files": [
+        "lib/analysis/fetch.ts",
+        "lib/analysis/html-extraction.ts",
+        "lib/analysis/link-discovery.ts",
+        "lib/analysis/model-extraction.ts",
+        "lib/analysis/pipeline.ts",
+        "lib/analysis/types.ts",
+        "lib/analysis/url-safety.ts",
+        "lib/opportunity/projection.ts",
+        "lib/opportunity/schema-v2.ts",
+        "lib/opportunity/structured-schema.ts"
+      ]
+    }
+  },
+  "schemaVersion": "2.0.0",
+  "provider": {
+    "name": "openai",
+    "endpoint": "responses",
+    "model": "gpt-5.6-terra",
+    "settings": {
+      "store": false,
+      "maxOutputTokens": 24000,
+      "requestTimeoutMs": 45000,
+      "maximumRetries": 0
+    },
+    "telemetry": null
+  },
+  "input": {
+    "mode": "url",
+    "startingUrl": "https://diamondchallenge.org/competition/"
+  },
+  "timing": {
+    "startedAt": "2026-08-12T03:35:05.650Z",
+    "modelStartedAt": "2026-08-12T03:35:06.296Z",
+    "modelFinishedAt": "2026-08-12T03:35:51.420Z",
+    "finishedAt": "2026-08-12T03:35:51.420Z",
+    "totalRuntimeMs": 45770,
+    "acquisitionRuntimeMs": 646,
+    "modelRuntimeMs": 45124
+  },
+  "acquisition": {
+    "submittedUrl": "https://diamondchallenge.org/competition/",
+    "successfullyAcquired": [
+      {
+        "role": "submitted",
+        "id": "page-13f3083976d9a6f9",
+        "url": "https://diamondchallenge.org/competition/",
+        "title": "Competition - Diamond Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T03:35:06.214Z",
+        "extractedCharacters": 17430,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 17430,
+        "truncatedForModel": false
+      }
+    ],
+    "failures": []
+  },
+  "modelOutput": {
+    "rawStructuredCandidate": null
+  },
+  "deterministicValidation": {
+    "completed": false,
+    "evidenceWarnings": []
+  },
+  "result": {
+    "draftCard": null,
+    "reviewedPages": []
+  },
+  "failure": {
+    "name": "ModelExtractionError",
+    "message": "The extraction service could not produce a structured facts card.",
+    "code": null,
+    "status": null,
+    "type": null,
+    "cause": {
+      "name": "Error",
+      "message": "Request timed out.",
+      "code": null,
+      "status": null,
+      "type": null
+    }
+  },
+  "secretsRetained": false
+}

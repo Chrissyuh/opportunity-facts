@@ -1,0 +1,219 @@
+{
+  "artifactVersion": 1,
+  "developmentSet": true,
+  "runArtifact": "nasa-techrise-2026-2027-run-03.json",
+  "groundTruthCard": "nasa-techrise-student-challenge-2026-2027.json",
+  "semanticReview": {
+    "reviewer": "human_manual_review",
+    "claims": [
+      {
+        "id": "opportunity_name",
+        "fieldId": "opportunity_name",
+        "displayedValue": "NASA TechRise Student Challenge",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "opportunity_category",
+        "fieldId": "opportunity_category",
+        "displayedValue": "Student challenge",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "operating_organization",
+        "fieldId": "operating_organization",
+        "displayedValue": "Future Engineers (administrator)",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "organization_type",
+        "fieldId": "organization_type",
+        "displayedValue": "Limited liability company",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "grade_levels",
+        "fieldId": "grade_levels",
+        "displayedValue": "6th–12th grade",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "geographic_restrictions",
+        "fieldId": "geographic_restrictions",
+        "displayedValue": "Affiliated with U.S. public, private, or charter schools",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "entry_format",
+        "fieldId": "entry_format",
+        "displayedValue": "Team entry",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "sponsor_requirement",
+        "fieldId": "sponsor_requirement",
+        "displayedValue": "Guided by an educator",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "selection_process",
+        "fieldId": "selection_process",
+        "displayedValue": "Experiment-idea submission → Winning-team selection",
+        "evidenceAttachments": 2,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 2,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "acceptance_count",
+        "fieldId": "acceptance_count",
+        "displayedValue": "60 winning teams",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "selection_evidence",
+        "fieldId": "selection_evidence",
+        "displayedValue": "Numerical selection count disclosed",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "other_benefits",
+        "fieldId": "other_benefits",
+        "displayedValue": "Technical support and an experiment flight spot",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "personal_information",
+        "fieldId": "personal_information",
+        "displayedValue": "Student account, contact, demographic, submission, and eligibility-verification information",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "data_sharing",
+        "fieldId": "data_sharing",
+        "displayedValue": "Classroom, service-provider, and entry-review sharing described",
+        "evidenceAttachments": 3,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 3,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "project_ownership",
+        "fieldId": "project_ownership",
+        "displayedValue": "Entrants retain submission materials, subject to challenge-specific exceptions",
+        "evidenceAttachments": 1,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 1,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "project_license",
+        "fieldId": "project_license",
+        "displayedValue": "Perpetual broad submission license; possible assignment/public-domain condition",
+        "evidenceAttachments": 2,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 2,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "cancellation_rights",
+        "fieldId": "cancellation_rights",
+        "displayedValue": "Sponsor may cancel, amend, suspend, terminate, or adjust timing",
+        "evidenceAttachments": 2,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 2,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      },
+      {
+        "id": "material_terms",
+        "fieldId": "material_terms",
+        "displayedValue": "Submission, AI-use, consent, and winner-expense terms",
+        "evidenceAttachments": 4,
+        "semanticallySupported": true,
+        "correctEvidenceAttachments": 4,
+        "judgment": "The exact excerpt supports the displayed claim in the attached object and scope."
+      }
+    ]
+  },
+  "metrics": {
+    "supportedClaimPrecision": {
+      "numerator": 18,
+      "denominator": 18,
+      "value": 1
+    },
+    "supportedSummaryRecall": {
+      "numerator": 16,
+      "denominator": 23,
+      "value": 0.6956521739130435
+    },
+    "statusAgreement": {
+      "numerator": 41,
+      "denominator": 59,
+      "value": 0.6949152542372882
+    },
+    "semanticEvidenceCorrectness": {
+      "numerator": 26,
+      "denominator": 26,
+      "value": 1
+    },
+    "structuredEntityPrecision": {
+      "numerator": 5,
+      "denominator": 5,
+      "value": 1
+    },
+    "structuredEntityRecall": {
+      "numerator": 5,
+      "denominator": 13,
+      "value": 0.38461538461538464
+    },
+    "correctionBurden": {
+      "missingClaim": 7,
+      "unsupportedClaimRemoval": 0,
+      "statusCorrection": 11,
+      "valueCorrection": 2,
+      "relationshipOrScopeCorrection": 2,
+      "evidenceCorrection": 0,
+      "structuralCorrection": 8,
+      "total": 30
+    },
+    "criticalMisleadingErrors": {
+      "count": 0,
+      "errors": []
+    }
+  }
+}

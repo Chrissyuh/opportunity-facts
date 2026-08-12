@@ -1,7 +1,7 @@
 import "server-only";
 
 import OpenAI from "openai";
-import { zodTextFormat } from "openai/helpers/zod";
+import { zodResponseFormat } from "openai/helpers/zod";
 import { z } from "zod";
 import {
   FIELD_DEFINITIONS,
@@ -12,14 +12,15 @@ import {
 import {
   SCHEMA_VERSION,
   costItemCollectionSchema,
+  costItemRecordSchema,
   createEmptyCard,
   cycleContainerSchema,
+  evidenceSourceSchema,
   factSchema,
   institutionRelationshipRecordSchema,
   organizationRecordSchema,
   organizationRoleRecordSchema,
   opportunityCardSchema,
-  opportunityFactsSchema,
   outcomeRecordSchema,
   pathwayRecordSchema,
   recordCollectionSchema,
@@ -48,9 +49,10 @@ import type { ExtractedSourcePage } from "./types";
 
 export const MAX_MODEL_INPUT_CHARACTERS = 120_000;
 export const MAX_MODEL_OUTPUT_TOKENS = 24_000;
-export const MODEL_REQUEST_TIMEOUT_MS = 45_000;
+export const MODEL_REQUEST_TIMEOUT_MS = 120_000;
 export const MODEL_MAX_RETRIES = 0;
 export const DEFAULT_OPENAI_MODEL = "gpt-5.6-terra";
+export const MODEL_REASONING_EFFORT = "low" as const;
 
 const unassessedStructuredCollection = () => ({
   status: "unassessed" as const,
@@ -84,8 +86,19 @@ export const modelStructuresSchema = z.strictObject({
   outcomes: recordCollectionSchema(outcomeRecordSchema),
 });
 
+export const modelCandidateFactSchema = z.strictObject(factSchema.shape);
+export const modelCandidateFactsSchema = z.strictObject(
+  Object.fromEntries(
+    FIELD_IDS.map((fieldId) => [fieldId, modelCandidateFactSchema]),
+  ) as Record<FieldId, typeof modelCandidateFactSchema>,
+);
+
 export const modelExtractionSchema = z.strictObject({
-  facts: opportunityFactsSchema,
+  // The model envelope enforces every field and structural type, while the
+  // authoritative Fact refinements run claim-by-claim below. This prevents a
+  // single contradictory model status/value combination from discarding an
+  // otherwise recoverable response before conservative sanitization.
+  facts: modelCandidateFactsSchema,
   structures: modelStructuresSchema.default(createEmptyModelStructures()),
 });
 
@@ -102,6 +115,25 @@ export interface ModelExtractor {
     sources: readonly AnalysisSourceContext[],
     options?: { readonly signal?: AbortSignal },
   ): Promise<ModelExtraction>;
+}
+
+export interface ModelUsageTelemetry {
+  readonly inputTokens: number;
+  readonly cachedInputTokens: number;
+  readonly outputTokens: number;
+  readonly reasoningTokens: number;
+  readonly totalTokens: number;
+}
+
+export interface ModelResponseTelemetry {
+  readonly model: string;
+  readonly responseId: string;
+  readonly usage: ModelUsageTelemetry | null;
+}
+
+export interface OpenAIExtractorOptions {
+  readonly onResponse?: (telemetry: ModelResponseTelemetry) => void;
+  readonly onRawCandidate?: (candidate: unknown) => void;
 }
 
 export interface EvidenceWarning {
@@ -150,6 +182,10 @@ SECURITY AND EVIDENCE CONTRACT
 - Never turn a founder, mentor, staff, alumni, or student affiliation into institutional operation, sponsorship, partnership, or endorsement.
 - Keep participant cash, team cash, restricted project funding, reimbursement, tuition support, and source-stated in-kind value distinct. Record recipient scope and distribution only when the excerpt states them.
 - Scoped differences between tiers, cohorts, tracks, stages, or pathways are not conflicts. Use stable kebab-case IDs and references; do not invent a graph, person entity, currency conversion, total, or transition.
+- Do not use an organizer's office, headquarters, or institutional address as the participant location. Do not treat volunteer mentor or judge roles as a participant benefit.
+- Do not put organizer modification or cancellation powers in the participant cancellation-policy field. Do not expand a privacy statement beyond the people or recipient categories named in its exact excerpts.
+- A generic page may describe several cycles, offerings, or tiers. Do not select one cycle's dates, one tier's duration or benefit, or organization-wide eligibility as universal. When the target cycle or scope is not established, use unclear and preserve the relevant excerpts.
+- A multi-placement, multi-track, or conditional award cannot be reduced to one scalar cash award. Model the supported outcome rows and their team/individual/project scope, or leave the flat cash summary unclear.
 - Leave a structured family unassessed when the supplied sources do not support safe atomic records. Automated output must never claim that an entire structured family is not applicable.
 - An organizer-stated acceptance rate uses claimKind organizer_stated. Do not calculate acceptance rate. Population and cycle compatibility require human review before a derived rate may be published.
 - Include all schema fields. Use nulls and empty arrays exactly as the schema requires for non-disclosed states.
@@ -200,7 +236,104 @@ export function buildBoundedSourcePayload(
   });
 }
 
-export function createOpenAIExtractor(): ModelExtractor {
+const MODEL_SCHEMA_DEFINITIONS = {
+  evidence_source: evidenceSourceSchema,
+  model_fact: modelCandidateFactSchema,
+  model_facts: modelCandidateFactsSchema,
+  cycle_container: cycleContainerSchema,
+  organization_record: organizationRecordSchema,
+  organization_role_record: organizationRoleRecordSchema,
+  institution_relationship_record: institutionRelationshipRecordSchema,
+  variant_record: variantRecordSchema,
+  stage_record: stageRecordSchema,
+  pathway_record: pathwayRecordSchema,
+  cost_item_collection: costItemCollectionSchema,
+  cost_item_record: costItemRecordSchema,
+  outcome_record: outcomeRecordSchema,
+} as const;
+
+const SUPPORTED_STRUCTURED_OUTPUT_STRING_FORMATS = new Set([
+  "date-time",
+  "time",
+  "date",
+  "duration",
+  "email",
+  "hostname",
+  "ipv4",
+  "ipv6",
+  "uuid",
+]);
+
+function sanitizeStructuredOutputSchema(
+  source: Record<string, unknown>,
+): Record<string, unknown> {
+  const schema = structuredClone(source);
+
+  function visit(value: unknown): void {
+    if (Array.isArray(value)) {
+      value.forEach(visit);
+      return;
+    }
+    if (typeof value !== "object" || value === null) return;
+
+    const record = value as Record<string, unknown>;
+    if (
+      typeof record.format === "string" &&
+      !SUPPORTED_STRUCTURED_OUTPUT_STRING_FORMATS.has(record.format)
+    ) {
+      // `uri` is not in the provider's strict-output subset. The authoritative
+      // Zod parse below still validates every URL after generation.
+      delete record.format;
+    }
+    Object.values(record).forEach(visit);
+  }
+
+  visit(schema);
+  return schema;
+}
+
+export function buildModelTextFormat() {
+  const responseFormat = zodResponseFormat(
+    modelExtractionSchema,
+    "opportunity_facts_extraction",
+    { schemaDefinitions: MODEL_SCHEMA_DEFINITIONS },
+  );
+  const schema = responseFormat.json_schema.schema;
+  if (!schema) {
+    throw new ModelExtractionError(
+      "The extraction contract could not produce a structured-output schema.",
+    );
+  }
+  return {
+    type: "json_schema" as const,
+    name: responseFormat.json_schema.name,
+    strict: true,
+    schema: sanitizeStructuredOutputSchema(schema),
+  };
+}
+
+function modelUsageTelemetry(
+  usage: {
+    input_tokens?: number;
+    output_tokens?: number;
+    total_tokens?: number;
+    input_tokens_details?: { cached_tokens?: number };
+    output_tokens_details?: { reasoning_tokens?: number };
+  } | null | undefined,
+): ModelUsageTelemetry | null {
+  if (!usage) return null;
+  return {
+    inputTokens: usage.input_tokens ?? 0,
+    cachedInputTokens: usage.input_tokens_details?.cached_tokens ?? 0,
+    outputTokens: usage.output_tokens ?? 0,
+    reasoningTokens: usage.output_tokens_details?.reasoning_tokens ?? 0,
+    totalTokens: usage.total_tokens ?? 0,
+  };
+}
+
+export function createOpenAIExtractor(
+  extractorOptions: OpenAIExtractorOptions = {},
+): ModelExtractor {
   const apiKey = process.env.OPENAI_API_KEY?.trim();
   if (!apiKey) throw new ModelConfigurationError();
   const client = new OpenAI({
@@ -210,12 +343,13 @@ export function createOpenAIExtractor(): ModelExtractor {
   });
   const model = process.env.OPENAI_MODEL?.trim() || DEFAULT_OPENAI_MODEL;
 
-  return async (sources, options) => {
+  return async (sources, requestOptions) => {
     try {
-      const response = await client.responses.parse(
+      const response = await client.responses.create(
         {
           model,
           store: false,
+          reasoning: { effort: MODEL_REASONING_EFFORT },
           max_output_tokens: MAX_MODEL_OUTPUT_TOKENS,
           input: [
             { role: "system", content: buildExtractionInstructions() },
@@ -225,15 +359,37 @@ export function createOpenAIExtractor(): ModelExtractor {
             },
           ],
           text: {
-            format: zodTextFormat(modelExtractionSchema, "opportunity_facts_extraction"),
+            format: buildModelTextFormat(),
           },
         },
-        { signal: options?.signal },
+        { signal: requestOptions?.signal },
       );
-      if (!response.output_parsed) {
+      if (!response.output_text) {
         throw new ModelExtractionError("The extraction model returned no structured result.");
       }
-      return response.output_parsed;
+      extractorOptions.onResponse?.({
+        model,
+        responseId: response.id,
+        usage: modelUsageTelemetry(response.usage),
+      });
+      let rawOutput: unknown;
+      try {
+        rawOutput = JSON.parse(response.output_text);
+      } catch (error) {
+        throw new ModelExtractionError(
+          "The extraction model returned invalid structured JSON.",
+          { cause: error },
+        );
+      }
+      extractorOptions.onRawCandidate?.(rawOutput);
+      const parsed = modelExtractionSchema.safeParse(rawOutput);
+      if (!parsed.success) {
+        throw new ModelExtractionError(
+          "The extraction model returned a result outside the extraction contract.",
+          { cause: parsed.error },
+        );
+      }
+      return parsed.data;
     } catch (error) {
       if (error instanceof ModelExtractionError) throw error;
       throw new ModelExtractionError(
@@ -261,12 +417,14 @@ function canonicalSource(
   };
 }
 
+type ModelCandidateFact = z.infer<typeof modelCandidateFactSchema>;
+
 function canonicalizeFactSources(
-  fact: Fact,
+  fact: ModelCandidateFact,
   contextsById: ReadonlyMap<string, AnalysisSourceContext>,
   contextsByUrl: ReadonlyMap<string, AnalysisSourceContext>,
 ) {
-  return factSchema.parse({
+  return modelCandidateFactSchema.parse({
     ...fact,
     sources: fact.sources.map((source) => canonicalSource(source, contextsById, contextsByUrl)),
     conflictingValues: fact.conflictingValues.map((candidate) => ({
@@ -274,6 +432,42 @@ function canonicalizeFactSources(
       sources: candidate.sources.map((source) => canonicalSource(source, contextsById, contextsByUrl)),
     })),
   });
+}
+
+function modelCandidateSources(fact: ModelCandidateFact): EvidenceSource[] {
+  return [
+    ...fact.sources,
+    ...fact.conflictingValues.flatMap((candidate) => candidate.sources),
+  ];
+}
+
+function authoritativeModelFact(fact: ModelCandidateFact): Fact {
+  const direct = factSchema.safeParse(fact);
+  if (direct.success) return direct.data;
+
+  if (fact.status === "not_found") {
+    return factSchema.parse({ status: "not_found" });
+  }
+  if (fact.status === "not_applicable") {
+    return factSchema.parse({
+      status: "not_applicable",
+      note:
+        fact.note ??
+        "The model proposed that this field does not apply; human review is required.",
+    });
+  }
+
+  const sources = modelCandidateSources(fact);
+  if (sources.length > 0) {
+    return factSchema.parse({
+      status: "unclear",
+      sources,
+      claimKind: "source_stated",
+      note:
+        "The model returned an internally inconsistent claim; its cited text requires human review.",
+    });
+  }
+  return factSchema.parse({ status: "not_found" });
 }
 
 function normalizedModelValue(fieldId: FieldId, value: Fact["value"]): NormalizedValue | null {
@@ -453,6 +647,190 @@ function automatedAcceptanceRateFact(facts: OpportunityFacts): Fact {
     });
   }
   return factSchema.parse({ status: "not_found" });
+}
+
+function factEvidence(fact: Fact): EvidenceSource[] {
+  const seen = new Set<string>();
+  return [...fact.sources, ...fact.conflictingValues.flatMap((candidate) => candidate.sources)]
+    .filter((source) => {
+      const key = `${source.id}\u0000${source.excerpt}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+}
+
+function factEvidenceText(fact: Fact): string {
+  return factEvidence(fact).map((source) => source.excerpt).join(" ").toLowerCase();
+}
+
+function withholdContextSensitiveFact(fact: Fact, note: string): Fact {
+  const sources = factEvidence(fact);
+  return factSchema.parse({
+    status: sources.length > 0 ? "unclear" : "not_found",
+    sources,
+    claimKind: sources.length > 0 ? "source_stated" : null,
+    note: sources.length > 0 ? note : null,
+  });
+}
+
+function sanitizeContextSensitiveFacts(
+  input: OpportunityFacts,
+  structures: ModelStructures,
+): OpportunityFacts {
+  const facts = structuredClone(input);
+  const withhold = (fieldId: FieldId, note: string) => {
+    if (facts[fieldId].status === "disclosed" || facts[fieldId].status === "conflicting") {
+      facts[fieldId] = withholdContextSensitiveFact(facts[fieldId], note);
+    }
+  };
+
+  const operatingText = factEvidenceText(facts.operating_organization);
+  if (
+    facts.operating_organization.status === "disclosed" &&
+    /\b(administ(?:er|ered|ration)|manag(?:e|ed|ement)|sponsor(?:s|ed|ship)?)\b/u.test(operatingText) &&
+    !/\b(operat(?:e|es|ed|or)|run by|organize(?:s|d)?)\b/u.test(operatingText)
+  ) {
+    withhold(
+      "operating_organization",
+      "The excerpt supports a non-operator organization role, so automated extraction did not promote it to the primary operator.",
+    );
+  }
+
+  const locationText = factEvidenceText(facts.location);
+  if (
+    facts.location.status === "disclosed" &&
+    /\b(office|headquarters|program at|agency(?:'s|â€™s)? .{0,50}(?:center|facility))\b/u.test(locationText) &&
+    !/\b(participat|attend|event (?:is|was|will be) held|takes place|virtual|online)\b/u.test(locationText)
+  ) {
+    withhold(
+      "location",
+      "The excerpt identifies an organizer or program location, not where participants take part.",
+    );
+  }
+
+  const cancellationText = factEvidenceText(facts.cancellation_policy);
+  if (
+    facts.cancellation_policy.status === "disclosed" &&
+    /\b(sponsor|organizer|administrator)\b.{0,100}\b(cancel|amend|suspend|modify)\b/u.test(cancellationText) &&
+    !/\b(participant|applicant|student|team|withdraw|refund)\b/u.test(cancellationText)
+  ) {
+    withhold(
+      "cancellation_policy",
+      "The excerpt describes organizer modification or cancellation rights, not a participant cancellation policy.",
+    );
+  }
+
+  const sharingText = factEvidenceText(facts.data_sharing);
+  const sharingValue = facts.data_sharing.status === "disclosed"
+    ? `${facts.data_sharing.value ?? ""} ${facts.data_sharing.displayValue ?? ""}`.toLowerCase()
+    : "";
+  const unsupportedSharingCategory = ["service provider", "judge", "consultant"].some(
+    (category) => sharingValue.includes(category) && !sharingText.includes(category),
+  );
+  if (unsupportedSharingCategory) {
+    withhold(
+      "data_sharing",
+      "The displayed sharing categories exceeded the categories named in the attached excerpts.",
+    );
+  }
+
+  const mentorshipText = factEvidenceText(facts.mentorship);
+  if (
+    facts.mentorship.status === "disclosed" &&
+    /\bvolunteer\b.{0,100}\b(judg|mentor)/u.test(mentorshipText) &&
+    !/\b(participant|student|team).{0,100}\b(receive|matched|mentor|support|access)\b/u.test(mentorshipText)
+  ) {
+    withhold(
+      "mentorship",
+      "The excerpt describes a volunteer role, not a mentorship benefit received by participants.",
+    );
+  }
+
+  const gradeText = factEvidenceText(facts.grade_levels);
+  if (
+    facts.grade_levels.status === "disclosed" &&
+    /\b(programs|education)\b.{0,160}\bmiddle school\b/u.test(gradeText) &&
+    !/\beligib(?:le|ility)|applicants? must|students? in grades?\b/u.test(gradeText)
+  ) {
+    withhold(
+      "grade_levels",
+      "The excerpt describes an organization's broader audience, not eligibility for one identified program and cycle.",
+    );
+  }
+
+  if (structures.cycle.status !== "modeled") {
+    for (const fieldId of [
+      "application_deadline",
+      "decision_date",
+      "start_date",
+      "end_date",
+    ] as const) {
+      withhold(
+        fieldId,
+        "The supplied pages did not establish one target cycle, so automated extraction withheld cycle-specific dates.",
+      );
+    }
+  }
+  if (structures.variants.status !== "modeled") {
+    withhold(
+      "duration",
+      "The supplied pages did not establish one applicable variant or cohort, so automated extraction withheld a universal duration.",
+    );
+  }
+
+  const cashText = factEvidenceText(facts.cash_award);
+  const modeledCashOutcomes = structures.outcomes.status === "modeled"
+    ? structures.outcomes.records.filter((record) =>
+        record.definition.status === "disclosed" &&
+        ["personal_cash_prize", "team_cash_prize"].includes(record.definition.value.outcomeType),
+      )
+    : [];
+  if (
+    facts.cash_award.status === "disclosed" &&
+    (/\btop (?:two|three|four|five|six|\d+)\b/u.test(cashText) ||
+      /\bboth\b.{0,80}\btracks?\b/u.test(cashText) ||
+      /\b(?:multiple|several)\b.{0,40}\b(?:awards?|prizes?)\b/u.test(cashText)) &&
+    modeledCashOutcomes.length < 2
+  ) {
+    withhold(
+      "cash_award",
+      "The excerpts describe a prize matrix that the automated structured outcomes did not represent completely.",
+    );
+  }
+
+  return facts;
+}
+
+function sanitizeIncompleteOutcomeMatrix(
+  facts: OpportunityFacts,
+  input: ModelStructures,
+): ModelStructures {
+  if (input.outcomes.status !== "modeled" || facts.cash_award.status !== "disclosed") {
+    return input;
+  }
+  const cashText = factEvidenceText(facts.cash_award);
+  const describesMatrix =
+    /\btop (?:two|three|four|five|six|\d+)\b/u.test(cashText) ||
+    /\bboth\b.{0,80}\btracks?\b/u.test(cashText) ||
+    /\b(?:multiple|several)\b.{0,40}\b(?:awards?|prizes?)\b/u.test(cashText);
+  if (!describesMatrix) return input;
+
+  const cashRecords = input.outcomes.records.filter((record) =>
+    record.definition.status === "disclosed" &&
+    ["personal_cash_prize", "team_cash_prize"].includes(record.definition.value.outcomeType),
+  );
+  if (cashRecords.length >= 2) return input;
+
+  const nonCashRecords = input.outcomes.records.filter(
+    (record) => !cashRecords.includes(record),
+  );
+  return {
+    ...input,
+    outcomes: nonCashRecords.length > 0
+      ? { ...input.outcomes, records: nonCashRecords }
+      : unassessedStructuredCollection(),
+  };
 }
 
 type ModelStructures = z.infer<typeof modelStructuresSchema>;
@@ -1209,6 +1587,78 @@ function sanitizeModelStructures(
   return { structures: modelStructuresSchema.parse(parsed), warnings };
 }
 
+const STRUCTURED_FAMILY_ORDER: readonly (keyof ModelStructures)[] = [
+  "organizations",
+  "organizationRoles",
+  "institutionRelationships",
+  "variants",
+  "stages",
+  "pathways",
+  "cycle",
+  "costItems",
+  "outcomes",
+];
+
+function projectedDraft(
+  base: OpportunityCard,
+  facts: OpportunityFacts,
+  sourcePagesChecked: OpportunityCard["sourcePagesChecked"],
+  structures: ModelStructures,
+) {
+  const projected = applyOpportunityProjections({
+    ...base,
+    schemaVersion: SCHEMA_VERSION,
+    sourcePagesChecked,
+    facts,
+    ...structures,
+  } as OpportunityCard);
+  return {
+    ...projected,
+    conflicts: FIELD_IDS.filter(
+      (fieldId) => projected.facts[fieldId].status === "conflicting",
+    ).map((fieldId) => ({
+      fieldId,
+      summary:
+        projected.facts[fieldId].note ?? "Reviewed sources support different values.",
+    })),
+  };
+}
+
+function salvageValidStructuredFamilies(
+  base: OpportunityCard,
+  facts: OpportunityFacts,
+  sourcePagesChecked: OpportunityCard["sourcePagesChecked"],
+  proposed: ModelStructures,
+  sourceId: string,
+): { structures: ModelStructures; warnings: EvidenceWarning[] } {
+  const full = opportunityCardSchema.safeParse(
+    projectedDraft(base, facts, sourcePagesChecked, proposed),
+  );
+  if (full.success) return { structures: proposed, warnings: [] };
+
+  let accepted = createEmptyModelStructures();
+  const warnings: EvidenceWarning[] = [];
+  for (const key of STRUCTURED_FAMILY_ORDER) {
+    const family = proposed[key];
+    if (family.status !== "modeled") continue;
+    const candidate = { ...accepted, [key]: family } as ModelStructures;
+    const parsed = opportunityCardSchema.safeParse(
+      projectedDraft(base, facts, sourcePagesChecked, candidate),
+    );
+    if (parsed.success) {
+      accepted = candidate;
+    } else {
+      warnings.push({
+        fieldId: `structured.${key}`,
+        sourceId,
+        message:
+          "This structured family was withheld because its IDs, scopes, or cross-references did not form a valid v2 draft; other valid families were retained.",
+      });
+    }
+  }
+  return { structures: accepted, warnings };
+}
+
 export async function extractOpportunityCard(
   sources: readonly AnalysisSourceContext[],
   extractor: ModelExtractor = createOpenAIExtractor(),
@@ -1229,7 +1679,9 @@ export async function extractOpportunityCard(
   const evidenceWarnings: EvidenceWarning[] = [];
 
   for (const fieldId of FIELD_IDS) {
-    const canonical = canonicalizeFactSources(modelResult.facts[fieldId], byId, byUrl);
+    const canonical = authoritativeModelFact(
+      canonicalizeFactSources(modelResult.facts[fieldId], byId, byUrl),
+    );
     const validated = validateFactEvidence(canonical, sourceTexts);
     facts[fieldId] = sanitizeModelFact(fieldId, validated.fact);
     evidenceWarnings.push(
@@ -1276,50 +1728,22 @@ export async function extractOpportunityCard(
     slug: neutralSlug(facts, sources),
     summary: `Automated draft from ${sources.length} user-supplied source page${sources.length === 1 ? "" : "s"}; review every value, excerpt, and attribution before use.`,
   });
-  const candidate = {
-    ...base,
-    schemaVersion: SCHEMA_VERSION,
-    sourcePagesChecked,
+  const conservativeStructures = sanitizeIncompleteOutcomeMatrix(
     facts,
-    ...structured.structures,
-  } as OpportunityCard;
-  const projected = applyOpportunityProjections(candidate);
-  const withConflicts = {
-    ...projected,
-    conflicts: FIELD_IDS.filter(
-      (fieldId) => projected.facts[fieldId].status === "conflicting",
-    ).map((fieldId) => ({
-      fieldId,
-      summary:
-        projected.facts[fieldId].note ?? "Reviewed sources support different values.",
-    })),
-  };
-  let parsed = opportunityCardSchema.safeParse(withConflicts);
-  if (!parsed.success) {
-    evidenceWarnings.push({
-      fieldId: "structured",
-      sourceId: sources[0].page.id,
-      message:
-        "Structured candidates were withheld because their IDs, scopes, or cross-references did not form a valid v2 draft.",
-    });
-    const fallback = applyOpportunityProjections({
-      ...base,
-      schemaVersion: SCHEMA_VERSION,
-      sourcePagesChecked,
-      facts,
-      ...createEmptyModelStructures(),
-    } as OpportunityCard);
-    parsed = opportunityCardSchema.safeParse({
-      ...fallback,
-      conflicts: FIELD_IDS.filter(
-        (fieldId) => fallback.facts[fieldId].status === "conflicting",
-      ).map((fieldId) => ({
-        fieldId,
-        summary:
-          fallback.facts[fieldId].note ?? "Reviewed sources support different values.",
-      })),
-    });
-  }
+    structured.structures,
+  );
+  const salvaged = salvageValidStructuredFamilies(
+    base,
+    facts,
+    sourcePagesChecked,
+    conservativeStructures,
+    sources[0].page.id,
+  );
+  evidenceWarnings.push(...salvaged.warnings);
+  const safeFacts = sanitizeContextSensitiveFacts(facts, salvaged.structures);
+  const parsed = opportunityCardSchema.safeParse(
+    projectedDraft(base, safeFacts, sourcePagesChecked, salvaged.structures),
+  );
   if (!parsed.success) {
     throw new ModelExtractionError(
       "The evidence-validated model output could not be represented as a schema v2 draft.",

@@ -16,12 +16,14 @@
 - [x] Repaired the full UX/accessibility audit: heading semantics, contrast, keyboard focus, live announcements, import state, mobile comparison, builder review scope/versioning, and populated mobile builder containment.
 - [x] Generated and visually inspected the four stable release screenshots in `docs/screenshots/`.
 - [x] Completed two independent post-repair software/security/UX signoffs with no remaining material P0/P1 implementation issue, then completed the evidence-driven Schema V2 repair documented in `REALITY_STRESS_TEST_RESOLUTION.md`.
+- [x] Preserved and pushed Schema V2 as `d842f1a39fd8e26cdc5931b5f82367b64e8a323d` plus the `benchmark-v2-baseline` tag, then completed the first live-provider three-card development benchmark without modifying ground truth.
+- [x] Hardened the production Responses extraction contract, link ranking, semantic validation, structured-family salvage, cycle/scope uncertainty, and prize-matrix handling. Final development-set drafts had 52/54 supported-claim precision, 70/72 semantic evidence correctness, and zero known critical misleading claims; full denominators are in `EXTRACTION_BENCHMARK_POST_FIX.md`.
 
 ## Final verification
 
 - [x] `npm run lint`
 - [x] `npm run typecheck`
-- [x] `npm test` — 22 files / 190 tests passed
+- [x] `npm test` — 23 files / 196 tests passed
 - [x] `npm run export:data` — 10 cards (7 demo, 3 human reviewed) and JSON Schema exported
 - [x] `npm run validate:data` — 10 public cards (7 demo), 0 drafts, both artifacts current
 - [x] `npm run test:e2e` — 80 passed, 4 intentional project-inapplicable skips, 0 failed
@@ -42,7 +44,8 @@
 ## Intentionally outstanding
 
 - [ ] Treat age-band representation as the documented non-gating P2 unless a broader reviewed sample demonstrates that a dedicated structured age model is warranted.
-- [ ] Run one configured provider smoke test only when a suitable OpenAI key is deliberately supplied.
+- [x] Run one configured production-path provider smoke test with `gpt-5.6-terra`, strict structured output, `store: false`, and deterministic post-validation.
+- [ ] Run the next seven-card evaluation as a separate out-of-sample phase; do not describe the current three-card tuned results as generalization.
 - [ ] Deploy only when a target is requested, then verify platform egress, rate/concurrency/spend controls, logs, secrets, headers, and both configured/keyless paths in that environment.
 - [ ] Conduct consented comprehension and extraction studies before publishing any result; public copy correctly remains “Study not yet published.”
 - [ ] Consider the non-gating P2 hardening backlog in `QUALITY.md` after real-data and deployment work establishes priority.

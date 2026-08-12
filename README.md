@@ -25,7 +25,7 @@ Opportunity Facts is a Next.js App Router application with strict TypeScript, Re
 - Repository JSON powers public demo and reviewed cards. Browser storage holds only user-requested drafts and comparison selections.
 - Server-side URL acquisition validates DNS and every redirect, connects to the validated address, limits content type/time/bytes, and discovers at most six relevant same-origin pages.
 - HTML is reduced to normalized, non-executable text. Source-page instructions are treated as hostile data.
-- Optional model extraction uses the official OpenAI JavaScript SDK and Responses API with strict Zod structured output, a 45-second timeout, no automatic retries, and a shared input budget distributed across all acquired pages. A deterministic post-pass rejects evidence excerpts that do not occur in the acquired source text.
+- Optional model extraction uses the official OpenAI JavaScript SDK and Responses API with provider-compatible strict Zod structured output, a 120-second timeout, low reasoning effort, no automatic retries, and a shared input budget distributed across all acquired pages. Deterministic post-processing rejects unsupported excerpts, typed-value mismatches, unsafe relationship/scope upgrades, and incomplete prize flattening.
 - API analysis responses are transient and marked `Cache-Control: no-store`. The application has no analytics or hidden telemetry.
 
 See [`PROJECT_SPEC.md`](PROJECT_SPEC.md), [`docs/SCHEMA_AND_DATA.md`](docs/SCHEMA_AND_DATA.md), and [`docs/THREAT_MODEL.md`](docs/THREAT_MODEL.md) for the durable contract and security boundaries.
@@ -134,3 +134,8 @@ tests/                  Unit, integration, security, fixtures, and Playwright fl
 ```
 
 The research page intentionally says **Study not yet published** until real results exist. No users, metrics, organizer responses, or accuracy claims are fabricated.
+
+The first live-provider extraction development benchmark is preserved locally in
+[`EXTRACTION_BENCHMARK.md`](./EXTRACTION_BENCHMARK.md). It uses the three existing
+human-reviewed cards as a tuning set and is explicitly not independent or
+out-of-sample accuracy evidence.

@@ -73,7 +73,7 @@ const TOPIC_RULES: readonly TopicRule[] = [
     topic: "faq",
     weight: 13,
     patterns: [
-      /\bfaq\b/iu,
+      /\bfaqs?\b/iu,
       /\bfrequently\s+asked\s+questions?\b/iu,
       /\bquestions?\s+and\s+answers?\b/iu,
     ],
@@ -117,6 +117,16 @@ const TOPIC_RULES: readonly TopicRule[] = [
       /\bcalendar\b/iu,
     ],
   },
+  {
+    topic: "other",
+    weight: 8,
+    patterns: [
+      /\babout(?:\s+us)?\b/iu,
+      /\bwho\s+(?:we|they)\s+are\b/iu,
+      /\borganization\b/iu,
+      /\borganizer\b/iu,
+    ],
+  },
 ];
 
 const NEGATIVE_PATTERNS = [
@@ -128,6 +138,11 @@ const NEGATIVE_PATTERNS = [
   /\bnews\b/iu,
   /\bblog\b/iu,
   /\bsocial\b/iu,
+];
+
+const STRONG_NEGATIVE_PATTERNS = [
+  /\badmissions?\s+(?:results?|officers?|sessions?)\b/iu,
+  /\bcounsel(?:ing|lor|lors)\b/iu,
 ];
 
 const NON_TEXT_EXTENSION =
@@ -178,6 +193,11 @@ function classify(text: string, url: URL): {
   for (const pattern of NEGATIVE_PATTERNS) {
     if (pattern.test(combined)) {
       score -= 10;
+    }
+  }
+  for (const pattern of STRONG_NEGATIVE_PATTERNS) {
+    if (pattern.test(combined)) {
+      score -= 25;
     }
   }
 

@@ -10,7 +10,7 @@ Opportunity Facts is release-gated by repository tests, deterministic public art
 | Domain truthfulness | Centralized all 59 fields and 13 core dimensions; enforced review scope, `not_applicable` reasons, source inventory reuse, review/version invalidation, calculated-claim arithmetic, cost completeness, and organizer-stated acceptance-rate attribution. | Schema, normalization, builder, analysis, and data-validation regressions. |
 | Heterogeneous real-card fidelity | Added schema `2.0.0` atomic claims, explicit assessment states, scoped organizations/variants/stages/pathways/costs/outcomes, deterministic flat-fact projections, and conservative V1 migration. The three reviewed cards no longer flatten the nine reality-test distinctions. | `schema-v2`, canonical-card population, serialization, registry, and structured desktop/mobile browser regressions; full disposition in `REALITY_STRESS_TEST_RESOLUTION.md`. |
 | URL and SSRF boundaries | Added shared literal-host screening plus server DNS validation, address pinning, redirect revalidation, same-origin discovery limits, Azure platform-service blocking, and sensitive query/fragment rejection. | Security tests cover IPv4/IPv6/mapped forms, metadata/local/service addresses, mixed DNS, redirects, byte/time/content bounds, fragments, and pinned transport behavior. |
-| Automated extraction | Bounded and fairly distributed model input, 45-second/no-retry SDK configuration, cancellation, hostile-output sanitization, exact excerpt matching, durable coverage limitations, neutral summaries/slugs, and no automatic acceptance-rate inference. | Analysis integration tests include hostile notes, unsupported calculations, empty HTML shells, currency ambiguity, evidence mismatch, and model-attribution repair. |
+| Automated extraction | Provider-compatible strict output, bounded/fair model input, 120-second low-reasoning/no-retry configuration, cancellation, hostile-output sanitization, exact excerpts, typed semantic checks, family-level salvage, conservative cycle/scope handling, durable coverage limitations, neutral summaries/slugs, and no automatic acceptance-rate inference. | Analysis integration tests include strict-schema budgets, hostile notes, unsupported calculations, empty shells, currency/date/enum mismatches, relationship/scope confusion, incomplete prize matrices, and structured-family salvage. |
 | Publication and local drafts | Drafts are excluded from public export; public states and artifact parity fail closed at validation/build and runtime load. Local writes roll back on partial failure. Imported drafts cannot create dead public links or duplicate comparison columns. | Temporary-repository artifact tests, runtime dataset tests, browser import/persistence flows, and `build` running `validate:data` first. |
 | UX, accessibility, and layout | Repaired heading order, focus indicators, contrast, semantic lists, live results, keyboard disclosures, comparison containment, builder state synchronization, and populated-builder mobile overflow. | Playwright runs both 1440×900 and 390×844 projects, axe checks primary/expanded states, print checks, and a desktop-to-390 resize regression. |
 
@@ -27,7 +27,7 @@ Opportunity Facts is release-gated by repository tests, deterministic public art
 | --- | --- |
 | `npm run lint` | Pass |
 | `npm run typecheck` | Pass |
-| `npm test` | 22 files, 190 tests passed |
+| `npm test` | 23 files, 196 tests passed |
 | `npm run export:data` | Exported 10 cards (7 demo, 3 human reviewed) and the JSON Schema |
 | `npm run validate:data` | 10 public cards (7 demo), 0 drafts, both artifacts valid and current |
 | `npm run test:e2e` | 84 total: 80 passed, 4 intentional project-inapplicable skips, 0 failed |
@@ -38,6 +38,8 @@ Opportunity Facts is release-gated by repository tests, deterministic public art
 | Production security | Strict CSP without `unsafe-eval`, nosniff, referrer, frame, COOP, permissions, HSTS, and analysis `no-store`; no API-key identifier or key-shaped value in client static bundles |
 | Research publication | All 7 public research files are SHA-256 identical to their source copies; templates remain empty/not-run and the site says “Study not yet published” |
 | First real-card render | TechRise, Lumiere, and Diamond passed expanded-evidence inspection at 1440×900 and 390×844 with exact viewport-width documents, Human reviewed badges, no demo markers, and no console warnings/errors |
+| Live extraction benchmark | Production-path smoke and three final development runs completed on exact model `gpt-5.6-terra`; 52/54 supported claims and 70/72 evidence attachments were semantically correct, with zero known critical misleading claims after validation |
+| Analyzer state audit | Pre-run, loading, provider failure, successful partial-source draft, explicit non-human-review warning, and expanded evidence inspected at 1440×900 and 390×844 without horizontal overflow; the intentional mocked 502 produced only the expected browser failed-resource diagnostic |
 
 Verification ran locally on Windows 11 Home with Node.js 25.2.1, npm 11.6.2, Next.js 16.3.0, and Playwright 1.58.2. The final production process used `next start` on `127.0.0.1:4410` solely for local verification.
 
@@ -45,7 +47,7 @@ Verification ran locally on Windows 11 Home with Node.js 25.2.1, npm 11.6.2, Nex
 
 - The repository now contains three real cards completed through line-by-line human source review plus seven visibly fictional demo cards. Additional real cards still require the same checklist and independent evidence review.
 - Schema V2 is grounded in those three reviewed cards. The age-band limitation remains a non-gating P2; broader ontologies, workflow engines, generalized recurrence, and currency conversion remain intentionally out of scope until evidence justifies them.
-- No live OpenAI request was made because no API key was supplied. Model behavior is covered by deterministic mocks and adversarial post-processing tests, not a provider smoke call.
+- Live OpenAI Responses requests were made only for the controlled three-card development benchmark. The exact model, settings, acquired pages, usage, drafts, warnings, and human semantic ledgers are preserved under `research/extraction-benchmark/`; no key or authorization header is retained.
 - Nothing was deployed. Aggregate rate limiting, concurrency/spend caps, outbound egress controls, provider/host log retention, and secret governance remain deployment responsibilities.
-- No study or benchmark result is claimed. Protocols and empty templates are ready for consented research.
+- No comprehension/user study result is claimed. The extraction report is a tuned three-card development benchmark, not independent validation or generalization accuracy.
 - Non-gating P2 boundaries: the compact builder directly edits the first repeated atomic subclaim while preserving and labeling imported tails; Diamond topical-prize names remain omitted until exact excerpts are reviewed; natural-language numbers and abbreviated dates are intentionally conservative in automated extraction; and age-band structure remains deferred until a broader reviewed sample justifies it.

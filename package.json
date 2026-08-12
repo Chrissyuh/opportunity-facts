@@ -13,7 +13,9 @@
     "test:e2e": "playwright test",
     "validate:data": "tsx scripts/validate-data.ts",
     "create:card": "tsx scripts/create-card.ts",
-    "export:data": "tsx scripts/export-public-data.ts"
+    "export:data": "tsx scripts/export-public-data.ts",
+    "benchmark:extract": "tsx --conditions=react-server scripts/run-extraction-benchmark.ts",
+    "benchmark:score": "tsx scripts/score-extraction-benchmark.ts"
   },
   "dependencies": {
     "cheerio": "^1.1.2",

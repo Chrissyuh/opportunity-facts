@@ -176,7 +176,7 @@ Identity-only transfer is intentionally conservative: a server that ignores `Acc
 - Use one bounded extraction task with a fixed strict structured output; do not give the model network, file, shell, credential, or arbitrary tool access.
 - Send at most 120,000 aggregate characters of extracted source text and request at most 24,000 output tokens. The server uses `OPENAI_MODEL` when configured and otherwise the code's versioned default.
 - Divide the model-input budget across every acquired page before redistributing unused capacity; expose per-page model truncation in the analysis record.
-- Give model requests a 45-second SDK timeout, disable automatic retries, and propagate request cancellation to fetch and model work.
+- Give model requests a 120-second SDK timeout, use low reasoning effort, disable automatic retries, and propagate request cancellation to fetch and model work. The live development benchmark showed that the prior 45-second bound returned no drafts for the production V2 contract.
 - Treat automatically fetched, discovered, and pasted pages as `user_supplied`; topical URL/link terms never prove an `official_*` provenance category.
 - Instruct the model to extract only registered fields, preserve uncertainty/conflicts, and refuse legitimacy/value judgments.
 - Parse model output through the authoritative schema and allowed registry statuses.

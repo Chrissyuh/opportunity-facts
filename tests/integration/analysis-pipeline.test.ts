@@ -16,6 +16,7 @@ import { analyzePastedSources } from "@/lib/analysis/pipeline";
 import {
   createEmptyFacts,
   factSchema,
+  opportunityCardSchema,
   type EvidenceSource,
 } from "@/lib/opportunity/schema";
 
@@ -321,8 +322,46 @@ describe("analysis pipeline", () => {
       expect.any(Array),
       expect.objectContaining({ signal: controller.signal }),
     );
-    expect(MODEL_REQUEST_TIMEOUT_MS).toBe(45_000);
+    expect(MODEL_REQUEST_TIMEOUT_MS).toBe(120_000);
     expect(MODEL_MAX_RETRIES).toBe(0);
+  });
+
+  it("recovers an internally inconsistent model fact without weakening the card schema", async () => {
+    const source: AnalysisSourceContext = {
+      accessedAt: "2026-08-11T18:00:00.000Z",
+      page: {
+        id: "page-inconsistent-fact",
+        url: "https://inconsistent-fixture.example/program",
+        title: "Program page",
+        pageType: "user_supplied",
+        trust: "untrusted_source_text",
+        text: "Tuition does not apply to this free program.",
+        blocks: [],
+        links: [],
+        truncated: false,
+      },
+    };
+    const facts = createEmptyFacts();
+    facts.tuition = {
+      ...factSchema.parse({ status: "not_applicable", note: "The program is free." }),
+      value: "USD 0",
+      displayValue: "$0",
+      sources: [evidence(source, "Tuition does not apply to this free program.")],
+      claimKind: "source_stated",
+    };
+
+    const result = await extractOpportunityCard(
+      [source],
+      async () => ({ facts, structures: createEmptyModelStructures() }),
+    );
+
+    expect(result.card.facts.tuition).toMatchObject({
+      status: "unclear",
+      value: null,
+      displayValue: null,
+      sources: [],
+    });
+    expect(opportunityCardSchema.safeParse(result.card).success).toBe(true);
   });
 
   it("keeps source-backed project funding out of participant cash in automated v2 drafts", async () => {
@@ -623,6 +662,177 @@ describe("analysis pipeline", () => {
         expect.objectContaining({ fieldId: "structured.institutionRelationships" }),
       ]),
     );
+  });
+
+  it("withholds common context and scope confusions instead of displaying them as facts", async () => {
+    const source: AnalysisSourceContext = {
+      accessedAt: "2026-08-12T12:00:00.000Z",
+      page: {
+        id: "page-context-confusions",
+        url: "https://context-fixture.example/program",
+        title: "Program details",
+        pageType: "user_supplied",
+        trust: "untrusted_source_text",
+        text: [
+          "The challenge is administered by Example Administrator.",
+          "The agency's program at its research center in Edwards, California coordinates the challenge.",
+          "The Sponsor reserves the right to cancel, amend, or suspend the Challenge.",
+          "Classroom submissions may be displayed to the educator and other students.",
+          "By serving in a volunteer role including judging and mentoring, volunteers agree to confidentiality.",
+          "Example Education enables high school and middle school students to write papers.",
+          "Summer Cohort starts June 1, 2026 and lasts 12 weeks.",
+          "Awards are given to the top three teams in both tracks. 1st Place: $12,000.",
+        ].join(" "),
+        blocks: [],
+        links: [],
+        truncated: false,
+      },
+    };
+    const facts = createEmptyFacts();
+    const supportedFact = (value: string | string[] | number, displayValue: string, excerpt: string) =>
+      factSchema.parse({
+        status: "disclosed",
+        value,
+        displayValue,
+        sources: [evidence(source, excerpt)],
+        claimKind: "source_stated",
+      });
+    facts.operating_organization = supportedFact(
+      "Example Administrator",
+      "Example Administrator",
+      "administered by Example Administrator",
+    );
+    facts.location = supportedFact(
+      "Edwards, California",
+      "Edwards, California",
+      "agency's program at its research center in Edwards, California",
+    );
+    facts.cancellation_policy = supportedFact(
+      "Sponsor may cancel the challenge",
+      "Sponsor may cancel the challenge",
+      "The Sponsor reserves the right to cancel, amend, or suspend the Challenge",
+    );
+    facts.data_sharing = supportedFact(
+      "Shared with classroom users and service providers",
+      "Classroom users and service providers",
+      "Classroom submissions may be displayed to the educator and other students",
+    );
+    facts.mentorship = supportedFact(
+      "Volunteer judging and mentoring roles",
+      "Mentoring referenced",
+      "By serving in a volunteer role including judging and mentoring",
+    );
+    facts.grade_levels = supportedFact(
+      ["Middle school", "High school"],
+      "Middle and high school",
+      "Example Education enables high school and middle school students to write papers",
+    );
+    facts.start_date = supportedFact(
+      "2026-06-01",
+      "June 1, 2026",
+      "Summer Cohort starts June 1, 2026",
+    );
+    facts.duration = supportedFact(
+      "12 weeks",
+      "12 weeks",
+      "Summer Cohort starts June 1, 2026 and lasts 12 weeks",
+    );
+    facts.cash_award = supportedFact(
+      12000,
+      "1st Place — $12,000/team",
+      "Awards are given to the top three teams in both tracks. 1st Place: $12,000",
+    );
+
+    const structures = createEmptyModelStructures();
+    structures.outcomes = {
+      status: "modeled",
+      note: null,
+      records: [{
+        id: "first-place-only",
+        definition: structuredAssertion(
+          source,
+          "first-place-definition",
+          { label: "First place", outcomeType: "team_cash_prize", scope: { variantIds: [], stageIds: [], pathwayIds: [] } },
+          "First place",
+          "Awards are given to the top three teams in both tracks. 1st Place: $12,000",
+        ),
+        recipientScope: structuredAssertion(
+          source,
+          "first-place-recipient",
+          "team",
+          "Team",
+          "Awards are given to the top three teams in both tracks",
+        ),
+        monetaryNature: null,
+        amount: structuredAssertion(
+          source,
+          "first-place-amount",
+          { kind: "exact", amount: 12000, currency: "USD" },
+          "$12,000",
+          "1st Place: $12,000",
+        ),
+        distribution: null, rank: null, track: null, quantity: null,
+        useRestriction: null, combinability: null, conditions: [],
+      }],
+    };
+
+    const result = await extractOpportunityCard([source], async () => ({
+      facts,
+      structures,
+    }));
+
+    for (const fieldId of [
+      "operating_organization", "location", "cancellation_policy", "data_sharing",
+      "mentorship", "grade_levels", "start_date", "duration", "cash_award",
+    ] as const) {
+      expect(result.card.facts[fieldId].status, fieldId).toBe("unclear");
+      expect(result.card.facts[fieldId].sources.length, fieldId).toBeGreaterThan(0);
+    }
+    expect(result.card.outcomes.status).toBe("unassessed");
+  });
+
+  it("salvages independent structured families when one family has invalid references", async () => {
+    const source: AnalysisSourceContext = {
+      accessedAt: "2026-08-12T12:00:00.000Z",
+      page: {
+        id: "page-salvage",
+        url: "https://salvage-fixture.example/program",
+        title: "Program",
+        pageType: "user_supplied",
+        trust: "untrusted_source_text",
+        text: "Example Learning is an education provider. Operated by Example Learning. Applicants submit an application.",
+        blocks: [], links: [], truncated: false,
+      },
+    };
+    const structures = createEmptyModelStructures();
+    structures.organizations = {
+      status: "modeled", note: null, records: [{
+        id: "example-learning",
+        name: structuredAssertion(source, "org-name", "Example Learning", "Example Learning", "Operated by Example Learning"),
+        kind: structuredAssertion(source, "org-kind", "education_provider", "Education provider", "Example Learning is an education provider"),
+      }],
+    };
+    structures.organizationRoles = {
+      status: "modeled", note: null, records: [{
+        id: "missing-role",
+        organizationId: "missing-organization",
+        role: structuredAssertion(
+          source,
+          "missing-role-claim",
+          { role: "operator", roleLabel: null, scope: { variantIds: [], stageIds: [], pathwayIds: [] } },
+          "Operator",
+          "Operated by Example Learning",
+        ),
+      }],
+    };
+
+    const result = await extractOpportunityCard([source], async () => ({
+      facts: createEmptyFacts(), structures,
+    }));
+
+    expect(result.card.organizations.status).toBe("modeled");
+    expect(result.card.organizations.records).toHaveLength(1);
+    expect(result.card.organizationRoles.status).toBe("unassessed");
   });
 
   it("requires server configuration for the production model extractor", () => {

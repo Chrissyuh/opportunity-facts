@@ -210,6 +210,19 @@ export function typedClaimSchema<T extends z.ZodType>(valueSchema: T) {
 }
 
 export function assertionSchema<T extends z.ZodType>(valueSchema: T) {
+  // Assertions cannot be conflicting, but the model-facing schema still needs
+  // a concrete item shape. `z.never()` serializes as JSON Schema `not`, which
+  // strict OpenAI Structured Outputs rejects before making a request. A typed
+  // candidate array capped at zero preserves the exact runtime invariant
+  // without emitting unsupported schema keywords.
+  const impossibleCandidateSchema = z.strictObject({
+    value: valueSchema,
+    displayValue: z.string().trim().min(1).max(1_000),
+    claimKind: sourceClaimKindSchema,
+    sources: z.array(evidenceSourceSchema).min(1),
+    note: nullableNoteSchema,
+  });
+
   return z.strictObject({
     claimId: claimIdSchema,
     status: z.literal("disclosed"),
@@ -218,7 +231,7 @@ export function assertionSchema<T extends z.ZodType>(valueSchema: T) {
     claimKind: sourceClaimKindSchema,
     sources: z.array(evidenceSourceSchema).min(1),
     note: nullableNoteSchema,
-    conflictingValues: z.array(z.never()).max(0).default([]),
+    conflictingValues: z.array(impossibleCandidateSchema).max(0).default([]),
   });
 }
 

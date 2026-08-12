@@ -286,7 +286,7 @@ export function AnalysisWorkbench({
         <section className="analysis-result" aria-labelledby="analysis-result-title">
           <div className="analysis-result-heading">
             <div>
-              <p className="eyebrow">Draft ready · Source evidence validated</p>
+              <p className="eyebrow">Draft ready · Automated evidence checks complete</p>
               <h2 id="analysis-result-title">Inspect and correct the draft.</h2>
             </div>
             <div className="button-row no-print">
@@ -296,6 +296,9 @@ export function AnalysisWorkbench({
             </div>
           </div>
           <p className="action-message" role="status" aria-live="polite">{localMessage}</p>
+          <div className="notice">
+            <strong>This is not human reviewed.</strong> Automatic checks confirm that retained excerpts exist in the fetched text; they do not prove that every interpretation or scope is correct. Missing or inaccessible pages can cause omissions. Check the source identity, meaning, and attachment of every claim before changing the review state. This analysis does not establish truth, legitimacy, prestige, quality, or value.
+          </div>
           <div className="reviewed-page-list">
             <h3>Pages fetched for review</h3>
             <ol>
