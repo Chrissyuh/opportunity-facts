@@ -35,10 +35,48 @@ const BENCHMARKS = {
     label: "Diamond Challenge — 2027",
     url: "https://diamondchallenge.org/competition/",
   },
+  "congressional-app-challenge-2026": {
+    label: "Congressional App Challenge — 2026",
+    url: "https://www.congressionalappchallenge.us/students/rules/",
+  },
+  "coca-cola-scholars-program-2027": {
+    label: "Coca-Cola Scholars Program — 2027",
+    url: "https://www.coca-colascholarsfoundation.org/apply/",
+  },
+  "yale-young-global-scholars-summer-2027": {
+    label: "Yale Young Global Scholars — Summer 2027",
+    url: "https://globalscholars.yale.edu/",
+  },
+  "polygence-core-program-fall-2026": {
+    label: "Polygence Core Program — Fall 2026 entry",
+    url: "https://www.polygence.org/core-program",
+  },
+  "mites-summer-2027": {
+    label: "MITES Summer — 2027",
+    url: "https://mites.mit.edu/discover-mites/mites-summer/",
+  },
+  "breakthrough-junior-challenge-2026": {
+    label: "Breakthrough Junior Challenge — 2026",
+    url: "https://breakthroughjuniorchallenge.org/",
+  },
+  "questbridge-national-college-match-2026": {
+    label: "QuestBridge National College Match — 2026 / Fall 2027",
+    url: "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+  },
 } as const;
 
 type BenchmarkSlug = keyof typeof BENCHMARKS;
-type BenchmarkStage = "baseline" | "post-fix";
+type BenchmarkStage = "baseline" | "post-fix" | "evaluation";
+
+const EVALUATION_SLUGS = new Set<BenchmarkSlug>([
+  "congressional-app-challenge-2026",
+  "coca-cola-scholars-program-2027",
+  "yale-young-global-scholars-summer-2027",
+  "polygence-core-program-fall-2026",
+  "mites-summer-2027",
+  "breakthrough-junior-challenge-2026",
+  "questbridge-national-college-match-2026",
+]);
 
 const SENSITIVE_VALUE_PATTERN = /sk-[A-Za-z0-9_-]+/gu;
 
@@ -106,8 +144,8 @@ function repositoryCodeHash() {
 
 function parseArguments() {
   const [stageInput, slugInput, runInput = "1"] = process.argv.slice(2);
-  if (stageInput !== "baseline" && stageInput !== "post-fix") {
-    throw new Error("Stage must be baseline or post-fix.");
+  if (stageInput !== "baseline" && stageInput !== "post-fix" && stageInput !== "evaluation") {
+    throw new Error("Stage must be baseline, post-fix, or evaluation.");
   }
   if (!(slugInput in BENCHMARKS)) {
     throw new Error(`Unknown benchmark slug: ${slugInput ?? "(missing)"}.`);
@@ -115,6 +153,12 @@ function parseArguments() {
   const run = Number(runInput);
   if (!Number.isInteger(run) || run < 1 || run > 3) {
     throw new Error("Run number must be an integer from 1 through 3.");
+  }
+  if (stageInput === "evaluation" && run !== 1) {
+    throw new Error("The frozen out-of-sample evaluation permits exactly run 1.");
+  }
+  if (stageInput === "evaluation" && !EVALUATION_SLUGS.has(slugInput as BenchmarkSlug)) {
+    throw new Error("Development-set programs cannot be run as out-of-sample evaluation cases.");
   }
   return {
     stage: stageInput as BenchmarkStage,
@@ -151,12 +195,19 @@ async function main() {
 
   const benchmark = BENCHMARKS[slug];
   const model = process.env.OPENAI_MODEL?.trim() || DEFAULT_OPENAI_MODEL;
-  const outputPath = join(
-    "research",
-    "extraction-benchmark",
-    stage,
-    `${slug}-run-${String(run).padStart(2, "0")}.json`,
-  );
+  const outputPath = stage === "evaluation"
+    ? join(
+        "research",
+        "extraction-evaluation",
+        "first-pass",
+        `${slug}-run-${String(run).padStart(2, "0")}.json`,
+      )
+    : join(
+        "research",
+        "extraction-benchmark",
+        stage,
+        `${slug}-run-${String(run).padStart(2, "0")}.json`,
+      );
   const startedAt = new Date();
   const capture: {
     modelStartedAt: Date | null;
@@ -206,7 +257,7 @@ async function main() {
   const artifact = {
   artifactVersion: 1,
   benchmarkStage: stage,
-  developmentSet: true,
+  developmentSet: stage !== "evaluation",
   run,
   program: { slug, label: benchmark.label },
   repository: {
