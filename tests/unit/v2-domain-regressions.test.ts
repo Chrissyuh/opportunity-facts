@@ -108,6 +108,14 @@ function cardWithCosts(slug: string, records: CostItemRecord[]): OpportunityCard
   return opportunityCardSchema.parse(applyOpportunityProjections(card));
 }
 
+it("labels a scholarship-conditioned price as conditional rather than cohort variation", () => {
+  const card = cardWithCosts("conditional-tuition", [
+    costItem("scholarship-adjusted-tuition", "tuition", "conditional", 1000),
+  ]);
+  expect(card.facts.tuition.status).toBe("disclosed");
+  expect(card.facts.tuition.displayValue).toBe("Conditional — see cost details");
+});
+
 function outcome(
   id: string,
   outcomeType: "personal_cash_prize" | "tuition_waiver" | "equipment",

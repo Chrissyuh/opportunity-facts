@@ -115,8 +115,8 @@ Do not put participant, applicant, or other unnecessary personal information in 
 - [ ] Legitimate tier/track/stage/path differences render as a matrix/list with no false scalar normalization.
 - [ ] Same-scope incompatible values remain conflicts rather than being treated as scoped alternatives.
 - [ ] `npm run validate:data` reports no deterministic projection drift.
-- [ ] The meter headline is `X of 13 core areas assessed` (`13 of 13 core areas assessed` when complete), reporting assessment coverage rather than disclosure success or quality.
-- [ ] Detail begins `X of Y applicable disclosed`, then includes each nonzero status count in order: not found, unclear, conflicting, not applicable, and unassessed.
+- [ ] The meter headline is `X of Y applicable core facts disclosed`, not a percentage, rating, or trust score.
+- [ ] Detail begins `X of 13 core areas assessed`, then includes each nonzero status count in order: not found, unclear, conflicting, not applicable, and unassessed.
 - [ ] `not_applicable` is excluded from the applicable count; draft-unassessed is separate from `not_found`.
 
 ## 9. Terms, conflicts, and uncertainty

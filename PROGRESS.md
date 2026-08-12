@@ -20,15 +20,16 @@
 - [x] Hardened the production Responses extraction contract, link ranking, semantic validation, structured-family salvage, cycle/scope uncertainty, and prize-matrix handling. Final development-set drafts had 52/54 supported-claim precision, 70/72 semantic evidence correctness, and zero known critical misleading claims; full denominators are in `EXTRACTION_BENCHMARK_POST_FIX.md`.
 - [x] Froze `evaluation-v2-frozen`, preregistered seven structurally diverse opportunities before inference, completed and committed all seven independent human-reviewed V2 cards, and preserved exactly one production-path extraction result per card without tuning or replacement runs.
 - [x] Published the honest out-of-sample evaluation: 82/154 ground-truth claim precision, 188/203 semantic evidence correctness, 16/82 structured recall, four critical misleading claims, and a 462-item correction ledger. The public library now contains ten real reviewed cards plus seven fictional demos.
+- [x] Completed post-evaluation extraction hardening without changing the frozen evaluation: subject/scope validation, first-class cycle resolution, sibling-program isolation, bounded three-family Responses extraction, safe partial completion, static reveal-shell/Schema.org acquisition, clearer draft UX, and a private one-run Lumos judge-path acceptance check with zero critical misleading claims after deterministic validation.
 
 ## Final verification
 
 - [x] `npm run lint`
 - [x] `npm run typecheck`
-- [x] `npm test` — 24 files / 203 tests passed
+- [x] `npm test` — 27 files / 234 tests passed
 - [x] `npm run export:data` — 17 cards (7 demo, 10 human reviewed) and JSON Schema exported
 - [x] `npm run validate:data` — 17 public cards (7 demo), 0 drafts, both artifacts current
-- [x] `npm run test:e2e` — 80 passed, 4 intentional project-inapplicable skips, 0 failed
+- [x] `npm run test:e2e` — 82 passed, 4 intentional project-inapplicable skips, 0 failed
 - [x] `npm run build` — fail-closed data validation plus 30 generated pages
 - [x] Homepage, all three real cards with expanded structured details, three-way comparison, populated V2 builder, and methodology inspected at 1440×900 and 390×844 — exact viewport width, one `h1`, and no console warnings/errors
 - [x] `npm audit --audit-level=high` — 0 vulnerabilities
@@ -49,7 +50,7 @@
 - [ ] Treat age-band representation as the documented non-gating P2 unless a broader reviewed sample demonstrates that a dedicated structured age model is warranted.
 - [x] Run one configured production-path provider smoke test with `gpt-5.6-terra`, strict structured output, `store: false`, and deterministic post-validation.
 - [x] Run the separate preregistered seven-card out-of-sample phase without tuning on its primary results; do not describe seven programs as population-level accuracy.
-- [ ] Repair the generalizable subject/scope, wrong-cycle count, invalid-structured-response, cycle omission, and structured-recall failures on a separate development fixture set before any unattended extraction claim.
+- [x] Repair the generalizable subject/scope, wrong-cycle count, invalid-structured-response, cycle omission, and structured-recall failures on a separate development fixture set before any unattended extraction claim.
 - [ ] Deploy only when a target is requested, then verify platform egress, rate/concurrency/spend controls, logs, secrets, headers, and both configured/keyless paths in that environment.
 - [ ] Conduct consented comprehension and extraction studies before publishing any result; public copy correctly remains “Study not yet published.”
 - [ ] Consider the non-gating P2 hardening backlog in `QUALITY.md` after real-data and deployment work establishes priority.

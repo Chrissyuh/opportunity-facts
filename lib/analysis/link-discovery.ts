@@ -10,6 +10,10 @@ import {
   normalizedOrigin,
   parsePublicHttpUrl,
 } from "./url-safety";
+import {
+  looksLikeDifferentNamedOpportunity,
+  targetIdentityHint,
+} from "./source-relevance";
 
 export const MAX_DISCOVERED_PAGES = 6;
 
@@ -219,6 +223,7 @@ function canonicalResourceKey(url: URL): string {
 
 export interface RankSameOriginLinksOptions {
   readonly maxPages?: number;
+  readonly targetTitle?: string;
 }
 
 export function rankSameOriginLinks(
@@ -229,6 +234,7 @@ export function rankSameOriginLinks(
   const baseUrl = withoutFragment(parsePublicHttpUrl(submittedPageUrl));
   const baseResourceKey = canonicalResourceKey(baseUrl);
   const requestedMaximum = options.maxPages ?? MAX_DISCOVERED_PAGES;
+  const targetIdentity = targetIdentityHint(options.targetTitle ?? "", baseUrl.href);
   const maximum = Math.max(
     0,
     Math.min(
@@ -263,14 +269,36 @@ export function rankSameOriginLinks(
     }
 
     const classification = classify(link.text, url);
-    if (classification.score <= 0) {
+    const candidateIdentity = targetIdentityHint(link.text, url.href);
+    const identityOverlap = candidateIdentity.tokens.filter((token) =>
+      targetIdentity.tokens.includes(token),
+    ).length;
+    const siblingPathPenalty =
+      targetIdentity.pathIdentity !== null &&
+      candidateIdentity.pathIdentity !== null &&
+      candidateIdentity.pathIdentity !== targetIdentity.pathIdentity
+        ? 35
+        : 0;
+    if (
+      options.targetTitle &&
+      identityOverlap === 0 &&
+      looksLikeDifferentNamedOpportunity(link.text, targetIdentity.tokens)
+    ) {
+      return;
+    }
+    if (siblingPathPenalty > 0 && identityOverlap === 0) {
+      return;
+    }
+    const identityScore = identityOverlap * 5 - siblingPathPenalty;
+    const adjustedScore = classification.score + identityScore;
+    if (adjustedScore <= 0) {
       return;
     }
 
     const candidate = {
       url: url.href,
       text: link.text,
-      score: classification.score,
+      score: adjustedScore,
       topic: classification.topic,
       documentOrder,
     } as const;

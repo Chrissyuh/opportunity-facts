@@ -17,6 +17,7 @@ export const DEFAULT_MAX_EXTRACTED_CHARACTERS = 200_000;
 export const MAX_EXTRACTED_LINKS = 500;
 export const MAX_SOURCE_INPUT_CHARACTERS = 2_000_000;
 export const MAX_SOURCE_TITLE_CHARACTERS = 240;
+export const MAX_STRUCTURED_METADATA_CHARACTERS = 50_000;
 
 const HIDDEN_NAME_PATTERN =
   /(?:^|\s)(?:d-none|hidden|invisible|offscreen|screen-reader|sr-only|visually-hidden)(?:$|\s)/iu;
@@ -24,6 +25,10 @@ const COOKIE_UI_PATTERN =
   /(?:^|[-_\s])(?:cookie|gdpr|consent)[-_\s]*(?:banner|dialog|modal|notice|popup|preferences?)(?:$|[-_\s])/iu;
 const INLINE_HIDDEN_PATTERN =
   /(?:display\s*:\s*none|visibility\s*:\s*hidden|opacity\s*:\s*(?:0+(?:\.0*)?|\.0+)(?:\s*!important)?\s*(?:;|$)|content-visibility\s*:\s*hidden)/iu;
+const NON_OPACITY_HIDDEN_PATTERN =
+  /(?:display\s*:\s*none|visibility\s*:\s*hidden|content-visibility\s*:\s*hidden)/iu;
+const INITIAL_REVEAL_TRANSFORM_PATTERN =
+  /transform\s*:\s*translate(?:3d|x|y)?\s*\([^;)]{1,80}\)/iu;
 const HIDDEN_CSS_DECLARATION =
   /(?:display\s*:\s*none|visibility\s*:\s*hidden|opacity\s*:\s*(?:0+(?:\.0*)?|\.0+)(?:\s*!important)?\s*(?:;|$)|content-visibility\s*:\s*hidden)/iu;
 
@@ -75,7 +80,23 @@ function removeHiddenAndExecutableContent($: CheerioAPI): void {
     }
   });
   $("[style]").each((_index, element) => {
-    if (INLINE_HIDDEN_PATTERN.test($(element).attr("style") ?? "")) {
+    const node = $(element);
+    const style = node.attr("style") ?? "";
+    const tagName = element.type === "tag" ? element.name.toLowerCase() : "";
+    const isPrimaryContentContainer =
+      tagName === "main" ||
+      tagName === "article" ||
+      (node.attr("role") ?? "").toLowerCase() === "main" ||
+      node.parent().is("main, article, [role='main']") ||
+      node.find("footer, nav").length > 0;
+    // Some SSR frameworks ship real primary content at opacity 0 with an
+    // initial transform, then reveal it during hydration. Preserve only that
+    // semantic top-level shell. Arbitrary opacity-hidden nodes stay excluded.
+    const isServerRenderedRevealShell =
+      isPrimaryContentContainer &&
+      !NON_OPACITY_HIDDEN_PATTERN.test(style) &&
+      INITIAL_REVEAL_TRANSFORM_PATTERN.test(style);
+    if (INLINE_HIDDEN_PATTERN.test(style) && !isServerRenderedRevealShell) {
       $(element).remove();
     }
   });
@@ -85,6 +106,69 @@ function removeHiddenAndExecutableContent($: CheerioAPI): void {
       $(element).remove();
     }
   });
+}
+
+function jsonLdTypes(value: unknown): readonly string[] {
+  if (typeof value === "string") return [value];
+  if (Array.isArray(value)) return value.filter((item): item is string => typeof item === "string");
+  return [];
+}
+
+function extractStructuredMetadataBlocks($: CheerioAPI): readonly ExtractedTextBlock[] {
+  const blocks: ExtractedTextBlock[] = [];
+  const seen = new Set<string>();
+  let usedCharacters = 0;
+  const push = (kind: ExtractedTextBlock["kind"], value: unknown) => {
+    if (typeof value !== "string") return;
+    const text = normalizeVisibleText(value);
+    const key = text.toLowerCase();
+    if (!text || seen.has(key)) return;
+    if (usedCharacters + text.length > MAX_STRUCTURED_METADATA_CHARACTERS) return;
+    seen.add(key);
+    usedCharacters += text.length;
+    blocks.push({ kind, text });
+  };
+  const visit = (value: unknown): void => {
+    if (Array.isArray(value)) {
+      value.forEach(visit);
+      return;
+    }
+    if (typeof value !== "object" || value === null) return;
+    const record = value as Record<string, unknown>;
+    if (Array.isArray(record["@graph"])) visit(record["@graph"]);
+    const types = jsonLdTypes(record["@type"]);
+    if (types.includes("FAQPage")) visit(record.mainEntity);
+    if (types.includes("Question")) {
+      push("heading", record.name);
+      visit(record.acceptedAnswer);
+    }
+    if (types.includes("Answer")) push("paragraph", record.text);
+    if (types.includes("Course")) {
+      push("heading", record.name);
+      push("paragraph", record.description);
+      push("definition", record.courseMode);
+      push("definition", record.duration);
+      push("definition", record.educationalLevel);
+      visit(record.provider);
+      visit(record.offers);
+    }
+    if (types.includes("Offer")) {
+      push("definition", record.price);
+      push("definition", record.priceCurrency);
+    }
+    if (types.includes("Organization")) push("definition", record.name);
+  };
+
+  $("script[type='application/ld+json']").slice(0, 20).each((_index, element) => {
+    const source = $(element).text();
+    if (!source || source.length > 250_000) return;
+    try {
+      visit(JSON.parse(source));
+    } catch {
+      // Malformed metadata is ignored; it never affects visible-page extraction.
+    }
+  });
+  return blocks;
 }
 
 function removeBoilerplate($: CheerioAPI): void {
@@ -352,6 +436,7 @@ export function extractHtmlPage(
   const maximumCharacters = validateMaximumCharacters(options.maxCharacters);
   const $ = load(html, { scriptingEnabled: false });
 
+  const structuredMetadataBlocks = extractStructuredMetadataBlocks($);
   removeHiddenAndExecutableContent($);
   const links = extractLinks($, url);
   removeBoilerplate($);
@@ -362,7 +447,12 @@ export function extractHtmlPage(
     0,
     MAX_SOURCE_TITLE_CHARACTERS,
   );
-  const capped = capBlocks(extractBlocks($, scope), maximumCharacters);
+  const visibleBlocks = extractBlocks($, scope);
+  const visibleText = new Set(visibleBlocks.map((block) => block.text.toLowerCase()));
+  const capped = capBlocks([
+    ...visibleBlocks,
+    ...structuredMetadataBlocks.filter((block) => !visibleText.has(block.text.toLowerCase())),
+  ], maximumCharacters);
 
   return {
     id: stablePageId(url.href),

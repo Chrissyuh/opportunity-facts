@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-import { buildModelTextFormat } from "@/lib/analysis/model-extraction";
+import {
+  buildModelStageTextFormats,
+  buildModelTextFormat,
+} from "@/lib/analysis/model-extraction";
 
 function inspectSchema(value: unknown) {
   let propertyCount = 0;
@@ -68,5 +71,17 @@ describe("model structured-output compatibility", () => {
     expect(limits.maximumDepth).toBeLessThanOrEqual(10);
     expect(limits.stringBudget).toBeLessThanOrEqual(120_000);
     expect([...limits.formats]).not.toContain("uri");
+  });
+
+  it("keeps every production family below the provider schema limits", () => {
+    for (const format of Object.values(buildModelStageTextFormats())) {
+      const limits = inspectSchema(format.schema);
+      expect(format.strict).toBe(true);
+      expect(JSON.stringify(format)).not.toContain('"not"');
+      expect(limits.propertyCount).toBeLessThanOrEqual(5_000);
+      expect(limits.maximumDepth).toBeLessThanOrEqual(10);
+      expect(limits.stringBudget).toBeLessThanOrEqual(120_000);
+      expect([...limits.formats]).not.toContain("uri");
+    }
   });
 });

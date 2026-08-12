@@ -44,8 +44,8 @@ test("homepage loads cleanly and opens the complete sample in one click", async 
   });
   await expect(page.getByRole("heading", { level: 1, name: "Lantern Bay Robotics Field Lab" })).toBeVisible();
   await expect(page.getByText("Demo data", { exact: true })).toHaveCount(1);
+  await expect(page.getByText(/of \d+ applicable core facts disclosed/)).toBeVisible();
   await expect(page.getByText(/of 13 core areas assessed/)).toBeVisible();
-  await expect(page.getByText(/of \d+ applicable disclosed/)).toBeVisible();
   await expect(page.getByLabel("Evidence status key")).toContainText("Disclosed");
   await expect(page.getByLabel("Evidence status key")).toContainText("Not found");
   await expect(page.getByLabel("Evidence status key")).toContainText("Unclear");
@@ -513,7 +513,13 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
           },
         ],
         pageWarnings: [],
-        evidenceWarnings: [],
+        evidenceWarnings: [
+          {
+            fieldId: "model.foundation",
+            sourceId: "program",
+            message: "The foundation extraction family did not complete; other sections were retained.",
+          },
+        ],
       }),
     });
   });
@@ -529,6 +535,8 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
   await expect(page.getByText("Draft ready", { exact: false })).toBeVisible();
   await expect(page.getByText("This is not human reviewed.", { exact: false })).toBeVisible();
   await expect(page.getByText("Missing or inaccessible pages can cause omissions.", { exact: false })).toBeVisible();
+  await expect(page.getByText("Part of the automated extraction did not complete.", { exact: false })).toBeVisible();
+  await expect(page.locator(".analysis-progress")).toHaveCSS("position", "static");
   await expect(page.getByRole("button", { name: "Save locally" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Edit in builder" })).toBeVisible();
   await expect(
@@ -540,6 +548,35 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
   await page.getByRole("button", { name: "Edit in builder" }).click();
   await expect(page).toHaveURL(/\/build$/);
   await expect(page.locator(".builder-preview").getByRole("heading", { level: 3, name: "Mocked Analysis Draft" })).toBeVisible();
+});
+
+test("a malformed configured-provider result leaves a professional recoverable state", async ({ page }) => {
+  await page.route("**/api/analyze", async (route) => {
+    if (route.request().method() === "GET") {
+      await route.fulfill({
+        contentType: "application/json",
+        status: 200,
+        body: JSON.stringify({ configured: true, model: "playwright-mocked-model" }),
+      });
+      return;
+    }
+    await route.fulfill({
+      contentType: "application/json",
+      status: 200,
+      body: JSON.stringify({
+        incompleteProviderResult: true,
+      }),
+    });
+  });
+
+  await page.goto("/analyze");
+  await page.getByLabel("Public opportunity URL").fill("https://program.example/current");
+  await page.getByRole("button", { name: "Start analysis" }).click();
+
+  const alert = page.locator(".error-summary");
+  await expect(alert).toContainText("Analysis did not complete.");
+  await expect(alert).toContainText("invalid facts-card response");
+  await expect(page.getByRole("button", { name: "Start analysis" })).toBeEnabled();
 });
 
 test("mobile navigation opens, closes through navigation, and avoids page overflow", async ({ page }, testInfo) => {

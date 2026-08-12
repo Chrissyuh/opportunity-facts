@@ -631,9 +631,14 @@ function projectCosts(
         }));
       }
     } else if (amounts.length === matching.length && uniqueAmounts.size > 0) {
-      const label = universal && uniqueAmounts.size === 1
-        ? amounts[0].amount.displayValue!
-        : "Varies by program/cohort";
+      const conditional = matching.some(
+        (cost) => cost.definition.value.requirement === "conditional",
+      );
+      const label = conditional
+        ? "Conditional — see cost details"
+        : universal && uniqueAmounts.size === 1
+          ? amounts[0].amount.displayValue!
+          : "Varies by program/cohort";
       setProjection(facts, refsByField, fieldId, disclosedProjection({
         value: label,
         displayValue: label,

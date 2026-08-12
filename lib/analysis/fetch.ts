@@ -624,7 +624,10 @@ export async function acquirePublicSourcePages(
   const candidates = rankSameOriginLinks(
     submittedFetched.url,
     submitted.extracted.links,
-    { maxPages: maxDiscoveredPages ?? MAX_DISCOVERED_PAGES },
+    {
+      maxPages: maxDiscoveredPages ?? MAX_DISCOVERED_PAGES,
+      targetTitle: submitted.extracted.title,
+    },
   );
   const discovered: AcquiredSourcePage[] = [];
   const failures: PageAcquisitionFailure[] = [];

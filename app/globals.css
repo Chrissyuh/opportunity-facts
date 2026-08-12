@@ -3090,6 +3090,10 @@ select[aria-invalid="true"] {
   padding: 1rem;
 }
 
+.analysis-layout[data-has-result="true"] .analysis-progress {
+  position: static;
+}
+
 .analysis-progress > ol {
   margin: 1rem 0 0;
   padding: 0;

@@ -123,7 +123,7 @@ The repair should occur before adding more heterogeneous real cards. The existin
 - **Frequency:** repeated across all three cards.
 - **Severity:** **P1**.
 - **Smallest robust fix:** report three numbers: assessed core fields, applicable core fields, and disclosed applicable core fields. Preserve the 13 dimensions; do not change which fields are core in this repair.
-- **Implemented display:** the meter leads with `X of 13 core areas assessed` (`13 of 13 core areas assessed` when complete); detail begins `X of Y applicable disclosed`, followed by nonzero not-found, unclear, conflicting, not-applicable, and unassessed counts.
+- **Current display:** the meter leads with `X of Y applicable core facts disclosed`; detail begins `X of 13 core areas assessed`, followed by nonzero not-found, unclear, conflicting, not-applicable, and unassessed counts.
 - **Migration impact:** low; no card-data migration, only registry/count/UI logic.
 - **Before more real cards?** Yes, because it affects every public comparison.
 

@@ -62,7 +62,7 @@ The 59-field map remains the stable renderer, search, import/export, and baselin
 - A mandatory-cost total is calculated only when `costItems.completeness` is `complete` and the required items are disclosed, compatible, same-currency, and unscoped. An incomplete ledger or conditional cost blocks a scalar calculation, and deposits credited toward tuition are not counted twice.
 - Restricted project funding is never projected as participant cash.
 
-The disclosure meter leads with `X of 13 core areas assessed` (`13 of 13 core areas assessed` on a fully assessed card). Its detail begins `X of Y applicable disclosed`, then appends nonzero `not found`, `unclear`, `conflicting`, `not applicable`, and `unassessed` counts in that order. It is not a trust or quality score, and `not_applicable` is excluded from the applicable denominator.
+The disclosure meter now leads with `X of Y applicable core facts disclosed`. Its detail begins `X of 13 core areas assessed`, then appends nonzero `not found`, `unclear`, `conflicting`, `not applicable`, and `unassessed` counts in that order. It is not a trust or quality score, and `not_applicable` is excluded from the applicable denominator.
 
 ## Disposition of the nine P1 findings
 
@@ -152,7 +152,7 @@ TechRise stores build funding, technical support, and the flight opportunity as 
 
 **Structures:** collection assessment states and builder-side unassessed flat fields distinguish “not reviewed yet” from `not_found` and `not_applicable`.
 
-**Metric behavior:** the headline is `X of 13 core areas assessed`, so each fully reviewed card leads with `13 of 13 core areas assessed`. The detail begins `X of Y applicable disclosed`, then appends nonzero not-found, unclear, conflicting, not-applicable, and draft-unassessed counts in that order. The following line says explicitly that the result is assessment coverage, not trust, quality, or independent verification. `not_applicable` reduces the applicable count; `not_found`, `unclear`, and `conflicting` remain assessed but are not disclosed.
+**Metric behavior:** the headline is `X of Y applicable core facts disclosed`. The detail begins `X of 13 core areas assessed`, then appends nonzero not-found, unclear, conflicting, not-applicable, and draft-unassessed counts in that order. The following line says explicitly that the result is disclosure/assessment coverage, not trust, quality, or independent verification. `not_applicable` reduces the applicable count; `not_found`, `unclear`, and `conflicting` remain assessed but are not disclosed.
 
 The current reviewed-card triples are: TechRise 13 assessed / 12 applicable / 6 disclosed; Lumiere 13 / 13 / 11; Diamond 13 / 13 / 10. These are transparent status counts, not comparative scores.
 

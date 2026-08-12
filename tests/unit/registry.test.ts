@@ -69,8 +69,8 @@ describe("field registry", () => {
       notApplicable: 0,
       unassessed: 0,
       total: 13,
-      label: "13 of 13 core areas assessed",
-      detailLabel: "1 of 13 applicable disclosed · 11 not found · 1 conflicting",
+      label: "1 of 13 applicable core facts disclosed",
+      detailLabel: "13 of 13 core areas assessed · 11 not found · 1 conflicting",
     });
 
     card.facts[CORE_FIELD_IDS[0]] = factSchema.parse({

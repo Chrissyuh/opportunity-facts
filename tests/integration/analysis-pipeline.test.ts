@@ -285,7 +285,7 @@ describe("analysis pipeline", () => {
         title: "Program page",
         url: "https://harbor-test.example/program",
         pageType: "user_supplied",
-        text: "Harbor Test Program. Application fee: $25. Tuition: $2,500 CAD. Published acceptance rate: 12%. Deposit label: FEE 25 USD. Conflicting code example: 25 USD CAD. Adding them gives $2,525 CAD.",
+        text: "Harbor Test Program. 2026 competition cycle. Application fee: $25. Tuition: $2,500 CAD. Published acceptance rate: 12%. Deposit label: FEE 25 USD. Conflicting code example: 25 USD CAD. Adding them gives $2,525 CAD.",
       }],
       { extractor },
     );

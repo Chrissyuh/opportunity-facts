@@ -94,8 +94,9 @@ The production fetch path is designed around the following defaults:
 | Extracted visible text | 200,000 characters per page by default |
 | Extracted links considered | 500 per page maximum |
 | Discovery scope | Submitted page plus at most 6 relevant same-origin pages |
-| Source-text characters sent in one model request | 120,000 aggregate maximum, excluding fixed instructions/metadata |
-| Model output | 24,000 tokens maximum |
+| Source-text characters sent in a summary request | 120,000 aggregate maximum, excluding fixed instructions/metadata |
+| Source-text characters sent in each structured-family request | 70,000 aggregate maximum selected from exact normalized blocks |
+| Model output | 12,000 summary, 14,000 foundation, and 16,000 detail tokens maximum |
 
 Relevant code is in `lib/analysis/url-safety.ts` and `lib/analysis/fetch.ts`. If a deployment changes these defaults, the deployed values and tests must be updated together. Per-call overrides are bounded by hard validation; an application route must not expose caller-controlled overrides.
 
@@ -173,8 +174,8 @@ Identity-only transfer is intentionally conservative: a server that ignores `Acc
 
 - Treat all extracted text as `untrusted_source_text`; visible and hidden prose never becomes a system/developer instruction.
 - Remove script, style, executable markup, repeated navigation, and identifiable boilerplate before model input, while assuming malicious instructions can remain in visible text.
-- Use one bounded extraction task with a fixed strict structured output; do not give the model network, file, shell, credential, or arbitrary tool access.
-- Send at most 120,000 aggregate characters of extracted source text and request at most 24,000 output tokens. The server uses `OPENAI_MODEL` when configured and otherwise the code's versioned default.
+- Use three bounded strict-output sections: flat summary facts, cycle/identity foundation, and process/cost/outcome details. Foundation and summary can run independently; details may reuse only the candidate foundation IDs and source-backed scopes. Do not give the model network, file, shell, credential, or arbitrary tool access.
+- Send at most 120,000 aggregate characters to the summary section and at most 70,000 exact normalized characters to each structured section. Request at most 12,000, 14,000, and 16,000 output tokens respectively. The server uses `OPENAI_MODEL` when configured and otherwise the code's versioned default.
 - Divide the model-input budget across every acquired page before redistributing unused capacity; expose per-page model truncation in the analysis record.
 - Give model requests a 120-second SDK timeout, use low reasoning effort, disable automatic retries, and propagate request cancellation to fetch and model work. The live development benchmark showed that the prior 45-second bound returned no drafts for the production V2 contract.
 - Treat automatically fetched, discovered, and pasted pages as `user_supplied`; topical URL/link terms never prove an `official_*` provenance category.
@@ -185,7 +186,7 @@ Identity-only transfer is intentionally conservative: a server that ignores `Acc
 
 **Residual risk:** Prompt injection is not “solved.” A model may misunderstand a matching passage, select an irrelevant real quotation, omit a material disclosure, or normalize incorrectly. Exact matching proves presence, not semantic entailment or real-world truth. Analysis output remains `draft` until a human performs source/value alignment review.
 
-Static Cheerio extraction cannot reproduce every browser layout, shadow DOM, client-rendered state, or computed-CSS visibility rule. Hidden-text removal is a bounded heuristic, not a browser-equivalence or sanitization proof. A fetched shell with no extractable visible text is identified in the result and converts absence claims to durable uncertainty. Other omissions remain possible; the pasted-source fallback and human evidence review remain necessary.
+Static Cheerio extraction cannot reproduce every browser layout, shadow DOM, client-rendered state, or computed-CSS visibility rule. Hidden-text removal is a bounded heuristic, not a browser-equivalence or sanitization proof. The extractor may read only allowlisted Course/FAQ fields from bounded, non-executable Schema.org JSON-LD; that publisher metadata is still hostile source text and receives the same evidence controls. A fetched shell with no extractable source text is identified in the result and converts absence claims to durable uncertainty. Other omissions remain possible; the pasted-source fallback and human evidence review remain necessary.
 
 ### T7. Fabricated, misattached, or conflicting evidence
 
@@ -201,7 +202,7 @@ Static Cheerio extraction cannot reproduce every browser layout, shadow DOM, cli
 
 **Controls:**
 
-- Parse remote HTML server-side only to extract text/links; never execute source scripts.
+- Parse remote HTML server-side only to extract text/links and bounded allowlisted Course/FAQ JSON-LD fields; never execute source scripts.
 - Never insert source HTML with `dangerouslySetInnerHTML`.
 - Render excerpts, titles, notes, and values through React text nodes, which escape markup by default.
 - Restrict source/card URLs to HTTP(S), validate imported JSON, and treat link text separately from destinations.
@@ -225,7 +226,7 @@ Static Cheerio extraction cannot reproduce every browser layout, shadow DOM, cli
 
 **Attack/failure:** Bundle `OPENAI_API_KEY` into client code, leak it in an error/log, accept a user-supplied key, or send undisclosed content to the provider.
 
-**Controls:** Import model integration only from server-only modules. Read `OPENAI_API_KEY` and `OPENAI_MODEL` on the server. Never use a `NEXT_PUBLIC_` name for a secret, serialize environment values into props, or return provider errors verbatim. The Responses request sets `store: false`, uses strict Zod-backed structured parsing, and gives the model no application tools. The no-key path remains functional and makes no model request.
+**Controls:** Import model integration only from server-only modules. Read `OPENAI_API_KEY` and `OPENAI_MODEL` on the server. Never use a `NEXT_PUBLIC_` name for a secret, serialize environment values into props, or return provider errors verbatim. Every Responses request sets `store: false`, uses strict Zod-backed structured parsing, and gives the model no application tools. The no-key path remains functional and makes no model request. A failed section is never retried automatically; independent completed sections may form a visibly partial draft.
 
 **Residual risk:** When configured, approved source text is sent to OpenAI and is subject to the account/provider's then-current processing and retention terms. This application cannot promise provider-side zero retention. Operators must review those terms/settings, disclose the transfer, minimize input, and rotate/revoke a key exposed in logs or bundles.
 
@@ -289,7 +290,7 @@ Deterministic tests should cover at least:
 - every redirect destination revalidated, including public-to-private and redirect loops;
 - timeout, header, declared length, streamed byte, content encoding, charset, and media-type failures;
 - discovery page/origin limits and irrelevant external links;
-- malicious HTML, scripts/styles/hidden content, empty client-rendered shells, and prompt-injection text;
+- malicious HTML, scripts/styles/hidden content, malformed/oversized JSON-LD, empty client-rendered shells, and prompt-injection text;
 - malformed structured output and missing API key behavior;
 - matching and nonmatching evidence, wrong-source/wrong-claim excerpts, conflicts, and calculations;
 - malicious/oversized imported JSON;

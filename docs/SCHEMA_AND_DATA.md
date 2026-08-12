@@ -304,7 +304,7 @@ The registry enforces these core IDs:
 12. `other_benefits`
 13. `material_terms`
 
-The headline is `X of 13 core areas assessed`; a fully assessed card therefore leads with `13 of 13 core areas assessed`. The detail begins `X of Y applicable disclosed`, then appends each nonzero count in this exact order: `not found`, `unclear`, `conflicting`, `not applicable`, and `unassessed`.
+The headline is `X of Y applicable core facts disclosed`. The detail begins `X of 13 core areas assessed`, then appends each nonzero count in this exact order: `not found`, `unclear`, `conflicting`, `not applicable`, and `unassessed`. Neither number is a trust, quality, or verification score.
 
 - Assessed includes every core field not still marked unassessed by the builder.
 - Applicable equals assessed minus `not_applicable`.

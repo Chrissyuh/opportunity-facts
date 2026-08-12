@@ -110,11 +110,11 @@ export default function MethodologyPage() {
 
         <h2 id="core-facts">The 13 core assessment areas</h2>
         <p>
-          The meter leads with “X of 13 core areas assessed” (for example, “13 of
-          13 core areas assessed” on a fully assessed card). Its detail begins “X
-          of Y applicable disclosed,” then lists nonzero not-found, unclear,
-          conflicting, not-applicable, and draft-unassessed counts in that order.
-          It is not a trust, quality, or value score. Not applicable is excluded
+          The meter leads with “X of Y applicable core facts disclosed” so the
+          useful disclosure result is not hidden behind assessment coverage. Its
+          detail begins “X of 13 core areas assessed,” then lists nonzero
+          not-found, unclear, conflicting, not-applicable, and draft-unassessed
+          counts in that order. It is not a trust, quality, or value score. Not applicable is excluded
           from the applicable denominator; a conflict remains visible but is not
           clean disclosure. The exact dimensions and all supported fields are
           published in the{" "}
@@ -123,7 +123,7 @@ export default function MethodologyPage() {
 
         <h2 id="automation">Where automation stops</h2>
         <p>
-          Automated extraction is one bounded structured pass over fetched or
+          Automated extraction uses bounded summary and structured sections over fetched or
           pasted source text. Source pages are treated as hostile data: instructions
           inside them cannot change the extraction job. No model decides whether an
           opportunity is legitimate, prestigious, worthwhile, safe, or likely to
@@ -138,8 +138,9 @@ export default function MethodologyPage() {
         <p>
           URL fetching uses public HTTP(S) only, validates DNS and every redirect,
           limits time and bytes, avoids cookies and authentication, and never runs
-          page scripts. JavaScript-only, blocked, or inaccessible sites can instead
-          be reviewed through pasted source text.
+          page scripts. Bounded allowlisted Schema.org course and FAQ metadata in a
+          static response is treated as untrusted publisher text. JavaScript-only,
+          blocked, or inaccessible sites can instead be reviewed through pasted source text.
         </p>
         <p>
           Automated results are drafts. Sources were collected automatically,

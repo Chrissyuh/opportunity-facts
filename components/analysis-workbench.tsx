@@ -189,7 +189,7 @@ export function AnalysisWorkbench({
   }
 
   return (
-    <div className="analysis-layout">
+    <div className="analysis-layout" data-has-result={result ? "true" : "false"}>
       <section className="analysis-input panel" aria-labelledby="analysis-input-title">
         <div className="analysis-input-header">
           <p className="eyebrow">Source input</p>
@@ -214,7 +214,7 @@ export function AnalysisWorkbench({
                 onChange={(event) => setUrl(event.target.value)}
                 required
               />
-              <p className="field-help">The server reviews this page and at most six relevant pages on the same origin. It does not run page scripts or crawl the wider web. Automated pages are labeled user supplied until a human verifies their provenance.</p>
+              <p className="field-help">The server reviews this page and at most six relevant pages on the same origin. Pages that appear to describe a different named program are deprioritized. It does not run page scripts or crawl the wider web. Automated pages are labeled user supplied until a human verifies their provenance.</p>
             </div>
           ) : (
             <div className="pasted-source-list">
@@ -252,7 +252,7 @@ export function AnalysisWorkbench({
 
           {error ? <div className="error-summary" role="alert"><strong>Analysis did not complete.</strong> {error}</div> : null}
           <button className="button" type="submit" disabled={!isConfigured || phase === "reviewing" || phase === "validating"}>
-            {!isConfigured ? "Automatic extraction unavailable" : phase === "reviewing" || phase === "validating" ? "Reviewing sources…" : "Start analysis"}
+            {!isConfigured ? "Automatic extraction unavailable" : phase === "reviewing" || phase === "validating" ? "Reviewing and structuring sources…" : "Start analysis"}
           </button>
           <div className="notice">
             <strong>Privacy boundary.</strong> Both URL and paste modes send supplied public source text to OpenAI for this response. Opportunity Facts does not intentionally retain it, but hosting, DNS/network, source-site, and OpenAI logs may exist. Do not submit signed or private URLs, application portals, personal information, or account-only content.
@@ -265,8 +265,8 @@ export function AnalysisWorkbench({
         <h2 id="analysis-progress-title">What the pipeline is doing</h2>
         <ol>
           <ProgressStep number="01" title="Validate source boundary" state={phase === "idle" || phase === "unconfigured" ? "waiting" : "complete"} text="Allow only bounded public HTTP(S) or explicitly pasted text." />
-          <ProgressStep number="02" title="Review relevant pages" state={phase === "reviewing" ? "active" : phase === "validating" || phase === "complete" ? "complete" : "waiting"} text="Extract visible text; ignore scripts, boilerplate, and page instructions." />
-          <ProgressStep number="03" title="Structure the disclosures" state={phase === "validating" ? "active" : phase === "complete" ? "complete" : "waiting"} text="Return registered fields only; preserve missing, unclear, and conflict states." />
+          <ProgressStep number="02" title="Review relevant pages" state={phase === "reviewing" ? "active" : phase === "validating" || phase === "complete" ? "complete" : "waiting"} text="Extract visible text and bounded page metadata; ignore executable scripts, boilerplate, and page instructions." />
+          <ProgressStep number="03" title="Extract bounded sections" state={phase === "validating" ? "active" : phase === "complete" ? "complete" : "waiting"} text="Build summary, identity/cycle, and detailed structures independently so one incomplete section cannot corrupt another." />
           <ProgressStep number="04" title="Validate every excerpt" state={phase === "complete" ? "complete" : "waiting"} text="Match citations back to normalized source text before displaying support." />
         </ol>
         {!isConfigured || phase === "unconfigured" ? (
@@ -286,7 +286,7 @@ export function AnalysisWorkbench({
         <section className="analysis-result" aria-labelledby="analysis-result-title">
           <div className="analysis-result-heading">
             <div>
-              <p className="eyebrow">Draft ready · Automated evidence checks complete</p>
+              <p className="eyebrow">Draft ready · Automated checks applied</p>
               <h2 id="analysis-result-title">Inspect and correct the draft.</h2>
             </div>
             <div className="button-row no-print">
@@ -313,7 +313,12 @@ export function AnalysisWorkbench({
               ))}
             </ol>
             {result.pageWarnings.length ? <p className="fine-print">{result.pageWarnings.length} discovered page{result.pageWarnings.length === 1 ? "" : "s"} could not be reviewed; the card lists only pages actually checked.</p> : null}
-            {result.evidenceWarnings.length ? <div className="notice"><strong>{result.evidenceWarnings.length} unsupported model citation{result.evidenceWarnings.length === 1 ? " was" : "s were"} removed.</strong> Facts retain only other validated support or an explicit uncertainty state.</div> : null}
+            {result.evidenceWarnings.some((warning) => warning.fieldId.startsWith("model.")) ? (
+              <div className="notice" role="status">
+                <strong>Part of the automated extraction did not complete.</strong> Independently completed sections were retained; the affected section remains missing or uncertain and needs manual review.
+              </div>
+            ) : null}
+            {result.evidenceWarnings.length ? <div className="notice"><strong>{result.evidenceWarnings.length} automated candidate warning{result.evidenceWarnings.length === 1 ? " was" : "s were"} recorded.</strong> Unsupported citations, mismatched subjects, and unsafe scopes were withheld; facts retain only other validated support or an explicit uncertainty state.</div> : null}
           </div>
           <FactsCard card={result.card} embedded />
         </section>

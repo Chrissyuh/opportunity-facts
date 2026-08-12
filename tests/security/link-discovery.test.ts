@@ -124,4 +124,55 @@ describe("same-origin relevant-page discovery", () => {
       text: "Refund and cancellation policy",
     });
   });
+
+  it("penalizes a different named program path without hard-coded program names", () => {
+    const candidates = rankSameOriginLinks(
+      "https://provider.example/programs/national-match",
+      [
+        link(
+          "https://provider.example/programs/prep-scholars/scholarships",
+          "Prep Scholars scholarships and awards",
+        ),
+        link(
+          "https://provider.example/programs/national-match/dates",
+          "National Match dates and deadlines",
+        ),
+        link("https://provider.example/privacy-policy", "Privacy policy"),
+      ],
+      { targetTitle: "National Match | Provider" },
+    );
+
+    expect(candidates.map((candidate) => candidate.url)).toEqual([
+      "https://provider.example/privacy-policy",
+      "https://provider.example/programs/national-match/dates",
+    ]);
+  });
+
+  it("rejects a differently named same-site opportunity but retains a target-family FAQ", () => {
+    const candidates = rankSameOriginLinks(
+      "https://provider.example/aurora-fellows",
+      [
+        link(
+          "https://provider.example/builder-competition",
+          "Builder Competition",
+        ),
+        link(
+          "https://provider.example/fellowship-faq",
+          "Fellowship FAQ and tuition",
+        ),
+        link("https://provider.example/terms", "Terms and refund policy"),
+      ],
+      { targetTitle: "Aurora Fellows | Provider" },
+    );
+
+    expect(candidates.map((candidate) => candidate.url)).toContain(
+      "https://provider.example/fellowship-faq",
+    );
+    expect(candidates.map((candidate) => candidate.url)).toContain(
+      "https://provider.example/terms",
+    );
+    expect(candidates.map((candidate) => candidate.url)).not.toContain(
+      "https://provider.example/builder-competition",
+    );
+  });
 });

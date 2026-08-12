@@ -57,7 +57,7 @@ export function getDisclosureCount(
   const applicable = assessed - notApplicable;
   const unassessed = CORE_DISCLOSURE_TOTAL - assessed;
   const statusParts = [
-    `${disclosed} of ${applicable} applicable disclosed`,
+    `${assessed} of ${CORE_DISCLOSURE_TOTAL} core areas assessed`,
     notFound > 0 ? `${notFound} not found` : null,
     unclear > 0 ? `${unclear} unclear` : null,
     conflicting > 0 ? `${conflicting} conflicting` : null,
@@ -74,7 +74,7 @@ export function getDisclosureCount(
     notApplicable,
     unassessed,
     total: CORE_DISCLOSURE_TOTAL,
-    label: `${assessed} of ${CORE_DISCLOSURE_TOTAL} core areas assessed`,
+    label: `${disclosed} of ${applicable} applicable core facts disclosed`,
     detailLabel: statusParts.join(" · "),
   };
 }
