@@ -26,7 +26,7 @@ Those questions must remain separate. A strong extraction score would not prove 
 
 - Never fill a result with an estimate and present it as observed.
 - Keep pilot, development, and held-out test results labeled and separate.
-- Record the product version, schema version, corpus version, protocol version, and evaluation code version for every run.
+- Record the product version, schema version, corpus version, protocol version, projection rules/hash, and evaluation code version for every run.
 - Freeze questions, answer keys, exclusions, primary outcomes, and decision thresholds before collecting confirmatory data.
 - Publish denominators, missing observations, protocol deviations, and uncertainty intervals alongside aggregate results.
 - Report negative and inconclusive findings. Do not select only favorable questions, fields, fixtures, or participants.
@@ -38,7 +38,7 @@ Those questions must remain separate. A strong extraction score would not prove 
 1. **Freeze the evaluated artifact.** Record a Git commit or release identifier, schema version, browser/device matrix, and screenshots of each tested condition.
 2. **Define the claim.** Select either comprehension or extraction. Write the primary outcome and planned analysis before viewing final results.
 3. **Prepare fixtures.** Use clearly fictional `.example` opportunities for initial studies, or obtain permission and review the legal/privacy implications of retained public-page material. Do not include student records or application data.
-4. **Create the answer key.** Two reviewers independently audit each source packet. Resolve disagreements before the fixture enters a confirmatory study or held-out benchmark.
+4. **Create the answer key.** Two reviewers independently audit each source packet, including V2 atomic claims, scope/reference bindings, collection states, and expected 59-fact projections. Resolve disagreements before the fixture enters a confirmatory study or held-out benchmark.
 5. **Pilot the procedure.** Use pilot data only to repair unclear instructions, timing, instrumentation, or scoring. Mark pilot rows and do not merge them into a confirmatory result unless that decision was made in advance.
 6. **Obtain required approval and consent.** Follow [`consent-and-privacy-notes.md`](./consent-and-privacy-notes.md), especially before involving anyone under 18.
 7. **Run the locked protocol.** Preserve assignment, exclusions, failed runs, and deviations. Do not tune the product, prompt, answer key, or thresholds against the held-out evaluation set.

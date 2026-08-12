@@ -25,17 +25,25 @@ import {
   type SourcePage,
 } from "@/lib/opportunity/schema";
 import {
+  OpportunityCardImportError,
+  importOpportunityCardJson,
+  parseOpportunityCard,
+} from "@/lib/opportunity/serialization";
+import {
+  applyOpportunityProjections,
+} from "@/lib/opportunity/projection";
+import {
   BUILDER_STORAGE_EVENT,
   BUILDER_STORAGE_KEY,
   BUILDER_TOUCHED_STORAGE_KEY,
   writeBuilderDraftStorage,
 } from "@/lib/opportunity/browser-storage";
 import { FactsCard } from "./facts-card";
+import { StructuredBuilder } from "./structured-builder";
 
 const initialCard = createEmptyCard({ slug: "untitled-opportunity" });
 const initialSerialized = JSON.stringify(initialCard);
 const MAX_IMPORT_BYTES = 1_000_000;
-
 const sectionLabels: Record<OpportunitySection, string> = {
   identity: "Identity",
   eligibility: "Eligibility",
@@ -69,8 +77,7 @@ function getServerSnapshot() {
 
 function parseStoredCard(value: string) {
   try {
-    const result = opportunityCardSchema.safeParse(JSON.parse(value) as unknown);
-    return result.success ? result.data : initialCard;
+    return parseOpportunityCard(JSON.parse(value) as unknown);
   } catch {
     return initialCard;
   }
@@ -82,15 +89,21 @@ function getTouchedSnapshot() {
     if (stored !== null) return stored;
     const storedCard = localStorage.getItem(BUILDER_STORAGE_KEY);
     if (storedCard === null) return "[]";
-    const parsed = opportunityCardSchema.safeParse(JSON.parse(storedCard) as unknown);
-    return parsed.success ? JSON.stringify(inferredAssessedFields(parsed.data)) : "[]";
+    try {
+      return JSON.stringify(inferredAssessedFields(parseOpportunityCard(JSON.parse(storedCard) as unknown)));
+    } catch {
+      return "[]";
+    }
   } catch {
     return "[]";
   }
 }
 
 function inferredAssessedFields(card: OpportunityCard): FieldId[] {
-  if (card.sourcePagesChecked.length > 0) return FIELD_IDS;
+  if (
+    card.reviewState !== "draft" ||
+    (card.migratedFrom !== null && card.migratedFrom.reviewedAt !== null)
+  ) return FIELD_IDS;
   return FIELD_IDS.filter((fieldId) => card.facts[fieldId].status !== "not_found");
 }
 
@@ -156,7 +169,23 @@ function invalidateReview(card: OpportunityCard): OpportunityCard {
   });
 }
 
+function structuredAssessmentComplete(card: OpportunityCard): boolean {
+  return card.cycle.status === "modeled" && [
+    card.organizations,
+    card.organizationRoles,
+    card.institutionRelationships,
+    card.variants,
+    card.stages,
+    card.pathways,
+    card.costItems,
+    card.outcomes,
+  ].every((collection) => collection.status !== "unassessed");
+}
+
 function replaceFact(card: OpportunityCard, fieldId: FieldId, fact: Fact) {
+  if (card.facts[fieldId].projection !== null) {
+    throw new Error("Structured summary facts are read-only projections in schema v2.");
+  }
   const draft = invalidateReview(card);
   const facts = { ...card.facts, [fieldId]: fact };
   const sources = Object.values(facts).flatMap((item) => [
@@ -212,12 +241,18 @@ export function CardBuilder() {
   const touched = parseTouched(touchedSerialized);
   const unassessedFields = new Set(FIELD_IDS.filter((fieldId) => !touched.includes(fieldId)));
   const unassessedNotFoundFields = FIELD_IDS.filter(
-    (fieldId) => unassessedFields.has(fieldId) && card.facts[fieldId].status === "not_found",
+    (fieldId) =>
+      card.facts[fieldId].projection === null &&
+      unassessedFields.has(fieldId) &&
+      card.facts[fieldId].status === "not_found",
   );
   const hasUngroundedNotFound =
     card.sourcePagesChecked.length === 0 &&
     FIELD_IDS.some((fieldId) => touched.includes(fieldId) && card.facts[fieldId].status === "not_found");
-  const canExport = touched.length === FIELD_IDS.length && !hasUngroundedNotFound;
+  const canExport =
+    touched.length === FIELD_IDS.length &&
+    !hasUngroundedNotFound &&
+    structuredAssessmentComplete(card);
   const [message, setMessage] = useState("Draft autosaves on this device after each valid change.");
   const [metadataError, setMetadataError] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
@@ -233,10 +268,12 @@ export function CardBuilder() {
       return;
     }
     const slug = String(data.get("slug") ?? "").trim().toLowerCase();
+    const opportunityId = String(data.get("opportunityId") ?? "").trim().toLowerCase() || null;
     const summary = String(data.get("summary") ?? "").trim();
     const createsRevision =
       card.reviewState !== "draft" &&
       (slug !== card.slug ||
+        opportunityId !== card.opportunityId ||
         summary !== card.summary ||
         reviewState !== card.reviewState ||
         reviewState === "human_reviewed" ||
@@ -244,6 +281,7 @@ export function CardBuilder() {
     const result = opportunityCardSchema.safeParse({
       ...card,
       slug,
+      opportunityId,
       summary,
       cardVersion: createsRevision ? card.cardVersion + 1 : card.cardVersion,
       reviewState,
@@ -288,6 +326,40 @@ export function CardBuilder() {
     }
   }
 
+  function applyStructuredCard(nextCard: OpportunityCard, successMessage: string) {
+    try {
+      // Structured edits necessarily make the materialized summary stale. Recompute
+      // before schema validation; validating first would reject the intended edit as
+      // projection drift.
+      const draftRevision = {
+        ...nextCard,
+        cardVersion:
+          nextCard.reviewState === "draft" ? nextCard.cardVersion : nextCard.cardVersion + 1,
+        reviewState: "draft" as const,
+        reviewedAt: null,
+      } as OpportunityCard;
+      const projected = applyOpportunityProjections(draftRevision);
+      const result = opportunityCardSchema.safeParse(projected);
+      if (!result.success) {
+        setMessage(
+          `Structured change rejected: ${result.error.issues[0]?.message ?? "invalid structured record"}`,
+        );
+        return false;
+      }
+      const projectedFields = Object.keys(result.data.projectionRefs) as FieldId[];
+      const nextTouched = [...new Set([...touched, ...projectedFields])];
+      if (!writeCard(result.data, nextTouched)) {
+        setMessage("The browser could not autosave this structured change.");
+        return false;
+      }
+      setMessage(successMessage);
+      return true;
+    } catch {
+      setMessage("That structured change could not be applied without breaking a source or scope reference.");
+      return false;
+    }
+  }
+
   async function importCard(file: File) {
     if (file.size > MAX_IMPORT_BYTES) {
       setMessage("Import rejected: card JSON must be 1 MB or smaller.");
@@ -295,24 +367,31 @@ export function CardBuilder() {
       return;
     }
     try {
-      const parsed: unknown = JSON.parse(await file.text());
-      const result = opportunityCardSchema.safeParse(parsed);
-      if (!result.success) {
-        setMessage(`Import rejected: ${result.error.issues[0]?.message ?? "invalid card"}`);
-        return;
-      }
-      const imported = result.data.reviewState === "draft"
-        ? result.data
-        : invalidateReview(result.data);
+      const json = await file.text();
+      const input = JSON.parse(json) as { schemaVersion?: unknown };
+      const wasV1 = input.schemaVersion === "1.0.0";
+      const importedCard = importOpportunityCardJson(json);
+      const imported = importedCard.reviewState === "draft"
+        ? importedCard
+        : invalidateReview(importedCard);
+      const importedAssessment = importedCard.reviewState === "draft"
+        ? inferredAssessedFields(imported)
+        : FIELD_IDS;
       setMessage(
-        writeCard(imported, inferredAssessedFields(imported))
-          ? result.data.reviewState === "draft"
-            ? "Valid card imported and saved locally."
-            : `Reviewed card imported as draft revision ${imported.cardVersion} and saved locally.`
+        writeCard(imported, importedAssessment)
+          ? wasV1
+            ? `Schema v1 card migrated to draft schema v2 revision ${imported.cardVersion} and saved locally. Structured sections require review before publication.`
+            : importedCard.reviewState === "draft"
+              ? "Valid schema v2 card imported and saved locally."
+              : `Reviewed card imported as draft revision ${imported.cardVersion} and saved locally.`
           : "The card is valid, but this browser could not save it.",
       );
-    } catch {
-      setMessage("Import rejected: the selected file is not valid JSON.");
+    } catch (error) {
+      setMessage(
+        error instanceof OpportunityCardImportError
+          ? `Import rejected: ${error.message}`
+          : "Import rejected: the selected file is not valid JSON.",
+      );
     } finally {
       if (fileRef.current) fileRef.current.value = "";
     }
@@ -384,12 +463,32 @@ export function CardBuilder() {
     }
     if (!window.confirm("Mark every unassessed field as not found after reviewing the listed source pages?")) return;
     const nextTouched = FIELD_IDS.filter(
-      (fieldId) => touched.includes(fieldId) || card.facts[fieldId].status === "not_found",
+      (fieldId) =>
+        touched.includes(fieldId) ||
+        (card.facts[fieldId].projection === null && card.facts[fieldId].status === "not_found"),
     );
     if (writeCard(invalidateReview(card), nextTouched)) {
       setMessage("All currently not-found fields are now assessed for the listed review scope; other changed fields still require individual review.");
     } else {
       setMessage("The browser could not save the completed field assessment.");
+    }
+  }
+
+  function reaffirmStructuredReview() {
+    if (!structuredAssessmentComplete(card)) {
+      setMessage("Assess the cycle and every structured section before reaffirming the structured review.");
+      return;
+    }
+    if (card.sourcePagesChecked.length === 0) {
+      setMessage("Record the checked source inventory before reaffirming structured claims.");
+      return;
+    }
+    if (!window.confirm("Confirm that every structured record and excerpt was rechecked against the current source inventory?")) return;
+    const projectedFields = Object.keys(card.projectionRefs) as FieldId[];
+    if (writeCard(invalidateReview(card), [...new Set([...touched, ...projectedFields])])) {
+      setMessage("Structured projections reaffirmed for the current source inventory. Unprojected summary fields still require individual review.");
+    } else {
+      setMessage("The browser could not save the structured-review attestation.");
     }
   }
 
@@ -403,7 +502,7 @@ export function CardBuilder() {
           </div>
           <form
             className="stack"
-            key={`${card.slug}|${card.summary}|${card.reviewState}`}
+            key={`${card.opportunityId ?? ""}|${card.slug}|${card.summary}|${card.reviewState}`}
             onSubmit={updateMetadata}
           >
             {metadataError ? (
@@ -414,6 +513,17 @@ export function CardBuilder() {
                 <label htmlFor="builder-slug">Slug</label>
                 <input id="builder-slug" name="slug" defaultValue={card.slug} pattern="[a-z0-9]+(?:-[a-z0-9]+)*" required />
                 <p className="field-help">Lowercase letters, numbers, and hyphens.</p>
+              </div>
+              <div className="field">
+                <label htmlFor="builder-opportunity-id">Opportunity identity</label>
+                <input
+                  id="builder-opportunity-id"
+                  name="opportunityId"
+                  defaultValue={card.opportunityId ?? ""}
+                  pattern="[a-z0-9]+(?:-[a-z0-9]+)*"
+                  placeholder="cycle-independent-id"
+                />
+                <p className="field-help">Stable across cycles; blank is allowed only for drafts.</p>
               </div>
               <div className="field">
                 <label htmlFor="builder-review-state">Review state</label>
@@ -465,6 +575,9 @@ export function CardBuilder() {
             <button className="button-quiet" type="button" onClick={markRemainingNotFound} disabled={card.sourcePagesChecked.length === 0 || unassessedNotFoundFields.length === 0}>
               Mark remaining fields not found after review
             </button>
+            <button className="button-quiet" type="button" onClick={reaffirmStructuredReview} disabled={card.sourcePagesChecked.length === 0 || !structuredAssessmentComplete(card)}>
+              Reaffirm structured records for this source scope
+            </button>
           </section>
           <div className="divider" />
           <div className="button-row">
@@ -489,6 +602,8 @@ export function CardBuilder() {
           <p className="action-message" role="status" aria-live="polite">{message}</p>
         </section>
 
+        <StructuredBuilder card={card} onCommit={applyStructuredCard} />
+
         <div className="builder-sections">
           {SECTIONS.map((section, sectionIndex) => (
             <details key={section} open={sectionIndex === 0}>
@@ -498,18 +613,38 @@ export function CardBuilder() {
                 <small>{FIELD_DEFINITIONS.filter((field) => field.section === section).length} facts</small>
               </summary>
               <div className="builder-section-fields">
-                {FIELD_DEFINITIONS.filter((field) => field.section === section).map((field) => (
-                  <FactEditor
-                    key={`${field.id}-${JSON.stringify(card.facts[field.id])}`}
-                    fieldId={field.id}
-                    label={field.label}
-                    description={field.description}
-                    core={field.core}
-                    fact={card.facts[field.id]}
-                    sourcePages={card.sourcePagesChecked}
-                    onApply={applyFact}
-                  />
-                ))}
+                {FIELD_DEFINITIONS.filter((field) => field.section === section).map((field) => {
+                  const projection = card.facts[field.id].projection;
+
+                  return projection !== null ? (
+                    <div className="fact-editor projected-fact-editor" key={field.id}>
+                      <div className="fact-editor-heading">
+                        <div>
+                          <h3>{field.label} {field.core ? <span>Core fact</span> : null}</h3>
+                          <p>{field.description}</p>
+                        </div>
+                        <span className="tag">V2 projection</span>
+                      </div>
+                      <div className="notice">
+                        <strong>Read-only summary.</strong>{" "}
+                        {projection
+                          ? `Generated by ${projection.rule}. Edit the structured source record above.`
+                          : "Complete the relevant structured section above; the projector will produce a conservative summary."}
+                      </div>
+                    </div>
+                  ) : (
+                    <FactEditor
+                      key={`${field.id}-${JSON.stringify(card.facts[field.id])}`}
+                      fieldId={field.id}
+                      label={field.label}
+                      description={field.description}
+                      core={field.core}
+                      fact={card.facts[field.id]}
+                      sourcePages={card.sourcePagesChecked}
+                      onApply={applyFact}
+                    />
+                  );
+                })}
               </div>
             </details>
           ))}

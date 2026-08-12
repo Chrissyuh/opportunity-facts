@@ -1,5 +1,7 @@
 # Reality stress test: first three human-reviewed cards
 
+> Resolution status: all nine P1 comparison-model findings below are resolved in schema `2.0.0`, the three canonical reviewed cards, deterministic projections, and structured card/comparison UI. The original findings remain here as the decision record; see [`REALITY_STRESS_TEST_RESOLUTION.md`](./REALITY_STRESS_TEST_RESOLUTION.md) for the implemented disposition and regressions. The age-range P2 remains intentionally deferred.
+
 Date: August 11, 2026  
 Schema tested: Opportunity Card `1.0.0` without modification  
 Cards: NASA TechRise Student Challenge 2026–2027, Lumiere Research Scholar Program Fall 2026, and Diamond Challenge 2027
@@ -43,7 +45,7 @@ The repair should occur before adding more heterogeneous real cards. The existin
 ## P1-3 — Multiple cohorts, dates, formats, and locations
 
 - **Affected fields:** `application_deadline`, `decision_date`, `start_date`, `end_date`, `duration`, `weekly_hours`, `required_live_hours`, `participation_format`, `location`, `travel_requirements`.
-- **TechRise example:** the announced cycle has an expected September 2026 opening, but no close/build/flight dates yet. The current fields cannot express an announced cycle state separately from missing dates.
+- **TechRise example:** the announced cycle had no source-backed application, build, or flight dates retained in the V1 card. The current fields cannot express an announced cycle state separately from missing dates.
 - **Lumiere example:** Fall 2026 has one start date, but four tier-specific durations and session counts. Other cohorts exist on the same official page. One duration/end-date pair cannot preserve tier or cohort scope.
 - **Diamond example:** the cycle has submission, live/virtual pitching, finalist notification, and in-person Summit stages. Dates, formats, locations, and travel requirements change by stage and chosen pathway.
 - **Information lost or distorted:** the binding between a date/duration/location and its cohort, tier, stage, or pathway; several decision dates also become one unnormalized text list.
@@ -121,6 +123,7 @@ The repair should occur before adding more heterogeneous real cards. The existin
 - **Frequency:** repeated across all three cards.
 - **Severity:** **P1**.
 - **Smallest robust fix:** report three numbers: assessed core fields, applicable core fields, and disclosed applicable core fields. Preserve the 13 dimensions; do not change which fields are core in this repair.
+- **Implemented display:** the meter leads with `X of 13 core areas assessed` (`13 of 13 core areas assessed` when complete); detail begins `X of Y applicable disclosed`, followed by nonzero not-found, unclear, conflicting, not-applicable, and unassessed counts.
 - **Migration impact:** low; no card-data migration, only registry/count/UI logic.
 - **Before more real cards?** Yes, because it affects every public comparison.
 

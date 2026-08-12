@@ -21,7 +21,7 @@ export default function MethodologyPage() {
       <header className="page-header">
         <div className="shell page-header-grid">
           <div>
-            <p className="eyebrow">Methodology · Version 1.0</p>
+            <p className="eyebrow">Methodology · Schema 2.0</p>
             <h1>Facts, with their uncertainty attached.</h1>
           </div>
           <p className="lede">
@@ -61,10 +61,10 @@ export default function MethodologyPage() {
         <h2 id="process">The review process</h2>
         <ol className="method-steps">
           <li>
-            <strong>Identify the operator.</strong> Record who runs the opportunity
-            and separately classify any named institution relationship. Location,
-            alumni involvement, or branding alone never proves operation or
-            endorsement.
+            <strong>Separate organizations and roles.</strong> Record each named
+            organization, who operates, manages, or administers the opportunity,
+            and each institution relationship separately. Location, alumni
+            involvement, or branding alone never proves operation or endorsement.
           </li>
           <li>
             <strong>Review a bounded source set.</strong> Start with the submitted
@@ -74,9 +74,11 @@ export default function MethodologyPage() {
             shape and same-origin discovery do not prove official provenance.
           </li>
           <li>
-            <strong>Attach evidence to values.</strong> A displayed factual value
-            needs a URL, page title, source type, excerpt, and access date unless
-            the status itself is not found, unclear, or not applicable.
+            <strong>Attach evidence to atomic values.</strong> Every displayed
+            factual value—including a role, tier scope, stage date, price,
+            condition, recipient, or distribution—needs a URL, page title, source
+            type, excerpt, and access date. Unclear claims cite the ambiguous text;
+            not-found and not-applicable claims show reasons instead of hidden values.
           </li>
           <li>
             <strong>Validate excerpts deterministically.</strong> Machine-assisted
@@ -85,9 +87,12 @@ export default function MethodologyPage() {
             validation warning.
           </li>
           <li>
-            <strong>Normalize carefully.</strong> Dates, money, duration, hours,
-            counts, formats, and relationship categories receive comparable
-            representations while the source wording remains available.
+            <strong>Normalize and scope carefully.</strong> Dates, money, duration,
+            hours, counts, formats, and relationship categories receive comparable
+          representations while the source wording remains available. Variant,
+            stage, and pathway references preserve where each value applies. A
+            modeled cost ledger is separately marked complete or incomplete; only
+            a complete, compatible ledger can produce a calculated total.
           </li>
           <li>
             <strong>Preserve disagreement.</strong> Supported conflicts stay on the
@@ -95,14 +100,24 @@ export default function MethodologyPage() {
             denominator and require a human to confirm both counts describe the same
             population and cycle; organizer-stated rates remain labeled as such.
           </li>
+          <li>
+            <strong>Project, do not flatten.</strong> The stable 59-field summary is
+            generated from structured records where they apply. Multiple legitimate
+            tier, track, stage, or pathway values stay visible as a matrix/list with
+            no invented universal scalar.
+          </li>
         </ol>
 
-        <h2 id="core-facts">The 13 core disclosures</h2>
+        <h2 id="core-facts">The 13 core assessment areas</h2>
         <p>
-          The completeness line reports how many of 13 high-priority dimensions
-          are disclosed. It is a count, not a trust, quality, or value score. A
-          conflict is visible but does not count as clean disclosure. The exact
-          dimensions and all supported fields are published in the{" "}
+          The meter leads with “X of 13 core areas assessed” (for example, “13 of
+          13 core areas assessed” on a fully assessed card). Its detail begins “X
+          of Y applicable disclosed,” then lists nonzero not-found, unclear,
+          conflicting, not-applicable, and draft-unassessed counts in that order.
+          It is not a trust, quality, or value score. Not applicable is excluded
+          from the applicable denominator; a conflict remains visible but is not
+          clean disclosure. The exact dimensions and all supported fields are
+          published in the{" "}
           <Link href="/data">schema and data documentation</Link>.
         </p>
 
@@ -127,11 +142,29 @@ export default function MethodologyPage() {
           be reviewed through pasted source text.
         </p>
 
+        <h2 id="structured-model">Why the card has structured detail</h2>
+        <p>
+          A single row cannot truthfully represent four tuition tiers, two selection
+          routes, several organizations, or a prize matrix. Schema 2.0 keeps the 59
+          summary fields for scanning and adds source-backed cycle, organization,
+          program/cohort, stage/pathway, cost, and outcome records. Cards and
+          comparison reveal those details progressively; summary projections are
+          recomputed and rejected if they drift from their contributing claims.
+        </p>
+        <p>
+          Legacy schema 1.0 files can be imported only as new draft revisions. The
+          migration preserves their facts and evidence but clears review status and
+          leaves all new structured sections unassessed. A reviewer must supply—not
+          infer—the cycle, roles, scopes, pathways, recipients, and funding types
+          before publication.
+        </p>
+
         <h2 id="limitations">Limitations</h2>
         <ul>
           <li>Official pages can be incomplete, outdated, changed, or inaccurate.</li>
           <li>A “not found” result covers only the pages listed on that card.</li>
           <li>Normalization cannot resolve ambiguous legal or financial language.</li>
+          <li>A matrix/list may be the truthful comparison result when no universal scalar exists.</li>
           <li>Automated link discovery is deliberately narrow and may miss a page.</li>
           <li>Automated analysis does not verify that a submitted or discovered page is official.</li>
           <li>Access dates do not create a permanent archive of source content.</li>
@@ -155,8 +188,9 @@ export default function MethodologyPage() {
 
         <h2 id="versioning">Versioning and retention</h2>
         <p>
-          Schema changes increment the schema version. Material public-card changes
-          increment the card version and reviewed date. Public demo/reviewed cards
+          Schema changes increment the schema version. Cycle identity remains
+          separate from card revision. Material public-card changes increment the
+          card version and reviewed date. Public demo/reviewed cards
           live in repository JSON; user-created drafts and comparison choices stay
           in that browser. Submitted page text is processed for the response and is
           not intentionally stored by Opportunity Facts.

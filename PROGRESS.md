@@ -3,10 +3,10 @@
 ## Completed
 
 - [x] Built a strict Next.js 16 App Router application with TypeScript, React, Tailwind CSS, Zod, Vitest, and Playwright from the empty repository.
-- [x] Implemented one authoritative 59-field card schema and registry with exactly 13 core disclosure dimensions.
-- [x] Added five-state facts, provenance, normalization, conflicts, calculation metadata, exact evidence alignment, review/version invariants, and portable JSON import/export.
+- [x] Implemented authoritative schema `2.0.0`: a stable 59-field projection/registry surface with exactly 13 core assessment areas plus evidence-bearing cycle, organization, variant, stage/pathway, cost, and outcome records.
+- [x] Added atomic structured claims, explicit record-assessment states, variant/stage/pathway scopes, provenance, normalization, conflicts, calculation metadata, exact evidence alignment, projection-drift rejection, review/version invariants, and portable JSON import/export.
 - [x] Added seven visibly fictional `.example` demo cards with varied opportunity types, relationships, costs, outcomes, conflicts, and missing information.
-- [x] Added the first three real human-reviewed ground-truth cards: NASA TechRise 2026–2027, Lumiere Fall 2026, and Diamond Challenge 2027, with source-by-source review records and a no-schema-change reality stress test.
+- [x] Added and migrated the first three real human-reviewed ground-truth cards: NASA TechRise 2026–2027, Lumiere Fall 2026, and Diamond Challenge 2027, with source-by-source review records and structured V2 resolution of all nine reality-stress-test P1 comparison losses.
 - [x] Completed the homepage/sample, searchable/filterable library, full facts cards, two/three-card comparison, manual builder, analysis workbench, corrections, print, methodology, data, and research surfaces.
 - [x] Implemented bounded public-page acquisition with DNS/IP validation, socket address pinning, redirect checks, byte/time/content limits, static extraction, and one-level same-origin discovery.
 - [x] Implemented optional server-only OpenAI Responses extraction with strict structured output, bounded/fair source input, no retries, cancellation, hostile-output sanitization, and deterministic evidence validation.
@@ -15,26 +15,33 @@
 - [x] Repaired the full security/data audit: SSRF/service-address policy, URL-token privacy, transient API behavior, artifact publication, calculation integrity, model attribution, local persistence, and client secret isolation.
 - [x] Repaired the full UX/accessibility audit: heading semantics, contrast, keyboard focus, live announcements, import state, mobile comparison, builder review scope/versioning, and populated mobile builder containment.
 - [x] Generated and visually inspected the four stable release screenshots in `docs/screenshots/`.
-- [x] Completed two independent post-repair software/security/UX signoffs with no remaining material P0/P1 implementation issue; the later real-data modeling P1s are documented separately in `REALITY_STRESS_TEST.md`.
+- [x] Completed two independent post-repair software/security/UX signoffs with no remaining material P0/P1 implementation issue, then completed the evidence-driven Schema V2 repair documented in `REALITY_STRESS_TEST_RESOLUTION.md`.
 
 ## Final verification
 
 - [x] `npm run lint`
 - [x] `npm run typecheck`
-- [x] `npm test` — 16 files / 138 tests passed
+- [x] `npm test` — 22 files / 190 tests passed
 - [x] `npm run export:data` — 10 cards (7 demo, 3 human reviewed) and JSON Schema exported
 - [x] `npm run validate:data` — 10 public cards (7 demo), 0 drafts, both artifacts current
-- [x] `npm run test:e2e` — 60 passed, 2 intentional project-inapplicable skips, 0 failed
+- [x] `npm run test:e2e` — 80 passed, 4 intentional project-inapplicable skips, 0 failed
 - [x] `npm run build` — fail-closed data validation plus 23 generated pages
-- [x] First three real cards inspected with expanded evidence at 1440×900 and 390×844 — exact viewport width, Human reviewed badges, no demo markers, and no console warnings/errors
+- [x] Homepage, all three real cards with expanded structured details, three-way comparison, populated V2 builder, and methodology inspected at 1440×900 and 390×844 — exact viewport width, one `h1`, and no console warnings/errors
 - [x] `npm audit --audit-level=high` — 0 vulnerabilities
-- [x] Production Chromium matrix — 27 clean route/viewport combinations at 1440×900, 390×844, and 720×900
+- [x] Final V2 production Chromium audit — 14 required surface/viewport combinations at 1440×900 and 390×844, with the full 84-test Playwright matrix covering the wider route and interaction set
 - [x] Fresh/resized populated builder — exact 390px document width, no serious/critical axe result, no console/page/request/HTTP error
 - [x] Production headers, analysis `no-store`, keyless API state, client secret scan, artifact/API parity, and seven research hash pairs
 
+## Schema V2 regression coverage
+
+- [x] V1 migration is deterministic, draft-only, digest-recorded, and does not infer cycle or structured semantics.
+- [x] Canonical data tests require all seven demos and three reviewed cards to use schema `2.0.0`; reviewed cards cannot leave structured sections unassessed.
+- [x] Focused unit coverage preserves cycle identity, affiliations, tiered costs, branching pathways, restricted project funding, prize matrices, projection consistency, and reference integrity.
+- [x] Focused browser coverage renders the TechRise, Lumiere, and Diamond distinctions on card and comparison surfaces without horizontal overflow.
+
 ## Intentionally outstanding
 
-- [ ] Repair the P1 comparison losses documented in `REALITY_STRESS_TEST.md` before scaling beyond the first three real cards; do not weaken the existing evidence/review contract.
+- [ ] Treat age-band representation as the documented non-gating P2 unless a broader reviewed sample demonstrates that a dedicated structured age model is warranted.
 - [ ] Run one configured provider smoke test only when a suitable OpenAI key is deliberately supplied.
 - [ ] Deploy only when a target is requested, then verify platform egress, rate/concurrency/spend controls, logs, secrets, headers, and both configured/keyless paths in that environment.
 - [ ] Conduct consented comprehension and extraction studies before publishing any result; public copy correctly remains “Study not yet published.”

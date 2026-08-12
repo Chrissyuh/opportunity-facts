@@ -17,8 +17,8 @@ export default function DataPage() {
             <h1>The card is portable by design.</h1>
           </div>
           <p className="lede">
-            One machine-readable schema drives the card renderer, builder,
-            comparison, validation, and extraction pipeline.
+            Schema 2.0 drives the card renderer, builder, comparison, validation,
+            import/export, and structured evidence contract.
           </p>
         </div>
       </header>
@@ -68,15 +68,19 @@ export default function DataPage() {
         <div className="narrow-shell prose">
           <h2>Record semantics</h2>
           <p>
-            Each card stores metadata plus a fact map keyed by the central field
-            registry. Facts preserve status, display/source wording, normalized
-            representation, sources, notes, confidence, and claim kind. A source
-            records its URL, title, excerpt, provenance category, and access date.
+            Each card stores cycle-independent identity, a modeled cycle, atomic
+            structured claims, and a 59-field summary map keyed by the central
+            registry. Structured records preserve organization roles, variants,
+            stages/pathways, scoped costs, and outcomes; mapped summary facts record
+            the exact claim references used to generate them. Cost ledgers separately
+            state whether the reviewed inventory is complete. A source records its
+            URL, title, excerpt, provenance category, and access date.
           </p>
           <p>
             Imports are validated before they reach rendering or browser storage.
-            Unknown or malformed structures return a readable error rather than
-            being partially accepted.
+            Valid schema 1.0 cards migrate only to unassessed draft schema 2.0
+            revisions; unknown or malformed structures return a readable error
+            rather than being partially accepted.
           </p>
           <h2>Public data boundary</h2>
           <p>

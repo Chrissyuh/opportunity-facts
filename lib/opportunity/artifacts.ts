@@ -43,6 +43,23 @@ function requireUniqueSlugs(cards: readonly OpportunityCard[], label: string): v
   if (uniqueSlugs.size !== cards.length) throw new Error(`${label} contain duplicate slugs.`);
 }
 
+function requireUniqueOpportunityCycles(
+  cards: readonly OpportunityCard[],
+  label: string,
+): void {
+  const seen = new Set<string>();
+  for (const card of cards) {
+    if (card.opportunityId === null || card.cycle.status !== "modeled") continue;
+    const key = `${card.opportunityId}\u0000${card.cycle.value.id}`;
+    if (seen.has(key)) {
+      throw new Error(
+        `${label} contain duplicate opportunity/cycle identity ${card.opportunityId} / ${card.cycle.value.id}.`,
+      );
+    }
+    seen.add(key);
+  }
+}
+
 export async function readRepositoryCards(root = process.cwd()): Promise<OpportunityCard[]> {
   const [demoCards, reviewedCards] = await Promise.all([
     readCardDirectory(
@@ -58,6 +75,7 @@ export async function readRepositoryCards(root = process.cwd()): Promise<Opportu
   ]);
   const cards = [...demoCards, ...reviewedCards];
   requireUniqueSlugs(cards, "Public repository cards");
+  requireUniqueOpportunityCycles(cards, "Public repository cards");
   return cards.sort((left, right) => left.slug.localeCompare(right.slug));
 }
 
@@ -68,6 +86,7 @@ export async function readRepositoryDrafts(root = process.cwd()): Promise<Opport
     "must use reviewState draft; move reviewed cards to data/opportunities before publication.",
   );
   requireUniqueSlugs(cards, "Repository drafts");
+  requireUniqueOpportunityCycles(cards, "Repository drafts");
   return cards.sort((left, right) => left.slug.localeCompare(right.slug));
 }
 
@@ -95,6 +114,7 @@ const publicDatasetSchema = z
   })
   .superRefine((dataset, context) => {
     const slugs = new Set<string>();
+    const opportunityCycles = new Set<string>();
     dataset.cards.forEach((card, index) => {
       if (
         card.reviewState !== "demo" &&
@@ -115,6 +135,17 @@ const publicDatasetSchema = z
         });
       }
       slugs.add(card.slug);
+      if (card.opportunityId !== null && card.cycle.status === "modeled") {
+        const key = `${card.opportunityId}\u0000${card.cycle.value.id}`;
+        if (opportunityCycles.has(key)) {
+          context.addIssue({
+            code: "custom",
+            path: ["cards", index, "cycle"],
+            message: "A public dataset cannot contain a duplicate opportunity/cycle identity.",
+          });
+        }
+        opportunityCycles.add(key);
+      }
     });
   });
 
@@ -132,7 +163,7 @@ export function createPublicJsonSchema() {
     $id: "https://opportunityfacts.example/schema/opportunity-card.schema.json",
     title: "Opportunity Facts card",
     description:
-      "Machine-readable shape for an Opportunity Facts card. Cross-field evidence and conflict invariants are additionally enforced by the authoritative Zod schema.",
+      "Machine-readable shape for an Opportunity Facts schema v2 card. Cross-field evidence, structured-reference, migration, and deterministic-projection invariants are additionally enforced by the authoritative Zod schema.",
   };
 }
 

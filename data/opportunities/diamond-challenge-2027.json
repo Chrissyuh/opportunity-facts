@@ -1,10 +1,138 @@
 {
-  "schemaVersion": "1.0.0",
-  "cardVersion": 1,
+  "schemaVersion": "2.0.0",
+  "opportunityId": "diamond-challenge",
+  "cycle": {
+    "status": "modeled",
+    "value": {
+      "id": "cycle-2027",
+      "label": {
+        "claimId": "diamond-cycle-label",
+        "status": "disclosed",
+        "value": "2027 competition cycle",
+        "displayValue": "2027 competition cycle",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "diamond-competition-rules",
+            "url": "https://diamondchallenge.org/competition/",
+            "title": "Competition - Diamond Challenge",
+            "pageType": "official_rules",
+            "accessedAt": "2026-08-11T22:39:59.688Z",
+            "excerpt": "2027 Competition Timeline"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "status": {
+        "claimId": "diamond-cycle-status",
+        "status": "disclosed",
+        "value": "announced",
+        "displayValue": "Announced",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "diamond-competition-rules",
+            "url": "https://diamondchallenge.org/competition/",
+            "title": "Competition - Diamond Challenge",
+            "pageType": "official_rules",
+            "accessedAt": "2026-08-11T22:39:59.688Z",
+            "excerpt": "2027 Competition Timeline"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "year": {
+        "claimId": "diamond-cycle-year",
+        "status": "disclosed",
+        "value": 2027,
+        "displayValue": "2027",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "diamond-competition-rules",
+            "url": "https://diamondchallenge.org/competition/",
+            "title": "Competition - Diamond Challenge",
+            "pageType": "official_rules",
+            "accessedAt": "2026-08-11T22:39:59.688Z",
+            "excerpt": "2027 Competition Timeline"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "startYear": {
+        "claimId": "diamond-cycle-start-year",
+        "status": "disclosed",
+        "value": 2026,
+        "displayValue": "2026",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "diamond-competition-rules",
+            "url": "https://diamondchallenge.org/competition/",
+            "title": "Competition - Diamond Challenge",
+            "pageType": "official_rules",
+            "accessedAt": "2026-08-11T22:39:59.688Z",
+            "excerpt": "September 16 | Submission Window Opens"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "endYear": {
+        "claimId": "diamond-cycle-end-year",
+        "status": "disclosed",
+        "value": 2027,
+        "displayValue": "2027",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "limitless-world-summit-2027",
+            "url": "https://limitlessworldsummit.org/",
+            "title": "Limitless World Summit",
+            "pageType": "official_program_page",
+            "accessedAt": "2026-08-11T22:39:59.688Z",
+            "excerpt": "April 29-30, 2027"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "season": null,
+      "cycleType": {
+        "claimId": "diamond-cycle-type",
+        "status": "disclosed",
+        "value": "competition_cycle",
+        "displayValue": "Competition cycle",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "diamond-competition-rules",
+            "url": "https://diamondchallenge.org/competition/",
+            "title": "Competition - Diamond Challenge",
+            "pageType": "official_rules",
+            "accessedAt": "2026-08-11T22:39:59.688Z",
+            "excerpt": "2027 Competition Timeline"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "timingRefs": {
+        "opens": "diamond-submission-opens",
+        "closes": "diamond-submission-deadline",
+        "coverageStart": null,
+        "coverageEnd": "diamond-summit-ends"
+      }
+    }
+  },
+  "cardVersion": 2,
   "slug": "diamond-challenge-2027",
-  "summary": "A worldwide 2027 high-school team entrepreneurship competition operated by Horn Entrepreneurship at the University of Delaware, with business and social innovation tracks, live or virtual pitching pathways, an in-person finalist summit, and team-level grand and topical prizes.",
+  "summary": "A worldwide 2027 high-school team entrepreneurship competition operated by Horn Entrepreneurship at the University of Delaware, with business and social innovation tracks, live or virtual pitching pathways, an in-person finalist summit, and six source-supported team cash awards across the two tracks.",
   "reviewState": "human_reviewed",
-  "reviewedAt": "2026-08-11T22:46:20.753Z",
+  "reviewedAt": "2026-08-12T00:27:28.180Z",
   "sourcePagesChecked": [
     {
       "id": "diamond-competition-rules",
@@ -43,6 +171,2836 @@
     }
   ],
   "conflicts": [],
+  "organizations": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "org-horn-entrepreneurship",
+        "name": {
+          "claimId": "diamond-horn-name",
+          "status": "disclosed",
+          "value": "Horn Entrepreneurship",
+          "displayValue": "Horn Entrepreneurship",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "The Diamond Challenge, a philanthropic education initiative by Horn Entrepreneurship at the University of Delaware"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "kind": {
+          "claimId": "diamond-horn-kind",
+          "status": "disclosed",
+          "value": "institution_unit",
+          "displayValue": "University entrepreneurship initiative",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "udel-horn-k12-programs",
+              "url": "https://www.udel.edu/research-innovation/horn/pre-college-programs/",
+              "title": "K-12 Programs | Horn Entrepreneurship | University of Delaware",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Horn Entrepreneurship launched a youth initiative to address major gaps in secondary entrepreneurship education."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        }
+      },
+      {
+        "id": "org-university-delaware",
+        "name": {
+          "claimId": "diamond-udel-name",
+          "status": "disclosed",
+          "value": "University of Delaware",
+          "displayValue": "University of Delaware",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Horn Entrepreneurship at the University of Delaware"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "kind": {
+          "claimId": "diamond-udel-kind",
+          "status": "disclosed",
+          "value": "higher_education_institution",
+          "displayValue": "Higher-education institution",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Horn Entrepreneurship at the University of Delaware"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        }
+      }
+    ],
+    "note": null
+  },
+  "organizationRoles": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "role-horn-operator",
+        "organizationId": "org-horn-entrepreneurship",
+        "role": {
+          "claimId": "diamond-horn-operator-role",
+          "status": "disclosed",
+          "value": {
+            "role": "operator",
+            "roleLabel": null,
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Operator",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "The Diamond Challenge, a philanthropic education initiative by Horn Entrepreneurship at the University of Delaware"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        }
+      }
+    ],
+    "note": "Horn Entrepreneurship operates the initiative within the University of Delaware."
+  },
+  "institutionRelationships": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "relationship-udel-operated",
+        "assertion": {
+          "claimId": "diamond-udel-operated-relationship",
+          "status": "disclosed",
+          "value": {
+            "subject": "opportunity",
+            "subjectOrganizationId": "org-horn-entrepreneurship",
+            "targetOrganizationId": "org-university-delaware",
+            "targetInstitutionName": null,
+            "relationshipType": "institution_operated",
+            "description": "Diamond Challenge is an initiative of Horn Entrepreneurship at the University of Delaware.",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Institution operated — University of Delaware / Horn Entrepreneurship",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "The Diamond Challenge, a philanthropic education initiative by Horn Entrepreneurship at the University of Delaware"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        }
+      }
+    ],
+    "note": "Affiliated pitch-event partners are described in the stage/location evidence but are not promoted to unnamed co-operators."
+  },
+  "variants": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "variant-business-innovation",
+        "definition": {
+          "claimId": "diamond-business-track",
+          "status": "disclosed",
+          "value": {
+            "label": "Business Innovation",
+            "kind": "track",
+            "parentVariantId": null
+          },
+          "displayValue": "Business Innovation",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "choose a competition track (business innovation or social innovation) as well as a pitch round format (live pitch event or virtual/pre-recorded)"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "eligibilityDifferences": [],
+        "notes": []
+      },
+      {
+        "id": "variant-social-innovation",
+        "definition": {
+          "claimId": "diamond-social-track",
+          "status": "disclosed",
+          "value": {
+            "label": "Social Innovation",
+            "kind": "track",
+            "parentVariantId": null
+          },
+          "displayValue": "Social Innovation",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "choose a competition track (business innovation or social innovation) as well as a pitch round format (live pitch event or virtual/pre-recorded)"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "eligibilityDifferences": [],
+        "notes": []
+      }
+    ],
+    "note": "Competition track and pitch pathway are independent dimensions; tracks are variants and live/virtual routes are pathways."
+  },
+  "stages": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "stage-submission",
+        "order": 1,
+        "definition": {
+          "claimId": "diamond-submission-stage",
+          "status": "disclosed",
+          "value": {
+            "label": "Submission round",
+            "kind": "application",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Submission round",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Teams who participate in the submission round will be evaluated by a series of judges and must meet the minimum score to advance to the pitching round."
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Pitch videos and pitch decks will only be viewed and judged during the second round of the competition."
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Student teams qualifying for the final round of competition at the Limitless World Summit will be required to attend in-person to compete."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "timings": [
+          {
+            "claimId": "diamond-submission-opens",
+            "status": "disclosed",
+            "value": {
+              "event": "opens",
+              "when": {
+                "precision": "date",
+                "date": "2026-09-16",
+                "certainty": "stated"
+              },
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "September 16, 2026",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "September 16 | Submission Window Opens"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "diamond-submission-deadline",
+            "status": "disclosed",
+            "value": {
+              "event": "deadline",
+              "when": {
+                "precision": "date_time",
+                "dateTime": "2027-01-14T17:00:00-05:00",
+                "certainty": "stated"
+              },
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "January 14, 2027 at 5:00 p.m. EST",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-dates-deadlines",
+                "url": "https://horn.udel.edu/deadlines2627",
+                "title": "Dates and Deadlines",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "January 14 by 5:00 pm EST: Submission deadline"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "durations": [],
+        "timeCommitments": [],
+        "formats": [],
+        "locations": [],
+        "selectionRules": [],
+        "advancement": [],
+        "requirements": [
+          {
+            "claimId": "diamond-submission-team-requirement",
+            "status": "disclosed",
+            "value": {
+              "requirement": "A team consists of 2–4 high-school students ages 14–18 at the submission deadline.",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "2–4 students ages 14–18",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "Teams must consist of 2-4 high school students"
+              },
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "aged 14-18 at the submission deadline"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "diamond-submission-adviser-requirement",
+            "status": "disclosed",
+            "value": {
+              "requirement": "Each team has one adult adviser age 21 or older.",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "One adult adviser age 21+",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "Each team is required to have one adult advisor aged 21 or older."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "travelRequirements": []
+      },
+      {
+        "id": "stage-submission-review",
+        "order": 2,
+        "definition": {
+          "claimId": "diamond-review-stage",
+          "status": "disclosed",
+          "value": {
+            "label": "Submission judging",
+            "kind": "proposal_review",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Submission judging",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Teams who participate in the submission round will be evaluated by a series of judges and must meet the minimum score to advance to the pitching round."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "timings": [
+          {
+            "claimId": "diamond-pitch-invite-notification",
+            "status": "disclosed",
+            "value": {
+              "event": "notification",
+              "when": {
+                "precision": "date",
+                "date": "2027-02-10",
+                "certainty": "stated"
+              },
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "February 10, 2027",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-dates-deadlines",
+                "url": "https://horn.udel.edu/deadlines2627",
+                "title": "Dates and Deadlines",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "February 10: Pitching round invitees (live and virtual) are selected."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "durations": [],
+        "timeCommitments": [],
+        "formats": [],
+        "locations": [],
+        "selectionRules": [
+          {
+            "claimId": "diamond-review-rule",
+            "status": "disclosed",
+            "value": {
+              "rule": "A series of judges evaluates submission-round teams, which must meet a minimum score to advance.",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Judging with a minimum advancement score",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "Teams who participate in the submission round will be evaluated by a series of judges and must meet the minimum score to advance to the pitching round."
+              },
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "must meet the minimum score to advance to the pitching round"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "advancement": [],
+        "requirements": [],
+        "travelRequirements": []
+      },
+      {
+        "id": "stage-live-pitch",
+        "order": 3,
+        "definition": {
+          "claimId": "diamond-live-pitch-stage",
+          "status": "disclosed",
+          "value": {
+            "label": "Live pitch event",
+            "kind": "pitch",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": [
+                "pathway-live-pitch"
+              ]
+            }
+          },
+          "displayValue": "Live pitch event",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "live pitch event or virtual/pre-recorded"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "timings": [],
+        "durations": [],
+        "timeCommitments": [],
+        "formats": [
+          {
+            "claimId": "diamond-live-pitch-format",
+            "status": "disclosed",
+            "value": {
+              "formats": [
+                "in_person"
+              ],
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": [
+                  "pathway-live-pitch"
+                ]
+              }
+            },
+            "displayValue": "In person",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "live pitch event or virtual/pre-recorded"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "locations": [
+          {
+            "claimId": "diamond-live-pitch-location",
+            "status": "disclosed",
+            "value": {
+              "location": "Affiliated pitch-event locations worldwide",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": [
+                  "pathway-live-pitch"
+                ]
+              }
+            },
+            "displayValue": "Affiliated pitch-event locations worldwide",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "events are hosted at various locations around the world in collaboration with Pitch Event Partner organizations"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "selectionRules": [],
+        "advancement": [],
+        "requirements": [],
+        "travelRequirements": [
+          {
+            "claimId": "diamond-live-pitch-travel",
+            "status": "disclosed",
+            "value": {
+              "requirement": "required",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": [
+                  "pathway-live-pitch"
+                ]
+              }
+            },
+            "displayValue": "A team participant must be present",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "A participant from a team must be present at the event to compete."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ]
+      },
+      {
+        "id": "stage-virtual-pitch",
+        "order": 3,
+        "definition": {
+          "claimId": "diamond-virtual-pitch-stage",
+          "status": "disclosed",
+          "value": {
+            "label": "Virtual/pre-recorded pitch",
+            "kind": "pitch",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": [
+                "pathway-virtual-pitch"
+              ]
+            }
+          },
+          "displayValue": "Virtual/pre-recorded pitch",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "live pitch event or virtual/pre-recorded"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "timings": [
+          {
+            "claimId": "diamond-virtual-finalist-notification",
+            "status": "disclosed",
+            "value": {
+              "event": "notification",
+              "when": {
+                "precision": "date",
+                "date": "2027-03-09",
+                "certainty": "stated"
+              },
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": [
+                  "pathway-virtual-pitch"
+                ]
+              }
+            },
+            "displayValue": "March 9, 2027",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-dates-deadlines",
+                "url": "https://horn.udel.edu/deadlines2627",
+                "title": "Dates and Deadlines",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "March 9: Finalists from the Virtual track are selected."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "durations": [],
+        "timeCommitments": [],
+        "formats": [
+          {
+            "claimId": "diamond-virtual-pitch-format",
+            "status": "disclosed",
+            "value": {
+              "formats": [
+                "online"
+              ],
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": [
+                  "pathway-virtual-pitch"
+                ]
+              }
+            },
+            "displayValue": "Virtual/pre-recorded",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "live pitch event or virtual/pre-recorded"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "locations": [],
+        "selectionRules": [
+          {
+            "claimId": "diamond-virtual-pitch-judging",
+            "status": "disclosed",
+            "value": {
+              "rule": "Pitch videos and pitch decks are judged during the second round.",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": [
+                  "pathway-virtual-pitch"
+                ]
+              }
+            },
+            "displayValue": "Pitch video and deck judged in round two",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "Pitch videos and pitch decks will only be viewed and judged during the second round of the competition."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "advancement": [],
+        "requirements": [],
+        "travelRequirements": [
+          {
+            "claimId": "diamond-virtual-pitch-travel",
+            "status": "disclosed",
+            "value": {
+              "requirement": "none",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": [
+                  "pathway-virtual-pitch"
+                ]
+              }
+            },
+            "displayValue": "No pitch-event travel for the virtual/pre-recorded route",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "live pitch event or virtual/pre-recorded"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ]
+      },
+      {
+        "id": "stage-summit-final",
+        "order": 4,
+        "definition": {
+          "claimId": "diamond-summit-stage",
+          "status": "disclosed",
+          "value": {
+            "label": "Limitless World Summit final",
+            "kind": "summit_final",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Limitless World Summit final",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Student teams qualifying for the final round of competition at the Limitless World Summit will be required to attend in-person to compete."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "timings": [
+          {
+            "claimId": "diamond-summit-starts",
+            "status": "disclosed",
+            "value": {
+              "event": "starts",
+              "when": {
+                "precision": "date",
+                "date": "2027-04-29",
+                "certainty": "stated"
+              },
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "April 29, 2027",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "limitless-world-summit-2027",
+                "url": "https://limitlessworldsummit.org/",
+                "title": "Limitless World Summit",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "April 29-30, 2027"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "diamond-summit-ends",
+            "status": "disclosed",
+            "value": {
+              "event": "ends",
+              "when": {
+                "precision": "date",
+                "date": "2027-04-30",
+                "certainty": "stated"
+              },
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "April 30, 2027",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "limitless-world-summit-2027",
+                "url": "https://limitlessworldsummit.org/",
+                "title": "Limitless World Summit",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "April 29-30, 2027"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "durations": [
+          {
+            "claimId": "diamond-summit-duration",
+            "status": "disclosed",
+            "value": {
+              "duration": {
+                "minimum": 2,
+                "maximum": null,
+                "unit": "days"
+              },
+              "scope": {
+                "variantIds": [],
+                "stageIds": [
+                  "stage-summit-final"
+                ],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "April 29–30, 2027",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "limitless-world-summit-2027",
+                "url": "https://limitlessworldsummit.org/",
+                "title": "Limitless World Summit",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "April 29-30, 2027"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "timeCommitments": [],
+        "formats": [
+          {
+            "claimId": "diamond-summit-format",
+            "status": "disclosed",
+            "value": {
+              "formats": [
+                "in_person"
+              ],
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "In person",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "Student teams qualifying for the final round of competition at the Limitless World Summit will be required to attend in-person to compete."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "locations": [
+          {
+            "claimId": "diamond-summit-location",
+            "status": "disclosed",
+            "value": {
+              "location": "Chase Center on the Riverfront, Wilmington, Delaware",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Chase Center on the Riverfront, Wilmington, Delaware",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "limitless-world-summit-2027",
+                "url": "https://limitlessworldsummit.org/",
+                "title": "Limitless World Summit",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "Chase Center on the Riverfront\nWilmington, Delaware"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "selectionRules": [],
+        "advancement": [],
+        "requirements": [],
+        "travelRequirements": [
+          {
+            "claimId": "diamond-summit-travel",
+            "status": "disclosed",
+            "value": {
+              "requirement": "required",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "At least one finalist team member must attend in person",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "At least one team member must be present."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ]
+      }
+    ],
+    "note": "The live and virtual pitch branches converge only for teams that qualify for the in-person Summit final."
+  },
+  "pathways": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "pathway-live-pitch",
+        "definition": {
+          "claimId": "diamond-live-pathway-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Live pitch pathway",
+            "variantIds": [
+              "variant-business-innovation",
+              "variant-social-innovation"
+            ]
+          },
+          "displayValue": "Live pitch pathway",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "choose a competition track (business innovation or social innovation) as well as a pitch round format (live pitch event or virtual/pre-recorded)"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "steps": [
+          {
+            "claimId": "diamond-live-step-submission",
+            "status": "disclosed",
+            "value": {
+              "stageId": "stage-submission",
+              "enterWhen": null
+            },
+            "displayValue": "Submission round",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "Teams who participate in the submission round will be evaluated by a series of judges and must meet the minimum score to advance to the pitching round."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "diamond-live-step-review",
+            "status": "disclosed",
+            "value": {
+              "stageId": "stage-submission-review",
+              "enterWhen": null
+            },
+            "displayValue": "Submission judging",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "Teams who participate in the submission round will be evaluated by a series of judges and must meet the minimum score to advance to the pitching round."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "diamond-live-step-pitch",
+            "status": "disclosed",
+            "value": {
+              "stageId": "stage-live-pitch",
+              "enterWhen": "Team is invited to the pitching round and selected the live format."
+            },
+            "displayValue": "Live pitch if invited",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "choose a competition track (business innovation or social innovation) as well as a pitch round format (live pitch event or virtual/pre-recorded)"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "diamond-live-step-summit",
+            "status": "disclosed",
+            "value": {
+              "stageId": "stage-summit-final",
+              "enterWhen": "Team qualifies for the final round."
+            },
+            "displayValue": "In-person Summit if finalist",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "Student teams qualifying for the final round of competition at the Limitless World Summit will be required to attend in-person to compete."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ]
+      },
+      {
+        "id": "pathway-virtual-pitch",
+        "definition": {
+          "claimId": "diamond-virtual-pathway-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Virtual/pre-recorded pitch pathway",
+            "variantIds": [
+              "variant-business-innovation",
+              "variant-social-innovation"
+            ]
+          },
+          "displayValue": "Virtual/pre-recorded pitch pathway",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "choose a competition track (business innovation or social innovation) as well as a pitch round format (live pitch event or virtual/pre-recorded)"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "steps": [
+          {
+            "claimId": "diamond-virtual-step-submission",
+            "status": "disclosed",
+            "value": {
+              "stageId": "stage-submission",
+              "enterWhen": null
+            },
+            "displayValue": "Submission round",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "Teams who participate in the submission round will be evaluated by a series of judges and must meet the minimum score to advance to the pitching round."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "diamond-virtual-step-review",
+            "status": "disclosed",
+            "value": {
+              "stageId": "stage-submission-review",
+              "enterWhen": null
+            },
+            "displayValue": "Submission judging",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "Teams who participate in the submission round will be evaluated by a series of judges and must meet the minimum score to advance to the pitching round."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "diamond-virtual-step-pitch",
+            "status": "disclosed",
+            "value": {
+              "stageId": "stage-virtual-pitch",
+              "enterWhen": "Team is invited to the pitching round and selected the virtual/pre-recorded format."
+            },
+            "displayValue": "Virtual/pre-recorded pitch if invited",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "choose a competition track (business innovation or social innovation) as well as a pitch round format (live pitch event or virtual/pre-recorded)"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "diamond-virtual-step-summit",
+            "status": "disclosed",
+            "value": {
+              "stageId": "stage-summit-final",
+              "enterWhen": "Team is selected as a virtual finalist."
+            },
+            "displayValue": "In-person Summit if finalist",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-dates-deadlines",
+                "url": "https://horn.udel.edu/deadlines2627",
+                "title": "Dates and Deadlines",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "March 9: Finalists from the Virtual track are selected."
+              },
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "Student teams qualifying for the final round of competition at the Limitless World Summit will be required to attend in-person to compete."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ]
+      }
+    ],
+    "note": "Pitch format is selected separately from Business/Social Innovation track."
+  },
+  "costItems": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "cost-required-travel",
+        "definition": {
+          "claimId": "diamond-travel-cost-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Travel for required in-person attendance",
+            "kind": "travel",
+            "requirement": "conditional",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [
+                "stage-live-pitch",
+                "stage-summit-final"
+              ],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Conditional travel for live pitch or finalist attendance",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "A participant from a team must be present at the event to compete."
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "At least one team member must be present."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "diamond-travel-cost-amount",
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "claimKind": null,
+          "sources": [],
+          "note": "No participant-paid travel amount or coverage commitment was published in the reviewed rules.",
+          "conflictingValues": []
+        },
+        "chargeBasis": null,
+        "treatment": null,
+        "refundability": null,
+        "includedItems": [],
+        "excludedItems": [],
+        "conditions": [
+          {
+            "claimId": "diamond-travel-cost-condition",
+            "status": "disclosed",
+            "value": "Travel applies if a team uses a live pitch event or qualifies for the in-person Summit final.",
+            "displayValue": "Depends on pitch route and advancement",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "A participant from a team must be present at the event to compete."
+              },
+              {
+                "id": "diamond-competition-rules",
+                "url": "https://diamondchallenge.org/competition/",
+                "title": "Competition - Diamond Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "At least one team member must be present."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ]
+      }
+    ],
+    "note": "The rules require some in-person attendance but do not publish whether or how participant travel costs are covered.",
+    "completeness": "incomplete"
+  },
+  "outcomes": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "outcome-business-1",
+        "definition": {
+          "claimId": "diamond-business-1-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Business Innovation 1st place",
+            "outcomeType": "team_cash_prize",
+            "scope": {
+              "variantIds": [
+                "variant-business-innovation"
+              ],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Business Innovation 1st place: $12,000/team",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "recipientScope": {
+          "claimId": "diamond-business-1-recipient",
+          "status": "disclosed",
+          "value": "team",
+          "displayValue": "Team",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "monetaryNature": {
+          "claimId": "diamond-business-1-nature",
+          "status": "disclosed",
+          "value": "cash",
+          "displayValue": "Cash",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "diamond-business-1-amount",
+          "status": "disclosed",
+          "value": {
+            "kind": "exact",
+            "amount": 12000,
+            "currency": "USD"
+          },
+          "displayValue": "$12,000",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "distribution": {
+          "claimId": "diamond-business-1-distribution",
+          "status": "disclosed",
+          "value": [
+            {
+              "payee": "registered_venture",
+              "method": "direct",
+              "condition": "Full payment to the team's designated venture if it is a registered entity."
+            },
+            {
+              "payee": "participant",
+              "method": "equal_split",
+              "condition": "Otherwise distributed as an even split among registered team members."
+            }
+          ],
+          "displayValue": "Full payment to a registered team venture or equal split among registered team members",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "rank": {
+          "claimId": "diamond-business-1-rank",
+          "status": "disclosed",
+          "value": {
+            "ordinal": 1,
+            "label": "1st place"
+          },
+          "displayValue": "1st place",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "track": {
+          "claimId": "diamond-business-1-track",
+          "status": "disclosed",
+          "value": "Business Innovation",
+          "displayValue": "Business Innovation",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "quantity": null,
+        "useRestriction": null,
+        "combinability": null,
+        "conditions": []
+      },
+      {
+        "id": "outcome-business-2",
+        "definition": {
+          "claimId": "diamond-business-2-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Business Innovation 2nd place",
+            "outcomeType": "team_cash_prize",
+            "scope": {
+              "variantIds": [
+                "variant-business-innovation"
+              ],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Business Innovation 2nd place: $8,000/team",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "recipientScope": {
+          "claimId": "diamond-business-2-recipient",
+          "status": "disclosed",
+          "value": "team",
+          "displayValue": "Team",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "monetaryNature": {
+          "claimId": "diamond-business-2-nature",
+          "status": "disclosed",
+          "value": "cash",
+          "displayValue": "Cash",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "diamond-business-2-amount",
+          "status": "disclosed",
+          "value": {
+            "kind": "exact",
+            "amount": 8000,
+            "currency": "USD"
+          },
+          "displayValue": "$8,000",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "distribution": {
+          "claimId": "diamond-business-2-distribution",
+          "status": "disclosed",
+          "value": [
+            {
+              "payee": "registered_venture",
+              "method": "direct",
+              "condition": "Full payment to the team's designated venture if it is a registered entity."
+            },
+            {
+              "payee": "participant",
+              "method": "equal_split",
+              "condition": "Otherwise distributed as an even split among registered team members."
+            }
+          ],
+          "displayValue": "Full payment to a registered team venture or equal split among registered team members",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "rank": {
+          "claimId": "diamond-business-2-rank",
+          "status": "disclosed",
+          "value": {
+            "ordinal": 2,
+            "label": "2nd place"
+          },
+          "displayValue": "2nd place",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "track": {
+          "claimId": "diamond-business-2-track",
+          "status": "disclosed",
+          "value": "Business Innovation",
+          "displayValue": "Business Innovation",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "quantity": null,
+        "useRestriction": null,
+        "combinability": null,
+        "conditions": []
+      },
+      {
+        "id": "outcome-business-3",
+        "definition": {
+          "claimId": "diamond-business-3-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Business Innovation 3rd place",
+            "outcomeType": "team_cash_prize",
+            "scope": {
+              "variantIds": [
+                "variant-business-innovation"
+              ],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Business Innovation 3rd place: $4,500/team",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "recipientScope": {
+          "claimId": "diamond-business-3-recipient",
+          "status": "disclosed",
+          "value": "team",
+          "displayValue": "Team",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "monetaryNature": {
+          "claimId": "diamond-business-3-nature",
+          "status": "disclosed",
+          "value": "cash",
+          "displayValue": "Cash",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "diamond-business-3-amount",
+          "status": "disclosed",
+          "value": {
+            "kind": "exact",
+            "amount": 4500,
+            "currency": "USD"
+          },
+          "displayValue": "$4,500",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "distribution": {
+          "claimId": "diamond-business-3-distribution",
+          "status": "disclosed",
+          "value": [
+            {
+              "payee": "registered_venture",
+              "method": "direct",
+              "condition": "Full payment to the team's designated venture if it is a registered entity."
+            },
+            {
+              "payee": "participant",
+              "method": "equal_split",
+              "condition": "Otherwise distributed as an even split among registered team members."
+            }
+          ],
+          "displayValue": "Full payment to a registered team venture or equal split among registered team members",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "rank": {
+          "claimId": "diamond-business-3-rank",
+          "status": "disclosed",
+          "value": {
+            "ordinal": 3,
+            "label": "3rd place"
+          },
+          "displayValue": "3rd place",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "track": {
+          "claimId": "diamond-business-3-track",
+          "status": "disclosed",
+          "value": "Business Innovation",
+          "displayValue": "Business Innovation",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "quantity": null,
+        "useRestriction": null,
+        "combinability": null,
+        "conditions": []
+      },
+      {
+        "id": "outcome-social-1",
+        "definition": {
+          "claimId": "diamond-social-1-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Social Innovation 1st place",
+            "outcomeType": "team_cash_prize",
+            "scope": {
+              "variantIds": [
+                "variant-social-innovation"
+              ],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Social Innovation 1st place: $12,000/team",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "recipientScope": {
+          "claimId": "diamond-social-1-recipient",
+          "status": "disclosed",
+          "value": "team",
+          "displayValue": "Team",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "monetaryNature": {
+          "claimId": "diamond-social-1-nature",
+          "status": "disclosed",
+          "value": "cash",
+          "displayValue": "Cash",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "diamond-social-1-amount",
+          "status": "disclosed",
+          "value": {
+            "kind": "exact",
+            "amount": 12000,
+            "currency": "USD"
+          },
+          "displayValue": "$12,000",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "distribution": {
+          "claimId": "diamond-social-1-distribution",
+          "status": "disclosed",
+          "value": [
+            {
+              "payee": "registered_venture",
+              "method": "direct",
+              "condition": "Full payment to the team's designated venture if it is a registered entity."
+            },
+            {
+              "payee": "participant",
+              "method": "equal_split",
+              "condition": "Otherwise distributed as an even split among registered team members."
+            }
+          ],
+          "displayValue": "Full payment to a registered team venture or equal split among registered team members",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "rank": {
+          "claimId": "diamond-social-1-rank",
+          "status": "disclosed",
+          "value": {
+            "ordinal": 1,
+            "label": "1st place"
+          },
+          "displayValue": "1st place",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "track": {
+          "claimId": "diamond-social-1-track",
+          "status": "disclosed",
+          "value": "Social Innovation",
+          "displayValue": "Social Innovation",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "quantity": null,
+        "useRestriction": null,
+        "combinability": null,
+        "conditions": []
+      },
+      {
+        "id": "outcome-social-2",
+        "definition": {
+          "claimId": "diamond-social-2-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Social Innovation 2nd place",
+            "outcomeType": "team_cash_prize",
+            "scope": {
+              "variantIds": [
+                "variant-social-innovation"
+              ],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Social Innovation 2nd place: $8,000/team",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "recipientScope": {
+          "claimId": "diamond-social-2-recipient",
+          "status": "disclosed",
+          "value": "team",
+          "displayValue": "Team",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "monetaryNature": {
+          "claimId": "diamond-social-2-nature",
+          "status": "disclosed",
+          "value": "cash",
+          "displayValue": "Cash",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "diamond-social-2-amount",
+          "status": "disclosed",
+          "value": {
+            "kind": "exact",
+            "amount": 8000,
+            "currency": "USD"
+          },
+          "displayValue": "$8,000",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "distribution": {
+          "claimId": "diamond-social-2-distribution",
+          "status": "disclosed",
+          "value": [
+            {
+              "payee": "registered_venture",
+              "method": "direct",
+              "condition": "Full payment to the team's designated venture if it is a registered entity."
+            },
+            {
+              "payee": "participant",
+              "method": "equal_split",
+              "condition": "Otherwise distributed as an even split among registered team members."
+            }
+          ],
+          "displayValue": "Full payment to a registered team venture or equal split among registered team members",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "rank": {
+          "claimId": "diamond-social-2-rank",
+          "status": "disclosed",
+          "value": {
+            "ordinal": 2,
+            "label": "2nd place"
+          },
+          "displayValue": "2nd place",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "track": {
+          "claimId": "diamond-social-2-track",
+          "status": "disclosed",
+          "value": "Social Innovation",
+          "displayValue": "Social Innovation",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "quantity": null,
+        "useRestriction": null,
+        "combinability": null,
+        "conditions": []
+      },
+      {
+        "id": "outcome-social-3",
+        "definition": {
+          "claimId": "diamond-social-3-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Social Innovation 3rd place",
+            "outcomeType": "team_cash_prize",
+            "scope": {
+              "variantIds": [
+                "variant-social-innovation"
+              ],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Social Innovation 3rd place: $4,500/team",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "recipientScope": {
+          "claimId": "diamond-social-3-recipient",
+          "status": "disclosed",
+          "value": "team",
+          "displayValue": "Team",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "monetaryNature": {
+          "claimId": "diamond-social-3-nature",
+          "status": "disclosed",
+          "value": "cash",
+          "displayValue": "Cash",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "diamond-social-3-amount",
+          "status": "disclosed",
+          "value": {
+            "kind": "exact",
+            "amount": 4500,
+            "currency": "USD"
+          },
+          "displayValue": "$4,500",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "distribution": {
+          "claimId": "diamond-social-3-distribution",
+          "status": "disclosed",
+          "value": [
+            {
+              "payee": "registered_venture",
+              "method": "direct",
+              "condition": "Full payment to the team's designated venture if it is a registered entity."
+            },
+            {
+              "payee": "participant",
+              "method": "equal_split",
+              "condition": "Otherwise distributed as an even split among registered team members."
+            }
+          ],
+          "displayValue": "Full payment to a registered team venture or equal split among registered team members",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "rank": {
+          "claimId": "diamond-social-3-rank",
+          "status": "disclosed",
+          "value": {
+            "ordinal": 3,
+            "label": "3rd place"
+          },
+          "displayValue": "3rd place",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "1st Place: $12,000 2nd Place: $8,000 3rd Place: $4,500"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "track": {
+          "claimId": "diamond-social-3-track",
+          "status": "disclosed",
+          "value": "Social Innovation",
+          "displayValue": "Social Innovation",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Awards are given to the top three teams in both business innovation, presented by CSC, and social innovation tracks"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "quantity": null,
+        "useRestriction": null,
+        "combinability": null,
+        "conditions": []
+      },
+      {
+        "id": "outcome-finalist-summit-seat",
+        "definition": {
+          "claimId": "diamond-summit-seat-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Finalist place at the 2027 Limitless World Summit",
+            "outcomeType": "program_seat",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [
+                "stage-summit-final"
+              ],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Finalist place at the 2027 Limitless World Summit",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "limitless-world-summit-2027",
+              "url": "https://limitlessworldsummit.org/",
+              "title": "Limitless World Summit",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "As a Diamond Challenge finalist, you’re not just recognized for your innovation—you’re invited to take your ideas to the next level at the Limitless World Summit!"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "recipientScope": {
+          "claimId": "diamond-summit-seat-recipient",
+          "status": "disclosed",
+          "value": "team",
+          "displayValue": "Finalist team",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "limitless-world-summit-2027",
+              "url": "https://limitlessworldsummit.org/",
+              "title": "Limitless World Summit",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "As a Diamond Challenge finalist, you’re not just recognized for your innovation—you’re invited to take your ideas to the next level at the Limitless World Summit!"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "monetaryNature": {
+          "claimId": "diamond-summit-seat-nature",
+          "status": "disclosed",
+          "value": "not_monetized",
+          "displayValue": "No monetary value published",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "limitless-world-summit-2027",
+              "url": "https://limitlessworldsummit.org/",
+              "title": "Limitless World Summit",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "As a Diamond Challenge finalist, you’re not just recognized for your innovation—you’re invited to take your ideas to the next level at the Limitless World Summit!"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": null,
+        "distribution": null,
+        "rank": null,
+        "track": null,
+        "quantity": null,
+        "useRestriction": null,
+        "combinability": null,
+        "conditions": [
+          {
+            "claimId": "diamond-summit-seat-condition",
+            "status": "disclosed",
+            "value": "Team qualifies as a finalist.",
+            "displayValue": "Finalist qualification",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "limitless-world-summit-2027",
+                "url": "https://limitlessworldsummit.org/",
+                "title": "Limitless World Summit",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "As a Diamond Challenge finalist, you’re not just recognized for your innovation—you’re invited to take your ideas to the next level at the Limitless World Summit!"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ]
+      },
+      {
+        "id": "outcome-resources",
+        "definition": {
+          "claimId": "diamond-resources-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Free entrepreneurship resources",
+            "outcomeType": "other_in_kind",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Free entrepreneurship resources",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "provides free resources for students, educators, and entrepreneurship practitioners"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "recipientScope": {
+          "claimId": "diamond-resources-recipient",
+          "status": "disclosed",
+          "value": "individual",
+          "displayValue": "Students and educators",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "provides free resources for students, educators, and entrepreneurship practitioners"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "monetaryNature": {
+          "claimId": "diamond-resources-nature",
+          "status": "disclosed",
+          "value": "not_monetized",
+          "displayValue": "No monetary value published",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "provides free resources for students, educators, and entrepreneurship practitioners"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": null,
+        "distribution": null,
+        "rank": null,
+        "track": null,
+        "quantity": null,
+        "useRestriction": null,
+        "combinability": null,
+        "conditions": []
+      },
+      {
+        "id": "outcome-feedback-network",
+        "definition": {
+          "claimId": "diamond-feedback-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Submission feedback, networking, and collaboration opportunities",
+            "outcomeType": "other",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Feedback, networking, and collaboration",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-dates-deadlines",
+              "url": "https://horn.udel.edu/deadlines2627",
+              "title": "Dates and Deadlines",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Participants are notified of pitching round decisions and receive submission round feedback from the Diamond Challenge Team via email."
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Every participant has the opportunity to grow their network, gain valuable feedback, and discover potential future collaborations."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "recipientScope": {
+          "claimId": "diamond-feedback-recipient",
+          "status": "disclosed",
+          "value": "individual",
+          "displayValue": "Participant",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-dates-deadlines",
+              "url": "https://horn.udel.edu/deadlines2627",
+              "title": "Dates and Deadlines",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Participants are notified of pitching round decisions and receive submission round feedback from the Diamond Challenge Team via email."
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Every participant has the opportunity to grow their network, gain valuable feedback, and discover potential future collaborations."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "monetaryNature": {
+          "claimId": "diamond-feedback-nature",
+          "status": "disclosed",
+          "value": "not_monetized",
+          "displayValue": "No monetary value published",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "diamond-dates-deadlines",
+              "url": "https://horn.udel.edu/deadlines2627",
+              "title": "Dates and Deadlines",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Participants are notified of pitching round decisions and receive submission round feedback from the Diamond Challenge Team via email."
+            },
+            {
+              "id": "diamond-competition-rules",
+              "url": "https://diamondchallenge.org/competition/",
+              "title": "Competition - Diamond Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-11T22:39:59.688Z",
+              "excerpt": "Every participant has the opportunity to grow their network, gain valuable feedback, and discover potential future collaborations."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": null,
+        "distribution": null,
+        "rank": null,
+        "track": null,
+        "quantity": null,
+        "useRestriction": null,
+        "combinability": null,
+        "conditions": [
+          {
+            "claimId": "diamond-feedback-condition",
+            "status": "disclosed",
+            "value": "Submission-round feedback is described for participants notified of pitching-round decisions.",
+            "displayValue": "Stage-dependent feedback",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "diamond-dates-deadlines",
+                "url": "https://horn.udel.edu/deadlines2627",
+                "title": "Dates and Deadlines",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-11T22:39:59.688Z",
+                "excerpt": "Participants are notified of pitching round decisions and receive submission round feedback from the Diamond Challenge Team via email."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ]
+      }
+    ],
+    "note": "The six supported track/rank awards are modeled individually. The V1 value names five topical prizes, but its stored excerpts do not support those names; no fabricated excerpt was introduced during migration."
+  },
   "facts": {
     "opportunity_name": {
       "status": "disclosed",
@@ -66,7 +3024,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "opportunity_category": {
       "status": "disclosed",
@@ -90,7 +3049,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "official_url": {
       "status": "disclosed",
@@ -114,16 +3074,14 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "operating_organization": {
       "status": "disclosed",
-      "value": "Horn Entrepreneurship at the University of Delaware",
-      "displayValue": "Horn Entrepreneurship, University of Delaware",
-      "normalizedValue": {
-        "kind": "text",
-        "value": "Horn Entrepreneurship at the University of Delaware"
-      },
+      "value": "Horn Entrepreneurship",
+      "displayValue": "Horn Entrepreneurship",
+      "normalizedValue": null,
       "sources": [
         {
           "id": "diamond-competition-rules",
@@ -138,15 +3096,23 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "organizations.primary-operator",
+        "claimRefs": [
+          "diamond-horn-operator-role",
+          "diamond-horn-name"
+        ]
+      }
     },
     "organization_type": {
       "status": "disclosed",
-      "value": "University entrepreneurship initiative",
+      "value": "institution_unit",
       "displayValue": "University entrepreneurship initiative",
       "normalizedValue": {
         "kind": "text",
-        "value": "University entrepreneurship initiative"
+        "value": "institution_unit"
       },
       "sources": [
         {
@@ -156,13 +3122,29 @@
           "pageType": "official_program_page",
           "accessedAt": "2026-08-11T22:39:59.688Z",
           "excerpt": "Horn Entrepreneurship launched a youth initiative to address major gaps in secondary entrepreneurship education."
+        },
+        {
+          "id": "diamond-competition-rules",
+          "url": "https://diamondchallenge.org/competition/",
+          "title": "Competition - Diamond Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:39:59.688Z",
+          "excerpt": "The Diamond Challenge, a philanthropic education initiative by Horn Entrepreneurship at the University of Delaware"
         }
       ],
       "note": null,
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "organizations.primary-operator-kind",
+        "claimRefs": [
+          "diamond-horn-kind",
+          "diamond-horn-name"
+        ]
+      }
     },
     "named_institution": {
       "status": "disclosed",
@@ -179,6 +3161,14 @@
           "title": "Competition - Diamond Challenge",
           "pageType": "official_rules",
           "accessedAt": "2026-08-11T22:39:59.688Z",
+          "excerpt": "The Diamond Challenge, a philanthropic education initiative by Horn Entrepreneurship at the University of Delaware"
+        },
+        {
+          "id": "diamond-competition-rules",
+          "url": "https://diamondchallenge.org/competition/",
+          "title": "Competition - Diamond Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:39:59.688Z",
           "excerpt": "Horn Entrepreneurship at the University of Delaware"
         }
       ],
@@ -186,12 +3176,20 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "relationships.institution-list",
+        "claimRefs": [
+          "diamond-udel-operated-relationship",
+          "diamond-udel-name"
+        ]
+      }
     },
     "institution_relationship": {
       "status": "disclosed",
       "value": "institution_operated",
-      "displayValue": "Institution operated",
+      "displayValue": "Institution operated — University of Delaware / Horn Entrepreneurship",
       "normalizedValue": {
         "kind": "relationship",
         "value": "institution_operated"
@@ -204,21 +3202,37 @@
           "pageType": "official_rules",
           "accessedAt": "2026-08-11T22:39:59.688Z",
           "excerpt": "The Diamond Challenge, a philanthropic education initiative by Horn Entrepreneurship at the University of Delaware"
+        },
+        {
+          "id": "diamond-competition-rules",
+          "url": "https://diamondchallenge.org/competition/",
+          "title": "Competition - Diamond Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:39:59.688Z",
+          "excerpt": "Horn Entrepreneurship at the University of Delaware"
         }
       ],
       "note": null,
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "relationships.summary",
+        "claimRefs": [
+          "diamond-udel-operated-relationship",
+          "diamond-udel-name"
+        ]
+      }
     },
     "relationship_explanation": {
       "status": "disclosed",
-      "value": "Horn Entrepreneurship is the University of Delaware unit operating the Diamond Challenge; external pitch-event organizations are delivery partners, not co-operators of the whole competition.",
-      "displayValue": "UD Horn operates; local organizations deliver affiliated pitch events",
+      "value": "Diamond Challenge is an initiative of Horn Entrepreneurship at the University of Delaware.",
+      "displayValue": "Diamond Challenge is an initiative of Horn Entrepreneurship at the University of Delaware.",
       "normalizedValue": {
         "kind": "text",
-        "value": "Horn Entrepreneurship at the University of Delaware operates the competition; affiliated partners execute live pitch events"
+        "value": "Diamond Challenge is an initiative of Horn Entrepreneurship at the University of Delaware."
       },
       "sources": [
         {
@@ -227,7 +3241,7 @@
           "title": "Competition - Diamond Challenge",
           "pageType": "official_rules",
           "accessedAt": "2026-08-11T22:39:59.688Z",
-          "excerpt": "a philanthropic education initiative by Horn Entrepreneurship at the University of Delaware"
+          "excerpt": "The Diamond Challenge, a philanthropic education initiative by Horn Entrepreneurship at the University of Delaware"
         },
         {
           "id": "diamond-competition-rules",
@@ -235,14 +3249,22 @@
           "title": "Competition - Diamond Challenge",
           "pageType": "official_rules",
           "accessedAt": "2026-08-11T22:39:59.688Z",
-          "excerpt": "The Diamond Challenge utilizes a network of affiliated partners to execute live pitch events."
+          "excerpt": "Horn Entrepreneurship at the University of Delaware"
         }
       ],
       "note": null,
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "relationships.explanations",
+        "claimRefs": [
+          "diamond-udel-operated-relationship",
+          "diamond-udel-name"
+        ]
+      }
     },
     "grade_levels": {
       "status": "disclosed",
@@ -270,7 +3292,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "ages": {
       "status": "disclosed",
@@ -291,7 +3314,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "geographic_restrictions": {
       "status": "disclosed",
@@ -315,7 +3339,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "citizenship_restrictions": {
       "status": "not_found",
@@ -327,7 +3352,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "prerequisite_skills": {
       "status": "disclosed",
@@ -375,7 +3401,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "entry_format": {
       "status": "disclosed",
@@ -407,7 +3434,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "sponsor_requirement": {
       "status": "disclosed",
@@ -431,16 +3459,14 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "application_deadline": {
       "status": "disclosed",
-      "value": "2027-01-14T17:00:00-05:00",
+      "value": "January 14, 2027 at 5:00 p.m. EST",
       "displayValue": "January 14, 2027 at 5:00 p.m. EST",
-      "normalizedValue": {
-        "kind": "date",
-        "isoDate": "2027-01-14"
-      },
+      "normalizedValue": null,
       "sources": [
         {
           "id": "diamond-dates-deadlines",
@@ -455,15 +3481,19 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "cycle.closes",
+        "claimRefs": [
+          "diamond-submission-deadline"
+        ]
+      }
     },
     "decision_date": {
       "status": "disclosed",
-      "value": [
-        "2027-02-10: pitching-round invitees notified",
-        "2027-03-09: finalists announced"
-      ],
-      "displayValue": "Pitching round: February 10; finalists: March 9, 2027",
+      "value": "Varies by stage/pathway",
+      "displayValue": "Varies by stage/pathway",
       "normalizedValue": null,
       "sources": [
         {
@@ -483,16 +3513,24 @@
           "excerpt": "March 9: Finalists from the Virtual track are selected."
         }
       ],
-      "note": "The single field preserves both stage-specific decisions as text; no single normalized decision date is selected.",
+      "note": "February 10, 2027; March 9, 2027",
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.notification",
+        "claimRefs": [
+          "diamond-pitch-invite-notification",
+          "diamond-virtual-finalist-notification"
+        ]
+      }
     },
     "start_date": {
       "status": "disclosed",
-      "value": "2026-09-16",
-      "displayValue": "Submission window opens September 16, 2026",
+      "value": "September 16, 2026",
+      "displayValue": "September 16, 2026",
       "normalizedValue": {
         "kind": "date",
         "isoDate": "2026-09-16"
@@ -507,16 +3545,23 @@
           "excerpt": "September 16 | Submission Window Opens"
         }
       ],
-      "note": null,
+      "note": "The cycle opening is used because no separate participation start was identified.",
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "cycle.opens",
+        "claimRefs": [
+          "diamond-submission-opens"
+        ]
+      }
     },
     "end_date": {
       "status": "disclosed",
-      "value": "2027-04-30",
-      "displayValue": "Limitless World Summit ends April 30, 2027",
+      "value": "April 30, 2027",
+      "displayValue": "April 30, 2027",
       "normalizedValue": {
         "kind": "date",
         "isoDate": "2027-04-30"
@@ -535,22 +3580,21 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "cycle.coverage-end",
+        "claimRefs": [
+          "diamond-summit-ends"
+        ]
+      }
     },
     "duration": {
       "status": "disclosed",
-      "value": "September 16, 2026 through April 30, 2027, with stage-dependent participation",
-      "displayValue": "September 16, 2026–April 30, 2027; stage-dependent",
+      "value": "Scoped by stage/pathway — see details",
+      "displayValue": "Scoped by stage/pathway — see details",
       "normalizedValue": null,
       "sources": [
-        {
-          "id": "diamond-competition-rules",
-          "url": "https://diamondchallenge.org/competition/",
-          "title": "Competition - Diamond Challenge",
-          "pageType": "official_rules",
-          "accessedAt": "2026-08-11T22:39:59.688Z",
-          "excerpt": "Beginning in September, teams develop their concepts and leverage resources throughout three rounds culminating at the Limitless World Summit."
-        },
         {
           "id": "limitless-world-summit-2027",
           "url": "https://limitlessworldsummit.org/",
@@ -560,11 +3604,18 @@
           "excerpt": "April 29-30, 2027"
         }
       ],
-      "note": "Most entrants do not participate through the Summit; duration depends on advancement and selected pitch pathway.",
+      "note": "April 29–30, 2027",
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.duration",
+        "claimRefs": [
+          "diamond-summit-duration"
+        ]
+      }
     },
     "weekly_hours": {
       "status": "not_found",
@@ -576,7 +3627,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "required_live_hours": {
       "status": "unclear",
@@ -605,16 +3657,14 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "participation_format": {
       "status": "disclosed",
-      "value": "hybrid",
-      "displayValue": "Hybrid: online submission; live-event or virtual pitch; in-person final",
-      "normalizedValue": {
-        "kind": "participation_format",
-        "value": "hybrid"
-      },
+      "value": "Varies by stage/pathway",
+      "displayValue": "Varies by stage/pathway",
+      "normalizedValue": null,
       "sources": [
         {
           "id": "diamond-competition-rules",
@@ -633,24 +3683,26 @@
           "excerpt": "Student teams qualifying for the final round of competition at the Limitless World Summit will be required to attend in-person to compete."
         }
       ],
-      "note": null,
+      "note": "In person; Virtual/pre-recorded",
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.formats",
+        "claimRefs": [
+          "diamond-live-pitch-format",
+          "diamond-virtual-pitch-format",
+          "diamond-summit-format"
+        ]
+      }
     },
     "location": {
       "status": "disclosed",
-      "value": [
-        "Online",
-        "Affiliated live pitch-event locations worldwide",
-        "Chase Center on the Riverfront, Wilmington, Delaware for the 2027 final"
-      ],
-      "displayValue": "Online or worldwide pitch site; final in Wilmington, Delaware",
-      "normalizedValue": {
-        "kind": "text",
-        "value": "Online, worldwide affiliated pitch sites, and Wilmington, Delaware finalist summit"
-      },
+      "value": "Varies by stage/pathway",
+      "displayValue": "Varies by stage/pathway",
+      "normalizedValue": null,
       "sources": [
         {
           "id": "diamond-competition-rules",
@@ -669,11 +3721,19 @@
           "excerpt": "Chase Center on the Riverfront\nWilmington, Delaware"
         }
       ],
-      "note": null,
+      "note": "Affiliated pitch-event locations worldwide; Chase Center on the Riverfront, Wilmington, Delaware",
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.locations",
+        "claimRefs": [
+          "diamond-live-pitch-location",
+          "diamond-summit-location"
+        ]
+      }
     },
     "travel_requirements": {
       "status": "disclosed",
@@ -705,7 +3765,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "application_fee": {
       "status": "not_found",
@@ -717,7 +3778,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "deposit": {
       "status": "not_applicable",
@@ -729,7 +3791,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "tuition": {
       "status": "not_applicable",
@@ -741,7 +3804,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "other_mandatory_costs": {
       "status": "unclear",
@@ -762,28 +3826,29 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "estimated_total_mandatory_cost": {
-      "status": "unclear",
+      "status": "not_found",
       "value": null,
       "displayValue": null,
       "normalizedValue": null,
-      "sources": [
-        {
-          "id": "diamond-competition-rules",
-          "url": "https://diamondchallenge.org/competition/",
-          "title": "Competition - Diamond Challenge",
-          "pageType": "official_rules",
-          "accessedAt": "2026-08-11T22:39:59.688Z",
-          "excerpt": "At least one team member must be present."
-        }
-      ],
-      "note": "No total can be calculated because cost depends on advancement, pitch pathway, origin, and unpublished travel-support or participant-payment terms.",
+      "sources": [],
+      "note": "A complete mandatory total cannot be calculated because at least one required cost amount is unresolved.",
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "costs.total-unresolved",
+        "claimRefs": [
+          "diamond-travel-cost-definition",
+          "diamond-travel-cost-amount",
+          "diamond-travel-cost-condition"
+        ]
+      }
     },
     "travel_included": {
       "status": "not_found",
@@ -795,7 +3860,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "lodging_included": {
       "status": "not_found",
@@ -807,7 +3873,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "meals_included": {
       "status": "not_found",
@@ -819,7 +3886,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "financial_aid": {
       "status": "not_found",
@@ -831,7 +3899,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "refund_policy": {
       "status": "not_found",
@@ -843,7 +3912,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "cancellation_policy": {
       "status": "not_found",
@@ -855,16 +3925,14 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "selection_process": {
       "status": "disclosed",
-      "value": "Submission-round judging, chosen live or virtual pitching round, then in-person finalist round at the Limitless World Summit",
-      "displayValue": "Submission judging → live/virtual pitch → in-person Summit final",
-      "normalizedValue": {
-        "kind": "text",
-        "value": "Submission judging, live or virtual pitching round, and in-person Summit final"
-      },
+      "value": "Live pitch pathway: Submission round → Submission judging → Live pitch event → Limitless World Summit final; Virtual/pre-recorded pitch pathway: Submission round → Submission judging → Virtual/pre-recorded pitch → Limitless World Summit final",
+      "displayValue": "Live pitch pathway: Submission round → Submission judging → Live pitch event → Limitless World Summit final; Virtual/pre-recorded pitch pathway: Submission round → Submission judging → Virtual/pre-recorded pitch → Limitless World Summit final",
+      "normalizedValue": null,
       "sources": [
         {
           "id": "diamond-competition-rules",
@@ -872,7 +3940,23 @@
           "title": "Competition - Diamond Challenge",
           "pageType": "official_rules",
           "accessedAt": "2026-08-11T22:39:59.688Z",
+          "excerpt": "choose a competition track (business innovation or social innovation) as well as a pitch round format (live pitch event or virtual/pre-recorded)"
+        },
+        {
+          "id": "diamond-competition-rules",
+          "url": "https://diamondchallenge.org/competition/",
+          "title": "Competition - Diamond Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:39:59.688Z",
           "excerpt": "Teams who participate in the submission round will be evaluated by a series of judges and must meet the minimum score to advance to the pitching round."
+        },
+        {
+          "id": "diamond-competition-rules",
+          "url": "https://diamondchallenge.org/competition/",
+          "title": "Competition - Diamond Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:39:59.688Z",
+          "excerpt": "Student teams qualifying for the final round of competition at the Limitless World Summit will be required to attend in-person to compete."
         },
         {
           "id": "diamond-competition-rules",
@@ -888,14 +3972,43 @@
           "title": "Competition - Diamond Challenge",
           "pageType": "official_rules",
           "accessedAt": "2026-08-11T22:39:59.688Z",
-          "excerpt": "Student teams qualifying for the final round of competition at the Limitless World Summit will be required to attend in-person to compete."
+          "excerpt": "live pitch event or virtual/pre-recorded"
+        },
+        {
+          "id": "diamond-dates-deadlines",
+          "url": "https://horn.udel.edu/deadlines2627",
+          "title": "Dates and Deadlines",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-11T22:39:59.688Z",
+          "excerpt": "March 9: Finalists from the Virtual track are selected."
         }
       ],
-      "note": null,
+      "note": "The v2 pathway ledger preserves the branches rather than selecting one route.",
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.process",
+        "claimRefs": [
+          "diamond-live-pathway-definition",
+          "diamond-live-step-submission",
+          "diamond-live-step-review",
+          "diamond-live-step-pitch",
+          "diamond-live-step-summit",
+          "diamond-submission-stage",
+          "diamond-review-stage",
+          "diamond-live-pitch-stage",
+          "diamond-summit-stage",
+          "diamond-virtual-pathway-definition",
+          "diamond-virtual-step-submission",
+          "diamond-virtual-step-review",
+          "diamond-virtual-step-pitch",
+          "diamond-virtual-step-summit",
+          "diamond-virtual-pitch-stage"
+        ]
+      }
     },
     "applicant_count": {
       "status": "not_found",
@@ -907,7 +4020,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "acceptance_count": {
       "status": "not_found",
@@ -919,7 +4033,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "acceptance_rate_claim": {
       "status": "not_found",
@@ -931,7 +4046,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "calculated_acceptance_rate": {
       "status": "not_found",
@@ -943,7 +4059,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "selection_evidence": {
       "status": "disclosed",
@@ -983,16 +4100,13 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "cash_award": {
       "status": "disclosed",
-      "value": [
-        "Business Innovation: 1st $12,000; 2nd $8,000; 3rd $4,500",
-        "Social Innovation: 1st $12,000; 2nd $8,000; 3rd $4,500",
-        "Topical prizes: DSWA Waste & Recycling Innovation, Gore Innovation Excellence, Pathways to Prosperity, Horn Entrepreneurship Global, and Human Flourishing; 2027 amounts not published"
-      ],
-      "displayValue": "Business and social tracks each: $12,000 / $8,000 / $4,500; topical prizes: DSWA Waste & Recycling, Gore Innovation Excellence, Pathways to Prosperity, Horn Entrepreneurship Global, and Human Flourishing (amounts unpublished)",
+      "value": "Multiple cash awards — see prize details",
+      "displayValue": "Multiple cash awards — see prize details",
       "normalizedValue": null,
       "sources": [
         {
@@ -1020,11 +4134,59 @@
           "excerpt": "All awards paid to winning teams will be distributed in either full payment to the team’s designated venture, which must be a registered entity, or as an even split amongst registered team members."
         }
       ],
-      "note": "These are team-level awards repeated across two tracks. The page also advertises a $100K prize pool and five named topical prizes but does not publish their 2027 amounts, so no single normalized award is selected.",
+      "note": "Business Innovation 1st place: $12,000/team; Business Innovation 2nd place: $8,000/team; Business Innovation 3rd place: $4,500/team; Social Innovation 1st place: $12,000/team; Social Innovation 2nd place: $8,000/team; Social Innovation 3rd place: $4,500/team",
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "outcomes.cash_award-matrix",
+        "claimRefs": [
+          "diamond-business-1-definition",
+          "diamond-business-1-recipient",
+          "diamond-business-1-nature",
+          "diamond-business-1-amount",
+          "diamond-business-1-distribution",
+          "diamond-business-1-rank",
+          "diamond-business-1-track",
+          "diamond-business-2-definition",
+          "diamond-business-2-recipient",
+          "diamond-business-2-nature",
+          "diamond-business-2-amount",
+          "diamond-business-2-distribution",
+          "diamond-business-2-rank",
+          "diamond-business-2-track",
+          "diamond-business-3-definition",
+          "diamond-business-3-recipient",
+          "diamond-business-3-nature",
+          "diamond-business-3-amount",
+          "diamond-business-3-distribution",
+          "diamond-business-3-rank",
+          "diamond-business-3-track",
+          "diamond-social-1-definition",
+          "diamond-social-1-recipient",
+          "diamond-social-1-nature",
+          "diamond-social-1-amount",
+          "diamond-social-1-distribution",
+          "diamond-social-1-rank",
+          "diamond-social-1-track",
+          "diamond-social-2-definition",
+          "diamond-social-2-recipient",
+          "diamond-social-2-nature",
+          "diamond-social-2-amount",
+          "diamond-social-2-distribution",
+          "diamond-social-2-rank",
+          "diamond-social-2-track",
+          "diamond-social-3-definition",
+          "diamond-social-3-recipient",
+          "diamond-social-3-nature",
+          "diamond-social-3-amount",
+          "diamond-social-3-distribution",
+          "diamond-social-3-rank",
+          "diamond-social-3-track"
+        ]
+      }
     },
     "stipend": {
       "status": "not_applicable",
@@ -1036,7 +4198,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "tuition_waiver": {
       "status": "not_applicable",
@@ -1048,16 +4211,14 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "program_seat": {
       "status": "disclosed",
-      "value": "Finalist place at the in-person 2027 Limitless World Summit",
-      "displayValue": "Finalist seat at the 2027 Limitless World Summit",
-      "normalizedValue": {
-        "kind": "text",
-        "value": "Finalist place at the 2027 Limitless World Summit"
-      },
+      "value": "Finalist place at the 2027 Limitless World Summit",
+      "displayValue": "Finalist place at the 2027 Limitless World Summit",
+      "normalizedValue": null,
       "sources": [
         {
           "id": "limitless-world-summit-2027",
@@ -1072,19 +4233,47 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "outcomes.program_seat",
+        "claimRefs": [
+          "diamond-summit-seat-definition",
+          "diamond-summit-seat-recipient",
+          "diamond-summit-seat-nature",
+          "diamond-summit-seat-condition"
+        ]
+      }
     },
     "in_kind_value": {
-      "status": "not_found",
-      "value": null,
-      "displayValue": null,
+      "status": "disclosed",
+      "value": "Free entrepreneurship resources",
+      "displayValue": "Free entrepreneurship resources",
       "normalizedValue": null,
-      "sources": [],
-      "note": "No monetary value is published for curriculum, feedback, network access, or the finalist Summit place.",
+      "sources": [
+        {
+          "id": "diamond-competition-rules",
+          "url": "https://diamondchallenge.org/competition/",
+          "title": "Competition - Diamond Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-11T22:39:59.688Z",
+          "excerpt": "provides free resources for students, educators, and entrepreneurship practitioners"
+        }
+      ],
+      "note": null,
       "confidence": null,
-      "claimKind": null,
+      "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "outcomes.in_kind_value",
+        "claimRefs": [
+          "diamond-resources-definition",
+          "diamond-resources-recipient",
+          "diamond-resources-nature"
+        ]
+      }
     },
     "certificate": {
       "status": "not_found",
@@ -1096,7 +4285,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "college_credit": {
       "status": "not_applicable",
@@ -1108,7 +4298,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "mentorship": {
       "status": "not_found",
@@ -1120,35 +4311,22 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "other_benefits": {
       "status": "disclosed",
       "value": [
-        "Free entrepreneurship resources",
-        "Submission-round feedback for advancing teams",
-        "Network and collaboration opportunities",
-        "Finalist participation at the Limitless World Summit"
+        "Submission feedback, networking, and collaboration opportunities"
       ],
-      "displayValue": "Resources, feedback, network, collaboration, and finalist Summit participation",
+      "displayValue": "Submission feedback, networking, and collaboration opportunities",
       "normalizedValue": {
         "kind": "text_list",
         "values": [
-          "Free entrepreneurship resources",
-          "Advancement feedback",
-          "Network and collaboration",
-          "Finalist Summit participation"
+          "Submission feedback, networking, and collaboration opportunities"
         ]
       },
       "sources": [
-        {
-          "id": "diamond-competition-rules",
-          "url": "https://diamondchallenge.org/competition/",
-          "title": "Competition - Diamond Challenge",
-          "pageType": "official_rules",
-          "accessedAt": "2026-08-11T22:39:59.688Z",
-          "excerpt": "provides free resources for students, educators, and entrepreneurship practitioners"
-        },
         {
           "id": "diamond-dates-deadlines",
           "url": "https://horn.udel.edu/deadlines2627",
@@ -1170,7 +4348,17 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "outcomes.other-benefits",
+        "claimRefs": [
+          "diamond-feedback-definition",
+          "diamond-feedback-recipient",
+          "diamond-feedback-nature",
+          "diamond-feedback-condition"
+        ]
+      }
     },
     "personal_information": {
       "status": "disclosed",
@@ -1223,7 +4411,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "data_sharing": {
       "status": "disclosed",
@@ -1263,7 +4452,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "project_ownership": {
       "status": "unclear",
@@ -1292,7 +4482,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "project_license": {
       "status": "disclosed",
@@ -1324,7 +4515,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "publicity_rights": {
       "status": "disclosed",
@@ -1356,7 +4548,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "confidentiality": {
       "status": "disclosed",
@@ -1396,7 +4589,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "cancellation_rights": {
       "status": "disclosed",
@@ -1436,7 +4630,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "material_terms": {
       "status": "disclosed",
@@ -1498,7 +4693,144 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     }
+  },
+  "projectionRefs": {
+    "operating_organization": [
+      "diamond-horn-operator-role",
+      "diamond-horn-name"
+    ],
+    "organization_type": [
+      "diamond-horn-kind",
+      "diamond-horn-name"
+    ],
+    "named_institution": [
+      "diamond-udel-operated-relationship",
+      "diamond-udel-name"
+    ],
+    "institution_relationship": [
+      "diamond-udel-operated-relationship",
+      "diamond-udel-name"
+    ],
+    "relationship_explanation": [
+      "diamond-udel-operated-relationship",
+      "diamond-udel-name"
+    ],
+    "application_deadline": [
+      "diamond-submission-deadline"
+    ],
+    "start_date": [
+      "diamond-submission-opens"
+    ],
+    "end_date": [
+      "diamond-summit-ends"
+    ],
+    "decision_date": [
+      "diamond-pitch-invite-notification",
+      "diamond-virtual-finalist-notification"
+    ],
+    "duration": [
+      "diamond-summit-duration"
+    ],
+    "participation_format": [
+      "diamond-live-pitch-format",
+      "diamond-virtual-pitch-format",
+      "diamond-summit-format"
+    ],
+    "location": [
+      "diamond-live-pitch-location",
+      "diamond-summit-location"
+    ],
+    "selection_process": [
+      "diamond-live-pathway-definition",
+      "diamond-live-step-submission",
+      "diamond-live-step-review",
+      "diamond-live-step-pitch",
+      "diamond-live-step-summit",
+      "diamond-submission-stage",
+      "diamond-review-stage",
+      "diamond-live-pitch-stage",
+      "diamond-summit-stage",
+      "diamond-virtual-pathway-definition",
+      "diamond-virtual-step-submission",
+      "diamond-virtual-step-review",
+      "diamond-virtual-step-pitch",
+      "diamond-virtual-step-summit",
+      "diamond-virtual-pitch-stage"
+    ],
+    "estimated_total_mandatory_cost": [
+      "diamond-travel-cost-definition",
+      "diamond-travel-cost-amount",
+      "diamond-travel-cost-condition"
+    ],
+    "cash_award": [
+      "diamond-business-1-definition",
+      "diamond-business-1-recipient",
+      "diamond-business-1-nature",
+      "diamond-business-1-amount",
+      "diamond-business-1-distribution",
+      "diamond-business-1-rank",
+      "diamond-business-1-track",
+      "diamond-business-2-definition",
+      "diamond-business-2-recipient",
+      "diamond-business-2-nature",
+      "diamond-business-2-amount",
+      "diamond-business-2-distribution",
+      "diamond-business-2-rank",
+      "diamond-business-2-track",
+      "diamond-business-3-definition",
+      "diamond-business-3-recipient",
+      "diamond-business-3-nature",
+      "diamond-business-3-amount",
+      "diamond-business-3-distribution",
+      "diamond-business-3-rank",
+      "diamond-business-3-track",
+      "diamond-social-1-definition",
+      "diamond-social-1-recipient",
+      "diamond-social-1-nature",
+      "diamond-social-1-amount",
+      "diamond-social-1-distribution",
+      "diamond-social-1-rank",
+      "diamond-social-1-track",
+      "diamond-social-2-definition",
+      "diamond-social-2-recipient",
+      "diamond-social-2-nature",
+      "diamond-social-2-amount",
+      "diamond-social-2-distribution",
+      "diamond-social-2-rank",
+      "diamond-social-2-track",
+      "diamond-social-3-definition",
+      "diamond-social-3-recipient",
+      "diamond-social-3-nature",
+      "diamond-social-3-amount",
+      "diamond-social-3-distribution",
+      "diamond-social-3-rank",
+      "diamond-social-3-track"
+    ],
+    "program_seat": [
+      "diamond-summit-seat-definition",
+      "diamond-summit-seat-recipient",
+      "diamond-summit-seat-nature",
+      "diamond-summit-seat-condition"
+    ],
+    "in_kind_value": [
+      "diamond-resources-definition",
+      "diamond-resources-recipient",
+      "diamond-resources-nature"
+    ],
+    "other_benefits": [
+      "diamond-feedback-definition",
+      "diamond-feedback-recipient",
+      "diamond-feedback-nature",
+      "diamond-feedback-condition"
+    ]
+  },
+  "migratedFrom": {
+    "schemaVersion": "1.0.0",
+    "cardVersion": 1,
+    "reviewedAt": "2026-08-11T22:46:20.753Z",
+    "cardSha256": "e8d24aeefeab24886e0554f0bb4786f9f365f2eaf48d3c5ac93a8d65f1abb215"
   }
 }

@@ -18,6 +18,28 @@ describe("demo dataset", () => {
     expect(() => parsePublicDataset(dataset)).toThrow(/cannot contain draft cards/i);
   });
 
+  it("keys opportunity-cycle uniqueness to stable IDs instead of display labels", async () => {
+    const source = JSON.parse(
+      await readFile(
+        path.join(
+          process.cwd(),
+          "data",
+          "opportunities",
+          "nasa-techrise-student-challenge-2026-2027.json",
+        ),
+        "utf8",
+      ),
+    ) as ReturnType<typeof createEmptyCard>;
+    const alternateLabel = structuredClone(source);
+    alternateLabel.slug = "nasa-techrise-alternate-cycle-label";
+    if (alternateLabel.cycle.status !== "modeled") throw new Error("Expected modeled cycle fixture.");
+    alternateLabel.cycle.value.label.value = "2026-27";
+    alternateLabel.cycle.value.label.displayValue = "2026-27";
+
+    expect(() => parsePublicDataset(createPublicDataset([source, alternateLabel])))
+      .toThrow(/duplicate opportunity\/cycle identity/i);
+  });
+
   it("contains at least six valid, obviously fictional cards with varied relationships", async () => {
     const directory = path.join(process.cwd(), "data", "demo");
     const files = (await readdir(directory)).filter((name) => name.endsWith(".json"));

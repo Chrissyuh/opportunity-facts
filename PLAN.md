@@ -3,8 +3,8 @@
 ## P0 — Core product
 
 - [x] Establish strict Next.js, Tailwind, Zod, Vitest, and Playwright foundation.
-- [x] Build the authoritative Opportunity Card schema and typed field registry.
-- [x] Define exactly 13 core disclosures and deterministic disclosure counting.
+- [x] Build the authoritative schema `2.0.0` card contract: atomic structured claims plus a stable typed 59-field projection registry.
+- [x] Define exactly 13 core assessment areas and deterministic assessed/applicable/evidence-status counting.
 - [x] Add normalization, acceptance-rate calculation, conflicts, and evidence validation.
 - [x] Seed and validate at least six obviously fictional demo cards.
 - [x] Build the homepage and one-click sample flow.
@@ -24,6 +24,7 @@
 - [x] Implement pasted-source analysis through the same pipeline.
 - [x] Implement correction JSON/Markdown/clipboard packets and optional GitHub issue links.
 - [x] Add coherent print views and a downloadable dataset/schema.
+- [x] Resolve the nine real-card comparison P1s with scoped organizations, variants, stages/pathways, costs, outcomes, deterministic projections, and conservative V1 migration.
 
 ## Quality and evidence
 
@@ -37,6 +38,7 @@
 
 ## P2 — Deferred until the release gate passes
 
+- [ ] Add a normalized age range only if a broader reviewed sample justifies it.
 - [ ] Consider a local-only, anonymous comprehension-study runner.
 - [ ] Consider a dynamic social preview image.
 - [ ] Consider only measured, nonessential interaction refinements.

@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import {
-  opportunityCardSchema,
-  type OpportunityCard,
-} from "@/lib/opportunity/schema";
+import type { OpportunityCard } from "@/lib/opportunity/schema";
+import { parseOpportunityCard } from "@/lib/opportunity/serialization";
 
 const compareStorageKey = "opportunity-facts:comparison:v1";
 
@@ -30,11 +28,13 @@ function readComparison(): OpportunityCard[] {
   try {
     const parsed: unknown = JSON.parse(localStorage.getItem(compareStorageKey) ?? "[]");
     if (!Array.isArray(parsed)) return [];
-    return parsed
-      .map((item) => opportunityCardSchema.safeParse(item))
-      .filter((result) => result.success)
-      .map((result) => result.data)
-      .slice(0, 3);
+    return parsed.flatMap((item) => {
+      try {
+        return [parseOpportunityCard(item)];
+      } catch {
+        return [];
+      }
+    }).slice(0, 3);
   } catch {
     return [];
   }

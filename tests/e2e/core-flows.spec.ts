@@ -44,7 +44,8 @@ test("homepage loads cleanly and opens the complete sample in one click", async 
   });
   await expect(page.getByRole("heading", { level: 1, name: "Lantern Bay Robotics Field Lab" })).toBeVisible();
   await expect(page.getByText("Demo data", { exact: true })).toHaveCount(1);
-  await expect(page.getByText(/of 13 core facts disclosed/)).toBeVisible();
+  await expect(page.getByText(/of 13 core areas assessed/)).toBeVisible();
+  await expect(page.getByText(/of \d+ applicable disclosed/)).toBeVisible();
   await expect(page.getByLabel("Evidence status key")).toContainText("Disclosed");
   await expect(page.getByLabel("Evidence status key")).toContainText("Not found");
   await expect(page.getByLabel("Evidence status key")).toContainText("Unclear");
@@ -139,6 +140,10 @@ test("the opportunity library combines search and disclosure filters", async ({ 
   await page.getByRole("button", { name: "Clear all", exact: true }).click();
   await expect(page.getByRole("heading", { level: 2, name: "10 cards" })).toBeVisible();
   await expect(page.getByRole("searchbox", { name: "Search" })).toHaveValue("");
+
+  await page.getByLabel("Refund policy").selectOption("not_applicable");
+  await expect(page.getByRole("heading", { level: 2, name: "3 cards" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Lumiere Research Scholar Program", exact: true })).toHaveCount(0);
 });
 
 test("two cards can be selected and compared without a winner", async ({ page }, testInfo) => {
@@ -247,12 +252,12 @@ test("builder blocks source-free assessments and incomplete review-state promoti
 test("builder review attestation is newly stamped and invalidated by later edits", async ({ page }) => {
   const sample = opportunityCardSchema.parse(
     JSON.parse(
-      await readFile(join(process.cwd(), "data/demo/cipher-finch-student-challenge.json"), "utf8"),
+      await readFile(join(process.cwd(), "data/opportunities/diamond-challenge-2027.json"), "utf8"),
     ) as unknown,
   );
   await page.goto("/build");
   await page.locator("#builder-import").setInputFiles({
-    name: "cipher-finch-student-challenge.json",
+    name: "diamond-challenge-2027.json",
     mimeType: "application/json",
     buffer: Buffer.from(JSON.stringify(sample)),
   });
@@ -284,12 +289,17 @@ test("builder review attestation is newly stamped and invalidated by later edits
   expect(reattested.cardVersion).toBe(reviewed.cardVersion + 1);
   expect(reattested.reviewedAt).not.toBe(reviewed.reviewedAt);
 
-  const nameEditor = page.locator("form.fact-editor").filter({
-    has: page.getByRole("heading", { level: 3, name: /Opportunity name/ }),
+  const identitySection = page.locator(".builder-form-column details").filter({
+    has: page.getByText("Identity", { exact: true }),
   });
-  await nameEditor.getByLabel("Evidence status").selectOption("not_applicable");
-  await nameEditor.getByLabel("Why this fact does not apply").fill("The checked sources explicitly state that no program name applies.");
-  await nameEditor.getByRole("button", { name: "Apply opportunity name" }).click();
+  if (!(await identitySection.evaluate((element) => element.hasAttribute("open")))) {
+    await identitySection.locator(":scope > summary").click();
+  }
+  const categoryStatus = page.locator("#builder-status-opportunity_category");
+  const categoryEditor = categoryStatus.locator("xpath=ancestor::form");
+  await categoryStatus.selectOption("not_applicable");
+  await categoryEditor.getByLabel("Why this fact does not apply").fill("The checked sources explicitly state that no program category applies.");
+  await categoryEditor.getByRole("button", { name: "Apply category" }).click();
   await expect(page.locator(".builder-preview .review-badge")).toHaveText("Draft");
   await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem("opportunity-facts:builder:v1") ?? "null")?.reviewedAt)).toBeNull();
   await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem("opportunity-facts:builder:v1") ?? "null")?.cardVersion)).toBe(sample.cardVersion + 3);
@@ -354,7 +364,7 @@ test("builder preserves organizer attribution and blocks unaudited calculated ra
   await expect(calculatedRate.getByRole("button", { name: "Apply calculated acceptance rate" })).toBeDisabled();
 });
 
-test("the manual builder updates its preview, exports, resets, and imports a card", async ({ page }, testInfo) => {
+test("the manual builder updates its preview but requires rich-model assessment before export", async ({ page }, testInfo) => {
   await page.goto("/build");
 
   await expect(page.locator(".builder-preview").getByText("Not assessed in this draft").first()).toBeVisible();
@@ -406,47 +416,12 @@ test("the manual builder updates its preview, exports, resets, and imports a car
 
   page.once("dialog", (dialog) => void dialog.accept());
   await page.getByRole("button", { name: "Mark remaining fields not found after review" }).click();
-  await expect(page.getByRole("button", { name: "Export JSON" })).toBeEnabled();
+  await expect(page.getByRole("button", { name: "Export JSON" })).toBeDisabled();
+  await expect(page.getByText(/Export unlocks after every field is assessed/)).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Model the distinctions that affect a decision." })).toBeVisible();
 
-  const downloadPromise = page.waitForEvent("download");
-  await page.getByRole("button", { name: "Export JSON" }).click();
-  const download = await downloadPromise;
-  expect(download.suggestedFilename()).toBe("playwright-opportunity.opportunity-facts.json");
-  const exportedPath = testInfo.outputPath(download.suggestedFilename());
-  await download.saveAs(exportedPath);
-  const exported: unknown = JSON.parse(await readFile(exportedPath, "utf8"));
-  expect(exported).toMatchObject({
-    slug: "playwright-opportunity",
-    reviewState: "draft",
-    facts: {
-      opportunity_name: {
-        status: "disclosed",
-        displayValue: "Playwright Test Opportunity",
-      },
-    },
-  });
-  const exportedCard = opportunityCardSchema.parse(exported);
-  expect(exportedCard.sourcePagesChecked.map((page) => page.url)).toContain("https://playwright-opportunity.example/faq");
-  expect(exportedCard.sourcePagesChecked.filter((page) => page.url.endsWith("/program"))).toHaveLength(1);
-  expect(exportedCard.facts.opportunity_name.sources[0].id).toBe(exportedCard.facts.opportunity_category.sources[0].id);
-
-  page.once("dialog", (dialog) => void dialog.accept());
-  await page.getByRole("button", { name: "Reset draft" }).click();
-  await expect(page.getByRole("status")).toContainText("Local builder draft cleared.");
-  await expect(preview.getByRole("heading", { level: 3, name: "untitled-opportunity" })).toBeVisible();
-  await expect(page.getByLabel("Slug")).toHaveValue("untitled-opportunity");
-  await expect(page.getByLabel("Short neutral summary")).toHaveValue(
-    "Card in progress. Source-backed details have not been added yet.",
-  );
-
-  await page.locator("#builder-import").setInputFiles(exportedPath);
-  await expect(page.getByRole("status")).toContainText("Valid card imported and saved locally.");
-  await expect(preview.getByRole("heading", { level: 3, name: "Playwright Test Opportunity" })).toBeVisible();
-  await expect(page.getByLabel("Slug")).toHaveValue("playwright-opportunity");
-  await expect(page.getByLabel("Short neutral summary")).toHaveValue(
-    "A deterministic browser-test opportunity card.",
-  );
-  await expect.poll(() => page.evaluate(() => localStorage.getItem("opportunity-facts:builder:v1"))).toContain("playwright-opportunity");
+  // V2 does not let the flat 59-field checklist stand in for the rich source model.
+  // Cycle plus every structured family must be assessed through the task-based editor.
 });
 
 test("hidden file inputs expose a visible focus indicator on their import controls", async ({ page }) => {

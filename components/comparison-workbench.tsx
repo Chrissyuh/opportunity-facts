@@ -8,9 +8,11 @@ import {
   type OpportunitySection,
 } from "@/lib/opportunity/fields";
 import { compareOpportunityCards, getCalculationContext } from "@/lib/opportunity/registry";
-import { opportunityCardSchema, type Fact, type OpportunityCard } from "@/lib/opportunity/schema";
+import type { Fact, OpportunityCard } from "@/lib/opportunity/schema";
+import { importOpportunityCardJson, parseOpportunityCard } from "@/lib/opportunity/serialization";
 import { EvidenceList } from "./evidence-list";
 import { StatusBadge } from "./status-badge";
+import { StructuredComparison } from "./structured-opportunity-details";
 
 const storageKey = "opportunity-facts:comparison:v1";
 const storageEvent = "opportunity-facts:comparison-change";
@@ -51,11 +53,13 @@ function parseCards(serialized: string) {
   try {
     const value: unknown = JSON.parse(serialized);
     if (!Array.isArray(value)) return [];
-    const parsed = value
-      .map((card) => opportunityCardSchema.safeParse(card))
-      .filter((result) => result.success)
-      .map((result) => result.data)
-      .slice(0, 3);
+    const parsed = value.flatMap((card) => {
+      try {
+        return [parseOpportunityCard(card)];
+      } catch {
+        return [];
+      }
+    }).slice(0, 3);
     return parsed.filter(
       (card, index) => parsed.findIndex((candidate) => candidate.slug === card.slug) === index,
     );
@@ -178,15 +182,9 @@ export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityC
       return;
     }
     try {
-      const parsed: unknown = JSON.parse(await file.text());
-      const result = opportunityCardSchema.safeParse(parsed);
-      if (!result.success) {
-        setMessage(`Import rejected: ${result.error.issues[0]?.message ?? "invalid card JSON"}`);
-        return;
-      }
-      addCard(result.data);
-    } catch {
-      setMessage("Import rejected: the selected file is not valid JSON.");
+      addCard(importOpportunityCardJson(await file.text()));
+    } catch (error) {
+      setMessage(`Import rejected: ${error instanceof Error ? error.message : "invalid card JSON"}`);
     } finally {
       if (fileRef.current) fileRef.current.value = "";
     }
@@ -248,7 +246,9 @@ export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityC
       </section>
 
       {selected.length >= 2 ? (
-        <section aria-labelledby="comparison-table-title">
+        <>
+          <StructuredComparison cards={selected} />
+          <section aria-labelledby="comparison-table-title">
           <div className="comparison-table-heading">
             <div>
               <p className="eyebrow">Aligned facts</p>
@@ -318,7 +318,8 @@ export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityC
             program seats, and in-kind values remain separate rows. Missing or conflicting
             information stays visible.
           </div>
-        </section>
+          </section>
+        </>
       ) : (
         <section className="comparison-empty" aria-labelledby="comparison-empty-title">
           <span aria-hidden="true">02–03</span>

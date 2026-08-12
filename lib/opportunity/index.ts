@@ -3,6 +3,7 @@ export * from "./fields";
 export * from "./format";
 export * from "./normalize";
 export * from "./public-url";
+export * from "./projection";
 export * from "./registry";
 export * from "./library";
 export * from "./schema";

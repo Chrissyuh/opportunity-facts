@@ -1,123 +1,172 @@
-# Public card review checklist
+# Public V2 card review checklist
 
-Use this checklist before adding or updating a public Opportunity Facts card. It complements the detailed [`research/disclosure-audit-guide.md`](../research/disclosure-audit-guide.md).
+Use this checklist before adding or updating a public Opportunity Facts card. It complements [`research/disclosure-audit-guide.md`](../research/disclosure-audit-guide.md) and the schema contract in [`SCHEMA_AND_DATA.md`](./SCHEMA_AND_DATA.md).
 
-Passing this checklist establishes source-to-card alignment at the recorded date. It does **not** certify the opportunity, audit the organizer's claims, give legal advice, or rate legitimacy, quality, prestige, admissions impact, or value.
+Passing establishes source-to-card alignment at the recorded date. It does **not** certify the opportunity, audit organizer claims, give legal advice, or rate legitimacy, quality, prestige, admissions impact, or value.
 
 ## Review record
 
 | Item | Record |
 | --- | --- |
 | Card slug | |
-| Opportunity/application cycle | |
+| Cycle-independent `opportunityId` | |
+| Cycle ID and label | |
 | Proposed card version | |
 | Schema version | |
 | Primary reviewer and date | |
 | Independent alignment reviewer and date, if used | |
-| Change type (`new`, `refresh`, `correction`) | |
+| Change type (`new`, `refresh`, `correction`, `migration`) | |
 | Related correction packet/issue | |
 
 Do not put participant, applicant, or other unnecessary personal information in this record.
 
-## 1. Scope and identity
+## 1. Opportunity, cycle, and identity
 
-- [ ] The card refers to one clearly identified opportunity and application cycle.
-- [ ] The slug is stable, neutral, and uses lowercase letters, numbers, and hyphens.
-- [ ] The primary official URL is public HTTP(S) and has no embedded credentials or private token.
-- [ ] The operating organization is supported by explicit source language or is marked `not_found`/`unclear`.
-- [ ] Any named institution is recorded separately from the operating organization.
-- [ ] The institution relationship uses the registry category actually supported by the source; venue, alumni, staff biography, or branding alone was not treated as operation, sponsorship, partnership, or endorsement.
-- [ ] The short summary is neutral and does not contain an unsupported factual value or product verdict.
+- [ ] `schemaVersion` is `2.0.0` and `opportunityId` excludes the cycle/year/cohort suffix.
+- [ ] The modeled cycle has a stable ID and evidence-bearing label/status/year metadata.
+- [ ] Cycle opening/closing/coverage references point to the correct disclosed stage timing claims.
+- [ ] `cardVersion` describes only this record revision; it was not used as cycle identity.
+- [ ] The slug is stable, neutral, lowercase kebab-case, and the filename is exactly `<slug>.json`.
+- [ ] The primary official URL is public HTTP(S) and has no credentials or private token.
+- [ ] Every named organization is separately recorded with source-backed name and kind.
+- [ ] Operator, manager, administrator, academic partner, and other roles are not collapsed into one generic organizer.
+- [ ] Institution operation/partnership/credit and founder/mentor/staff affiliations use only the relationship actually supported by evidence.
+- [ ] Venue, branding, biography, alumni/faculty involvement, or email domain alone was not treated as operation, partnership, sponsorship, or endorsement.
+- [ ] The short summary is neutral and contains no unsupported factual value or product verdict.
 
 ## 2. Source inventory
 
-- [ ] Each source has a unique stable ID, title, canonical URL, provenance/page type, and UTC access timestamp.
-- [ ] Sources cover the relevant program page, FAQ/eligibility, money/aid, rules, terms/refund/cancellation, privacy, and relationship pages when those pages exist.
-- [ ] Every source is public and reviewable; no credentials, private application content, or student records were copied.
+- [ ] Each source has one stable ID, title, canonical URL, provenance/page type, and RFC 3339 access timestamp.
+- [ ] Sources cover the relevant program, FAQ/eligibility, cost/aid, schedule, rules, terms/refund/cancellation, privacy, relationship, and award pages when they exist.
+- [ ] Every source is public and reviewable; no credentials, signed/private applications, student records, or unnecessary personal data were copied.
 - [ ] Search snippets, AI summaries, testimonials, and unsourced directories were not used as primary evidence.
 - [ ] Sources from different cycles are not silently combined.
-- [ ] Page attribution to the opportunity/operator is documented rather than inferred from visual branding.
-- [ ] All fact-level source objects match an entry in `sourcePagesChecked` exactly.
+- [ ] Attribution to the opportunity/operator is documented rather than inferred from visual branding.
+- [ ] Every flat or structured evidence object exactly matches one `sourcePagesChecked` entry except for its excerpt.
+- [ ] Automated excerpts passed deterministic matching to the acquired/pasted source text; failures were removed or downgraded.
 
-## 3. Every registry field
+## 3. Atomic claim evidence
 
-- [ ] Every authoritative field exists once in `facts`; no component-specific or ad hoc fields were added.
-- [ ] Each field uses one allowed status: `disclosed`, `not_found`, `unclear`, `conflicting`, or `not_applicable`.
-- [ ] `not_found` means only that the finite recorded source review did not locate the disclosure.
-- [ ] `unclear` is used when wording is relevant but cannot support one determinate value.
-- [ ] `not_applicable` has an affirmative reason; it is not a substitute for missing evidence.
-- [ ] Every `disclosed` value has a claim kind and at least one source-backed excerpt.
-- [ ] No `not_found` or `not_applicable` field carries a hidden value or evidence.
-- [ ] No `unclear` field presents unresolved wording as a settled value.
-- [ ] The 13-core-fact count is computed from the central registry and described only as disclosure completeness.
+- [ ] Every structured factual value has a globally unique `claimId`.
+- [ ] Every independently reviewable cycle, organization, role/scope, relationship/scope, timing/scope, cost, pathway, and outcome assertion has its own claim kind and evidence; parent-record evidence was not used as a blanket substitute.
+- [ ] Fields grouped inside one claim payload are inseparable parts of the same sourced assertion; values with different support or uncertainty were split into separate claims.
+- [ ] Every excerpt preserves enough context for subject, unit, conditions, exceptions, and scope.
+- [ ] No excerpt splices nonadjacent text or silently changes source wording.
+- [ ] `unclear` claims present no settled value and include evidence plus an explanation.
+- [ ] `not_found` means only that the finite inventory did not locate the disclosure and contains no hidden value/evidence.
+- [ ] `not_applicable` has an affirmative reason and contains no hidden value/evidence.
+- [ ] `conflicting` preserves at least two distinct supported candidates and selects no top-level value.
+- [ ] Structured source claims use only `source_stated` or `organizer_stated`; `calculated` is reserved for supported flat-fact calculations.
 
-## 4. Evidence alignment
+## 4. Structured collection assessment
 
-- [ ] Every displayed value was checked against its cited source, not merely against a model response.
-- [ ] Every excerpt matches normalized source text exactly and is long enough to preserve subject, unit, conditions, and exceptions.
-- [ ] No quotation splices nonadjacent text or silently changes source wording.
-- [ ] Subject/population is correct: applicant, participant, finalist, winner, team, or school was not substituted for another.
-- [ ] Date year, cycle, timezone, precision, and deadline conditions are preserved when disclosed.
-- [ ] Money currency, amount/range, unit, payer/recipient, required/optional status, and conditions are preserved.
-- [ ] Normalized values retain the original value/display wording and do not add precision or meaning.
-- [ ] Evidence matcher failures were removed or downgraded rather than waived.
+- [ ] Cycle and each of `organizations`, `organizationRoles`, `institutionRelationships`, `variants`, `stages`, `pathways`, `costItems`, and `outcomes` has an explicit assessment state.
+- [ ] `modeled` collections contain at least one record.
+- [ ] Empty assessed collections use `none_found` or `not_applicable` with a reason.
+- [ ] `unassessed` is used only while the card remains a draft.
+- [ ] A proposed `human_reviewed` or `organizer_confirmed` card has no unassessed structured section.
+- [ ] Record IDs are globally unique; organization, variant, stage, pathway, cost-credit, and cycle-timing references resolve in the same card.
 
-## 5. Money, selection, outcomes, and terms
+## 5. Scope, variants, stages, and pathways
 
-- [ ] Zero cost is supported and not confused with cost `not_found`.
-- [ ] Application fees, deposits, tuition, and other mandatory costs remain separate.
-- [ ] Deposit refundability was not inferred.
-- [ ] Total mandatory cost is source-stated or visibly calculated from complete, compatible, cited inputs; exclusions are disclosed.
-- [ ] Travel, lodging, and meals are each represented without assuming inclusion.
-- [ ] Financial aid availability and limitations use the source's actual scope.
-- [ ] Applicant and acceptance/winner counts use the same population and cycle before any rate is calculated.
-- [ ] A calculated acceptance rate preserves inputs/formula and is labeled calculated; a source-stated rate without counts is labeled organizer-stated.
-- [ ] “Selective” or similar copy was not converted into a numerical rate.
-- [ ] Cash awards and stipends remain distinct from waivers, program seats, certificates, mentorship, and organizer-assigned in-kind value.
-- [ ] Project ownership, project license, publicity rights, data sharing, confidentiality, cancellation, and refund language are summarized neutrally without a legal verdict.
+- [ ] Every nonempty `variantIds`, `stageIds`, or `pathwayIds` scope contains known IDs.
+- [ ] Empty scope dimensions are intended to mean unrestricted; no missing reference was accidentally represented as global.
+- [ ] Tier/cohort/track differences are separate variants instead of semicolon text or cloned cards.
+- [ ] Dates preserve year, timezone, precision, and `stated` versus `expected` certainty.
+- [ ] Duration, commitment, format, location, selection rule, and travel obligation remain attached to the correct stage and scope.
+- [ ] Every pathway has a source-backed name and ordered, nonrepeating references to known stages.
+- [ ] Branch/entry conditions remain evidence-bearing text on the correct pathway step.
+- [ ] Shared stages and branch-specific stages were not flattened into one universal route.
 
-## 6. Conflicts and uncertainty
+## 6. Cost items and totals
 
-- [ ] Every incompatible supported current value is preserved under `conflictingValues` with its own evidence.
-- [ ] A conflicting fact does not select a preferred top-level value.
-- [ ] Card-level conflict metadata exists for every conflicting fact and no nonconflicting fact.
-- [ ] Cycle, population, unit, and source recency were checked before declaring a conflict.
-- [ ] Source precedence or supersession was not invented.
+- [ ] Zero cost is supported and not confused with amount `not_found`.
+- [ ] Application fees, deposits, tuition, travel, lodging, meals, materials, and other participant costs remain separate.
+- [ ] Every amount preserves currency, exact/range semantics, payer/unit, required/optional/conditional status, and scope.
+- [ ] A modeled `costItems` collection is marked `complete` only when the reviewed sources establish that no relevant required/conditional participant-cost item is missing; otherwise it remains `incomplete` with an explanation.
+- [ ] Tier-specific prices each reference the correct variant.
+- [ ] Deposit-to-tuition credit targets known cost items and is not added to the total twice.
+- [ ] Refundability and reimbursement conditions were not inferred.
+- [ ] Included/excluded items and conditions carry their own evidence.
+- [ ] Financial aid/waiver outcomes remain scoped to the eligible variant and recipient.
+- [ ] A calculated scalar mandatory total exists only when the cost inventory is `complete` and every included required amount is disclosed, same-currency, compatible, and universal.
+- [ ] Conditional, unresolved, mixed-currency, or scoped costs block a misleading scalar total and explain why.
+
+## 7. Selection and outcomes
+
+- [ ] Applicant and acceptance/winner counts use the same population and cycle before a rate is calculated.
+- [ ] A calculated acceptance rate preserves inputs/formula and is visibly calculated; a source-stated rate without counts is organizer-stated.
+- [ ] “Selective,” “competitive,” or similar copy was not converted to a numerical rate.
+- [ ] Each prize/benefit is a separate outcome when type, rank, track, recipient, amount, distribution, restriction, or condition differs.
+- [ ] Cash prizes and stipends remain distinct from project budgets, reimbursement, waivers, seats, certificates, mentorship, credit, equipment, and other in-kind outcomes.
+- [ ] Every outcome has an evidence-bearing recipient scope; team amounts were not divided per person without a disclosed distribution.
+- [ ] Project budgets are classified as restricted funding and include a source-backed use restriction.
+- [ ] Prize matrices preserve every source-supported track/rank amount and do not select one representative award.
+- [ ] Unknown award amounts remain `not_found`; unsupported prize names or values were not recreated from legacy prose.
+- [ ] Distribution payee/method/conditions and combinability are preserved when disclosed.
+
+## 8. Flat facts, projections, and core assessment
+
+- [ ] Every one of the 59 registry fields exists once in `facts`; no component-only field was added.
+- [ ] Direct facts use one allowed status and preserve original/display/normalized values, sources, notes, claim kind, conflicts, and calculations.
+- [ ] Fields marked “V2 projection” were generated from structured records rather than hand-edited.
+- [ ] Fact-level projection rule/claim refs match top-level `projectionRefs`.
+- [ ] Projection evidence is exactly the contributing claim evidence and no unrelated source was added.
+- [ ] Legitimate tier/track/stage/path differences render as a matrix/list with no false scalar normalization.
+- [ ] Same-scope incompatible values remain conflicts rather than being treated as scoped alternatives.
+- [ ] `npm run validate:data` reports no deterministic projection drift.
+- [ ] The meter headline is `X of 13 core areas assessed` (`13 of 13 core areas assessed` when complete), reporting assessment coverage rather than disclosure success or quality.
+- [ ] Detail begins `X of Y applicable disclosed`, then includes each nonzero status count in order: not found, unclear, conflicting, not applicable, and unassessed.
+- [ ] `not_applicable` is excluded from the applicable count; draft-unassessed is separate from `not_found`.
+
+## 9. Terms, conflicts, and uncertainty
+
+- [ ] Project ownership/license, publicity rights, privacy/data sharing, confidentiality, cancellation, refund, and modification language is summarized neutrally without a legal verdict.
+- [ ] Every incompatible supported current flat value appears under `conflictingValues` with its own evidence.
+- [ ] Card-level conflict metadata exactly matches conflicting flat fields.
+- [ ] Cycle, population, unit, scope, and source recency were checked before declaring a conflict.
+- [ ] Source precedence/supersession was not invented.
 - [ ] Calculations do not depend on unresolved conflicting inputs.
-- [ ] Notes distinguish source absence, ambiguity, source conflict, and reviewer limitation.
+- [ ] Notes distinguish finite source absence, ambiguity, conflict, source limitation, and reviewer limitation.
 
-## 7. Review state and truthfulness
+## 10. Migration, review state, and truthfulness
 
-- [ ] The card remained in `data/drafts/` until review was complete; only `human_reviewed` or `organizer_confirmed` cards are moved to `data/opportunities/`.
-- [ ] Automated or pasted sources remain `user_supplied`; an `official_*` or `public_record` page type was assigned only after a human verified both publisher ownership and document kind.
-- [ ] Fictional data uses reserved `.example` URLs and remains visibly labeled `demo` / Demo data.
-- [ ] Automated, imported, or incompletely checked cards remain `draft`.
-- [ ] `human_reviewed` is selected only after a human checked value/excerpt/source alignment for every displayed fact and the full source inventory.
+- [ ] If this began as V1, migration preserved legacy facts/evidence, advanced one revision, recorded the prior digest, cleared review attestation, and left new sections unassessed.
+- [ ] No V1 prose was automatically classified as reviewed cycle, role, scope, pathway, recipient, or funding semantics.
+- [ ] The card remained in `data/drafts/` until both flat and structured review were complete.
+- [ ] Automated/pasted sources remain `user_supplied`; `official_*` or `public_record` was assigned only after publisher/document-kind review.
+- [ ] Fictional data uses reserved `.example` URLs and remains visibly `demo` / Demo data.
+- [ ] Automated, migrated, imported, or incompletely checked cards remain `draft`.
+- [ ] `human_reviewed` means a human checked every displayed value, excerpt, source, scope, relationship, projection, conflict, and the full inventory.
 - [ ] `organizer_confirmed` states organizer involvement and is not presented as independent verification.
-- [ ] A non-demo reviewed state has a valid `reviewedAt` timestamp.
-- [ ] No real organization, response, endorsement, user count, accuracy figure, traffic figure, or research result was fabricated.
-- [ ] The card contains no legitimacy, scam, prestige, worth, recommendation, or admissions-impact score or implication.
+- [ ] A non-demo reviewed state has a valid current `reviewedAt` timestamp.
+- [ ] No real organization, response, endorsement, user count, accuracy/traffic figure, or research result was fabricated.
+- [ ] The card contains no legitimacy, scam, prestige, worth, recommendation, admissions-impact, or value score/implication.
 
-## 8. Privacy, safety, and presentation
+## 11. Privacy, safety, and presentation
 
-- [ ] Excerpts contain no unnecessary personal information about applicants, participants, or private individuals.
+- [ ] Excerpts contain no unnecessary applicant/participant/private-person information.
 - [ ] URLs contain no credentials, session IDs, signed query/fragment tokens, or other secrets.
 - [ ] Source text is rendered as text, never arbitrary HTML or executable markup.
-- [ ] Link labels and destinations are understandable and use safe external-link behavior.
+- [ ] Link labels/destinations are understandable and use safe external-link behavior.
 - [ ] Status meaning is conveyed in words, not color alone.
+- [ ] The card header displays cycle, card revision, and schema version separately.
+- [ ] “Explore structured details” exposes organizations, programs, process, costs, and outcomes without hiding the evidence state.
+- [ ] Structured comparison preserves the selected cards’ distinctions without overflow at desktop, 200% zoom, and mobile widths.
 - [ ] Evidence disclosures, tables/lists, correction controls, export, print, and comparison remain keyboard usable.
-- [ ] The card's disclaimer accurately says it reports reviewed sources and does not rate the opportunity.
+- [ ] The disclaimer says the card reports reviewed sources and does not rate the opportunity.
 
-## 9. Version and file review
+## 12. Version and file review
 
 - [ ] `schemaVersion` matches the current exported schema.
-- [ ] `cardVersion` was incremented for a substantive correction or refresh.
-- [ ] `reviewedAt` and `sourcePagesChecked` reflect the current audit, not an older review.
-- [ ] The JSON filename and slug follow repository conventions.
-- [ ] The diff contains only intended card/source changes and does not overwrite unrelated work.
-- [ ] Machine-readable exports were regenerated if the repository requires it.
+- [ ] `cardVersion` advanced for migration, correction, refresh, or new attestation as required.
+- [ ] `reviewedAt` and `sourcePagesChecked` reflect the current audit.
+- [ ] JSON filename and slug follow repository conventions.
+- [ ] No duplicate public slug or opportunity/cycle identity exists.
+- [ ] The diff contains only intended changes and preserves unrelated work.
+- [ ] Public schema/dataset artifacts were regenerated deterministically.
 
-## 10. Verification commands
+## 13. Verification commands
 
 Run from the repository root and record actual outcomes:
 
@@ -130,19 +179,19 @@ npm test
 npm run build
 ```
 
-For a change that affects rendering, comparison, export, or interaction, also run the relevant Playwright suite and inspect desktop, mobile, keyboard, and print output:
+For any rendering, comparison, builder, import, or interaction change, also run:
 
 ```powershell
 npm run test:e2e
 ```
 
 - [ ] Public schema/dataset export was regenerated deterministically.
-- [ ] Data validation passed.
+- [ ] Data validation passed, including reviewed structured assessment and projection parity.
 - [ ] Lint passed.
 - [ ] Strict typecheck passed.
-- [ ] Deterministic tests passed.
+- [ ] Deterministic unit/integration/security/data tests passed.
 - [ ] Production build passed.
-- [ ] Relevant browser checks passed, or the exact unverified item and reason are recorded below.
+- [ ] Relevant desktop/mobile/keyboard/print/browser checks passed, or the exact unverified item is recorded.
 
 ## Sign-off and remaining limitations
 
@@ -152,6 +201,8 @@ Record concise evidence, not “looks good.”
 | --- | --- |
 | Source-to-card pass | |
 | Card-to-source pass | |
+| Structured scope/reference pass | |
+| Projection parity pass | |
 | Automated validation | |
 | Browser/print verification | |
 | Remaining uncertainty | |

@@ -2,6 +2,8 @@
 
 Review scope: the current Fall 2026 cohort, researched and reviewed on August 11, 2026. The current application deadline was August 23, 2026, and the published cohort start was September 14, 2026.
 
+Schema V2 disposition: migrated to canonical schema `2.0.0`, manually populated from the retained reviewed evidence, and re-attested on August 12, 2026. The stable opportunity ID, Fall 2026 cycle, four program tiers, scoped prices/support, selection stages, credit relationship, and founder/mentor affiliations are now independently structured.
+
 ## Official sources checked
 
 - Lumiere Education, “Programs” — current program tiers, Fall 2026 deadline/start, tier durations and session counts, one-to-one mentorship, the stated UC San Diego Extended Studies credit partnership, and credit eligibility.
@@ -19,11 +21,11 @@ All eight URLs appear once in `sourcePagesChecked`; evidence metadata exactly re
 
 - Lumiere Education is the operator. Harvard and Oxford are founder affiliations; Harvard, Stanford, Oxford, MIT, and other universities named in the FAQ are mentor affiliations. None is represented as an operator, sponsor, institutional partner, or endorser.
 - The one institutional relationship recorded is Lumiere's explicit statement of a credit partnership with the University of California, San Diego Extended Studies. No separate UC San Diego public page naming Lumiere was found, so that source limitation is visible in the card.
-- The current linked application, rather than the dated 2025 article, supports the four Fall 2026 price tiers: $3,190, $6,450, $9,900, and $9,900. No single tuition value was normalized because doing so would erase the tier selection.
+- The current linked application, rather than the dated 2025 article, supports the four Fall 2026 price tiers: $3,190, $6,450, $9,900, and $9,900. V2 binds one cost item to each tier; the flat tuition projection says it varies by program/cohort and has no scalar normalization.
 - The $200 conditional-acceptance deposit is credited toward tuition and is reimbursed if Lumiere cannot make an appropriate mentor match. A general withdrawal/refund schedule was not found, so `refund_policy` is `unclear`.
 - Financial aid is represented only as the published competitive, income-limited scholarship for Individual Research Program applicants. No award amount or full-need guarantee was inferred.
 - The program is online and worldwide. Travel, lodging, and meals are `not_applicable`, not silently omitted costs.
-- The four tier durations and tier-dependent session counts are preserved as text. A single end date or live-hour total was not invented.
+- The four tier durations, commitments, mentorship quantities, and support differences are scope-bound to their tier records. A single end date or live-hour total was not invented.
 - The application, shortlist interview, mentor matching, decision, and logistics sequence is disclosed. No acceptance rate was calculated because current-cycle applicant and acceptance counts are absent.
 - Publication support and credit are stated conditionally: publication is not guaranteed, and successful completers are described as eligible to receive three post-baccalaureate credits and a digital transcript.
 - No public student privacy policy, program-specific IP allocation/license, publicity term, confidentiality policy, organizer cancellation term, or general tuition-refund schedule was located.
@@ -40,10 +42,12 @@ All eight URLs appear once in `sourcePagesChecked`; evidence metadata exactly re
 - Exact-excerpt audit: complete against the rendered official pages and current linked application.
 - Source inventory/evidence metadata parity: complete and deduplicated.
 - All 59 fields assessed: complete.
+- V2 cycle and all structured collection assessment states: complete.
+- Atomic-claim evidence, tier scope/reference, deposit-credit, and deterministic projection pass: complete.
 - Unsupported-summary reread: complete; every summary clause is supported by current official material.
 - Adversarial reread for overclaiming and institutional prestige transfer: complete.
 
-Status counts at review: 30 `disclosed`, 4 `unclear`, 17 `not_found`, and 8 `not_applicable`.
+Current V2 flat-fact status counts after deterministic projection: 30 `disclosed`, 4 `unclear`, 17 `not_found`, and 8 `not_applicable`.
 
 ## Unresolved factual ambiguity
 

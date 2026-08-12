@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import { opportunityCardSchema, type OpportunityCard } from "@/lib/opportunity/schema";
-import { FIELD_IDS } from "@/lib/opportunity/fields";
 import {
   BUILDER_STORAGE_EVENT,
   ANALYSIS_URL_HANDOFF_KEY,
@@ -173,7 +172,9 @@ export function AnalysisWorkbench({
       writeBuilderDraftStorage(
         localStorage,
         JSON.stringify(result.card),
-        JSON.stringify(FIELD_IDS),
+        // Model output is a candidate draft, not a human assessment. The
+        // builder must require explicit review before attestation/export.
+        JSON.stringify([]),
       )
     ) {
       window.dispatchEvent(new Event(BUILDER_STORAGE_EVENT));

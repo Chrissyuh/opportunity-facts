@@ -67,6 +67,13 @@ The corpus should cover:
 - supported conflicts across two pages;
 - same-origin relevant and irrelevant links;
 - adversarial source text that tells a model to ignore instructions or invent a result.
+- schema V2 atomic claims and collection assessment states;
+- multiple organizations and role-safe institution relationships;
+- tier/cohort/track scoped costs and deposit-credit behavior;
+- complete versus incomplete cost-inventory behavior;
+- stage/pathway scoped dates, formats, locations, travel, and conditions;
+- prize matrices, project funding versus participant cash, and team versus individual recipients;
+- cycle identity independent from card revision and deterministic projection/reference integrity.
 
 Start with clearly fictional `.example` fixtures so the full source packets can be retained and redistributed. If real public pages are later included, record URL, title, access time, content hash, provenance, permission/licensing basis, and any redaction. Do not include student applications, account-only pages, personal records, or material obtained by bypassing access controls. A URL being public does not automatically grant unrestricted redistribution rights.
 
@@ -74,7 +81,7 @@ Keep source snapshots immutable. A live URL check may be a separate freshness st
 
 ## 5. Annotation model
 
-Each case contains one opportunity and a finite set of source records. Each expected fact annotation must include:
+Each case contains one opportunity/cycle and a finite set of source records. Each expected flat-fact annotation must include:
 
 - `field_id` from the authoritative registry;
 - expected evidence status;
@@ -84,6 +91,19 @@ Each case contains one opportunity and a finite set of source records. Each expe
 - page type and claim kind;
 - calculation inputs and formula when a value is calculated;
 - a short adjudication note for ambiguity, conflict, or non-applicability.
+
+For schema V2 cases, the answer key must also contain expected structured annotations:
+
+- cycle-independent opportunity ID and source-backed cycle claims;
+- collection assessment state for every structured family;
+- record and claim IDs stable within the frozen case;
+- atomic claim status/value/evidence/claim kind;
+- referenced organization, variant, stage, and pathway IDs;
+- scope, ordered pathway step, cost treatment, recipient/distribution, and restriction claims where applicable;
+- modeled cost-ledger completeness where applicable;
+- expected flat projection and exact contributing claim IDs.
+
+Evaluate structured output and projected flat facts separately. A system can extract all words yet fail by binding the right amount to the wrong tier, the right date to the wrong stage, or the right prize to the wrong recipient.
 
 Define one canonical text representation for annotation. Evidence offsets must refer to Unicode code-point indices in that frozen normalized text (not browser DOM offsets, bytes, or JavaScript UTF-16 positions), with `end_offset` exclusive. Store the exact excerpt as the human-reviewable authority and test that the recorded offsets reproduce it before freezing the corpus.
 
@@ -120,7 +140,9 @@ An illustrative case shape is:
       "claim_kind": "source_stated",
       "adjudication_note": ""
     }
-  ]
+  ],
+  "expected_structured_claims": [],
+  "expected_projection_refs": {}
 }
 ```
 
@@ -130,7 +152,7 @@ The example describes structure only; it is not a benchmark observation.
 
 1. Train reviewers on the schema, field registry, and [`disclosure-audit-guide.md`](./disclosure-audit-guide.md).
 2. Have two reviewers independently inventory sources and annotate every evaluated registry field.
-3. Compare status, normalized value, conflict set, evidence span, provenance, and claim kind separately.
+3. Compare flat status/value plus structured collection state, record binding, scope, normalized value, conflict set, evidence span, provenance, claim kind, and projection refs separately.
 4. Send disagreements to an adjudicator who can inspect both rationales but not system output.
 5. Freeze the adjudicated key and content hashes before running the held-out system.
 6. Record pre-adjudication agreement; do not use system output to resolve a human disagreement.
@@ -148,7 +170,12 @@ Freeze field-specific comparison rules before evaluation:
 - lists are compared as sets when order has no meaning;
 - conflicts require the complete supported set, with extra and missing values counted separately;
 - calculations require correct supported inputs, formula, output, and `calculated` labeling;
-- relationship categories require explicit source support and may correctly remain `unclear`.
+- relationship categories require explicit source support and may correctly remain `unclear`;
+- record/scope references require exact stable IDs from the frozen key;
+- distinct scoped values are compared as a matrix and are not conflicts;
+- projection correctness requires the expected flat representation and exact contributing claim set;
+- a calculated cost total requires an expected complete ledger in addition to compatible items;
+- project budgets must remain restricted funding and recipient scope/distribution must match the key.
 
 Do not add aliases after inspecting test errors. Version the answer key if a genuine annotation defect is found, publish the change, and rerun all compared systems.
 
@@ -180,6 +207,16 @@ Treat each `(case, field, normalized value)` as a claim. A claim is correct only
 - **Evidence-span source accuracy:** correct source assignment / output supported claims.
 - **Conflict preservation:** cases where the complete expected conflicting set and evidence are retained / expected conflict cases.
 - **Calculation integrity:** correctly labeled calculations with correct inputs and result / expected calculated facts.
+
+### Structured binding and projection
+
+- **Atomic-claim fidelity:** correct structured claim status/value/evidence / expected structured claims.
+- **Scope-binding accuracy:** claims attached to the correct variant/stage/pathway set / scoped output claims.
+- **Reference integrity:** output records whose entity, timing, pathway, treatment, and projection refs resolve / output records requiring refs.
+- **Matrix preservation:** expected multi-tier/track/pathway matrices retained without a false scalar / expected matrix cases.
+- **Recipient/funding fidelity:** outcome type, monetary nature, recipient, distribution, and restriction all correct / expected outcomes.
+- **Projection fidelity:** flat projected value/status/normalization and exact claim refs correct / expected projected fields.
+- **Migration conservatism:** V1 fixtures converted to draft V2 without inferred structured semantics or retained attestation / V1 migration fixtures.
 
 ### Deterministic validation invariants
 
@@ -228,6 +265,16 @@ At minimum include cases for:
 - hostname resolution that changes between validation stages;
 - oversized/decompression-expanded response and unsupported content type;
 - cross-origin links that look relevant but must not be crawled.
+- four tier prices plus a shared deposit credited to tuition, which must not become one scalar total;
+- an incomplete ledger whose listed amounts are all known, which still must not produce a calculated total;
+- conditional unknown travel cost, which must block a calculated total;
+- project build funding that must not become participant cash;
+- two selection pathways sharing stages but differing in pitch format/travel;
+- team prize matrices with conditional venture/equal-split distribution;
+- founder/mentor affiliations that must not become institution operation/partnership;
+- an expected month that must not become an exact date;
+- duplicate/dangling claim, scope, pathway, and projection references;
+- a V1 reviewed card that must migrate to an unassessed draft V2 revision.
 
 Prompt-injection resistance is judged by schema/evidence behavior, not by asking the model whether it followed the attack.
 

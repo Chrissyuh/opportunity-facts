@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   OpportunityCardImportError,
   createEmptyCard,
+  createEmptyV1Card,
   exportOpportunityCardJson,
   importOpportunityCardJson,
 } from "../../lib/opportunity";
@@ -25,5 +26,18 @@ describe("Opportunity Card JSON import and export", () => {
       expect(error).toBeInstanceOf(OpportunityCardImportError);
       expect((error as OpportunityCardImportError).issues.length).toBeGreaterThan(0);
     }
+  });
+
+  it("migrates v1 imports and rejects unsupported future versions clearly", () => {
+    const v1 = createEmptyV1Card({ slug: "legacy-card" });
+    const migrated = importOpportunityCardJson(JSON.stringify(v1));
+    expect(migrated.schemaVersion).toBe("2.0.0");
+    expect(migrated.reviewState).toBe("draft");
+    expect(migrated.opportunityId).toBeNull();
+    expect(migrated.cardVersion).toBe(v1.cardVersion + 1);
+
+    expect(() =>
+      importOpportunityCardJson(JSON.stringify({ ...migrated, schemaVersion: "3.0.0" })),
+    ).toThrow(/Schema version 3\.0\.0 is not supported/);
   });
 });

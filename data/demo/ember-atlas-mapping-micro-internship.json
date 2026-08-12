@@ -1,10 +1,15 @@
 {
-  "schemaVersion": "1.0.0",
-  "cardVersion": 1,
+  "schemaVersion": "2.0.0",
+  "opportunityId": null,
+  "cycle": {
+    "status": "unassessed",
+    "value": null
+  },
+  "cardVersion": 2,
   "slug": "ember-atlas-mapping-micro-internship",
   "summary": "A paid remote micro-internship whose college connection is limited to founder alumni status, with explicit wages, ownership, and confidentiality terms.",
   "reviewState": "demo",
-  "reviewedAt": "2026-08-10T12:00:00Z",
+  "reviewedAt": null,
   "sourcePagesChecked": [
     {
       "id": "program",
@@ -29,6 +34,46 @@
     }
   ],
   "conflicts": [],
+  "organizations": {
+    "status": "unassessed",
+    "records": [],
+    "note": null
+  },
+  "organizationRoles": {
+    "status": "unassessed",
+    "records": [],
+    "note": null
+  },
+  "institutionRelationships": {
+    "status": "unassessed",
+    "records": [],
+    "note": null
+  },
+  "variants": {
+    "status": "unassessed",
+    "records": [],
+    "note": null
+  },
+  "stages": {
+    "status": "unassessed",
+    "records": [],
+    "note": null
+  },
+  "pathways": {
+    "status": "unassessed",
+    "records": [],
+    "note": null
+  },
+  "costItems": {
+    "status": "unassessed",
+    "records": [],
+    "note": null
+  },
+  "outcomes": {
+    "status": "unassessed",
+    "records": [],
+    "note": null
+  },
   "facts": {
     "opportunity_name": {
       "status": "disclosed",
@@ -49,7 +94,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "opportunity_category": {
       "status": "disclosed",
@@ -70,7 +116,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "official_url": {
       "status": "disclosed",
@@ -94,7 +141,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "operating_organization": {
       "status": "disclosed",
@@ -115,7 +163,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "organization_type": {
       "status": "disclosed",
@@ -136,7 +185,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "named_institution": {
       "status": "disclosed",
@@ -157,7 +207,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "institution_relationship": {
       "status": "disclosed",
@@ -181,7 +232,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "relationship_explanation": {
       "status": "disclosed",
@@ -202,7 +254,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "grade_levels": {
       "status": "disclosed",
@@ -232,7 +285,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "ages": {
       "status": "not_found",
@@ -244,7 +298,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "geographic_restrictions": {
       "status": "disclosed",
@@ -265,7 +320,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "citizenship_restrictions": {
       "status": "disclosed",
@@ -286,7 +342,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "prerequisite_skills": {
       "status": "disclosed",
@@ -316,7 +373,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "entry_format": {
       "status": "disclosed",
@@ -337,7 +395,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "sponsor_requirement": {
       "status": "disclosed",
@@ -358,7 +417,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "application_deadline": {
       "status": "disclosed",
@@ -382,7 +442,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "decision_date": {
       "status": "disclosed",
@@ -406,7 +467,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "start_date": {
       "status": "disclosed",
@@ -430,7 +492,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "end_date": {
       "status": "disclosed",
@@ -454,7 +517,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "duration": {
       "status": "disclosed",
@@ -479,7 +543,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "weekly_hours": {
       "status": "disclosed",
@@ -505,7 +570,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "required_live_hours": {
       "status": "disclosed",
@@ -531,7 +597,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "participation_format": {
       "status": "disclosed",
@@ -555,7 +622,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "location": {
       "status": "not_found",
@@ -567,7 +635,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "travel_requirements": {
       "status": "not_found",
@@ -579,7 +648,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "application_fee": {
       "status": "disclosed",
@@ -605,7 +675,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "deposit": {
       "status": "not_found",
@@ -617,7 +688,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "tuition": {
       "status": "not_found",
@@ -629,7 +701,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "other_mandatory_costs": {
       "status": "not_found",
@@ -641,7 +714,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "estimated_total_mandatory_cost": {
       "status": "disclosed",
@@ -667,7 +741,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "travel_included": {
       "status": "not_found",
@@ -679,7 +754,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "lodging_included": {
       "status": "not_found",
@@ -691,7 +767,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "meals_included": {
       "status": "not_found",
@@ -703,7 +780,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "financial_aid": {
       "status": "not_applicable",
@@ -715,7 +793,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "refund_policy": {
       "status": "not_applicable",
@@ -727,7 +806,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "cancellation_policy": {
       "status": "not_found",
@@ -739,7 +819,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "selection_process": {
       "status": "disclosed",
@@ -760,7 +841,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "applicant_count": {
       "status": "not_found",
@@ -772,7 +854,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "acceptance_count": {
       "status": "not_found",
@@ -784,7 +867,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "acceptance_rate_claim": {
       "status": "not_found",
@@ -796,7 +880,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "calculated_acceptance_rate": {
       "status": "not_found",
@@ -808,7 +893,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "selection_evidence": {
       "status": "disclosed",
@@ -829,7 +915,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "cash_award": {
       "status": "not_found",
@@ -841,7 +928,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "stipend": {
       "status": "disclosed",
@@ -867,7 +955,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "tuition_waiver": {
       "status": "not_found",
@@ -879,7 +968,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "program_seat": {
       "status": "not_found",
@@ -891,7 +981,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "in_kind_value": {
       "status": "not_found",
@@ -903,7 +994,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "certificate": {
       "status": "not_found",
@@ -915,7 +1007,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "college_credit": {
       "status": "not_found",
@@ -927,7 +1020,8 @@
       "confidence": null,
       "claimKind": null,
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "mentorship": {
       "status": "disclosed",
@@ -948,7 +1042,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "other_benefits": {
       "status": "disclosed",
@@ -980,7 +1075,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "personal_information": {
       "status": "disclosed",
@@ -1016,7 +1112,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "data_sharing": {
       "status": "disclosed",
@@ -1037,7 +1134,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "project_ownership": {
       "status": "disclosed",
@@ -1058,7 +1156,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "project_license": {
       "status": "disclosed",
@@ -1079,7 +1178,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "publicity_rights": {
       "status": "disclosed",
@@ -1100,7 +1200,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "confidentiality": {
       "status": "disclosed",
@@ -1121,7 +1222,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "cancellation_rights": {
       "status": "disclosed",
@@ -1142,7 +1244,8 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     },
     "material_terms": {
       "status": "disclosed",
@@ -1174,7 +1277,15 @@
       "confidence": null,
       "claimKind": "source_stated",
       "conflictingValues": [],
-      "calculation": null
+      "calculation": null,
+      "projection": null
     }
+  },
+  "projectionRefs": {},
+  "migratedFrom": {
+    "schemaVersion": "1.0.0",
+    "cardVersion": 1,
+    "reviewedAt": "2026-08-10T12:00:00Z",
+    "cardSha256": "a048319707da97ea93ad24646245995db90e42ef3a6c4109ed960cc8599acfc6"
   }
 }

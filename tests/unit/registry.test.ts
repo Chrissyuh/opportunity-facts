@@ -34,7 +34,7 @@ describe("field registry", () => {
     }
   });
 
-  it("counts disclosed core facts as completeness, not a rating", () => {
+  it("reports assessed and applicable core areas without producing a rating", () => {
     const card = createEmptyCard({ slug: "count-test" });
     const evidence = {
       id: "source",
@@ -61,9 +61,27 @@ describe("field registry", () => {
 
     expect(getDisclosureCount(card)).toEqual({
       disclosed: 1,
+      assessed: 13,
+      applicable: 13,
+      notFound: 11,
+      unclear: 0,
+      conflicting: 1,
+      notApplicable: 0,
+      unassessed: 0,
       total: 13,
-      label: "1 of 13 core facts disclosed",
+      label: "13 of 13 core areas assessed",
+      detailLabel: "1 of 13 applicable disclosed · 11 not found · 1 conflicting",
     });
+
+    card.facts[CORE_FIELD_IDS[0]] = factSchema.parse({
+      status: "not_applicable",
+      note: "This dimension does not apply to the opportunity.",
+    });
+    const count = getDisclosureCount(card);
+    expect(count.assessed).toBe(13);
+    expect(count.applicable).toBe(12);
+    expect(count.notApplicable).toBe(1);
+    expect(count.unassessed).toBe(0);
   });
 
   it("formats normalized values and aligns differences through the registry", () => {

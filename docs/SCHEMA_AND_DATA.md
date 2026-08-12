@@ -1,56 +1,83 @@
 # Schema and data guide
 
-Opportunity Facts uses one strict card schema and one typed field registry. They are the authority for repository JSON, rendering, comparison, disclosure counts, builder import/export, analysis output, and tests. A UI component must not invent its own field list or looser data shape.
+Opportunity Facts uses one strict schema `2.0.0` card contract with two complementary layers:
+
+1. a stable 59-field fact map for scanning, search, baseline comparison, completeness reporting, and compatibility;
+2. evidence-bearing structured records for distinctions that cannot be represented truthfully as one scalar.
+
+The schema and typed field registry are authoritative for repository JSON, rendering, comparison, builder import/export, analysis output, public artifacts, and tests. A component must not invent its own field list, structured record, or looser data shape.
 
 ## Authoritative files
 
 | Concern | Authority |
 | --- | --- |
+| Public schema export and compatibility entrypoint | `lib/opportunity/schema.ts` |
+| V2 card and cross-record invariants | `lib/opportunity/schema-v2.ts` |
+| Atomic claims, scopes, and structured records | `lib/opportunity/structured-schema.ts` |
+| V1 import schema | `lib/opportunity/schema-v1.ts` |
+| Conservative V1-to-V2 migration | `lib/opportunity/migration.ts` |
+| Deterministic V2-to-fact projections | `lib/opportunity/projection.ts` |
 | Enumerations and field definitions | `lib/opportunity/fields.ts` |
-| Formatted/comparable field registry and disclosure count | `lib/opportunity/registry.ts` |
-| Zod card/fact/source schemas | `lib/opportunity/schema.ts` |
+| Formatted/comparable registry and core assessment count | `lib/opportunity/registry.ts` |
 | Opportunity helpers and public TypeScript imports | `lib/opportunity/index.ts` |
 | Fictional cards | `data/demo/*.json` |
-| Work-in-progress cards (never public) | `data/drafts/*.json` |
-| Future public reviewed cards | `data/opportunities/*.json` |
-| Machine-readable schema | `public/schema/opportunity-card.schema.json` |
+| Work in progress, never public | `data/drafts/*.json` |
+| Human-reviewed/organizer-confirmed cards | `data/opportunities/*.json` |
+| Machine-readable JSON Schema | `public/schema/opportunity-card.schema.json` |
 | Downloadable public dataset | `public/data/opportunities.json` |
-| Public schema/dataset exporter | `scripts/export-public-data.ts` / `npm run export:data` |
-| Data validator | `scripts/validate-data.ts` / `npm run validate:data` |
+| Exporter | `scripts/export-public-data.ts` / `npm run export:data` |
+| Validator | `scripts/validate-data.ts` / `npm run validate:data` |
 | Draft generator | `scripts/create-card.ts` / `npm run create:card -- <slug>` |
 
-The exported JSON schema and dataset are build artifacts/consumer interfaces. Change the TypeScript/Zod authority first, then regenerate and validate the public artifacts. Do not hand-edit two competing schemas.
+The exported JSON Schema and dataset are build artifacts and consumer interfaces. Change the TypeScript/Zod authority first, then regenerate them. Do not hand-edit competing schemas.
 
-The public JSON Schema is useful for structural interoperability, but it cannot encode every Zod `superRefine` relationship (for example, evidence/source metadata alignment and conflict metadata parity). Passing the JSON Schema alone is insufficient; repository and application imports must pass `opportunityCardSchema`.
+JSON Schema can express structure but not every Zod cross-field rule. Repository cards and application imports must pass `opportunityCardSchema`, which additionally verifies evidence inventory reuse, globally unique IDs, reference integrity, review-state completeness, and deterministic projection parity.
 
-## Versions
+## Versions and identity
 
-- `schemaVersion` is currently `1.0.0`. It identifies the interpretation and allowed structure of a card.
-- `cardVersion` starts at `1`. Importing an existing reviewed/demo card into the builder opens the next draft revision; substantive source/fact changes or a new attestation from a non-draft card also advance it. Completing review of the current draft preserves that draft's version.
+- `schemaVersion` is `2.0.0`. It defines the interpretation and allowed card structure.
+- `opportunityId` identifies the continuing opportunity independently of one cycle or public URL slug.
+- `cycle.id` plus its source-backed label/status/year claims identifies the reviewed application/cohort/competition cycle.
+- `cardVersion` is only the positive-integer revision of that card.
+- `slug` is the cycle-specific public record/route key and may change without changing opportunity identity.
 
-Schema version and card version answer different questions. A card can move from version 2 to 3 without changing schema version. A breaking schema change requires a new schema version and an explicit migration/compatibility decision for every stored card and local import.
+A reviewed card requires a non-null cycle-independent `opportunityId` and a modeled cycle. Public artifacts reject duplicate slugs and duplicate normalized `(opportunityId, cycle label)` pairs.
 
-## Top-level card
+A substantive source, fact, structured-record, or attestation change advances `cardVersion` under the builder/version policy. A schema migration also advances the revision once; it does not turn a revision number into a year or cohort.
 
-The strict top-level shape is conceptually:
+## Top-level V2 card
+
+The strict shape is conceptually:
 
 ```ts
-interface OpportunityCard {
-  schemaVersion: "1.0.0";
-  cardVersion: number;              // positive integer
-  slug: string;                     // lowercase kebab-case
-  summary: string;                  // short neutral summary
+interface OpportunityCardV2 {
+  schemaVersion: "2.0.0";
+  opportunityId: string | null;       // required for reviewed/confirmed cards
+  cycle: CycleContainer;
+  cardVersion: number;
+  slug: string;
+  summary: string;
   reviewState: ReviewState;
-  reviewedAt: string | null;        // RFC 3339 with offset
+  reviewedAt: string | null;
   sourcePagesChecked: SourcePage[];
   conflicts: CardConflict[];
-  facts: Record<FieldId, Fact>;      // all 59 current registry fields, exactly once
+
+  organizations: RecordCollection<OrganizationRecord>;
+  organizationRoles: RecordCollection<OrganizationRoleRecord>;
+  institutionRelationships: RecordCollection<InstitutionRelationshipRecord>;
+  variants: RecordCollection<VariantRecord>;
+  stages: RecordCollection<StageRecord>;
+  pathways: RecordCollection<PathwayRecord>;
+  costItems: RecordCollection<CostItemRecord>;
+  outcomes: RecordCollection<OutcomeRecord>;
+
+  facts: Record<FieldId, Fact>;        // all 59 fields exactly once
+  projectionRefs: Partial<Record<FieldId, ClaimId[]>>;
+  migratedFrom: MigrationMetadata | null;
 }
 ```
 
-Zod objects are strict: all 59 current fact keys are required after parsing, and unknown top-level or nested keys are rejected rather than silently treated as supported product fields. Helper factories fill an explicit `not_found` record for each field instead of omitting it.
-
-`sourcePagesChecked` is the finite review inventory. `not_found` means the reviewer or analysis did not locate a value in that inventory; it does not claim that no disclosure exists anywhere.
+Zod objects are strict. Unknown top-level or nested keys are rejected rather than silently treated as supported fields.
 
 ## Sources and evidence
 
@@ -59,16 +86,16 @@ A checked page contains:
 ```ts
 interface SourcePage {
   id: string;          // lowercase kebab-case, unique within the card
-  url: string;         // bounded public HTTP(S), no credentials/sensitive query or fragment
+  url: string;         // bounded public HTTP(S), no credentials/sensitive token
   title: string;
   pageType: PageType;
   accessedAt: string;  // RFC 3339 timestamp with offset
 }
 ```
 
-A fact's evidence source repeats those fields and adds an `excerpt`. The repeated metadata must exactly match the corresponding `sourcePagesChecked` entry. Each canonical URL appears once in the inventory under one stable ID, which facts reuse. This prevents duplicate page identities or a source ID quietly changing URL, title, provenance, or access time between facts.
+Evidence repeats that metadata and adds an exact `excerpt`. The repeated metadata must exactly match the `sourcePagesChecked` entry with the same ID. Each canonical URL appears once in the inventory under one stable ID.
 
-Allowed provenance values are:
+Allowed page types remain:
 
 - `official_program_page`
 - `official_faq`
@@ -80,15 +107,132 @@ Allowed provenance values are:
 - `public_record`
 - `user_supplied`
 
-Automated URL and pasted-text analysis always records `user_supplied`. A path such as `/faq` or `/privacy` is useful for topical discovery but does not establish official provenance. The `official_*` categories are reserved for cards where a human or organizer has actually classified the source; the review state still describes process, not truth.
+Automated URL and pasted-text analysis records `user_supplied`. URL path, branding, or same-origin discovery does not establish official provenance. Human/organizer review may classify attributable sources into an `official_*` category; review state still describes process rather than truth.
 
-The stored-link schema confirms HTTP(S) syntax, a 2,048-character maximum, empty username/password, no token/key/signature/session-like names in query strings or parameter-like fragments, and rejection of literal non-public/service addresses plus obvious single-label, local, and metadata hostnames/suffixes. This browser-safe screening does not DNS-resolve a hostname and therefore does not prove that an arbitrary name is public. Server analysis separately applies DNS/address, redirect, timeout, byte, and content-type controls described in [`THREAT_MODEL.md`](./THREAT_MODEL.md).
+Stored URLs must be public HTTP(S), at most 2,048 characters, and free of credentials or token/key/signature/session-like query/fragment parameters. The stored-link check rejects literal non-public/service addresses and obvious local/metadata hostnames. Server acquisition separately applies DNS/address, redirect, timeout, byte, and content-type controls described in [`THREAT_MODEL.md`](./THREAT_MODEL.md).
 
-Every displayed factual value requires evidence. Automated candidates have an additional non-schema gate: the excerpt must match normalized text from the cited fetched/pasted record before the value can be shown as source-supported.
+Every displayed factual value requires evidence. Automated candidates have an additional gate: the excerpt must match normalized acquired source text before the value can be shown as supported.
 
-## Fact shape and invariants
+## Atomic structured claims
 
-Each registered field uses the same structure:
+Structured evidence belongs to each independently reviewable semantic assertion, not merely to a parent object. Each claim has a globally unique `claimId` and one of the same five evidence states. Its typed payload may bind inseparable fields supported by the same assertion—for example role + scope, relationship target + type + scope, stage event + time + scope, or outcome type + scope. Independent assertions with different support remain separate claims; a record has no blanket evidence field.
+
+```ts
+type TypedClaim<T> =
+  | {
+      claimId: ClaimId;
+      status: "disclosed";
+      value: T;
+      displayValue: string;
+      claimKind: "source_stated" | "organizer_stated";
+      sources: EvidenceSource[];       // at least one
+      note: string | null;
+      conflictingValues: [];
+    }
+  | UnclearClaim
+  | NotFoundClaim
+  | NotApplicableClaim
+  | ConflictingClaim<T>;
+```
+
+| Status | Structured-claim behavior |
+| --- | --- |
+| `disclosed` | Requires value, display value, source/organizer claim kind, and evidence. |
+| `unclear` | Has no settled value; requires evidence and a note explaining the ambiguity. |
+| `not_found` | Has no value/evidence and requires a finite-review explanation. |
+| `not_applicable` | Has no value/evidence and requires an affirmative domain reason. |
+| `conflicting` | Selects no top-level value and preserves at least two distinct evidence-bearing candidates. |
+
+Structured claims cannot use `calculated`. Calculated values remain limited to deterministic, whitelisted flat-fact calculations with visible inputs and formulas.
+
+Claims may cite only pages in `sourcePagesChecked`, and their repeated source metadata must match. Record IDs and claim IDs are globally unique within a card.
+
+## Collection assessment states
+
+An empty array is ambiguous, so every structured record family uses an explicit envelope:
+
+```ts
+type RecordCollection<T> =
+  | { status: "unassessed"; records: []; note: null }
+  | { status: "modeled"; records: [T, ...T[]]; note: string | null }
+  | { status: "none_found"; records: []; note: string }
+  | { status: "not_applicable"; records: []; note: string };
+```
+
+- `unassessed` means draft work remains. It is not equivalent to `not_found`.
+- `none_found` means the finite reviewed inventory did not disclose a record.
+- `not_applicable` requires an affirmative reason.
+- `modeled` requires at least one record.
+
+`human_reviewed` and `organizer_confirmed` cards cannot leave cycle or any structured collection unassessed. Demo cards may retain unassessed structured sections because they are explicitly fictional product fixtures rather than real-card source audits.
+
+`costItems` uses the same four states, with one additional requirement on `modeled`: `completeness` is `complete` or `incomplete`. This records whether the reviewer established that the ledger contains every relevant participant cost, not merely whether each listed item is well formed. Lumiere and Diamond intentionally remain `incomplete` because the retained sources do not establish a complete general refund/participant-cost inventory.
+
+## Scope
+
+Structured values can be bound to one or more variants, stages, and pathways:
+
+```ts
+interface Scope {
+  variantIds: string[];
+  stageIds: string[];
+  pathwayIds: string[];
+}
+```
+
+IDs are OR alternatives within one dimension; nonempty dimensions apply together. An empty dimension means unrestricted. Every ID must resolve to a record in the same card. Scope is evidence-bearing when it determines where a role, timing, cost, requirement, or outcome applies.
+
+This intentionally avoids an arbitrary predicate or workflow language. Source conditions remain neutral evidence-bearing text attached to a typed record/reference.
+
+## Structured record families
+
+### Cycle
+
+The modeled cycle preserves a stable cycle ID plus atomic label, status, year/start-year/end-year, season, and cycle-type claims. Optional timing references point to disclosed stage timing claims for opening, deadline, coverage start, and coverage end; each reference must resolve and use the expected event kind.
+
+The allowed cycle statuses are `announced`, `applications_open`, `applications_closed`, `active`, and `complete`. Date precision remains month, date, or RFC 3339 date-time, with `stated` versus `expected` certainty.
+
+### Organizations, roles, and institution relationships
+
+- `organizations` preserves each named entity and its source-backed kind.
+- `organizationRoles` binds one known organization to a role and scope.
+- `institutionRelationships` preserves subject, target, relationship type, explanation, and scope without converting founder/mentor affiliation into operation, partnership, or endorsement.
+
+The first three cards require distinct operator, manager, administrator, academic/credit partner, institution-operated, founder-affiliation, and mentor-affiliation representations. A relationship to an unidentified local delivery organization is not fabricated; the model can add a scoped record later when evidence identifies it.
+
+### Variants
+
+Variants represent source-supported `cohort`, `tier`, or `track` distinctions with a stable ID, label, kind, optional parent, eligibility differences, and notes. A pathway is not a variant; delivery branches belong under `pathways`.
+
+### Stages and pathways
+
+A stage has stable order/identity plus an evidence-bearing definition and separate claims for timings, durations, time commitments, formats, locations, selection rules, advancement, requirements, and travel requirements. Each claim can carry its scope inside the same supported assertion.
+
+A pathway contains an evidence-bearing definition and ordered evidence-bearing steps. Each step references one known stage and may preserve an entry condition. A pathway cannot repeat a stage. This represents the live versus virtual Diamond routes without introducing a general workflow engine.
+
+### Cost items
+
+Each cost item preserves:
+
+- label, type, required/optional/conditional status, and scope;
+- exact or ranged ISO-currency amount, including `not_found` or `unclear` amount states;
+- per-application/participant/team/traveler basis where supported;
+- a deposit-to-tuition credit reference;
+- collection-level `complete` versus `incomplete` inventory status;
+- refundability and its condition;
+- included/excluded items and other conditions.
+
+Application fee, deposit, tuition, travel, lodging, meals, materials, and other costs remain separate. A shared deposit can reference multiple tier tuition items. Zero is not `not_found`, and an incomplete, conditional, unresolved, mixed-currency, or scoped inventory cannot become one universal calculated total.
+
+### Outcomes
+
+Each outcome preserves source-backed outcome type and scope, recipient scope, monetary nature, optional amount, distribution, rank, track, quantity, use restriction, combinability, and conditions.
+
+Cash, stipends, restricted project budgets, reimbursements, waivers/scholarships, program seats, mentorship, credit, equipment, travel support, flight/experiment opportunities, and other in-kind benefits remain distinct. Project budgets require restricted-funding classification and a cited use restriction. Personal cash prizes require individual scope; team cash prizes require team scope.
+
+## Stable flat facts and projections
+
+The seven flat-fact sections remain `identity`, `eligibility`, `commitment`, `money`, `selection`, `outcomes`, and `terms`. All 59 fields are present exactly once.
 
 ```ts
 interface Fact {
@@ -98,109 +242,53 @@ interface Fact {
   normalizedValue: NormalizedValue | null;
   sources: EvidenceSource[];
   note: string | null;
-  confidence: number | null;         // 0 through 1
+  confidence: number | null;
   claimKind: ClaimKind | null;
   conflictingValues: ConflictingValue[];
   calculation: Calculation | null;
+  projection: {
+    schemaVersion: "2.0.0";
+    rule: string;
+    claimRefs: ClaimId[];
+  } | null;
 }
 ```
 
-`confidence` is optional extraction metadata. It is not truth probability, a reviewer score, a legitimacy signal, or a substitute for evidence.
+`confidence` is extraction metadata, not truth probability, a reviewer score, or a legitimacy signal.
 
-### Status behavior
+For structured projection fields:
 
-| Status | Required behavior |
-| --- | --- |
-| `disclosed` | Requires `value`, `displayValue`, at least one evidence source, and a claim kind. |
-| `not_found` | Has no value, display value, normalized value, or fact-level evidence. Pages checked remain visible at card level. |
-| `unclear` | Cannot present an unresolved value/display value; may cite the ambiguous source and explain it in `note`. |
-| `conflicting` | Requires at least two distinct supported candidates; cannot select a top-level value. |
-| `not_applicable` | Has no value/evidence and requires an affirmative domain reason in `note`, not mere absence. |
+- the builder edits the structured record, never the flat fact;
+- the projector stores the rule and exact contributing claim IDs;
+- top-level `projectionRefs` must match fact-level `claimRefs`;
+- evidence is the deterministic deduplicated union of contributing claim evidence;
+- validation recomputes the projection and rejects any stored value/reference drift;
+- a universal single value may keep a normalized scalar;
+- legitimate scoped differences produce a visible matrix/list and `normalizedValue: null`;
+- same-scope incompatible claims remain conflicts;
+- calculated totals require complete, compatible, same-currency inputs and exclude credited deposits from double counting.
 
-Each field definition also declares its allowed statuses. A card is invalid if a fact uses a status the registry does not allow.
-
-### Claim kinds
-
-- `source_stated`: the cited source directly states the fact.
-- `organizer_stated`: an organizer's own claim is being preserved explicitly.
-- `calculated`: the application/reviewer calculated a value from cited inputs.
-
-A calculated fact must include a short formula, named finite-number inputs, and an explanation. Calculation metadata is rejected on any other claim kind. Original source facts and evidence remain available; a calculation never becomes source-stated through formatting.
-
-### Conflicts
-
-Each conflicting candidate carries its own original value, display value, optional normalized value, evidence, and note. Candidates must be distinct. The top-level fact value and normalized value remain `null`, and card-level `conflicts` contains exactly one summary for that field.
-
-This shape intentionally prevents “first value wins” behavior:
-
-```json
-{
-  "status": "conflicting",
-  "value": null,
-  "displayValue": null,
-  "normalizedValue": null,
-  "sources": [],
-  "note": "Two reviewed pages give different current deadlines.",
-  "confidence": null,
-  "claimKind": null,
-  "conflictingValues": [
-    {
-      "value": "March 1",
-      "displayValue": "March 1",
-      "normalizedValue": null,
-      "sources": [{ "id": "dates", "url": "https://northstar-workshop.example/dates", "title": "Dates", "pageType": "official_program_page", "accessedAt": "2026-08-10T12:00:00Z", "excerpt": "Applications close March 1." }],
-      "note": null
-    },
-    {
-      "value": "March 8",
-      "displayValue": "March 8",
-      "normalizedValue": null,
-      "sources": [{ "id": "faq", "url": "https://northstar-workshop.example/faq", "title": "FAQ", "pageType": "official_faq", "accessedAt": "2026-08-10T12:00:00Z", "excerpt": "The application deadline is March 8." }],
-      "note": null
-    }
-  ],
-  "calculation": null
-}
-```
-
-The example is fictional documentation, not a repository card or observed conflict.
+Unmapped facts retain their direct evidence/state behavior. V2 does not delete a flat field merely because no structured family projects it.
 
 ## Normalized values
 
-The original `value` and user-facing `displayValue` are never overwritten by normalization. `normalizedValue` is a tagged union used for consistent filtering, comparison, formatting, and calculations:
+Original `value` and `displayValue` are never overwritten by normalization. The tagged union supports:
 
-| Kind | Key semantics |
-| --- | --- |
-| `text` | One canonical text value |
-| `text_list` | One or more canonical text entries |
-| `date` | ISO calendar date without invented time/timezone |
-| `money` | Nonnegative amount, ISO-style three-letter currency, and `fee`, `deposit`, `cash`, `in_kind`, or `tuition_waiver` classification |
-| `number` | Nonnegative value and optional unit |
-| `boolean` | Explicit true/false only; missing disclosure is not false |
-| `percentage` | Value from 0 through 100 |
-| `duration` | Nonnegative amount in hours, days, weeks, or months |
-| `hours` | Minimum, optional maximum, and total/day/week period |
-| `relationship` | One allowed institution-relationship category |
-| `participation_format` | Online, commuter, residential, hybrid, or in-person category |
+- text and text lists;
+- ISO date without invented time/timezone;
+- nonnegative money with currency and fee/deposit/cash/in-kind/tuition-waiver classification;
+- numbers and units;
+- explicit booleans;
+- percentages;
+- durations and hour ranges;
+- institution-relationship categories;
+- participation format.
 
-The schema checks that a field's normalized kind matches its registry value type. It does not accept a money object for a date field or generic text where a relationship category is required.
+The registry restricts normalized kinds per field. Scoped matrices intentionally have no scalar normalization.
 
-## Field registry
+## Exactly 13 core assessment areas
 
-Every definition includes:
-
-- stable field ID;
-- section and user-facing label;
-- concise neutral description;
-- whether it is one of the 13 core disclosure dimensions;
-- value type and comparison behavior;
-- allowed evidence statuses.
-
-The seven sections are `identity`, `eligibility`, `commitment`, `money`, `selection`, `outcomes`, and `terms`.
-
-### Exactly 13 core dimensions
-
-The registry enforces exactly these 13 core IDs:
+The registry enforces these core IDs:
 
 1. `operating_organization`
 2. `institution_relationship`
@@ -216,96 +304,97 @@ The registry enforces exactly these 13 core IDs:
 12. `other_benefits`
 13. `material_terms`
 
-“X of 13 core facts disclosed” is a completeness count. It is never a quality, legitimacy, safety, prestige, admissions-impact, or value score. A disclosed organizer claim can count as disclosed while still being unverified in the real world.
+The headline is `X of 13 core areas assessed`; a fully assessed card therefore leads with `13 of 13 core areas assessed`. The detail begins `X of Y applicable disclosed`, then appends each nonzero count in this exact order: `not found`, `unclear`, `conflicting`, `not applicable`, and `unassessed`.
 
-Adding, deleting, or changing a core flag is a product/schema decision. It requires registry tests, disclosure-count tests, comparison/builder review, documentation and export regeneration, and an explicit versioning decision.
+- Assessed includes every core field not still marked unassessed by the builder.
+- Applicable equals assessed minus `not_applicable`.
+- Disclosed counts only `disclosed` fields.
+- `not_found`, `unclear`, and `conflicting` remain assessed but not disclosed.
+
+This is assessment coverage, never quality, legitimacy, safety, prestige, admissions impact, or value. An organizer-stated fact can count as disclosed while remaining unverified in the real world.
 
 ## Review states
 
 | State | Meaning |
 | --- | --- |
-| `demo` | Obviously fictional card; every cited/official URL must use a reserved `.example` hostname. |
-| `draft` | Automated, imported, incomplete, or not fully aligned by a human reviewer. |
-| `human_reviewed` | A reviewer checked displayed value/excerpt/source alignment. It is not an independent audit of the claim. |
-| `organizer_confirmed` | The organizer confirmed or supplied information. It is not independent verification. |
+| `demo` | Obviously fictional `.example` card, persistently labeled Demo data. |
+| `draft` | Automated, imported, migrated, incomplete, or not fully aligned by a human. |
+| `human_reviewed` | A reviewer checked value/excerpt/source/scope/projection alignment; not an independent audit. |
+| `organizer_confirmed` | The organizer supplied or confirmed information; not independent verification. |
 
-`human_reviewed` and `organizer_confirmed` require `reviewedAt`. A valid JSON file does not automatically qualify for either state.
+Reviewed/confirmed cards require `reviewedAt`, modeled cycle identity, and assessed structured collections. Passing schema validation alone does not qualify a card for review attestation.
 
-## Adding a card
+## Conservative V1 import
 
-### 1. Create a minimal draft
+V1 compatibility is import-only. Repository and public artifact readers accept canonical V2 files; browser import dispatches by exact schema version.
 
-```powershell
-npm run create:card -- fictional-opportunity-slug
-```
+`migrateV1ToV2`:
 
-Use a neutral lowercase slug. The generator should refuse to overwrite an existing card. Keep a new card `draft` until the review gate is genuinely complete.
-The generator writes it to `data/drafts/`; that directory is excluded from every public artifact.
+1. strictly validates the V1 input;
+2. preserves all legacy facts, evidence, conflicts, summary, slug, and source inventory;
+3. increments the card revision once;
+4. clears review attestation (`draft`, `reviewedAt: null`);
+5. leaves `opportunityId`, cycle, and every structured collection unassessed;
+6. records prior schema/revision/review time plus a canonical SHA-256 digest;
+7. performs no semantic inference from flat prose.
 
-### 2. Inventory sources
+The same input produces the same migrated draft. A V2 card cannot be migrated again. A reviewer must assign cycle-independent identity, populate every structured section, regenerate projections, and re-attest the result before publication.
 
-Follow [`research/disclosure-audit-guide.md`](../research/disclosure-audit-guide.md). Add each checked page once to `sourcePagesChecked`, then reuse its stable metadata in fact evidence. Do not include account-only links, credentials, signed URLs, applications, or unnecessary personal data.
+## Adding or updating a card
 
-For demo cards, use only obviously fictional names and reserved `.example` URLs and retain `reviewState: "demo"`.
+1. Create a draft:
 
-### 3. Populate every fact
+   ```powershell
+   npm run create:card -- fictional-opportunity-slug
+   ```
 
-Use the registry rather than deleting fields that were not found. Preserve original wording, normalized representation, exact evidence, uncertainty, conflicts, and calculation inputs. Automated analysis does not calculate acceptance rates: a human must first confirm that applicant and acceptance counts cover the same population and cycle. A calculated mandatory-cost total requires every cost category to be assessed and compatible. Never infer institution operation, refundability, acceptance rates, cash value, or legal status from weak signals.
+2. Follow [`research/disclosure-audit-guide.md`](../research/disclosure-audit-guide.md). Add each checked page once and reuse its metadata.
+3. Establish opportunity and cycle identity. Assess every structured collection; do not leave an empty array with ambiguous meaning.
+4. Add evidence to each independently reviewable role/scope, relationship/scope, timing/scope, amount, condition, recipient, and distribution assertion. Split claims whenever the supporting passages or uncertainty differ.
+5. Let the shared projector create mapped flat facts. Do not hand-edit a “V2 projection” field.
+6. Preserve uncertainty/conflicts and avoid unsupported classifications.
+7. Complete [`REVIEW_CHECKLIST.md`](./REVIEW_CHECKLIST.md), re-attest only after card-to-source and source-to-card passes, and move reviewed data from `data/drafts/` to `data/opportunities/`.
+8. Run:
 
-### 4. Validate and audit
+   ```powershell
+   npm run export:data
+   npm run validate:data
+   npm run lint
+   npm run typecheck
+   npm test
+   npm run test:e2e
+   npm run build
+   ```
 
-```powershell
-npm run export:data
-npm run validate:data
-```
-
-Complete [`REVIEW_CHECKLIST.md`](./REVIEW_CHECKLIST.md), set a truthful reviewed state and `reviewedAt`, and move the file from `data/drafts/` to `data/opportunities/`. `export:data` deterministically rebuilds the public dataset and machine-readable JSON Schema only from demo and reviewed public JSON. `validate:data` confirms states, filenames, slug uniqueness across drafts/public cards, demo constraints, deterministic timestamps, and byte-for-byte artifact parity. Structural validation does not prove source alignment; a human must check every displayed value and excerpt before selecting `human_reviewed`.
-
-### 5. Run release checks
-
-```powershell
-npm run lint
-npm run typecheck
-npm test
-npm run test:e2e
-npm run build
-```
-
-Record actual results. Do not weaken a schema or test to admit one convenient card.
+The exporter and validator fail closed on drafts in public data, filename/slug mismatch, duplicate public identity, invalid review state, stale artifacts, schema errors, and projection/reference drift. Structural validation still does not prove source alignment.
 
 ## Public exports and imports
 
-The downloadable dataset contains repository public cards only. It must not silently include browser drafts, comparison selections, pasted pages, failed analysis output, or model prompts. Demo and reviewed records remain distinguishable by `reviewState`.
+The downloadable dataset contains only repository demo/reviewed cards. It never includes browser drafts, comparison choices, pasted pages, prompts, or failed analysis output. Demo and reviewed records remain distinguishable.
 
-Browser import follows the same strict card schema. Imported drafts stay local unless the user explicitly downloads/submits them. Schema compatibility errors should identify the problem without partially accepting unknown fields.
+Imports are version-dispatched before rendering or browser persistence. Unknown versions, malformed V1/V2 structures, and future versions fail with a readable error. V1 import returns only the conservative draft described above; it never enters a public artifact automatically.
 
-When a public export is regenerated, verify:
-
-- every source card passes the current Zod schema;
-- record order is deterministic;
-- no secret, private URL, student information, or local draft appears;
-- card/demo labels and versions are preserved;
-- the exported schema and dataset paths are covered by tests/build;
-- the correction/version history remains in Git rather than being rewritten.
-
-Use the supported sequence rather than manually editing generated files:
+Use the supported artifact sequence:
 
 ```powershell
 npm run export:data
 npm run validate:data
 ```
 
+Verify deterministic order/timestamp, schema/data parity, demo labels, version metadata, no secrets/private URLs/student data, and Git-based correction history.
+
 ## Changing the model safely
 
-For a new field or value type:
+For a new structured value, record family, field, or normalization:
 
-1. change the typed field registry and central schema;
-2. decide whether the schema change is backward compatible;
-3. update normalization, formatting, comparison, builder, import/export, extraction, and evidence behavior through shared domain helpers;
-4. migrate every demo/reviewed card explicitly;
-5. regenerate the machine-readable schema/dataset with `npm run export:data`;
-6. update unit, data, integration, and browser tests;
-7. update this guide, methodology, and review checklist;
-8. run the full release gate.
+1. demonstrate the need with reviewed cards rather than speculation;
+2. change the shared schema/registry/projector authority;
+3. decide schema and migration compatibility explicitly;
+4. update builder, rendering, comparison, extraction, and evidence behavior through shared helpers;
+5. migrate and re-review every affected demo/reviewed card;
+6. regenerate artifacts;
+7. add unit, data, integration, and browser regressions;
+8. update this guide, methodology, review checklist, and decision record;
+9. run the full release gate.
 
-Do not add an unregistered JSON property that only one component understands. That creates a second information model and breaks reviewability.
+Do not add component-only JSON fields, parse legacy prose into reviewed semantics, or broaden enums with unreviewed abstractions. See [`REALITY_STRESS_TEST_RESOLUTION.md`](../REALITY_STRESS_TEST_RESOLUTION.md) for the evidence behind the current V2 boundary.

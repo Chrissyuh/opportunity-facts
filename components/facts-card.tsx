@@ -13,6 +13,7 @@ import { CorrectionWorkflow } from "./correction-workflow";
 import { DisclosureMeter } from "./disclosure-meter";
 import { EvidenceList } from "./evidence-list";
 import { ReviewBadge, StatusBadge, reviewLabels } from "./status-badge";
+import { StructuredOpportunityDetails } from "./structured-opportunity-details";
 
 const sectionLabels: Record<OpportunitySection, string> = {
   identity: "Identity",
@@ -123,6 +124,9 @@ export function FactsCard({
       : null;
   const TitleHeading = embedded ? "h3" : "h1";
   const SectionHeading = embedded ? "h4" : "h2";
+  const cycleLabel = card.cycle.status === "modeled"
+    ? card.cycle.value.label.value
+    : "Cycle not modeled";
 
   return (
     <article
@@ -138,7 +142,7 @@ export function FactsCard({
         <div className="facts-card-title-row">
           <div>
             <p className="record-number">
-              Opportunity Facts · v{card.cardVersion} · schema {card.schemaVersion}
+              Opportunity Facts · {cycleLabel} · card revision {card.cardVersion} · schema {card.schemaVersion}
             </p>
             <TitleHeading className="facts-card-title">{name}</TitleHeading>
             <p className="facts-card-summary">{card.summary}</p>
@@ -150,7 +154,7 @@ export function FactsCard({
             </a>
           ) : null}
         </div>
-        <DisclosureMeter card={card} />
+        <DisclosureMeter card={card} unassessedFields={unassessedFields} />
         <div className="review-explanation">
           <strong>{reviewLabels[card.reviewState]}:</strong>{" "}
           {reviewExplanations[card.reviewState]}
@@ -166,6 +170,8 @@ export function FactsCard({
         <StatusBadge status="conflicting" />
         <StatusBadge status="not_applicable" />
       </div>
+
+      <StructuredOpportunityDetails card={card} embedded={embedded} />
 
       <div className="facts-sections">
         {SECTIONS.map((section) => {

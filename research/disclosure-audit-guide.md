@@ -7,6 +7,7 @@ This guide is for reviewers creating or checking an Opportunity Facts card. The 
 Record before reviewing:
 
 - exact opportunity name and application cycle;
+- cycle-independent opportunity ID, cycle ID/label, and current schema version;
 - official starting URL;
 - pages in scope and why each is attributable to the opportunity or operator;
 - access date in UTC;
@@ -41,6 +42,8 @@ For every source record, capture:
 - exact, context-sufficient excerpt;
 - stable source ID used by facts and conflicts.
 
+Schema V2 evidence is attached to each independently reviewable semantic claim, not only the surrounding record. A tier price, stage timing, scoped role, scoped relationship, pathway step, recipient scope, distribution rule, or use restriction needs a claim ID and supporting excerpt when displayed. One claim payload may bind inseparable typed fields supported by the same assertion, such as role + scope; split the claim whenever values have different support or uncertainty. A parent record has no blanket evidence.
+
 Never capture account credentials, private application pages, student records, or personal contact data not necessary to the public disclosure.
 
 ## 3. Apply the status decision tree
@@ -72,7 +75,20 @@ Do not splice nonadjacent fragments into a quotation. Use multiple source entrie
 
 Evidence may state an organizer claim without establishing real-world truth. For example, an official page can support “the organizer states that 500 people applied”; it does not independently audit the count.
 
-## 5. Field-specific rules
+## 5. Structured scope before flat summaries
+
+For a real V2 card, assess cycle and every structured collection before review attestation: organizations, organization roles, institution relationships, variants, stages, pathways, cost items, and outcomes.
+
+- Use `unassessed` only while review remains incomplete.
+- Use `none_found` when the finite inventory did not disclose a record.
+- Use `not_applicable` only for an affirmative domain reason.
+- Use `modeled` only with one or more source-supported records.
+
+Bind a value to the known `variantIds`, `stageIds`, and `pathwayIds` where it applies. An empty dimension means unrestricted, so never omit a scope reference merely because it is inconvenient. Distinct scoped values are not conflicts; incompatible values for the same scope are.
+
+After structured review, let the deterministic projector create covered flat facts. Do not select one tier, track, stage, or pathway value as the universal normalized summary. A matrix/list can be disclosed and comparable without a scalar normalization.
+
+## 6. Field-specific rules
 
 ### Operator and institution relationship
 
@@ -88,9 +104,13 @@ Identify the legal or operating organization only from explicit source language 
 
 Physical location, venue rental, alumni/faculty involvement, email domain, logo placement, or a founder's biography does not by itself prove operation, sponsorship, partnership, or endorsement. Cite both the relationship label and a concise explanation. If the source supports only “held at,” use hosted-at rather than a stronger category.
 
+Create a separate organization record for each named entity and a separate role/relationship assertion for each supported link. Do not flatten manager, administrator, academic/credit partner, founder affiliation, mentor affiliation, or local delivery role into one operator. Scope a delivery relationship to its stage/pathway when it does not apply to the whole opportunity.
+
 ### Eligibility and commitment
 
 Preserve conjunctions and exceptions. “Grades 9-12 and age 15 by June 1” is not equivalent to either condition alone. Record timezone and year for dates when disclosed. Do not invent a timezone or convert a date-only deadline into a timestamp. Keep required live hours separate from estimated weekly work.
+
+Model dates, durations, formats, locations, requirements, and travel obligations on the stage/variant/pathway they describe. Preserve `expected` month precision instead of promoting it to an exact date. Use ordered pathway steps for supported branches; do not convert a pathway condition into a global rule.
 
 ### Money
 
@@ -108,6 +128,8 @@ For every amount, record currency, amount/range, unit, recipient/payer, and whet
 
 Zero and `not_found` are different. A deposit is not refundable unless the policy says so. “Up to” is a maximum, not a promised amount. An in-kind value is not cash. Calculate total mandatory cost only when every included term, unit, and arithmetic operation is visible; preserve the inputs and identify exclusions.
 
+Create one scoped cost item per distinct price/condition. Record charge basis, tuition-credit treatment, inclusions/exclusions, and conditional refund/reimbursement separately. Mark the modeled ledger `complete` only when the review established that every relevant required/conditional participant cost was captured; otherwise mark it `incomplete`. Do not calculate one total from an incomplete ledger or across scoped tiers, conditional travel, unresolved amounts, or currencies; never add a deposit that is credited toward tuition twice.
+
 ### Selection
 
 Use published applicant and acceptance/winner counts only for the same pool and cycle. A calculated rate must display the formula and “Calculated from published counts.” Do not calculate when denominators, populations, or years differ. A rate stated without counts is an organizer-stated acceptance-rate claim. Words such as “competitive,” “selective,” or “limited” are descriptive selection evidence, not a numerical rate.
@@ -115,6 +137,8 @@ Use published applicant and acceptance/winner counts only for the same pool and 
 ### Outcomes
 
 State who receives each outcome and any conditions. Separate participant benefits from finalist/winner benefits. Do not combine cash, tuition waiver, program seat, mentorship, certificate, college credit, and in-kind value into one total.
+
+Create separate outcome records when rank, track, recipient, amount, distribution, restriction, stage, or pathway differs. A project budget is restricted funding, not personal cash, and requires a cited use restriction. Team outcomes stay team-level unless an explicit distribution says otherwise. Unknown prize amounts remain `not_found`; unsupported legacy labels are not reconstructed without evidence.
 
 ### Terms
 
@@ -131,7 +155,7 @@ Summarize neutrally and retain precise evidence for:
 
 Do not declare a term fair, unfair, legal, illegal, standard, or predatory. If legal interpretation is needed, say it is outside the card's scope.
 
-## 6. Conflicts, ambiguity, and calculations
+## 7. Conflicts, ambiguity, and calculations
 
 When current in-scope sources disagree:
 
@@ -151,16 +175,18 @@ A calculation is allowed only when:
 - the original inputs remain in the card;
 - the result is labeled `calculated`, not source-stated.
 
-## 7. Review-state rules
+## 8. Review-state and migration rules
 
 - `demo`: obviously fictional `.example` data, persistently labeled Demo data.
 - `draft`: incomplete, automated, imported, or not yet source-aligned by a human reviewer.
 - `human_reviewed`: a reviewer checked every displayed value, excerpt, URL, provenance, normalization, status, conflict, and calculation against the recorded sources.
 - `organizer_confirmed`: the organizer confirmed or supplied the information. This is not independent verification and does not replace evidence.
 
+A V1 import is recovery input, not reviewed V2 data. Conservative migration preserves legacy facts/evidence, advances one revision, clears review attestation, records the prior digest, and leaves cycle and structured collections unassessed. Never infer V2 roles, scopes, pathways, recipients, or funding types from V1 prose. Re-review and re-attest the populated V2 card before publication.
+
 Do not select `human_reviewed` merely because a card passed schema validation. Do not convert `organizer_confirmed` into an endorsement badge. Record review date and version for either state.
 
-## 8. Two-pass audit
+## 9. Two-pass audit
 
 ### Pass A: source-to-card completeness
 
@@ -168,6 +194,7 @@ Do not select `human_reviewed` merely because a card passed schema validation. D
 - Confirm that material disclosed fees, dates, eligibility limits, outcomes, and terms appear in the appropriate fields.
 - Confirm that all five statuses remain available and that uncertainty was not smoothed into a value.
 - Confirm that conflicts and calculation inputs were preserved.
+- Confirm every material structured distinction was represented and every empty collection has the correct assessment state.
 
 ### Pass B: card-to-source support
 
@@ -177,10 +204,11 @@ Do not select `human_reviewed` merely because a card passed schema validation. D
 - Confirm normalization did not overwrite source wording or change meaning.
 - Confirm `not_found` fields have an adequate page inventory and do not overclaim absence.
 - Confirm the completeness count uses only the 13 registry-defined core dimensions and is described as completeness, not trust.
+- Confirm structured claim IDs/evidence, references, scopes, and generated flat projections align with the source-backed records.
 
 A different reviewer should perform Pass B for a public `human_reviewed` card when practical. Record disagreements and resolution; do not hide them.
 
-## 9. Version and correction handling
+## 10. Version and correction handling
 
 Treat corrections as evidence changes, not reputation disputes. A correction packet should identify card/version, field, current value, proposed status/value, exact supporting excerpt, source URL, access date, and explanation. Validate the source before changing the card.
 
@@ -192,7 +220,7 @@ On any substantive change:
 - rerun schema/data validation and relevant tests;
 - avoid carrying forward `human_reviewed` if the affected value/source alignment has not been rechecked.
 
-## 10. Using card audits as a disclosure study
+## 11. Using card audits as a disclosure study
 
 A multi-card disclosure audit requires a sampling protocol in addition to accurate cards. Before collecting study data:
 
@@ -209,6 +237,6 @@ Report counts and denominators for all five statuses by field. Publish the sampl
 
 Generalize only to the defined sampling frame. A small or convenience sample is descriptive evidence about those reviewed cards, not “all student opportunities.” Preserve the card/source records needed to audit aggregate counts without redistributing restricted source text or personal information.
 
-## 11. Reviewer sign-off
+## 12. Reviewer sign-off
 
-Use the repository's [`docs/REVIEW_CHECKLIST.md`](../docs/REVIEW_CHECKLIST.md) for the final auditable gate. Sign-off means the reviewer checked source alignment under this guide. It does not certify the organizer, independently audit the claims, or provide legal advice.
+Use the repository's [`docs/REVIEW_CHECKLIST.md`](https://github.com/Chrissyuh/opportunity-facts/blob/main/docs/REVIEW_CHECKLIST.md) for the final auditable gate. Sign-off means the reviewer checked source alignment under this guide. It does not certify the organizer, independently audit the claims, or provide legal advice.

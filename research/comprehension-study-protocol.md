@@ -59,9 +59,10 @@ Fixtures A and B should have the same number and approximate complexity of sourc
 - at least one supported conflict;
 - an institution-relationship distinction;
 - cash and in-kind outcome information;
-- a material money or terms question.
+- a material money or terms question;
+- at least one schema V2 distinction that a scalar summary cannot hold, such as tiered prices, stage/pathway-specific obligations, or team versus individual outcomes.
 
-Use fictional organizations and `.example` URLs for the first study. The card and source condition must expose substantively identical source content. Do not give the card condition extra facts that are absent from its source packet.
+Use fictional organizations and `.example` URLs for the first study. The card and source condition must expose substantively identical source content. Structured card details may reorganize claims by organization, variant, stage, pathway, cost, or outcome, but may not add a value, scope, condition, or inference absent from the source packet.
 
 ## 3. Participants and ethical gate
 
@@ -77,7 +78,7 @@ Prepare and freeze:
 
 1. the two fixture source packets;
 2. the corresponding Opportunity Facts cards;
-3. a source-derived answer key with exact supporting excerpts;
+3. a source-derived answer key with exact supporting excerpts, structured scope/reference bindings, and expected flat projections;
 4. ten scored questions per fixture;
 5. neutral task instructions;
 6. the four-sequence assignment list;
@@ -93,11 +94,11 @@ Use the same constructs in both fixtures. A recommended ten-item blueprint is:
 
 1. operating organization;
 2. relationship to a named institution;
-3. total mandatory cost or whether it can be calculated;
+3. tier/pathway-specific mandatory cost or whether one total can be calculated;
 4. whether travel, lodging, or meals are included;
-5. a deadline or required time commitment;
+5. a cycle/stage-specific deadline or required time commitment;
 6. what selection evidence is published;
-7. cash versus in-kind outcomes;
+7. cash versus project/in-kind outcomes and the recipient scope;
 8. refund or cancellation terms;
 9. privacy, project-rights, or publicity terms;
 10. recognition of a fact that is not found, unclear, or conflicting.

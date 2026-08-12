@@ -7,19 +7,19 @@ import { currentUtcDate, opportunityDeadlineState } from "@/lib/opportunity/libr
 import type { OpportunityCard } from "@/lib/opportunity/schema";
 import { ReviewBadge, StatusBadge } from "./status-badge";
 
-type DisclosureFilter = "all" | "disclosed" | "missing";
+type DisclosureFilter = "all" | "disclosed" | "unresolved" | "not_applicable";
+type FactStatus = OpportunityCard["facts"][keyof OpportunityCard["facts"]]["status"];
 
 function textValue(card: OpportunityCard, field: keyof OpportunityCard["facts"]) {
   const value = card.facts[field].displayValue;
   return value ?? "";
 }
 
-function isDisclosed(card: OpportunityCard, field: keyof OpportunityCard["facts"]) {
-  return card.facts[field].status === "disclosed";
-}
-
-function matchesDisclosure(value: boolean, filter: DisclosureFilter) {
-  return filter === "all" || (filter === "disclosed" ? value : !value);
+function matchesDisclosure(status: FactStatus, filter: DisclosureFilter) {
+  if (filter === "all") return true;
+  if (filter === "disclosed") return status === "disclosed";
+  if (filter === "not_applicable") return status === "not_applicable";
+  return status === "not_found" || status === "unclear" || status === "conflicting";
 }
 
 function formatFamily(card: OpportunityCard) {
@@ -64,9 +64,9 @@ export function OpportunityLibrary({ cards }: { cards: OpportunityCard[] }) {
         (!search || searchable.includes(search)) &&
         (category === "all" || textValue(card, "opportunity_category") === category) &&
         (review === "all" || card.reviewState === review) &&
-        matchesDisclosure(isDisclosed(card, "estimated_total_mandatory_cost"), cost) &&
-        matchesDisclosure(isDisclosed(card, "refund_policy"), refund) &&
-        matchesDisclosure(isDisclosed(card, "selection_evidence"), selection) &&
+        matchesDisclosure(card.facts.estimated_total_mandatory_cost.status, cost) &&
+        matchesDisclosure(card.facts.refund_policy.status, refund) &&
+        matchesDisclosure(card.facts.selection_evidence.status, selection) &&
         (format === "all" || formatFamily(card) === format) &&
         (deadline === "all" || opportunityDeadlineState(card, today) === deadline)
       );
@@ -188,9 +188,10 @@ function DisclosureSelect({
     <div className="field">
       <label htmlFor={id}>{label}</label>
       <select id={id} value={value} onChange={(event) => onChange(event.target.value as DisclosureFilter)}>
-        <option value="all">Disclosed or missing</option>
+        <option value="all">All assessment states</option>
         <option value="disclosed">Disclosed</option>
-        <option value="missing">Missing / unclear / conflicting</option>
+        <option value="unresolved">Not found / unclear / conflicting</option>
+        <option value="not_applicable">Not applicable</option>
       </select>
     </div>
   );

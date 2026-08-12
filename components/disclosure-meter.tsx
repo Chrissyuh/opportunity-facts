@@ -1,32 +1,38 @@
-import { CORE_FIELD_IDS } from "@/lib/opportunity/fields";
+import { CORE_FIELD_IDS, type FieldId } from "@/lib/opportunity/fields";
 import { getDisclosureCount } from "@/lib/opportunity/registry";
 import type { OpportunityCard } from "@/lib/opportunity/schema";
 
-export function DisclosureMeter({ card }: { card: OpportunityCard }) {
-  const count = getDisclosureCount(card);
+export function DisclosureMeter({
+  card,
+  unassessedFields = new Set(),
+}: {
+  card: OpportunityCard;
+  unassessedFields?: ReadonlySet<FieldId>;
+}) {
+  const count = getDisclosureCount(card, unassessedFields);
 
   return (
     <div className="disclosure-meter">
       <div className="disclosure-meter-label">
         <strong>{count.label}</strong>
-        <span>Completeness count—not a trust score</span>
+        <span>{count.detailLabel}</span>
+        <span>Assessment coverage—not trust, quality, or independent verification</span>
       </div>
-      <div
-        className="disclosure-track"
-        role="progressbar"
-        aria-label={count.label}
-        aria-valuemin={0}
-        aria-valuemax={count.total}
-        aria-valuenow={count.disclosed}
-      >
-        {CORE_FIELD_IDS.map((fieldId, index) => (
-          <span
-            key={fieldId}
-            data-filled={index < count.disclosed}
-            aria-hidden="true"
-          />
-        ))}
-      </div>
+      <ul className="disclosure-track" aria-label="Core-area assessment statuses">
+        {CORE_FIELD_IDS.map((fieldId) => {
+          const status = unassessedFields.has(fieldId)
+            ? "unassessed"
+            : card.facts[fieldId].status;
+          return (
+            <li key={fieldId}>
+              <span data-status={status} aria-hidden="true" />
+              <span className="sr-only">
+                {fieldId.replaceAll("_", " ")}: {status.replaceAll("_", " ")}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }

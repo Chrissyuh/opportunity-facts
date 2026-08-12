@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   buildBoundedSourcePayload,
   buildExtractionInstructions,
+  createEmptyModelStructures,
   createOpenAIExtractor,
   extractOpportunityCard,
   MAX_MODEL_INPUT_CHARACTERS,
@@ -33,6 +34,25 @@ function evidence(source: AnalysisSourceContext, excerpt: string): EvidenceSourc
     pageType: source.page.pageType,
     accessedAt: source.accessedAt,
     excerpt,
+  };
+}
+
+function structuredAssertion<const T>(
+  source: AnalysisSourceContext,
+  claimId: string,
+  value: T,
+  displayValue: string,
+  excerpt: string,
+) {
+  return {
+    claimId,
+    status: "disclosed" as const,
+    value,
+    displayValue,
+    claimKind: "source_stated" as const,
+    sources: [evidence(source, excerpt)],
+    note: null,
+    conflictingValues: [],
   };
 }
 
@@ -303,6 +323,306 @@ describe("analysis pipeline", () => {
     );
     expect(MODEL_REQUEST_TIMEOUT_MS).toBe(45_000);
     expect(MODEL_MAX_RETRIES).toBe(0);
+  });
+
+  it("keeps source-backed project funding out of participant cash in automated v2 drafts", async () => {
+    const source: AnalysisSourceContext = {
+      accessedAt: "2026-08-11T18:00:00.000Z",
+      page: {
+        id: "page-techrise",
+        url: "https://techrise-fixture.example/program",
+        title: "Challenge details",
+        pageType: "user_supplied",
+        trust: "untrusted_source_text",
+        text: [
+          "Selected teams receive $1,500 to build their experiment.",
+          "The funding is for the team project and may be used only to build the experiment.",
+        ].join(" "),
+        blocks: [],
+        links: [],
+        truncated: false,
+      },
+    };
+    const structures = createEmptyModelStructures();
+    structures.outcomes = {
+      status: "modeled",
+      note: null,
+      records: [
+        {
+          id: "experiment-build-budget",
+          definition: structuredAssertion(
+            source,
+            "experiment-build-budget-definition",
+            {
+              label: "$1,500 experiment build funding",
+              outcomeType: "project_budget",
+              scope: { variantIds: [], stageIds: [], pathwayIds: [] },
+            },
+            "$1,500 experiment build funding",
+            "Selected teams receive $1,500 to build their experiment.",
+          ),
+          recipientScope: structuredAssertion(
+            source,
+            "experiment-build-budget-recipient",
+            "team",
+            "Team",
+            "Selected teams receive $1,500 to build their experiment.",
+          ),
+          monetaryNature: structuredAssertion(
+            source,
+            "experiment-build-budget-nature",
+            "restricted_funding",
+            "Restricted project funding",
+            "The funding is for the team project and may be used only to build the experiment.",
+          ),
+          amount: structuredAssertion(
+            source,
+            "experiment-build-budget-amount",
+            { kind: "exact", amount: 1500, currency: "USD" },
+            "$1,500",
+            "Selected teams receive $1,500 to build their experiment.",
+          ),
+          distribution: null,
+          rank: null,
+          track: null,
+          quantity: null,
+          useRestriction: structuredAssertion(
+            source,
+            "experiment-build-budget-restriction",
+            "May be used only to build the experiment.",
+            "Restricted to experiment construction",
+            "The funding is for the team project and may be used only to build the experiment.",
+          ),
+          combinability: null,
+          conditions: [],
+        },
+      ],
+    };
+
+    const result = await extractOpportunityCard([source], async () => ({
+      facts: createEmptyFacts(),
+      structures,
+    }));
+
+    expect(result.card.reviewState).toBe("draft");
+    expect(result.card.outcomes.status).toBe("modeled");
+    expect(result.card.facts.cash_award.status).toBe("not_found");
+    expect(result.card.facts.other_benefits.displayValue).toContain(
+      "experiment build funding",
+    );
+  });
+
+  it("accepts scoped tier and branch candidates without flattening them", async () => {
+    const source: AnalysisSourceContext = {
+      accessedAt: "2026-08-11T18:00:00.000Z",
+      page: {
+        id: "page-structured-program",
+        url: "https://structured-fixture.example/program",
+        title: "Programs and selection",
+        pageType: "user_supplied",
+        trust: "untrusted_source_text",
+        text: [
+          "Individual tuition is $3,190.",
+          "Premium tuition is $6,450.",
+          "Applicants submit online.",
+          "Selected teams follow the live pitch pathway before the final summit.",
+          "Selected teams follow the virtual pitch pathway before the final summit.",
+        ].join(" "),
+        blocks: [],
+        links: [],
+        truncated: false,
+      },
+    };
+    const structures = createEmptyModelStructures();
+    structures.variants = {
+      status: "modeled",
+      note: null,
+      records: [
+        {
+          id: "individual-tier",
+          definition: structuredAssertion(
+            source,
+            "individual-tier-definition",
+            { label: "Individual", kind: "tier", parentVariantId: null },
+            "Individual",
+            "Individual tuition is $3,190.",
+          ),
+          eligibilityDifferences: [],
+          notes: [],
+        },
+        {
+          id: "premium-tier",
+          definition: structuredAssertion(
+            source,
+            "premium-tier-definition",
+            { label: "Premium", kind: "tier", parentVariantId: null },
+            "Premium",
+            "Premium tuition is $6,450.",
+          ),
+          eligibilityDifferences: [],
+          notes: [],
+        },
+      ],
+    };
+    structures.costItems = {
+      status: "modeled",
+      completeness: "incomplete",
+      note: null,
+      records: [
+        ["individual", "individual-tier", 3190],
+        ["premium", "premium-tier", 6450],
+      ].map(([label, variantId, amount]) => ({
+        id: `${label}-tuition`,
+        definition: structuredAssertion(
+          source,
+          `${label}-tuition-definition`,
+          {
+            label: `${label} tuition`,
+            kind: "tuition",
+            requirement: "required",
+            scope: { variantIds: [String(variantId)], stageIds: [], pathwayIds: [] },
+          },
+          `${label} tuition`,
+          `${label === "individual" ? "Individual" : "Premium"} tuition is $${Number(amount).toLocaleString("en-US")}.`,
+        ),
+        amount: structuredAssertion(
+          source,
+          `${label}-tuition-amount`,
+          { kind: "exact", amount: Number(amount), currency: "USD" },
+          `$${Number(amount).toLocaleString("en-US")}`,
+          `${label === "individual" ? "Individual" : "Premium"} tuition is $${Number(amount).toLocaleString("en-US")}.`,
+        ),
+        chargeBasis: null,
+        treatment: null,
+        refundability: null,
+        includedItems: [],
+        excludedItems: [],
+        conditions: [],
+      })),
+    };
+    const stage = (id: string, order: number, label: string, kind: "application" | "pitch" | "summit_final", excerpt: string) => ({
+      id,
+      order,
+      definition: structuredAssertion(
+        source,
+        `${id}-definition`,
+        {
+          label,
+          kind,
+          scope: {
+            variantIds: [] as string[],
+            stageIds: [] as string[],
+            pathwayIds: [] as string[],
+          },
+        },
+        label,
+        excerpt,
+      ),
+      timings: [], durations: [], timeCommitments: [], formats: [], locations: [],
+      selectionRules: [], advancement: [], requirements: [], travelRequirements: [],
+    });
+    structures.stages = {
+      status: "modeled",
+      note: null,
+      records: [
+        stage("application", 1, "Application", "application", "Applicants submit online."),
+        stage("live-pitch", 2, "Live pitch", "pitch", "Selected teams follow the live pitch pathway before the final summit."),
+        stage("virtual-pitch", 2, "Virtual pitch", "pitch", "Selected teams follow the virtual pitch pathway before the final summit."),
+        stage("final-summit", 3, "Final summit", "summit_final", "Selected teams follow the live pitch pathway before the final summit."),
+      ],
+    };
+    const pathway = (id: string, label: string, pitchId: string, excerpt: string) => ({
+      id,
+      definition: structuredAssertion(
+        source,
+        `${id}-definition`,
+        { label, variantIds: [] as string[] },
+        label,
+        excerpt,
+      ),
+      steps: ["application", pitchId, "final-summit"].map((stageId, index) =>
+        structuredAssertion(
+          source,
+          `${id}-step-${index + 1}`,
+          { stageId, enterWhen: null },
+          stageId,
+          excerpt,
+        ),
+      ),
+    });
+    structures.pathways = {
+      status: "modeled",
+      note: null,
+      records: [
+        pathway("live-path", "Live pitch pathway", "live-pitch", "Selected teams follow the live pitch pathway before the final summit."),
+        pathway("virtual-path", "Virtual pitch pathway", "virtual-pitch", "Selected teams follow the virtual pitch pathway before the final summit."),
+      ],
+    };
+
+    const result = await extractOpportunityCard([source], async () => ({
+      facts: createEmptyFacts(),
+      structures,
+    }));
+
+    expect(result.card.facts.tuition.displayValue).toBe("Varies by program/cohort");
+    expect(result.card.facts.tuition.normalizedValue).toBeNull();
+    expect(result.card.facts.selection_process.displayValue).toContain("Live pitch pathway");
+    expect(result.card.facts.selection_process.displayValue).toContain("Virtual pitch pathway");
+  });
+
+  it("withholds a person-affiliation candidate that the model upgrades to partnership", async () => {
+    const source: AnalysisSourceContext = {
+      accessedAt: "2026-08-11T18:00:00.000Z",
+      page: {
+        id: "page-affiliation",
+        url: "https://affiliation-fixture.example/about",
+        title: "About",
+        pageType: "user_supplied",
+        trust: "untrusted_source_text",
+        text: "The program was founded by alumni of Harvard University. Harvard University does not operate, sponsor, or partner with the program.",
+        blocks: [],
+        links: [],
+        truncated: false,
+      },
+    };
+    const structures = createEmptyModelStructures();
+    structures.institutionRelationships = {
+      status: "modeled",
+      note: null,
+      records: [
+        {
+          id: "false-partnership",
+          assertion: structuredAssertion(
+            source,
+            "false-partnership-claim",
+            {
+              subject: "opportunity",
+              subjectOrganizationId: null,
+              targetOrganizationId: null,
+              targetInstitutionName: "Harvard University",
+              relationshipType: "institution_partnered",
+              description: "The model incorrectly proposed a partnership.",
+              scope: { variantIds: [], stageIds: [], pathwayIds: [] },
+            },
+            "Institution partnership — Harvard University",
+            "The program was founded by alumni of Harvard University. Harvard University does not operate, sponsor, or partner with the program.",
+          ),
+        },
+      ],
+    };
+
+    const result = await extractOpportunityCard([source], async () => ({
+      facts: createEmptyFacts(),
+      structures,
+    }));
+
+    expect(result.card.institutionRelationships.status).toBe("unassessed");
+    expect(result.card.facts.institution_relationship.status).toBe("not_found");
+    expect(result.evidenceWarnings).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ fieldId: "structured.institutionRelationships" }),
+      ]),
+    );
   });
 
   it("requires server configuration for the production model extractor", () => {

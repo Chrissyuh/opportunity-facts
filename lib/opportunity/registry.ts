@@ -27,18 +27,55 @@ export const CORE_DISCLOSURE_TOTAL = 13 as const;
 
 export interface DisclosureCount {
   readonly disclosed: number;
+  readonly assessed: number;
+  readonly applicable: number;
+  readonly notFound: number;
+  readonly unclear: number;
+  readonly conflicting: number;
+  readonly notApplicable: number;
+  readonly unassessed: number;
   readonly total: typeof CORE_DISCLOSURE_TOTAL;
   readonly label: string;
+  readonly detailLabel: string;
 }
 
-export function getDisclosureCount(card: OpportunityCard): DisclosureCount {
-  const disclosed = CORE_FIELD_IDS.filter(
-    (fieldId) => card.facts[fieldId].status === "disclosed",
-  ).length;
+export function getDisclosureCount(
+  card: OpportunityCard,
+  unassessedFieldIds: ReadonlySet<FieldId> = new Set(),
+): DisclosureCount {
+  const coreStatuses = CORE_FIELD_IDS
+    .filter((fieldId) => !unassessedFieldIds.has(fieldId))
+    .map((fieldId) => card.facts[fieldId].status);
+  const countStatus = (status: (typeof coreStatuses)[number]) =>
+    coreStatuses.filter((candidate) => candidate === status).length;
+  const disclosed = countStatus("disclosed");
+  const notFound = countStatus("not_found");
+  const unclear = countStatus("unclear");
+  const conflicting = countStatus("conflicting");
+  const notApplicable = countStatus("not_applicable");
+  const assessed = coreStatuses.length;
+  const applicable = assessed - notApplicable;
+  const unassessed = CORE_DISCLOSURE_TOTAL - assessed;
+  const statusParts = [
+    `${disclosed} of ${applicable} applicable disclosed`,
+    notFound > 0 ? `${notFound} not found` : null,
+    unclear > 0 ? `${unclear} unclear` : null,
+    conflicting > 0 ? `${conflicting} conflicting` : null,
+    notApplicable > 0 ? `${notApplicable} not applicable` : null,
+    unassessed > 0 ? `${unassessed} unassessed` : null,
+  ].filter((part): part is string => part !== null);
   return {
     disclosed,
+    assessed,
+    applicable,
+    notFound,
+    unclear,
+    conflicting,
+    notApplicable,
+    unassessed,
     total: CORE_DISCLOSURE_TOTAL,
-    label: `${disclosed} of ${CORE_DISCLOSURE_TOTAL} core facts disclosed`,
+    label: `${assessed} of ${CORE_DISCLOSURE_TOTAL} core areas assessed`,
+    detailLabel: statusParts.join(" · "),
   };
 }
 
