@@ -1,0 +1,4138 @@
+{
+  "artifactVersion": 1,
+  "benchmarkStage": "evaluation",
+  "developmentSet": false,
+  "run": 1,
+  "program": {
+    "slug": "congressional-app-challenge-2026",
+    "label": "Congressional App Challenge — 2026"
+  },
+  "repository": {
+    "gitCommit": "0746d8e772b63b26bee6a909a6c15311154e1ff7",
+    "workingTreeDirty": false,
+    "extractionCodeHash": {
+      "algorithm": "sha256",
+      "value": "6a26033f9508c0613a79af0548a694465d2582d9fd3167c79e4e66d4618fa8e8",
+      "files": [
+        "lib/analysis/fetch.ts",
+        "lib/analysis/html-extraction.ts",
+        "lib/analysis/link-discovery.ts",
+        "lib/analysis/model-extraction.ts",
+        "lib/analysis/pipeline.ts",
+        "lib/analysis/types.ts",
+        "lib/analysis/url-safety.ts",
+        "lib/opportunity/projection.ts",
+        "lib/opportunity/schema-v2.ts",
+        "lib/opportunity/structured-schema.ts"
+      ]
+    }
+  },
+  "schemaVersion": "2.0.0",
+  "provider": {
+    "name": "openai",
+    "endpoint": "responses",
+    "model": "gpt-5.6-terra",
+    "settings": {
+      "store": false,
+      "reasoningEffort": "low",
+      "maxOutputTokens": 24000,
+      "requestTimeoutMs": 120000,
+      "maximumRetries": 0
+    },
+    "telemetry": {
+      "model": "gpt-5.6-terra",
+      "responseId": "resp_0a992833139d6d27016a7c1428289c8193831ddfa08d886fd3",
+      "usage": {
+        "inputTokens": 48385,
+        "cachedInputTokens": 0,
+        "outputTokens": 12549,
+        "reasoningTokens": 332,
+        "totalTokens": 60934
+      }
+    }
+  },
+  "input": {
+    "mode": "url",
+    "startingUrl": "https://www.congressionalappchallenge.us/students/rules/"
+  },
+  "timing": {
+    "startedAt": "2026-08-12T06:35:15.860Z",
+    "modelStartedAt": "2026-08-12T06:35:17.317Z",
+    "modelFinishedAt": "2026-08-12T06:36:45.663Z",
+    "finishedAt": "2026-08-12T06:36:45.748Z",
+    "totalRuntimeMs": 89888,
+    "acquisitionRuntimeMs": 1457,
+    "modelRuntimeMs": 88346
+  },
+  "acquisition": {
+    "submittedUrl": "https://www.congressionalappchallenge.us/students/rules/",
+    "successfullyAcquired": [
+      {
+        "role": "submitted",
+        "id": "page-0238055580eb31dc",
+        "url": "https://www.congressionalappchallenge.us/students/rules/",
+        "title": "RULES -",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:35:16.283Z",
+        "extractedCharacters": 1110,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 1110,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-385c66dd96ab0a52",
+        "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+        "title": "PRIVACY POLICY -",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:35:16.678Z",
+        "extractedCharacters": 4224,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 4224,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-61f16831142c119c",
+        "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+        "title": "FREQUENTLY ASKED QUESTIONS -",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:35:16.929Z",
+        "extractedCharacters": 9458,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 9458,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-abe3e8325fc91c0f",
+        "url": "https://www.congressionalappchallenge.us/about/",
+        "title": "ABOUT -",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:35:17.295Z",
+        "extractedCharacters": 3903,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 3903,
+        "truncatedForModel": false
+      }
+    ],
+    "failures": []
+  },
+  "modelOutput": {
+    "rawStructuredCandidate": {
+      "facts": {
+        "opportunity_name": {
+          "status": "disclosed",
+          "value": "Congressional App Challenge",
+          "displayValue": "Congressional App Challenge",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Congressional App Challenge"
+          },
+          "sources": [
+            {
+              "id": "page-abe3e8325fc91c0f",
+              "url": "https://www.congressionalappchallenge.us/about/",
+              "title": "ABOUT -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:17.295Z",
+              "excerpt": "Every year we challenge students in our districts to create and submit their original apps for a chance to win the Congressional App Challenge (CAC)."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "opportunity_category": {
+          "status": "disclosed",
+          "value": "District-specific student app competition",
+          "displayValue": "District-specific student app competition",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "District-specific student app competition"
+          },
+          "sources": [
+            {
+              "id": "page-abe3e8325fc91c0f",
+              "url": "https://www.congressionalappchallenge.us/about/",
+              "title": "ABOUT -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:17.295Z",
+              "excerpt": "Each challenge is district-specific."
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "official_url": {
+          "status": "disclosed",
+          "value": "https://www.congressionalappchallenge.us/students/rules/",
+          "displayValue": "https://www.congressionalappchallenge.us/students/rules/",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "https://www.congressionalappchallenge.us/students/rules/"
+          },
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "COMPLETE RULEBOOK"
+            }
+          ],
+          "note": "Official rules page supplied for the opportunity.",
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "operating_organization": {
+          "status": "disclosed",
+          "value": "Internet Education Foundation",
+          "displayValue": "Internet Education Foundation",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Internet Education Foundation"
+          },
+          "sources": [
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "The Congressional App Challenge is administered by the Internet Education Foundation."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "organization_type": {
+          "status": "disclosed",
+          "value": "Non-profit",
+          "displayValue": "Non-profit",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Non-profit"
+          },
+          "sources": [
+            {
+              "id": "page-abe3e8325fc91c0f",
+              "url": "https://www.congressionalappchallenge.us/about/",
+              "title": "ABOUT -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:17.295Z",
+              "excerpt": "We have appointed the non-profit Internet Education Foundation to provide the CAC with supplemental staffing and support."
+            }
+          ],
+          "note": null,
+          "confidence": 0.96,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "named_institution": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No specific college or university is named as operating, sponsoring, partnering with, or hosting the opportunity.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "institution_relationship": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No relationship with a named educational institution was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "relationship_explanation": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No named-institution relationship was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "grade_levels": {
+          "status": "disclosed",
+          "value": [
+            "Middle school",
+            "High school"
+          ],
+          "displayValue": "Middle or high school students",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Middle school",
+              "High school"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "To be eligible to participate in the Congressional App Challenge, you must be a middle or high school student at the time of app submission."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "ages": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No numeric age range was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "geographic_restrictions": {
+          "status": "disclosed",
+          "value": "Students may compete in the congressional district where they reside or attend school; teams must have at least half of teammates eligible for their competing district.",
+          "displayValue": "Residence or school district; team district rule applies",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Students may compete in the congressional district where they reside or attend school; teams must have at least half of teammates eligible for their competing district."
+          },
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "Students may compete in the district they reside in or the district they attend school in.\nIf competing as a team, at least half of the teammates must be eligible to compete in the district in which they are participating in."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "citizenship_restrictions": {
+          "status": "disclosed",
+          "value": "All competing students must be U.S. residents at submission; citizenship is not required.",
+          "displayValue": "U.S. residents; no citizenship requirement",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "All competing students must be U.S. residents at submission; citizenship is not required."
+          },
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "All competing students must be U.S. residents at the time of submission. There is no citizen requirement for students."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "prerequisite_skills": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No prerequisite skills, coursework, or experience were stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "entry_format": {
+          "status": "disclosed",
+          "value": "Individual or teams of up to four students",
+          "displayValue": "Individual or team (maximum 4 students)",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Individual or teams of up to four students"
+          },
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "Students may register as individuals or as teams of up to four. No more than four students are allowed to form a team."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "sponsor_requirement": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No required adult, teacher, school, or sponsor was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_deadline": {
+          "status": "disclosed",
+          "value": "2026-10-26",
+          "displayValue": "October 26, 2026",
+          "normalizedValue": {
+            "kind": "date",
+            "isoDate": "2026-10-26"
+          },
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "Register online and submit app by October 26, 2026."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "decision_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "December – Winners announced!"
+            }
+          ],
+          "note": "Only a month, not a precise decision date, was supplied.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "start_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "May – Challenge officially launches"
+            }
+          ],
+          "note": "Only a launch month, not a precise start date, was supplied.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "end_date": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No program end date was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "duration": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No total duration was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "weekly_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No weekly time commitment was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "required_live_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No required live-attendance hours were disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "participation_format": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "Register online and submit app by October 26, 2026."
+            }
+          ],
+          "note": "Online registration/submission is stated, but the overall participation format is not fully specified.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "location": {
+          "status": "disclosed",
+          "value": "Congressional district where the student resides or attends school",
+          "displayValue": "Student's residence or school congressional district",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Congressional district where the student resides or attends school"
+          },
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "Students may compete in the district they reside in or the district they attend school in."
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_requirements": {
+          "status": "disclosed",
+          "value": "Student travel to the #HouseOfCode celebration is the student's responsibility.",
+          "displayValue": "Travel to #HouseOfCode is the student's responsibility",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Student travel to the #HouseOfCode celebration is the student's responsibility."
+          },
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "The costs for travel is the responsibility of the student."
+            }
+          ],
+          "note": "This statement appears in the #HouseOfCode travel question.",
+          "confidence": 0.96,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_fee": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No application fee was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "deposit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No deposit was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No tuition or mandatory participation fee was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_mandatory_costs": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "The costs for travel is the responsibility of the student."
+            }
+          ],
+          "note": "Travel cost responsibility is stated for #HouseOfCode, but neither amount nor universal applicability is disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "estimated_total_mandatory_cost": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No total mandatory cost was stated or safely calculable.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_included": {
+          "status": "disclosed",
+          "value": false,
+          "displayValue": "No, student travel is not included for #HouseOfCode",
+          "normalizedValue": {
+            "kind": "boolean",
+            "value": false
+          },
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "The costs for travel is the responsibility of the student."
+            }
+          ],
+          "note": "Applies to travel to #HouseOfCode.",
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "lodging_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No lodging inclusion terms were disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "meals_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No meal inclusion terms were disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "financial_aid": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No financial aid was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "refund_policy": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No refund policy was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_policy": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No participant cancellation policy was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_process": {
+          "status": "disclosed",
+          "value": "Students create an app and demonstration video, review the checklist, register and submit online, complete an exit questionnaire, and district offices select their district winner.",
+          "displayValue": "App/video submission followed by district winner selection",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Students create an app and demonstration video, review the checklist, register and submit online, complete an exit questionnaire, and district offices select their district winner."
+          },
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "Check eligibility.\nCreate an app.\nCreate a demonstration video.\nReview the Submission Checklist.\nRegister online and submit app by October 26, 2026.\nComplete the Exit Questionnaire."
+            },
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "They will be able to view applications and select your district’s winner."
+            }
+          ],
+          "note": null,
+          "confidence": 0.94,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "applicant_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No applicant count was published in supplied sources.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No acceptance or winner count was published.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_rate_claim": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No organizer-stated acceptance rate was supplied.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "calculated_acceptance_rate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No compatible published applicant and acceptance counts support a calculation.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_evidence": {
+          "status": "disclosed",
+          "value": "Descriptive",
+          "displayValue": "Descriptive selection-process information is published",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Descriptive"
+          },
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "They will be able to view applications and select your district’s winner."
+            }
+          ],
+          "note": null,
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cash_award": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No cash award from the opportunity was stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "stipend": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No stipend was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition_waiver": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No tuition waiver was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "program_seat": {
+          "status": "not_applicable",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "The disclosed outcomes do not describe admission to a separate program.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "in_kind_value": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No source-stated monetary value for an in-kind benefit was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "certificate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No certificate was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "college_credit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No college credit was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "mentorship": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No mentorship benefit was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_benefits": {
+          "status": "disclosed",
+          "value": [
+            "Winning app eligible to be featured in the Capitol Building",
+            "Winning app eligible to be put on House.gov",
+            "Invitation to the #HouseOfCode celebration",
+            "Waived copyright registration application fees through the ARTS Act"
+          ],
+          "displayValue": "Potential Capitol/House.gov features, #HouseOfCode invitation, and waived copyright application fees",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Winning app eligible to be featured in the Capitol Building",
+              "Winning app eligible to be put on House.gov",
+              "Invitation to the #HouseOfCode celebration",
+              "Waived copyright registration application fees through the ARTS Act"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "Winning app eligible to be featured in the Capitol Building\nWinning app eligible to be put on House.gov (10 million visitors per year)\nInvitation to the #HouseOfCode celebration\nWaived copyright registration application fees through the ARTS Act"
+            }
+          ],
+          "note": "The source describes these as the confirmed 2026 prize list; feature outcomes are described as eligible, not guaranteed.",
+          "confidence": 0.97,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "personal_information": {
+          "status": "disclosed",
+          "value": [
+            "Personally identifiable information provided by email",
+            "Information submitted through registration forms",
+            "Mobile telephone number if voluntarily provided for text messages",
+            "IP address collected by Google Analytics"
+          ],
+          "displayValue": "Email PII, registration-form information, optional mobile number, and Google Analytics IP address",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Personally identifiable information provided by email",
+              "Information submitted through registration forms",
+              "Mobile telephone number if voluntarily provided for text messages",
+              "IP address collected by Google Analytics"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "If you choose to email us and provide personally identifiable information about yourself"
+            },
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "Information submitted through the registration forms will be held confidentially by the sponsor of this competition, the Internet Education Foundation and the House of Representatives."
+            },
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "If you voluntarily provide your mobile telephone number and agree to receive text messages"
+            },
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "Google Analytics collects only the IP address assigned to your browser on the date of your visit"
+            }
+          ],
+          "note": null,
+          "confidence": 0.94,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "data_sharing": {
+          "status": "disclosed",
+          "value": "The policy says emailed personally identifiable information will not be sold, rented, or otherwise disclosed to third parties. It says mobile telephone numbers, text-message opt-in data, and consent information will not be sold, rented, or shared with third parties or affiliates for their own marketing or promotional purposes; those data may be shared with service providers as necessary to operate and support the text-message program.",
+          "displayValue": "No sale/rental of stated PII; limited SMS service-provider sharing",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "The policy says emailed personally identifiable information will not be sold, rented, or otherwise disclosed to third parties. It says mobile telephone numbers, text-message opt-in data, and consent information will not be sold, rented, or shared with third parties or affiliates for their own marketing or promotional purposes; those data may be shared with service providers as necessary to operate and support the text-message program."
+          },
+          "sources": [
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "If you choose to email us and provide personally identifiable information about yourself, we will not sell, rent or otherwise disclose that information to third parties."
+            },
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "We will not sell, rent, or share mobile telephone numbers, text-message opt-in data, or consent information with third parties or affiliates for their own marketing or promotional purposes. We may share this information with service providers, including our text-messaging platform and telecommunications providers, only as necessary to operate and support the text-message program."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_ownership": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No submitted-project ownership terms were disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_license": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No license to submitted work was disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "publicity_rights": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No participant publicity-rights terms were disclosed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "confidentiality": {
+          "status": "disclosed",
+          "value": "Information submitted through registration forms will be held confidentially by the sponsor, the Internet Education Foundation, and the House of Representatives.",
+          "displayValue": "Registration-form information held confidentially by named entities",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Information submitted through registration forms will be held confidentially by the sponsor, the Internet Education Foundation, and the House of Representatives."
+          },
+          "sources": [
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "Information submitted through the registration forms will be held confidentially by the sponsor of this competition, the Internet Education Foundation and the House of Representatives."
+            }
+          ],
+          "note": null,
+          "confidence": 0.97,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_rights": {
+          "status": "disclosed",
+          "value": "The Internet Education Foundation may change or discontinue the text-message program or update its SMS terms at any time.",
+          "displayValue": "IEF may change or discontinue the text-message program",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "The Internet Education Foundation may change or discontinue the text-message program or update its SMS terms at any time."
+          },
+          "sources": [
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "We may change or discontinue the text-message program or update these terms at any time."
+            }
+          ],
+          "note": "This is limited to the text-message program and its terms, not the full competition.",
+          "confidence": 0.93,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "material_terms": {
+          "status": "disclosed",
+          "value": [
+            "Text-message consent is not a condition of participating or receiving services",
+            "Message and data rates may apply",
+            "Users may opt out of text messages by replying STOP"
+          ],
+          "displayValue": "Optional SMS consent; message/data rates; STOP opt-out",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Text-message consent is not a condition of participating or receiving services",
+              "Message and data rates may apply",
+              "Users may opt out of text messages by replying STOP"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "Message frequency varies. Message and data rates may apply.\nYou may opt out at any time by replying STOP to any message. Reply HELP for assistance. Consent to receive text messages is not a condition of participating in the Congressional App Challenge or receiving services from us."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        }
+      },
+      "structures": {
+        "cycle": {
+          "status": "modeled",
+          "value": {
+            "id": "2026",
+            "label": {
+              "claimId": "cycle-2026-label",
+              "status": "disclosed",
+              "value": "2026",
+              "displayValue": "2026",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-0238055580eb31dc",
+                  "url": "https://www.congressionalappchallenge.us/students/rules/",
+                  "title": "RULES -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:16.283Z",
+                  "excerpt": "2026 IMPORTANT DATES"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "status": {
+              "claimId": "cycle-2026-status",
+              "status": "disclosed",
+              "value": "announced",
+              "displayValue": "2026 important dates announced",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-0238055580eb31dc",
+                  "url": "https://www.congressionalappchallenge.us/students/rules/",
+                  "title": "RULES -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:16.283Z",
+                  "excerpt": "2026 IMPORTANT DATES"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "year": {
+              "claimId": "cycle-2026-year",
+              "status": "disclosed",
+              "value": 2026,
+              "displayValue": "2026",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-0238055580eb31dc",
+                  "url": "https://www.congressionalappchallenge.us/students/rules/",
+                  "title": "RULES -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:16.283Z",
+                  "excerpt": "2026 IMPORTANT DATES"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "startYear": null,
+            "endYear": null,
+            "season": null,
+            "cycleType": {
+              "claimId": "cycle-2026-type",
+              "status": "disclosed",
+              "value": "calendar_year",
+              "displayValue": "Calendar year",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-0238055580eb31dc",
+                  "url": "https://www.congressionalappchallenge.us/students/rules/",
+                  "title": "RULES -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:16.283Z",
+                  "excerpt": "2026 IMPORTANT DATES"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "timingRefs": {
+              "opens": "stage-registration",
+              "closes": "stage-submission",
+              "coverageStart": null,
+              "coverageEnd": null
+            }
+          }
+        },
+        "organizations": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "internet-education-foundation",
+              "name": {
+                "claimId": "org-ief-name",
+                "status": "disclosed",
+                "value": "Internet Education Foundation",
+                "displayValue": "Internet Education Foundation",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-385c66dd96ab0a52",
+                    "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+                    "title": "PRIVACY POLICY -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.678Z",
+                    "excerpt": "The Congressional App Challenge is administered by the Internet Education Foundation."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "kind": {
+                "claimId": "org-ief-kind",
+                "status": "unclear",
+                "value": null,
+                "displayValue": null,
+                "claimKind": null,
+                "sources": [
+                  {
+                    "id": "page-abe3e8325fc91c0f",
+                    "url": "https://www.congressionalappchallenge.us/about/",
+                    "title": "ABOUT -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:17.295Z",
+                    "excerpt": "We have appointed the non-profit Internet Education Foundation to provide the CAC with supplemental staffing and support."
+                  }
+                ],
+                "note": "The source calls IEF a non-profit, which does not map precisely to the available organization-kind values.",
+                "conflictingValues": []
+              }
+            }
+          ],
+          "note": null
+        },
+        "organizationRoles": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "ief-administrator",
+              "organizationId": "internet-education-foundation",
+              "role": {
+                "claimId": "ief-administrator-role",
+                "status": "disclosed",
+                "value": {
+                  "role": "administrator",
+                  "roleLabel": "Administered by",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Administrator",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-385c66dd96ab0a52",
+                    "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+                    "title": "PRIVACY POLICY -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.678Z",
+                    "excerpt": "The Congressional App Challenge is administered by the Internet Education Foundation."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              }
+            }
+          ],
+          "note": null
+        },
+        "institutionRelationships": {
+          "status": "unassessed",
+          "records": [],
+          "note": null
+        },
+        "variants": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "district-challenge",
+              "definition": {
+                "claimId": "variant-district-challenge-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "District-specific challenge",
+                  "kind": "track",
+                  "parentVariantId": null
+                },
+                "displayValue": "District-specific challenge",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-abe3e8325fc91c0f",
+                    "url": "https://www.congressionalappchallenge.us/about/",
+                    "title": "ABOUT -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:17.295Z",
+                    "excerpt": "Each challenge is district-specific."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "eligibilityDifferences": [],
+              "notes": []
+            }
+          ],
+          "note": "District-specific challenges are modeled as a scoped track rather than as conflicting offerings."
+        },
+        "stages": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "stage-registration",
+              "order": 1,
+              "definition": {
+                "claimId": "stage-registration-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Student pre-registration",
+                  "kind": "application",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Student pre-registration",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-0238055580eb31dc",
+                    "url": "https://www.congressionalappchallenge.us/students/rules/",
+                    "title": "RULES -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.283Z",
+                    "excerpt": "Jan 1 – Student pre-registration opens"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "timings": [
+                {
+                  "claimId": "stage-registration-opens",
+                  "status": "disclosed",
+                  "value": {
+                    "event": "opens",
+                    "when": {
+                      "precision": "date",
+                      "date": "2026-01-01",
+                      "certainty": "stated"
+                    },
+                    "scope": {
+                      "variantIds": [],
+                      "stageIds": [
+                        "stage-registration"
+                      ],
+                      "pathwayIds": []
+                    }
+                  },
+                  "displayValue": "January 1, 2026",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-0238055580eb31dc",
+                      "url": "https://www.congressionalappchallenge.us/students/rules/",
+                      "title": "RULES -",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:35:16.283Z",
+                      "excerpt": "Jan 1 – Student pre-registration opens"
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ],
+              "durations": [],
+              "timeCommitments": [],
+              "formats": [
+                {
+                  "claimId": "stage-registration-format",
+                  "status": "disclosed",
+                  "value": {
+                    "formats": [
+                      "online"
+                    ],
+                    "scope": {
+                      "variantIds": [],
+                      "stageIds": [
+                        "stage-registration"
+                      ],
+                      "pathwayIds": []
+                    }
+                  },
+                  "displayValue": "Online",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-61f16831142c119c",
+                      "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                      "title": "FREQUENTLY ASKED QUESTIONS -",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:35:16.929Z",
+                      "excerpt": "Register online and submit app by October 26, 2026."
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ],
+              "locations": [],
+              "selectionRules": [],
+              "advancement": [],
+              "requirements": [],
+              "travelRequirements": []
+            },
+            {
+              "id": "stage-submission",
+              "order": 2,
+              "definition": {
+                "claimId": "stage-submission-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "App submission",
+                  "kind": "application",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "App submission",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-61f16831142c119c",
+                    "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                    "title": "FREQUENTLY ASKED QUESTIONS -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.929Z",
+                    "excerpt": "Register online and submit app by October 26, 2026."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "timings": [
+                {
+                  "claimId": "stage-submission-deadline",
+                  "status": "disclosed",
+                  "value": {
+                    "event": "deadline",
+                    "when": {
+                      "precision": "date",
+                      "date": "2026-10-26",
+                      "certainty": "stated"
+                    },
+                    "scope": {
+                      "variantIds": [],
+                      "stageIds": [
+                        "stage-submission"
+                      ],
+                      "pathwayIds": []
+                    }
+                  },
+                  "displayValue": "October 26, 2026",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-61f16831142c119c",
+                      "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                      "title": "FREQUENTLY ASKED QUESTIONS -",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:35:16.929Z",
+                      "excerpt": "Register online and submit app by October 26, 2026."
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ],
+              "durations": [],
+              "timeCommitments": [],
+              "formats": [
+                {
+                  "claimId": "stage-submission-format",
+                  "status": "disclosed",
+                  "value": {
+                    "formats": [
+                      "online"
+                    ],
+                    "scope": {
+                      "variantIds": [],
+                      "stageIds": [
+                        "stage-submission"
+                      ],
+                      "pathwayIds": []
+                    }
+                  },
+                  "displayValue": "Online",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-61f16831142c119c",
+                      "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                      "title": "FREQUENTLY ASKED QUESTIONS -",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:35:16.929Z",
+                      "excerpt": "Register online and submit app by October 26, 2026."
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ],
+              "locations": [],
+              "selectionRules": [],
+              "advancement": [],
+              "requirements": [
+                {
+                  "claimId": "stage-submission-video-requirement",
+                  "status": "disclosed",
+                  "value": {
+                    "requirement": "Create a demonstration video.",
+                    "scope": {
+                      "variantIds": [],
+                      "stageIds": [
+                        "stage-submission"
+                      ],
+                      "pathwayIds": []
+                    }
+                  },
+                  "displayValue": "Create a demonstration video",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-61f16831142c119c",
+                      "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                      "title": "FREQUENTLY ASKED QUESTIONS -",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:35:16.929Z",
+                      "excerpt": "Create a demonstration video."
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ],
+              "travelRequirements": []
+            },
+            {
+              "id": "stage-judging",
+              "order": 3,
+              "definition": {
+                "claimId": "stage-judging-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Judging period",
+                  "kind": "proposal_review",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Judging period",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-0238055580eb31dc",
+                    "url": "https://www.congressionalappchallenge.us/students/rules/",
+                    "title": "RULES -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.283Z",
+                    "excerpt": "November – Judging period"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "timings": [
+                {
+                  "claimId": "stage-judging-starts",
+                  "status": "disclosed",
+                  "value": {
+                    "event": "starts",
+                    "when": {
+                      "precision": "month",
+                      "year": 2026,
+                      "month": 11,
+                      "certainty": "stated"
+                    },
+                    "scope": {
+                      "variantIds": [],
+                      "stageIds": [
+                        "stage-judging"
+                      ],
+                      "pathwayIds": []
+                    }
+                  },
+                  "displayValue": "November 2026",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-0238055580eb31dc",
+                      "url": "https://www.congressionalappchallenge.us/students/rules/",
+                      "title": "RULES -",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:35:16.283Z",
+                      "excerpt": "November – Judging period"
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ],
+              "durations": [],
+              "timeCommitments": [],
+              "formats": [],
+              "locations": [],
+              "selectionRules": [],
+              "advancement": [],
+              "requirements": [],
+              "travelRequirements": []
+            },
+            {
+              "id": "stage-winner-announcement",
+              "order": 4,
+              "definition": {
+                "claimId": "stage-winner-announcement-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Winner announcement",
+                  "kind": "winner_selection",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Winner announcement",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-0238055580eb31dc",
+                    "url": "https://www.congressionalappchallenge.us/students/rules/",
+                    "title": "RULES -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.283Z",
+                    "excerpt": "December – Winners announced!"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "timings": [
+                {
+                  "claimId": "stage-winner-announcement-notification",
+                  "status": "disclosed",
+                  "value": {
+                    "event": "notification",
+                    "when": {
+                      "precision": "month",
+                      "year": 2026,
+                      "month": 12,
+                      "certainty": "stated"
+                    },
+                    "scope": {
+                      "variantIds": [],
+                      "stageIds": [
+                        "stage-winner-announcement"
+                      ],
+                      "pathwayIds": []
+                    }
+                  },
+                  "displayValue": "December 2026",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-0238055580eb31dc",
+                      "url": "https://www.congressionalappchallenge.us/students/rules/",
+                      "title": "RULES -",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:35:16.283Z",
+                      "excerpt": "December – Winners announced!"
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ],
+              "durations": [],
+              "timeCommitments": [],
+              "formats": [],
+              "locations": [],
+              "selectionRules": [],
+              "advancement": [],
+              "requirements": [],
+              "travelRequirements": []
+            }
+          ],
+          "note": null
+        },
+        "pathways": {
+          "status": "unassessed",
+          "records": [],
+          "note": null
+        },
+        "costItems": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "house-of-code-travel",
+              "definition": {
+                "claimId": "cost-house-of-code-travel-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Travel to #HouseOfCode",
+                  "kind": "travel",
+                  "requirement": "conditional",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Travel to #HouseOfCode",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-61f16831142c119c",
+                    "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                    "title": "FREQUENTLY ASKED QUESTIONS -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.929Z",
+                    "excerpt": "The costs for travel is the responsibility of the student."
+                  }
+                ],
+                "note": "Applies when a student travels to #HouseOfCode.",
+                "conflictingValues": []
+              },
+              "amount": {
+                "claimId": "cost-house-of-code-travel-amount",
+                "status": "not_found",
+                "value": null,
+                "displayValue": null,
+                "claimKind": null,
+                "sources": [],
+                "note": "No travel amount was disclosed.",
+                "conflictingValues": []
+              },
+              "chargeBasis": null,
+              "treatment": null,
+              "refundability": null,
+              "includedItems": [],
+              "excludedItems": [],
+              "conditions": [
+                {
+                  "claimId": "cost-house-of-code-travel-condition",
+                  "status": "disclosed",
+                  "value": "Student is responsible for travel costs to #HouseOfCode.",
+                  "displayValue": "Student responsibility for #HouseOfCode travel",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-61f16831142c119c",
+                      "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                      "title": "FREQUENTLY ASKED QUESTIONS -",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:35:16.929Z",
+                      "excerpt": "The costs for travel is the responsibility of the student."
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ]
+            }
+          ],
+          "note": "Only a conditional travel cost responsibility is disclosed; no amount is published.",
+          "completeness": "incomplete"
+        },
+        "outcomes": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "capitol-feature-eligibility",
+              "definition": {
+                "claimId": "outcome-capitol-feature-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Eligibility for Capitol Building feature",
+                  "outcomeType": "other_in_kind",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [
+                      "stage-winner-announcement"
+                    ],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Eligibility for Capitol Building feature",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-61f16831142c119c",
+                    "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                    "title": "FREQUENTLY ASKED QUESTIONS -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.929Z",
+                    "excerpt": "Winning app eligible to be featured in the Capitol Building"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "recipientScope": {
+                "claimId": "outcome-capitol-feature-recipient",
+                "status": "unclear",
+                "value": null,
+                "displayValue": null,
+                "claimKind": null,
+                "sources": [
+                  {
+                    "id": "page-61f16831142c119c",
+                    "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                    "title": "FREQUENTLY ASKED QUESTIONS -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.929Z",
+                    "excerpt": "Winning app eligible to be featured in the Capitol Building"
+                  }
+                ],
+                "note": "The benefit is tied to a winning app; no recipient-scope enum is explicitly stated.",
+                "conflictingValues": []
+              },
+              "monetaryNature": {
+                "claimId": "outcome-capitol-feature-monetary",
+                "status": "disclosed",
+                "value": "not_monetized",
+                "displayValue": "Not monetized",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-61f16831142c119c",
+                    "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                    "title": "FREQUENTLY ASKED QUESTIONS -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.929Z",
+                    "excerpt": "Winning app eligible to be featured in the Capitol Building"
+                  }
+                ],
+                "note": "No monetary amount is stated.",
+                "conflictingValues": []
+              },
+              "amount": null,
+              "distribution": null,
+              "rank": null,
+              "track": null,
+              "quantity": null,
+              "useRestriction": null,
+              "combinability": null,
+              "conditions": [
+                {
+                  "claimId": "outcome-capitol-feature-condition",
+                  "status": "disclosed",
+                  "value": "Available as eligibility for a winning app, not stated as guaranteed display.",
+                  "displayValue": "Eligibility, not guaranteed display",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-61f16831142c119c",
+                      "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                      "title": "FREQUENTLY ASKED QUESTIONS -",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:35:16.929Z",
+                      "excerpt": "Winning app eligible to be featured in the Capitol Building"
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ]
+            },
+            {
+              "id": "house-of-code-invitation",
+              "definition": {
+                "claimId": "outcome-house-of-code-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Invitation to #HouseOfCode celebration",
+                  "outcomeType": "other_in_kind",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [
+                      "stage-winner-announcement"
+                    ],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Invitation to #HouseOfCode celebration",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-61f16831142c119c",
+                    "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                    "title": "FREQUENTLY ASKED QUESTIONS -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.929Z",
+                    "excerpt": "Invitation to the #HouseOfCode celebration"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "recipientScope": {
+                "claimId": "outcome-house-of-code-recipient",
+                "status": "unclear",
+                "value": null,
+                "displayValue": null,
+                "claimKind": null,
+                "sources": [
+                  {
+                    "id": "page-61f16831142c119c",
+                    "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                    "title": "FREQUENTLY ASKED QUESTIONS -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.929Z",
+                    "excerpt": "Invitation to the #HouseOfCode celebration"
+                  }
+                ],
+                "note": "Recipient scope is not explicitly stated.",
+                "conflictingValues": []
+              },
+              "monetaryNature": {
+                "claimId": "outcome-house-of-code-monetary",
+                "status": "disclosed",
+                "value": "not_monetized",
+                "displayValue": "Not monetized",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-61f16831142c119c",
+                    "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                    "title": "FREQUENTLY ASKED QUESTIONS -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.929Z",
+                    "excerpt": "Invitation to the #HouseOfCode celebration"
+                  }
+                ],
+                "note": "No monetary amount is stated.",
+                "conflictingValues": []
+              },
+              "amount": null,
+              "distribution": null,
+              "rank": null,
+              "track": null,
+              "quantity": null,
+              "useRestriction": null,
+              "combinability": null,
+              "conditions": [
+                {
+                  "claimId": "outcome-house-of-code-travel-condition",
+                  "status": "disclosed",
+                  "value": "Travel costs are the responsibility of the student.",
+                  "displayValue": "Student responsible for travel costs",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-61f16831142c119c",
+                      "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                      "title": "FREQUENTLY ASKED QUESTIONS -",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:35:16.929Z",
+                      "excerpt": "The costs for travel is the responsibility of the student."
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ]
+            }
+          ],
+          "note": "Only non-cash outcomes with safely supported atomic claims are modeled."
+        }
+      }
+    }
+  },
+  "deterministicValidation": {
+    "completed": true,
+    "evidenceWarnings": [
+      {
+        "fieldId": "structured.cycle",
+        "sourceId": "cycle-2026-status",
+        "message": "A structured atomic claim was withheld because its typed enum value is not stated by the cited excerpt."
+      },
+      {
+        "fieldId": "structured.stages",
+        "sourceId": "stage-registration-opens",
+        "message": "A structured atomic claim was withheld because its typed date does not match the exact cited excerpt and display value."
+      },
+      {
+        "fieldId": "structured.stages",
+        "sourceId": "stage-submission-deadline",
+        "message": "A structured atomic claim was withheld because its typed date event is not stated in the cited excerpt."
+      },
+      {
+        "fieldId": "structured.stages",
+        "sourceId": "stage-judging-starts",
+        "message": "A structured atomic claim was withheld because its typed date does not match the exact cited excerpt and display value."
+      },
+      {
+        "fieldId": "structured.stages",
+        "sourceId": "stage-winner-announcement-notification",
+        "message": "A structured atomic claim was withheld because its typed date does not match the exact cited excerpt and display value."
+      },
+      {
+        "fieldId": "structured.outcomes",
+        "sourceId": "outcome-capitol-feature-monetary",
+        "message": "A structured atomic claim was withheld because its typed enum value is not stated by the cited excerpt."
+      },
+      {
+        "fieldId": "structured.outcomes",
+        "sourceId": "outcome-house-of-code-monetary",
+        "message": "A structured atomic claim was withheld because its typed enum value is not stated by the cited excerpt."
+      }
+    ]
+  },
+  "result": {
+    "draftCard": {
+      "schemaVersion": "2.0.0",
+      "opportunityId": null,
+      "cycle": {
+        "status": "unassessed",
+        "value": null
+      },
+      "cardVersion": 1,
+      "slug": "congressional-app-challenge",
+      "summary": "Automated draft from 4 user-supplied source pages; review every value, excerpt, and attribution before use.",
+      "reviewState": "draft",
+      "reviewedAt": null,
+      "sourcePagesChecked": [
+        {
+          "id": "page-0238055580eb31dc",
+          "url": "https://www.congressionalappchallenge.us/students/rules/",
+          "title": "RULES -",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:35:16.283Z"
+        },
+        {
+          "id": "page-385c66dd96ab0a52",
+          "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+          "title": "PRIVACY POLICY -",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:35:16.678Z"
+        },
+        {
+          "id": "page-61f16831142c119c",
+          "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+          "title": "FREQUENTLY ASKED QUESTIONS -",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:35:16.929Z"
+        },
+        {
+          "id": "page-abe3e8325fc91c0f",
+          "url": "https://www.congressionalappchallenge.us/about/",
+          "title": "ABOUT -",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:35:17.295Z"
+        }
+      ],
+      "conflicts": [],
+      "organizations": {
+        "status": "modeled",
+        "records": [
+          {
+            "id": "internet-education-foundation",
+            "name": {
+              "claimId": "org-ief-name",
+              "status": "disclosed",
+              "value": "Internet Education Foundation",
+              "displayValue": "Internet Education Foundation",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-385c66dd96ab0a52",
+                  "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+                  "title": "PRIVACY POLICY -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:16.678Z",
+                  "excerpt": "The Congressional App Challenge is administered by the Internet Education Foundation."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "kind": {
+              "claimId": "org-ief-kind",
+              "status": "unclear",
+              "value": null,
+              "displayValue": null,
+              "claimKind": null,
+              "sources": [
+                {
+                  "id": "page-abe3e8325fc91c0f",
+                  "url": "https://www.congressionalappchallenge.us/about/",
+                  "title": "ABOUT -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:17.295Z",
+                  "excerpt": "We have appointed the non-profit Internet Education Foundation to provide the CAC with supplemental staffing and support."
+                }
+              ],
+              "note": "The source calls IEF a non-profit, which does not map precisely to the available organization-kind values.",
+              "conflictingValues": []
+            }
+          }
+        ],
+        "note": null
+      },
+      "organizationRoles": {
+        "status": "modeled",
+        "records": [
+          {
+            "id": "ief-administrator",
+            "organizationId": "internet-education-foundation",
+            "role": {
+              "claimId": "ief-administrator-role",
+              "status": "disclosed",
+              "value": {
+                "role": "administrator",
+                "roleLabel": "Administered by",
+                "scope": {
+                  "variantIds": [],
+                  "stageIds": [],
+                  "pathwayIds": []
+                }
+              },
+              "displayValue": "Administrator",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-385c66dd96ab0a52",
+                  "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+                  "title": "PRIVACY POLICY -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:16.678Z",
+                  "excerpt": "The Congressional App Challenge is administered by the Internet Education Foundation."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            }
+          }
+        ],
+        "note": null
+      },
+      "institutionRelationships": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "variants": {
+        "status": "modeled",
+        "records": [
+          {
+            "id": "district-challenge",
+            "definition": {
+              "claimId": "variant-district-challenge-definition",
+              "status": "disclosed",
+              "value": {
+                "label": "District-specific challenge",
+                "kind": "track",
+                "parentVariantId": null
+              },
+              "displayValue": "District-specific challenge",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-abe3e8325fc91c0f",
+                  "url": "https://www.congressionalappchallenge.us/about/",
+                  "title": "ABOUT -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:17.295Z",
+                  "excerpt": "Each challenge is district-specific."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "eligibilityDifferences": [],
+            "notes": []
+          }
+        ],
+        "note": "District-specific challenges are modeled as a scoped track rather than as conflicting offerings."
+      },
+      "stages": {
+        "status": "modeled",
+        "records": [
+          {
+            "id": "stage-registration",
+            "order": 1,
+            "definition": {
+              "claimId": "stage-registration-definition",
+              "status": "disclosed",
+              "value": {
+                "label": "Student pre-registration",
+                "kind": "application",
+                "scope": {
+                  "variantIds": [],
+                  "stageIds": [],
+                  "pathwayIds": []
+                }
+              },
+              "displayValue": "Student pre-registration",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-0238055580eb31dc",
+                  "url": "https://www.congressionalappchallenge.us/students/rules/",
+                  "title": "RULES -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:16.283Z",
+                  "excerpt": "Jan 1 – Student pre-registration opens"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "timings": [],
+            "durations": [],
+            "timeCommitments": [],
+            "formats": [
+              {
+                "claimId": "stage-registration-format",
+                "status": "disclosed",
+                "value": {
+                  "formats": [
+                    "online"
+                  ],
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [
+                      "stage-registration"
+                    ],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Online",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-61f16831142c119c",
+                    "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                    "title": "FREQUENTLY ASKED QUESTIONS -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.929Z",
+                    "excerpt": "Register online and submit app by October 26, 2026."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              }
+            ],
+            "locations": [],
+            "selectionRules": [],
+            "advancement": [],
+            "requirements": [],
+            "travelRequirements": []
+          },
+          {
+            "id": "stage-submission",
+            "order": 2,
+            "definition": {
+              "claimId": "stage-submission-definition",
+              "status": "disclosed",
+              "value": {
+                "label": "App submission",
+                "kind": "application",
+                "scope": {
+                  "variantIds": [],
+                  "stageIds": [],
+                  "pathwayIds": []
+                }
+              },
+              "displayValue": "App submission",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-61f16831142c119c",
+                  "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                  "title": "FREQUENTLY ASKED QUESTIONS -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:16.929Z",
+                  "excerpt": "Register online and submit app by October 26, 2026."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "timings": [],
+            "durations": [],
+            "timeCommitments": [],
+            "formats": [
+              {
+                "claimId": "stage-submission-format",
+                "status": "disclosed",
+                "value": {
+                  "formats": [
+                    "online"
+                  ],
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [
+                      "stage-submission"
+                    ],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Online",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-61f16831142c119c",
+                    "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                    "title": "FREQUENTLY ASKED QUESTIONS -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.929Z",
+                    "excerpt": "Register online and submit app by October 26, 2026."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              }
+            ],
+            "locations": [],
+            "selectionRules": [],
+            "advancement": [],
+            "requirements": [
+              {
+                "claimId": "stage-submission-video-requirement",
+                "status": "disclosed",
+                "value": {
+                  "requirement": "Create a demonstration video.",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [
+                      "stage-submission"
+                    ],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Create a demonstration video",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-61f16831142c119c",
+                    "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                    "title": "FREQUENTLY ASKED QUESTIONS -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.929Z",
+                    "excerpt": "Create a demonstration video."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              }
+            ],
+            "travelRequirements": []
+          },
+          {
+            "id": "stage-judging",
+            "order": 3,
+            "definition": {
+              "claimId": "stage-judging-definition",
+              "status": "disclosed",
+              "value": {
+                "label": "Judging period",
+                "kind": "proposal_review",
+                "scope": {
+                  "variantIds": [],
+                  "stageIds": [],
+                  "pathwayIds": []
+                }
+              },
+              "displayValue": "Judging period",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-0238055580eb31dc",
+                  "url": "https://www.congressionalappchallenge.us/students/rules/",
+                  "title": "RULES -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:16.283Z",
+                  "excerpt": "November – Judging period"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "timings": [],
+            "durations": [],
+            "timeCommitments": [],
+            "formats": [],
+            "locations": [],
+            "selectionRules": [],
+            "advancement": [],
+            "requirements": [],
+            "travelRequirements": []
+          },
+          {
+            "id": "stage-winner-announcement",
+            "order": 4,
+            "definition": {
+              "claimId": "stage-winner-announcement-definition",
+              "status": "disclosed",
+              "value": {
+                "label": "Winner announcement",
+                "kind": "winner_selection",
+                "scope": {
+                  "variantIds": [],
+                  "stageIds": [],
+                  "pathwayIds": []
+                }
+              },
+              "displayValue": "Winner announcement",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-0238055580eb31dc",
+                  "url": "https://www.congressionalappchallenge.us/students/rules/",
+                  "title": "RULES -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:16.283Z",
+                  "excerpt": "December – Winners announced!"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "timings": [],
+            "durations": [],
+            "timeCommitments": [],
+            "formats": [],
+            "locations": [],
+            "selectionRules": [],
+            "advancement": [],
+            "requirements": [],
+            "travelRequirements": []
+          }
+        ],
+        "note": null
+      },
+      "pathways": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "costItems": {
+        "status": "modeled",
+        "records": [
+          {
+            "id": "house-of-code-travel",
+            "definition": {
+              "claimId": "cost-house-of-code-travel-definition",
+              "status": "disclosed",
+              "value": {
+                "label": "Travel to #HouseOfCode",
+                "kind": "travel",
+                "requirement": "conditional",
+                "scope": {
+                  "variantIds": [],
+                  "stageIds": [],
+                  "pathwayIds": []
+                }
+              },
+              "displayValue": "Travel to #HouseOfCode",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-61f16831142c119c",
+                  "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                  "title": "FREQUENTLY ASKED QUESTIONS -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:16.929Z",
+                  "excerpt": "The costs for travel is the responsibility of the student."
+                }
+              ],
+              "note": "Applies when a student travels to #HouseOfCode.",
+              "conflictingValues": []
+            },
+            "amount": {
+              "claimId": "cost-house-of-code-travel-amount",
+              "status": "not_found",
+              "value": null,
+              "displayValue": null,
+              "claimKind": null,
+              "sources": [],
+              "note": "No travel amount was disclosed.",
+              "conflictingValues": []
+            },
+            "chargeBasis": null,
+            "treatment": null,
+            "refundability": null,
+            "includedItems": [],
+            "excludedItems": [],
+            "conditions": [
+              {
+                "claimId": "cost-house-of-code-travel-condition",
+                "status": "disclosed",
+                "value": "Student is responsible for travel costs to #HouseOfCode.",
+                "displayValue": "Student responsibility for #HouseOfCode travel",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-61f16831142c119c",
+                    "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                    "title": "FREQUENTLY ASKED QUESTIONS -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.929Z",
+                    "excerpt": "The costs for travel is the responsibility of the student."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              }
+            ]
+          }
+        ],
+        "note": "Only a conditional travel cost responsibility is disclosed; no amount is published.",
+        "completeness": "incomplete"
+      },
+      "outcomes": {
+        "status": "modeled",
+        "records": [
+          {
+            "id": "capitol-feature-eligibility",
+            "definition": {
+              "claimId": "outcome-capitol-feature-definition",
+              "status": "disclosed",
+              "value": {
+                "label": "Eligibility for Capitol Building feature",
+                "outcomeType": "other_in_kind",
+                "scope": {
+                  "variantIds": [],
+                  "stageIds": [
+                    "stage-winner-announcement"
+                  ],
+                  "pathwayIds": []
+                }
+              },
+              "displayValue": "Eligibility for Capitol Building feature",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-61f16831142c119c",
+                  "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                  "title": "FREQUENTLY ASKED QUESTIONS -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:16.929Z",
+                  "excerpt": "Winning app eligible to be featured in the Capitol Building"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "recipientScope": {
+              "claimId": "outcome-capitol-feature-recipient",
+              "status": "unclear",
+              "value": null,
+              "displayValue": null,
+              "claimKind": null,
+              "sources": [
+                {
+                  "id": "page-61f16831142c119c",
+                  "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                  "title": "FREQUENTLY ASKED QUESTIONS -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:16.929Z",
+                  "excerpt": "Winning app eligible to be featured in the Capitol Building"
+                }
+              ],
+              "note": "The benefit is tied to a winning app; no recipient-scope enum is explicitly stated.",
+              "conflictingValues": []
+            },
+            "monetaryNature": null,
+            "amount": null,
+            "distribution": null,
+            "rank": null,
+            "track": null,
+            "quantity": null,
+            "useRestriction": null,
+            "combinability": null,
+            "conditions": [
+              {
+                "claimId": "outcome-capitol-feature-condition",
+                "status": "disclosed",
+                "value": "Available as eligibility for a winning app, not stated as guaranteed display.",
+                "displayValue": "Eligibility, not guaranteed display",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-61f16831142c119c",
+                    "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                    "title": "FREQUENTLY ASKED QUESTIONS -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.929Z",
+                    "excerpt": "Winning app eligible to be featured in the Capitol Building"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              }
+            ]
+          },
+          {
+            "id": "house-of-code-invitation",
+            "definition": {
+              "claimId": "outcome-house-of-code-definition",
+              "status": "disclosed",
+              "value": {
+                "label": "Invitation to #HouseOfCode celebration",
+                "outcomeType": "other_in_kind",
+                "scope": {
+                  "variantIds": [],
+                  "stageIds": [
+                    "stage-winner-announcement"
+                  ],
+                  "pathwayIds": []
+                }
+              },
+              "displayValue": "Invitation to #HouseOfCode celebration",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-61f16831142c119c",
+                  "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                  "title": "FREQUENTLY ASKED QUESTIONS -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:16.929Z",
+                  "excerpt": "Invitation to the #HouseOfCode celebration"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "recipientScope": {
+              "claimId": "outcome-house-of-code-recipient",
+              "status": "unclear",
+              "value": null,
+              "displayValue": null,
+              "claimKind": null,
+              "sources": [
+                {
+                  "id": "page-61f16831142c119c",
+                  "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                  "title": "FREQUENTLY ASKED QUESTIONS -",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:35:16.929Z",
+                  "excerpt": "Invitation to the #HouseOfCode celebration"
+                }
+              ],
+              "note": "Recipient scope is not explicitly stated.",
+              "conflictingValues": []
+            },
+            "monetaryNature": null,
+            "amount": null,
+            "distribution": null,
+            "rank": null,
+            "track": null,
+            "quantity": null,
+            "useRestriction": null,
+            "combinability": null,
+            "conditions": [
+              {
+                "claimId": "outcome-house-of-code-travel-condition",
+                "status": "disclosed",
+                "value": "Travel costs are the responsibility of the student.",
+                "displayValue": "Student responsible for travel costs",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-61f16831142c119c",
+                    "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+                    "title": "FREQUENTLY ASKED QUESTIONS -",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:35:16.929Z",
+                    "excerpt": "The costs for travel is the responsibility of the student."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              }
+            ]
+          }
+        ],
+        "note": "Only non-cash outcomes with safely supported atomic claims are modeled."
+      },
+      "facts": {
+        "opportunity_name": {
+          "status": "disclosed",
+          "value": "Congressional App Challenge",
+          "displayValue": "Congressional App Challenge",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Congressional App Challenge"
+          },
+          "sources": [
+            {
+              "id": "page-abe3e8325fc91c0f",
+              "url": "https://www.congressionalappchallenge.us/about/",
+              "title": "ABOUT -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:17.295Z",
+              "excerpt": "Every year we challenge students in our districts to create and submit their original apps for a chance to win the Congressional App Challenge (CAC)."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "opportunity_category": {
+          "status": "disclosed",
+          "value": "District-specific student app competition",
+          "displayValue": "District-specific student app competition",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "District-specific student app competition"
+          },
+          "sources": [
+            {
+              "id": "page-abe3e8325fc91c0f",
+              "url": "https://www.congressionalappchallenge.us/about/",
+              "title": "ABOUT -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:17.295Z",
+              "excerpt": "Each challenge is district-specific."
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "official_url": {
+          "status": "disclosed",
+          "value": "https://www.congressionalappchallenge.us/students/rules/",
+          "displayValue": "https://www.congressionalappchallenge.us/students/rules/",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "https://www.congressionalappchallenge.us/students/rules/"
+          },
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "COMPLETE RULEBOOK"
+            }
+          ],
+          "note": null,
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "operating_organization": {
+          "status": "disclosed",
+          "value": "Internet Education Foundation (administrator)",
+          "displayValue": "Internet Education Foundation (administrator)",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "The Congressional App Challenge is administered by the Internet Education Foundation."
+            }
+          ],
+          "note": "No single operator is asserted; the v2 role ledger is summarized without upgrading another role.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": {
+            "schemaVersion": "2.0.0",
+            "rule": "organizations.primary-operator",
+            "claimRefs": [
+              "ief-administrator-role",
+              "org-ief-name"
+            ]
+          }
+        },
+        "organization_type": {
+          "status": "disclosed",
+          "value": "Non-profit",
+          "displayValue": "Non-profit",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Non-profit"
+          },
+          "sources": [
+            {
+              "id": "page-abe3e8325fc91c0f",
+              "url": "https://www.congressionalappchallenge.us/about/",
+              "title": "ABOUT -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:17.295Z",
+              "excerpt": "We have appointed the non-profit Internet Education Foundation to provide the CAC with supplemental staffing and support."
+            }
+          ],
+          "note": null,
+          "confidence": 0.96,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "named_institution": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "institution_relationship": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "relationship_explanation": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "grade_levels": {
+          "status": "disclosed",
+          "value": [
+            "Middle school",
+            "High school"
+          ],
+          "displayValue": "Middle or high school students",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Middle school",
+              "High school"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "To be eligible to participate in the Congressional App Challenge, you must be a middle or high school student at the time of app submission."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "ages": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "geographic_restrictions": {
+          "status": "disclosed",
+          "value": "Students may compete in the congressional district where they reside or attend school; teams must have at least half of teammates eligible for their competing district.",
+          "displayValue": "Residence or school district; team district rule applies",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Students may compete in the congressional district where they reside or attend school; teams must have at least half of teammates eligible for their competing district."
+          },
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "Students may compete in the district they reside in or the district they attend school in.\nIf competing as a team, at least half of the teammates must be eligible to compete in the district in which they are participating in."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "citizenship_restrictions": {
+          "status": "disclosed",
+          "value": "All competing students must be U.S. residents at submission; citizenship is not required.",
+          "displayValue": "U.S. residents; no citizenship requirement",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "All competing students must be U.S. residents at submission; citizenship is not required."
+          },
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "All competing students must be U.S. residents at the time of submission. There is no citizen requirement for students."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "prerequisite_skills": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "entry_format": {
+          "status": "disclosed",
+          "value": "Individual or teams of up to four students",
+          "displayValue": "Individual or team (maximum 4 students)",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Individual or teams of up to four students"
+          },
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "Students may register as individuals or as teams of up to four. No more than four students are allowed to form a team."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "sponsor_requirement": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_deadline": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "Register online and submit app by October 26, 2026."
+            }
+          ],
+          "note": "The supplied pages did not establish one target cycle, so automated extraction withheld cycle-specific dates.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "decision_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "December – Winners announced!"
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "start_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "May – Challenge officially launches"
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "end_date": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "duration": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "weekly_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "required_live_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "participation_format": {
+          "status": "disclosed",
+          "value": "Scoped by stage/pathway — see details",
+          "displayValue": "Scoped by stage/pathway — see details",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "Register online and submit app by October 26, 2026."
+            }
+          ],
+          "note": "Online",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": {
+            "schemaVersion": "2.0.0",
+            "rule": "stages.formats",
+            "claimRefs": [
+              "stage-registration-format",
+              "stage-submission-format"
+            ]
+          }
+        },
+        "location": {
+          "status": "disclosed",
+          "value": "Congressional district where the student resides or attends school",
+          "displayValue": "Student's residence or school congressional district",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Congressional district where the student resides or attends school"
+          },
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "Students may compete in the district they reside in or the district they attend school in."
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_requirements": {
+          "status": "disclosed",
+          "value": "Student travel to the #HouseOfCode celebration is the student's responsibility.",
+          "displayValue": "Travel to #HouseOfCode is the student's responsibility",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Student travel to the #HouseOfCode celebration is the student's responsibility."
+          },
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "The costs for travel is the responsibility of the student."
+            }
+          ],
+          "note": null,
+          "confidence": 0.96,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_fee": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "deposit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_mandatory_costs": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "The costs for travel is the responsibility of the student."
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "estimated_total_mandatory_cost": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "A complete mandatory total cannot be calculated because at least one required cost amount is unresolved.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": {
+            "schemaVersion": "2.0.0",
+            "rule": "costs.total-unresolved",
+            "claimRefs": [
+              "cost-house-of-code-travel-definition",
+              "cost-house-of-code-travel-amount",
+              "cost-house-of-code-travel-condition"
+            ]
+          }
+        },
+        "travel_included": {
+          "status": "disclosed",
+          "value": false,
+          "displayValue": "No, student travel is not included for #HouseOfCode",
+          "normalizedValue": {
+            "kind": "boolean",
+            "value": false
+          },
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "The costs for travel is the responsibility of the student."
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "lodging_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "meals_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "financial_aid": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "refund_policy": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_policy": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_process": {
+          "status": "disclosed",
+          "value": "Student pre-registration → App submission → Judging period → Winner announcement",
+          "displayValue": "Student pre-registration → App submission → Judging period → Winner announcement",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "Jan 1 – Student pre-registration opens"
+            },
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "Register online and submit app by October 26, 2026."
+            },
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "November – Judging period"
+            },
+            {
+              "id": "page-0238055580eb31dc",
+              "url": "https://www.congressionalappchallenge.us/students/rules/",
+              "title": "RULES -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.283Z",
+              "excerpt": "December – Winners announced!"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": {
+            "schemaVersion": "2.0.0",
+            "rule": "stages.process",
+            "claimRefs": [
+              "stage-registration-definition",
+              "stage-submission-definition",
+              "stage-judging-definition",
+              "stage-winner-announcement-definition"
+            ]
+          }
+        },
+        "applicant_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_rate_claim": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "calculated_acceptance_rate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_evidence": {
+          "status": "disclosed",
+          "value": "Descriptive",
+          "displayValue": "Descriptive selection-process information is published",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Descriptive"
+          },
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "They will be able to view applications and select your district’s winner."
+            }
+          ],
+          "note": null,
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cash_award": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "stipend": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition_waiver": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "program_seat": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Automated extraction cannot establish that this field does not apply; human review is required.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "in_kind_value": {
+          "status": "disclosed",
+          "value": "Multiple outcomes — see details",
+          "displayValue": "Multiple outcomes — see details",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "Winning app eligible to be featured in the Capitol Building"
+            },
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "Invitation to the #HouseOfCode celebration"
+            },
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "The costs for travel is the responsibility of the student."
+            }
+          ],
+          "note": "Eligibility for Capitol Building feature; Invitation to #HouseOfCode celebration",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": {
+            "schemaVersion": "2.0.0",
+            "rule": "outcomes.in_kind_value-matrix",
+            "claimRefs": [
+              "outcome-capitol-feature-definition",
+              "outcome-capitol-feature-recipient",
+              "outcome-capitol-feature-condition",
+              "outcome-house-of-code-definition",
+              "outcome-house-of-code-recipient",
+              "outcome-house-of-code-travel-condition"
+            ]
+          }
+        },
+        "certificate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "college_credit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "mentorship": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_benefits": {
+          "status": "disclosed",
+          "value": [
+            "Winning app eligible to be featured in the Capitol Building",
+            "Winning app eligible to be put on House.gov",
+            "Invitation to the #HouseOfCode celebration",
+            "Waived copyright registration application fees through the ARTS Act"
+          ],
+          "displayValue": "Potential Capitol/House.gov features, #HouseOfCode invitation, and waived copyright application fees",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Winning app eligible to be featured in the Capitol Building",
+              "Winning app eligible to be put on House.gov",
+              "Invitation to the #HouseOfCode celebration",
+              "Waived copyright registration application fees through the ARTS Act"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-61f16831142c119c",
+              "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+              "title": "FREQUENTLY ASKED QUESTIONS -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.929Z",
+              "excerpt": "Winning app eligible to be featured in the Capitol Building\nWinning app eligible to be put on House.gov (10 million visitors per year)\nInvitation to the #HouseOfCode celebration\nWaived copyright registration application fees through the ARTS Act"
+            }
+          ],
+          "note": null,
+          "confidence": 0.97,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "personal_information": {
+          "status": "disclosed",
+          "value": [
+            "Personally identifiable information provided by email",
+            "Information submitted through registration forms",
+            "Mobile telephone number if voluntarily provided for text messages",
+            "IP address collected by Google Analytics"
+          ],
+          "displayValue": "Email PII, registration-form information, optional mobile number, and Google Analytics IP address",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Personally identifiable information provided by email",
+              "Information submitted through registration forms",
+              "Mobile telephone number if voluntarily provided for text messages",
+              "IP address collected by Google Analytics"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "If you choose to email us and provide personally identifiable information about yourself"
+            },
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "Information submitted through the registration forms will be held confidentially by the sponsor of this competition, the Internet Education Foundation and the House of Representatives."
+            },
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "If you voluntarily provide your mobile telephone number and agree to receive text messages"
+            },
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "Google Analytics collects only the IP address assigned to your browser on the date of your visit"
+            }
+          ],
+          "note": null,
+          "confidence": 0.94,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "data_sharing": {
+          "status": "disclosed",
+          "value": "The policy says emailed personally identifiable information will not be sold, rented, or otherwise disclosed to third parties. It says mobile telephone numbers, text-message opt-in data, and consent information will not be sold, rented, or shared with third parties or affiliates for their own marketing or promotional purposes; those data may be shared with service providers as necessary to operate and support the text-message program.",
+          "displayValue": "No sale/rental of stated PII; limited SMS service-provider sharing",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "The policy says emailed personally identifiable information will not be sold, rented, or otherwise disclosed to third parties. It says mobile telephone numbers, text-message opt-in data, and consent information will not be sold, rented, or shared with third parties or affiliates for their own marketing or promotional purposes; those data may be shared with service providers as necessary to operate and support the text-message program."
+          },
+          "sources": [
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "If you choose to email us and provide personally identifiable information about yourself, we will not sell, rent or otherwise disclose that information to third parties."
+            },
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "We will not sell, rent, or share mobile telephone numbers, text-message opt-in data, or consent information with third parties or affiliates for their own marketing or promotional purposes. We may share this information with service providers, including our text-messaging platform and telecommunications providers, only as necessary to operate and support the text-message program."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_ownership": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_license": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "publicity_rights": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "confidentiality": {
+          "status": "disclosed",
+          "value": "Information submitted through registration forms will be held confidentially by the sponsor, the Internet Education Foundation, and the House of Representatives.",
+          "displayValue": "Registration-form information held confidentially by named entities",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Information submitted through registration forms will be held confidentially by the sponsor, the Internet Education Foundation, and the House of Representatives."
+          },
+          "sources": [
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "Information submitted through the registration forms will be held confidentially by the sponsor of this competition, the Internet Education Foundation and the House of Representatives."
+            }
+          ],
+          "note": null,
+          "confidence": 0.97,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_rights": {
+          "status": "disclosed",
+          "value": "The Internet Education Foundation may change or discontinue the text-message program or update its SMS terms at any time.",
+          "displayValue": "IEF may change or discontinue the text-message program",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "The Internet Education Foundation may change or discontinue the text-message program or update its SMS terms at any time."
+          },
+          "sources": [
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "We may change or discontinue the text-message program or update these terms at any time."
+            }
+          ],
+          "note": null,
+          "confidence": 0.93,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "material_terms": {
+          "status": "disclosed",
+          "value": [
+            "Text-message consent is not a condition of participating or receiving services",
+            "Message and data rates may apply",
+            "Users may opt out of text messages by replying STOP"
+          ],
+          "displayValue": "Optional SMS consent; message/data rates; STOP opt-out",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Text-message consent is not a condition of participating or receiving services",
+              "Message and data rates may apply",
+              "Users may opt out of text messages by replying STOP"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-385c66dd96ab0a52",
+              "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+              "title": "PRIVACY POLICY -",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:35:16.678Z",
+              "excerpt": "Message frequency varies. Message and data rates may apply.\nYou may opt out at any time by replying STOP to any message. Reply HELP for assistance. Consent to receive text messages is not a condition of participating in the Congressional App Challenge or receiving services from us."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        }
+      },
+      "projectionRefs": {
+        "operating_organization": [
+          "ief-administrator-role",
+          "org-ief-name"
+        ],
+        "participation_format": [
+          "stage-registration-format",
+          "stage-submission-format"
+        ],
+        "selection_process": [
+          "stage-registration-definition",
+          "stage-submission-definition",
+          "stage-judging-definition",
+          "stage-winner-announcement-definition"
+        ],
+        "estimated_total_mandatory_cost": [
+          "cost-house-of-code-travel-definition",
+          "cost-house-of-code-travel-amount",
+          "cost-house-of-code-travel-condition"
+        ],
+        "in_kind_value": [
+          "outcome-capitol-feature-definition",
+          "outcome-capitol-feature-recipient",
+          "outcome-capitol-feature-condition",
+          "outcome-house-of-code-definition",
+          "outcome-house-of-code-recipient",
+          "outcome-house-of-code-travel-condition"
+        ]
+      },
+      "migratedFrom": null
+    },
+    "reviewedPages": [
+      {
+        "id": "page-0238055580eb31dc",
+        "url": "https://www.congressionalappchallenge.us/students/rules/",
+        "title": "RULES -",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:35:16.283Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-385c66dd96ab0a52",
+        "url": "https://www.congressionalappchallenge.us/privacy-policy/",
+        "title": "PRIVACY POLICY -",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:35:16.678Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-61f16831142c119c",
+        "url": "https://www.congressionalappchallenge.us/congress/frequently-asked-questions/",
+        "title": "FREQUENTLY ASKED QUESTIONS -",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:35:16.929Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-abe3e8325fc91c0f",
+        "url": "https://www.congressionalappchallenge.us/about/",
+        "title": "ABOUT -",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:35:17.295Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      }
+    ]
+  },
+  "failure": null,
+  "secretsRetained": false
+}

@@ -1,0 +1,4622 @@
+{
+  "artifactVersion": 1,
+  "benchmarkStage": "evaluation",
+  "developmentSet": false,
+  "run": 1,
+  "program": {
+    "slug": "yale-young-global-scholars-summer-2027",
+    "label": "Yale Young Global Scholars — Summer 2027"
+  },
+  "repository": {
+    "gitCommit": "0746d8e772b63b26bee6a909a6c15311154e1ff7",
+    "workingTreeDirty": true,
+    "extractionCodeHash": {
+      "algorithm": "sha256",
+      "value": "6a26033f9508c0613a79af0548a694465d2582d9fd3167c79e4e66d4618fa8e8",
+      "files": [
+        "lib/analysis/fetch.ts",
+        "lib/analysis/html-extraction.ts",
+        "lib/analysis/link-discovery.ts",
+        "lib/analysis/model-extraction.ts",
+        "lib/analysis/pipeline.ts",
+        "lib/analysis/types.ts",
+        "lib/analysis/url-safety.ts",
+        "lib/opportunity/projection.ts",
+        "lib/opportunity/schema-v2.ts",
+        "lib/opportunity/structured-schema.ts"
+      ]
+    }
+  },
+  "schemaVersion": "2.0.0",
+  "provider": {
+    "name": "openai",
+    "endpoint": "responses",
+    "model": "gpt-5.6-terra",
+    "settings": {
+      "store": false,
+      "reasoningEffort": "low",
+      "maxOutputTokens": 24000,
+      "requestTimeoutMs": 120000,
+      "maximumRetries": 0
+    },
+    "telemetry": {
+      "model": "gpt-5.6-terra",
+      "responseId": "resp_0eec6b421d7b1ca1016a7c14d9f7408195ac53b0e29d9574d0",
+      "usage": {
+        "inputTokens": 49607,
+        "cachedInputTokens": 44150,
+        "outputTokens": 15811,
+        "reasoningTokens": 516,
+        "totalTokens": 65418
+      }
+    }
+  },
+  "input": {
+    "mode": "url",
+    "startingUrl": "https://globalscholars.yale.edu/"
+  },
+  "timing": {
+    "startedAt": "2026-08-12T06:38:13.088Z",
+    "modelStartedAt": "2026-08-12T06:38:15.736Z",
+    "modelFinishedAt": "2026-08-12T06:40:04.317Z",
+    "finishedAt": "2026-08-12T06:40:04.445Z",
+    "totalRuntimeMs": 111357,
+    "acquisitionRuntimeMs": 2648,
+    "modelRuntimeMs": 108581
+  },
+  "acquisition": {
+    "submittedUrl": "https://globalscholars.yale.edu/",
+    "successfullyAcquired": [
+      {
+        "role": "submitted",
+        "id": "page-961ea664b8eaecd1",
+        "url": "https://globalscholars.yale.edu/",
+        "title": "Welcome | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:38:13.302Z",
+        "extractedCharacters": 1223,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 1223,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-a634ed7e010dce55",
+        "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+        "title": "Rules & Regulations | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:38:14.029Z",
+        "extractedCharacters": 13248,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 13248,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-2b34d534b6b35769",
+        "url": "https://globalscholars.yale.edu/tuition",
+        "title": "Tuition & Aid | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:38:14.460Z",
+        "extractedCharacters": 1955,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 1955,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-d298b51f9dc5c56a",
+        "url": "https://globalscholars.yale.edu/eligibility",
+        "title": "Eligibility | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:38:14.594Z",
+        "extractedCharacters": 1658,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 1658,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-65e82225287610ae",
+        "url": "https://globalscholars.yale.edu/how-to-apply",
+        "title": "How to Apply | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:38:14.752Z",
+        "extractedCharacters": 2709,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 2709,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-28bd2f589643105b",
+        "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+        "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:38:15.370Z",
+        "extractedCharacters": 1809,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 1809,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-93ad204f05c2a653",
+        "url": "https://globalscholars.yale.edu/about",
+        "title": "About | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:38:15.724Z",
+        "extractedCharacters": 1140,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 1140,
+        "truncatedForModel": false
+      }
+    ],
+    "failures": []
+  },
+  "modelOutput": {
+    "rawStructuredCandidate": {
+      "facts": {
+        "opportunity_name": {
+          "status": "disclosed",
+          "value": "Yale Young Global Scholars (YYGS)",
+          "displayValue": "Yale Young Global Scholars (YYGS)",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Yale Young Global Scholars (YYGS)"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Yale Young Global Scholars (YYGS) is an academic enrichment program for outstanding high school students from around the world."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "opportunity_category": {
+          "status": "disclosed",
+          "value": "Academic enrichment program",
+          "displayValue": "Academic enrichment program",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Academic enrichment program"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Yale Young Global Scholars (YYGS) is an academic enrichment program for outstanding high school students from around the world."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "official_url": {
+          "status": "disclosed",
+          "value": "https://globalscholars.yale.edu/",
+          "displayValue": "https://globalscholars.yale.edu/",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "https://globalscholars.yale.edu/"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Welcome | Yale Young Global Scholars"
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "operating_organization": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "The reviewed sources identify Yale University as a campus and policy context but do not expressly state which organization operates YYGS.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "organization_type": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No operating-organization type was expressly stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "named_institution": {
+          "status": "disclosed",
+          "value": "Yale University",
+          "displayValue": "Yale University",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Yale University"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Immerse yourself in a global learning community at Yale University."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "institution_relationship": {
+          "status": "disclosed",
+          "value": "hosted_at_institution",
+          "displayValue": "Hosted at Yale University",
+          "normalizedValue": {
+            "kind": "relationship",
+            "value": "hosted_at_institution"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Each summer, students from over 150 countries (including all 50 U.S. states) participate in one interdisciplinary, two-week session at Yale’s historic campus."
+            }
+          ],
+          "note": "This supports hosting/location only, not institutional operation or sponsorship.",
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "relationship_explanation": {
+          "status": "disclosed",
+          "value": "Students participate in sessions at Yale’s historic campus and in a learning community at Yale University.",
+          "displayValue": "Students participate in sessions at Yale’s historic campus and in a learning community at Yale University.",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Students participate in sessions at Yale’s historic campus and in a learning community at Yale University."
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Each summer, students from over 150 countries (including all 50 U.S. states) participate in one interdisciplinary, two-week session at Yale’s historic campus. Immerse yourself in a global learning community at Yale University."
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "grade_levels": {
+          "status": "disclosed",
+          "value": [
+            "Current high school sophomores",
+            "Current high school juniors",
+            "International equivalents"
+          ],
+          "displayValue": "Current high school sophomores or juniors (or international equivalent)",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Current high school sophomores",
+              "Current high school juniors",
+              "International equivalents"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-d298b51f9dc5c56a",
+              "url": "https://globalscholars.yale.edu/eligibility",
+              "title": "Eligibility | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.594Z",
+              "excerpt": "Grade Level | Be a current high school sophomore or junior (or international equivalent)."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "ages": {
+          "status": "disclosed",
+          "value": "16–18 years old by July 19, 2027",
+          "displayValue": "16–18 years old by July 19, 2027",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "16–18 years old by July 19, 2027"
+          },
+          "sources": [
+            {
+              "id": "page-d298b51f9dc5c56a",
+              "url": "https://globalscholars.yale.edu/eligibility",
+              "title": "Eligibility | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.594Z",
+              "excerpt": "Age | Be between the ages of 16-18 years old by July 19, 2027 (first day of Session III).*"
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "geographic_restrictions": {
+          "status": "disclosed",
+          "value": "Applications accepted from all countries",
+          "displayValue": "Applications accepted from all countries",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Applications accepted from all countries"
+          },
+          "sources": [
+            {
+              "id": "page-d298b51f9dc5c56a",
+              "url": "https://globalscholars.yale.edu/eligibility",
+              "title": "Eligibility | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.594Z",
+              "excerpt": "YYGS accepts applications from ALL countries, and offers the opportunity for students to apply for need-based financial aid to students from ALL countries."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "citizenship_restrictions": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "The sources state worldwide application availability but do not specify citizenship or residency requirements.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "prerequisite_skills": {
+          "status": "disclosed",
+          "value": [
+            "Ability to participate in a rigorous academic curriculum conducted in English"
+          ],
+          "displayValue": "English fluency sufficient to participate in a rigorous academic curriculum",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Ability to participate in a rigorous academic curriculum conducted in English"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-d298b51f9dc5c56a",
+              "url": "https://globalscholars.yale.edu/eligibility",
+              "title": "Eligibility | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.594Z",
+              "excerpt": "English Fluency | Be able to participate in a rigorous academic curriculum conducted in English."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "entry_format": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No individual-versus-team entry format was stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "sponsor_requirement": {
+          "status": "disclosed",
+          "value": "Applicants must submit contact information for a parent/guardian, teacher, and/or school official.",
+          "displayValue": "Contact information for a parent/guardian, teacher, and/or school official required",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Applicants must submit contact information for a parent/guardian, teacher, and/or school official."
+          },
+          "sources": [
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "You will need to submit contact information for a parent/guardian, teacher, and/or official at your school."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_deadline": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No final application deadline for the 2027 cycle was supplied.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "decision_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "Admissions decisions will be released by mid-December (for Early Action) and mid-March (for Regular Decision)."
+            }
+          ],
+          "note": "Decision timing is stated only by month range, not as a precise date.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "start_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Session I Residential(June 20 - July 2)"
+            }
+          ],
+          "note": "Three distinct 2027 residential sessions have different start dates; no single program-wide start date is supported.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "end_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Session III Residential(July 18 - July 30)"
+            }
+          ],
+          "note": "Three distinct 2027 residential sessions have different end dates; no single program-wide end date is supported.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "duration": {
+          "status": "disclosed",
+          "value": 2,
+          "displayValue": "Two weeks per session",
+          "normalizedValue": {
+            "kind": "duration",
+            "amount": 2,
+            "unit": "weeks"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Each summer, students from over 150 countries (including all 50 U.S. states) participate in one interdisciplinary, two-week session at Yale’s historic campus."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "weekly_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No weekly-hour total was stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "required_live_hours": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-a634ed7e010dce55",
+              "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+              "title": "Rules & Regulations | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.029Z",
+              "excerpt": "Scholars will attend required appointments including lectures, seminars, and other meetings, unless they are seeking help from a staff member for health or similar emergency reasons."
+            }
+          ],
+          "note": "Required attendance is stated, but no number of required live hours is provided.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "participation_format": {
+          "status": "disclosed",
+          "value": "residential",
+          "displayValue": "Residential",
+          "normalizedValue": {
+            "kind": "participation_format",
+            "value": "residential"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "YYGS is excited to offer residential sessions for June & July 2027. We are not offering online sessions at this time."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "location": {
+          "status": "disclosed",
+          "value": "Yale's historic campus / Yale University",
+          "displayValue": "Yale's historic campus / Yale University",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Yale's historic campus / Yale University"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Each summer, students from over 150 countries (including all 50 U.S. states) participate in one interdisciplinary, two-week session at Yale’s historic campus. Immerse yourself in a global learning community at Yale University."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_requirements": {
+          "status": "disclosed",
+          "value": "Travel is not covered by the program.",
+          "displayValue": "Travel is not covered",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Travel is not covered by the program."
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+            }
+          ],
+          "note": "The source does not expressly state that travel is required for every participant.",
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_fee": {
+          "status": "conflicting",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "The fee differs by application pathway.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [
+            {
+              "value": 85,
+              "displayValue": "$85 USD Early Action fee",
+              "normalizedValue": {
+                "kind": "money",
+                "amount": 85,
+                "currency": "USD",
+                "classification": "fee"
+              },
+              "sources": [
+                {
+                  "id": "page-65e82225287610ae",
+                  "url": "https://globalscholars.yale.edu/how-to-apply",
+                  "title": "How to Apply | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.752Z",
+                  "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+                }
+              ],
+              "note": "Early Action."
+            },
+            {
+              "value": 100,
+              "displayValue": "$100 USD Regular Decision fee",
+              "normalizedValue": {
+                "kind": "money",
+                "amount": 100,
+                "currency": "USD",
+                "classification": "fee"
+              },
+              "sources": [
+                {
+                  "id": "page-65e82225287610ae",
+                  "url": "https://globalscholars.yale.edu/how-to-apply",
+                  "title": "How to Apply | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.752Z",
+                  "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+                }
+              ],
+              "note": "Regular Decision."
+            }
+          ],
+          "calculation": null,
+          "projection": null
+        },
+        "deposit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No deposit was stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition": {
+          "status": "disclosed",
+          "value": 7500,
+          "displayValue": "$7,500 USD for one two-week residential session",
+          "normalizedValue": {
+            "kind": "money",
+            "amount": 7500,
+            "currency": "USD",
+            "classification": "fee"
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "For YYGS Residential students, the full program tuition for one, 2-week session is $7,500 USD."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_mandatory_costs": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Tuition payments can be subject to processing fees by the external payment processor (Slate or FlyWire)."
+            }
+          ],
+          "note": "Processing fees may apply, but the source does not state an amount or whether they are mandatory in every case.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "estimated_total_mandatory_cost": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Tuition payments can be subject to processing fees by the external payment processor (Slate or FlyWire)."
+            }
+          ],
+          "note": "A total cannot safely be calculated because application fee pathway and potential processing fees vary.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_included": {
+          "status": "disclosed",
+          "value": false,
+          "displayValue": "No",
+          "normalizedValue": {
+            "kind": "boolean",
+            "value": false
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "lodging_included": {
+          "status": "disclosed",
+          "value": true,
+          "displayValue": "Yes, housing is covered by tuition",
+          "normalizedValue": {
+            "kind": "boolean",
+            "value": true
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "meals_included": {
+          "status": "disclosed",
+          "value": true,
+          "displayValue": "Yes, meals are covered by tuition",
+          "normalizedValue": {
+            "kind": "boolean",
+            "value": true
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "financial_aid": {
+          "status": "disclosed",
+          "value": "Need-based financial aid is offered as a tuition discount of up to 100% of tuition, equally to domestic and international students.",
+          "displayValue": "Need-based tuition discount up to 100%",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Need-based financial aid is offered as a tuition discount of up to 100% of tuition, equally to domestic and international students."
+          },
+          "sources": [
+            {
+              "id": "page-28bd2f589643105b",
+              "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+              "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:15.370Z",
+              "excerpt": "YYGS is proud to be one of the only pre-college programs in the world that provides need-based financial aid equally to both domestic and international students, which is offered as a tuition discount (up to 100% of tuition)."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "refund_policy": {
+          "status": "disclosed",
+          "value": "Tuition payments are non-refundable except in extreme circumstances such as documented visa denial or family medical emergency.",
+          "displayValue": "Non-refundable except documented extreme circumstances",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Tuition payments are non-refundable except in extreme circumstances such as documented visa denial or family medical emergency."
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that any/all YYGS tuition payments made are non-refundable, except in extreme circumstances such as visa denial or family medical emergency where documentation can be provided to YYGS (e.g., of good faith attempts to secure a visa, with an official doctor’s note from a non-relative)."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_policy": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No participant cancellation policy was supplied.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_process": {
+          "status": "disclosed",
+          "value": "Applicants complete and submit an application, pay the applicable fee unless a fee waiver is approved, and receive an admissions decision through Early Action or Regular Decision.",
+          "displayValue": "Application submission, fee/waiver review, then Early Action or Regular Decision notification",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Applicants complete and submit an application, pay the applicable fee unless a fee waiver is approved, and receive an admissions decision through Early Action or Regular Decision."
+          },
+          "sources": [
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "Once your application is complete, click on the “Review” page. Next click on the “Submit Application” button at the bottom of the page."
+            },
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "If your Fee Waiver Request is denied, then your application will not be reviewed until the YYGS application fee is paid."
+            }
+          ],
+          "note": null,
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "applicant_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No applicant count was supplied.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No acceptance count was supplied.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_rate_claim": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No organizer-stated acceptance rate was supplied.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "calculated_acceptance_rate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No compatible applicant and acceptance counts were supplied.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_evidence": {
+          "status": "disclosed",
+          "value": "Descriptive application-process evidence; no numerical selection statistics supplied.",
+          "displayValue": "Descriptive",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Descriptive application-process evidence; no numerical selection statistics supplied."
+          },
+          "sources": [
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "Decision Notification: *Please review the Early Action and Regular Decision information for important, specific deadlines, dates, and times. Admissions decisions will be released by mid-December (for Early Action) and mid-March (for Regular Decision)."
+            }
+          ],
+          "note": null,
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cash_award": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No participant cash award was stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "stipend": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No stipend was stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition_waiver": {
+          "status": "disclosed",
+          "value": 7500,
+          "displayValue": "Up to 100% tuition discount (up to $7,500 for one session)",
+          "normalizedValue": {
+            "kind": "money",
+            "amount": 7500,
+            "currency": "USD",
+            "classification": "tuition_waiver"
+          },
+          "sources": [
+            {
+              "id": "page-28bd2f589643105b",
+              "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+              "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:15.370Z",
+              "excerpt": "YYGS is proud to be one of the only pre-college programs in the world that provides need-based financial aid equally to both domestic and international students, which is offered as a tuition discount (up to 100% of tuition)."
+            },
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "For YYGS Residential students, the full program tuition for one, 2-week session is $7,500 USD."
+            }
+          ],
+          "note": "The amount is the maximum possible tuition discount for one session, not cash paid to a participant.",
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "program_seat": {
+          "status": "disclosed",
+          "value": "Admission to one interdisciplinary two-week YYGS session",
+          "displayValue": "Admission to one two-week session",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Admission to one interdisciplinary two-week YYGS session"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Each summer, students from over 150 countries (including all 50 U.S. states) participate in one interdisciplinary, two-week session at Yale’s historic campus."
+            }
+          ],
+          "note": null,
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "in_kind_value": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No source-stated monetary value for a non-cash benefit was supplied.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "certificate": {
+          "status": "disclosed",
+          "value": true,
+          "displayValue": "Certificate of Participation",
+          "normalizedValue": {
+            "kind": "boolean",
+            "value": true
+          },
+          "sources": [
+            {
+              "id": "page-a634ed7e010dce55",
+              "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+              "title": "Rules & Regulations | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.029Z",
+              "excerpt": "YYGS does not permit scholars to miss any part of our programming for any reason; scholars must be present in every part of programming in order to receive a YYGS Certificate of Participation."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "college_credit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No college credit was stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "mentorship": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No mentorship benefit was stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_benefits": {
+          "status": "disclosed",
+          "value": [
+            "Housing",
+            "Meals",
+            "Curriculum materials",
+            "Air chilled rooms"
+          ],
+          "displayValue": "Housing, meals, curriculum materials, and air chilled rooms",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Housing",
+              "Meals",
+              "Curriculum materials",
+              "Air chilled rooms"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+            }
+          ],
+          "note": "Included components associated with paid tuition.",
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "personal_information": {
+          "status": "disclosed",
+          "value": [
+            "Contact information for a parent/guardian",
+            "Contact information for a teacher and/or school official",
+            "Financial-aid application information"
+          ],
+          "displayValue": "Parent/guardian, teacher/school-official contact information; financial-aid application information",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Contact information for a parent/guardian",
+              "Contact information for a teacher and/or school official",
+              "Financial-aid application information"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "You will need to submit contact information for a parent/guardian, teacher, and/or official at your school."
+            },
+            {
+              "id": "page-28bd2f589643105b",
+              "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+              "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:15.370Z",
+              "excerpt": "Please know that the information you provide will be kept confidential."
+            }
+          ],
+          "note": "The financial-aid page does not enumerate the information fields collected.",
+          "confidence": 0.85,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "data_sharing": {
+          "status": "disclosed",
+          "value": "Information provided in the financial-aid application will be kept confidential.",
+          "displayValue": "Financial-aid information kept confidential",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Information provided in the financial-aid application will be kept confidential."
+          },
+          "sources": [
+            {
+              "id": "page-28bd2f589643105b",
+              "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+              "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:15.370Z",
+              "excerpt": "Please know that the information you provide will be kept confidential."
+            }
+          ],
+          "note": "This excerpt applies to information provided when applying for financial aid; it does not establish broader data-sharing practices.",
+          "confidence": 0.8,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_ownership": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No submitted-work ownership terms were supplied.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_license": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No submitted-work license terms were supplied.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "publicity_rights": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No participant publicity-rights terms were supplied.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "confidentiality": {
+          "status": "disclosed",
+          "value": "Financial-aid application information will be kept confidential.",
+          "displayValue": "Financial-aid information kept confidential",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Financial-aid application information will be kept confidential."
+          },
+          "sources": [
+            {
+              "id": "page-28bd2f589643105b",
+              "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+              "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:15.370Z",
+              "excerpt": "Please know that the information you provide will be kept confidential."
+            }
+          ],
+          "note": "Scope is financial-aid application information.",
+          "confidence": 0.8,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_rights": {
+          "status": "disclosed",
+          "value": "YYGS reserves the right to implement new safety measures before or during the program.",
+          "displayValue": "YYGS may implement new safety measures",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "YYGS reserves the right to implement new safety measures before or during the program."
+          },
+          "sources": [
+            {
+              "id": "page-a634ed7e010dce55",
+              "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+              "title": "Rules & Regulations | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.029Z",
+              "excerpt": "Given the evolving nature of the COVID-19 pandemic and changing best practices for health and safety protocols, YYGS reserves the right to implement new safety measures (e.g., mask mandates, social distancing) at any time before or during the program."
+            }
+          ],
+          "note": "This is a modification right, not an express right to cancel the program.",
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "material_terms": {
+          "status": "disclosed",
+          "value": [
+            "Participants must attend every part of programming to receive a YYGS Certificate of Participation.",
+            "Tuition payments are non-refundable except in documented extreme circumstances.",
+            "Video, audio, or digital recording of program sessions is forbidden without written permission."
+          ],
+          "displayValue": "Attendance, non-refundability, and recording restrictions",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Participants must attend every part of programming to receive a YYGS Certificate of Participation.",
+              "Tuition payments are non-refundable except in documented extreme circumstances.",
+              "Video, audio, or digital recording of program sessions is forbidden without written permission."
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-a634ed7e010dce55",
+              "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+              "title": "Rules & Regulations | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.029Z",
+              "excerpt": "YYGS does not permit scholars to miss any part of our programming for any reason; scholars must be present in every part of programming in order to receive a YYGS Certificate of Participation."
+            },
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that any/all YYGS tuition payments made are non-refundable, except in extreme circumstances such as visa denial or family medical emergency where documentation can be provided to YYGS (e.g., of good faith attempts to secure a visa, with an official doctor’s note from a non-relative)."
+            },
+            {
+              "id": "page-a634ed7e010dce55",
+              "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+              "title": "Rules & Regulations | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.029Z",
+              "excerpt": "Video, audio or digital recording of program sessions including lectures, briefings, seminars, discussion sessions, and presentations is forbidden."
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        }
+      },
+      "structures": {
+        "cycle": {
+          "status": "modeled",
+          "value": {
+            "id": "summer-2027",
+            "label": {
+              "claimId": "cycle-summer-2027-label",
+              "status": "disclosed",
+              "value": "Summer 2027",
+              "displayValue": "Summer 2027",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-961ea664b8eaecd1",
+                  "url": "https://globalscholars.yale.edu/",
+                  "title": "Welcome | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:13.302Z",
+                  "excerpt": "SUMMER 2027 OFFERINGS:"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "status": {
+              "claimId": "cycle-summer-2027-status",
+              "status": "disclosed",
+              "value": "applications_closed",
+              "displayValue": "Applications closed",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-65e82225287610ae",
+                  "url": "https://globalscholars.yale.edu/how-to-apply",
+                  "title": "How to Apply | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.752Z",
+                  "excerpt": "**The YYGS application is currently closed. Sign up for our mailing list to receive updates about YYGS 2027. We anticipate this application will open in late September.**"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "year": {
+              "claimId": "cycle-summer-2027-year",
+              "status": "disclosed",
+              "value": 2027,
+              "displayValue": "2027",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-961ea664b8eaecd1",
+                  "url": "https://globalscholars.yale.edu/",
+                  "title": "Welcome | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:13.302Z",
+                  "excerpt": "SUMMER 2027 OFFERINGS:"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "startYear": null,
+            "endYear": null,
+            "season": {
+              "claimId": "cycle-summer-2027-season",
+              "status": "disclosed",
+              "value": "summer",
+              "displayValue": "Summer",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-961ea664b8eaecd1",
+                  "url": "https://globalscholars.yale.edu/",
+                  "title": "Welcome | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:13.302Z",
+                  "excerpt": "SUMMER 2027 OFFERINGS:"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "cycleType": {
+              "claimId": "cycle-summer-2027-type",
+              "status": "disclosed",
+              "value": "seasonal",
+              "displayValue": "Seasonal",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-961ea664b8eaecd1",
+                  "url": "https://globalscholars.yale.edu/",
+                  "title": "Welcome | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:13.302Z",
+                  "excerpt": "SUMMER 2027 OFFERINGS:"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "timingRefs": {
+              "opens": null,
+              "closes": null,
+              "coverageStart": null,
+              "coverageEnd": null
+            }
+          }
+        },
+        "organizations": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "yale-university",
+              "name": {
+                "claimId": "org-yale-university-name",
+                "status": "disclosed",
+                "value": "Yale University",
+                "displayValue": "Yale University",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-961ea664b8eaecd1",
+                    "url": "https://globalscholars.yale.edu/",
+                    "title": "Welcome | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:13.302Z",
+                    "excerpt": "Immerse yourself in a global learning community at Yale University."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "kind": {
+                "claimId": "org-yale-university-kind",
+                "status": "disclosed",
+                "value": "higher_education_institution",
+                "displayValue": "Higher education institution",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-961ea664b8eaecd1",
+                    "url": "https://globalscholars.yale.edu/",
+                    "title": "Welcome | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:13.302Z",
+                    "excerpt": "Immerse yourself in a global learning community at Yale University."
+                  }
+                ],
+                "note": "Institution type is represented from the source's naming of Yale University.",
+                "conflictingValues": []
+              }
+            }
+          ],
+          "note": "Only a named host institution is modeled; no operator role is asserted."
+        },
+        "organizationRoles": {
+          "status": "unassessed",
+          "records": [],
+          "note": null
+        },
+        "institutionRelationships": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "yygs-hosted-at-yale",
+              "assertion": {
+                "claimId": "institution-relationship-yygs-yale-host",
+                "status": "disclosed",
+                "value": {
+                  "subject": "opportunity",
+                  "subjectOrganizationId": null,
+                  "targetOrganizationId": "yale-university",
+                  "targetInstitutionName": "Yale University",
+                  "relationshipType": "hosted_at_institution",
+                  "description": "YYGS sessions take place at Yale's historic campus.",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Hosted at Yale University",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-961ea664b8eaecd1",
+                    "url": "https://globalscholars.yale.edu/",
+                    "title": "Welcome | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:13.302Z",
+                    "excerpt": "Each summer, students from over 150 countries (including all 50 U.S. states) participate in one interdisciplinary, two-week session at Yale’s historic campus."
+                  }
+                ],
+                "note": "Does not assert operation, sponsorship, partnership, or endorsement.",
+                "conflictingValues": []
+              }
+            }
+          ],
+          "note": null
+        },
+        "variants": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "session-i-2027",
+              "definition": {
+                "claimId": "variant-session-i-2027",
+                "status": "disclosed",
+                "value": {
+                  "label": "Session I Residential",
+                  "kind": "cohort",
+                  "parentVariantId": null
+                },
+                "displayValue": "Session I Residential",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-961ea664b8eaecd1",
+                    "url": "https://globalscholars.yale.edu/",
+                    "title": "Welcome | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:13.302Z",
+                    "excerpt": "Session I Residential(June 20 - July 2)"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "eligibilityDifferences": [],
+              "notes": []
+            },
+            {
+              "id": "session-ii-2027",
+              "definition": {
+                "claimId": "variant-session-ii-2027",
+                "status": "disclosed",
+                "value": {
+                  "label": "Session II Residential",
+                  "kind": "cohort",
+                  "parentVariantId": null
+                },
+                "displayValue": "Session II Residential",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-961ea664b8eaecd1",
+                    "url": "https://globalscholars.yale.edu/",
+                    "title": "Welcome | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:13.302Z",
+                    "excerpt": "Session II Residential(July 4 - July 16)"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "eligibilityDifferences": [],
+              "notes": []
+            },
+            {
+              "id": "session-iii-2027",
+              "definition": {
+                "claimId": "variant-session-iii-2027",
+                "status": "disclosed",
+                "value": {
+                  "label": "Session III Residential",
+                  "kind": "cohort",
+                  "parentVariantId": null
+                },
+                "displayValue": "Session III Residential",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-961ea664b8eaecd1",
+                    "url": "https://globalscholars.yale.edu/",
+                    "title": "Welcome | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:13.302Z",
+                    "excerpt": "Session III Residential(July 18 - July 30)"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "eligibilityDifferences": [],
+              "notes": []
+            }
+          ],
+          "note": null
+        },
+        "stages": {
+          "status": "unassessed",
+          "records": [],
+          "note": null
+        },
+        "pathways": {
+          "status": "unassessed",
+          "records": [],
+          "note": null
+        },
+        "costItems": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "residential-session-tuition",
+              "definition": {
+                "claimId": "cost-residential-session-tuition-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Residential session tuition",
+                  "kind": "tuition",
+                  "requirement": "required",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Residential session tuition",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-2b34d534b6b35769",
+                    "url": "https://globalscholars.yale.edu/tuition",
+                    "title": "Tuition & Aid | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.460Z",
+                    "excerpt": "For YYGS Residential students, the full program tuition for one, 2-week session is $7,500 USD."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "amount": {
+                "claimId": "cost-residential-session-tuition-amount",
+                "status": "disclosed",
+                "value": {
+                  "kind": "exact",
+                  "amount": 7500,
+                  "currency": "USD"
+                },
+                "displayValue": "$7,500 USD",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-2b34d534b6b35769",
+                    "url": "https://globalscholars.yale.edu/tuition",
+                    "title": "Tuition & Aid | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.460Z",
+                    "excerpt": "For YYGS Residential students, the full program tuition for one, 2-week session is $7,500 USD."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "chargeBasis": {
+                "claimId": "cost-residential-session-tuition-basis",
+                "status": "disclosed",
+                "value": "per_participant",
+                "displayValue": "Per participant",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-2b34d534b6b35769",
+                    "url": "https://globalscholars.yale.edu/tuition",
+                    "title": "Tuition & Aid | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.460Z",
+                    "excerpt": "For YYGS Residential students, the full program tuition for one, 2-week session is $7,500 USD."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "treatment": null,
+              "refundability": {
+                "claimId": "cost-residential-session-tuition-refundability",
+                "status": "disclosed",
+                "value": {
+                  "kind": "conditional",
+                  "condition": "Non-refundable except in extreme circumstances such as documented visa denial or family medical emergency."
+                },
+                "displayValue": "Conditionally refundable in documented extreme circumstances",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-2b34d534b6b35769",
+                    "url": "https://globalscholars.yale.edu/tuition",
+                    "title": "Tuition & Aid | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.460Z",
+                    "excerpt": "Please note that any/all YYGS tuition payments made are non-refundable, except in extreme circumstances such as visa denial or family medical emergency where documentation can be provided to YYGS (e.g., of good faith attempts to secure a visa, with an official doctor’s note from a non-relative)."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "includedItems": [
+                {
+                  "claimId": "cost-residential-session-tuition-includes",
+                  "status": "disclosed",
+                  "value": "Housing, meals, curriculum materials, and air chilled rooms",
+                  "displayValue": "Housing, meals, curriculum materials, and air chilled rooms",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-2b34d534b6b35769",
+                      "url": "https://globalscholars.yale.edu/tuition",
+                      "title": "Tuition & Aid | Yale Young Global Scholars",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:38:14.460Z",
+                      "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ],
+              "excludedItems": [
+                {
+                  "claimId": "cost-residential-session-tuition-excludes",
+                  "status": "disclosed",
+                  "value": "Travel",
+                  "displayValue": "Travel",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-2b34d534b6b35769",
+                      "url": "https://globalscholars.yale.edu/tuition",
+                      "title": "Tuition & Aid | Yale Young Global Scholars",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:38:14.460Z",
+                      "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ],
+              "conditions": []
+            },
+            {
+              "id": "early-action-application-fee",
+              "definition": {
+                "claimId": "cost-early-action-fee-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Early Action application fee",
+                  "kind": "application_fee",
+                  "requirement": "required",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Early Action application fee",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-65e82225287610ae",
+                    "url": "https://globalscholars.yale.edu/how-to-apply",
+                    "title": "How to Apply | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.752Z",
+                    "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "amount": {
+                "claimId": "cost-early-action-fee-amount",
+                "status": "disclosed",
+                "value": {
+                  "kind": "exact",
+                  "amount": 85,
+                  "currency": "USD"
+                },
+                "displayValue": "$85 USD",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-65e82225287610ae",
+                    "url": "https://globalscholars.yale.edu/how-to-apply",
+                    "title": "How to Apply | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.752Z",
+                    "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "chargeBasis": {
+                "claimId": "cost-early-action-fee-basis",
+                "status": "disclosed",
+                "value": "per_application",
+                "displayValue": "Per application",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-65e82225287610ae",
+                    "url": "https://globalscholars.yale.edu/how-to-apply",
+                    "title": "How to Apply | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.752Z",
+                    "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "treatment": null,
+              "refundability": {
+                "claimId": "cost-early-action-fee-refundability",
+                "status": "disclosed",
+                "value": {
+                  "kind": "nonrefundable",
+                  "condition": null
+                },
+                "displayValue": "Non-refundable",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-65e82225287610ae",
+                    "url": "https://globalscholars.yale.edu/how-to-apply",
+                    "title": "How to Apply | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.752Z",
+                    "excerpt": "All YYGS application fees are non-refundable."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "includedItems": [],
+              "excludedItems": [],
+              "conditions": []
+            },
+            {
+              "id": "regular-decision-application-fee",
+              "definition": {
+                "claimId": "cost-regular-decision-fee-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Regular Decision application fee",
+                  "kind": "application_fee",
+                  "requirement": "required",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Regular Decision application fee",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-65e82225287610ae",
+                    "url": "https://globalscholars.yale.edu/how-to-apply",
+                    "title": "How to Apply | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.752Z",
+                    "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "amount": {
+                "claimId": "cost-regular-decision-fee-amount",
+                "status": "disclosed",
+                "value": {
+                  "kind": "exact",
+                  "amount": 100,
+                  "currency": "USD"
+                },
+                "displayValue": "$100 USD",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-65e82225287610ae",
+                    "url": "https://globalscholars.yale.edu/how-to-apply",
+                    "title": "How to Apply | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.752Z",
+                    "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "chargeBasis": {
+                "claimId": "cost-regular-decision-fee-basis",
+                "status": "disclosed",
+                "value": "per_application",
+                "displayValue": "Per application",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-65e82225287610ae",
+                    "url": "https://globalscholars.yale.edu/how-to-apply",
+                    "title": "How to Apply | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.752Z",
+                    "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "treatment": null,
+              "refundability": {
+                "claimId": "cost-regular-decision-fee-refundability",
+                "status": "disclosed",
+                "value": {
+                  "kind": "nonrefundable",
+                  "condition": null
+                },
+                "displayValue": "Non-refundable",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-65e82225287610ae",
+                    "url": "https://globalscholars.yale.edu/how-to-apply",
+                    "title": "How to Apply | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.752Z",
+                    "excerpt": "All YYGS application fees are non-refundable."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "includedItems": [],
+              "excludedItems": [],
+              "conditions": []
+            }
+          ],
+          "note": "Potential external payment-processing fees are disclosed but amount and applicability are not sufficiently specified for a cost record.",
+          "completeness": "incomplete"
+        },
+        "outcomes": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "need-based-tuition-discount",
+              "definition": {
+                "claimId": "outcome-need-based-tuition-discount-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Need-based tuition discount",
+                  "outcomeType": "tuition_waiver",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Need-based tuition discount",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-28bd2f589643105b",
+                    "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+                    "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:15.370Z",
+                    "excerpt": "YYGS is proud to be one of the only pre-college programs in the world that provides need-based financial aid equally to both domestic and international students, which is offered as a tuition discount (up to 100% of tuition)."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "recipientScope": {
+                "claimId": "outcome-need-based-tuition-discount-recipient",
+                "status": "disclosed",
+                "value": "individual",
+                "displayValue": "Individual student",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-28bd2f589643105b",
+                    "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+                    "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:15.370Z",
+                    "excerpt": "Students with demonstrated financial need are encouraged to apply for YYGS need-based financial aid."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "monetaryNature": {
+                "claimId": "outcome-need-based-tuition-discount-nature",
+                "status": "disclosed",
+                "value": "restricted_funding",
+                "displayValue": "Tuition discount",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-28bd2f589643105b",
+                    "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+                    "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:15.370Z",
+                    "excerpt": "YYGS is proud to be one of the only pre-college programs in the world that provides need-based financial aid equally to both domestic and international students, which is offered as a tuition discount (up to 100% of tuition)."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "amount": {
+                "claimId": "outcome-need-based-tuition-discount-amount",
+                "status": "disclosed",
+                "value": {
+                  "kind": "exact",
+                  "amount": 7500,
+                  "currency": "USD"
+                },
+                "displayValue": "Up to $7,500 USD for one session",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-28bd2f589643105b",
+                    "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+                    "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:15.370Z",
+                    "excerpt": "YYGS is proud to be one of the only pre-college programs in the world that provides need-based financial aid equally to both domestic and international students, which is offered as a tuition discount (up to 100% of tuition)."
+                  },
+                  {
+                    "id": "page-2b34d534b6b35769",
+                    "url": "https://globalscholars.yale.edu/tuition",
+                    "title": "Tuition & Aid | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.460Z",
+                    "excerpt": "For YYGS Residential students, the full program tuition for one, 2-week session is $7,500 USD."
+                  }
+                ],
+                "note": "Maximum one-session tuition discount; not cash.",
+                "conflictingValues": []
+              },
+              "distribution": null,
+              "rank": null,
+              "track": null,
+              "quantity": null,
+              "useRestriction": {
+                "claimId": "outcome-need-based-tuition-discount-restriction",
+                "status": "disclosed",
+                "value": "Available to students with demonstrated financial need; applied as a tuition discount.",
+                "displayValue": "Demonstrated financial need; tuition discount",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-28bd2f589643105b",
+                    "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+                    "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:15.370Z",
+                    "excerpt": "For students with demonstrated financial need, we strive to ensure that cost of attendance will not prevent anyone from anywhere in the world from participating in YYGS."
+                  },
+                  {
+                    "id": "page-28bd2f589643105b",
+                    "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+                    "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:15.370Z",
+                    "excerpt": "YYGS is proud to be one of the only pre-college programs in the world that provides need-based financial aid equally to both domestic and international students, which is offered as a tuition discount (up to 100% of tuition)."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "combinability": null,
+              "conditions": []
+            },
+            {
+              "id": "certificate-of-participation",
+              "definition": {
+                "claimId": "outcome-certificate-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "YYGS Certificate of Participation",
+                  "outcomeType": "certificate",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "YYGS Certificate of Participation",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-a634ed7e010dce55",
+                    "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+                    "title": "Rules & Regulations | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.029Z",
+                    "excerpt": "YYGS does not permit scholars to miss any part of our programming for any reason; scholars must be present in every part of programming in order to receive a YYGS Certificate of Participation."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "recipientScope": {
+                "claimId": "outcome-certificate-recipient",
+                "status": "disclosed",
+                "value": "individual",
+                "displayValue": "Individual scholar",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-a634ed7e010dce55",
+                    "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+                    "title": "Rules & Regulations | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.029Z",
+                    "excerpt": "YYGS does not permit scholars to miss any part of our programming for any reason; scholars must be present in every part of programming in order to receive a YYGS Certificate of Participation."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "monetaryNature": {
+                "claimId": "outcome-certificate-nature",
+                "status": "disclosed",
+                "value": "not_monetized",
+                "displayValue": "Not monetized",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-a634ed7e010dce55",
+                    "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+                    "title": "Rules & Regulations | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.029Z",
+                    "excerpt": "YYGS does not permit scholars to miss any part of our programming for any reason; scholars must be present in every part of programming in order to receive a YYGS Certificate of Participation."
+                  }
+                ],
+                "note": "No monetary value is stated.",
+                "conflictingValues": []
+              },
+              "amount": null,
+              "distribution": null,
+              "rank": null,
+              "track": null,
+              "quantity": null,
+              "useRestriction": null,
+              "combinability": null,
+              "conditions": [
+                {
+                  "claimId": "outcome-certificate-condition",
+                  "status": "disclosed",
+                  "value": "Scholar must be present in every part of programming.",
+                  "displayValue": "Present for every part of programming",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-a634ed7e010dce55",
+                      "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+                      "title": "Rules & Regulations | Yale Young Global Scholars",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:38:14.029Z",
+                      "excerpt": "YYGS does not permit scholars to miss any part of our programming for any reason; scholars must be present in every part of programming in order to receive a YYGS Certificate of Participation."
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ]
+            }
+          ],
+          "note": null
+        }
+      }
+    }
+  },
+  "deterministicValidation": {
+    "completed": true,
+    "evidenceWarnings": [
+      {
+        "sourceId": "page-961ea664b8eaecd1",
+        "message": "The cited excerpt was not found in the normalized source text.",
+        "fieldId": "official_url"
+      },
+      {
+        "fieldId": "structured.cycle",
+        "sourceId": "cycle-summer-2027-status",
+        "message": "A structured atomic claim was withheld because its typed enum value is not stated by the cited excerpt."
+      },
+      {
+        "fieldId": "structured.outcomes",
+        "sourceId": "outcome-need-based-tuition-discount-nature",
+        "message": "A structured atomic claim was withheld because its typed enum value is not stated by the cited excerpt."
+      },
+      {
+        "fieldId": "structured.outcomes",
+        "sourceId": "outcome-certificate-recipient",
+        "message": "A structured atomic claim was withheld because its typed enum value is not stated by the cited excerpt."
+      },
+      {
+        "fieldId": "structured.outcomes",
+        "sourceId": "outcome-certificate-nature",
+        "message": "A structured atomic claim was withheld because its typed enum value is not stated by the cited excerpt."
+      },
+      {
+        "fieldId": "structured.institutionRelationships",
+        "sourceId": "institution-relationship-yygs-yale-host",
+        "message": "An institution relationship candidate was withheld because its excerpt did not explicitly support the proposed relationship type."
+      }
+    ]
+  },
+  "result": {
+    "draftCard": {
+      "schemaVersion": "2.0.0",
+      "opportunityId": null,
+      "cycle": {
+        "status": "unassessed",
+        "value": null
+      },
+      "cardVersion": 1,
+      "slug": "yale-young-global-scholars-yygs",
+      "summary": "Automated draft from 7 user-supplied source pages; review every value, excerpt, and attribution before use.",
+      "reviewState": "draft",
+      "reviewedAt": null,
+      "sourcePagesChecked": [
+        {
+          "id": "page-961ea664b8eaecd1",
+          "url": "https://globalscholars.yale.edu/",
+          "title": "Welcome | Yale Young Global Scholars",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:38:13.302Z"
+        },
+        {
+          "id": "page-a634ed7e010dce55",
+          "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+          "title": "Rules & Regulations | Yale Young Global Scholars",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:38:14.029Z"
+        },
+        {
+          "id": "page-2b34d534b6b35769",
+          "url": "https://globalscholars.yale.edu/tuition",
+          "title": "Tuition & Aid | Yale Young Global Scholars",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:38:14.460Z"
+        },
+        {
+          "id": "page-d298b51f9dc5c56a",
+          "url": "https://globalscholars.yale.edu/eligibility",
+          "title": "Eligibility | Yale Young Global Scholars",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:38:14.594Z"
+        },
+        {
+          "id": "page-65e82225287610ae",
+          "url": "https://globalscholars.yale.edu/how-to-apply",
+          "title": "How to Apply | Yale Young Global Scholars",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:38:14.752Z"
+        },
+        {
+          "id": "page-28bd2f589643105b",
+          "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+          "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:38:15.370Z"
+        },
+        {
+          "id": "page-93ad204f05c2a653",
+          "url": "https://globalscholars.yale.edu/about",
+          "title": "About | Yale Young Global Scholars",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:38:15.724Z"
+        }
+      ],
+      "conflicts": [],
+      "organizations": {
+        "status": "modeled",
+        "records": [
+          {
+            "id": "yale-university",
+            "name": {
+              "claimId": "org-yale-university-name",
+              "status": "disclosed",
+              "value": "Yale University",
+              "displayValue": "Yale University",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-961ea664b8eaecd1",
+                  "url": "https://globalscholars.yale.edu/",
+                  "title": "Welcome | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:13.302Z",
+                  "excerpt": "Immerse yourself in a global learning community at Yale University."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "kind": {
+              "claimId": "org-yale-university-kind",
+              "status": "disclosed",
+              "value": "higher_education_institution",
+              "displayValue": "Higher education institution",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-961ea664b8eaecd1",
+                  "url": "https://globalscholars.yale.edu/",
+                  "title": "Welcome | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:13.302Z",
+                  "excerpt": "Immerse yourself in a global learning community at Yale University."
+                }
+              ],
+              "note": "Institution type is represented from the source's naming of Yale University.",
+              "conflictingValues": []
+            }
+          }
+        ],
+        "note": "Only a named host institution is modeled; no operator role is asserted."
+      },
+      "organizationRoles": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "institutionRelationships": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "variants": {
+        "status": "modeled",
+        "records": [
+          {
+            "id": "session-i-2027",
+            "definition": {
+              "claimId": "variant-session-i-2027",
+              "status": "disclosed",
+              "value": {
+                "label": "Session I Residential",
+                "kind": "cohort",
+                "parentVariantId": null
+              },
+              "displayValue": "Session I Residential",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-961ea664b8eaecd1",
+                  "url": "https://globalscholars.yale.edu/",
+                  "title": "Welcome | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:13.302Z",
+                  "excerpt": "Session I Residential(June 20 - July 2)"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "eligibilityDifferences": [],
+            "notes": []
+          },
+          {
+            "id": "session-ii-2027",
+            "definition": {
+              "claimId": "variant-session-ii-2027",
+              "status": "disclosed",
+              "value": {
+                "label": "Session II Residential",
+                "kind": "cohort",
+                "parentVariantId": null
+              },
+              "displayValue": "Session II Residential",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-961ea664b8eaecd1",
+                  "url": "https://globalscholars.yale.edu/",
+                  "title": "Welcome | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:13.302Z",
+                  "excerpt": "Session II Residential(July 4 - July 16)"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "eligibilityDifferences": [],
+            "notes": []
+          },
+          {
+            "id": "session-iii-2027",
+            "definition": {
+              "claimId": "variant-session-iii-2027",
+              "status": "disclosed",
+              "value": {
+                "label": "Session III Residential",
+                "kind": "cohort",
+                "parentVariantId": null
+              },
+              "displayValue": "Session III Residential",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-961ea664b8eaecd1",
+                  "url": "https://globalscholars.yale.edu/",
+                  "title": "Welcome | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:13.302Z",
+                  "excerpt": "Session III Residential(July 18 - July 30)"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "eligibilityDifferences": [],
+            "notes": []
+          }
+        ],
+        "note": null
+      },
+      "stages": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "pathways": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "costItems": {
+        "status": "modeled",
+        "records": [
+          {
+            "id": "residential-session-tuition",
+            "definition": {
+              "claimId": "cost-residential-session-tuition-definition",
+              "status": "disclosed",
+              "value": {
+                "label": "Residential session tuition",
+                "kind": "tuition",
+                "requirement": "required",
+                "scope": {
+                  "variantIds": [],
+                  "stageIds": [],
+                  "pathwayIds": []
+                }
+              },
+              "displayValue": "Residential session tuition",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-2b34d534b6b35769",
+                  "url": "https://globalscholars.yale.edu/tuition",
+                  "title": "Tuition & Aid | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.460Z",
+                  "excerpt": "For YYGS Residential students, the full program tuition for one, 2-week session is $7,500 USD."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "amount": {
+              "claimId": "cost-residential-session-tuition-amount",
+              "status": "disclosed",
+              "value": {
+                "kind": "exact",
+                "amount": 7500,
+                "currency": "USD"
+              },
+              "displayValue": "$7,500 USD",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-2b34d534b6b35769",
+                  "url": "https://globalscholars.yale.edu/tuition",
+                  "title": "Tuition & Aid | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.460Z",
+                  "excerpt": "For YYGS Residential students, the full program tuition for one, 2-week session is $7,500 USD."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "chargeBasis": {
+              "claimId": "cost-residential-session-tuition-basis",
+              "status": "disclosed",
+              "value": "per_participant",
+              "displayValue": "Per participant",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-2b34d534b6b35769",
+                  "url": "https://globalscholars.yale.edu/tuition",
+                  "title": "Tuition & Aid | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.460Z",
+                  "excerpt": "For YYGS Residential students, the full program tuition for one, 2-week session is $7,500 USD."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "treatment": null,
+            "refundability": {
+              "claimId": "cost-residential-session-tuition-refundability",
+              "status": "disclosed",
+              "value": {
+                "kind": "conditional",
+                "condition": "Non-refundable except in extreme circumstances such as documented visa denial or family medical emergency."
+              },
+              "displayValue": "Conditionally refundable in documented extreme circumstances",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-2b34d534b6b35769",
+                  "url": "https://globalscholars.yale.edu/tuition",
+                  "title": "Tuition & Aid | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.460Z",
+                  "excerpt": "Please note that any/all YYGS tuition payments made are non-refundable, except in extreme circumstances such as visa denial or family medical emergency where documentation can be provided to YYGS (e.g., of good faith attempts to secure a visa, with an official doctor’s note from a non-relative)."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "includedItems": [
+              {
+                "claimId": "cost-residential-session-tuition-includes",
+                "status": "disclosed",
+                "value": "Housing, meals, curriculum materials, and air chilled rooms",
+                "displayValue": "Housing, meals, curriculum materials, and air chilled rooms",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-2b34d534b6b35769",
+                    "url": "https://globalscholars.yale.edu/tuition",
+                    "title": "Tuition & Aid | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.460Z",
+                    "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              }
+            ],
+            "excludedItems": [
+              {
+                "claimId": "cost-residential-session-tuition-excludes",
+                "status": "disclosed",
+                "value": "Travel",
+                "displayValue": "Travel",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-2b34d534b6b35769",
+                    "url": "https://globalscholars.yale.edu/tuition",
+                    "title": "Tuition & Aid | Yale Young Global Scholars",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:38:14.460Z",
+                    "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              }
+            ],
+            "conditions": []
+          },
+          {
+            "id": "early-action-application-fee",
+            "definition": {
+              "claimId": "cost-early-action-fee-definition",
+              "status": "disclosed",
+              "value": {
+                "label": "Early Action application fee",
+                "kind": "application_fee",
+                "requirement": "required",
+                "scope": {
+                  "variantIds": [],
+                  "stageIds": [],
+                  "pathwayIds": []
+                }
+              },
+              "displayValue": "Early Action application fee",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-65e82225287610ae",
+                  "url": "https://globalscholars.yale.edu/how-to-apply",
+                  "title": "How to Apply | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.752Z",
+                  "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "amount": {
+              "claimId": "cost-early-action-fee-amount",
+              "status": "disclosed",
+              "value": {
+                "kind": "exact",
+                "amount": 85,
+                "currency": "USD"
+              },
+              "displayValue": "$85 USD",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-65e82225287610ae",
+                  "url": "https://globalscholars.yale.edu/how-to-apply",
+                  "title": "How to Apply | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.752Z",
+                  "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "chargeBasis": {
+              "claimId": "cost-early-action-fee-basis",
+              "status": "disclosed",
+              "value": "per_application",
+              "displayValue": "Per application",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-65e82225287610ae",
+                  "url": "https://globalscholars.yale.edu/how-to-apply",
+                  "title": "How to Apply | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.752Z",
+                  "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "treatment": null,
+            "refundability": {
+              "claimId": "cost-early-action-fee-refundability",
+              "status": "disclosed",
+              "value": {
+                "kind": "nonrefundable",
+                "condition": null
+              },
+              "displayValue": "Non-refundable",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-65e82225287610ae",
+                  "url": "https://globalscholars.yale.edu/how-to-apply",
+                  "title": "How to Apply | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.752Z",
+                  "excerpt": "All YYGS application fees are non-refundable."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "includedItems": [],
+            "excludedItems": [],
+            "conditions": []
+          },
+          {
+            "id": "regular-decision-application-fee",
+            "definition": {
+              "claimId": "cost-regular-decision-fee-definition",
+              "status": "disclosed",
+              "value": {
+                "label": "Regular Decision application fee",
+                "kind": "application_fee",
+                "requirement": "required",
+                "scope": {
+                  "variantIds": [],
+                  "stageIds": [],
+                  "pathwayIds": []
+                }
+              },
+              "displayValue": "Regular Decision application fee",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-65e82225287610ae",
+                  "url": "https://globalscholars.yale.edu/how-to-apply",
+                  "title": "How to Apply | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.752Z",
+                  "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "amount": {
+              "claimId": "cost-regular-decision-fee-amount",
+              "status": "disclosed",
+              "value": {
+                "kind": "exact",
+                "amount": 100,
+                "currency": "USD"
+              },
+              "displayValue": "$100 USD",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-65e82225287610ae",
+                  "url": "https://globalscholars.yale.edu/how-to-apply",
+                  "title": "How to Apply | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.752Z",
+                  "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "chargeBasis": {
+              "claimId": "cost-regular-decision-fee-basis",
+              "status": "disclosed",
+              "value": "per_application",
+              "displayValue": "Per application",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-65e82225287610ae",
+                  "url": "https://globalscholars.yale.edu/how-to-apply",
+                  "title": "How to Apply | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.752Z",
+                  "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "treatment": null,
+            "refundability": {
+              "claimId": "cost-regular-decision-fee-refundability",
+              "status": "disclosed",
+              "value": {
+                "kind": "nonrefundable",
+                "condition": null
+              },
+              "displayValue": "Non-refundable",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-65e82225287610ae",
+                  "url": "https://globalscholars.yale.edu/how-to-apply",
+                  "title": "How to Apply | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.752Z",
+                  "excerpt": "All YYGS application fees are non-refundable."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "includedItems": [],
+            "excludedItems": [],
+            "conditions": []
+          }
+        ],
+        "note": "Potential external payment-processing fees are disclosed but amount and applicability are not sufficiently specified for a cost record.",
+        "completeness": "incomplete"
+      },
+      "outcomes": {
+        "status": "modeled",
+        "records": [
+          {
+            "id": "need-based-tuition-discount",
+            "definition": {
+              "claimId": "outcome-need-based-tuition-discount-definition",
+              "status": "disclosed",
+              "value": {
+                "label": "Need-based tuition discount",
+                "outcomeType": "tuition_waiver",
+                "scope": {
+                  "variantIds": [],
+                  "stageIds": [],
+                  "pathwayIds": []
+                }
+              },
+              "displayValue": "Need-based tuition discount",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-28bd2f589643105b",
+                  "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+                  "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:15.370Z",
+                  "excerpt": "YYGS is proud to be one of the only pre-college programs in the world that provides need-based financial aid equally to both domestic and international students, which is offered as a tuition discount (up to 100% of tuition)."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "recipientScope": {
+              "claimId": "outcome-need-based-tuition-discount-recipient",
+              "status": "disclosed",
+              "value": "individual",
+              "displayValue": "Individual student",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-28bd2f589643105b",
+                  "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+                  "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:15.370Z",
+                  "excerpt": "Students with demonstrated financial need are encouraged to apply for YYGS need-based financial aid."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "monetaryNature": null,
+            "amount": {
+              "claimId": "outcome-need-based-tuition-discount-amount",
+              "status": "disclosed",
+              "value": {
+                "kind": "exact",
+                "amount": 7500,
+                "currency": "USD"
+              },
+              "displayValue": "Up to $7,500 USD for one session",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-28bd2f589643105b",
+                  "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+                  "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:15.370Z",
+                  "excerpt": "YYGS is proud to be one of the only pre-college programs in the world that provides need-based financial aid equally to both domestic and international students, which is offered as a tuition discount (up to 100% of tuition)."
+                },
+                {
+                  "id": "page-2b34d534b6b35769",
+                  "url": "https://globalscholars.yale.edu/tuition",
+                  "title": "Tuition & Aid | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:14.460Z",
+                  "excerpt": "For YYGS Residential students, the full program tuition for one, 2-week session is $7,500 USD."
+                }
+              ],
+              "note": "Maximum one-session tuition discount; not cash.",
+              "conflictingValues": []
+            },
+            "distribution": null,
+            "rank": null,
+            "track": null,
+            "quantity": null,
+            "useRestriction": {
+              "claimId": "outcome-need-based-tuition-discount-restriction",
+              "status": "disclosed",
+              "value": "Available to students with demonstrated financial need; applied as a tuition discount.",
+              "displayValue": "Demonstrated financial need; tuition discount",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-28bd2f589643105b",
+                  "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+                  "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:15.370Z",
+                  "excerpt": "For students with demonstrated financial need, we strive to ensure that cost of attendance will not prevent anyone from anywhere in the world from participating in YYGS."
+                },
+                {
+                  "id": "page-28bd2f589643105b",
+                  "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+                  "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:38:15.370Z",
+                  "excerpt": "YYGS is proud to be one of the only pre-college programs in the world that provides need-based financial aid equally to both domestic and international students, which is offered as a tuition discount (up to 100% of tuition)."
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "combinability": null,
+            "conditions": []
+          }
+        ],
+        "note": null
+      },
+      "facts": {
+        "opportunity_name": {
+          "status": "disclosed",
+          "value": "Yale Young Global Scholars (YYGS)",
+          "displayValue": "Yale Young Global Scholars (YYGS)",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Yale Young Global Scholars (YYGS)"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Yale Young Global Scholars (YYGS) is an academic enrichment program for outstanding high school students from around the world."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "opportunity_category": {
+          "status": "disclosed",
+          "value": "Academic enrichment program",
+          "displayValue": "Academic enrichment program",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Academic enrichment program"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Yale Young Global Scholars (YYGS) is an academic enrichment program for outstanding high school students from around the world."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "official_url": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "operating_organization": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "organization_type": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "named_institution": {
+          "status": "disclosed",
+          "value": "Yale University",
+          "displayValue": "Yale University",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Yale University"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Immerse yourself in a global learning community at Yale University."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "institution_relationship": {
+          "status": "disclosed",
+          "value": "hosted_at_institution",
+          "displayValue": "Hosted at Yale University",
+          "normalizedValue": {
+            "kind": "relationship",
+            "value": "hosted_at_institution"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Each summer, students from over 150 countries (including all 50 U.S. states) participate in one interdisciplinary, two-week session at Yale’s historic campus."
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "relationship_explanation": {
+          "status": "disclosed",
+          "value": "Students participate in sessions at Yale’s historic campus and in a learning community at Yale University.",
+          "displayValue": "Students participate in sessions at Yale’s historic campus and in a learning community at Yale University.",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Students participate in sessions at Yale's historic campus and in a learning community at Yale University."
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Each summer, students from over 150 countries (including all 50 U.S. states) participate in one interdisciplinary, two-week session at Yale’s historic campus. Immerse yourself in a global learning community at Yale University."
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "grade_levels": {
+          "status": "disclosed",
+          "value": [
+            "Current high school sophomores",
+            "Current high school juniors",
+            "International equivalents"
+          ],
+          "displayValue": "Current high school sophomores or juniors (or international equivalent)",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Current high school sophomores",
+              "Current high school juniors",
+              "International equivalents"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-d298b51f9dc5c56a",
+              "url": "https://globalscholars.yale.edu/eligibility",
+              "title": "Eligibility | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.594Z",
+              "excerpt": "Grade Level | Be a current high school sophomore or junior (or international equivalent)."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "ages": {
+          "status": "disclosed",
+          "value": "16–18 years old by July 19, 2027",
+          "displayValue": "16–18 years old by July 19, 2027",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "16-18 years old by July 19, 2027"
+          },
+          "sources": [
+            {
+              "id": "page-d298b51f9dc5c56a",
+              "url": "https://globalscholars.yale.edu/eligibility",
+              "title": "Eligibility | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.594Z",
+              "excerpt": "Age | Be between the ages of 16-18 years old by July 19, 2027 (first day of Session III).*"
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "geographic_restrictions": {
+          "status": "disclosed",
+          "value": "Applications accepted from all countries",
+          "displayValue": "Applications accepted from all countries",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Applications accepted from all countries"
+          },
+          "sources": [
+            {
+              "id": "page-d298b51f9dc5c56a",
+              "url": "https://globalscholars.yale.edu/eligibility",
+              "title": "Eligibility | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.594Z",
+              "excerpt": "YYGS accepts applications from ALL countries, and offers the opportunity for students to apply for need-based financial aid to students from ALL countries."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "citizenship_restrictions": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "prerequisite_skills": {
+          "status": "disclosed",
+          "value": [
+            "Ability to participate in a rigorous academic curriculum conducted in English"
+          ],
+          "displayValue": "English fluency sufficient to participate in a rigorous academic curriculum",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Ability to participate in a rigorous academic curriculum conducted in English"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-d298b51f9dc5c56a",
+              "url": "https://globalscholars.yale.edu/eligibility",
+              "title": "Eligibility | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.594Z",
+              "excerpt": "English Fluency | Be able to participate in a rigorous academic curriculum conducted in English."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "entry_format": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "sponsor_requirement": {
+          "status": "disclosed",
+          "value": "Applicants must submit contact information for a parent/guardian, teacher, and/or school official.",
+          "displayValue": "Contact information for a parent/guardian, teacher, and/or school official required",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Applicants must submit contact information for a parent/guardian, teacher, and/or school official."
+          },
+          "sources": [
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "You will need to submit contact information for a parent/guardian, teacher, and/or official at your school."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_deadline": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "decision_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "Admissions decisions will be released by mid-December (for Early Action) and mid-March (for Regular Decision)."
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "start_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Session I Residential(June 20 - July 2)"
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "end_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Session III Residential(July 18 - July 30)"
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "duration": {
+          "status": "disclosed",
+          "value": 2,
+          "displayValue": "Two weeks per session",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Each summer, students from over 150 countries (including all 50 U.S. states) participate in one interdisciplinary, two-week session at Yale’s historic campus."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "weekly_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "required_live_hours": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-a634ed7e010dce55",
+              "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+              "title": "Rules & Regulations | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.029Z",
+              "excerpt": "Scholars will attend required appointments including lectures, seminars, and other meetings, unless they are seeking help from a staff member for health or similar emergency reasons."
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "participation_format": {
+          "status": "disclosed",
+          "value": "residential",
+          "displayValue": "Residential",
+          "normalizedValue": {
+            "kind": "participation_format",
+            "value": "residential"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "YYGS is excited to offer residential sessions for June & July 2027. We are not offering online sessions at this time."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "location": {
+          "status": "disclosed",
+          "value": "Yale's historic campus / Yale University",
+          "displayValue": "Yale's historic campus / Yale University",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Yale's historic campus / Yale University"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Each summer, students from over 150 countries (including all 50 U.S. states) participate in one interdisciplinary, two-week session at Yale’s historic campus. Immerse yourself in a global learning community at Yale University."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_requirements": {
+          "status": "disclosed",
+          "value": "Travel is not covered by the program.",
+          "displayValue": "Travel is not covered",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Travel is not covered by the program."
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+            }
+          ],
+          "note": null,
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_fee": {
+          "status": "disclosed",
+          "value": "Varies by program/cohort",
+          "displayValue": "Varies by program/cohort",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+            },
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "All YYGS application fees are non-refundable."
+            }
+          ],
+          "note": "Early Action application fee: $85 USD; Regular Decision application fee: $100 USD",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": {
+            "schemaVersion": "2.0.0",
+            "rule": "costs.application_fee-matrix",
+            "claimRefs": [
+              "cost-early-action-fee-definition",
+              "cost-early-action-fee-amount",
+              "cost-early-action-fee-basis",
+              "cost-early-action-fee-refundability",
+              "cost-regular-decision-fee-definition",
+              "cost-regular-decision-fee-amount",
+              "cost-regular-decision-fee-basis",
+              "cost-regular-decision-fee-refundability"
+            ]
+          }
+        },
+        "deposit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition": {
+          "status": "disclosed",
+          "value": 7500,
+          "displayValue": "$7,500 USD",
+          "normalizedValue": {
+            "kind": "money",
+            "amount": 7500,
+            "currency": "USD",
+            "classification": "fee"
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "For YYGS Residential students, the full program tuition for one, 2-week session is $7,500 USD."
+            },
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that any/all YYGS tuition payments made are non-refundable, except in extreme circumstances such as visa denial or family medical emergency where documentation can be provided to YYGS (e.g., of good faith attempts to secure a visa, with an official doctor’s note from a non-relative)."
+            },
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": {
+            "schemaVersion": "2.0.0",
+            "rule": "costs.tuition",
+            "claimRefs": [
+              "cost-residential-session-tuition-definition",
+              "cost-residential-session-tuition-amount",
+              "cost-residential-session-tuition-basis",
+              "cost-residential-session-tuition-refundability",
+              "cost-residential-session-tuition-includes",
+              "cost-residential-session-tuition-excludes"
+            ]
+          }
+        },
+        "other_mandatory_costs": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Tuition payments can be subject to processing fees by the external payment processor (Slate or FlyWire)."
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "estimated_total_mandatory_cost": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "For YYGS Residential students, the full program tuition for one, 2-week session is $7,500 USD."
+            },
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that any/all YYGS tuition payments made are non-refundable, except in extreme circumstances such as visa denial or family medical emergency where documentation can be provided to YYGS (e.g., of good faith attempts to secure a visa, with an official doctor’s note from a non-relative)."
+            },
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+            },
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "In your Applicant Status Portal, pay the $85 USD Early Action fee or $100 USD Regular Decision fee*."
+            },
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "All YYGS application fees are non-refundable."
+            }
+          ],
+          "note": "The reviewed cost inventory contains source-backed items but does not establish that every applicable mandatory charge is known.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": {
+            "schemaVersion": "2.0.0",
+            "rule": "costs.total-incomplete",
+            "claimRefs": [
+              "cost-residential-session-tuition-definition",
+              "cost-residential-session-tuition-amount",
+              "cost-residential-session-tuition-basis",
+              "cost-residential-session-tuition-refundability",
+              "cost-residential-session-tuition-includes",
+              "cost-residential-session-tuition-excludes",
+              "cost-early-action-fee-definition",
+              "cost-early-action-fee-amount",
+              "cost-early-action-fee-basis",
+              "cost-early-action-fee-refundability",
+              "cost-regular-decision-fee-definition",
+              "cost-regular-decision-fee-amount",
+              "cost-regular-decision-fee-basis",
+              "cost-regular-decision-fee-refundability"
+            ]
+          }
+        },
+        "travel_included": {
+          "status": "disclosed",
+          "value": false,
+          "displayValue": "No",
+          "normalizedValue": {
+            "kind": "boolean",
+            "value": false
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "lodging_included": {
+          "status": "disclosed",
+          "value": true,
+          "displayValue": "Yes, housing is covered by tuition",
+          "normalizedValue": {
+            "kind": "boolean",
+            "value": true
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "meals_included": {
+          "status": "disclosed",
+          "value": true,
+          "displayValue": "Yes, meals are covered by tuition",
+          "normalizedValue": {
+            "kind": "boolean",
+            "value": true
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "financial_aid": {
+          "status": "disclosed",
+          "value": "Need-based financial aid is offered as a tuition discount of up to 100% of tuition, equally to domestic and international students.",
+          "displayValue": "Need-based tuition discount up to 100%",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Need-based financial aid is offered as a tuition discount of up to 100% of tuition, equally to domestic and international students."
+          },
+          "sources": [
+            {
+              "id": "page-28bd2f589643105b",
+              "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+              "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:15.370Z",
+              "excerpt": "YYGS is proud to be one of the only pre-college programs in the world that provides need-based financial aid equally to both domestic and international students, which is offered as a tuition discount (up to 100% of tuition)."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "refund_policy": {
+          "status": "disclosed",
+          "value": "Tuition payments are non-refundable except in extreme circumstances such as documented visa denial or family medical emergency.",
+          "displayValue": "Non-refundable except documented extreme circumstances",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Tuition payments are non-refundable except in extreme circumstances such as documented visa denial or family medical emergency."
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that any/all YYGS tuition payments made are non-refundable, except in extreme circumstances such as visa denial or family medical emergency where documentation can be provided to YYGS (e.g., of good faith attempts to secure a visa, with an official doctor’s note from a non-relative)."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_policy": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_process": {
+          "status": "disclosed",
+          "value": "Applicants complete and submit an application, pay the applicable fee unless a fee waiver is approved, and receive an admissions decision through Early Action or Regular Decision.",
+          "displayValue": "Application submission, fee/waiver review, then Early Action or Regular Decision notification",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Applicants complete and submit an application, pay the applicable fee unless a fee waiver is approved, and receive an admissions decision through Early Action or Regular Decision."
+          },
+          "sources": [
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "Once your application is complete, click on the “Review” page. Next click on the “Submit Application” button at the bottom of the page."
+            },
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "If your Fee Waiver Request is denied, then your application will not be reviewed until the YYGS application fee is paid."
+            }
+          ],
+          "note": null,
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "applicant_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_rate_claim": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "calculated_acceptance_rate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_evidence": {
+          "status": "disclosed",
+          "value": "Descriptive application-process evidence; no numerical selection statistics supplied.",
+          "displayValue": "Descriptive",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Descriptive application-process evidence; no numerical selection statistics supplied."
+          },
+          "sources": [
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "Decision Notification: *Please review the Early Action and Regular Decision information for important, specific deadlines, dates, and times. Admissions decisions will be released by mid-December (for Early Action) and mid-March (for Regular Decision)."
+            }
+          ],
+          "note": null,
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cash_award": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "stipend": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition_waiver": {
+          "status": "disclosed",
+          "value": 7500,
+          "displayValue": "Need-based tuition discount — Up to $7,500 USD for one session/individual",
+          "normalizedValue": {
+            "kind": "money",
+            "amount": 7500,
+            "currency": "USD",
+            "classification": "tuition_waiver"
+          },
+          "sources": [
+            {
+              "id": "page-28bd2f589643105b",
+              "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+              "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:15.370Z",
+              "excerpt": "YYGS is proud to be one of the only pre-college programs in the world that provides need-based financial aid equally to both domestic and international students, which is offered as a tuition discount (up to 100% of tuition)."
+            },
+            {
+              "id": "page-28bd2f589643105b",
+              "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+              "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:15.370Z",
+              "excerpt": "Students with demonstrated financial need are encouraged to apply for YYGS need-based financial aid."
+            },
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "For YYGS Residential students, the full program tuition for one, 2-week session is $7,500 USD."
+            },
+            {
+              "id": "page-28bd2f589643105b",
+              "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+              "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:15.370Z",
+              "excerpt": "For students with demonstrated financial need, we strive to ensure that cost of attendance will not prevent anyone from anywhere in the world from participating in YYGS."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": {
+            "schemaVersion": "2.0.0",
+            "rule": "outcomes.tuition_waiver",
+            "claimRefs": [
+              "outcome-need-based-tuition-discount-definition",
+              "outcome-need-based-tuition-discount-recipient",
+              "outcome-need-based-tuition-discount-amount",
+              "outcome-need-based-tuition-discount-restriction"
+            ]
+          }
+        },
+        "program_seat": {
+          "status": "disclosed",
+          "value": "Admission to one interdisciplinary two-week YYGS session",
+          "displayValue": "Admission to one two-week session",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Admission to one interdisciplinary two-week YYGS session"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:13.302Z",
+              "excerpt": "Each summer, students from over 150 countries (including all 50 U.S. states) participate in one interdisciplinary, two-week session at Yale’s historic campus."
+            }
+          ],
+          "note": null,
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "in_kind_value": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "certificate": {
+          "status": "disclosed",
+          "value": true,
+          "displayValue": "Certificate of Participation",
+          "normalizedValue": {
+            "kind": "boolean",
+            "value": true
+          },
+          "sources": [
+            {
+              "id": "page-a634ed7e010dce55",
+              "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+              "title": "Rules & Regulations | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.029Z",
+              "excerpt": "YYGS does not permit scholars to miss any part of our programming for any reason; scholars must be present in every part of programming in order to receive a YYGS Certificate of Participation."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "college_credit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "mentorship": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_benefits": {
+          "status": "disclosed",
+          "value": [
+            "Housing",
+            "Meals",
+            "Curriculum materials",
+            "Air chilled rooms"
+          ],
+          "displayValue": "Housing, meals, curriculum materials, and air chilled rooms",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Housing",
+              "Meals",
+              "Curriculum materials",
+              "Air chilled rooms"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that tuition covers all on-campus components of the program (housing, meals, curriculum materials, air chilled rooms, etc.), but travel is not covered due to our program size and the legal and logistical limitations of working with globally diverse families."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "personal_information": {
+          "status": "disclosed",
+          "value": [
+            "Contact information for a parent/guardian",
+            "Contact information for a teacher and/or school official",
+            "Financial-aid application information"
+          ],
+          "displayValue": "Parent/guardian, teacher/school-official contact information; financial-aid application information",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Contact information for a parent/guardian",
+              "Contact information for a teacher and/or school official",
+              "Financial-aid application information"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.752Z",
+              "excerpt": "You will need to submit contact information for a parent/guardian, teacher, and/or official at your school."
+            },
+            {
+              "id": "page-28bd2f589643105b",
+              "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+              "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:15.370Z",
+              "excerpt": "Please know that the information you provide will be kept confidential."
+            }
+          ],
+          "note": null,
+          "confidence": 0.85,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "data_sharing": {
+          "status": "disclosed",
+          "value": "Information provided in the financial-aid application will be kept confidential.",
+          "displayValue": "Financial-aid information kept confidential",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Information provided in the financial-aid application will be kept confidential."
+          },
+          "sources": [
+            {
+              "id": "page-28bd2f589643105b",
+              "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+              "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:15.370Z",
+              "excerpt": "Please know that the information you provide will be kept confidential."
+            }
+          ],
+          "note": null,
+          "confidence": 0.8,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_ownership": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_license": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "publicity_rights": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "confidentiality": {
+          "status": "disclosed",
+          "value": "Financial-aid application information will be kept confidential.",
+          "displayValue": "Financial-aid information kept confidential",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Financial-aid application information will be kept confidential."
+          },
+          "sources": [
+            {
+              "id": "page-28bd2f589643105b",
+              "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+              "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:15.370Z",
+              "excerpt": "Please know that the information you provide will be kept confidential."
+            }
+          ],
+          "note": null,
+          "confidence": 0.8,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_rights": {
+          "status": "disclosed",
+          "value": "YYGS reserves the right to implement new safety measures before or during the program.",
+          "displayValue": "YYGS may implement new safety measures",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "YYGS reserves the right to implement new safety measures before or during the program."
+          },
+          "sources": [
+            {
+              "id": "page-a634ed7e010dce55",
+              "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+              "title": "Rules & Regulations | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.029Z",
+              "excerpt": "Given the evolving nature of the COVID-19 pandemic and changing best practices for health and safety protocols, YYGS reserves the right to implement new safety measures (e.g., mask mandates, social distancing) at any time before or during the program."
+            }
+          ],
+          "note": null,
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "material_terms": {
+          "status": "disclosed",
+          "value": [
+            "Participants must attend every part of programming to receive a YYGS Certificate of Participation.",
+            "Tuition payments are non-refundable except in documented extreme circumstances.",
+            "Video, audio, or digital recording of program sessions is forbidden without written permission."
+          ],
+          "displayValue": "Attendance, non-refundability, and recording restrictions",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Participants must attend every part of programming to receive a YYGS Certificate of Participation.",
+              "Tuition payments are non-refundable except in documented extreme circumstances.",
+              "Video, audio, or digital recording of program sessions is forbidden without written permission."
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-a634ed7e010dce55",
+              "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+              "title": "Rules & Regulations | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.029Z",
+              "excerpt": "YYGS does not permit scholars to miss any part of our programming for any reason; scholars must be present in every part of programming in order to receive a YYGS Certificate of Participation."
+            },
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.460Z",
+              "excerpt": "Please note that any/all YYGS tuition payments made are non-refundable, except in extreme circumstances such as visa denial or family medical emergency where documentation can be provided to YYGS (e.g., of good faith attempts to secure a visa, with an official doctor’s note from a non-relative)."
+            },
+            {
+              "id": "page-a634ed7e010dce55",
+              "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+              "title": "Rules & Regulations | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:38:14.029Z",
+              "excerpt": "Video, audio or digital recording of program sessions including lectures, briefings, seminars, discussion sessions, and presentations is forbidden."
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        }
+      },
+      "projectionRefs": {
+        "application_fee": [
+          "cost-early-action-fee-definition",
+          "cost-early-action-fee-amount",
+          "cost-early-action-fee-basis",
+          "cost-early-action-fee-refundability",
+          "cost-regular-decision-fee-definition",
+          "cost-regular-decision-fee-amount",
+          "cost-regular-decision-fee-basis",
+          "cost-regular-decision-fee-refundability"
+        ],
+        "tuition": [
+          "cost-residential-session-tuition-definition",
+          "cost-residential-session-tuition-amount",
+          "cost-residential-session-tuition-basis",
+          "cost-residential-session-tuition-refundability",
+          "cost-residential-session-tuition-includes",
+          "cost-residential-session-tuition-excludes"
+        ],
+        "estimated_total_mandatory_cost": [
+          "cost-residential-session-tuition-definition",
+          "cost-residential-session-tuition-amount",
+          "cost-residential-session-tuition-basis",
+          "cost-residential-session-tuition-refundability",
+          "cost-residential-session-tuition-includes",
+          "cost-residential-session-tuition-excludes",
+          "cost-early-action-fee-definition",
+          "cost-early-action-fee-amount",
+          "cost-early-action-fee-basis",
+          "cost-early-action-fee-refundability",
+          "cost-regular-decision-fee-definition",
+          "cost-regular-decision-fee-amount",
+          "cost-regular-decision-fee-basis",
+          "cost-regular-decision-fee-refundability"
+        ],
+        "tuition_waiver": [
+          "outcome-need-based-tuition-discount-definition",
+          "outcome-need-based-tuition-discount-recipient",
+          "outcome-need-based-tuition-discount-amount",
+          "outcome-need-based-tuition-discount-restriction"
+        ]
+      },
+      "migratedFrom": null
+    },
+    "reviewedPages": [
+      {
+        "id": "page-961ea664b8eaecd1",
+        "url": "https://globalscholars.yale.edu/",
+        "title": "Welcome | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:38:13.302Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-a634ed7e010dce55",
+        "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+        "title": "Rules & Regulations | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:38:14.029Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-2b34d534b6b35769",
+        "url": "https://globalscholars.yale.edu/tuition",
+        "title": "Tuition & Aid | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:38:14.460Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-d298b51f9dc5c56a",
+        "url": "https://globalscholars.yale.edu/eligibility",
+        "title": "Eligibility | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:38:14.594Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-65e82225287610ae",
+        "url": "https://globalscholars.yale.edu/how-to-apply",
+        "title": "How to Apply | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:38:14.752Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-28bd2f589643105b",
+        "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+        "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:38:15.370Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-93ad204f05c2a653",
+        "url": "https://globalscholars.yale.edu/about",
+        "title": "About | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:38:15.724Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      }
+    ]
+  },
+  "failure": null,
+  "secretsRetained": false
+}

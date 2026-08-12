@@ -1,0 +1,3061 @@
+{
+  "artifactVersion": 1,
+  "benchmarkStage": "evaluation",
+  "developmentSet": false,
+  "run": 1,
+  "program": {
+    "slug": "questbridge-national-college-match-2026",
+    "label": "QuestBridge National College Match — 2026 / Fall 2027"
+  },
+  "repository": {
+    "gitCommit": "0746d8e772b63b26bee6a909a6c15311154e1ff7",
+    "workingTreeDirty": true,
+    "extractionCodeHash": {
+      "algorithm": "sha256",
+      "value": "6a26033f9508c0613a79af0548a694465d2582d9fd3167c79e4e66d4618fa8e8",
+      "files": [
+        "lib/analysis/fetch.ts",
+        "lib/analysis/html-extraction.ts",
+        "lib/analysis/link-discovery.ts",
+        "lib/analysis/model-extraction.ts",
+        "lib/analysis/pipeline.ts",
+        "lib/analysis/types.ts",
+        "lib/analysis/url-safety.ts",
+        "lib/opportunity/projection.ts",
+        "lib/opportunity/schema-v2.ts",
+        "lib/opportunity/structured-schema.ts"
+      ]
+    }
+  },
+  "schemaVersion": "2.0.0",
+  "provider": {
+    "name": "openai",
+    "endpoint": "responses",
+    "model": "gpt-5.6-terra",
+    "settings": {
+      "store": false,
+      "reasoningEffort": "low",
+      "maxOutputTokens": 24000,
+      "requestTimeoutMs": 120000,
+      "maximumRetries": 0
+    },
+    "telemetry": {
+      "model": "gpt-5.6-terra",
+      "responseId": "resp_086a544889443c98016a7c168dc7d08194b50bffc5c7025600",
+      "usage": {
+        "inputTokens": 56990,
+        "cachedInputTokens": 44150,
+        "outputTokens": 11223,
+        "reasoningTokens": 337,
+        "totalTokens": 68213
+      }
+    }
+  },
+  "input": {
+    "mode": "url",
+    "startingUrl": "https://www.questbridge.org/apply-to-college/programs/national-college-match"
+  },
+  "timing": {
+    "startedAt": "2026-08-12T06:45:29.831Z",
+    "modelStartedAt": "2026-08-12T06:45:31.581Z",
+    "modelFinishedAt": "2026-08-12T06:46:53.181Z",
+    "finishedAt": "2026-08-12T06:46:53.255Z",
+    "totalRuntimeMs": 83424,
+    "acquisitionRuntimeMs": 1750,
+    "modelRuntimeMs": 81600
+  },
+  "acquisition": {
+    "submittedUrl": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+    "successfullyAcquired": [
+      {
+        "role": "submitted",
+        "id": "page-489197c11071d3e6",
+        "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+        "title": "National College Match | QuestBridge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:45:30.123Z",
+        "extractedCharacters": 3109,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 3109,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-ab5b5eaa659bd9ab",
+        "url": "https://www.questbridge.org/privacy-policy",
+        "title": "Privacy Policy | QuestBridge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:45:30.402Z",
+        "extractedCharacters": 42112,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 42112,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-940eb728cb6f9199",
+        "url": "https://www.questbridge.org/apply-to-college/programs/college-prep-scholars-program/scholarships-and-awards",
+        "title": "Scholarships & Awards | QuestBridge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:45:30.642Z",
+        "extractedCharacters": 1032,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 1032,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-b543f62e1cba9923",
+        "url": "https://www.questbridge.org/apply-to-college/programs/college-prep-scholars-program/scholarships-and-awards/national-college-admissions-conferences",
+        "title": "National College Admissions Conferences | QuestBridge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:45:30.872Z",
+        "extractedCharacters": 2210,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 2210,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-73177402e77695e6",
+        "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+        "title": "Dates & Deadlines | QuestBridge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:45:31.117Z",
+        "extractedCharacters": 4113,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 4113,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-c7a25a8d43a2c8fe",
+        "url": "https://www.questbridge.org/apply-to-college/programs/college-prep-scholars-program/scholarships-and-awards/quest-for-excellence-awards",
+        "title": "Quest for Excellence Awards | QuestBridge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:45:31.332Z",
+        "extractedCharacters": 3199,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 3199,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-8b34ff34564cb741",
+        "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+        "title": "Apply to the National College Match | QuestBridge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:45:31.551Z",
+        "extractedCharacters": 7462,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 7462,
+        "truncatedForModel": false
+      }
+    ],
+    "failures": []
+  },
+  "modelOutput": {
+    "rawStructuredCandidate": {
+      "facts": {
+        "opportunity_name": {
+          "status": "disclosed",
+          "value": "National College Match",
+          "displayValue": "National College Match",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "National College Match"
+          },
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "National College Match"
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "opportunity_category": {
+          "status": "disclosed",
+          "value": "College admission and scholarship matching program",
+          "displayValue": "College admission and scholarship matching program",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "College admission and scholarship matching program"
+          },
+          "sources": [
+            {
+              "id": "page-ab5b5eaa659bd9ab",
+              "url": "https://www.questbridge.org/privacy-policy",
+              "title": "Privacy Policy | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.402Z",
+              "excerpt": "our National College Match program which offers you an opportunity to be matched with one of our partner colleges or universities for early admission and a full scholarship"
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "official_url": {
+          "status": "disclosed",
+          "value": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+          "displayValue": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "https://www.questbridge.org/apply-to-college/programs/national-college-match"
+          },
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "National College Match"
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "operating_organization": {
+          "status": "disclosed",
+          "value": "QuestBridge",
+          "displayValue": "QuestBridge",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "QuestBridge"
+          },
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "Through QuestBridge, high-achieving students from low-income backgrounds can apply for free for early admission and a full four-year scholarship at our 55 college partners."
+            }
+          ],
+          "note": null,
+          "confidence": 0.82,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "organization_type": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No reviewed source explicitly states QuestBridge's organization type.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "named_institution": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "apply for full four-year scholarships to 55 top colleges through QuestBridge."
+            }
+          ],
+          "note": "The source identifies 55 college partners but does not provide one specific institution as the opportunity's named institution.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "institution_relationship": {
+          "status": "disclosed",
+          "value": "institution_partnered",
+          "displayValue": "Partnered with 55 college partners",
+          "normalizedValue": {
+            "kind": "relationship",
+            "value": "institution_partnered"
+          },
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "Through QuestBridge, high-achieving students from low-income backgrounds can apply for free for early admission and a full four-year scholarship at our 55 college partners."
+            }
+          ],
+          "note": "The source describes college partners collectively, without naming a single institution in the supplied excerpt.",
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "relationship_explanation": {
+          "status": "disclosed",
+          "value": "Applicants can apply through QuestBridge for early admission and full four-year scholarships at its 55 college partners.",
+          "displayValue": "Applicants can apply through QuestBridge for early admission and full four-year scholarships at its 55 college partners.",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Applicants can apply through QuestBridge for early admission and full four-year scholarships at its 55 college partners."
+          },
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "Through QuestBridge, high-achieving students from low-income backgrounds can apply for free for early admission and a full four-year scholarship at our 55 college partners."
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "grade_levels": {
+          "status": "disclosed",
+          "value": [
+            "High school seniors"
+          ],
+          "displayValue": "High school seniors",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "High school seniors"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "Through the National College Match, high-achieving high school seniors from low-income backgrounds can apply for early admission and full four-year scholarships"
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "ages": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No participant age range is stated for the National College Match.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "geographic_restrictions": {
+          "status": "disclosed",
+          "value": "Open to high school seniors currently attending high school in the U.S. and U.S. Citizens and Permanent Residents living abroad; international students living outside the U.S. are not eligible.",
+          "displayValue": "High school seniors in the U.S.; U.S. citizens and permanent residents abroad; international students outside the U.S. are ineligible",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Open to high school seniors currently attending high school in the U.S. and U.S. Citizens and Permanent Residents living abroad; international students living outside the U.S. are not eligible."
+          },
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "It is open to any high school senior currently attending high school in the U.S. and U.S. Citizens and Permanent Residents living abroad. International students living outside the U.S. are not eligible."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "citizenship_restrictions": {
+          "status": "disclosed",
+          "value": "U.S. Citizens and Permanent Residents living abroad are eligible; international students living outside the U.S. are not eligible.",
+          "displayValue": "U.S. citizens and permanent residents abroad eligible; international students outside the U.S. ineligible",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "U.S. Citizens and Permanent Residents living abroad are eligible; international students living outside the U.S. are not eligible."
+          },
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "It is open to any high school senior currently attending high school in the U.S. and U.S. Citizens and Permanent Residents living abroad. International students living outside the U.S. are not eligible."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "prerequisite_skills": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "Typically, National College Match Finalists… Earn primarily A’s in the most challenging courses available and display intellectual curiosity and strong writing ability."
+            }
+          ],
+          "note": "The source provides typical finalist characteristics, rather than absolute prerequisite skills.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "entry_format": {
+          "status": "disclosed",
+          "value": "Individual application",
+          "displayValue": "Individual application",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Individual application"
+          },
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "We review all applications holistically"
+            }
+          ],
+          "note": "No team-entry format is stated in the reviewed sources.",
+          "confidence": 0.7,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "sponsor_requirement": {
+          "status": "disclosed",
+          "value": "A Match Agreement Form must be signed by the applicant, parent/guardian, and school counselor for applicants submitting Match Rankings.",
+          "displayValue": "Applicant, parent/guardian, and school counselor signatures required for Match Agreement Form",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "A Match Agreement Form must be signed by the applicant, parent/guardian, and school counselor for applicants submitting Match Rankings."
+          },
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "The Match Agreement Form (available after submitting Match Rankings Form) is also due October 15. It must be signed by the applicant, their parent/guardian, and school counselor, and uploaded to the Manage page."
+            }
+          ],
+          "note": "Applies to the Match Agreement Form after submitting the Match Rankings Form.",
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_deadline": {
+          "status": "disclosed",
+          "value": "October 1",
+          "displayValue": "October 1",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "October 1 | National College Match application deadline. | Eligible high school seniors"
+            }
+          ],
+          "note": "The supplied source does not state the year for this deadline.",
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "decision_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "October 21 | Finalist decisions released on the Manage page."
+            },
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "December 1 | Match Day! Match results released through the Manage page."
+            }
+          ],
+          "note": "The source gives separate finalist-decision and Match-result dates; a single decision date is not precise.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "start_date": {
+          "status": "disclosed",
+          "value": "Late summer",
+          "displayValue": "Late summer",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "Late summer | National College Match application opens."
+            }
+          ],
+          "note": "This is the application opening, not a program attendance start date.",
+          "confidence": 0.82,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "end_date": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No overall National College Match end date is stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "duration": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No total program duration is stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "weekly_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No weekly time commitment is stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "required_live_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No required live-attendance hours are stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "participation_format": {
+          "status": "not_applicable",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "Through the National College Match, high-achieving high school seniors from low-income backgrounds can apply for early admission and full four-year scholarships to some of the nation’s top colleges"
+            }
+          ],
+          "note": "This opportunity is an admissions and scholarship matching process, not a program with a stated participation format.",
+          "confidence": 0.85,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "location": {
+          "status": "not_applicable",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "Rank up to 15 college partners to be considered for early admission and a full four-year scholarship."
+            }
+          ],
+          "note": "No single participant location applies; applicants may rank up to 15 college partners.",
+          "confidence": 0.85,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_requirements": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No travel requirement for the National College Match application process is stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_fee": {
+          "status": "disclosed",
+          "value": 0,
+          "displayValue": "Free",
+          "normalizedValue": {
+            "kind": "money",
+            "amount": 0,
+            "currency": "USD",
+            "classification": "fee"
+          },
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "High-achieving students from low-income backgrounds can apply for free to our college partners through the National College Match."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "deposit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No deposit is stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition": {
+          "status": "not_applicable",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "High-achieving students from low-income backgrounds can apply for free to our college partners through the National College Match."
+            }
+          ],
+          "note": "The National College Match application is free; it is not itself a tuition-charging program.",
+          "confidence": 0.9,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_mandatory_costs": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No other mandatory application-process costs are stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "estimated_total_mandatory_cost": {
+          "status": "disclosed",
+          "value": 0,
+          "displayValue": "$0 to apply",
+          "normalizedValue": {
+            "kind": "money",
+            "amount": 0,
+            "currency": "USD",
+            "classification": "fee"
+          },
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "High-achieving students from low-income backgrounds can apply for free to our college partners through the National College Match."
+            }
+          ],
+          "note": "This covers applying through the National College Match, not costs of attending a matched college.",
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_included": {
+          "status": "not_applicable",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "High-achieving students from low-income backgrounds can apply for free to our college partners through the National College Match."
+            }
+          ],
+          "note": "No required travel is stated for the application process.",
+          "confidence": 0.8,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "lodging_included": {
+          "status": "not_applicable",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "High-achieving students from low-income backgrounds can apply for free to our college partners through the National College Match."
+            }
+          ],
+          "note": "No lodging component is stated for the application process.",
+          "confidence": 0.8,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "meals_included": {
+          "status": "not_applicable",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "High-achieving students from low-income backgrounds can apply for free to our college partners through the National College Match."
+            }
+          ],
+          "note": "No meals component is stated for the application process.",
+          "confidence": 0.8,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "financial_aid": {
+          "status": "disclosed",
+          "value": "Matched Finalists are admitted early with a full four-year scholarship.",
+          "displayValue": "Full four-year scholarship for matched Finalists",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Matched Finalists are admitted early with a full four-year scholarship."
+          },
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "Matched? Congrats! Finalists who match are admitted early with a full four-year scholarship to the school with which they matched."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "refund_policy": {
+          "status": "not_applicable",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "High-achieving students from low-income backgrounds can apply for free to our college partners through the National College Match."
+            }
+          ],
+          "note": "The application is free, so no application-payment refund policy applies.",
+          "confidence": 0.9,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_policy": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No participant cancellation policy is stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_process": {
+          "status": "disclosed",
+          "value": "Applications are reviewed holistically; applicants rank up to 15 college partners, and selected Finalists submit additional requirements to ranked schools.",
+          "displayValue": "Holistic review; Finalists may rank up to 15 colleges and submit additional requirements",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Applications are reviewed holistically; applicants rank up to 15 college partners, and selected Finalists submit additional requirements to ranked schools."
+          },
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "We review all applications holistically, and there are no absolute criteria or cut-offs for GPA, standardized test scores, income, or other factors."
+            },
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "Rank up to 15 college partners to be considered for early admission and a full four-year scholarship."
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "applicant_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No applicant count is stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_count": {
+          "status": "disclosed",
+          "value": 2550,
+          "displayValue": "2,550 Finalists matched to a college partner in 2025",
+          "normalizedValue": {
+            "kind": "number",
+            "value": 2550,
+            "unit": "Finalists matched"
+          },
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "2,550 Finalists matched to a college partner in 2025"
+            }
+          ],
+          "note": "This is a count of Finalists matched to a college partner, not necessarily all Finalists selected.",
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_rate_claim": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No acceptance-rate percentage is directly stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "calculated_acceptance_rate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No compatible applicant and acceptance populations are published for a calculated rate.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_evidence": {
+          "status": "disclosed",
+          "value": "Descriptive holistic-review criteria and a numerical count of matched Finalists are published.",
+          "displayValue": "Descriptive and numerical",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Descriptive holistic-review criteria and a numerical count of matched Finalists are published."
+          },
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "We review all applications holistically, and there are no absolute criteria or cut-offs for GPA, standardized test scores, income, or other factors."
+            },
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "2,550 Finalists matched to a college partner in 2025"
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cash_award": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "The supplied sources describe scholarships, not cash paid to participants.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "stipend": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No participation stipend is stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition_waiver": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "Finalists who match are admitted to a college partner with a full four-year scholarship, worth over $360,000."
+            }
+          ],
+          "note": "A full scholarship is stated, but the source does not characterize it specifically as a tuition waiver or specify its components.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "program_seat": {
+          "status": "disclosed",
+          "value": "Early admission to the college with which a Finalist matches",
+          "displayValue": "Early admission to matched college",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Early admission to the college with which a Finalist matches"
+          },
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "Matched? Congrats! Finalists who match are admitted early with a full four-year scholarship to the school with which they matched."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "in_kind_value": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "Finalists who match are admitted to a college partner with a full four-year scholarship, worth over $360,000."
+            }
+          ],
+          "note": "The source provides a scholarship value but does not identify this as a non-cash in-kind benefit or break out its components.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "certificate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No certificate is stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "college_credit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No college-credit award is stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "mentorship": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No mentorship benefit is stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_benefits": {
+          "status": "disclosed",
+          "value": [
+            "Access to a supportive community of over 35,000 QuestBridge Scholars and Alumni",
+            "Lifelong opportunities and networking"
+          ],
+          "displayValue": "Supportive Scholar and Alumni community, lifelong opportunities, and networking",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Access to a supportive community of over 35,000 QuestBridge Scholars and Alumni",
+              "Lifelong opportunities and networking"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "Whether you are admitted through the Match or QuestBridge Regular Decision, you will join a supportive community of over 35,000 QuestBridge Scholars and Alumni for lifelong opportunities, networking, and more."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "personal_information": {
+          "status": "disclosed",
+          "value": [
+            "Biographical information",
+            "Academic information",
+            "Household income",
+            "Financial status",
+            "Citizenship status",
+            "Essays",
+            "Other personal details"
+          ],
+          "displayValue": "Biographical, academic, household-income, financial-status, citizenship-status, essay, and other personal details",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Biographical information",
+              "Academic information",
+              "Household income",
+              "Financial status",
+              "Citizenship status",
+              "Essays",
+              "Other personal details"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-ab5b5eaa659bd9ab",
+              "url": "https://www.questbridge.org/privacy-policy",
+              "title": "Privacy Policy | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.402Z",
+              "excerpt": "Application Data | This is the personal data that is collected when you apply to programs on the QB Website, including but not limited to the CPS Programs and the College Match Program. Data collected in the application includes biographical, academic information, household income, financial status, citizenship, citizenship status, essays, and other personal details."
+            }
+          ],
+          "note": "This privacy-policy statement applies to the College Match Program among other QB programs.",
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "data_sharing": {
+          "status": "disclosed",
+          "value": "QuestBridge may disclose registration information to selected Associates with the applicant's opt-in consent; application materials containing sensitive personal data may be shared with QB partners.",
+          "displayValue": "Opt-in sharing with Associates; sensitive application data may be shared with QB partners",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "QuestBridge may disclose registration information to selected Associates with the applicant's opt-in consent; application materials containing sensitive personal data may be shared with QB partners."
+          },
+          "sources": [
+            {
+              "id": "page-ab5b5eaa659bd9ab",
+              "url": "https://www.questbridge.org/privacy-policy",
+              "title": "Privacy Policy | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.402Z",
+              "excerpt": "QB may disclose your registration information for the purposes set forth above to those of our Associates for which you select the \"opt-in\" option during registration."
+            },
+            {
+              "id": "page-ab5b5eaa659bd9ab",
+              "url": "https://www.questbridge.org/privacy-policy",
+              "title": "Privacy Policy | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.402Z",
+              "excerpt": "If you submit an application for a QB program, including but not limited to any of the CPS Programs and College Match, be advised that if you include any \"special categories\" of Personal Data as defined in the GDPR ... such information may be included in the materials shared with our partners."
+            }
+          ],
+          "note": "The disclosed sharing terms are conditional and apply to the named recipient categories.",
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_ownership": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No project ownership term is stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_license": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No license in submitted work is stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "publicity_rights": {
+          "status": "disclosed",
+          "value": "If selected for QB programs, QuestBridge asks permission to share biographical and academic information, photograph, and application and award status with educators, school administrators, and the wider public for publicity and promotional purposes.",
+          "displayValue": "Permission requested for selected participants' information and photographs for publicity",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "If selected for QB programs, QuestBridge asks permission to share biographical and academic information, photograph, and application and award status with educators, school administrators, and the wider public for publicity and promotional purposes."
+          },
+          "sources": [
+            {
+              "id": "page-ab5b5eaa659bd9ab",
+              "url": "https://www.questbridge.org/privacy-policy",
+              "title": "Privacy Policy | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.402Z",
+              "excerpt": "If you are selected for QB programs, we ask that you give us your permission to share your biographical and academic information, photograph, and application and award status with educators and school administrators, and to use that information for publicity and promotional purposes if you are selected for QB programs (including, but not limited to, the CPS programs or the College Match)."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "confidentiality": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No participant confidentiality or nondisclosure requirement is stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_rights": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No organizer cancellation, modification, or suspension rights are stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "material_terms": {
+          "status": "disclosed",
+          "value": [
+            "Ranking colleges through the National College Match creates a binding agreement, except for MIT.",
+            "Applicants who rank colleges cannot apply to other colleges through Early Decision or Single-Choice Early Action, subject to listed exceptions."
+          ],
+          "displayValue": "Binding agreement and early-application restrictions for college-ranking applicants",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Ranking colleges through the National College Match creates a binding agreement, except for MIT.",
+              "Applicants who rank colleges cannot apply to other colleges through Early Decision or Single-Choice Early Action, subject to listed exceptions."
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "When you rank colleges through the National College Match, you enter into a binding* agreement with the colleges on your list."
+            },
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "National College Match applicants who rank colleges cannot apply to other colleges through Early Decision or Single-Choice Early Action (also known as Restrictive Early Action)."
+            },
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "*With the exception of MIT, which is not binding."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        }
+      },
+      "structures": {
+        "cycle": {
+          "status": "unassessed",
+          "value": null
+        },
+        "organizations": {
+          "status": "unassessed",
+          "records": [],
+          "note": null
+        },
+        "organizationRoles": {
+          "status": "unassessed",
+          "records": [],
+          "note": null
+        },
+        "institutionRelationships": {
+          "status": "unassessed",
+          "records": [],
+          "note": null
+        },
+        "variants": {
+          "status": "unassessed",
+          "records": [],
+          "note": null
+        },
+        "stages": {
+          "status": "unassessed",
+          "records": [],
+          "note": null
+        },
+        "pathways": {
+          "status": "unassessed",
+          "records": [],
+          "note": null
+        },
+        "costItems": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "application-fee",
+              "definition": {
+                "claimId": "cost-application-fee-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "National College Match application fee",
+                  "kind": "application_fee",
+                  "requirement": "required",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "National College Match application fee",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-73177402e77695e6",
+                    "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+                    "title": "Dates & Deadlines | QuestBridge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:45:31.117Z",
+                    "excerpt": "High-achieving students from low-income backgrounds can apply for free to our college partners through the National College Match."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "amount": {
+                "claimId": "cost-application-fee-amount",
+                "status": "disclosed",
+                "value": {
+                  "kind": "exact",
+                  "amount": 0,
+                  "currency": "USD"
+                },
+                "displayValue": "Free",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-73177402e77695e6",
+                    "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+                    "title": "Dates & Deadlines | QuestBridge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:45:31.117Z",
+                    "excerpt": "High-achieving students from low-income backgrounds can apply for free to our college partners through the National College Match."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "chargeBasis": null,
+              "treatment": null,
+              "refundability": null,
+              "includedItems": [],
+              "excludedItems": [],
+              "conditions": []
+            }
+          ],
+          "note": "Only the free application cost is safely modeled from supplied sources.",
+          "completeness": "incomplete"
+        },
+        "outcomes": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "matched-college-admission",
+              "definition": {
+                "claimId": "outcome-matched-college-admission-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Early admission to matched college",
+                  "outcomeType": "program_seat",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Early admission to matched college",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-73177402e77695e6",
+                    "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+                    "title": "Dates & Deadlines | QuestBridge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:45:31.117Z",
+                    "excerpt": "Matched? Congrats! Finalists who match are admitted early with a full four-year scholarship to the school with which they matched."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "recipientScope": {
+                "claimId": "outcome-matched-college-admission-recipient",
+                "status": "disclosed",
+                "value": "individual",
+                "displayValue": "Matched Finalist",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-73177402e77695e6",
+                    "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+                    "title": "Dates & Deadlines | QuestBridge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:45:31.117Z",
+                    "excerpt": "Matched? Congrats! Finalists who match are admitted early with a full four-year scholarship to the school with which they matched."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "monetaryNature": null,
+              "amount": null,
+              "distribution": null,
+              "rank": null,
+              "track": null,
+              "quantity": null,
+              "useRestriction": null,
+              "combinability": null,
+              "conditions": []
+            },
+            {
+              "id": "full-four-year-scholarship",
+              "definition": {
+                "claimId": "outcome-full-four-year-scholarship-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Full four-year scholarship",
+                  "outcomeType": "scholarship",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Full four-year scholarship",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-73177402e77695e6",
+                    "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+                    "title": "Dates & Deadlines | QuestBridge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:45:31.117Z",
+                    "excerpt": "Matched? Congrats! Finalists who match are admitted early with a full four-year scholarship to the school with which they matched."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "recipientScope": {
+                "claimId": "outcome-full-four-year-scholarship-recipient",
+                "status": "disclosed",
+                "value": "individual",
+                "displayValue": "Matched Finalist",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-73177402e77695e6",
+                    "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+                    "title": "Dates & Deadlines | QuestBridge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:45:31.117Z",
+                    "excerpt": "Matched? Congrats! Finalists who match are admitted early with a full four-year scholarship to the school with which they matched."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "monetaryNature": {
+                "claimId": "outcome-full-four-year-scholarship-nature",
+                "status": "unclear",
+                "value": null,
+                "displayValue": null,
+                "claimKind": null,
+                "sources": [
+                  {
+                    "id": "page-489197c11071d3e6",
+                    "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+                    "title": "National College Match | QuestBridge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:45:30.123Z",
+                    "excerpt": "Finalists who match are admitted to a college partner with a full four-year scholarship, worth over $360,000."
+                  }
+                ],
+                "note": "The source does not characterize the scholarship's monetary nature or components.",
+                "conflictingValues": []
+              },
+              "amount": {
+                "claimId": "outcome-full-four-year-scholarship-amount",
+                "status": "unclear",
+                "value": null,
+                "displayValue": null,
+                "claimKind": null,
+                "sources": [
+                  {
+                    "id": "page-489197c11071d3e6",
+                    "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+                    "title": "National College Match | QuestBridge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:45:30.123Z",
+                    "excerpt": "Finalists who match are admitted to a college partner with a full four-year scholarship, worth over $360,000."
+                  }
+                ],
+                "note": "The stated value is \"over $360,000\" and cannot be modeled as an exact amount under this schema.",
+                "conflictingValues": []
+              },
+              "distribution": null,
+              "rank": null,
+              "track": null,
+              "quantity": null,
+              "useRestriction": null,
+              "combinability": null,
+              "conditions": []
+            }
+          ],
+          "note": "Outcomes apply to Finalists who match; scholarship value and composition remain unmodeled."
+        }
+      }
+    }
+  },
+  "deterministicValidation": {
+    "completed": true,
+    "evidenceWarnings": [
+      {
+        "sourceId": "page-ab5b5eaa659bd9ab",
+        "message": "The cited excerpt was not found in the normalized source text.",
+        "fieldId": "data_sharing"
+      },
+      {
+        "fieldId": "structured.costItems",
+        "sourceId": "cost-application-fee-amount",
+        "message": "A structured atomic claim was withheld because its typed money value does not match the exact cited excerpt and display value."
+      },
+      {
+        "fieldId": "structured.outcomes",
+        "sourceId": "outcome-matched-college-admission-recipient",
+        "message": "A structured atomic claim was withheld because its typed enum value is not stated by the cited excerpt."
+      },
+      {
+        "fieldId": "structured.outcomes",
+        "sourceId": "outcome-full-four-year-scholarship-recipient",
+        "message": "A structured atomic claim was withheld because its typed enum value is not stated by the cited excerpt."
+      }
+    ]
+  },
+  "result": {
+    "draftCard": {
+      "schemaVersion": "2.0.0",
+      "opportunityId": null,
+      "cycle": {
+        "status": "unassessed",
+        "value": null
+      },
+      "cardVersion": 1,
+      "slug": "national-college-match",
+      "summary": "Automated draft from 7 user-supplied source pages; review every value, excerpt, and attribution before use.",
+      "reviewState": "draft",
+      "reviewedAt": null,
+      "sourcePagesChecked": [
+        {
+          "id": "page-489197c11071d3e6",
+          "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+          "title": "National College Match | QuestBridge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:45:30.123Z"
+        },
+        {
+          "id": "page-ab5b5eaa659bd9ab",
+          "url": "https://www.questbridge.org/privacy-policy",
+          "title": "Privacy Policy | QuestBridge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:45:30.402Z"
+        },
+        {
+          "id": "page-940eb728cb6f9199",
+          "url": "https://www.questbridge.org/apply-to-college/programs/college-prep-scholars-program/scholarships-and-awards",
+          "title": "Scholarships & Awards | QuestBridge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:45:30.642Z"
+        },
+        {
+          "id": "page-b543f62e1cba9923",
+          "url": "https://www.questbridge.org/apply-to-college/programs/college-prep-scholars-program/scholarships-and-awards/national-college-admissions-conferences",
+          "title": "National College Admissions Conferences | QuestBridge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:45:30.872Z"
+        },
+        {
+          "id": "page-73177402e77695e6",
+          "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+          "title": "Dates & Deadlines | QuestBridge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:45:31.117Z"
+        },
+        {
+          "id": "page-c7a25a8d43a2c8fe",
+          "url": "https://www.questbridge.org/apply-to-college/programs/college-prep-scholars-program/scholarships-and-awards/quest-for-excellence-awards",
+          "title": "Quest for Excellence Awards | QuestBridge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:45:31.332Z"
+        },
+        {
+          "id": "page-8b34ff34564cb741",
+          "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+          "title": "Apply to the National College Match | QuestBridge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:45:31.551Z"
+        }
+      ],
+      "conflicts": [],
+      "organizations": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "organizationRoles": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "institutionRelationships": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "variants": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "stages": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "pathways": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "costItems": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "outcomes": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "facts": {
+        "opportunity_name": {
+          "status": "disclosed",
+          "value": "National College Match",
+          "displayValue": "National College Match",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "National College Match"
+          },
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "National College Match"
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "opportunity_category": {
+          "status": "disclosed",
+          "value": "College admission and scholarship matching program",
+          "displayValue": "College admission and scholarship matching program",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "College admission and scholarship matching program"
+          },
+          "sources": [
+            {
+              "id": "page-ab5b5eaa659bd9ab",
+              "url": "https://www.questbridge.org/privacy-policy",
+              "title": "Privacy Policy | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.402Z",
+              "excerpt": "our National College Match program which offers you an opportunity to be matched with one of our partner colleges or universities for early admission and a full scholarship"
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "official_url": {
+          "status": "disclosed",
+          "value": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+          "displayValue": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "https://www.questbridge.org/apply-to-college/programs/national-college-match"
+          },
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "National College Match"
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "operating_organization": {
+          "status": "disclosed",
+          "value": "QuestBridge",
+          "displayValue": "QuestBridge",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "QuestBridge"
+          },
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "Through QuestBridge, high-achieving students from low-income backgrounds can apply for free for early admission and a full four-year scholarship at our 55 college partners."
+            }
+          ],
+          "note": null,
+          "confidence": 0.82,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "organization_type": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "named_institution": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "apply for full four-year scholarships to 55 top colleges through QuestBridge."
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "institution_relationship": {
+          "status": "disclosed",
+          "value": "institution_partnered",
+          "displayValue": "Partnered with 55 college partners",
+          "normalizedValue": {
+            "kind": "relationship",
+            "value": "institution_partnered"
+          },
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "Through QuestBridge, high-achieving students from low-income backgrounds can apply for free for early admission and a full four-year scholarship at our 55 college partners."
+            }
+          ],
+          "note": null,
+          "confidence": 0.9,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "relationship_explanation": {
+          "status": "disclosed",
+          "value": "Applicants can apply through QuestBridge for early admission and full four-year scholarships at its 55 college partners.",
+          "displayValue": "Applicants can apply through QuestBridge for early admission and full four-year scholarships at its 55 college partners.",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Applicants can apply through QuestBridge for early admission and full four-year scholarships at its 55 college partners."
+          },
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "Through QuestBridge, high-achieving students from low-income backgrounds can apply for free for early admission and a full four-year scholarship at our 55 college partners."
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "grade_levels": {
+          "status": "disclosed",
+          "value": [
+            "High school seniors"
+          ],
+          "displayValue": "High school seniors",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "High school seniors"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "Through the National College Match, high-achieving high school seniors from low-income backgrounds can apply for early admission and full four-year scholarships"
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "ages": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "geographic_restrictions": {
+          "status": "disclosed",
+          "value": "Open to high school seniors currently attending high school in the U.S. and U.S. Citizens and Permanent Residents living abroad; international students living outside the U.S. are not eligible.",
+          "displayValue": "High school seniors in the U.S.; U.S. citizens and permanent residents abroad; international students outside the U.S. are ineligible",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Open to high school seniors currently attending high school in the U.S. and U.S. Citizens and Permanent Residents living abroad; international students living outside the U.S. are not eligible."
+          },
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "It is open to any high school senior currently attending high school in the U.S. and U.S. Citizens and Permanent Residents living abroad. International students living outside the U.S. are not eligible."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "citizenship_restrictions": {
+          "status": "disclosed",
+          "value": "U.S. Citizens and Permanent Residents living abroad are eligible; international students living outside the U.S. are not eligible.",
+          "displayValue": "U.S. citizens and permanent residents abroad eligible; international students outside the U.S. ineligible",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "U.S. Citizens and Permanent Residents living abroad are eligible; international students living outside the U.S. are not eligible."
+          },
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "It is open to any high school senior currently attending high school in the U.S. and U.S. Citizens and Permanent Residents living abroad. International students living outside the U.S. are not eligible."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "prerequisite_skills": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "Typically, National College Match Finalists… Earn primarily A’s in the most challenging courses available and display intellectual curiosity and strong writing ability."
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "entry_format": {
+          "status": "disclosed",
+          "value": "Individual application",
+          "displayValue": "Individual application",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Individual application"
+          },
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "We review all applications holistically"
+            }
+          ],
+          "note": null,
+          "confidence": 0.7,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "sponsor_requirement": {
+          "status": "disclosed",
+          "value": "A Match Agreement Form must be signed by the applicant, parent/guardian, and school counselor for applicants submitting Match Rankings.",
+          "displayValue": "Applicant, parent/guardian, and school counselor signatures required for Match Agreement Form",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "A Match Agreement Form must be signed by the applicant, parent/guardian, and school counselor for applicants submitting Match Rankings."
+          },
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "The Match Agreement Form (available after submitting Match Rankings Form) is also due October 15. It must be signed by the applicant, their parent/guardian, and school counselor, and uploaded to the Manage page."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_deadline": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "October 1 | National College Match application deadline. | Eligible high school seniors"
+            }
+          ],
+          "note": "The supplied pages did not establish one target cycle, so automated extraction withheld cycle-specific dates.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "decision_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "October 21 | Finalist decisions released on the Manage page."
+            },
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "December 1 | Match Day! Match results released through the Manage page."
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "start_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "Late summer | National College Match application opens."
+            }
+          ],
+          "note": "The supplied pages did not establish one target cycle, so automated extraction withheld cycle-specific dates.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "end_date": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "duration": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "weekly_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "required_live_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "participation_format": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Automated extraction cannot establish that this field does not apply; human review is required.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "location": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Automated extraction cannot establish that this field does not apply; human review is required.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_requirements": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_fee": {
+          "status": "disclosed",
+          "value": 0,
+          "displayValue": "Free",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "High-achieving students from low-income backgrounds can apply for free to our college partners through the National College Match."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "deposit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Automated extraction cannot establish that this field does not apply; human review is required.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_mandatory_costs": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "estimated_total_mandatory_cost": {
+          "status": "disclosed",
+          "value": 0,
+          "displayValue": "$0 to apply",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "High-achieving students from low-income backgrounds can apply for free to our college partners through the National College Match."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_included": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Automated extraction cannot establish that this field does not apply; human review is required.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "lodging_included": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Automated extraction cannot establish that this field does not apply; human review is required.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "meals_included": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Automated extraction cannot establish that this field does not apply; human review is required.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "financial_aid": {
+          "status": "disclosed",
+          "value": "Matched Finalists are admitted early with a full four-year scholarship.",
+          "displayValue": "Full four-year scholarship for matched Finalists",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Matched Finalists are admitted early with a full four-year scholarship."
+          },
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "Matched? Congrats! Finalists who match are admitted early with a full four-year scholarship to the school with which they matched."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "refund_policy": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Automated extraction cannot establish that this field does not apply; human review is required.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_policy": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_process": {
+          "status": "disclosed",
+          "value": "Applications are reviewed holistically; applicants rank up to 15 college partners, and selected Finalists submit additional requirements to ranked schools.",
+          "displayValue": "Holistic review; Finalists may rank up to 15 colleges and submit additional requirements",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Applications are reviewed holistically; applicants rank up to 15 college partners, and selected Finalists submit additional requirements to ranked schools."
+          },
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "We review all applications holistically, and there are no absolute criteria or cut-offs for GPA, standardized test scores, income, or other factors."
+            },
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "Rank up to 15 college partners to be considered for early admission and a full four-year scholarship."
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "applicant_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_count": {
+          "status": "disclosed",
+          "value": 2550,
+          "displayValue": "2,550 Finalists matched to a college partner in 2025",
+          "normalizedValue": {
+            "kind": "number",
+            "value": 2550,
+            "unit": "people"
+          },
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "2,550 Finalists matched to a college partner in 2025"
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_rate_claim": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "calculated_acceptance_rate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_evidence": {
+          "status": "disclosed",
+          "value": "Descriptive holistic-review criteria and a numerical count of matched Finalists are published.",
+          "displayValue": "Descriptive and numerical",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Descriptive holistic-review criteria and a numerical count of matched Finalists are published."
+          },
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "We review all applications holistically, and there are no absolute criteria or cut-offs for GPA, standardized test scores, income, or other factors."
+            },
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "2,550 Finalists matched to a college partner in 2025"
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cash_award": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "stipend": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition_waiver": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "Finalists who match are admitted to a college partner with a full four-year scholarship, worth over $360,000."
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "program_seat": {
+          "status": "disclosed",
+          "value": "Early admission to the college with which a Finalist matches",
+          "displayValue": "Early admission to matched college",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Early admission to the college with which a Finalist matches"
+          },
+          "sources": [
+            {
+              "id": "page-73177402e77695e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+              "title": "Dates & Deadlines | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.117Z",
+              "excerpt": "Matched? Congrats! Finalists who match are admitted early with a full four-year scholarship to the school with which they matched."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "in_kind_value": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "Finalists who match are admitted to a college partner with a full four-year scholarship, worth over $360,000."
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "certificate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "college_credit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "mentorship": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_benefits": {
+          "status": "disclosed",
+          "value": [
+            "Access to a supportive community of over 35,000 QuestBridge Scholars and Alumni",
+            "Lifelong opportunities and networking"
+          ],
+          "displayValue": "Supportive Scholar and Alumni community, lifelong opportunities, and networking",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Access to a supportive community of over 35,000 QuestBridge Scholars and Alumni",
+              "Lifelong opportunities and networking"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-489197c11071d3e6",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+              "title": "National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.123Z",
+              "excerpt": "Whether you are admitted through the Match or QuestBridge Regular Decision, you will join a supportive community of over 35,000 QuestBridge Scholars and Alumni for lifelong opportunities, networking, and more."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "personal_information": {
+          "status": "disclosed",
+          "value": [
+            "Biographical information",
+            "Academic information",
+            "Household income",
+            "Financial status",
+            "Citizenship status",
+            "Essays",
+            "Other personal details"
+          ],
+          "displayValue": "Biographical, academic, household-income, financial-status, citizenship-status, essay, and other personal details",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Biographical information",
+              "Academic information",
+              "Household income",
+              "Financial status",
+              "Citizenship status",
+              "Essays",
+              "Other personal details"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-ab5b5eaa659bd9ab",
+              "url": "https://www.questbridge.org/privacy-policy",
+              "title": "Privacy Policy | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.402Z",
+              "excerpt": "Application Data | This is the personal data that is collected when you apply to programs on the QB Website, including but not limited to the CPS Programs and the College Match Program. Data collected in the application includes biographical, academic information, household income, financial status, citizenship, citizenship status, essays, and other personal details."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "data_sharing": {
+          "status": "disclosed",
+          "value": "QuestBridge may disclose registration information to selected Associates with the applicant's opt-in consent; application materials containing sensitive personal data may be shared with QB partners.",
+          "displayValue": "Opt-in sharing with Associates; sensitive application data may be shared with QB partners",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "QuestBridge may disclose registration information to selected Associates with the applicant's opt-in consent; application materials containing sensitive personal data may be shared with QB partners."
+          },
+          "sources": [
+            {
+              "id": "page-ab5b5eaa659bd9ab",
+              "url": "https://www.questbridge.org/privacy-policy",
+              "title": "Privacy Policy | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.402Z",
+              "excerpt": "QB may disclose your registration information for the purposes set forth above to those of our Associates for which you select the \"opt-in\" option during registration."
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_ownership": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_license": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "publicity_rights": {
+          "status": "disclosed",
+          "value": "If selected for QB programs, QuestBridge asks permission to share biographical and academic information, photograph, and application and award status with educators, school administrators, and the wider public for publicity and promotional purposes.",
+          "displayValue": "Permission requested for selected participants' information and photographs for publicity",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "If selected for QB programs, QuestBridge asks permission to share biographical and academic information, photograph, and application and award status with educators, school administrators, and the wider public for publicity and promotional purposes."
+          },
+          "sources": [
+            {
+              "id": "page-ab5b5eaa659bd9ab",
+              "url": "https://www.questbridge.org/privacy-policy",
+              "title": "Privacy Policy | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:30.402Z",
+              "excerpt": "If you are selected for QB programs, we ask that you give us your permission to share your biographical and academic information, photograph, and application and award status with educators and school administrators, and to use that information for publicity and promotional purposes if you are selected for QB programs (including, but not limited to, the CPS programs or the College Match)."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "confidentiality": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_rights": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "material_terms": {
+          "status": "disclosed",
+          "value": [
+            "Ranking colleges through the National College Match creates a binding agreement, except for MIT.",
+            "Applicants who rank colleges cannot apply to other colleges through Early Decision or Single-Choice Early Action, subject to listed exceptions."
+          ],
+          "displayValue": "Binding agreement and early-application restrictions for college-ranking applicants",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Ranking colleges through the National College Match creates a binding agreement, except for MIT.",
+              "Applicants who rank colleges cannot apply to other colleges through Early Decision or Single-Choice Early Action, subject to listed exceptions."
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "When you rank colleges through the National College Match, you enter into a binding* agreement with the colleges on your list."
+            },
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "National College Match applicants who rank colleges cannot apply to other colleges through Early Decision or Single-Choice Early Action (also known as Restrictive Early Action)."
+            },
+            {
+              "id": "page-8b34ff34564cb741",
+              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+              "title": "Apply to the National College Match | QuestBridge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:45:31.551Z",
+              "excerpt": "*With the exception of MIT, which is not binding."
+            }
+          ],
+          "note": null,
+          "confidence": 1,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        }
+      },
+      "projectionRefs": {},
+      "migratedFrom": null
+    },
+    "reviewedPages": [
+      {
+        "id": "page-489197c11071d3e6",
+        "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+        "title": "National College Match | QuestBridge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:45:30.123Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-ab5b5eaa659bd9ab",
+        "url": "https://www.questbridge.org/privacy-policy",
+        "title": "Privacy Policy | QuestBridge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:45:30.402Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-940eb728cb6f9199",
+        "url": "https://www.questbridge.org/apply-to-college/programs/college-prep-scholars-program/scholarships-and-awards",
+        "title": "Scholarships & Awards | QuestBridge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:45:30.642Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-b543f62e1cba9923",
+        "url": "https://www.questbridge.org/apply-to-college/programs/college-prep-scholars-program/scholarships-and-awards/national-college-admissions-conferences",
+        "title": "National College Admissions Conferences | QuestBridge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:45:30.872Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-73177402e77695e6",
+        "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+        "title": "Dates & Deadlines | QuestBridge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:45:31.117Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-c7a25a8d43a2c8fe",
+        "url": "https://www.questbridge.org/apply-to-college/programs/college-prep-scholars-program/scholarships-and-awards/quest-for-excellence-awards",
+        "title": "Quest for Excellence Awards | QuestBridge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:45:31.332Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-8b34ff34564cb741",
+        "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+        "title": "Apply to the National College Match | QuestBridge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:45:31.551Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      }
+    ]
+  },
+  "failure": null,
+  "secretsRetained": false
+}

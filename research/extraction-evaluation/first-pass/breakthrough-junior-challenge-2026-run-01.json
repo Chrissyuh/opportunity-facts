@@ -1,0 +1,3960 @@
+{
+  "artifactVersion": 1,
+  "benchmarkStage": "evaluation",
+  "developmentSet": false,
+  "run": 1,
+  "program": {
+    "slug": "breakthrough-junior-challenge-2026",
+    "label": "Breakthrough Junior Challenge — 2026"
+  },
+  "repository": {
+    "gitCommit": "0746d8e772b63b26bee6a909a6c15311154e1ff7",
+    "workingTreeDirty": true,
+    "extractionCodeHash": {
+      "algorithm": "sha256",
+      "value": "6a26033f9508c0613a79af0548a694465d2582d9fd3167c79e4e66d4618fa8e8",
+      "files": [
+        "lib/analysis/fetch.ts",
+        "lib/analysis/html-extraction.ts",
+        "lib/analysis/link-discovery.ts",
+        "lib/analysis/model-extraction.ts",
+        "lib/analysis/pipeline.ts",
+        "lib/analysis/types.ts",
+        "lib/analysis/url-safety.ts",
+        "lib/opportunity/projection.ts",
+        "lib/opportunity/schema-v2.ts",
+        "lib/opportunity/structured-schema.ts"
+      ]
+    }
+  },
+  "schemaVersion": "2.0.0",
+  "provider": {
+    "name": "openai",
+    "endpoint": "responses",
+    "model": "gpt-5.6-terra",
+    "settings": {
+      "store": false,
+      "reasoningEffort": "low",
+      "maxOutputTokens": 24000,
+      "requestTimeoutMs": 120000,
+      "maximumRetries": 0
+    },
+    "telemetry": {
+      "model": "gpt-5.6-terra",
+      "responseId": "resp_05b6fb038727652c016a7c1617ec088197ab3629aaebeab61a",
+      "usage": {
+        "inputTokens": 68605,
+        "cachedInputTokens": 44150,
+        "outputTokens": 15793,
+        "reasoningTokens": 345,
+        "totalTokens": 84398
+      }
+    }
+  },
+  "input": {
+    "mode": "url",
+    "startingUrl": "https://breakthroughjuniorchallenge.org/"
+  },
+  "timing": {
+    "startedAt": "2026-08-12T06:43:30.452Z",
+    "modelStartedAt": "2026-08-12T06:43:33.529Z",
+    "modelFinishedAt": "2026-08-12T06:45:23.634Z",
+    "finishedAt": "2026-08-12T06:45:23.776Z",
+    "totalRuntimeMs": 113324,
+    "acquisitionRuntimeMs": 3077,
+    "modelRuntimeMs": 110105
+  },
+  "acquisition": {
+    "submittedUrl": "https://breakthroughjuniorchallenge.org/",
+    "successfullyAcquired": [
+      {
+        "role": "submitted",
+        "id": "page-ed10ffcd72851dd3",
+        "url": "https://breakthroughjuniorchallenge.org/",
+        "title": "Breakthrough Junior Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:43:30.929Z",
+        "extractedCharacters": 3658,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 3658,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-3dde91fd4e14362a",
+        "url": "https://breakthroughjuniorchallenge.org/terms",
+        "title": "Breakthrough Junior Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:43:31.428Z",
+        "extractedCharacters": 38702,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 38702,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-239a8e3e8399a87a",
+        "url": "https://breakthroughjuniorchallenge.org/privacy",
+        "title": "Breakthrough Junior Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:43:31.867Z",
+        "extractedCharacters": 15570,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 15570,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-c573441dc35b63fb",
+        "url": "https://breakthroughjuniorchallenge.org/rules",
+        "title": "Breakthrough Junior Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:43:32.352Z",
+        "extractedCharacters": 66072,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 39201,
+        "truncatedForModel": true
+      },
+      {
+        "role": "discovered",
+        "id": "page-3f322c4885d1c372",
+        "url": "https://breakthroughjuniorchallenge.org/faq",
+        "title": "Breakthrough Junior Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:43:32.808Z",
+        "extractedCharacters": 22073,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 17142,
+        "truncatedForModel": true
+      },
+      {
+        "role": "discovered",
+        "id": "page-73ec920bd3f8940e",
+        "url": "https://breakthroughjuniorchallenge.org/prize",
+        "title": "Breakthrough Junior Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:43:33.175Z",
+        "extractedCharacters": 705,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 705,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-df342696e2de05e9",
+        "url": "https://breakthroughjuniorchallenge.org/about",
+        "title": "Breakthrough Junior Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:43:33.514Z",
+        "extractedCharacters": 5022,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 5022,
+        "truncatedForModel": false
+      }
+    ],
+    "failures": []
+  },
+  "modelOutput": {
+    "rawStructuredCandidate": {
+      "facts": {
+        "opportunity_name": {
+          "status": "disclosed",
+          "value": "Breakthrough Junior Challenge",
+          "displayValue": "Breakthrough Junior Challenge",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Breakthrough Junior Challenge"
+          },
+          "sources": [
+            {
+              "id": "page-ed10ffcd72851dd3",
+              "url": "https://breakthroughjuniorchallenge.org/",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:30.929Z",
+              "excerpt": "Breakthrough Junior Challenge"
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "opportunity_category": {
+          "status": "disclosed",
+          "value": "Annual global science video competition",
+          "displayValue": "Annual global science video competition",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Annual global science video competition"
+          },
+          "sources": [
+            {
+              "id": "page-ed10ffcd72851dd3",
+              "url": "https://breakthroughjuniorchallenge.org/",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:30.929Z",
+              "excerpt": "The Breakthrough Junior Challenge is an annual, global science video competition for high-school students."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "official_url": {
+          "status": "disclosed",
+          "value": "https://breakthroughjuniorchallenge.org/",
+          "displayValue": "https://breakthroughjuniorchallenge.org/",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "https://breakthroughjuniorchallenge.org/"
+          },
+          "sources": [
+            {
+              "id": "page-ed10ffcd72851dd3",
+              "url": "https://breakthroughjuniorchallenge.org/",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:30.929Z",
+              "excerpt": "Breakthrough Junior Challenge"
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "operating_organization": {
+          "status": "disclosed",
+          "value": "Breakthrough Prize Foundation",
+          "displayValue": "Breakthrough Prize Foundation",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Breakthrough Prize Foundation"
+          },
+          "sources": [
+            {
+              "id": "page-df342696e2de05e9",
+              "url": "https://breakthroughjuniorchallenge.org/about",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:33.514Z",
+              "excerpt": "The Challenge is organized by the Breakthrough Prize Foundation"
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "organization_type": {
+          "status": "disclosed",
+          "value": "Nonprofit organization",
+          "displayValue": "Nonprofit organization",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Nonprofit organization"
+          },
+          "sources": [
+            {
+              "id": "page-3dde91fd4e14362a",
+              "url": "https://breakthroughjuniorchallenge.org/terms",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.428Z",
+              "excerpt": "\"Foundation\" means Breakthrough Prize Foundation, a nonprofit organization"
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "named_institution": {
+          "status": "disclosed",
+          "value": "Cold Spring Harbor Laboratory",
+          "displayValue": "Cold Spring Harbor Laboratory",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Cold Spring Harbor Laboratory"
+          },
+          "sources": [
+            {
+              "id": "page-df342696e2de05e9",
+              "url": "https://breakthroughjuniorchallenge.org/about",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:33.514Z",
+              "excerpt": "The Breakthrough Prize Lab for the winning student’s school is designed by and in partnership with Cold Spring Harbor Laboratory (CSHL)."
+            }
+          ],
+          "note": "Named in connection with the Breakthrough Science Lab outcome, not as operator.",
+          "confidence": 0.92,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "institution_relationship": {
+          "status": "disclosed",
+          "value": "institution_partnered",
+          "displayValue": "Partnered with Cold Spring Harbor Laboratory for the Breakthrough Science Lab",
+          "normalizedValue": {
+            "kind": "relationship",
+            "value": "institution_partnered"
+          },
+          "sources": [
+            {
+              "id": "page-df342696e2de05e9",
+              "url": "https://breakthroughjuniorchallenge.org/about",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:33.514Z",
+              "excerpt": "The Breakthrough Prize Lab for the winning student’s school is designed by and in partnership with Cold Spring Harbor Laboratory (CSHL)."
+            }
+          ],
+          "note": null,
+          "confidence": 0.92,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "relationship_explanation": {
+          "status": "disclosed",
+          "value": "The Breakthrough Prize Lab for the winning student's school is designed by and in partnership with Cold Spring Harbor Laboratory (CSHL).",
+          "displayValue": "Breakthrough Science Lab designed by and in partnership with CSHL",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "The Breakthrough Prize Lab for the winning student's school is designed by and in partnership with Cold Spring Harbor Laboratory (CSHL)."
+          },
+          "sources": [
+            {
+              "id": "page-df342696e2de05e9",
+              "url": "https://breakthroughjuniorchallenge.org/about",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:33.514Z",
+              "excerpt": "The Breakthrough Prize Lab for the winning student’s school is designed by and in partnership with Cold Spring Harbor Laboratory (CSHL)."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "grade_levels": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No specific eligible grade levels stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "ages": {
+          "status": "disclosed",
+          "value": "Ages 13 to 18; must be 13 by May 11, 2026 and not yet 19 on October 1, 2026.",
+          "displayValue": "13–18",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Ages 13 to 18; must be 13 by May 11, 2026 and not yet 19 on October 1, 2026."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "individuals between the ages of 13 and 18 may participate. You must be 13 years of age by May 11, 2026 at 12:01 AM Pacific Daylight Time (”PDT”) to participate in the Competition, and You cannot be older than 18 years of age (not yet 19) on October 1, 2026 at 11:59 PM PDT."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "geographic_restrictions": {
+          "status": "disclosed",
+          "value": "Not available to people residing in countries or regions subject to comprehensive U.S. economic sanctions, or individuals with whom U.S. persons cannot transact under U.S. law.",
+          "displayValue": "Excludes comprehensively sanctioned countries/regions and otherwise prohibited transactions",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Not available to people residing in countries or regions subject to comprehensive U.S. economic sanctions, or individuals with whom U.S. persons cannot transact under U.S. law."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "If you reside in any country or region that is subject to comprehensive U.S. economic sanctions or are otherwise an individual with which U.S. persons cannot transact under U.S. law, you are not eligible to enter the contest."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "citizenship_restrictions": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-3f322c4885d1c372",
+              "url": "https://breakthroughjuniorchallenge.org/faq",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.808Z",
+              "excerpt": "If you have dual citizenships and official IDs from more than one country, you can choose your country. But the country chosen on the Application must match the ID you upload."
+            }
+          ],
+          "note": "The source describes country selection and ID matching but does not establish a general citizenship requirement.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "prerequisite_skills": {
+          "status": "disclosed",
+          "value": [
+            "Create an original video explaining a life sciences, physics, or mathematics concept or theory.",
+            "Complete peer review of at least five other entries."
+          ],
+          "displayValue": "Original science-explanation video; peer review of at least five entries",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Create an original video explaining a life sciences, physics, or mathematics concept or theory.",
+              "Complete peer review of at least five other entries."
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-df342696e2de05e9",
+              "url": "https://breakthroughjuniorchallenge.org/about",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:33.514Z",
+              "excerpt": "Students ages 13 to 18 from countries across the globe are invited to create and submit original videos (2:00 minutes in length maximum) that bring to life a concept or theory in the life sciences, physics or mathematics."
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "In order for Your Entry to be valid and complete, You must also review at least five (5) other Entries from other entrants"
+            }
+          ],
+          "note": null,
+          "confidence": 0.96,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "entry_format": {
+          "status": "disclosed",
+          "value": "Individual entry only; group submissions are not eligible.",
+          "displayValue": "Individual only",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Individual entry only; group submissions are not eligible."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "Entries are limited to individuals only; commercial enterprises and business entities are not eligible. Group submissions are not eligible."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "sponsor_requirement": {
+          "status": "disclosed",
+          "value": "Minors need parent or legal guardian permission; the parent or guardian must agree to the rules.",
+          "displayValue": "Parent/legal-guardian permission required for minors",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Minors need parent or legal guardian permission; the parent or guardian must agree to the rules."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "If You are a minor, You must have Your parent's or legal guardian's permission to enter and Your parent or legal guardian must agree, on Your behalf and on his or her own behalf, to follow and be bound by these RULES"
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_deadline": {
+          "status": "disclosed",
+          "value": "2026-09-15",
+          "displayValue": "September 15, 2026 at 11:59 PM PDT",
+          "normalizedValue": {
+            "kind": "date",
+            "isoDate": "2026-09-15"
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "ALL ENTRIES MUST BE RECEIVED BY September 15, 2026 at 11:59 PM PDT."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "decision_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The Winner will be announced on a date to be determined by the Competition Sponsor"
+            }
+          ],
+          "note": "Winner-announcement date is stated as to be determined.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "start_date": {
+          "status": "disclosed",
+          "value": "2026-05-11",
+          "displayValue": "May 11, 2026 at 12:01 AM PDT",
+          "normalizedValue": {
+            "kind": "date",
+            "isoDate": "2026-05-11"
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The Competition begins May 11, 2026 at 12:01 AM PDT"
+            }
+          ],
+          "note": "Competition period start.",
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "end_date": {
+          "status": "disclosed",
+          "value": "2026-09-15",
+          "displayValue": "September 15, 2026 at 11:59 PM PDT",
+          "normalizedValue": {
+            "kind": "date",
+            "isoDate": "2026-09-15"
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "ends September 15, 2026 at 11:59 PM PDT"
+            }
+          ],
+          "note": "Competition period end; later judging stages occur after this period.",
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "duration": {
+          "status": "disclosed",
+          "value": "May 11 through September 15, 2026",
+          "displayValue": "Competition period: May 11–September 15, 2026",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "May 11 through September 15, 2026"
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The Competition begins May 11, 2026 at 12:01 AM PDT (the “Competition Start Date”) and ends September 15, 2026 at 11:59 PM PDT (the “Competition End Date”), such period referred to herein as the “Competition Period.”"
+            }
+          ],
+          "note": "This is the official Competition Period, not the entire judging timeline.",
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "weekly_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No weekly time commitment stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "required_live_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No required live-attendance hours stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "participation_format": {
+          "status": "disclosed",
+          "value": "online",
+          "displayValue": "Online submission and review",
+          "normalizedValue": {
+            "kind": "participation_format",
+            "value": "online"
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "go to breakthroughjuniorchallenge.org, (the “Website”), click “Enter” at the top of the webpage and follow the on-screen instructions to complete the application form"
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "Your video submission must be two minutes (2:00) or under according to the clock on YouTube."
+            }
+          ],
+          "note": "The source supports online entry; a possible in-person prize ceremony is separate and conditional.",
+          "confidence": 0.91,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "location": {
+          "status": "disclosed",
+          "value": "Online via breakthroughjuniorchallenge.org and YouTube for video submission.",
+          "displayValue": "Online",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Online via breakthroughjuniorchallenge.org and YouTube for video submission."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "go to breakthroughjuniorchallenge.org, (the “Website”), click “Enter” at the top of the webpage and follow the on-screen instructions to complete the application form"
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "Your video submission must be two minutes (2:00) or under according to the clock on YouTube."
+            }
+          ],
+          "note": null,
+          "confidence": 0.92,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_requirements": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The Competition Sponsor anticipates that there will be an in-person prize ceremony. The occurrence and timing of the ceremony will be in the sole discretion of the Competition Sponsor."
+            }
+          ],
+          "note": "An in-person prize ceremony is anticipated, but location and participant travel arrangements are not stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_fee": {
+          "status": "disclosed",
+          "value": 0,
+          "displayValue": "No purchase or payment necessary",
+          "normalizedValue": {
+            "kind": "money",
+            "amount": 0,
+            "currency": "USD",
+            "classification": "fee"
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "No Purchase Or Payment Necessary To Enter Or Win."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "deposit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No deposit stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition": {
+          "status": "not_applicable",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-3dde91fd4e14362a",
+              "url": "https://breakthroughjuniorchallenge.org/terms",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.428Z",
+              "excerpt": "Registration on this Website and participation in any Competition is free."
+            }
+          ],
+          "note": "The source affirmatively states participation is free.",
+          "confidence": 0.98,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_mandatory_costs": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No other mandatory costs stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "estimated_total_mandatory_cost": {
+          "status": "disclosed",
+          "value": 0,
+          "displayValue": "$0 stated participation cost",
+          "normalizedValue": {
+            "kind": "money",
+            "amount": 0,
+            "currency": "USD",
+            "classification": "fee"
+          },
+          "sources": [
+            {
+              "id": "page-3dde91fd4e14362a",
+              "url": "https://breakthroughjuniorchallenge.org/terms",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.428Z",
+              "excerpt": "Registration on this Website and participation in any Competition is free."
+            }
+          ],
+          "note": "Does not address a winner's possible travel or incidental expenses.",
+          "confidence": 0.97,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Travel inclusion is not stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "lodging_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Lodging inclusion is not stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "meals_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Meal inclusion is not stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "financial_aid": {
+          "status": "not_applicable",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-3dde91fd4e14362a",
+              "url": "https://breakthroughjuniorchallenge.org/terms",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.428Z",
+              "excerpt": "Registration on this Website and participation in any Competition is free."
+            }
+          ],
+          "note": "Participation is free; no financial-aid program is described.",
+          "confidence": 0.9,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "refund_policy": {
+          "status": "not_applicable",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-3dde91fd4e14362a",
+              "url": "https://breakthroughjuniorchallenge.org/terms",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.428Z",
+              "excerpt": "Registration on this Website and participation in any Competition is free."
+            }
+          ],
+          "note": "No participation payment is stated.",
+          "confidence": 0.9,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_policy": {
+          "status": "disclosed",
+          "value": "Competitors may withdraw their entries from winner selection by expressly informing the Foundation within 48 hours after the competition closes.",
+          "displayValue": "Entry withdrawal within 48 hours after close",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Competitors may withdraw their entries from winner selection by expressly informing the Foundation within 48 hours after the competition closes."
+          },
+          "sources": [
+            {
+              "id": "page-3dde91fd4e14362a",
+              "url": "https://breakthroughjuniorchallenge.org/terms",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.428Z",
+              "excerpt": "Competitors may withdraw their Entries from this selection by expressly informing Foundation of their decision within 48 hours after the close of the Competition."
+            }
+          ],
+          "note": null,
+          "confidence": 0.97,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_process": {
+          "status": "disclosed",
+          "value": "Qualified entries undergo peer-to-peer review, administrative review, Evaluation Panel review, finalist selection, Selection Committee review, and sponsor selection of the winner using the Trait Scoring Rubric.",
+          "displayValue": "Multi-phase peer, panel, committee, and sponsor selection",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Qualified entries undergo peer-to-peer review, administrative review, Evaluation Panel review, finalist selection, Selection Committee review, and sponsor selection of the winner using the Trait Scoring Rubric."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "There are four phases of assessment for each qualified Entry"
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The Competition Sponsor shall assess such top five (5) and select the winner based on the TRAIT SCORING RUBRIC."
+            }
+          ],
+          "note": null,
+          "confidence": 0.94,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "applicant_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No applicant count published in reviewed sources.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_count": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "One (1) Prize (“Prize”) will be awarded to the Winner"
+            }
+          ],
+          "note": "One winner is stated, but this is not an acceptance count for participants.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_rate_claim": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No organizer-stated acceptance rate found.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "calculated_acceptance_rate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No compatible published applicant and acceptance populations for calculation.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_evidence": {
+          "status": "disclosed",
+          "value": "Descriptive and numerical stage limits are published.",
+          "displayValue": "Descriptive selection process with numerical stage limits",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Descriptive and numerical stage limits are published."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The top Entries (up to seventy-five (75)) will be subjected to an administrative review"
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "the top fifteen (15) Entries from the Evaluation Panel review who also pass the second Administrative Review will be deemed the finalists"
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cash_award": {
+          "status": "not_applicable",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-73ec920bd3f8940e",
+              "url": "https://breakthroughjuniorchallenge.org/prize",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:33.175Z",
+              "excerpt": "$250,000 Post-secondary scholarship"
+            }
+          ],
+          "note": "The published participant award is described as a post-secondary scholarship, not cash paid directly to the participant.",
+          "confidence": 0.92,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "stipend": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No participation stipend stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition_waiver": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No tuition waiver stated; the source calls the participant award a scholarship.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "program_seat": {
+          "status": "not_applicable",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-73ec920bd3f8940e",
+              "url": "https://breakthroughjuniorchallenge.org/prize",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:33.175Z",
+              "excerpt": "If your video is chosen as the Winner, you will receive $250,000 Post-secondary scholarship"
+            }
+          ],
+          "note": "No admission or program-seat outcome is stated.",
+          "confidence": 0.88,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "in_kind_value": {
+          "status": "disclosed",
+          "value": 100000,
+          "displayValue": "Up to $100,000 Breakthrough Science Lab renovation for the winner's school",
+          "normalizedValue": {
+            "kind": "money",
+            "amount": 100000,
+            "currency": "USD",
+            "classification": "in_kind"
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "renovations to the Winner’s school (“School”) valued up to $100,000 for the renovation or addition of a science lab."
+            }
+          ],
+          "note": "Restricted in-kind renovation benefit for the winner's school; not participant cash.",
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "certificate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No certificate stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "college_credit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No college credit stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "mentorship": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "No mentorship benefit stated.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_benefits": {
+          "status": "disclosed",
+          "value": [
+            "$50,000 prize awarded to one teacher selected by the winner"
+          ],
+          "displayValue": "$50,000 teacher prize",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "$50,000 prize awarded to one teacher selected by the winner"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "the Winner will also elect one teacher (“Teacher”) who has inspired the Winner in the field of science or mathematics, and such teacher will be awarded $50,000."
+            }
+          ],
+          "note": "This benefit is awarded to the selected teacher, not directly to the student winner.",
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "personal_information": {
+          "status": "disclosed",
+          "value": [
+            "Name",
+            "Email address",
+            "Postal mailing address",
+            "Home/mobile telephone number",
+            "Age and nationality verification document"
+          ],
+          "displayValue": "Name, email, mailing address, phone number, and age/nationality verification documentation",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Name",
+              "Email address",
+              "Postal mailing address",
+              "Home/mobile telephone number",
+              "Age and nationality verification document"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-239a8e3e8399a87a",
+              "url": "https://breakthroughjuniorchallenge.org/privacy",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.867Z",
+              "excerpt": "You may provide to Foundation what is generally called \"personally identifiable information” (such as your name, email address, postal mailing address, home/mobile telephone number, etc.), when using this Website, such as when you register, when you submit Entries, and/or when you provide information in order to receive any Prize."
+            },
+            {
+              "id": "page-3f322c4885d1c372",
+              "url": "https://breakthroughjuniorchallenge.org/faq",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.808Z",
+              "excerpt": "An official government-issued document such as a birth certificate, state ID, country ID, or passport document verifying your age and nationality."
+            }
+          ],
+          "note": null,
+          "confidence": 0.94,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "data_sharing": {
+          "status": "disclosed",
+          "value": "Foundation may disclose information provided to other competitors in certain cases, to third-party service providers, when legally required, and in connection with safety, fraud, or rights protection; it may also send promotional messages related to the website and activities of parties it works with.",
+          "displayValue": "Disclosures to competitors, service providers, legal/safety recipients; promotional communications",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Foundation may disclose information provided to other competitors in certain cases, to third-party service providers, when legally required, and in connection with safety, fraud, or rights protection; it may also send promotional messages related to the website and activities of parties it works with."
+          },
+          "sources": [
+            {
+              "id": "page-239a8e3e8399a87a",
+              "url": "https://breakthroughjuniorchallenge.org/privacy",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.867Z",
+              "excerpt": "Foundation may disclose information that you choose to provide to other Competitors in certain cases to enable your participation in and the operation of Competitions."
+            },
+            {
+              "id": "page-239a8e3e8399a87a",
+              "url": "https://breakthroughjuniorchallenge.org/privacy",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.867Z",
+              "excerpt": "Foundation works with third party service providers to provide general website hosting, specialized Content hosting (e.g. the hosting of video Content), maintenance, and other services."
+            },
+            {
+              "id": "page-239a8e3e8399a87a",
+              "url": "https://breakthroughjuniorchallenge.org/privacy",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.867Z",
+              "excerpt": "Foundation may use your email address or other personally identifiable information to send you: i) messages about this Website; ii) promotional messages related to this Website and the activities of other parties with whom we work"
+            }
+          ],
+          "note": null,
+          "confidence": 0.94,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_ownership": {
+          "status": "disclosed",
+          "value": "The entrant represents that the entry is an original work created solely by the entrant and that the entrant owns all intellectual-property rights in it; once submitted, the entry becomes the exclusive property of the Competition Sponsor.",
+          "displayValue": "Entrant represents ownership; submitted entry becomes sponsor's exclusive property",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "The entrant represents that the entry is an original work created solely by the entrant and that the entrant owns all intellectual-property rights in it; once submitted, the entry becomes the exclusive property of the Competition Sponsor."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "Your Entry, including any Content therein, is an original work created solely by You and that You own all Intellectual Property Rights in and to the Entry"
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "Once submitted, Your Entry becomes the exclusive property of the Competition Sponsor"
+            }
+          ],
+          "note": "The source contains both entrant ownership representation and sponsor exclusive-property language.",
+          "confidence": 0.93,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_license": {
+          "status": "disclosed",
+          "value": "By submitting an entry, the entrant grants the Competition Sponsor a royalty-free, perpetual, irrevocable, sublicensable, non-exclusive right and license to use, reproduce, modify, publish, distribute, perform, and display the entry and content worldwide.",
+          "displayValue": "Royalty-free, perpetual, irrevocable, sublicensable non-exclusive license",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "By submitting an entry, the entrant grants the Competition Sponsor a royalty-free, perpetual, irrevocable, sublicensable, non-exclusive right and license to use, reproduce, modify, publish, distribute, perform, and display the entry and content worldwide."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "By submitting Your Entry, You represent and warrant that You have the right to grant, and do hereby grant, to Competition Sponsor a royalty-free, perpetual, irrevocable, sublicensable and non-exclusive right and license to (a) use, reproduce, modify, adapt, publish, translate, create derivative works from, distribute, perform and display Your Entry"
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "publicity_rights": {
+          "status": "disclosed",
+          "value": "Entrants grant the Competition Sponsor the right to use their name, city and state, image, voice, likeness, photos, statements, biographical materials, and prize information for promotional purposes without further permission or compensation.",
+          "displayValue": "Use of entrant identity and materials for promotion without further permission or compensation",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Entrants grant the Competition Sponsor the right to use their name, city and state, image, voice, likeness, photos, statements, biographical materials, and prize information for promotional purposes without further permission or compensation."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "You also grant the Competition Sponsor the right to use Your name, city and state, image, voice, likeness, photos, statements, biographical materials, Prize information and other material and information, without limitation, for the Competition Sponsor’s promotional purposes without further permission or compensation."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "confidentiality": {
+          "status": "disclosed",
+          "value": "The Competition Sponsor is not required to treat an entry or its content as confidential.",
+          "displayValue": "Entries and content are not required to be treated as confidential",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "The Competition Sponsor is not required to treat an entry or its content as confidential."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "Under no circumstances will the Competition Sponsor be required to treat Your Entry or any Content as confidential."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_rights": {
+          "status": "disclosed",
+          "value": "The Foundation may modify the agreement at any time, and may disqualify an entry or terminate or suspend participation at any time and without notice.",
+          "displayValue": "Foundation reserves modification, disqualification, termination, and suspension rights",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "The Foundation may modify the agreement at any time, and may disqualify an entry or terminate or suspend participation at any time and without notice."
+          },
+          "sources": [
+            {
+              "id": "page-3dde91fd4e14362a",
+              "url": "https://breakthroughjuniorchallenge.org/terms",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.428Z",
+              "excerpt": "Foundation reserves the right to modify this Agreement at any time."
+            },
+            {
+              "id": "page-3dde91fd4e14362a",
+              "url": "https://breakthroughjuniorchallenge.org/terms",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.428Z",
+              "excerpt": "Foundation may, in its absolute discretion, disqualify Your Entry or terminate or suspend Your participation at any time and without notice."
+            }
+          ],
+          "note": null,
+          "confidence": 0.97,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "material_terms": {
+          "status": "disclosed",
+          "value": [
+            "Binding individual arbitration and class-action waiver.",
+            "Winner may need to submit signed, notarized eligibility/liability and publicity documents within five business days.",
+            "Winner may be required to attend an award ceremony."
+          ],
+          "displayValue": "Arbitration/class-action waiver; winner documentation; possible award-ceremony attendance",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Binding individual arbitration and class-action waiver.",
+              "Winner may need to submit signed, notarized eligibility/liability and publicity documents within five business days.",
+              "Winner may be required to attend an award ceremony."
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-3dde91fd4e14362a",
+              "url": "https://breakthroughjuniorchallenge.org/terms",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.428Z",
+              "excerpt": "you will only be permitted to pursue claims against breakthrough prize foundation on an individual basis, not as a plaintiff or class member in any class or representative action or proceeding"
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The Winner will be required to verify his or her eligibility by completing, signing, notarizing, and returning an Affidavit of Eligibility/Liability Release, and, where lawful, a Publicity Release within five (5) business days"
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The Winner will be required to attend an award ceremony on a date to be announced by the Competition Sponsor."
+            }
+          ],
+          "note": null,
+          "confidence": 0.96,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        }
+      },
+      "structures": {
+        "cycle": {
+          "status": "modeled",
+          "value": {
+            "id": "2026-competition",
+            "label": {
+              "claimId": "cycle-label-2026",
+              "status": "disclosed",
+              "value": "2026 Breakthrough Junior Challenge",
+              "displayValue": "2026 Breakthrough Junior Challenge",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-ed10ffcd72851dd3",
+                  "url": "https://breakthroughjuniorchallenge.org/",
+                  "title": "Breakthrough Junior Challenge",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:43:30.929Z",
+                  "excerpt": "Welcome to the 2026 Breakthrough Junior Challenge Applications are now OPEN!"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "status": {
+              "claimId": "cycle-status-2026",
+              "status": "disclosed",
+              "value": "applications_open",
+              "displayValue": "Applications open",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-ed10ffcd72851dd3",
+                  "url": "https://breakthroughjuniorchallenge.org/",
+                  "title": "Breakthrough Junior Challenge",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:43:30.929Z",
+                  "excerpt": "Welcome to the 2026 Breakthrough Junior Challenge Applications are now OPEN!"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "year": {
+              "claimId": "cycle-year-2026",
+              "status": "disclosed",
+              "value": 2026,
+              "displayValue": "2026",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-ed10ffcd72851dd3",
+                  "url": "https://breakthroughjuniorchallenge.org/",
+                  "title": "Breakthrough Junior Challenge",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:43:30.929Z",
+                  "excerpt": "Welcome to the 2026 Breakthrough Junior Challenge Applications are now OPEN!"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "startYear": null,
+            "endYear": null,
+            "season": null,
+            "cycleType": {
+              "claimId": "cycle-type-2026",
+              "status": "disclosed",
+              "value": "competition_cycle",
+              "displayValue": "Competition cycle",
+              "claimKind": "source_stated",
+              "sources": [
+                {
+                  "id": "page-c573441dc35b63fb",
+                  "url": "https://breakthroughjuniorchallenge.org/rules",
+                  "title": "Breakthrough Junior Challenge",
+                  "pageType": "user_supplied",
+                  "accessedAt": "2026-08-12T06:43:32.352Z",
+                  "excerpt": "The Competition begins May 11, 2026 at 12:01 AM PDT"
+                }
+              ],
+              "note": null,
+              "conflictingValues": []
+            },
+            "timingRefs": {
+              "opens": "stage-application",
+              "closes": "stage-application",
+              "coverageStart": "stage-application",
+              "coverageEnd": "stage-application"
+            }
+          }
+        },
+        "organizations": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "breakthrough-prize-foundation",
+              "name": {
+                "claimId": "org-bpf-name",
+                "status": "disclosed",
+                "value": "Breakthrough Prize Foundation",
+                "displayValue": "Breakthrough Prize Foundation",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-df342696e2de05e9",
+                    "url": "https://breakthroughjuniorchallenge.org/about",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:33.514Z",
+                    "excerpt": "The Challenge is organized by the Breakthrough Prize Foundation"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "kind": {
+                "claimId": "org-bpf-kind",
+                "status": "unclear",
+                "value": null,
+                "displayValue": null,
+                "claimKind": null,
+                "sources": [
+                  {
+                    "id": "page-3dde91fd4e14362a",
+                    "url": "https://breakthroughjuniorchallenge.org/terms",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:31.428Z",
+                    "excerpt": "\"Foundation\" means Breakthrough Prize Foundation, a nonprofit organization"
+                  }
+                ],
+                "note": "Nonprofit is stated, but it is not one of the available organization-kind enum values.",
+                "conflictingValues": []
+              }
+            },
+            {
+              "id": "cold-spring-harbor-laboratory",
+              "name": {
+                "claimId": "org-cshl-name",
+                "status": "disclosed",
+                "value": "Cold Spring Harbor Laboratory",
+                "displayValue": "Cold Spring Harbor Laboratory",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-df342696e2de05e9",
+                    "url": "https://breakthroughjuniorchallenge.org/about",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:33.514Z",
+                    "excerpt": "Cold Spring Harbor Laboratory (Breakthrough Science Lab)"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "kind": {
+                "claimId": "org-cshl-kind",
+                "status": "unclear",
+                "value": null,
+                "displayValue": null,
+                "claimKind": null,
+                "sources": [
+                  {
+                    "id": "page-df342696e2de05e9",
+                    "url": "https://breakthroughjuniorchallenge.org/about",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:33.514Z",
+                    "excerpt": "CSHL’s DNA Learning Center is the world’s largest provider of student lab instruction in molecular genetics and teacher training."
+                  }
+                ],
+                "note": "No supported mapping to a single available organization-kind enum.",
+                "conflictingValues": []
+              }
+            }
+          ],
+          "note": null
+        },
+        "organizationRoles": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "bpf-operator",
+              "organizationId": "breakthrough-prize-foundation",
+              "role": {
+                "claimId": "bpf-operator-role",
+                "status": "disclosed",
+                "value": {
+                  "role": "operator",
+                  "roleLabel": "Organizer",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Organizer",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-df342696e2de05e9",
+                    "url": "https://breakthroughjuniorchallenge.org/about",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:33.514Z",
+                    "excerpt": "The Challenge is organized by the Breakthrough Prize Foundation"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              }
+            }
+          ],
+          "note": null
+        },
+        "institutionRelationships": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "cshl-science-lab-partnership",
+              "assertion": {
+                "claimId": "cshl-partnership",
+                "status": "disclosed",
+                "value": {
+                  "subject": "opportunity",
+                  "subjectOrganizationId": "breakthrough-prize-foundation",
+                  "targetOrganizationId": "cold-spring-harbor-laboratory",
+                  "targetInstitutionName": "Cold Spring Harbor Laboratory",
+                  "relationshipType": "institution_partnered",
+                  "description": "The Breakthrough Prize Lab for the winning student's school is designed by and in partnership with CSHL.",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Breakthrough Science Lab designed in partnership with Cold Spring Harbor Laboratory",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-df342696e2de05e9",
+                    "url": "https://breakthroughjuniorchallenge.org/about",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:33.514Z",
+                    "excerpt": "The Breakthrough Prize Lab for the winning student’s school is designed by and in partnership with Cold Spring Harbor Laboratory (CSHL)."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              }
+            }
+          ],
+          "note": null
+        },
+        "variants": {
+          "status": "unassessed",
+          "records": [],
+          "note": null
+        },
+        "stages": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "stage-application",
+              "order": 1,
+              "definition": {
+                "claimId": "stage-application-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Application submission",
+                  "kind": "application",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Application submission",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-ed10ffcd72851dd3",
+                    "url": "https://breakthroughjuniorchallenge.org/",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:30.929Z",
+                    "excerpt": "September 15Application Submission Deadline"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "timings": [
+                {
+                  "claimId": "application-deadline-timing",
+                  "status": "disclosed",
+                  "value": {
+                    "event": "deadline",
+                    "when": {
+                      "precision": "date_time",
+                      "dateTime": "2026-09-15T23:59:00-07:00",
+                      "certainty": "stated"
+                    },
+                    "scope": {
+                      "variantIds": [],
+                      "stageIds": [
+                        "stage-application"
+                      ],
+                      "pathwayIds": []
+                    }
+                  },
+                  "displayValue": "September 15, 2026 at 11:59 PM PDT",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-c573441dc35b63fb",
+                      "url": "https://breakthroughjuniorchallenge.org/rules",
+                      "title": "Breakthrough Junior Challenge",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:43:32.352Z",
+                      "excerpt": "ALL ENTRIES MUST BE RECEIVED BY September 15, 2026 at 11:59 PM PDT."
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ],
+              "durations": [],
+              "timeCommitments": [],
+              "formats": [],
+              "locations": [],
+              "selectionRules": [],
+              "advancement": [],
+              "requirements": [
+                {
+                  "claimId": "application-peer-review-requirement",
+                  "status": "disclosed",
+                  "value": {
+                    "requirement": "For a valid and complete entry, review at least five other entries.",
+                    "scope": {
+                      "variantIds": [],
+                      "stageIds": [
+                        "stage-application"
+                      ],
+                      "pathwayIds": []
+                    }
+                  },
+                  "displayValue": "Review at least five other entries",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-c573441dc35b63fb",
+                      "url": "https://breakthroughjuniorchallenge.org/rules",
+                      "title": "Breakthrough Junior Challenge",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:43:32.352Z",
+                      "excerpt": "In order for Your Entry to be valid and complete, You must also review at least five (5) other Entries from other entrants"
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ],
+              "travelRequirements": []
+            },
+            {
+              "id": "stage-peer-review",
+              "order": 2,
+              "definition": {
+                "claimId": "stage-peer-review-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Peer-to-Peer Review",
+                  "kind": "proposal_review",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Peer-to-Peer Review",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-ed10ffcd72851dd3",
+                    "url": "https://breakthroughjuniorchallenge.org/",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:30.929Z",
+                    "excerpt": "September 17 – 30Peer-To-Peer Review"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "timings": [],
+              "durations": [],
+              "timeCommitments": [],
+              "formats": [],
+              "locations": [],
+              "selectionRules": [
+                {
+                  "claimId": "peer-review-rule",
+                  "status": "disclosed",
+                  "value": {
+                    "rule": "Each participant must score at least five other submissions; additional scoring may be requested.",
+                    "scope": {
+                      "variantIds": [],
+                      "stageIds": [
+                        "stage-peer-review"
+                      ],
+                      "pathwayIds": []
+                    }
+                  },
+                  "displayValue": "Score at least five peer submissions",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-ed10ffcd72851dd3",
+                      "url": "https://breakthroughjuniorchallenge.org/",
+                      "title": "Breakthrough Junior Challenge",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:43:30.929Z",
+                      "excerpt": "As part of your entry, you must score at least 5 other submissions by September 30 at 11:59 PM Pacific Daylight Time (West Coast USA), during the Peer-to-Peer Review. You may be asked to score additional submissions as well."
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ],
+              "advancement": [
+                {
+                  "claimId": "peer-review-advance",
+                  "status": "disclosed",
+                  "value": {
+                    "count": 75,
+                    "description": "Top entries, up to 75, are subject to administrative review.",
+                    "scope": {
+                      "variantIds": [],
+                      "stageIds": [
+                        "stage-peer-review"
+                      ],
+                      "pathwayIds": []
+                    }
+                  },
+                  "displayValue": "Up to 75 entries advance to administrative review",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-c573441dc35b63fb",
+                      "url": "https://breakthroughjuniorchallenge.org/rules",
+                      "title": "Breakthrough Junior Challenge",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:43:32.352Z",
+                      "excerpt": "The top Entries (up to seventy-five (75)) will be subjected to an administrative review"
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ],
+              "requirements": [],
+              "travelRequirements": []
+            },
+            {
+              "id": "stage-evaluation-panel",
+              "order": 3,
+              "definition": {
+                "claimId": "stage-evaluation-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Evaluation Panel Review",
+                  "kind": "proposal_review",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Evaluation Panel Review",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-ed10ffcd72851dd3",
+                    "url": "https://breakthroughjuniorchallenge.org/",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:30.929Z",
+                    "excerpt": "October 4 – 25Evaluation Panel Review"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "timings": [],
+              "durations": [],
+              "timeCommitments": [],
+              "formats": [],
+              "locations": [],
+              "selectionRules": [],
+              "advancement": [
+                {
+                  "claimId": "evaluation-finalist-advance",
+                  "status": "disclosed",
+                  "value": {
+                    "count": 15,
+                    "description": "Top 15 entries passing second administrative review are finalists.",
+                    "scope": {
+                      "variantIds": [],
+                      "stageIds": [
+                        "stage-evaluation-panel"
+                      ],
+                      "pathwayIds": []
+                    }
+                  },
+                  "displayValue": "Top 15 become finalists",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-c573441dc35b63fb",
+                      "url": "https://breakthroughjuniorchallenge.org/rules",
+                      "title": "Breakthrough Junior Challenge",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:43:32.352Z",
+                      "excerpt": "the top fifteen (15) Entries from the Evaluation Panel review who also pass the second Administrative Review will be deemed the finalists"
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ],
+              "requirements": [],
+              "travelRequirements": []
+            }
+          ],
+          "note": "Only stages with safely supported atomic records are modeled."
+        },
+        "pathways": {
+          "status": "unassessed",
+          "records": [],
+          "note": null
+        },
+        "costItems": {
+          "status": "none_found",
+          "records": [],
+          "note": "Participation is stated to be free; no positive mandatory cost item found."
+        },
+        "outcomes": {
+          "status": "modeled",
+          "records": [
+            {
+              "id": "winner-postsecondary-scholarship",
+              "definition": {
+                "claimId": "outcome-scholarship-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Post-secondary scholarship",
+                  "outcomeType": "scholarship",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "$250,000 post-secondary scholarship",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-73ec920bd3f8940e",
+                    "url": "https://breakthroughjuniorchallenge.org/prize",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:33.175Z",
+                    "excerpt": "$250,000 Post-secondary scholarship"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "recipientScope": {
+                "claimId": "outcome-scholarship-recipient",
+                "status": "disclosed",
+                "value": "individual",
+                "displayValue": "Winner (individual)",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-c573441dc35b63fb",
+                    "url": "https://breakthroughjuniorchallenge.org/rules",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:32.352Z",
+                    "excerpt": "One (1) Prize (“Prize”) will be awarded to the Winner consisting of: a $250,000 college scholarship"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "monetaryNature": {
+                "claimId": "outcome-scholarship-nature",
+                "status": "disclosed",
+                "value": "restricted_funding",
+                "displayValue": "Scholarship",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-73ec920bd3f8940e",
+                    "url": "https://breakthroughjuniorchallenge.org/prize",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:33.175Z",
+                    "excerpt": "$250,000 Post-secondary scholarship"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "amount": {
+                "claimId": "outcome-scholarship-amount",
+                "status": "disclosed",
+                "value": {
+                  "kind": "exact",
+                  "amount": 250000,
+                  "currency": "USD"
+                },
+                "displayValue": "$250,000",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-73ec920bd3f8940e",
+                    "url": "https://breakthroughjuniorchallenge.org/prize",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:33.175Z",
+                    "excerpt": "$250,000 Post-secondary scholarship"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "distribution": null,
+              "rank": null,
+              "track": null,
+              "quantity": null,
+              "useRestriction": null,
+              "combinability": null,
+              "conditions": []
+            },
+            {
+              "id": "teacher-prize",
+              "definition": {
+                "claimId": "outcome-teacher-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Teacher prize",
+                  "outcomeType": "personal_cash_prize",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "$50,000 prize for teacher selected by winner",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-73ec920bd3f8940e",
+                    "url": "https://breakthroughjuniorchallenge.org/prize",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:33.175Z",
+                    "excerpt": "$50,000 Prize for yourteacher"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "recipientScope": {
+                "claimId": "outcome-teacher-recipient",
+                "status": "disclosed",
+                "value": "individual",
+                "displayValue": "Selected teacher (individual)",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-c573441dc35b63fb",
+                    "url": "https://breakthroughjuniorchallenge.org/rules",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:32.352Z",
+                    "excerpt": "such teacher will be awarded $50,000."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "monetaryNature": {
+                "claimId": "outcome-teacher-nature",
+                "status": "disclosed",
+                "value": "cash",
+                "displayValue": "Cash prize",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-c573441dc35b63fb",
+                    "url": "https://breakthroughjuniorchallenge.org/rules",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:32.352Z",
+                    "excerpt": "such teacher will be awarded $50,000."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "amount": {
+                "claimId": "outcome-teacher-amount",
+                "status": "disclosed",
+                "value": {
+                  "kind": "exact",
+                  "amount": 50000,
+                  "currency": "USD"
+                },
+                "displayValue": "$50,000",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-c573441dc35b63fb",
+                    "url": "https://breakthroughjuniorchallenge.org/rules",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:32.352Z",
+                    "excerpt": "such teacher will be awarded $50,000."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "distribution": null,
+              "rank": null,
+              "track": null,
+              "quantity": null,
+              "useRestriction": null,
+              "combinability": null,
+              "conditions": [
+                {
+                  "claimId": "outcome-teacher-condition",
+                  "status": "disclosed",
+                  "value": "Winner elects one teacher who inspired the winner in science or mathematics.",
+                  "displayValue": "Winner selects one inspiring science or mathematics teacher",
+                  "claimKind": "source_stated",
+                  "sources": [
+                    {
+                      "id": "page-c573441dc35b63fb",
+                      "url": "https://breakthroughjuniorchallenge.org/rules",
+                      "title": "Breakthrough Junior Challenge",
+                      "pageType": "user_supplied",
+                      "accessedAt": "2026-08-12T06:43:32.352Z",
+                      "excerpt": "the Winner will also elect one teacher (“Teacher”) who has inspired the Winner in the field of science or mathematics"
+                    }
+                  ],
+                  "note": null,
+                  "conflictingValues": []
+                }
+              ]
+            },
+            {
+              "id": "breakthrough-science-lab",
+              "definition": {
+                "claimId": "outcome-lab-definition",
+                "status": "disclosed",
+                "value": {
+                  "label": "Breakthrough Science Lab renovation",
+                  "outcomeType": "other_in_kind",
+                  "scope": {
+                    "variantIds": [],
+                    "stageIds": [],
+                    "pathwayIds": []
+                  }
+                },
+                "displayValue": "Science-lab renovation or addition for winner's school",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-c573441dc35b63fb",
+                    "url": "https://breakthroughjuniorchallenge.org/rules",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:32.352Z",
+                    "excerpt": "renovations to the Winner’s school (“School”) valued up to $100,000 for the renovation or addition of a science lab."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "recipientScope": {
+                "claimId": "outcome-lab-recipient",
+                "status": "disclosed",
+                "value": "school",
+                "displayValue": "Winner's school",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-c573441dc35b63fb",
+                    "url": "https://breakthroughjuniorchallenge.org/rules",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:32.352Z",
+                    "excerpt": "renovations to the Winner’s school (“School”) valued up to $100,000"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "monetaryNature": {
+                "claimId": "outcome-lab-nature",
+                "status": "disclosed",
+                "value": "source_stated_estimated_value",
+                "displayValue": "Source-stated value",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-c573441dc35b63fb",
+                    "url": "https://breakthroughjuniorchallenge.org/rules",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:32.352Z",
+                    "excerpt": "valued up to $100,000"
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "amount": {
+                "claimId": "outcome-lab-amount",
+                "status": "disclosed",
+                "value": {
+                  "kind": "exact",
+                  "amount": 100000,
+                  "currency": "USD"
+                },
+                "displayValue": "Up to $100,000",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-c573441dc35b63fb",
+                    "url": "https://breakthroughjuniorchallenge.org/rules",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:32.352Z",
+                    "excerpt": "renovations to the Winner’s school (“School”) valued up to $100,000 for the renovation or addition of a science lab."
+                  }
+                ],
+                "note": "Schema exact amount cannot encode the source's 'up to' qualifier; qualifier retained in display value.",
+                "conflictingValues": []
+              },
+              "distribution": null,
+              "rank": null,
+              "track": null,
+              "quantity": null,
+              "useRestriction": {
+                "claimId": "outcome-lab-restriction",
+                "status": "disclosed",
+                "value": "Funds are for approved expenses associated with renovating or adding a science lab at the winner's school.",
+                "displayValue": "Restricted to approved school science-lab renovation expenses",
+                "claimKind": "source_stated",
+                "sources": [
+                  {
+                    "id": "page-c573441dc35b63fb",
+                    "url": "https://breakthroughjuniorchallenge.org/rules",
+                    "title": "Breakthrough Junior Challenge",
+                    "pageType": "user_supplied",
+                    "accessedAt": "2026-08-12T06:43:32.352Z",
+                    "excerpt": "pay up to $100,000 for all approved expenses associated with the renovation."
+                  }
+                ],
+                "note": null,
+                "conflictingValues": []
+              },
+              "combinability": null,
+              "conditions": []
+            }
+          ],
+          "note": "Award outcomes are modeled separately by recipient and monetary nature."
+        }
+      }
+    }
+  },
+  "deterministicValidation": {
+    "completed": true,
+    "evidenceWarnings": [
+      {
+        "fieldId": "structured",
+        "sourceId": "page-ed10ffcd72851dd3",
+        "message": "Structured candidates were withheld because source coverage was incomplete or unavailable."
+      }
+    ]
+  },
+  "result": {
+    "draftCard": {
+      "schemaVersion": "2.0.0",
+      "opportunityId": null,
+      "cycle": {
+        "status": "unassessed",
+        "value": null
+      },
+      "cardVersion": 1,
+      "slug": "breakthrough-junior-challenge",
+      "summary": "Automated draft from 7 user-supplied source pages; review every value, excerpt, and attribution before use.",
+      "reviewState": "draft",
+      "reviewedAt": null,
+      "sourcePagesChecked": [
+        {
+          "id": "page-ed10ffcd72851dd3",
+          "url": "https://breakthroughjuniorchallenge.org/",
+          "title": "Breakthrough Junior Challenge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:43:30.929Z"
+        },
+        {
+          "id": "page-3dde91fd4e14362a",
+          "url": "https://breakthroughjuniorchallenge.org/terms",
+          "title": "Breakthrough Junior Challenge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:43:31.428Z"
+        },
+        {
+          "id": "page-239a8e3e8399a87a",
+          "url": "https://breakthroughjuniorchallenge.org/privacy",
+          "title": "Breakthrough Junior Challenge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:43:31.867Z"
+        },
+        {
+          "id": "page-c573441dc35b63fb",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Breakthrough Junior Challenge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:43:32.352Z"
+        },
+        {
+          "id": "page-3f322c4885d1c372",
+          "url": "https://breakthroughjuniorchallenge.org/faq",
+          "title": "Breakthrough Junior Challenge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:43:32.808Z"
+        },
+        {
+          "id": "page-73ec920bd3f8940e",
+          "url": "https://breakthroughjuniorchallenge.org/prize",
+          "title": "Breakthrough Junior Challenge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:43:33.175Z"
+        },
+        {
+          "id": "page-df342696e2de05e9",
+          "url": "https://breakthroughjuniorchallenge.org/about",
+          "title": "Breakthrough Junior Challenge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-12T06:43:33.514Z"
+        }
+      ],
+      "conflicts": [],
+      "organizations": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "organizationRoles": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "institutionRelationships": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "variants": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "stages": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "pathways": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "costItems": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "outcomes": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "facts": {
+        "opportunity_name": {
+          "status": "disclosed",
+          "value": "Breakthrough Junior Challenge",
+          "displayValue": "Breakthrough Junior Challenge",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Breakthrough Junior Challenge"
+          },
+          "sources": [
+            {
+              "id": "page-ed10ffcd72851dd3",
+              "url": "https://breakthroughjuniorchallenge.org/",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:30.929Z",
+              "excerpt": "Breakthrough Junior Challenge"
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "opportunity_category": {
+          "status": "disclosed",
+          "value": "Annual global science video competition",
+          "displayValue": "Annual global science video competition",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Annual global science video competition"
+          },
+          "sources": [
+            {
+              "id": "page-ed10ffcd72851dd3",
+              "url": "https://breakthroughjuniorchallenge.org/",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:30.929Z",
+              "excerpt": "The Breakthrough Junior Challenge is an annual, global science video competition for high-school students."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "official_url": {
+          "status": "disclosed",
+          "value": "https://breakthroughjuniorchallenge.org/",
+          "displayValue": "https://breakthroughjuniorchallenge.org/",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "https://breakthroughjuniorchallenge.org/"
+          },
+          "sources": [
+            {
+              "id": "page-ed10ffcd72851dd3",
+              "url": "https://breakthroughjuniorchallenge.org/",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:30.929Z",
+              "excerpt": "Breakthrough Junior Challenge"
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "operating_organization": {
+          "status": "disclosed",
+          "value": "Breakthrough Prize Foundation",
+          "displayValue": "Breakthrough Prize Foundation",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Breakthrough Prize Foundation"
+          },
+          "sources": [
+            {
+              "id": "page-df342696e2de05e9",
+              "url": "https://breakthroughjuniorchallenge.org/about",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:33.514Z",
+              "excerpt": "The Challenge is organized by the Breakthrough Prize Foundation"
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "organization_type": {
+          "status": "disclosed",
+          "value": "Nonprofit organization",
+          "displayValue": "Nonprofit organization",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Nonprofit organization"
+          },
+          "sources": [
+            {
+              "id": "page-3dde91fd4e14362a",
+              "url": "https://breakthroughjuniorchallenge.org/terms",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.428Z",
+              "excerpt": "\"Foundation\" means Breakthrough Prize Foundation, a nonprofit organization"
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "named_institution": {
+          "status": "disclosed",
+          "value": "Cold Spring Harbor Laboratory",
+          "displayValue": "Cold Spring Harbor Laboratory",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Cold Spring Harbor Laboratory"
+          },
+          "sources": [
+            {
+              "id": "page-df342696e2de05e9",
+              "url": "https://breakthroughjuniorchallenge.org/about",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:33.514Z",
+              "excerpt": "The Breakthrough Prize Lab for the winning student’s school is designed by and in partnership with Cold Spring Harbor Laboratory (CSHL)."
+            }
+          ],
+          "note": null,
+          "confidence": 0.92,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "institution_relationship": {
+          "status": "disclosed",
+          "value": "institution_partnered",
+          "displayValue": "Partnered with Cold Spring Harbor Laboratory for the Breakthrough Science Lab",
+          "normalizedValue": {
+            "kind": "relationship",
+            "value": "institution_partnered"
+          },
+          "sources": [
+            {
+              "id": "page-df342696e2de05e9",
+              "url": "https://breakthroughjuniorchallenge.org/about",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:33.514Z",
+              "excerpt": "The Breakthrough Prize Lab for the winning student’s school is designed by and in partnership with Cold Spring Harbor Laboratory (CSHL)."
+            }
+          ],
+          "note": null,
+          "confidence": 0.92,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "relationship_explanation": {
+          "status": "disclosed",
+          "value": "The Breakthrough Prize Lab for the winning student's school is designed by and in partnership with Cold Spring Harbor Laboratory (CSHL).",
+          "displayValue": "Breakthrough Science Lab designed by and in partnership with CSHL",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "The Breakthrough Prize Lab for the winning student's school is designed by and in partnership with Cold Spring Harbor Laboratory (CSHL)."
+          },
+          "sources": [
+            {
+              "id": "page-df342696e2de05e9",
+              "url": "https://breakthroughjuniorchallenge.org/about",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:33.514Z",
+              "excerpt": "The Breakthrough Prize Lab for the winning student’s school is designed by and in partnership with Cold Spring Harbor Laboratory (CSHL)."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "grade_levels": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Review coverage was truncated before all source text could be assessed, so absence cannot be claimed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "ages": {
+          "status": "disclosed",
+          "value": "Ages 13 to 18; must be 13 by May 11, 2026 and not yet 19 on October 1, 2026.",
+          "displayValue": "13–18",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Ages 13 to 18; must be 13 by May 11, 2026 and not yet 19 on October 1, 2026."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "individuals between the ages of 13 and 18 may participate. You must be 13 years of age by May 11, 2026 at 12:01 AM Pacific Daylight Time (”PDT”) to participate in the Competition, and You cannot be older than 18 years of age (not yet 19) on October 1, 2026 at 11:59 PM PDT."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "geographic_restrictions": {
+          "status": "disclosed",
+          "value": "Not available to people residing in countries or regions subject to comprehensive U.S. economic sanctions, or individuals with whom U.S. persons cannot transact under U.S. law.",
+          "displayValue": "Excludes comprehensively sanctioned countries/regions and otherwise prohibited transactions",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Not available to people residing in countries or regions subject to comprehensive U.S. economic sanctions, or individuals with whom U.S. persons cannot transact under U.S. law."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "If you reside in any country or region that is subject to comprehensive U.S. economic sanctions or are otherwise an individual with which U.S. persons cannot transact under U.S. law, you are not eligible to enter the contest."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "citizenship_restrictions": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-3f322c4885d1c372",
+              "url": "https://breakthroughjuniorchallenge.org/faq",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.808Z",
+              "excerpt": "If you have dual citizenships and official IDs from more than one country, you can choose your country. But the country chosen on the Application must match the ID you upload."
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "prerequisite_skills": {
+          "status": "disclosed",
+          "value": [
+            "Create an original video explaining a life sciences, physics, or mathematics concept or theory.",
+            "Complete peer review of at least five other entries."
+          ],
+          "displayValue": "Original science-explanation video; peer review of at least five entries",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Create an original video explaining a life sciences, physics, or mathematics concept or theory.",
+              "Complete peer review of at least five other entries."
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-df342696e2de05e9",
+              "url": "https://breakthroughjuniorchallenge.org/about",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:33.514Z",
+              "excerpt": "Students ages 13 to 18 from countries across the globe are invited to create and submit original videos (2:00 minutes in length maximum) that bring to life a concept or theory in the life sciences, physics or mathematics."
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "In order for Your Entry to be valid and complete, You must also review at least five (5) other Entries from other entrants"
+            }
+          ],
+          "note": null,
+          "confidence": 0.96,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "entry_format": {
+          "status": "disclosed",
+          "value": "Individual entry only; group submissions are not eligible.",
+          "displayValue": "Individual only",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Individual entry only; group submissions are not eligible."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "Entries are limited to individuals only; commercial enterprises and business entities are not eligible. Group submissions are not eligible."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "sponsor_requirement": {
+          "status": "disclosed",
+          "value": "Minors need parent or legal guardian permission; the parent or guardian must agree to the rules.",
+          "displayValue": "Parent/legal-guardian permission required for minors",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Minors need parent or legal guardian permission; the parent or guardian must agree to the rules."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "If You are a minor, You must have Your parent's or legal guardian's permission to enter and Your parent or legal guardian must agree, on Your behalf and on his or her own behalf, to follow and be bound by these RULES"
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_deadline": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "ALL ENTRIES MUST BE RECEIVED BY September 15, 2026 at 11:59 PM PDT."
+            }
+          ],
+          "note": "The supplied pages did not establish one target cycle, so automated extraction withheld cycle-specific dates.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "decision_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The Winner will be announced on a date to be determined by the Competition Sponsor"
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "start_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The Competition begins May 11, 2026 at 12:01 AM PDT"
+            }
+          ],
+          "note": "The supplied pages did not establish one target cycle, so automated extraction withheld cycle-specific dates.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "end_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "ends September 15, 2026 at 11:59 PM PDT"
+            }
+          ],
+          "note": "The supplied pages did not establish one target cycle, so automated extraction withheld cycle-specific dates.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "duration": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The Competition begins May 11, 2026 at 12:01 AM PDT (the “Competition Start Date”) and ends September 15, 2026 at 11:59 PM PDT (the “Competition End Date”), such period referred to herein as the “Competition Period.”"
+            }
+          ],
+          "note": "The supplied pages did not establish one applicable variant or cohort, so automated extraction withheld a universal duration.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "weekly_hours": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Review coverage was truncated before all source text could be assessed, so absence cannot be claimed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "required_live_hours": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Review coverage was truncated before all source text could be assessed, so absence cannot be claimed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "participation_format": {
+          "status": "disclosed",
+          "value": "online",
+          "displayValue": "Online submission and review",
+          "normalizedValue": {
+            "kind": "participation_format",
+            "value": "online"
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "go to breakthroughjuniorchallenge.org, (the “Website”), click “Enter” at the top of the webpage and follow the on-screen instructions to complete the application form"
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "Your video submission must be two minutes (2:00) or under according to the clock on YouTube."
+            }
+          ],
+          "note": null,
+          "confidence": 0.91,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "location": {
+          "status": "disclosed",
+          "value": "Online via breakthroughjuniorchallenge.org and YouTube for video submission.",
+          "displayValue": "Online",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Online via breakthroughjuniorchallenge.org and YouTube for video submission."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "go to breakthroughjuniorchallenge.org, (the “Website”), click “Enter” at the top of the webpage and follow the on-screen instructions to complete the application form"
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "Your video submission must be two minutes (2:00) or under according to the clock on YouTube."
+            }
+          ],
+          "note": null,
+          "confidence": 0.92,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_requirements": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The Competition Sponsor anticipates that there will be an in-person prize ceremony. The occurrence and timing of the ceremony will be in the sole discretion of the Competition Sponsor."
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_fee": {
+          "status": "disclosed",
+          "value": 0,
+          "displayValue": "No purchase or payment necessary",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "No Purchase Or Payment Necessary To Enter Or Win."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "deposit": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Review coverage was truncated before all source text could be assessed, so absence cannot be claimed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Automated extraction cannot establish that this field does not apply; human review is required.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_mandatory_costs": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Review coverage was truncated before all source text could be assessed, so absence cannot be claimed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "estimated_total_mandatory_cost": {
+          "status": "disclosed",
+          "value": 0,
+          "displayValue": "$0 stated participation cost",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-3dde91fd4e14362a",
+              "url": "https://breakthroughjuniorchallenge.org/terms",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.428Z",
+              "excerpt": "Registration on this Website and participation in any Competition is free."
+            }
+          ],
+          "note": null,
+          "confidence": 0.97,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_included": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Review coverage was truncated before all source text could be assessed, so absence cannot be claimed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "lodging_included": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Review coverage was truncated before all source text could be assessed, so absence cannot be claimed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "meals_included": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Review coverage was truncated before all source text could be assessed, so absence cannot be claimed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "financial_aid": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Automated extraction cannot establish that this field does not apply; human review is required.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "refund_policy": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Automated extraction cannot establish that this field does not apply; human review is required.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_policy": {
+          "status": "disclosed",
+          "value": "Competitors may withdraw their entries from winner selection by expressly informing the Foundation within 48 hours after the competition closes.",
+          "displayValue": "Entry withdrawal within 48 hours after close",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Competitors may withdraw their entries from winner selection by expressly informing the Foundation within 48 hours after the competition closes."
+          },
+          "sources": [
+            {
+              "id": "page-3dde91fd4e14362a",
+              "url": "https://breakthroughjuniorchallenge.org/terms",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.428Z",
+              "excerpt": "Competitors may withdraw their Entries from this selection by expressly informing Foundation of their decision within 48 hours after the close of the Competition."
+            }
+          ],
+          "note": null,
+          "confidence": 0.97,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_process": {
+          "status": "disclosed",
+          "value": "Qualified entries undergo peer-to-peer review, administrative review, Evaluation Panel review, finalist selection, Selection Committee review, and sponsor selection of the winner using the Trait Scoring Rubric.",
+          "displayValue": "Multi-phase peer, panel, committee, and sponsor selection",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Qualified entries undergo peer-to-peer review, administrative review, Evaluation Panel review, finalist selection, Selection Committee review, and sponsor selection of the winner using the Trait Scoring Rubric."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "There are four phases of assessment for each qualified Entry"
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The Competition Sponsor shall assess such top five (5) and select the winner based on the TRAIT SCORING RUBRIC."
+            }
+          ],
+          "note": null,
+          "confidence": 0.94,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "applicant_count": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Review coverage was truncated before all source text could be assessed, so absence cannot be claimed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_count": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "One (1) Prize (“Prize”) will be awarded to the Winner"
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_rate_claim": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Review coverage was truncated before all source text could be assessed, so absence cannot be claimed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "calculated_acceptance_rate": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "One (1) Prize (“Prize”) will be awarded to the Winner"
+            }
+          ],
+          "note": "A rate was not calculated because one or both published counts are unclear.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_evidence": {
+          "status": "disclosed",
+          "value": "Descriptive and numerical stage limits are published.",
+          "displayValue": "Descriptive selection process with numerical stage limits",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Descriptive and numerical stage limits are published."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The top Entries (up to seventy-five (75)) will be subjected to an administrative review"
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "the top fifteen (15) Entries from the Evaluation Panel review who also pass the second Administrative Review will be deemed the finalists"
+            }
+          ],
+          "note": null,
+          "confidence": 0.95,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cash_award": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Automated extraction cannot establish that this field does not apply; human review is required.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "stipend": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Review coverage was truncated before all source text could be assessed, so absence cannot be claimed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition_waiver": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Review coverage was truncated before all source text could be assessed, so absence cannot be claimed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "program_seat": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Automated extraction cannot establish that this field does not apply; human review is required.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "in_kind_value": {
+          "status": "disclosed",
+          "value": 100000,
+          "displayValue": "Up to $100,000 Breakthrough Science Lab renovation for the winner's school",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "renovations to the Winner’s school (“School”) valued up to $100,000 for the renovation or addition of a science lab."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "certificate": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Review coverage was truncated before all source text could be assessed, so absence cannot be claimed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "college_credit": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Review coverage was truncated before all source text could be assessed, so absence cannot be claimed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "mentorship": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Review coverage was truncated before all source text could be assessed, so absence cannot be claimed.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_benefits": {
+          "status": "disclosed",
+          "value": [
+            "$50,000 prize awarded to one teacher selected by the winner"
+          ],
+          "displayValue": "$50,000 teacher prize",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "$50,000 prize awarded to one teacher selected by the winner"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "the Winner will also elect one teacher (“Teacher”) who has inspired the Winner in the field of science or mathematics, and such teacher will be awarded $50,000."
+            }
+          ],
+          "note": null,
+          "confidence": 0.98,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "personal_information": {
+          "status": "disclosed",
+          "value": [
+            "Name",
+            "Email address",
+            "Postal mailing address",
+            "Home/mobile telephone number",
+            "Age and nationality verification document"
+          ],
+          "displayValue": "Name, email, mailing address, phone number, and age/nationality verification documentation",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Name",
+              "Email address",
+              "Postal mailing address",
+              "Home/mobile telephone number",
+              "Age and nationality verification document"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-239a8e3e8399a87a",
+              "url": "https://breakthroughjuniorchallenge.org/privacy",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.867Z",
+              "excerpt": "You may provide to Foundation what is generally called \"personally identifiable information” (such as your name, email address, postal mailing address, home/mobile telephone number, etc.), when using this Website, such as when you register, when you submit Entries, and/or when you provide information in order to receive any Prize."
+            },
+            {
+              "id": "page-3f322c4885d1c372",
+              "url": "https://breakthroughjuniorchallenge.org/faq",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.808Z",
+              "excerpt": "An official government-issued document such as a birth certificate, state ID, country ID, or passport document verifying your age and nationality."
+            }
+          ],
+          "note": null,
+          "confidence": 0.94,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "data_sharing": {
+          "status": "disclosed",
+          "value": "Foundation may disclose information provided to other competitors in certain cases, to third-party service providers, when legally required, and in connection with safety, fraud, or rights protection; it may also send promotional messages related to the website and activities of parties it works with.",
+          "displayValue": "Disclosures to competitors, service providers, legal/safety recipients; promotional communications",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Foundation may disclose information provided to other competitors in certain cases, to third-party service providers, when legally required, and in connection with safety, fraud, or rights protection; it may also send promotional messages related to the website and activities of parties it works with."
+          },
+          "sources": [
+            {
+              "id": "page-239a8e3e8399a87a",
+              "url": "https://breakthroughjuniorchallenge.org/privacy",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.867Z",
+              "excerpt": "Foundation may disclose information that you choose to provide to other Competitors in certain cases to enable your participation in and the operation of Competitions."
+            },
+            {
+              "id": "page-239a8e3e8399a87a",
+              "url": "https://breakthroughjuniorchallenge.org/privacy",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.867Z",
+              "excerpt": "Foundation works with third party service providers to provide general website hosting, specialized Content hosting (e.g. the hosting of video Content), maintenance, and other services."
+            },
+            {
+              "id": "page-239a8e3e8399a87a",
+              "url": "https://breakthroughjuniorchallenge.org/privacy",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.867Z",
+              "excerpt": "Foundation may use your email address or other personally identifiable information to send you: i) messages about this Website; ii) promotional messages related to this Website and the activities of other parties with whom we work"
+            }
+          ],
+          "note": null,
+          "confidence": 0.94,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_ownership": {
+          "status": "disclosed",
+          "value": "The entrant represents that the entry is an original work created solely by the entrant and that the entrant owns all intellectual-property rights in it; once submitted, the entry becomes the exclusive property of the Competition Sponsor.",
+          "displayValue": "Entrant represents ownership; submitted entry becomes sponsor's exclusive property",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "The entrant represents that the entry is an original work created solely by the entrant and that the entrant owns all intellectual-property rights in it; once submitted, the entry becomes the exclusive property of the Competition Sponsor."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "Your Entry, including any Content therein, is an original work created solely by You and that You own all Intellectual Property Rights in and to the Entry"
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "Once submitted, Your Entry becomes the exclusive property of the Competition Sponsor"
+            }
+          ],
+          "note": null,
+          "confidence": 0.93,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_license": {
+          "status": "disclosed",
+          "value": "By submitting an entry, the entrant grants the Competition Sponsor a royalty-free, perpetual, irrevocable, sublicensable, non-exclusive right and license to use, reproduce, modify, publish, distribute, perform, and display the entry and content worldwide.",
+          "displayValue": "Royalty-free, perpetual, irrevocable, sublicensable non-exclusive license",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "By submitting an entry, the entrant grants the Competition Sponsor a royalty-free, perpetual, irrevocable, sublicensable, non-exclusive right and license to use, reproduce, modify, publish, distribute, perform, and display the entry and content worldwide."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "By submitting Your Entry, You represent and warrant that You have the right to grant, and do hereby grant, to Competition Sponsor a royalty-free, perpetual, irrevocable, sublicensable and non-exclusive right and license to (a) use, reproduce, modify, adapt, publish, translate, create derivative works from, distribute, perform and display Your Entry"
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "publicity_rights": {
+          "status": "disclosed",
+          "value": "Entrants grant the Competition Sponsor the right to use their name, city and state, image, voice, likeness, photos, statements, biographical materials, and prize information for promotional purposes without further permission or compensation.",
+          "displayValue": "Use of entrant identity and materials for promotion without further permission or compensation",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Entrants grant the Competition Sponsor the right to use their name, city and state, image, voice, likeness, photos, statements, biographical materials, and prize information for promotional purposes without further permission or compensation."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "You also grant the Competition Sponsor the right to use Your name, city and state, image, voice, likeness, photos, statements, biographical materials, Prize information and other material and information, without limitation, for the Competition Sponsor’s promotional purposes without further permission or compensation."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "confidentiality": {
+          "status": "disclosed",
+          "value": "The Competition Sponsor is not required to treat an entry or its content as confidential.",
+          "displayValue": "Entries and content are not required to be treated as confidential",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "The Competition Sponsor is not required to treat an entry or its content as confidential."
+          },
+          "sources": [
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "Under no circumstances will the Competition Sponsor be required to treat Your Entry or any Content as confidential."
+            }
+          ],
+          "note": null,
+          "confidence": 0.99,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_rights": {
+          "status": "disclosed",
+          "value": "The Foundation may modify the agreement at any time, and may disqualify an entry or terminate or suspend participation at any time and without notice.",
+          "displayValue": "Foundation reserves modification, disqualification, termination, and suspension rights",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "The Foundation may modify the agreement at any time, and may disqualify an entry or terminate or suspend participation at any time and without notice."
+          },
+          "sources": [
+            {
+              "id": "page-3dde91fd4e14362a",
+              "url": "https://breakthroughjuniorchallenge.org/terms",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.428Z",
+              "excerpt": "Foundation reserves the right to modify this Agreement at any time."
+            },
+            {
+              "id": "page-3dde91fd4e14362a",
+              "url": "https://breakthroughjuniorchallenge.org/terms",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.428Z",
+              "excerpt": "Foundation may, in its absolute discretion, disqualify Your Entry or terminate or suspend Your participation at any time and without notice."
+            }
+          ],
+          "note": null,
+          "confidence": 0.97,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "material_terms": {
+          "status": "disclosed",
+          "value": [
+            "Binding individual arbitration and class-action waiver.",
+            "Winner may need to submit signed, notarized eligibility/liability and publicity documents within five business days.",
+            "Winner may be required to attend an award ceremony."
+          ],
+          "displayValue": "Arbitration/class-action waiver; winner documentation; possible award-ceremony attendance",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Binding individual arbitration and class-action waiver.",
+              "Winner may need to submit signed, notarized eligibility/liability and publicity documents within five business days.",
+              "Winner may be required to attend an award ceremony."
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-3dde91fd4e14362a",
+              "url": "https://breakthroughjuniorchallenge.org/terms",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:31.428Z",
+              "excerpt": "you will only be permitted to pursue claims against breakthrough prize foundation on an individual basis, not as a plaintiff or class member in any class or representative action or proceeding"
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The Winner will be required to verify his or her eligibility by completing, signing, notarizing, and returning an Affidavit of Eligibility/Liability Release, and, where lawful, a Publicity Release within five (5) business days"
+            },
+            {
+              "id": "page-c573441dc35b63fb",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-12T06:43:32.352Z",
+              "excerpt": "The Winner will be required to attend an award ceremony on a date to be announced by the Competition Sponsor."
+            }
+          ],
+          "note": null,
+          "confidence": 0.96,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        }
+      },
+      "projectionRefs": {},
+      "migratedFrom": null
+    },
+    "reviewedPages": [
+      {
+        "id": "page-ed10ffcd72851dd3",
+        "url": "https://breakthroughjuniorchallenge.org/",
+        "title": "Breakthrough Junior Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:43:30.929Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-3dde91fd4e14362a",
+        "url": "https://breakthroughjuniorchallenge.org/terms",
+        "title": "Breakthrough Junior Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:43:31.428Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-239a8e3e8399a87a",
+        "url": "https://breakthroughjuniorchallenge.org/privacy",
+        "title": "Breakthrough Junior Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:43:31.867Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-c573441dc35b63fb",
+        "url": "https://breakthroughjuniorchallenge.org/rules",
+        "title": "Breakthrough Junior Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:43:32.352Z",
+        "truncated": false,
+        "truncatedForModel": true,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-3f322c4885d1c372",
+        "url": "https://breakthroughjuniorchallenge.org/faq",
+        "title": "Breakthrough Junior Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:43:32.808Z",
+        "truncated": false,
+        "truncatedForModel": true,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-73ec920bd3f8940e",
+        "url": "https://breakthroughjuniorchallenge.org/prize",
+        "title": "Breakthrough Junior Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:43:33.175Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-df342696e2de05e9",
+        "url": "https://breakthroughjuniorchallenge.org/about",
+        "title": "Breakthrough Junior Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:43:33.514Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      }
+    ]
+  },
+  "failure": null,
+  "secretsRetained": false
+}

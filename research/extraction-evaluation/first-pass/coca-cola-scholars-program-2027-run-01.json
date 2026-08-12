@@ -1,0 +1,183 @@
+{
+  "artifactVersion": 1,
+  "benchmarkStage": "evaluation",
+  "developmentSet": false,
+  "run": 1,
+  "program": {
+    "slug": "coca-cola-scholars-program-2027",
+    "label": "Coca-Cola Scholars Program — 2027"
+  },
+  "repository": {
+    "gitCommit": "0746d8e772b63b26bee6a909a6c15311154e1ff7",
+    "workingTreeDirty": true,
+    "extractionCodeHash": {
+      "algorithm": "sha256",
+      "value": "6a26033f9508c0613a79af0548a694465d2582d9fd3167c79e4e66d4618fa8e8",
+      "files": [
+        "lib/analysis/fetch.ts",
+        "lib/analysis/html-extraction.ts",
+        "lib/analysis/link-discovery.ts",
+        "lib/analysis/model-extraction.ts",
+        "lib/analysis/pipeline.ts",
+        "lib/analysis/types.ts",
+        "lib/analysis/url-safety.ts",
+        "lib/opportunity/projection.ts",
+        "lib/opportunity/schema-v2.ts",
+        "lib/opportunity/structured-schema.ts"
+      ]
+    }
+  },
+  "schemaVersion": "2.0.0",
+  "provider": {
+    "name": "openai",
+    "endpoint": "responses",
+    "model": "gpt-5.6-terra",
+    "settings": {
+      "store": false,
+      "reasoningEffort": "low",
+      "maxOutputTokens": 24000,
+      "requestTimeoutMs": 120000,
+      "maximumRetries": 0
+    },
+    "telemetry": {
+      "model": "gpt-5.6-terra",
+      "responseId": "resp_0a891e6ae7af10b8016a7c148a52508196b3fbf1079c3c20e3",
+      "usage": {
+        "inputTokens": 0,
+        "cachedInputTokens": 0,
+        "outputTokens": 0,
+        "reasoningTokens": 0,
+        "totalTokens": 0
+      }
+    }
+  },
+  "input": {
+    "mode": "url",
+    "startingUrl": "https://www.coca-colascholarsfoundation.org/apply/"
+  },
+  "timing": {
+    "startedAt": "2026-08-12T06:36:52.649Z",
+    "modelStartedAt": "2026-08-12T06:36:55.910Z",
+    "modelFinishedAt": "2026-08-12T06:38:04.270Z",
+    "finishedAt": "2026-08-12T06:38:04.270Z",
+    "totalRuntimeMs": 71621,
+    "acquisitionRuntimeMs": 3261,
+    "modelRuntimeMs": 68360
+  },
+  "acquisition": {
+    "submittedUrl": "https://www.coca-colascholarsfoundation.org/apply/",
+    "successfullyAcquired": [
+      {
+        "role": "submitted",
+        "id": "page-c367e3f0e346e929",
+        "url": "https://www.coca-colascholarsfoundation.org/apply/",
+        "title": "Apply to be a Coke Scholar - $20,000 College Scholarship",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:36:53.193Z",
+        "extractedCharacters": 10218,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 10218,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-0d98081f912fd7c8",
+        "url": "https://www.coca-colascholarsfoundation.org/about/faq",
+        "title": "FAQ - Coca-Cola Scholars Foundation",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:36:53.675Z",
+        "extractedCharacters": 2383,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 2383,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-dcf66383b8f7f668",
+        "url": "https://www.coca-colascholarsfoundation.org/about/",
+        "title": "About - Coca-Cola Scholars Foundation",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:36:54.041Z",
+        "extractedCharacters": 2608,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 2608,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-baf98d773403dde4",
+        "url": "https://www.coca-colascholarsfoundation.org/about/sponsors/",
+        "title": "Sponsors - Coca-Cola Scholars Foundation",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:36:54.421Z",
+        "extractedCharacters": 4342,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 4342,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-e458fbb53bbedfc2",
+        "url": "https://www.coca-colascholarsfoundation.org/about/leadership/",
+        "title": "Leadership - Coca-Cola Scholars Foundation",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:36:54.865Z",
+        "extractedCharacters": 54775,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 54775,
+        "truncatedForModel": false
+      },
+      {
+        "role": "discovered",
+        "id": "page-8b344150e008de28",
+        "url": "https://www.coca-colascholarsfoundation.org/about/2026-scholar-bios/",
+        "title": "2026 Coke Scholar Bios",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:36:55.444Z",
+        "extractedCharacters": 117233,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 43603,
+        "truncatedForModel": true
+      },
+      {
+        "role": "discovered",
+        "id": "page-2034ccd11f73746e",
+        "url": "https://www.coca-colascholarsfoundation.org/about/impact/",
+        "title": "Impact - Coca-Cola Scholars Foundation",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-12T06:36:55.867Z",
+        "extractedCharacters": 2071,
+        "truncatedDuringExtraction": false,
+        "modelCharacters": 2071,
+        "truncatedForModel": false
+      }
+    ],
+    "failures": []
+  },
+  "modelOutput": {
+    "rawStructuredCandidate": null
+  },
+  "deterministicValidation": {
+    "completed": false,
+    "evidenceWarnings": []
+  },
+  "result": {
+    "draftCard": null,
+    "reviewedPages": []
+  },
+  "failure": {
+    "name": "ModelExtractionError",
+    "message": "The extraction model returned invalid structured JSON.",
+    "code": null,
+    "status": null,
+    "type": null,
+    "cause": {
+      "name": "SyntaxError",
+      "message": "Unterminated string in JSON at position 34492 (line 1 column 34493)",
+      "code": null,
+      "status": null,
+      "type": null
+    }
+  },
+  "secretsRetained": false
+}
