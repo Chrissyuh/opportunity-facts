@@ -30,7 +30,11 @@ describe("preregistered out-of-sample human ground truth", () => {
     if (value.outcomes.status !== "modeled") return;
     const scholarship = value.outcomes.records[0];
     expect(scholarship.definition.value.outcomeType).toBe("scholarship");
-    expect(scholarship.amount?.status === "disclosed" && scholarship.amount.value.amount).toBe(20_000);
+    expect(
+      scholarship.amount?.status === "disclosed" && scholarship.amount.value.kind === "exact"
+        ? scholarship.amount.value.amount
+        : null,
+    ).toBe(20_000);
     expect(scholarship.monetaryNature?.status === "disclosed" && scholarship.monetaryNature.value).toBe("restricted_funding");
   });
 
@@ -57,7 +61,11 @@ describe("preregistered out-of-sample human ground truth", () => {
     expect(value.costItems.completeness).toBe("incomplete");
     const travel = value.costItems.records.find((item) => item.definition.value.kind === "travel");
     expect(travel?.amount.status).toBe("not_found");
-    expect(value.costItems.records.filter((item) => item.amount.status === "disclosed" && item.amount.value.amount === 0)).toHaveLength(3);
+    expect(value.costItems.records.filter((item) =>
+      item.amount.status === "disclosed" &&
+      item.amount.value.kind === "exact" &&
+      item.amount.value.amount === 0,
+    )).toHaveLength(3);
   });
 
   it("preserves Breakthrough's three recipients and monetary natures", async () => {
