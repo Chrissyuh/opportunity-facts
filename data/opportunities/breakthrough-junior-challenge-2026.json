@@ -1,0 +1,2409 @@
+{
+  "schemaVersion": "2.0.0",
+  "opportunityId": "breakthrough-junior-challenge",
+  "cycle": {
+    "status": "modeled",
+    "value": {
+      "id": "bjc-cycle-2026",
+      "label": {
+        "claimId": "bjc-cycle-label",
+        "status": "disclosed",
+        "value": "2026",
+        "displayValue": "2026",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "bjc-home",
+            "url": "https://breakthroughjuniorchallenge.org/",
+            "title": "Breakthrough Junior Challenge",
+            "pageType": "official_program_page",
+            "accessedAt": "2026-08-12T06:25:00.000Z",
+            "excerpt": "Submissions are due September 15, 2026 at 11:59 PM PDT."
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "status": {
+        "claimId": "bjc-cycle-status",
+        "status": "disclosed",
+        "value": "applications_open",
+        "displayValue": "Submissions open",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "bjc-home",
+            "url": "https://breakthroughjuniorchallenge.org/",
+            "title": "Breakthrough Junior Challenge",
+            "pageType": "official_program_page",
+            "accessedAt": "2026-08-12T06:25:00.000Z",
+            "excerpt": "Submissions are due September 15, 2026 at 11:59 PM PDT."
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "year": {
+        "claimId": "bjc-cycle-year",
+        "status": "disclosed",
+        "value": 2026,
+        "displayValue": "2026",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "bjc-home",
+            "url": "https://breakthroughjuniorchallenge.org/",
+            "title": "Breakthrough Junior Challenge",
+            "pageType": "official_program_page",
+            "accessedAt": "2026-08-12T06:25:00.000Z",
+            "excerpt": "Submissions are due September 15, 2026 at 11:59 PM PDT."
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "startYear": null,
+      "endYear": null,
+      "season": null,
+      "cycleType": {
+        "claimId": "bjc-cycle-type",
+        "status": "disclosed",
+        "value": "competition_cycle",
+        "displayValue": "Competition cycle",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "bjc-home",
+            "url": "https://breakthroughjuniorchallenge.org/",
+            "title": "Breakthrough Junior Challenge",
+            "pageType": "official_program_page",
+            "accessedAt": "2026-08-12T06:25:00.000Z",
+            "excerpt": "Submissions are due September 15, 2026 at 11:59 PM PDT."
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "timingRefs": {
+        "opens": "bjc-open-date",
+        "closes": "bjc-deadline",
+        "coverageStart": null,
+        "coverageEnd": null
+      }
+    }
+  },
+  "cardVersion": 1,
+  "slug": "breakthrough-junior-challenge-2026",
+  "summary": "The 2026 Breakthrough Junior Challenge is an individual global science-video competition for ages 13–18 with a $250,000 student scholarship, $50,000 teacher prize, and $100,000 school laboratory award.",
+  "reviewState": "human_reviewed",
+  "reviewedAt": "2026-08-12T06:25:00.000Z",
+  "sourcePagesChecked": [
+    {
+      "id": "bjc-home",
+      "url": "https://breakthroughjuniorchallenge.org/",
+      "title": "Breakthrough Junior Challenge",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-12T06:25:00.000Z"
+    },
+    {
+      "id": "bjc-rules",
+      "url": "https://breakthroughjuniorchallenge.org/rules",
+      "title": "Official Rules - Breakthrough Junior Challenge",
+      "pageType": "official_rules",
+      "accessedAt": "2026-08-12T06:25:00.000Z"
+    },
+    {
+      "id": "bjc-faq",
+      "url": "https://breakthroughjuniorchallenge.org/faq",
+      "title": "FAQ - Breakthrough Junior Challenge",
+      "pageType": "official_faq",
+      "accessedAt": "2026-08-12T06:25:00.000Z"
+    },
+    {
+      "id": "bjc-privacy",
+      "url": "https://breakthroughjuniorchallenge.org/privacy",
+      "title": "Privacy Policy - Breakthrough Junior Challenge",
+      "pageType": "official_privacy_policy",
+      "accessedAt": "2026-08-12T06:25:00.000Z"
+    },
+    {
+      "id": "bjc-terms",
+      "url": "https://breakthroughjuniorchallenge.org/terms",
+      "title": "Terms of Use - Breakthrough Junior Challenge",
+      "pageType": "official_terms",
+      "accessedAt": "2026-08-12T06:25:00.000Z"
+    }
+  ],
+  "conflicts": [],
+  "organizations": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "bjc-foundation",
+        "name": {
+          "claimId": "bjc-foundation-name",
+          "status": "disclosed",
+          "value": "Breakthrough Prize Foundation",
+          "displayValue": "Breakthrough Prize Foundation",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Breakthrough Prize Foundation (Sponsor)"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "kind": {
+          "claimId": "bjc-foundation-kind",
+          "status": "disclosed",
+          "value": "education_provider",
+          "displayValue": "Nonprofit foundation sponsor",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Breakthrough Prize Foundation (Sponsor)"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        }
+      }
+    ],
+    "note": null
+  },
+  "organizationRoles": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "bjc-sponsor-role",
+        "organizationId": "bjc-foundation",
+        "role": {
+          "claimId": "bjc-sponsor-role-claim",
+          "status": "disclosed",
+          "value": {
+            "role": "sponsor",
+            "roleLabel": null,
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Sponsor",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Breakthrough Prize Foundation (Sponsor)"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        }
+      }
+    ],
+    "note": null
+  },
+  "institutionRelationships": {
+    "status": "not_applicable",
+    "records": [],
+    "note": "A winner's school can receive a lab, but no institution operates or endorses the global competition."
+  },
+  "variants": {
+    "status": "not_applicable",
+    "records": [],
+    "note": "One individual-entry competition format is published."
+  },
+  "stages": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "bjc-stage-submit",
+        "order": 1,
+        "definition": {
+          "claimId": "bjc-submit-stage",
+          "status": "disclosed",
+          "value": {
+            "label": "Video submission",
+            "kind": "application",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Video submission",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-home",
+              "url": "https://breakthroughjuniorchallenge.org/",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Submissions are due September 15, 2026 at 11:59 PM PDT."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "timings": [
+          {
+            "claimId": "bjc-open-date",
+            "status": "disclosed",
+            "value": {
+              "event": "opens",
+              "when": {
+                "precision": "date",
+                "date": "2026-05-11",
+                "certainty": "stated"
+              },
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "May 11, 2026",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "bjc-rules",
+                "url": "https://breakthroughjuniorchallenge.org/rules",
+                "title": "Official Rules - Breakthrough Junior Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "The Challenge begins on May 11, 2026"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "bjc-deadline",
+            "status": "disclosed",
+            "value": {
+              "event": "deadline",
+              "when": {
+                "precision": "date_time",
+                "dateTime": "2026-09-15T23:59:00-07:00",
+                "certainty": "stated"
+              },
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "September 15, 2026 at 11:59 p.m. PDT",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "bjc-home",
+                "url": "https://breakthroughjuniorchallenge.org/",
+                "title": "Breakthrough Junior Challenge",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Submissions are due September 15, 2026 at 11:59 PM PDT."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "durations": [],
+        "timeCommitments": [],
+        "formats": [
+          {
+            "claimId": "bjc-submit-format",
+            "status": "disclosed",
+            "value": {
+              "formats": [
+                "online"
+              ],
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Online video",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "bjc-rules",
+                "url": "https://breakthroughjuniorchallenge.org/rules",
+                "title": "Official Rules - Breakthrough Junior Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "uploaded to YouTube"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "locations": [],
+        "selectionRules": [],
+        "advancement": [],
+        "requirements": [
+          {
+            "claimId": "bjc-video-requirement",
+            "status": "disclosed",
+            "value": {
+              "requirement": "Original science video no longer than two minutes.",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Original video up to two minutes",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "bjc-rules",
+                "url": "https://breakthroughjuniorchallenge.org/rules",
+                "title": "Official Rules - Breakthrough Junior Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "The video must be no longer than two (2) minutes"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "travelRequirements": []
+      },
+      {
+        "id": "bjc-stage-peer",
+        "order": 2,
+        "definition": {
+          "claimId": "bjc-peer-stage",
+          "status": "disclosed",
+          "value": {
+            "label": "Peer-to-peer review",
+            "kind": "proposal_review",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Peer-to-peer review",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Each Entrant must score at least five (5) other video entries as part of the Peer-to-Peer Review"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "timings": [
+          {
+            "claimId": "bjc-peer-deadline",
+            "status": "disclosed",
+            "value": {
+              "event": "deadline",
+              "when": {
+                "precision": "date",
+                "date": "2026-09-30",
+                "certainty": "stated"
+              },
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "September 30, 2026",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "bjc-rules",
+                "url": "https://breakthroughjuniorchallenge.org/rules",
+                "title": "Official Rules - Breakthrough Junior Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Peer-to-Peer Review must be completed by September 30, 2026"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "durations": [],
+        "timeCommitments": [],
+        "formats": [
+          {
+            "claimId": "bjc-peer-format",
+            "status": "disclosed",
+            "value": {
+              "formats": [
+                "online"
+              ],
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Online",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "bjc-rules",
+                "url": "https://breakthroughjuniorchallenge.org/rules",
+                "title": "Official Rules - Breakthrough Junior Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Each Entrant must score at least five (5) other video entries as part of the Peer-to-Peer Review"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "locations": [],
+        "selectionRules": [
+          {
+            "claimId": "bjc-peer-rule",
+            "status": "disclosed",
+            "value": {
+              "rule": "Entrants score at least five other videos using the published rubric.",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Score at least five peer videos",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "bjc-rules",
+                "url": "https://breakthroughjuniorchallenge.org/rules",
+                "title": "Official Rules - Breakthrough Junior Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Each Entrant must score at least five (5) other video entries as part of the Peer-to-Peer Review"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "advancement": [],
+        "requirements": [],
+        "travelRequirements": []
+      },
+      {
+        "id": "bjc-stage-finalists",
+        "order": 3,
+        "definition": {
+          "claimId": "bjc-finalist-stage",
+          "status": "disclosed",
+          "value": {
+            "label": "Evaluation and finalist selection",
+            "kind": "finalist",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Evaluation and finalist selection",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Evaluation Panel will select up to fifteen Finalists"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "timings": [],
+        "durations": [],
+        "timeCommitments": [],
+        "formats": [],
+        "locations": [],
+        "selectionRules": [
+          {
+            "claimId": "bjc-evaluation-rule",
+            "status": "disclosed",
+            "value": {
+              "rule": "An evaluation panel applies engagement, illumination, creativity, and difficulty criteria.",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Published four-part judging criteria",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "bjc-faq",
+                "url": "https://breakthroughjuniorchallenge.org/faq",
+                "title": "FAQ - Breakthrough Junior Challenge",
+                "pageType": "official_faq",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Engagement, Illumination, Creativity, and Difficulty"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "advancement": [
+          {
+            "claimId": "bjc-finalist-count",
+            "status": "disclosed",
+            "value": {
+              "count": 15,
+              "description": "Up to fifteen Finalists",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Up to 15 Finalists",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "bjc-rules",
+                "url": "https://breakthroughjuniorchallenge.org/rules",
+                "title": "Official Rules - Breakthrough Junior Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "up to fifteen Finalists"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "requirements": [],
+        "travelRequirements": []
+      },
+      {
+        "id": "bjc-stage-winner",
+        "order": 4,
+        "definition": {
+          "claimId": "bjc-winner-stage",
+          "status": "disclosed",
+          "value": {
+            "label": "Winner selection",
+            "kind": "winner_selection",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Winner selection",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "timings": [],
+        "durations": [],
+        "timeCommitments": [],
+        "formats": [],
+        "locations": [],
+        "selectionRules": [],
+        "advancement": [
+          {
+            "claimId": "bjc-winner-count",
+            "status": "disclosed",
+            "value": {
+              "count": 1,
+              "description": "One Challenge winner",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "One winner",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "bjc-rules",
+                "url": "https://breakthroughjuniorchallenge.org/rules",
+                "title": "Official Rules - Breakthrough Junior Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "one (1) Winner"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "requirements": [],
+        "travelRequirements": []
+      }
+    ],
+    "note": null
+  },
+  "pathways": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "bjc-pathway",
+        "definition": {
+          "claimId": "bjc-pathway-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Submission through winner selection",
+            "variantIds": []
+          },
+          "displayValue": "Submission through winner selection",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-home",
+              "url": "https://breakthroughjuniorchallenge.org/",
+              "title": "Breakthrough Junior Challenge",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Submissions are due September 15, 2026 at 11:59 PM PDT."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "steps": [
+          {
+            "claimId": "bjc-step-submit",
+            "status": "disclosed",
+            "value": {
+              "stageId": "bjc-stage-submit",
+              "enterWhen": null
+            },
+            "displayValue": "Submit",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "bjc-home",
+                "url": "https://breakthroughjuniorchallenge.org/",
+                "title": "Breakthrough Junior Challenge",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Submissions are due September 15, 2026 at 11:59 PM PDT."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "bjc-step-peer",
+            "status": "disclosed",
+            "value": {
+              "stageId": "bjc-stage-peer",
+              "enterWhen": "Eligible entrant completes peer review."
+            },
+            "displayValue": "Peer review",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "bjc-rules",
+                "url": "https://breakthroughjuniorchallenge.org/rules",
+                "title": "Official Rules - Breakthrough Junior Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Each Entrant must score at least five (5) other video entries as part of the Peer-to-Peer Review"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "bjc-step-final",
+            "status": "disclosed",
+            "value": {
+              "stageId": "bjc-stage-finalists",
+              "enterWhen": "Entry advances through evaluation."
+            },
+            "displayValue": "Finalist selection",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "bjc-rules",
+                "url": "https://breakthroughjuniorchallenge.org/rules",
+                "title": "Official Rules - Breakthrough Junior Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "up to fifteen Finalists"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "bjc-step-win",
+            "status": "disclosed",
+            "value": {
+              "stageId": "bjc-stage-winner",
+              "enterWhen": "Selected from the finalist pool."
+            },
+            "displayValue": "Winner selection",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "bjc-rules",
+                "url": "https://breakthroughjuniorchallenge.org/rules",
+                "title": "Official Rules - Breakthrough Junior Challenge",
+                "pageType": "official_rules",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ]
+      }
+    ],
+    "note": null
+  },
+  "costItems": {
+    "status": "not_applicable",
+    "records": [],
+    "note": "The official rules state that no purchase or payment is necessary to enter or win."
+  },
+  "outcomes": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "bjc-student-scholarship",
+        "definition": {
+          "claimId": "bjc-scholarship-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "$250,000 post-secondary scholarship",
+            "outcomeType": "scholarship",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [
+                "bjc-stage-winner"
+              ],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "$250,000 scholarship",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "recipientScope": {
+          "claimId": "bjc-scholarship-recipient",
+          "status": "disclosed",
+          "value": "individual",
+          "displayValue": "Winning student",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "monetaryNature": {
+          "claimId": "bjc-scholarship-nature",
+          "status": "disclosed",
+          "value": "restricted_funding",
+          "displayValue": "Restricted education funding",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "paid directly to the post-secondary educational institution"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "bjc-scholarship-amount",
+          "status": "disclosed",
+          "value": {
+            "kind": "exact",
+            "amount": 250000,
+            "currency": "USD"
+          },
+          "displayValue": "$250,000",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "distribution": {
+          "claimId": "bjc-scholarship-distribution",
+          "status": "disclosed",
+          "value": [
+            {
+              "payee": "service_provider",
+              "method": "direct",
+              "condition": "Paid to an eligible post-secondary institution for the winner's education."
+            }
+          ],
+          "displayValue": "Paid directly to educational institution",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "paid directly to the post-secondary educational institution"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "rank": {
+          "claimId": "bjc-scholarship-rank",
+          "status": "disclosed",
+          "value": {
+            "ordinal": 1,
+            "label": "Winner"
+          },
+          "displayValue": "Winner",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "track": null,
+        "quantity": null,
+        "useRestriction": {
+          "claimId": "bjc-scholarship-use",
+          "status": "disclosed",
+          "value": "Post-secondary education expenses under the official scholarship rules.",
+          "displayValue": "Post-secondary education",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "post-secondary scholarship"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "combinability": null,
+        "conditions": []
+      },
+      {
+        "id": "bjc-teacher-prize",
+        "definition": {
+          "claimId": "bjc-teacher-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "$50,000 teacher prize",
+            "outcomeType": "personal_cash_prize",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [
+                "bjc-stage-winner"
+              ],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "$50,000 teacher prize",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "recipientScope": {
+          "claimId": "bjc-teacher-recipient",
+          "status": "disclosed",
+          "value": "individual",
+          "displayValue": "Winner's teacher",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "monetaryNature": {
+          "claimId": "bjc-teacher-nature",
+          "status": "disclosed",
+          "value": "cash",
+          "displayValue": "Cash prize",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "bjc-teacher-amount",
+          "status": "disclosed",
+          "value": {
+            "kind": "exact",
+            "amount": 50000,
+            "currency": "USD"
+          },
+          "displayValue": "$50,000",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "distribution": {
+          "claimId": "bjc-teacher-distribution",
+          "status": "disclosed",
+          "value": [
+            {
+              "payee": "participant",
+              "method": "direct",
+              "condition": "Paid to the teacher designated under the rules, not the student entrant."
+            }
+          ],
+          "displayValue": "Direct to teacher",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "rank": null,
+        "track": null,
+        "quantity": null,
+        "useRestriction": null,
+        "combinability": null,
+        "conditions": []
+      },
+      {
+        "id": "bjc-school-lab",
+        "definition": {
+          "claimId": "bjc-lab-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "$100,000 Breakthrough Science Lab",
+            "outcomeType": "equipment",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [
+                "bjc-stage-winner"
+              ],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "$100,000 school science lab",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "recipientScope": {
+          "claimId": "bjc-lab-recipient",
+          "status": "disclosed",
+          "value": "school",
+          "displayValue": "Winner's school",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "monetaryNature": {
+          "claimId": "bjc-lab-nature",
+          "status": "disclosed",
+          "value": "source_stated_estimated_value",
+          "displayValue": "Source-stated $100,000 lab value",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "bjc-lab-amount",
+          "status": "disclosed",
+          "value": {
+            "kind": "exact",
+            "amount": 100000,
+            "currency": "USD"
+          },
+          "displayValue": "$100,000 stated value",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "distribution": {
+          "claimId": "bjc-lab-distribution",
+          "status": "disclosed",
+          "value": [
+            {
+              "payee": "service_provider",
+              "method": "direct",
+              "condition": "Lab is provided to the winner's school under the official rules."
+            }
+          ],
+          "displayValue": "Provided to school",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "rank": null,
+        "track": null,
+        "quantity": null,
+        "useRestriction": {
+          "claimId": "bjc-lab-use",
+          "status": "disclosed",
+          "value": "Breakthrough Science Lab for the winner's school.",
+          "displayValue": "School science lab",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "bjc-rules",
+              "url": "https://breakthroughjuniorchallenge.org/rules",
+              "title": "Official Rules - Breakthrough Junior Challenge",
+              "pageType": "official_rules",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "combinability": null,
+        "conditions": []
+      }
+    ],
+    "note": "Three different recipients and monetary natures are preserved separately."
+  },
+  "facts": {
+    "opportunity_name": {
+      "status": "disclosed",
+      "value": "Breakthrough Junior Challenge",
+      "displayValue": "Breakthrough Junior Challenge",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Breakthrough Junior Challenge"
+      },
+      "sources": [
+        {
+          "id": "bjc-home",
+          "url": "https://breakthroughjuniorchallenge.org/",
+          "title": "Breakthrough Junior Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Breakthrough Junior Challenge"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "opportunity_category": {
+      "status": "disclosed",
+      "value": "Global science video competition",
+      "displayValue": "Global science video competition",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "bjc-home",
+          "url": "https://breakthroughjuniorchallenge.org/",
+          "title": "Breakthrough Junior Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "global science video competition"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "official_url": {
+      "status": "disclosed",
+      "value": "https://breakthroughjuniorchallenge.org/",
+      "displayValue": "https://breakthroughjuniorchallenge.org/",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "https://breakthroughjuniorchallenge.org/"
+      },
+      "sources": [
+        {
+          "id": "bjc-home",
+          "url": "https://breakthroughjuniorchallenge.org/",
+          "title": "Breakthrough Junior Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Submissions are due September 15, 2026 at 11:59 PM PDT."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "operating_organization": {
+      "status": "disclosed",
+      "value": "Breakthrough Prize Foundation (sponsor)",
+      "displayValue": "Breakthrough Prize Foundation (sponsor)",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Breakthrough Prize Foundation (Sponsor)"
+        }
+      ],
+      "note": "No single operator is asserted; the v2 role ledger is summarized without upgrading another role.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "organizations.primary-operator",
+        "claimRefs": [
+          "bjc-sponsor-role-claim",
+          "bjc-foundation-name"
+        ]
+      }
+    },
+    "organization_type": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "named_institution": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "institution_relationship": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "relationship_explanation": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "grade_levels": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "ages": {
+      "status": "disclosed",
+      "value": "13–18",
+      "displayValue": "Ages 13–18",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "You must be at least 13 years old and no older than 18 years old on October 1, 2026"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "geographic_restrictions": {
+      "status": "disclosed",
+      "value": "Worldwide, subject to official exclusions and sanctions rules",
+      "displayValue": "Worldwide with listed legal exclusions",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "The Challenge is open to individuals from all countries, except those prohibited by law"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "citizenship_restrictions": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "prerequisite_skills": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "entry_format": {
+      "status": "disclosed",
+      "value": "Individual two-minute science video",
+      "displayValue": "Individual video entry",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Entries must be submitted by individuals. Team entries are not permitted."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "sponsor_requirement": {
+      "status": "disclosed",
+      "value": "Parent or legal guardian consent is required for minors",
+      "displayValue": "Parent/guardian consent for minors",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "If you are a minor, your parent or legal guardian must agree to these Official Rules"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "application_deadline": {
+      "status": "disclosed",
+      "value": "September 15, 2026 at 11:59 p.m. PDT",
+      "displayValue": "September 15, 2026 at 11:59 p.m. PDT",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "bjc-home",
+          "url": "https://breakthroughjuniorchallenge.org/",
+          "title": "Breakthrough Junior Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Submissions are due September 15, 2026 at 11:59 PM PDT."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "cycle.closes",
+        "claimRefs": [
+          "bjc-deadline"
+        ]
+      }
+    },
+    "decision_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "start_date": {
+      "status": "disclosed",
+      "value": "May 11, 2026",
+      "displayValue": "May 11, 2026",
+      "normalizedValue": {
+        "kind": "date",
+        "isoDate": "2026-05-11"
+      },
+      "sources": [
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "The Challenge begins on May 11, 2026"
+        }
+      ],
+      "note": "The cycle opening is used because no separate participation start was identified.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "cycle.opens",
+        "claimRefs": [
+          "bjc-open-date"
+        ]
+      }
+    },
+    "end_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "duration": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "weekly_hours": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "required_live_hours": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "participation_format": {
+      "status": "disclosed",
+      "value": "Varies by source record",
+      "displayValue": "Varies by source record",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "uploaded to YouTube"
+        },
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Each Entrant must score at least five (5) other video entries as part of the Peer-to-Peer Review"
+        }
+      ],
+      "note": "Online video; Online",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.formats",
+        "claimRefs": [
+          "bjc-submit-format",
+          "bjc-peer-format"
+        ]
+      }
+    },
+    "location": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "travel_requirements": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "application_fee": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "deposit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "tuition": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "other_mandatory_costs": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "estimated_total_mandatory_cost": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "travel_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "lodging_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "meals_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "financial_aid": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "refund_policy": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "cancellation_policy": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "selection_process": {
+      "status": "disclosed",
+      "value": "Submission through winner selection: Video submission → Peer-to-peer review → Evaluation and finalist selection → Winner selection",
+      "displayValue": "Submission through winner selection: Video submission → Peer-to-peer review → Evaluation and finalist selection → Winner selection",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "bjc-home",
+          "url": "https://breakthroughjuniorchallenge.org/",
+          "title": "Breakthrough Junior Challenge",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Submissions are due September 15, 2026 at 11:59 PM PDT."
+        },
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Each Entrant must score at least five (5) other video entries as part of the Peer-to-Peer Review"
+        },
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "up to fifteen Finalists"
+        },
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+        },
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Evaluation Panel will select up to fifteen Finalists"
+        }
+      ],
+      "note": "The v2 pathway ledger defines the authoritative route; unrelated stages are not inserted into it.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.process",
+        "claimRefs": [
+          "bjc-pathway-definition",
+          "bjc-step-submit",
+          "bjc-step-peer",
+          "bjc-step-final",
+          "bjc-step-win",
+          "bjc-submit-stage",
+          "bjc-peer-stage",
+          "bjc-finalist-stage",
+          "bjc-winner-stage"
+        ]
+      }
+    },
+    "applicant_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "acceptance_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "acceptance_rate_claim": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "calculated_acceptance_rate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "selection_evidence": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "cash_award": {
+      "status": "disclosed",
+      "value": 50000,
+      "displayValue": "$50,000 teacher prize — $50,000/individual",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 50000,
+        "currency": "USD",
+        "classification": "cash"
+      },
+      "sources": [
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+        }
+      ],
+      "note": "Direct to teacher",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "outcomes.cash_award",
+        "claimRefs": [
+          "bjc-teacher-definition",
+          "bjc-teacher-recipient",
+          "bjc-teacher-nature",
+          "bjc-teacher-amount",
+          "bjc-teacher-distribution"
+        ]
+      }
+    },
+    "stipend": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "tuition_waiver": {
+      "status": "disclosed",
+      "value": 250000,
+      "displayValue": "$250,000 post-secondary scholarship — $250,000/individual",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 250000,
+        "currency": "USD",
+        "classification": "tuition_waiver"
+      },
+      "sources": [
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+        },
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "paid directly to the post-secondary educational institution"
+        },
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "post-secondary scholarship"
+        }
+      ],
+      "note": "Paid directly to educational institution",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "outcomes.tuition_waiver",
+        "claimRefs": [
+          "bjc-scholarship-definition",
+          "bjc-scholarship-recipient",
+          "bjc-scholarship-nature",
+          "bjc-scholarship-amount",
+          "bjc-scholarship-distribution",
+          "bjc-scholarship-rank",
+          "bjc-scholarship-use"
+        ]
+      }
+    },
+    "program_seat": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "in_kind_value": {
+      "status": "disclosed",
+      "value": 100000,
+      "displayValue": "$100,000 Breakthrough Science Lab — $100,000 stated value/school",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 100000,
+        "currency": "USD",
+        "classification": "in_kind"
+      },
+      "sources": [
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
+        }
+      ],
+      "note": "Provided to school",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "outcomes.in_kind_value",
+        "claimRefs": [
+          "bjc-lab-definition",
+          "bjc-lab-recipient",
+          "bjc-lab-nature",
+          "bjc-lab-amount",
+          "bjc-lab-distribution",
+          "bjc-lab-use"
+        ]
+      }
+    },
+    "certificate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "college_credit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "mentorship": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "other_benefits": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "personal_information": {
+      "status": "disclosed",
+      "value": [
+        "Name",
+        "Email",
+        "Address",
+        "Telephone",
+        "Birth date"
+      ],
+      "displayValue": "Identity and contact information",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "bjc-privacy",
+          "url": "https://breakthroughjuniorchallenge.org/privacy",
+          "title": "Privacy Policy - Breakthrough Junior Challenge",
+          "pageType": "official_privacy_policy",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "name, email address, postal address, telephone number, and date of birth"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "data_sharing": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "project_ownership": {
+      "status": "disclosed",
+      "value": "Rules contain broad submission-property language; entrant rights require careful reading",
+      "displayValue": "Rules contain broad submission-property provisions",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "all Entries and all rights associated with the Entries shall be the exclusive property of Sponsor"
+        }
+      ],
+      "note": "The exact interaction between ownership, license, and platform-hosting language should be reviewed before entry.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "project_license": {
+      "status": "disclosed",
+      "value": "Sponsor receives broad rights to use, reproduce, display, distribute, and create derivative works",
+      "displayValue": "Broad worldwide submission license",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "the right to use, reproduce, display, perform, distribute, adapt, modify, and create derivative works"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "publicity_rights": {
+      "status": "disclosed",
+      "value": "Winner publicity use includes name, likeness, voice, opinions, and biographical information",
+      "displayValue": "Winner publicity rights",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "use winner's name, likeness, voice, opinions and biographical information for publicity"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "confidentiality": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "cancellation_rights": {
+      "status": "disclosed",
+      "value": "Sponsor may cancel, terminate, modify, or suspend the Challenge",
+      "displayValue": "Sponsor may cancel, terminate, modify, or suspend",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "bjc-rules",
+          "url": "https://breakthroughjuniorchallenge.org/rules",
+          "title": "Official Rules - Breakthrough Junior Challenge",
+          "pageType": "official_rules",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Sponsor reserves the right to cancel, terminate, modify or suspend the Challenge"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "material_terms": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    }
+  },
+  "projectionRefs": {
+    "operating_organization": [
+      "bjc-sponsor-role-claim",
+      "bjc-foundation-name"
+    ],
+    "application_deadline": [
+      "bjc-deadline"
+    ],
+    "start_date": [
+      "bjc-open-date"
+    ],
+    "participation_format": [
+      "bjc-submit-format",
+      "bjc-peer-format"
+    ],
+    "selection_process": [
+      "bjc-pathway-definition",
+      "bjc-step-submit",
+      "bjc-step-peer",
+      "bjc-step-final",
+      "bjc-step-win",
+      "bjc-submit-stage",
+      "bjc-peer-stage",
+      "bjc-finalist-stage",
+      "bjc-winner-stage"
+    ],
+    "cash_award": [
+      "bjc-teacher-definition",
+      "bjc-teacher-recipient",
+      "bjc-teacher-nature",
+      "bjc-teacher-amount",
+      "bjc-teacher-distribution"
+    ],
+    "tuition_waiver": [
+      "bjc-scholarship-definition",
+      "bjc-scholarship-recipient",
+      "bjc-scholarship-nature",
+      "bjc-scholarship-amount",
+      "bjc-scholarship-distribution",
+      "bjc-scholarship-rank",
+      "bjc-scholarship-use"
+    ],
+    "in_kind_value": [
+      "bjc-lab-definition",
+      "bjc-lab-recipient",
+      "bjc-lab-nature",
+      "bjc-lab-amount",
+      "bjc-lab-distribution",
+      "bjc-lab-use"
+    ]
+  },
+  "migratedFrom": null
+}

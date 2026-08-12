@@ -1,0 +1,2510 @@
+{
+  "schemaVersion": "2.0.0",
+  "opportunityId": "mites-summer",
+  "cycle": {
+    "status": "modeled",
+    "value": {
+      "id": "mites-cycle-summer-2027",
+      "label": {
+        "claimId": "mites-cycle-label",
+        "status": "disclosed",
+        "value": "Summer 2027",
+        "displayValue": "Summer 2027",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "mites-faq",
+            "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+            "title": "FAQs - MITES Summer and Semester",
+            "pageType": "official_faq",
+            "accessedAt": "2026-08-12T06:25:00.000Z",
+            "excerpt": "2027 MITES Summer dates are not yet available"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "status": {
+        "claimId": "mites-cycle-status",
+        "status": "disclosed",
+        "value": "announced",
+        "displayValue": "Announced; exact dates pending",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "mites-faq",
+            "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+            "title": "FAQs - MITES Summer and Semester",
+            "pageType": "official_faq",
+            "accessedAt": "2026-08-12T06:25:00.000Z",
+            "excerpt": "2027 MITES Summer dates are not yet available"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "year": {
+        "claimId": "mites-cycle-year",
+        "status": "disclosed",
+        "value": 2027,
+        "displayValue": "2027",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "mites-faq",
+            "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+            "title": "FAQs - MITES Summer and Semester",
+            "pageType": "official_faq",
+            "accessedAt": "2026-08-12T06:25:00.000Z",
+            "excerpt": "2027 MITES Summer dates"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "startYear": null,
+      "endYear": null,
+      "season": {
+        "claimId": "mites-cycle-season",
+        "status": "disclosed",
+        "value": "summer",
+        "displayValue": "Summer",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "mites-summer",
+            "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+            "title": "MITES Summer",
+            "pageType": "official_program_page",
+            "accessedAt": "2026-08-12T06:25:00.000Z",
+            "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "cycleType": {
+        "claimId": "mites-cycle-type",
+        "status": "disclosed",
+        "value": "seasonal",
+        "displayValue": "Seasonal",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "mites-summer",
+            "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+            "title": "MITES Summer",
+            "pageType": "official_program_page",
+            "accessedAt": "2026-08-12T06:25:00.000Z",
+            "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "timingRefs": {
+        "opens": null,
+        "closes": null,
+        "coverageStart": null,
+        "coverageEnd": null
+      }
+    }
+  },
+  "cardVersion": 1,
+  "slug": "mites-summer-2027",
+  "summary": "MITES Summer is a free six-week residential STEM program operated within MIT's School of Engineering for eligible rising high-school seniors; 2027 exact program dates were not yet published.",
+  "reviewState": "human_reviewed",
+  "reviewedAt": "2026-08-12T06:25:00.000Z",
+  "sourcePagesChecked": [
+    {
+      "id": "mites-home",
+      "url": "https://mites.mit.edu/",
+      "title": "MITES",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-12T06:25:00.000Z"
+    },
+    {
+      "id": "mites-summer",
+      "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+      "title": "MITES Summer",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-12T06:25:00.000Z"
+    },
+    {
+      "id": "mites-apply",
+      "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+      "title": "Prepare Your MITES Application",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-12T06:25:00.000Z"
+    },
+    {
+      "id": "mites-faq",
+      "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+      "title": "FAQs - MITES Summer and Semester",
+      "pageType": "official_faq",
+      "accessedAt": "2026-08-12T06:25:00.000Z"
+    },
+    {
+      "id": "mites-about",
+      "url": "https://mites.mit.edu/about-us/",
+      "title": "About Us - MITES",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-12T06:25:00.000Z"
+    }
+  ],
+  "conflicts": [],
+  "organizations": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "mites-org",
+        "name": {
+          "claimId": "mites-org-name",
+          "status": "disclosed",
+          "value": "MITES",
+          "displayValue": "MITES",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-about",
+              "url": "https://mites.mit.edu/about-us/",
+              "title": "About Us - MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "MITES"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "kind": {
+          "claimId": "mites-org-kind",
+          "status": "disclosed",
+          "value": "institution_unit",
+          "displayValue": "MIT School of Engineering program",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-about",
+              "url": "https://mites.mit.edu/about-us/",
+              "title": "About Us - MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "an integral part of MIT's School of Engineering"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        }
+      },
+      {
+        "id": "mites-mit",
+        "name": {
+          "claimId": "mites-mit-name",
+          "status": "disclosed",
+          "value": "Massachusetts Institute of Technology",
+          "displayValue": "Massachusetts Institute of Technology",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-about",
+              "url": "https://mites.mit.edu/about-us/",
+              "title": "About Us - MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "MIT's School of Engineering"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "kind": {
+          "claimId": "mites-mit-kind",
+          "status": "disclosed",
+          "value": "higher_education_institution",
+          "displayValue": "Higher-education institution",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-about",
+              "url": "https://mites.mit.edu/about-us/",
+              "title": "About Us - MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "MIT's School of Engineering"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        }
+      }
+    ],
+    "note": null
+  },
+  "organizationRoles": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "mites-role-operator",
+        "organizationId": "mites-org",
+        "role": {
+          "claimId": "mites-role-operator-claim",
+          "status": "disclosed",
+          "value": {
+            "role": "operator",
+            "roleLabel": null,
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Operator",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-about",
+              "url": "https://mites.mit.edu/about-us/",
+              "title": "About Us - MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "an integral part of MIT's School of Engineering"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        }
+      },
+      {
+        "id": "mites-role-host",
+        "organizationId": "mites-mit",
+        "role": {
+          "claimId": "mites-role-host-claim",
+          "status": "disclosed",
+          "value": {
+            "role": "host",
+            "roleLabel": null,
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Host institution",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-summer",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "on MIT's campus"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        }
+      }
+    ],
+    "note": null
+  },
+  "institutionRelationships": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "mites-mit-operated",
+        "assertion": {
+          "claimId": "mites-mit-operated-claim",
+          "status": "disclosed",
+          "value": {
+            "subject": "opportunity",
+            "subjectOrganizationId": "mites-org",
+            "targetOrganizationId": "mites-mit",
+            "targetInstitutionName": null,
+            "relationshipType": "institution_operated",
+            "description": "MITES is an integral part of MIT's School of Engineering.",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Institution operated — MIT",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-about",
+              "url": "https://mites.mit.edu/about-us/",
+              "title": "About Us - MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "an integral part of MIT's School of Engineering"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        }
+      }
+    ],
+    "note": null
+  },
+  "variants": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "mites-summer-variant",
+        "definition": {
+          "claimId": "mites-summer-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "MITES Summer",
+            "kind": "cohort",
+            "parentVariantId": null
+          },
+          "displayValue": "MITES Summer",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-summer",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "eligibilityDifferences": [],
+        "notes": []
+      }
+    ],
+    "note": null
+  },
+  "stages": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "mites-stage-application",
+        "order": 1,
+        "definition": {
+          "claimId": "mites-application-stage",
+          "status": "disclosed",
+          "value": {
+            "label": "Shared MITES application",
+            "kind": "application",
+            "scope": {
+              "variantIds": [
+                "mites-summer-variant"
+              ],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Shared MITES application",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-apply",
+              "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+              "title": "Prepare Your MITES Application",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "The MITES Summer and MITES Semester programs share one application"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "timings": [],
+        "durations": [],
+        "timeCommitments": [],
+        "formats": [
+          {
+            "claimId": "mites-application-format",
+            "status": "disclosed",
+            "value": {
+              "formats": [
+                "online"
+              ],
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Online",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "mites-apply",
+                "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+                "title": "Prepare Your MITES Application",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "online application"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "locations": [],
+        "selectionRules": [
+          {
+            "claimId": "mites-selection-rule",
+            "status": "disclosed",
+            "value": {
+              "rule": "Applications are reviewed holistically.",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Holistic review",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "mites-apply",
+                "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+                "title": "Prepare Your MITES Application",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Applications are reviewed holistically"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "advancement": [],
+        "requirements": [],
+        "travelRequirements": []
+      },
+      {
+        "id": "mites-stage-program",
+        "order": 2,
+        "definition": {
+          "claimId": "mites-program-stage",
+          "status": "disclosed",
+          "value": {
+            "label": "Six-week residential program",
+            "kind": "program",
+            "scope": {
+              "variantIds": [
+                "mites-summer-variant"
+              ],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Six-week residential program",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-summer",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "timings": [],
+        "durations": [
+          {
+            "claimId": "mites-program-duration",
+            "status": "disclosed",
+            "value": {
+              "duration": {
+                "minimum": 6,
+                "maximum": null,
+                "unit": "weeks"
+              },
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Six weeks",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "mites-summer",
+                "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+                "title": "MITES Summer",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "timeCommitments": [
+          {
+            "claimId": "mites-program-hours",
+            "status": "disclosed",
+            "value": {
+              "minimumHours": 40,
+              "maximumHours": null,
+              "period": "week",
+              "label": "Weekdays 9 a.m.–5 p.m.",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Weekdays 9 a.m.–5 p.m.",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "mites-summer",
+                "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+                "title": "MITES Summer",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "classes are held weekdays from 9:00 a.m. to 5:00 p.m."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "formats": [
+          {
+            "claimId": "mites-program-format",
+            "status": "disclosed",
+            "value": {
+              "formats": [
+                "residential"
+              ],
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Residential",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "mites-summer",
+                "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+                "title": "MITES Summer",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "locations": [
+          {
+            "claimId": "mites-program-location",
+            "status": "disclosed",
+            "value": {
+              "location": "MIT campus, Cambridge, Massachusetts",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "MIT campus",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "mites-summer",
+                "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+                "title": "MITES Summer",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "on MIT's campus"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "selectionRules": [],
+        "advancement": [],
+        "requirements": [],
+        "travelRequirements": [
+          {
+            "claimId": "mites-program-travel",
+            "status": "disclosed",
+            "value": {
+              "requirement": "required",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Student arranges travel to and from MIT",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "mites-home",
+                "url": "https://mites.mit.edu/",
+                "title": "MITES",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ]
+      }
+    ],
+    "note": "The official site described typical application months but did not yet publish exact 2027 dates."
+  },
+  "pathways": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "mites-pathway",
+        "definition": {
+          "claimId": "mites-pathway-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Application to MITES Summer",
+            "variantIds": [
+              "mites-summer-variant"
+            ]
+          },
+          "displayValue": "Application to MITES Summer",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-summer",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "steps": [
+          {
+            "claimId": "mites-step-apply",
+            "status": "disclosed",
+            "value": {
+              "stageId": "mites-stage-application",
+              "enterWhen": null
+            },
+            "displayValue": "Apply",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "mites-apply",
+                "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+                "title": "Prepare Your MITES Application",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "share one application"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "mites-step-program",
+            "status": "disclosed",
+            "value": {
+              "stageId": "mites-stage-program",
+              "enterWhen": "Selected for MITES Summer."
+            },
+            "displayValue": "Attend MITES Summer",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "mites-summer",
+                "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+                "title": "MITES Summer",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ]
+      }
+    ],
+    "note": null
+  },
+  "costItems": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "mites-cost-tuition",
+        "definition": {
+          "claimId": "mites-tuition-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Tuition and educational costs",
+            "kind": "tuition",
+            "requirement": "required",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Tuition and educational costs",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-home",
+              "url": "https://mites.mit.edu/",
+              "title": "MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "mites-tuition-amount",
+          "status": "disclosed",
+          "value": {
+            "kind": "exact",
+            "amount": 0,
+            "currency": "USD"
+          },
+          "displayValue": "$0",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-home",
+              "url": "https://mites.mit.edu/",
+              "title": "MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "chargeBasis": {
+          "claimId": "mites-tuition-basis",
+          "status": "disclosed",
+          "value": "per_participant",
+          "displayValue": "Per participant",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-home",
+              "url": "https://mites.mit.edu/",
+              "title": "MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "treatment": null,
+        "refundability": null,
+        "includedItems": [],
+        "excludedItems": [],
+        "conditions": []
+      },
+      {
+        "id": "mites-cost-lodging",
+        "definition": {
+          "claimId": "mites-lodging-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Boarding",
+            "kind": "lodging",
+            "requirement": "required",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Boarding",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-home",
+              "url": "https://mites.mit.edu/",
+              "title": "MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "mites-lodging-amount",
+          "status": "disclosed",
+          "value": {
+            "kind": "exact",
+            "amount": 0,
+            "currency": "USD"
+          },
+          "displayValue": "$0",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-home",
+              "url": "https://mites.mit.edu/",
+              "title": "MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "chargeBasis": {
+          "claimId": "mites-lodging-basis",
+          "status": "disclosed",
+          "value": "per_participant",
+          "displayValue": "Per participant",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-home",
+              "url": "https://mites.mit.edu/",
+              "title": "MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "treatment": null,
+        "refundability": null,
+        "includedItems": [],
+        "excludedItems": [],
+        "conditions": []
+      },
+      {
+        "id": "mites-cost-meals",
+        "definition": {
+          "claimId": "mites-meals-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Food",
+            "kind": "meals",
+            "requirement": "required",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Food",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-home",
+              "url": "https://mites.mit.edu/",
+              "title": "MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "mites-meals-amount",
+          "status": "disclosed",
+          "value": {
+            "kind": "exact",
+            "amount": 0,
+            "currency": "USD"
+          },
+          "displayValue": "$0",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-home",
+              "url": "https://mites.mit.edu/",
+              "title": "MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "chargeBasis": {
+          "claimId": "mites-meals-basis",
+          "status": "disclosed",
+          "value": "per_participant",
+          "displayValue": "Per participant",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-home",
+              "url": "https://mites.mit.edu/",
+              "title": "MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "treatment": null,
+        "refundability": null,
+        "includedItems": [],
+        "excludedItems": [],
+        "conditions": []
+      },
+      {
+        "id": "mites-cost-travel",
+        "definition": {
+          "claimId": "mites-travel-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Transportation to and from MIT",
+            "kind": "travel",
+            "requirement": "required",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Transportation to and from MIT",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-home",
+              "url": "https://mites.mit.edu/",
+              "title": "MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "mites-travel-amount",
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "claimKind": null,
+          "sources": [],
+          "note": "Transportation cost depends on the participant's origin; no amount is published.",
+          "conflictingValues": []
+        },
+        "chargeBasis": {
+          "claimId": "mites-travel-basis",
+          "status": "disclosed",
+          "value": "per_traveler",
+          "displayValue": "Per traveler",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-home",
+              "url": "https://mites.mit.edu/",
+              "title": "MITES",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "treatment": null,
+        "refundability": null,
+        "includedItems": [],
+        "excludedItems": [],
+        "conditions": []
+      }
+    ],
+    "note": "Tuition, food, and boarding are covered; student transportation varies and no amount is published.",
+    "completeness": "incomplete"
+  },
+  "outcomes": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "mites-outcome-seat",
+        "definition": {
+          "claimId": "mites-seat-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Place in MITES Summer",
+            "outcomeType": "program_seat",
+            "scope": {
+              "variantIds": [
+                "mites-summer-variant"
+              ],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Place in MITES Summer",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-summer",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "recipientScope": {
+          "claimId": "mites-seat-recipient",
+          "status": "disclosed",
+          "value": "individual",
+          "displayValue": "Individual student",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-summer",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "monetaryNature": {
+          "claimId": "mites-seat-nature",
+          "status": "disclosed",
+          "value": "not_monetized",
+          "displayValue": "Program seat; costs modeled separately",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-summer",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": null,
+        "distribution": null,
+        "rank": null,
+        "track": null,
+        "quantity": null,
+        "useRestriction": null,
+        "combinability": null,
+        "conditions": []
+      },
+      {
+        "id": "mites-outcome-evaluation",
+        "definition": {
+          "claimId": "mites-evaluation-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Written instructor evaluation",
+            "outcomeType": "other_in_kind",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Written instructor evaluation",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-summer",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Students receive a written evaluation from each instructor"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "recipientScope": {
+          "claimId": "mites-evaluation-recipient",
+          "status": "disclosed",
+          "value": "individual",
+          "displayValue": "Individual student",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-summer",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Students receive a written evaluation"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "monetaryNature": {
+          "claimId": "mites-evaluation-nature",
+          "status": "disclosed",
+          "value": "not_monetized",
+          "displayValue": "No monetary value published",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "mites-summer",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "written evaluation"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": null,
+        "distribution": null,
+        "rank": null,
+        "track": null,
+        "quantity": null,
+        "useRestriction": null,
+        "combinability": null,
+        "conditions": []
+      }
+    ],
+    "note": null
+  },
+  "facts": {
+    "opportunity_name": {
+      "status": "disclosed",
+      "value": "MITES Summer",
+      "displayValue": "MITES Summer",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "MITES Summer"
+      },
+      "sources": [
+        {
+          "id": "mites-summer",
+          "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+          "title": "MITES Summer",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "MITES Summer"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "opportunity_category": {
+      "status": "disclosed",
+      "value": "Selective residential STEM enrichment program",
+      "displayValue": "Selective residential STEM enrichment program",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "mites-summer",
+          "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+          "title": "MITES Summer",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "official_url": {
+      "status": "disclosed",
+      "value": "https://mites.mit.edu/discover-mites/mites-summer/",
+      "displayValue": "https://mites.mit.edu/discover-mites/mites-summer/",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "https://mites.mit.edu/discover-mites/mites-summer/"
+      },
+      "sources": [
+        {
+          "id": "mites-summer",
+          "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+          "title": "MITES Summer",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "operating_organization": {
+      "status": "disclosed",
+      "value": "MITES",
+      "displayValue": "MITES",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "mites-about",
+          "url": "https://mites.mit.edu/about-us/",
+          "title": "About Us - MITES",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "an integral part of MIT's School of Engineering"
+        },
+        {
+          "id": "mites-about",
+          "url": "https://mites.mit.edu/about-us/",
+          "title": "About Us - MITES",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "MITES"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "organizations.primary-operator",
+        "claimRefs": [
+          "mites-role-operator-claim",
+          "mites-org-name"
+        ]
+      }
+    },
+    "organization_type": {
+      "status": "disclosed",
+      "value": "institution_unit",
+      "displayValue": "MIT School of Engineering program",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "institution_unit"
+      },
+      "sources": [
+        {
+          "id": "mites-about",
+          "url": "https://mites.mit.edu/about-us/",
+          "title": "About Us - MITES",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "an integral part of MIT's School of Engineering"
+        },
+        {
+          "id": "mites-about",
+          "url": "https://mites.mit.edu/about-us/",
+          "title": "About Us - MITES",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "MITES"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "organizations.primary-operator-kind",
+        "claimRefs": [
+          "mites-org-kind",
+          "mites-org-name"
+        ]
+      }
+    },
+    "named_institution": {
+      "status": "disclosed",
+      "value": "Massachusetts Institute of Technology",
+      "displayValue": "Massachusetts Institute of Technology",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Massachusetts Institute of Technology"
+      },
+      "sources": [
+        {
+          "id": "mites-about",
+          "url": "https://mites.mit.edu/about-us/",
+          "title": "About Us - MITES",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "an integral part of MIT's School of Engineering"
+        },
+        {
+          "id": "mites-about",
+          "url": "https://mites.mit.edu/about-us/",
+          "title": "About Us - MITES",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "MIT's School of Engineering"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "relationships.institution-list",
+        "claimRefs": [
+          "mites-mit-operated-claim",
+          "mites-mit-name"
+        ]
+      }
+    },
+    "institution_relationship": {
+      "status": "disclosed",
+      "value": "institution_operated",
+      "displayValue": "Institution operated — MIT",
+      "normalizedValue": {
+        "kind": "relationship",
+        "value": "institution_operated"
+      },
+      "sources": [
+        {
+          "id": "mites-about",
+          "url": "https://mites.mit.edu/about-us/",
+          "title": "About Us - MITES",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "an integral part of MIT's School of Engineering"
+        },
+        {
+          "id": "mites-about",
+          "url": "https://mites.mit.edu/about-us/",
+          "title": "About Us - MITES",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "MIT's School of Engineering"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "relationships.summary",
+        "claimRefs": [
+          "mites-mit-operated-claim",
+          "mites-mit-name"
+        ]
+      }
+    },
+    "relationship_explanation": {
+      "status": "disclosed",
+      "value": "MITES is an integral part of MIT's School of Engineering.",
+      "displayValue": "MITES is an integral part of MIT's School of Engineering.",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "MITES is an integral part of MIT's School of Engineering."
+      },
+      "sources": [
+        {
+          "id": "mites-about",
+          "url": "https://mites.mit.edu/about-us/",
+          "title": "About Us - MITES",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "an integral part of MIT's School of Engineering"
+        },
+        {
+          "id": "mites-about",
+          "url": "https://mites.mit.edu/about-us/",
+          "title": "About Us - MITES",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "MIT's School of Engineering"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "relationships.explanations",
+        "claimRefs": [
+          "mites-mit-operated-claim",
+          "mites-mit-name"
+        ]
+      }
+    },
+    "grade_levels": {
+      "status": "disclosed",
+      "value": [
+        "11 at application",
+        "Rising 12 during program"
+      ],
+      "displayValue": "11th-grade applicants / rising seniors",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "11",
+          "12"
+        ]
+      },
+      "sources": [
+        {
+          "id": "mites-apply",
+          "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+          "title": "Prepare Your MITES Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Applicants must be U.S. citizens or permanent residents and must be in 11th grade at the time of application"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "ages": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "geographic_restrictions": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "citizenship_restrictions": {
+      "status": "disclosed",
+      "value": "U.S. citizens or permanent residents",
+      "displayValue": "U.S. citizens or permanent residents",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "mites-apply",
+          "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+          "title": "Prepare Your MITES Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Applicants must be U.S. citizens or permanent residents and must be in 11th grade at the time of application"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "prerequisite_skills": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "entry_format": {
+      "status": "disclosed",
+      "value": "Individual application",
+      "displayValue": "Individual application",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "mites-apply",
+          "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+          "title": "Prepare Your MITES Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "application"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "sponsor_requirement": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "application_deadline": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "decision_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "start_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "end_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "duration": {
+      "status": "disclosed",
+      "value": "Six weeks",
+      "displayValue": "Six weeks",
+      "normalizedValue": {
+        "kind": "duration",
+        "amount": 6,
+        "unit": "weeks"
+      },
+      "sources": [
+        {
+          "id": "mites-summer",
+          "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+          "title": "MITES Summer",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.duration",
+        "claimRefs": [
+          "mites-program-duration"
+        ]
+      }
+    },
+    "weekly_hours": {
+      "status": "disclosed",
+      "value": "Weekdays 9 a.m.–5 p.m.",
+      "displayValue": "Weekdays 9 a.m.–5 p.m.",
+      "normalizedValue": {
+        "kind": "hours",
+        "minimum": 40,
+        "maximum": null,
+        "period": "week"
+      },
+      "sources": [
+        {
+          "id": "mites-summer",
+          "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+          "title": "MITES Summer",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "classes are held weekdays from 9:00 a.m. to 5:00 p.m."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.weekly-hours",
+        "claimRefs": [
+          "mites-program-hours"
+        ]
+      }
+    },
+    "required_live_hours": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "participation_format": {
+      "status": "disclosed",
+      "value": "Varies by source record",
+      "displayValue": "Varies by source record",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "mites-apply",
+          "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+          "title": "Prepare Your MITES Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "online application"
+        },
+        {
+          "id": "mites-summer",
+          "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+          "title": "MITES Summer",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+        }
+      ],
+      "note": "Online; Residential",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.formats",
+        "claimRefs": [
+          "mites-application-format",
+          "mites-program-format"
+        ]
+      }
+    },
+    "location": {
+      "status": "disclosed",
+      "value": "MIT campus",
+      "displayValue": "MIT campus",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "mites-summer",
+          "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+          "title": "MITES Summer",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "on MIT's campus"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.locations",
+        "claimRefs": [
+          "mites-program-location"
+        ]
+      }
+    },
+    "travel_requirements": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "application_fee": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "deposit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "tuition": {
+      "status": "disclosed",
+      "value": 0,
+      "displayValue": "$0",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 0,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "mites-home",
+          "url": "https://mites.mit.edu/",
+          "title": "MITES",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "costs.tuition",
+        "claimRefs": [
+          "mites-tuition-definition",
+          "mites-tuition-amount",
+          "mites-tuition-basis"
+        ]
+      }
+    },
+    "other_mandatory_costs": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "estimated_total_mandatory_cost": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "A complete mandatory total cannot be calculated because at least one required cost amount is unresolved.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "costs.total-unresolved",
+        "claimRefs": [
+          "mites-tuition-definition",
+          "mites-tuition-amount",
+          "mites-tuition-basis",
+          "mites-lodging-definition",
+          "mites-lodging-amount",
+          "mites-lodging-basis",
+          "mites-meals-definition",
+          "mites-meals-amount",
+          "mites-meals-basis",
+          "mites-travel-definition",
+          "mites-travel-amount",
+          "mites-travel-basis"
+        ]
+      }
+    },
+    "travel_included": {
+      "status": "disclosed",
+      "value": false,
+      "displayValue": "Transportation is not automatically included",
+      "normalizedValue": {
+        "kind": "boolean",
+        "value": false
+      },
+      "sources": [
+        {
+          "id": "mites-home",
+          "url": "https://mites.mit.edu/",
+          "title": "MITES",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "lodging_included": {
+      "status": "disclosed",
+      "value": true,
+      "displayValue": "Boarding is covered",
+      "normalizedValue": {
+        "kind": "boolean",
+        "value": true
+      },
+      "sources": [
+        {
+          "id": "mites-home",
+          "url": "https://mites.mit.edu/",
+          "title": "MITES",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "meals_included": {
+      "status": "disclosed",
+      "value": true,
+      "displayValue": "Food is covered",
+      "normalizedValue": {
+        "kind": "boolean",
+        "value": true
+      },
+      "sources": [
+        {
+          "id": "mites-home",
+          "url": "https://mites.mit.edu/",
+          "title": "MITES",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "All MITES programs are free of cost. We cover all educational, food, and boarding costs. Students only pay for transportation to and from MIT."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "financial_aid": {
+      "status": "disclosed",
+      "value": "Travel scholarships are available for students who cannot afford transportation",
+      "displayValue": "Travel scholarships available",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "mites-home",
+          "url": "https://mites.mit.edu/",
+          "title": "MITES",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Travel scholarships are available for students who cannot afford the transportation cost"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "refund_policy": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The program charges no tuition, food, or boarding payment to refund.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "cancellation_policy": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "selection_process": {
+      "status": "disclosed",
+      "value": "Application to MITES Summer: Shared MITES application → Six-week residential program",
+      "displayValue": "Application to MITES Summer: Shared MITES application → Six-week residential program",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "mites-summer",
+          "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+          "title": "MITES Summer",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+        },
+        {
+          "id": "mites-apply",
+          "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+          "title": "Prepare Your MITES Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "share one application"
+        },
+        {
+          "id": "mites-apply",
+          "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+          "title": "Prepare Your MITES Application",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "The MITES Summer and MITES Semester programs share one application"
+        }
+      ],
+      "note": "The v2 pathway ledger defines the authoritative route; unrelated stages are not inserted into it.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.process",
+        "claimRefs": [
+          "mites-pathway-definition",
+          "mites-step-apply",
+          "mites-step-program",
+          "mites-application-stage",
+          "mites-program-stage"
+        ]
+      }
+    },
+    "applicant_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "acceptance_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "acceptance_rate_claim": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "calculated_acceptance_rate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "selection_evidence": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "cash_award": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "stipend": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "tuition_waiver": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "program_seat": {
+      "status": "disclosed",
+      "value": "Place in MITES Summer",
+      "displayValue": "Place in MITES Summer",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "mites-summer",
+          "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+          "title": "MITES Summer",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "MITES Summer is a six-week residential academic enrichment program"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "outcomes.program_seat",
+        "claimRefs": [
+          "mites-seat-definition",
+          "mites-seat-recipient",
+          "mites-seat-nature"
+        ]
+      }
+    },
+    "in_kind_value": {
+      "status": "disclosed",
+      "value": "Written instructor evaluation",
+      "displayValue": "Written instructor evaluation",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "mites-summer",
+          "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+          "title": "MITES Summer",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Students receive a written evaluation from each instructor"
+        },
+        {
+          "id": "mites-summer",
+          "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+          "title": "MITES Summer",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Students receive a written evaluation"
+        },
+        {
+          "id": "mites-summer",
+          "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+          "title": "MITES Summer",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "written evaluation"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "outcomes.in_kind_value",
+        "claimRefs": [
+          "mites-evaluation-definition",
+          "mites-evaluation-recipient",
+          "mites-evaluation-nature"
+        ]
+      }
+    },
+    "certificate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "college_credit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "mentorship": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "other_benefits": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "personal_information": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "data_sharing": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "project_ownership": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "project_license": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "publicity_rights": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "confidentiality": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "cancellation_rights": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "material_terms": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    }
+  },
+  "projectionRefs": {
+    "operating_organization": [
+      "mites-role-operator-claim",
+      "mites-org-name"
+    ],
+    "organization_type": [
+      "mites-org-kind",
+      "mites-org-name"
+    ],
+    "named_institution": [
+      "mites-mit-operated-claim",
+      "mites-mit-name"
+    ],
+    "institution_relationship": [
+      "mites-mit-operated-claim",
+      "mites-mit-name"
+    ],
+    "relationship_explanation": [
+      "mites-mit-operated-claim",
+      "mites-mit-name"
+    ],
+    "duration": [
+      "mites-program-duration"
+    ],
+    "weekly_hours": [
+      "mites-program-hours"
+    ],
+    "participation_format": [
+      "mites-application-format",
+      "mites-program-format"
+    ],
+    "location": [
+      "mites-program-location"
+    ],
+    "selection_process": [
+      "mites-pathway-definition",
+      "mites-step-apply",
+      "mites-step-program",
+      "mites-application-stage",
+      "mites-program-stage"
+    ],
+    "tuition": [
+      "mites-tuition-definition",
+      "mites-tuition-amount",
+      "mites-tuition-basis"
+    ],
+    "estimated_total_mandatory_cost": [
+      "mites-tuition-definition",
+      "mites-tuition-amount",
+      "mites-tuition-basis",
+      "mites-lodging-definition",
+      "mites-lodging-amount",
+      "mites-lodging-basis",
+      "mites-meals-definition",
+      "mites-meals-amount",
+      "mites-meals-basis",
+      "mites-travel-definition",
+      "mites-travel-amount",
+      "mites-travel-basis"
+    ],
+    "program_seat": [
+      "mites-seat-definition",
+      "mites-seat-recipient",
+      "mites-seat-nature"
+    ],
+    "in_kind_value": [
+      "mites-evaluation-definition",
+      "mites-evaluation-recipient",
+      "mites-evaluation-nature"
+    ]
+  },
+  "migratedFrom": null
+}

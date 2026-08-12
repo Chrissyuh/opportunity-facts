@@ -1,0 +1,2351 @@
+{
+  "schemaVersion": "2.0.0",
+  "opportunityId": "coca-cola-scholars-program",
+  "cycle": {
+    "status": "modeled",
+    "value": {
+      "id": "coke-cycle-2027",
+      "label": {
+        "claimId": "coke-cycle-label",
+        "status": "disclosed",
+        "value": "2027",
+        "displayValue": "2027",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "coke-apply",
+            "url": "https://www.coca-colascholarsfoundation.org/apply/",
+            "title": "Apply - Coca-Cola Scholars Foundation",
+            "pageType": "official_program_page",
+            "accessedAt": "2026-08-12T06:25:00.000Z",
+            "excerpt": "2027 Coca-Cola Scholars"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "status": {
+        "claimId": "coke-cycle-status",
+        "status": "disclosed",
+        "value": "applications_open",
+        "displayValue": "Applications open",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "coke-apply",
+            "url": "https://www.coca-colascholarsfoundation.org/apply/",
+            "title": "Apply - Coca-Cola Scholars Foundation",
+            "pageType": "official_program_page",
+            "accessedAt": "2026-08-12T06:25:00.000Z",
+            "excerpt": "The application deadline is September 30, 2026, at 5 p.m. Eastern."
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "year": {
+        "claimId": "coke-cycle-year",
+        "status": "disclosed",
+        "value": 2027,
+        "displayValue": "2027",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "coke-apply",
+            "url": "https://www.coca-colascholarsfoundation.org/apply/",
+            "title": "Apply - Coca-Cola Scholars Foundation",
+            "pageType": "official_program_page",
+            "accessedAt": "2026-08-12T06:25:00.000Z",
+            "excerpt": "2027 Coca-Cola Scholars"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "startYear": {
+        "claimId": "coke-cycle-start-year",
+        "status": "disclosed",
+        "value": 2026,
+        "displayValue": "2026",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "coke-apply",
+            "url": "https://www.coca-colascholarsfoundation.org/apply/",
+            "title": "Apply - Coca-Cola Scholars Foundation",
+            "pageType": "official_program_page",
+            "accessedAt": "2026-08-12T06:25:00.000Z",
+            "excerpt": "Current high school or home-schooled students attending school in one of the 50 U.S. states, the District of Columbia, Puerto Rico, or select DoD schools who will graduate high school during the 2026-2027 academic school year"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "endYear": {
+        "claimId": "coke-cycle-end-year",
+        "status": "disclosed",
+        "value": 2027,
+        "displayValue": "2027",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "coke-apply",
+            "url": "https://www.coca-colascholarsfoundation.org/apply/",
+            "title": "Apply - Coca-Cola Scholars Foundation",
+            "pageType": "official_program_page",
+            "accessedAt": "2026-08-12T06:25:00.000Z",
+            "excerpt": "Current high school or home-schooled students attending school in one of the 50 U.S. states, the District of Columbia, Puerto Rico, or select DoD schools who will graduate high school during the 2026-2027 academic school year"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "season": null,
+      "cycleType": {
+        "claimId": "coke-cycle-type",
+        "status": "disclosed",
+        "value": "academic_year",
+        "displayValue": "Academic-year scholarship cycle",
+        "claimKind": "source_stated",
+        "sources": [
+          {
+            "id": "coke-apply",
+            "url": "https://www.coca-colascholarsfoundation.org/apply/",
+            "title": "Apply - Coca-Cola Scholars Foundation",
+            "pageType": "official_program_page",
+            "accessedAt": "2026-08-12T06:25:00.000Z",
+            "excerpt": "Current high school or home-schooled students attending school in one of the 50 U.S. states, the District of Columbia, Puerto Rico, or select DoD schools who will graduate high school during the 2026-2027 academic school year"
+          }
+        ],
+        "note": null,
+        "conflictingValues": []
+      },
+      "timingRefs": {
+        "opens": null,
+        "closes": "coke-application-deadline",
+        "coverageStart": null,
+        "coverageEnd": null
+      }
+    }
+  },
+  "cardVersion": 1,
+  "slug": "coca-cola-scholars-program-2027",
+  "summary": "The 2027 Coca-Cola Scholars Program will select 150 U.S. high-school seniors for individual $20,000 achievement-based scholarships through application, semifinalist, interview, and Scholars Weekend stages.",
+  "reviewState": "human_reviewed",
+  "reviewedAt": "2026-08-12T06:25:00.000Z",
+  "sourcePagesChecked": [
+    {
+      "id": "coke-apply",
+      "url": "https://www.coca-colascholarsfoundation.org/apply/",
+      "title": "Apply - Coca-Cola Scholars Foundation",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-12T06:25:00.000Z"
+    },
+    {
+      "id": "coke-faq",
+      "url": "https://www.coca-colascholarsfoundation.org/about/faq/",
+      "title": "Frequently Asked Questions - Coca-Cola Scholars Foundation",
+      "pageType": "official_faq",
+      "accessedAt": "2026-08-12T06:25:00.000Z"
+    },
+    {
+      "id": "coke-about",
+      "url": "https://www.coca-colascholarsfoundation.org/about/",
+      "title": "About - Coca-Cola Scholars Foundation",
+      "pageType": "official_program_page",
+      "accessedAt": "2026-08-12T06:25:00.000Z"
+    }
+  ],
+  "conflicts": [],
+  "organizations": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "coke-org-foundation",
+        "name": {
+          "claimId": "coke-foundation-name",
+          "status": "disclosed",
+          "value": "Coca-Cola Scholars Foundation",
+          "displayValue": "Coca-Cola Scholars Foundation",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-apply",
+              "url": "https://www.coca-colascholarsfoundation.org/apply/",
+              "title": "Apply - Coca-Cola Scholars Foundation",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Each year, we award 150 Coca-Cola Scholars a $20,000 scholarship."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "kind": {
+          "claimId": "coke-foundation-kind",
+          "status": "disclosed",
+          "value": "education_provider",
+          "displayValue": "Scholarship foundation",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-about",
+              "url": "https://www.coca-colascholarsfoundation.org/about/",
+              "title": "About - Coca-Cola Scholars Foundation",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Coca-Cola Scholars Foundation"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        }
+      },
+      {
+        "id": "coke-org-company-system",
+        "name": {
+          "claimId": "coke-system-name",
+          "status": "disclosed",
+          "value": "The Coca-Cola Company and Coca-Cola bottlers",
+          "displayValue": "The Coca-Cola Company and Coca-Cola bottlers",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-faq",
+              "url": "https://www.coca-colascholarsfoundation.org/about/faq/",
+              "title": "Frequently Asked Questions - Coca-Cola Scholars Foundation",
+              "pageType": "official_faq",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "The Coca-Cola Scholars Foundation is funded by The Coca-Cola Company and Coca-Cola bottlers"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "kind": {
+          "claimId": "coke-system-kind",
+          "status": "disclosed",
+          "value": "private_company",
+          "displayValue": "Corporate funders",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-faq",
+              "url": "https://www.coca-colascholarsfoundation.org/about/faq/",
+              "title": "Frequently Asked Questions - Coca-Cola Scholars Foundation",
+              "pageType": "official_faq",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "funded by The Coca-Cola Company and Coca-Cola bottlers"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        }
+      }
+    ],
+    "note": null
+  },
+  "organizationRoles": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "coke-role-foundation-operator",
+        "organizationId": "coke-org-foundation",
+        "role": {
+          "claimId": "coke-foundation-operator",
+          "status": "disclosed",
+          "value": {
+            "role": "operator",
+            "roleLabel": null,
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Operator",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-apply",
+              "url": "https://www.coca-colascholarsfoundation.org/apply/",
+              "title": "Apply - Coca-Cola Scholars Foundation",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Each year, we award 150 Coca-Cola Scholars a $20,000 scholarship."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        }
+      },
+      {
+        "id": "coke-role-system-funder",
+        "organizationId": "coke-org-company-system",
+        "role": {
+          "claimId": "coke-system-funder",
+          "status": "disclosed",
+          "value": {
+            "role": "funder",
+            "roleLabel": null,
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Funder",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-faq",
+              "url": "https://www.coca-colascholarsfoundation.org/about/faq/",
+              "title": "Frequently Asked Questions - Coca-Cola Scholars Foundation",
+              "pageType": "official_faq",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "The Coca-Cola Scholars Foundation is funded by The Coca-Cola Company and Coca-Cola bottlers"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        }
+      }
+    ],
+    "note": null
+  },
+  "institutionRelationships": {
+    "status": "not_applicable",
+    "records": [],
+    "note": "The scholarship is used at accredited institutions, but no single institution operates, hosts, or partners in the national selection program."
+  },
+  "variants": {
+    "status": "not_applicable",
+    "records": [],
+    "note": "One national scholarship award is described; no applicant tiers or cohorts are published."
+  },
+  "stages": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "coke-stage-application",
+        "order": 1,
+        "definition": {
+          "claimId": "coke-application-stage",
+          "status": "disclosed",
+          "value": {
+            "label": "Initial application",
+            "kind": "application",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Initial application",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-apply",
+              "url": "https://www.coca-colascholarsfoundation.org/apply/",
+              "title": "Apply - Coca-Cola Scholars Foundation",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "The application deadline is September 30, 2026, at 5 p.m. Eastern."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "timings": [
+          {
+            "claimId": "coke-application-deadline",
+            "status": "disclosed",
+            "value": {
+              "event": "deadline",
+              "when": {
+                "precision": "date_time",
+                "dateTime": "2026-09-30T17:00:00-04:00",
+                "certainty": "stated"
+              },
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "September 30, 2026 at 5 p.m. Eastern",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "coke-apply",
+                "url": "https://www.coca-colascholarsfoundation.org/apply/",
+                "title": "Apply - Coca-Cola Scholars Foundation",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "The application deadline is September 30, 2026, at 5 p.m. Eastern."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "durations": [],
+        "timeCommitments": [],
+        "formats": [
+          {
+            "claimId": "coke-application-format",
+            "status": "disclosed",
+            "value": {
+              "formats": [
+                "online"
+              ],
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Online",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "coke-apply",
+                "url": "https://www.coca-colascholarsfoundation.org/apply/",
+                "title": "Apply - Coca-Cola Scholars Foundation",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "online application"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "locations": [],
+        "selectionRules": [],
+        "advancement": [
+          {
+            "claimId": "coke-semifinal-count",
+            "status": "disclosed",
+            "value": {
+              "count": 1200,
+              "description": "Approximately 1,200 Semifinalists",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Approximately 1,200 Semifinalists",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "coke-apply",
+                "url": "https://www.coca-colascholarsfoundation.org/apply/",
+                "title": "Apply - Coca-Cola Scholars Foundation",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Approximately 1,200 Semifinalists will be invited to complete a second application"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "requirements": [],
+        "travelRequirements": []
+      },
+      {
+        "id": "coke-stage-semifinal",
+        "order": 2,
+        "definition": {
+          "claimId": "coke-semifinal-stage",
+          "status": "disclosed",
+          "value": {
+            "label": "Semifinalist application",
+            "kind": "semifinal",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Semifinalist application",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-apply",
+              "url": "https://www.coca-colascholarsfoundation.org/apply/",
+              "title": "Apply - Coca-Cola Scholars Foundation",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Approximately 1,200 Semifinalists will be invited to complete a second application"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "timings": [],
+        "durations": [],
+        "timeCommitments": [],
+        "formats": [
+          {
+            "claimId": "coke-semifinal-format",
+            "status": "disclosed",
+            "value": {
+              "formats": [
+                "online"
+              ],
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Online",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "coke-apply",
+                "url": "https://www.coca-colascholarsfoundation.org/apply/",
+                "title": "Apply - Coca-Cola Scholars Foundation",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Approximately 1,200 Semifinalists will be invited to complete a second application"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "locations": [],
+        "selectionRules": [],
+        "advancement": [
+          {
+            "claimId": "coke-finalist-count",
+            "status": "disclosed",
+            "value": {
+              "count": 250,
+              "description": "250 Regional Finalists",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "250 Regional Finalists",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "coke-apply",
+                "url": "https://www.coca-colascholarsfoundation.org/apply/",
+                "title": "Apply - Coca-Cola Scholars Foundation",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "250 Regional Finalists will be selected"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "requirements": [],
+        "travelRequirements": []
+      },
+      {
+        "id": "coke-stage-interview",
+        "order": 3,
+        "definition": {
+          "claimId": "coke-interview-stage",
+          "status": "disclosed",
+          "value": {
+            "label": "Regional Finalist interview",
+            "kind": "interview",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Regional Finalist interview",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-apply",
+              "url": "https://www.coca-colascholarsfoundation.org/apply/",
+              "title": "Apply - Coca-Cola Scholars Foundation",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Regional Finalists will participate in online interviews"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "timings": [],
+        "durations": [],
+        "timeCommitments": [],
+        "formats": [
+          {
+            "claimId": "coke-interview-format",
+            "status": "disclosed",
+            "value": {
+              "formats": [
+                "online"
+              ],
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Online interview",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "coke-apply",
+                "url": "https://www.coca-colascholarsfoundation.org/apply/",
+                "title": "Apply - Coca-Cola Scholars Foundation",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Regional Finalists will participate in online interviews"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "locations": [],
+        "selectionRules": [],
+        "advancement": [
+          {
+            "claimId": "coke-scholar-count",
+            "status": "disclosed",
+            "value": {
+              "count": 150,
+              "description": "150 Coca-Cola Scholars",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "150 Scholars",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "coke-apply",
+                "url": "https://www.coca-colascholarsfoundation.org/apply/",
+                "title": "Apply - Coca-Cola Scholars Foundation",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Each year, we award 150 Coca-Cola Scholars a $20,000 scholarship."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "requirements": [],
+        "travelRequirements": []
+      },
+      {
+        "id": "coke-stage-weekend",
+        "order": 4,
+        "definition": {
+          "claimId": "coke-weekend-stage",
+          "status": "disclosed",
+          "value": {
+            "label": "Scholars Weekend",
+            "kind": "summit_final",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Scholars Weekend",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-apply",
+              "url": "https://www.coca-colascholarsfoundation.org/apply/",
+              "title": "Apply - Coca-Cola Scholars Foundation",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Scholars Weekend in Atlanta"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "timings": [
+          {
+            "claimId": "coke-weekend-timing",
+            "status": "disclosed",
+            "value": {
+              "event": "starts",
+              "when": {
+                "precision": "month",
+                "year": 2027,
+                "month": 4,
+                "certainty": "stated"
+              },
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "April 2027",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "coke-apply",
+                "url": "https://www.coca-colascholarsfoundation.org/apply/",
+                "title": "Apply - Coca-Cola Scholars Foundation",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Scholars Weekend in April"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "durations": [],
+        "timeCommitments": [],
+        "formats": [
+          {
+            "claimId": "coke-weekend-format",
+            "status": "disclosed",
+            "value": {
+              "formats": [
+                "in_person"
+              ],
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "In person",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "coke-apply",
+                "url": "https://www.coca-colascholarsfoundation.org/apply/",
+                "title": "Apply - Coca-Cola Scholars Foundation",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Scholars Weekend in Atlanta"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "locations": [
+          {
+            "claimId": "coke-weekend-location",
+            "status": "disclosed",
+            "value": {
+              "location": "Atlanta, Georgia",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Atlanta, Georgia",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "coke-apply",
+                "url": "https://www.coca-colascholarsfoundation.org/apply/",
+                "title": "Apply - Coca-Cola Scholars Foundation",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Scholars Weekend in Atlanta"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ],
+        "selectionRules": [],
+        "advancement": [],
+        "requirements": [],
+        "travelRequirements": [
+          {
+            "claimId": "coke-weekend-travel",
+            "status": "disclosed",
+            "value": {
+              "requirement": "required",
+              "scope": {
+                "variantIds": [],
+                "stageIds": [],
+                "pathwayIds": []
+              }
+            },
+            "displayValue": "Scholar attendance in Atlanta",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "coke-apply",
+                "url": "https://www.coca-colascholarsfoundation.org/apply/",
+                "title": "Apply - Coca-Cola Scholars Foundation",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Scholars Weekend in Atlanta"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ]
+      }
+    ],
+    "note": null
+  },
+  "pathways": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "coke-pathway",
+        "definition": {
+          "claimId": "coke-pathway-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Scholar selection pathway",
+            "variantIds": []
+          },
+          "displayValue": "Scholar selection pathway",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-apply",
+              "url": "https://www.coca-colascholarsfoundation.org/apply/",
+              "title": "Apply - Coca-Cola Scholars Foundation",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Approximately 1,200 Semifinalists will be invited to complete a second application"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "steps": [
+          {
+            "claimId": "coke-step-application",
+            "status": "disclosed",
+            "value": {
+              "stageId": "coke-stage-application",
+              "enterWhen": null
+            },
+            "displayValue": "Initial application",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "coke-apply",
+                "url": "https://www.coca-colascholarsfoundation.org/apply/",
+                "title": "Apply - Coca-Cola Scholars Foundation",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "The application deadline is September 30, 2026, at 5 p.m. Eastern."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "coke-step-semifinal",
+            "status": "disclosed",
+            "value": {
+              "stageId": "coke-stage-semifinal",
+              "enterWhen": "Selected as a Semifinalist."
+            },
+            "displayValue": "Semifinalist application",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "coke-apply",
+                "url": "https://www.coca-colascholarsfoundation.org/apply/",
+                "title": "Apply - Coca-Cola Scholars Foundation",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Approximately 1,200 Semifinalists will be invited to complete a second application"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "coke-step-interview",
+            "status": "disclosed",
+            "value": {
+              "stageId": "coke-stage-interview",
+              "enterWhen": "Selected as a Regional Finalist."
+            },
+            "displayValue": "Regional Finalist interview",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "coke-apply",
+                "url": "https://www.coca-colascholarsfoundation.org/apply/",
+                "title": "Apply - Coca-Cola Scholars Foundation",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "250 Regional Finalists will be selected"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          {
+            "claimId": "coke-step-weekend",
+            "status": "disclosed",
+            "value": {
+              "stageId": "coke-stage-weekend",
+              "enterWhen": "Selected as one of 150 Scholars."
+            },
+            "displayValue": "Scholars Weekend",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "coke-apply",
+                "url": "https://www.coca-colascholarsfoundation.org/apply/",
+                "title": "Apply - Coca-Cola Scholars Foundation",
+                "pageType": "official_program_page",
+                "accessedAt": "2026-08-12T06:25:00.000Z",
+                "excerpt": "Each year, we award 150 Coca-Cola Scholars a $20,000 scholarship."
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          }
+        ]
+      }
+    ],
+    "note": null
+  },
+  "costItems": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "coke-cost-application",
+        "definition": {
+          "claimId": "coke-application-fee-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "Application fee",
+            "kind": "application_fee",
+            "requirement": "required",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "Free application",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-apply",
+              "url": "https://www.coca-colascholarsfoundation.org/apply/",
+              "title": "Apply - Coca-Cola Scholars Foundation",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "There is no application fee"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "coke-application-fee-amount",
+          "status": "disclosed",
+          "value": {
+            "kind": "exact",
+            "amount": 0,
+            "currency": "USD"
+          },
+          "displayValue": "$0",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-apply",
+              "url": "https://www.coca-colascholarsfoundation.org/apply/",
+              "title": "Apply - Coca-Cola Scholars Foundation",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "There is no application fee"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "chargeBasis": {
+          "claimId": "coke-application-fee-basis",
+          "status": "disclosed",
+          "value": "per_application",
+          "displayValue": "Per application",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-apply",
+              "url": "https://www.coca-colascholarsfoundation.org/apply/",
+              "title": "Apply - Coca-Cola Scholars Foundation",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "There is no application fee"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "treatment": null,
+        "refundability": null,
+        "includedItems": [],
+        "excludedItems": [],
+        "conditions": []
+      }
+    ],
+    "note": "The application is free; the reviewed pages did not establish all possible travel arrangements for Scholars Weekend.",
+    "completeness": "incomplete"
+  },
+  "outcomes": {
+    "status": "modeled",
+    "records": [
+      {
+        "id": "coke-outcome-scholarship",
+        "definition": {
+          "claimId": "coke-scholarship-definition",
+          "status": "disclosed",
+          "value": {
+            "label": "$20,000 Coca-Cola Scholars Program scholarship",
+            "outcomeType": "scholarship",
+            "scope": {
+              "variantIds": [],
+              "stageIds": [],
+              "pathwayIds": []
+            }
+          },
+          "displayValue": "$20,000 scholarship",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-apply",
+              "url": "https://www.coca-colascholarsfoundation.org/apply/",
+              "title": "Apply - Coca-Cola Scholars Foundation",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Each year, we award 150 Coca-Cola Scholars a $20,000 scholarship."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "recipientScope": {
+          "claimId": "coke-scholarship-recipient",
+          "status": "disclosed",
+          "value": "individual",
+          "displayValue": "Individual Scholar",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-apply",
+              "url": "https://www.coca-colascholarsfoundation.org/apply/",
+              "title": "Apply - Coca-Cola Scholars Foundation",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Each year, we award 150 Coca-Cola Scholars a $20,000 scholarship."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "monetaryNature": {
+          "claimId": "coke-scholarship-nature",
+          "status": "disclosed",
+          "value": "restricted_funding",
+          "displayValue": "Scholarship funding",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-faq",
+              "url": "https://www.coca-colascholarsfoundation.org/about/faq/",
+              "title": "Frequently Asked Questions - Coca-Cola Scholars Foundation",
+              "pageType": "official_faq",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Scholarship funds may be used for tuition, fees, books, supplies, equipment, and room and board"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "amount": {
+          "claimId": "coke-scholarship-amount",
+          "status": "disclosed",
+          "value": {
+            "kind": "exact",
+            "amount": 20000,
+            "currency": "USD"
+          },
+          "displayValue": "$20,000",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-apply",
+              "url": "https://www.coca-colascholarsfoundation.org/apply/",
+              "title": "Apply - Coca-Cola Scholars Foundation",
+              "pageType": "official_program_page",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Each year, we award 150 Coca-Cola Scholars a $20,000 scholarship."
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "distribution": {
+          "claimId": "coke-scholarship-distribution",
+          "status": "disclosed",
+          "value": [
+            {
+              "payee": "service_provider",
+              "method": "direct",
+              "condition": "Used for eligible educational expenses through the Foundation's scholarship administration."
+            }
+          ],
+          "displayValue": "Educational-expense administration",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-faq",
+              "url": "https://www.coca-colascholarsfoundation.org/about/faq/",
+              "title": "Frequently Asked Questions - Coca-Cola Scholars Foundation",
+              "pageType": "official_faq",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Scholarship funds may be used for tuition, fees, books, supplies, equipment, and room and board"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "rank": null,
+        "track": null,
+        "quantity": null,
+        "useRestriction": {
+          "claimId": "coke-scholarship-use",
+          "status": "disclosed",
+          "value": "Eligible educational expenses including tuition, fees, books, supplies, equipment, and room and board.",
+          "displayValue": "Eligible educational expenses",
+          "claimKind": "source_stated",
+          "sources": [
+            {
+              "id": "coke-faq",
+              "url": "https://www.coca-colascholarsfoundation.org/about/faq/",
+              "title": "Frequently Asked Questions - Coca-Cola Scholars Foundation",
+              "pageType": "official_faq",
+              "accessedAt": "2026-08-12T06:25:00.000Z",
+              "excerpt": "Scholarship funds may be used for tuition, fees, books, supplies, equipment, and room and board"
+            }
+          ],
+          "note": null,
+          "conflictingValues": []
+        },
+        "combinability": null,
+        "conditions": []
+      }
+    ],
+    "note": null
+  },
+  "facts": {
+    "opportunity_name": {
+      "status": "disclosed",
+      "value": "Coca-Cola Scholars Program",
+      "displayValue": "Coca-Cola Scholars Program",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "Coca-Cola Scholars Program"
+      },
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Each year, we award 150 Coca-Cola Scholars a $20,000 scholarship."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "opportunity_category": {
+      "status": "disclosed",
+      "value": "Achievement-based college scholarship",
+      "displayValue": "Achievement-based college scholarship",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "coke-faq",
+          "url": "https://www.coca-colascholarsfoundation.org/about/faq/",
+          "title": "Frequently Asked Questions - Coca-Cola Scholars Foundation",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "The Coca-Cola Scholars Program scholarship is an achievement-based scholarship"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "official_url": {
+      "status": "disclosed",
+      "value": "https://www.coca-colascholarsfoundation.org/apply/",
+      "displayValue": "https://www.coca-colascholarsfoundation.org/apply/",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "https://www.coca-colascholarsfoundation.org/apply/"
+      },
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Each year, we award 150 Coca-Cola Scholars a $20,000 scholarship."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "operating_organization": {
+      "status": "disclosed",
+      "value": "Coca-Cola Scholars Foundation",
+      "displayValue": "Coca-Cola Scholars Foundation",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Each year, we award 150 Coca-Cola Scholars a $20,000 scholarship."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "organizations.primary-operator",
+        "claimRefs": [
+          "coke-foundation-operator",
+          "coke-foundation-name"
+        ]
+      }
+    },
+    "organization_type": {
+      "status": "disclosed",
+      "value": "education_provider",
+      "displayValue": "Scholarship foundation",
+      "normalizedValue": {
+        "kind": "text",
+        "value": "education_provider"
+      },
+      "sources": [
+        {
+          "id": "coke-about",
+          "url": "https://www.coca-colascholarsfoundation.org/about/",
+          "title": "About - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Coca-Cola Scholars Foundation"
+        },
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Each year, we award 150 Coca-Cola Scholars a $20,000 scholarship."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "organizations.primary-operator-kind",
+        "claimRefs": [
+          "coke-foundation-kind",
+          "coke-foundation-name"
+        ]
+      }
+    },
+    "named_institution": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "institution_relationship": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "relationship_explanation": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "grade_levels": {
+      "status": "disclosed",
+      "value": [
+        "12"
+      ],
+      "displayValue": "High-school seniors graduating in 2026–2027",
+      "normalizedValue": {
+        "kind": "text_list",
+        "values": [
+          "12"
+        ]
+      },
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Current high school or home-schooled students attending school in one of the 50 U.S. states, the District of Columbia, Puerto Rico, or select DoD schools who will graduate high school during the 2026-2027 academic school year"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "ages": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "geographic_restrictions": {
+      "status": "disclosed",
+      "value": "50 U.S. states, District of Columbia, Puerto Rico, and select DoD schools",
+      "displayValue": "United States, Puerto Rico, or select DoD schools",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Current high school or home-schooled students attending school in one of the 50 U.S. states, the District of Columbia, Puerto Rico, or select DoD schools who will graduate high school during the 2026-2027 academic school year"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "citizenship_restrictions": {
+      "status": "disclosed",
+      "value": "Eligible U.S. citizenship or residency categories listed by the Foundation",
+      "displayValue": "U.S. citizenship/residency rules apply",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "U.S. Citizens; U.S. Nationals; U.S. Permanent Residents; Refugees; Asylees; Cuban-Haitian Entrants; or Humanitarian Parolees"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "prerequisite_skills": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "entry_format": {
+      "status": "disclosed",
+      "value": "Individual application",
+      "displayValue": "Individual application",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Applicants may not be children or grandchildren of employees, officers, or owners"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "sponsor_requirement": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "application_deadline": {
+      "status": "disclosed",
+      "value": "September 30, 2026 at 5 p.m. Eastern",
+      "displayValue": "September 30, 2026 at 5 p.m. Eastern",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "The application deadline is September 30, 2026, at 5 p.m. Eastern."
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "cycle.closes",
+        "claimRefs": [
+          "coke-application-deadline"
+        ]
+      }
+    },
+    "decision_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "start_date": {
+      "status": "disclosed",
+      "value": "April 2027",
+      "displayValue": "April 2027",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Scholars Weekend in April"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.starts",
+        "claimRefs": [
+          "coke-weekend-timing"
+        ]
+      }
+    },
+    "end_date": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "duration": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "weekly_hours": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "required_live_hours": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "participation_format": {
+      "status": "disclosed",
+      "value": "Varies by source record",
+      "displayValue": "Varies by source record",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "online application"
+        },
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Approximately 1,200 Semifinalists will be invited to complete a second application"
+        },
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Regional Finalists will participate in online interviews"
+        },
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Scholars Weekend in Atlanta"
+        }
+      ],
+      "note": "Online; Online interview; In person",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.formats",
+        "claimRefs": [
+          "coke-application-format",
+          "coke-semifinal-format",
+          "coke-interview-format",
+          "coke-weekend-format"
+        ]
+      }
+    },
+    "location": {
+      "status": "disclosed",
+      "value": "Atlanta, Georgia",
+      "displayValue": "Atlanta, Georgia",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Scholars Weekend in Atlanta"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.locations",
+        "claimRefs": [
+          "coke-weekend-location"
+        ]
+      }
+    },
+    "travel_requirements": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "application_fee": {
+      "status": "disclosed",
+      "value": 0,
+      "displayValue": "$0",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 0,
+        "currency": "USD",
+        "classification": "fee"
+      },
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "There is no application fee"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "costs.application_fee",
+        "claimRefs": [
+          "coke-application-fee-definition",
+          "coke-application-fee-amount",
+          "coke-application-fee-basis"
+        ]
+      }
+    },
+    "deposit": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "tuition": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "other_mandatory_costs": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "estimated_total_mandatory_cost": {
+      "status": "unclear",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "There is no application fee"
+        }
+      ],
+      "note": "The reviewed cost inventory contains source-backed items but does not establish that every applicable mandatory charge is known.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "costs.total-incomplete",
+        "claimRefs": [
+          "coke-application-fee-definition",
+          "coke-application-fee-amount",
+          "coke-application-fee-basis"
+        ]
+      }
+    },
+    "travel_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "lodging_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "meals_included": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "financial_aid": {
+      "status": "disclosed",
+      "value": "The award is achievement-based rather than need-based",
+      "displayValue": "Achievement-based; not need-based",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "coke-faq",
+          "url": "https://www.coca-colascholarsfoundation.org/about/faq/",
+          "title": "Frequently Asked Questions - Coca-Cola Scholars Foundation",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "The Coca-Cola Scholars Program scholarship is an achievement-based scholarship"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "refund_policy": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "There is no participant tuition or application payment to refund in the reviewed scholarship application.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "cancellation_policy": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "selection_process": {
+      "status": "disclosed",
+      "value": "Scholar selection pathway: Initial application → Semifinalist application → Regional Finalist interview → Scholars Weekend",
+      "displayValue": "Scholar selection pathway: Initial application → Semifinalist application → Regional Finalist interview → Scholars Weekend",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Approximately 1,200 Semifinalists will be invited to complete a second application"
+        },
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "The application deadline is September 30, 2026, at 5 p.m. Eastern."
+        },
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "250 Regional Finalists will be selected"
+        },
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Each year, we award 150 Coca-Cola Scholars a $20,000 scholarship."
+        },
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Regional Finalists will participate in online interviews"
+        },
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Scholars Weekend in Atlanta"
+        }
+      ],
+      "note": "The v2 pathway ledger defines the authoritative route; unrelated stages are not inserted into it.",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "stages.process",
+        "claimRefs": [
+          "coke-pathway-definition",
+          "coke-step-application",
+          "coke-step-semifinal",
+          "coke-step-interview",
+          "coke-step-weekend",
+          "coke-application-stage",
+          "coke-semifinal-stage",
+          "coke-interview-stage",
+          "coke-weekend-stage"
+        ]
+      }
+    },
+    "applicant_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "acceptance_count": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "acceptance_rate_claim": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "calculated_acceptance_rate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "selection_evidence": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "cash_award": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "stipend": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "tuition_waiver": {
+      "status": "disclosed",
+      "value": 20000,
+      "displayValue": "$20,000 Coca-Cola Scholars Program scholarship — $20,000/individual",
+      "normalizedValue": {
+        "kind": "money",
+        "amount": 20000,
+        "currency": "USD",
+        "classification": "tuition_waiver"
+      },
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Each year, we award 150 Coca-Cola Scholars a $20,000 scholarship."
+        },
+        {
+          "id": "coke-faq",
+          "url": "https://www.coca-colascholarsfoundation.org/about/faq/",
+          "title": "Frequently Asked Questions - Coca-Cola Scholars Foundation",
+          "pageType": "official_faq",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "Scholarship funds may be used for tuition, fees, books, supplies, equipment, and room and board"
+        }
+      ],
+      "note": "Educational-expense administration",
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": {
+        "schemaVersion": "2.0.0",
+        "rule": "outcomes.tuition_waiver",
+        "claimRefs": [
+          "coke-scholarship-definition",
+          "coke-scholarship-recipient",
+          "coke-scholarship-nature",
+          "coke-scholarship-amount",
+          "coke-scholarship-distribution",
+          "coke-scholarship-use"
+        ]
+      }
+    },
+    "program_seat": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "in_kind_value": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "certificate": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "college_credit": {
+      "status": "not_applicable",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": "The outcome is a scholarship, not academic credit.",
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "mentorship": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "other_benefits": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "personal_information": {
+      "status": "disclosed",
+      "value": [
+        "Academic information",
+        "Activities",
+        "Employment",
+        "Service"
+      ],
+      "displayValue": "Academic, activity, employment, and service information",
+      "normalizedValue": null,
+      "sources": [
+        {
+          "id": "coke-apply",
+          "url": "https://www.coca-colascholarsfoundation.org/apply/",
+          "title": "Apply - Coca-Cola Scholars Foundation",
+          "pageType": "official_program_page",
+          "accessedAt": "2026-08-12T06:25:00.000Z",
+          "excerpt": "The application asks for information about grades, school and community activities, employment, and volunteer service"
+        }
+      ],
+      "note": null,
+      "confidence": null,
+      "claimKind": "source_stated",
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "data_sharing": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "project_ownership": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "project_license": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "publicity_rights": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "confidentiality": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "cancellation_rights": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    },
+    "material_terms": {
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
+      "confidence": null,
+      "claimKind": null,
+      "conflictingValues": [],
+      "calculation": null,
+      "projection": null
+    }
+  },
+  "projectionRefs": {
+    "operating_organization": [
+      "coke-foundation-operator",
+      "coke-foundation-name"
+    ],
+    "organization_type": [
+      "coke-foundation-kind",
+      "coke-foundation-name"
+    ],
+    "application_deadline": [
+      "coke-application-deadline"
+    ],
+    "start_date": [
+      "coke-weekend-timing"
+    ],
+    "participation_format": [
+      "coke-application-format",
+      "coke-semifinal-format",
+      "coke-interview-format",
+      "coke-weekend-format"
+    ],
+    "location": [
+      "coke-weekend-location"
+    ],
+    "selection_process": [
+      "coke-pathway-definition",
+      "coke-step-application",
+      "coke-step-semifinal",
+      "coke-step-interview",
+      "coke-step-weekend",
+      "coke-application-stage",
+      "coke-semifinal-stage",
+      "coke-interview-stage",
+      "coke-weekend-stage"
+    ],
+    "application_fee": [
+      "coke-application-fee-definition",
+      "coke-application-fee-amount",
+      "coke-application-fee-basis"
+    ],
+    "estimated_total_mandatory_cost": [
+      "coke-application-fee-definition",
+      "coke-application-fee-amount",
+      "coke-application-fee-basis"
+    ],
+    "tuition_waiver": [
+      "coke-scholarship-definition",
+      "coke-scholarship-recipient",
+      "coke-scholarship-nature",
+      "coke-scholarship-amount",
+      "coke-scholarship-distribution",
+      "coke-scholarship-use"
+    ]
+  },
+  "migratedFrom": null
+}

@@ -26,20 +26,24 @@ async function reviewedCard(slug: string): Promise<OpportunityCard> {
 }
 
 describe("canonical V2 repository cards", () => {
-  it("stores all seven demos and all three reviewed cards as canonical V2", async () => {
+  it("stores all seven demos and all ten reviewed cards as canonical V2", async () => {
     const [demos, reviewed] = await Promise.all([
       readCards("demo"),
       readCards("opportunities"),
     ]);
 
     expect(demos).toHaveLength(7);
-    expect(reviewed).toHaveLength(3);
+    expect(reviewed).toHaveLength(10);
     for (const card of [...demos, ...reviewed]) {
       expect(card.schemaVersion).toBe("2.0.0");
-      expect(card.cardVersion).toBe(2);
-      expect(card.migratedFrom?.schemaVersion).toBe("1.0.0");
-      expect(card.migratedFrom?.cardVersion).toBe(1);
-      expect(card.migratedFrom?.cardSha256).toMatch(/^[a-f0-9]{64}$/);
+      if (card.migratedFrom === null) {
+        expect(card.cardVersion).toBe(1);
+      } else {
+        expect(card.cardVersion).toBe(2);
+        expect(card.migratedFrom.schemaVersion).toBe("1.0.0");
+        expect(card.migratedFrom.cardVersion).toBe(1);
+        expect(card.migratedFrom.cardSha256).toMatch(/^[a-f0-9]{64}$/);
+      }
     }
     for (const card of demos) {
       expect(card.reviewState).toBe("demo");
@@ -47,7 +51,7 @@ describe("canonical V2 repository cards", () => {
     }
     for (const card of reviewed) {
       expect(card.reviewState).toBe("human_reviewed");
-      expect(card.reviewedAt).toBe("2026-08-12T00:27:28.180Z");
+      expect(card.reviewedAt).toMatch(/^2026-08-12T/);
       expect(card.opportunityId).not.toBeNull();
       expect(card.cycle.status).toBe("modeled");
       for (const collection of [
