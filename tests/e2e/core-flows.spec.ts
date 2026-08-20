@@ -594,7 +594,12 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
   await expect(page.getByRole("button", { name: "Cancel analysis" })).toBeVisible();
   await expect(page.getByText(/\d+ sec elapsed/)).toBeVisible();
   await expect(page.locator(".analysis-progress [data-state='active']")).toHaveCount(0);
-  await expect(page.getByRole("heading", { level: 2, name: "Inspect and correct the draft." })).toBeVisible();
+  const resultTitle = page.getByRole("heading", { level: 2, name: "Inspect and correct the draft." });
+  await expect(resultTitle).toBeVisible();
+  await expect(resultTitle).toBeFocused();
+  const resultTop = async () => (await page.locator(".analysis-result").boundingBox())?.y ?? Number.POSITIVE_INFINITY;
+  await expect.poll(resultTop).toBeGreaterThanOrEqual(0);
+  await expect.poll(resultTop).toBeLessThan(40);
   await expect(page.getByRole("heading", { level: 3, name: "Mocked Analysis Draft" })).toBeVisible();
   await expect(page.getByText("Mocked source page")).toBeVisible();
   await expect(page.getByText("Draft ready", { exact: false })).toBeVisible();

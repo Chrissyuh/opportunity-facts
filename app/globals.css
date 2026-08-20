@@ -3304,6 +3304,7 @@ select[aria-invalid="true"] {
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 3px solid var(--ink);
+  scroll-margin-top: 1rem;
 }
 
 .analysis-result-heading {

@@ -140,6 +140,8 @@ export function AnalysisWorkbench({
   const [requestStartedAt, setRequestStartedAt] = useState<number | null>(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const activeRequest = useRef<AbortController | null>(null);
+  const resultSection = useRef<HTMLElement | null>(null);
+  const resultTitle = useRef<HTMLHeadingElement | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -182,6 +184,18 @@ export function AnalysisWorkbench({
   }, [phase, requestStartedAt]);
 
   useEffect(() => () => activeRequest.current?.abort(), []);
+
+  useEffect(() => {
+    if (phase !== "complete" || !result) return;
+    const frame = window.requestAnimationFrame(() => {
+      resultTitle.current?.focus({ preventScroll: true });
+      resultSection.current?.scrollIntoView({
+        block: "start",
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [phase, result]);
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -380,11 +394,13 @@ export function AnalysisWorkbench({
       </aside>
 
       {result ? (
-        <section className="analysis-result" aria-labelledby="analysis-result-title">
+        <section ref={resultSection} className="analysis-result" aria-labelledby="analysis-result-title">
           <div className="analysis-result-heading">
             <div>
               <p className="eyebrow">Draft ready · Automated checks applied</p>
-              <h2 id="analysis-result-title">Inspect and correct the draft.</h2>
+              <h2 ref={resultTitle} id="analysis-result-title" tabIndex={-1}>
+                Inspect and correct the draft.
+              </h2>
             </div>
             <div className="button-row no-print">
               <button className="button" type="button" onClick={() => saveDraft()}>Save locally</button>
