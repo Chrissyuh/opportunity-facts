@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.0.0",
+  "schemaVersion": "2.1.0",
   "opportunityId": "diamond-challenge",
   "cycle": {
     "status": "modeled",
@@ -3098,7 +3098,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "diamond-horn-operator-role",
@@ -3138,7 +3138,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator-kind",
         "claimRefs": [
           "diamond-horn-kind",
@@ -3178,7 +3178,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.institution-list",
         "claimRefs": [
           "diamond-udel-operated-relationship",
@@ -3218,7 +3218,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.summary",
         "claimRefs": [
           "diamond-udel-operated-relationship",
@@ -3258,7 +3258,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.explanations",
         "claimRefs": [
           "diamond-udel-operated-relationship",
@@ -3483,7 +3483,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "cycle.closes",
         "claimRefs": [
           "diamond-submission-deadline"
@@ -3519,7 +3519,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.notification",
         "claimRefs": [
           "diamond-pitch-invite-notification",
@@ -3551,7 +3551,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "cycle.opens",
         "claimRefs": [
           "diamond-submission-opens"
@@ -3582,7 +3582,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "cycle.coverage-end",
         "claimRefs": [
           "diamond-summit-ends"
@@ -3610,7 +3610,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.duration",
         "claimRefs": [
           "diamond-summit-duration"
@@ -3689,7 +3689,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.formats",
         "claimRefs": [
           "diamond-live-pitch-format",
@@ -3727,7 +3727,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.locations",
         "claimRefs": [
           "diamond-live-pitch-location",
@@ -3841,12 +3841,11 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "costs.total-unresolved",
         "claimRefs": [
           "diamond-travel-cost-definition",
-          "diamond-travel-cost-amount",
-          "diamond-travel-cost-condition"
+          "diamond-travel-cost-amount"
         ]
       }
     },
@@ -3989,7 +3988,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.process",
         "claimRefs": [
           "diamond-live-pathway-definition",
@@ -4140,7 +4139,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.cash_award-matrix",
         "claimRefs": [
           "diamond-business-1-definition",
@@ -4235,7 +4234,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.program_seat",
         "claimRefs": [
           "diamond-summit-seat-definition",
@@ -4266,7 +4265,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.in_kind_value",
         "claimRefs": [
           "diamond-resources-definition",
@@ -4350,7 +4349,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.other-benefits",
         "claimRefs": [
           "diamond-feedback-definition",
@@ -4762,8 +4761,7 @@
     ],
     "estimated_total_mandatory_cost": [
       "diamond-travel-cost-definition",
-      "diamond-travel-cost-amount",
-      "diamond-travel-cost-condition"
+      "diamond-travel-cost-amount"
     ],
     "cash_award": [
       "diamond-business-1-definition",

@@ -21,6 +21,24 @@ describe("public URL parsing", () => {
   );
 
   it.each([
+    "http://example.com:22/program",
+    "http://example.com:8080/program",
+    "https://example.com:8443/program",
+    "https://example.com:80/program",
+  ])("rejects a non-default public destination port in %s", (url) => {
+    expect(() => parsePublicHttpUrl(url)).toThrowError(
+      expect.objectContaining({ code: "UNSUPPORTED_PORT" }),
+    );
+  });
+
+  it.each([
+    ["http://example.com:80/program", "http://example.com/program"],
+    ["https://example.com:443/program", "https://example.com/program"],
+  ])("normalizes an explicit protocol-default port in %s", (url, expected) => {
+    expect(parsePublicHttpUrl(url).href).toBe(expected);
+  });
+
+  it.each([
     "http://localhost/",
     "http://LOCALHOST./",
     "http://api.localhost/",
@@ -103,6 +121,22 @@ describe("public URL parsing", () => {
     expect(parsePublicHttpUrl("https://example.com/program#fees").href).toBe(
       "https://example.com/program",
     );
+  });
+
+  it("strips recognized marketing identifiers while preserving functional query parameters", () => {
+    expect(
+      parsePublicHttpUrl(
+        "https://example.com/apply?utm_source=newsletter&UTM_Campaign=fall&gclid=google&fbclid=meta&msclkid=microsoft&attribution_id=uuid&source=school&cohort=fall",
+      ).href,
+    ).toBe("https://example.com/apply?source=school&cohort=fall");
+  });
+
+  it("rejects sensitive query keys instead of stripping them beside tracking keys", () => {
+    expect(() =>
+      parsePublicHttpUrl(
+        "https://example.com/apply?utm_source=newsletter&accessToken=secret",
+      ),
+    ).toThrowError(expect.objectContaining({ code: "URL_SENSITIVE_QUERY" }));
   });
 });
 

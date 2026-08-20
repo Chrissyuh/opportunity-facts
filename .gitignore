@@ -15,6 +15,7 @@
 /test-results/
 /.playwright-cli/
 /.codex-runtime/
+/output/
 
 # next.js
 /.next/

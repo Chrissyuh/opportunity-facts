@@ -40,9 +40,14 @@ function source(): AnalysisSourceContext {
   };
 }
 
-function response(output: unknown, id: string) {
+function response(
+  output: unknown,
+  id: string,
+  status: "completed" | "failed" | "in_progress" | "cancelled" | "queued" | "incomplete" = "completed",
+) {
   return {
     id,
+    status,
     output_text: typeof output === "string" ? output : JSON.stringify(output),
     usage: {
       input_tokens: 100,
@@ -64,11 +69,82 @@ function stageOutput(name: string) {
       variants: structures.variants,
     };
   }
-  return {
+  if (name === "opportunity_facts_process") return {
     stages: structures.stages,
     pathways: structures.pathways,
+  };
+  if (name === "opportunity_facts_financial") return {
     costItems: structures.costItems,
     outcomes: structures.outcomes,
+  };
+  throw new Error(`Unexpected structured response name: ${name}`);
+}
+
+function disclosedClaim(value: unknown, displayValue: string, claimId: string) {
+  return {
+    claimId,
+    status: "disclosed",
+    value,
+    displayValue,
+    claimKind: "source_stated",
+    sources: [{
+      id: "page-program",
+      url: "https://program.example/current-cycle",
+      title: "Current Program",
+      pageType: "user_supplied",
+      accessedAt: "2026-08-12T12:00:00.000Z",
+      excerpt: displayValue,
+    }],
+    note: null,
+    conflictingValues: [],
+  };
+}
+
+function costRecord(id: string, minimum: number, maximum: number | null) {
+  const amount = maximum === null
+    ? { kind: "exact", amount: minimum, currency: "USD" }
+    : { kind: "range", minimum, maximum, currency: "USD" };
+  return {
+    id,
+    definition: disclosedClaim(
+      { label: "Tuition", kind: "tuition", requirement: "required", scope: { variantIds: [], stageIds: [], pathwayIds: [] } },
+      "Tuition",
+      `${id}-definition`,
+    ),
+    amount: disclosedClaim(amount, "$1,000", `${id}-amount`),
+    chargeBasis: null,
+    treatment: null,
+    refundability: null,
+    includedItems: [],
+    excludedItems: [],
+    conditions: [],
+  };
+}
+
+function stageRecord(id: string, invalidDuration = false) {
+  return {
+    id,
+    order: id === "apply" ? 1 : 2,
+    definition: disclosedClaim(
+      { label: id === "apply" ? "Apply" : "Review", kind: "application", scope: { variantIds: [], stageIds: [], pathwayIds: [] } },
+      id === "apply" ? "Apply" : "Review",
+      `${id}-definition`,
+    ),
+    timings: [],
+    durations: invalidDuration
+      ? [disclosedClaim(
+          { duration: { minimum: 10, maximum: 2, unit: "weeks" }, scope: { variantIds: [], stageIds: [], pathwayIds: [] } },
+          "2 to 10 weeks",
+          `${id}-duration`,
+        )]
+      : [],
+    timeCommitments: [],
+    formats: [],
+    locations: [],
+    selectionRules: [],
+    advancement: [],
+    requirements: [],
+    travelRequirements: [],
   };
 }
 
@@ -86,9 +162,14 @@ afterEach(() => {
 });
 
 describe("bounded model-family reliability", () => {
-  it("uses three smaller strict contracts", () => {
+  it("uses four bounded strict contracts", () => {
     const formats = buildModelStageTextFormats();
-    expect(Object.keys(formats)).toEqual(["facts", "foundation", "details"]);
+    expect(Object.keys(formats)).toEqual([
+      "facts",
+      "foundation",
+      "process",
+      "financial",
+    ]);
     for (const format of Object.values(formats)) {
       expect(format.strict).toBe(true);
       expect(JSON.stringify(format.schema)).not.toContain('"not"');
@@ -105,7 +186,7 @@ describe("bounded model-family reliability", () => {
     });
 
     const raw = await createOpenAIExtractor()([source()]);
-    expect(createResponse).toHaveBeenCalledTimes(3);
+    expect(createResponse).toHaveBeenCalledTimes(4);
     expect(raw.familyFailures).toEqual([
       expect.objectContaining({ family: "foundation", message: expect.stringMatching(/incomplete|invalid/i) }),
     ]);
@@ -122,13 +203,170 @@ describe("bounded model-family reliability", () => {
   it("does not retry a timed-out family and retains other completed families", async () => {
     createResponse.mockImplementation(async (request: { text: { format: { name: string } } }) => {
       const name = request.text.format.name;
-      if (name === "opportunity_facts_details") throw new Error("request timed out");
+      if (name === "opportunity_facts_financial") throw new Error("request timed out");
       return response(stageOutput(name), `resp-${name}`);
     });
     const raw = await createOpenAIExtractor()([source()]);
-    expect(createResponse).toHaveBeenCalledTimes(3);
-    expect(raw.familyFailures?.map((failure) => failure.family)).toEqual(["details"]);
+    expect(createResponse).toHaveBeenCalledTimes(4);
+    expect(raw.familyFailures?.map((failure) => failure.family)).toEqual(["financial"]);
   });
+
+  it("withholds one invalid cost record without discarding valid financial siblings", async () => {
+    createResponse.mockImplementation(async (request: { text: { format: { name: string } } }) => {
+      const name = request.text.format.name;
+      if (name === "opportunity_facts_financial") {
+        return response({
+          costItems: {
+            status: "modeled",
+            records: [costRecord("valid-tuition", 1_000, null), costRecord("invalid-range", 1_000, 100)],
+            note: null,
+            completeness: "complete",
+          },
+          outcomes: createEmptyModelStructures().outcomes,
+        }, "resp-financial-partial");
+      }
+      return response(stageOutput(name), `resp-${name}`);
+    });
+
+    const raw = await createOpenAIExtractor()([source()]);
+    expect(raw.familyFailures).toEqual([]);
+    expect(raw.familyWarnings).toEqual([
+      expect.objectContaining({ family: "financial", message: expect.stringMatching(/1 invalid costItems record.*1 independently valid/u) }),
+    ]);
+    expect(raw.structures?.costItems).toMatchObject({
+      status: "modeled",
+      completeness: "incomplete",
+      records: [expect.objectContaining({ id: "valid-tuition" })],
+    });
+  });
+
+  it("withholds one invalid stage record without discarding a valid process record", async () => {
+    createResponse.mockImplementation(async (request: { text: { format: { name: string } } }) => {
+      const name = request.text.format.name;
+      if (name === "opportunity_facts_process") {
+        return response({
+          stages: {
+            status: "modeled",
+            records: [stageRecord("apply"), stageRecord("review", true)],
+            note: null,
+          },
+          pathways: createEmptyModelStructures().pathways,
+        }, "resp-process-partial");
+      }
+      return response(stageOutput(name), `resp-${name}`);
+    });
+
+    const raw = await createOpenAIExtractor()([source()]);
+    expect(raw.familyFailures).toEqual([]);
+    expect(raw.familyWarnings).toEqual([
+      expect.objectContaining({ family: "process", message: expect.stringMatching(/1 invalid stages record/u) }),
+    ]);
+    expect(raw.structures?.stages).toMatchObject({
+      status: "modeled",
+      records: [expect.objectContaining({ id: "apply" })],
+    });
+  });
+
+  it("still rejects a family with missing or extra top-level contract keys", async () => {
+    createResponse.mockImplementation(async (request: { text: { format: { name: string } } }) => {
+      const name = request.text.format.name;
+      if (name === "opportunity_facts_financial") {
+        return response({
+          ...stageOutput(name),
+          unexpected: true,
+        }, "resp-financial-extra-key");
+      }
+      return response(stageOutput(name), `resp-${name}`);
+    });
+
+    const raw = await createOpenAIExtractor()([source()]);
+    expect(raw.familyFailures).toEqual([
+      expect.objectContaining({ family: "financial", message: expect.stringMatching(/outside its contract/i) }),
+    ]);
+    expect(raw.structures?.costItems.status).toBe("unassessed");
+  });
+
+  it("records telemetry independently for every completed family", async () => {
+    const telemetry = vi.fn();
+    createResponse.mockImplementation(async (request: { text: { format: { name: string } } }) => {
+      const name = request.text.format.name;
+      return response(stageOutput(name), `resp-${name}`);
+    });
+
+    await createOpenAIExtractor({ onResponse: telemetry })([source()]);
+
+    expect(telemetry).toHaveBeenCalledTimes(4);
+    expect(new Set(
+      telemetry.mock.calls.map(([entry]) => entry.family),
+    )).toEqual(new Set(["facts", "foundation", "process", "financial"]));
+    for (const [entry] of telemetry.mock.calls) {
+      expect(entry).toMatchObject({
+        model: "gpt-5.6-terra",
+        usage: { inputTokens: 100, outputTokens: 50, totalTokens: 150 },
+      });
+    }
+  });
+
+  it("runs process and financial families with the completed foundation context", async () => {
+    const inputs = new Map<string, unknown>();
+    createResponse.mockImplementation(async (request: {
+      input: Array<{ role: string; content: string }>;
+      text: { format: { name: string } };
+    }) => {
+      const name = request.text.format.name;
+      inputs.set(name, request.input);
+      return response(stageOutput(name), `resp-${name}`);
+    });
+
+    await createOpenAIExtractor()([source()]);
+
+    for (const name of ["opportunity_facts_process", "opportunity_facts_financial"]) {
+      expect(JSON.stringify(inputs.get(name))).toMatch(/FOUNDATION CONTEXT/);
+    }
+  });
+
+  it("starts no second-wave provider calls when the request is aborted between waves", async () => {
+    const controller = new AbortController();
+    createResponse.mockImplementation(async (request: { text: { format: { name: string } } }) => {
+      const name = request.text.format.name;
+      if (name === "opportunity_facts_foundation") {
+        controller.abort(new DOMException("Request cancelled", "AbortError"));
+      }
+      return response(stageOutput(name), `resp-${name}`);
+    });
+
+    await expect(
+      createOpenAIExtractor()([source()], { signal: controller.signal }),
+    ).rejects.toMatchObject({ name: "AbortError" });
+
+    expect(createResponse).toHaveBeenCalledTimes(2);
+    expect(new Set(
+      createResponse.mock.calls.map(([request]) => request.text.format.name),
+    )).toEqual(new Set(["opportunity_facts_summary", "opportunity_facts_foundation"]));
+  });
+
+  it.each(["failed", "in_progress", "cancelled", "queued", "incomplete"] as const)(
+    "rejects schema-valid output when the provider status is %s",
+    async (status) => {
+      createResponse.mockImplementation(async (request: { text: { format: { name: string } } }) => {
+        const name = request.text.format.name;
+        return response(
+          stageOutput(name),
+          `resp-${name}-${status}`,
+          name === "opportunity_facts_foundation" ? status : "completed",
+        );
+      });
+
+      const raw = await createOpenAIExtractor()([source()]);
+      expect(raw.familyFailures).toEqual([
+        expect.objectContaining({
+          family: "foundation",
+          message: expect.stringMatching(/completed state|completion limit/i),
+        }),
+      ]);
+      expect(raw.facts).toBeDefined();
+    },
+  );
 
   it("never converts a failed summary family into false not-found claims", async () => {
     createResponse.mockImplementation(async (request: { text: { format: { name: string } } }) => {
@@ -152,7 +390,7 @@ describe("bounded model-family reliability", () => {
         "The provider did not complete any extraction section, so no partial draft was displayed. Try again later or use pasted public sources.",
       ),
     );
-    expect(createResponse).toHaveBeenCalledTimes(3);
+    expect(createResponse).toHaveBeenCalledTimes(4);
   });
 });
 

@@ -1,6 +1,6 @@
 # Schema and data guide
 
-Opportunity Facts uses one strict schema `2.0.0` card contract with two complementary layers:
+Opportunity Facts uses one strict current schema `2.1.0` card contract with two complementary layers:
 
 1. a stable 59-field fact map for scanning, search, baseline comparison, completeness reporting, and compatibility;
 2. evidence-bearing structured records for distinctions that cannot be represented truthfully as one scalar.
@@ -12,10 +12,11 @@ The schema and typed field registry are authoritative for repository JSON, rende
 | Concern | Authority |
 | --- | --- |
 | Public schema export and compatibility entrypoint | `lib/opportunity/schema.ts` |
+| Schema-version constants | `lib/opportunity/schema-version.ts` |
 | V2 card and cross-record invariants | `lib/opportunity/schema-v2.ts` |
 | Atomic claims, scopes, and structured records | `lib/opportunity/structured-schema.ts` |
 | V1 import schema | `lib/opportunity/schema-v1.ts` |
-| Conservative V1-to-V2 migration | `lib/opportunity/migration.ts` |
+| Conservative V1 and lossless `2.0.0` import migrations | `lib/opportunity/migration.ts` |
 | Deterministic V2-to-fact projections | `lib/opportunity/projection.ts` |
 | Enumerations and field definitions | `lib/opportunity/fields.ts` |
 | Formatted/comparable registry and core assessment count | `lib/opportunity/registry.ts` |
@@ -35,7 +36,7 @@ JSON Schema can express structure but not every Zod cross-field rule. Repository
 
 ## Versions and identity
 
-- `schemaVersion` is `2.0.0`. It defines the interpretation and allowed card structure.
+- `schemaVersion` is `2.1.0`. It defines the interpretation and allowed card structure.
 - `opportunityId` identifies the continuing opportunity independently of one cycle or public URL slug.
 - `cycle.id` plus its source-backed label/status/year claims identifies the reviewed application/cohort/competition cycle.
 - `cardVersion` is only the positive-integer revision of that card.
@@ -43,7 +44,15 @@ JSON Schema can express structure but not every Zod cross-field rule. Repository
 
 A reviewed card requires a non-null cycle-independent `opportunityId` and a modeled cycle. Public artifacts reject duplicate slugs and duplicate normalized `(opportunityId, cycle label)` pairs.
 
-A substantive source, fact, structured-record, or attestation change advances `cardVersion` under the builder/version policy. A schema migration also advances the revision once; it does not turn a revision number into a year or cohort.
+A substantive source, fact, structured-record, or attestation change advances `cardVersion` under the builder/version policy. The conservative V1 migration advances the revision because it creates a new draft with unassessed V2 structures. The lossless `2.0.0` to `2.1.0` envelope/projection-metadata migration does not change card content or revision. Neither version number is a year or cohort.
+
+Version compatibility is intentionally one-way:
+
+- `1.0.0` imports become new draft `2.1.0` revisions with unassessed structured sections;
+- `2.0.0` imports retain rich structured claims, evidence, review state, and card revision while the derived 59-field summary is deterministically rebuilt under `2.1.0` projection rules;
+- `2.0.0` files cannot claim vocabulary introduced in `2.1.0` (`educator_cash_prize`, educator recipient scope, or educator/school distribution payees);
+- unsupported future versions fail closed with a clear import error;
+- repository cards and public exports are canonical `2.1.0` only.
 
 ## Top-level V2 card
 
@@ -51,7 +60,7 @@ The strict shape is conceptually:
 
 ```ts
 interface OpportunityCardV2 {
-  schemaVersion: "2.0.0";
+  schemaVersion: "2.1.0";
   opportunityId: string | null;       // required for reviewed/confirmed cards
   cycle: CycleContainer;
   cardVersion: number;
@@ -228,7 +237,7 @@ Application fee, deposit, tuition, travel, lodging, meals, materials, and other 
 
 Each outcome preserves source-backed outcome type and scope, recipient scope, monetary nature, optional amount, distribution, rank, track, quantity, use restriction, combinability, and conditions.
 
-Cash, stipends, restricted project budgets, reimbursements, waivers/scholarships, program seats, mentorship, credit, equipment, travel support, flight/experiment opportunities, and other in-kind benefits remain distinct. Project budgets require restricted-funding classification and a cited use restriction. Personal cash prizes require individual scope; team cash prizes require team scope.
+Cash, stipends, restricted project budgets, reimbursements, waivers/scholarships, program seats, mentorship, credit, equipment, travel support, flight/experiment opportunities, and other in-kind benefits remain distinct. Project budgets require restricted-funding classification and a cited use restriction. Personal cash prizes require individual scope; team cash prizes require team scope; educator cash prizes require educator scope. Educator-, school-, and organization-scoped outcomes remain visible in rich details but never project into the participant cash or in-kind summary fields.
 
 ## Stable flat facts and projections
 
@@ -247,7 +256,7 @@ interface Fact {
   conflictingValues: ConflictingValue[];
   calculation: Calculation | null;
   projection: {
-    schemaVersion: "2.0.0";
+    schemaVersion: "2.1.0";
     rule: string;
     claimRefs: ClaimId[];
   } | null;
@@ -372,7 +381,7 @@ The exporter and validator fail closed on drafts in public data, filename/slug m
 
 The downloadable dataset contains only repository demo/reviewed cards. It never includes browser drafts, comparison choices, pasted pages, prompts, or failed analysis output. Demo and reviewed records remain distinguishable.
 
-Imports are version-dispatched before rendering or browser persistence. Unknown versions, malformed V1/V2 structures, and future versions fail with a readable error. V1 import returns only the conservative draft described above; it never enters a public artifact automatically.
+Imports are version-dispatched before rendering or browser persistence. Unknown versions, malformed V1/V2 structures, and future versions fail with a readable error. V1 import returns only the conservative draft described above. A portable reviewed/confirmed V2 file loses its review attestation, advances one revision, and enters the browser as a draft; a local file cannot establish repository review provenance. Portable V2 fictional cards retain the `demo` label. No import enters a public artifact automatically.
 
 Use the supported artifact sequence:
 

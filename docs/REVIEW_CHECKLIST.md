@@ -22,7 +22,7 @@ Do not put participant, applicant, or other unnecessary personal information in 
 
 ## 1. Opportunity, cycle, and identity
 
-- [ ] `schemaVersion` is `2.0.0` and `opportunityId` excludes the cycle/year/cohort suffix.
+- [ ] `schemaVersion` is the current exported version (`2.1.0`) and `opportunityId` excludes the cycle/year/cohort suffix.
 - [ ] The modeled cycle has a stable ID and evidence-bearing label/status/year metadata.
 - [ ] Cycle opening/closing/coverage references point to the correct disclosed stage timing claims.
 - [ ] `cardVersion` describes only this record revision; it was not used as cycle identity.
@@ -100,6 +100,7 @@ Do not put participant, applicant, or other unnecessary personal information in 
 - [ ] Each prize/benefit is a separate outcome when type, rank, track, recipient, amount, distribution, restriction, or condition differs.
 - [ ] Cash prizes and stipends remain distinct from project budgets, reimbursement, waivers, seats, certificates, mentorship, credit, equipment, and other in-kind outcomes.
 - [ ] Every outcome has an evidence-bearing recipient scope; team amounts were not divided per person without a disclosed distribution.
+- [ ] Educator-, school-, and organization-scoped outcomes remain in rich details and do not project into participant cash or in-kind summary fields.
 - [ ] Project budgets are classified as restricted funding and include a source-backed use restriction.
 - [ ] Prize matrices preserve every source-supported track/rank amount and do not select one representative award.
 - [ ] Unknown award amounts remain `not_found`; unsupported prize names or values were not recreated from legacy prose.
@@ -136,7 +137,7 @@ Do not put participant, applicant, or other unnecessary personal information in 
 - [ ] The card remained in `data/drafts/` until both flat and structured review were complete.
 - [ ] Automated/pasted sources remain `user_supplied`; `official_*` or `public_record` was assigned only after publisher/document-kind review.
 - [ ] Fictional data uses reserved `.example` URLs and remains visibly `demo` / Demo data.
-- [ ] Automated, migrated, imported, or incompletely checked cards remain `draft`.
+- [ ] Automated, migrated, imported reviewed/confirmed, or incompletely checked real cards remain `draft`; imported V2 fictional cards retain `demo` provenance.
 - [ ] `human_reviewed` means a human checked every displayed value, excerpt, source, scope, relationship, projection, conflict, and the full inventory.
 - [ ] `organizer_confirmed` states organizer involvement and is not presented as independent verification.
 - [ ] A non-demo reviewed state has a valid current `reviewedAt` timestamp.

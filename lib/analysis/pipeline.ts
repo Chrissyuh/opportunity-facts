@@ -15,6 +15,7 @@ import {
   type EvidenceWarning,
   type ModelExtractor,
 } from "./model-extraction";
+import { parsePublicHttpUrl } from "./url-safety";
 import type { PageAcquisitionFailure } from "./types";
 
 export const MAX_PASTED_SOURCES = 7;
@@ -30,11 +31,7 @@ const analysisSourceUrlSchema = z
     (value) => isObviouslyPublicHttpUrl(value) && !hasSensitiveUrlQuery(value),
     "Enter a public HTTP(S) URL without credentials, sensitive query tokens, or an obvious local/private host.",
   )
-  .transform((value) => {
-    const canonical = new URL(value);
-    canonical.hash = "";
-    return canonical.href;
-  });
+  .transform((value) => parsePublicHttpUrl(value).href);
 
 export const pastedSourceInputSchema = z.strictObject({
   title: z.string().trim().min(1).max(240),

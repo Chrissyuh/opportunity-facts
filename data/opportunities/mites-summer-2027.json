@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.0.0",
+  "schemaVersion": "2.1.0",
   "opportunityId": "mites-summer",
   "cycle": {
     "status": "modeled",
@@ -1320,7 +1320,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "mites-role-operator-claim",
@@ -1360,7 +1360,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator-kind",
         "claimRefs": [
           "mites-org-kind",
@@ -1400,7 +1400,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.institution-list",
         "claimRefs": [
           "mites-mit-operated-claim",
@@ -1440,7 +1440,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.summary",
         "claimRefs": [
           "mites-mit-operated-claim",
@@ -1480,7 +1480,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.explanations",
         "claimRefs": [
           "mites-mit-operated-claim",
@@ -1692,7 +1692,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.duration",
         "claimRefs": [
           "mites-program-duration"
@@ -1725,7 +1725,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.weekly-hours",
         "claimRefs": [
           "mites-program-hours"
@@ -1774,7 +1774,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.formats",
         "claimRefs": [
           "mites-application-format",
@@ -1803,7 +1803,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.locations",
         "claimRefs": [
           "mites-program-location"
@@ -1875,12 +1875,11 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "costs.tuition",
         "claimRefs": [
           "mites-tuition-definition",
-          "mites-tuition-amount",
-          "mites-tuition-basis"
+          "mites-tuition-amount"
         ]
       }
     },
@@ -1909,21 +1908,17 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "costs.total-unresolved",
         "claimRefs": [
           "mites-tuition-definition",
           "mites-tuition-amount",
-          "mites-tuition-basis",
           "mites-lodging-definition",
           "mites-lodging-amount",
-          "mites-lodging-basis",
           "mites-meals-definition",
           "mites-meals-amount",
-          "mites-meals-basis",
           "mites-travel-definition",
-          "mites-travel-amount",
-          "mites-travel-basis"
+          "mites-travel-amount"
         ]
       }
     },
@@ -2052,8 +2047,8 @@
     },
     "selection_process": {
       "status": "disclosed",
-      "value": "Application to MITES Summer: Shared MITES application → Six-week residential program",
-      "displayValue": "Application to MITES Summer: Shared MITES application → Six-week residential program",
+      "value": "Application to MITES Summer: Shared MITES application",
+      "displayValue": "Application to MITES Summer: Shared MITES application",
       "normalizedValue": null,
       "sources": [
         {
@@ -2087,14 +2082,12 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.process",
         "claimRefs": [
           "mites-pathway-definition",
           "mites-step-apply",
-          "mites-step-program",
-          "mites-application-stage",
-          "mites-program-stage"
+          "mites-application-stage"
         ]
       }
     },
@@ -2223,7 +2216,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.program_seat",
         "claimRefs": [
           "mites-seat-definition",
@@ -2269,7 +2262,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.in_kind_value",
         "claimRefs": [
           "mites-evaluation-definition",
@@ -2472,28 +2465,21 @@
     "selection_process": [
       "mites-pathway-definition",
       "mites-step-apply",
-      "mites-step-program",
-      "mites-application-stage",
-      "mites-program-stage"
+      "mites-application-stage"
     ],
     "tuition": [
       "mites-tuition-definition",
-      "mites-tuition-amount",
-      "mites-tuition-basis"
+      "mites-tuition-amount"
     ],
     "estimated_total_mandatory_cost": [
       "mites-tuition-definition",
       "mites-tuition-amount",
-      "mites-tuition-basis",
       "mites-lodging-definition",
       "mites-lodging-amount",
-      "mites-lodging-basis",
       "mites-meals-definition",
       "mites-meals-amount",
-      "mites-meals-basis",
       "mites-travel-definition",
-      "mites-travel-amount",
-      "mites-travel-basis"
+      "mites-travel-amount"
     ],
     "program_seat": [
       "mites-seat-definition",

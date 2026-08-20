@@ -21,7 +21,7 @@ export default function MethodologyPage() {
       <header className="page-header">
         <div className="shell page-header-grid">
           <div>
-            <p className="eyebrow">Methodology · Schema 2.0</p>
+            <p className="eyebrow">Methodology · Schema 2.1.0</p>
             <h1>Facts, with their uncertainty attached.</h1>
           </div>
           <p className="lede">
@@ -172,7 +172,7 @@ export default function MethodologyPage() {
         <h2 id="structured-model">Why the card has structured detail</h2>
         <p>
           A single row cannot truthfully represent four tuition tiers, two selection
-          routes, several organizations, or a prize matrix. Schema 2.0 keeps the 59
+          routes, several organizations, or a prize matrix. Schema 2.1.0 keeps the 59
           summary fields for scanning and adds source-backed cycle, organization,
           program/cohort, stage/pathway, cost, and outcome records. Cards and
           comparison reveal those details progressively; summary projections are

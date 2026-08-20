@@ -20,10 +20,25 @@ import type {
 export const MAX_URL_LENGTH = 2_048;
 export const MAX_DNS_RESULTS = 32;
 
+const KNOWN_TRACKING_QUERY_KEYS = new Set([
+  "attribution_id",
+  "dclid",
+  "fbclid",
+  "gclid",
+  "igshid",
+  "li_fat_id",
+  "mc_cid",
+  "mc_eid",
+  "msclkid",
+  "ttclid",
+  "twclid",
+]);
+
 export type UrlSafetyErrorCode =
   | "INVALID_URL"
   | "URL_TOO_LONG"
   | "UNSUPPORTED_PROTOCOL"
+  | "UNSUPPORTED_PORT"
   | "URL_CREDENTIALS"
   | "URL_SENSITIVE_QUERY"
   | "MISSING_HOSTNAME"
@@ -84,6 +99,19 @@ export function normalizeUrlHostname(hostname: string): string {
   return normalizePublicUrlHostname(hostname);
 }
 
+function stripKnownTrackingQuery(url: URL): void {
+  const keysToDelete = new Set<string>();
+  for (const key of url.searchParams.keys()) {
+    const normalized = key.toLowerCase();
+    if (normalized.startsWith("utm_") || KNOWN_TRACKING_QUERY_KEYS.has(normalized)) {
+      keysToDelete.add(key);
+    }
+  }
+  for (const key of keysToDelete) {
+    url.searchParams.delete(key);
+  }
+}
+
 export function parsePublicHttpUrl(input: string | URL): URL {
   const raw = input instanceof URL ? input.href : input.trim();
 
@@ -115,6 +143,15 @@ export function parsePublicHttpUrl(input: string | URL): URL {
       "Only public HTTP and HTTPS URLs can be reviewed.",
     );
   }
+  // URL normalizes explicit default :80/:443 ports to an empty string. Other
+  // ports would turn this public-page feature into a blind arbitrary-port
+  // request primitive even when the destination address itself is public.
+  if (url.port !== "") {
+    throw new UrlSafetyError(
+      "UNSUPPORTED_PORT",
+      "Only the standard port for public HTTP or HTTPS pages can be reviewed.",
+    );
+  }
 
   if (url.username !== "" || url.password !== "") {
     throw new UrlSafetyError(
@@ -128,6 +165,13 @@ export function parsePublicHttpUrl(input: string | URL): URL {
       "URLs with token-, key-, signature-, session-, auth-, code-, or secret-like query parameters are not accepted.",
     );
   }
+
+  // Marketing identifiers are unnecessary for reviewing the public resource.
+  // Remove a deliberately narrow, recognized set before transport and before
+  // the canonical URL can become source/evidence metadata. Ambiguous keys such
+  // as `source`, `ref`, and routing/form parameters are preserved. Sensitive
+  // keys are rejected above rather than silently sanitized.
+  stripKnownTrackingQuery(url);
 
   const hostname = normalizeUrlHostname(url.hostname);
   if (hostname === "") {

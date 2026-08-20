@@ -99,7 +99,7 @@ test("mapped summaries are read-only and a structured change autosaves its proje
   expect(stored.facts.operating_organization).toMatchObject({
     status: "disclosed",
     displayValue: "Builder Research Lab",
-    projection: { schemaVersion: "2.0.0" },
+    projection: { schemaVersion: "2.1.0" },
   });
 
   const projectedEditor = page.locator(".projected-fact-editor").filter({
@@ -133,7 +133,7 @@ test("a V1 import migrates deterministically but remains blocked on structured r
     await page.evaluate((key) => JSON.parse(localStorage.getItem(key) ?? "null") as unknown, builderCardKey),
   );
   expect(migrated).toMatchObject({
-    schemaVersion: "2.0.0",
+    schemaVersion: "2.1.0",
     cardVersion: legacy.cardVersion + 1,
     reviewState: "draft",
     reviewedAt: null,
@@ -186,7 +186,7 @@ test("a populated real V2 card autosaves, survives reload, and remains usable at
   });
 
   await expect(page.getByRole("status")).toContainText(
-    `Reviewed card imported as draft revision ${diamond.cardVersion + 1}`,
+    `Attested card imported as draft revision ${diamond.cardVersion + 1}`,
   );
   const stored = opportunityCardSchema.parse(
     await page.evaluate((key) => JSON.parse(localStorage.getItem(key) ?? "null") as unknown, builderCardKey),

@@ -7,6 +7,7 @@ import type { FieldId } from "../lib/opportunity/fields";
 import { migrateV1ToV2 } from "../lib/opportunity/migration";
 import { applyOpportunityProjections } from "../lib/opportunity/projection";
 import {
+  SCHEMA_VERSION,
   opportunityCardSchema,
   type OpportunityCard,
 } from "../lib/opportunity/schema-v2";
@@ -1289,7 +1290,7 @@ async function main(): Promise<void> {
   ];
   for (const { filePath, card } of planned) {
     await writeFile(filePath, `${JSON.stringify(card, null, 2)}\n`, "utf8");
-    process.stdout.write(`Migrated ${path.relative(process.cwd(), filePath)} to schema 2.0.0.\n`);
+    process.stdout.write(`Migrated ${path.relative(process.cwd(), filePath)} to schema ${SCHEMA_VERSION}.\n`);
   }
 }
 

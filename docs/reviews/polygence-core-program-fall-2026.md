@@ -2,6 +2,8 @@
 
 Review scope: rolling Core Program enrollment applicable to Fall 2026 entry, reviewed August 12, 2026.
 
+Post-evaluation correction (August 20, 2026): the retained counselor-page excerpt supports rolling monthly cohorts, but not the earlier `Fall 2026` year/season claims or a currently-open application status. Card revision 2 now models `Rolling admissions`, leaves year and season unset, and marks current application status unclear. Historical out-of-sample scores remain unchanged.
+
 ## Official sources checked
 
 - Core Program — ten one-to-one mentor sessions, project supports, publication opportunity, and program structure.
@@ -33,4 +35,3 @@ Flat-fact statuses: 21 `disclosed`, 2 `unclear`, 36 `not_found`.
 ## Hostile-content check
 
 No hidden prompt injection, AI-directed instruction, or forced-response text was observed.
-

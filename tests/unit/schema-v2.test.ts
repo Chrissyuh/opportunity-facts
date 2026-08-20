@@ -6,6 +6,7 @@ import {
   createEmptyV1Card,
   migrateV1ToV2,
   opportunityCardSchema,
+  SCHEMA_VERSION,
   type EvidenceSource,
   type OpportunityCard,
 } from "../../lib/opportunity";
@@ -128,7 +129,7 @@ describe("Opportunity Facts schema v2", () => {
     const second = migrateV1ToV2(v1);
 
     expect(first).toEqual(second);
-    expect(first.schemaVersion).toBe("2.0.0");
+    expect(first.schemaVersion).toBe(SCHEMA_VERSION);
     expect(first.opportunityId).toBeNull();
     expect(first.cycle.status).toBe("unassessed");
     expect(first.cardVersion).toBe(v1.cardVersion + 1);
@@ -327,6 +328,87 @@ describe("Opportunity Facts schema v2", () => {
     );
   });
 
+  it("attaches only cost identity and amount evidence to a scalar cost projection", () => {
+    const candidate = baseRichCard("cost-evidence-alignment-fixture");
+    const amountEvidence = {
+      ...evidence,
+      id: "tuition-amount-page",
+      url: "https://fixture.example/tuition",
+      title: "Tuition",
+      excerpt: "Program tuition is $4,500.",
+    };
+    const refundEvidence = {
+      ...evidence,
+      id: "refund-page",
+      url: "https://fixture.example/refunds",
+      title: "Refund terms",
+      excerpt: "Refund requests are considered case by case.",
+    };
+    candidate.sourcePagesChecked = [
+      page,
+      {
+        id: amountEvidence.id,
+        url: amountEvidence.url,
+        title: amountEvidence.title,
+        pageType: amountEvidence.pageType,
+        accessedAt: amountEvidence.accessedAt,
+      },
+      {
+        id: refundEvidence.id,
+        url: refundEvidence.url,
+        title: refundEvidence.title,
+        pageType: refundEvidence.pageType,
+        accessedAt: refundEvidence.accessedAt,
+      },
+    ];
+    const amount = assertion(
+      "single-tuition-amount",
+      { kind: "exact" as const, amount: 4500, currency: "USD" },
+      "$4,500",
+    );
+    amount.sources = [amountEvidence];
+    const refundability = assertion(
+      "single-tuition-refundability",
+      { kind: "conditional" as const, condition: "Considered case by case." },
+      "Conditional",
+    );
+    refundability.sources = [refundEvidence];
+    candidate.costItems = {
+      status: "modeled",
+      completeness: "incomplete",
+      records: [
+        {
+          id: "single-tuition",
+          definition: assertion(
+            "single-tuition-definition",
+            { label: "Program tuition", kind: "tuition", requirement: "required", scope },
+            "Program tuition",
+          ),
+          amount,
+          chargeBasis: null,
+          treatment: null,
+          refundability,
+          includedItems: [],
+          excludedItems: [],
+          conditions: [],
+        },
+      ],
+      note: "Other mandatory charges were not established.",
+    };
+
+    const card = parseProjected(candidate);
+    expect(card.facts.tuition.displayValue).toBe("$4,500");
+    expect(card.facts.tuition.sources.map((source) => source.excerpt)).toEqual([
+      evidence.excerpt,
+      amountEvidence.excerpt,
+    ]);
+    expect(card.facts.tuition.sources).not.toContainEqual(refundEvidence);
+    expect(card.facts.tuition.projection?.claimRefs).toEqual([
+      "single-tuition-definition",
+      "single-tuition-amount",
+    ]);
+  });
+
   it("keeps shared deadlines scalar while preserving variant date ranges and formats", () => {
     const candidate = baseRichCard("variant-schedule-fixture");
     candidate.variants = {
@@ -430,6 +512,46 @@ describe("Opportunity Facts schema v2", () => {
           requirements: [],
           travelRequirements: [],
         },
+        {
+          id: "ranking-stage",
+          order: 2,
+          definition: assertion(
+            "ranking-stage-definition",
+            {
+              label: "College ranking",
+              kind: "matching",
+              scope: {
+                variantIds: [] as string[],
+                stageIds: ["ranking-stage"],
+                pathwayIds: [] as string[],
+              },
+            },
+            "College ranking",
+          ),
+          timings: [
+            assertion(
+              "ranking-deadline",
+              {
+                event: "deadline",
+                when: { precision: "date", date: "2027-02-01", certainty: "stated" },
+                scope: {
+                  variantIds: [] as string[],
+                  stageIds: ["ranking-stage"],
+                  pathwayIds: [] as string[],
+                },
+              },
+              "Ranking deadline: February 1, 2027",
+            ),
+          ],
+          durations: [],
+          timeCommitments: [],
+          formats: [],
+          locations: [],
+          selectionRules: [],
+          advancement: [],
+          requirements: [],
+          travelRequirements: [],
+        },
       ],
       note: null,
     };
@@ -440,6 +562,9 @@ describe("Opportunity Facts schema v2", () => {
       kind: "date",
       isoDate: "2027-01-15",
     });
+    expect(card.facts.application_deadline.projection?.claimRefs).not.toContain(
+      "ranking-deadline",
+    );
     expect(card.facts.start_date.displayValue).toBe("Varies by program/cohort");
     expect(card.facts.end_date.displayValue).toBe("Varies by program/cohort");
     expect(card.facts.participation_format.displayValue).toBe("Varies by program/cohort");
@@ -478,6 +603,48 @@ describe("Opportunity Facts schema v2", () => {
       "application-stage-definition",
       "interview-stage-definition",
     ]);
+  });
+
+  it("does not present post-admission program delivery as part of selection", () => {
+    const candidate = baseRichCard("selection-versus-delivery-fixture");
+    const stage = (
+      id: string,
+      order: number,
+      label: string,
+      kind: "application" | "interview" | "program" | "other",
+    ) => ({
+      id,
+      order,
+      definition: assertion(`${id}-definition`, { label, kind, scope }, label),
+      timings: [],
+      durations: [],
+      timeCommitments: [],
+      formats: [],
+      locations: [],
+      selectionRules: [],
+      advancement: [],
+      requirements: [],
+      travelRequirements: [],
+    });
+    candidate.stages = {
+      status: "modeled",
+      records: [
+        stage("application-stage", 1, "Application", "application"),
+        stage("interview-stage", 2, "Interview", "interview"),
+        stage("program-stage", 3, "Six-week program", "program"),
+        stage("demo-stage", 4, "Program demo day", "other"),
+      ],
+      note: null,
+    };
+
+    const card = parseProjected(candidate);
+    expect(card.facts.selection_process.displayValue).toBe("Application → Interview");
+    expect(card.facts.selection_process.projection?.claimRefs).not.toContain(
+      "program-stage-definition",
+    );
+    expect(card.facts.selection_process.projection?.claimRefs).not.toContain(
+      "demo-stage-definition",
+    );
   });
 
   it("treats one modeled pathway as authoritative instead of inserting unrelated stages", () => {
@@ -609,6 +776,97 @@ describe("Opportunity Facts schema v2", () => {
     expect(card.facts.application_deadline.displayValue).toBe("January 14, 2027");
     expect(card.facts.selection_process.displayValue).toContain("Live pathway");
     expect(card.facts.selection_process.displayValue).toContain("Virtual pathway");
+  });
+
+  it("distinguishes several deadlines in one application stage from scoped deadline variation", () => {
+    const candidate = baseRichCard("multiple-application-deadlines-fixture");
+    const applicationScope = {
+      variantIds: [] as string[],
+      stageIds: ["application-stage"],
+      pathwayIds: [] as string[],
+    };
+    candidate.stages = {
+      status: "modeled",
+      records: [
+        {
+          id: "application-stage",
+          order: 1,
+          definition: assertion(
+            "application-stage-definition",
+            { label: "Application", kind: "application", scope: applicationScope },
+            "Application",
+          ),
+          timings: [
+            assertion(
+              "early-application-deadline",
+              {
+                event: "deadline",
+                when: { precision: "date", date: "2027-01-08", certainty: "stated" },
+                scope: applicationScope,
+              },
+              "Early deadline: January 8, 2027",
+            ),
+            assertion(
+              "final-application-deadline",
+              {
+                event: "deadline",
+                when: { precision: "date", date: "2027-01-22", certainty: "stated" },
+                scope: applicationScope,
+              },
+              "Final deadline: January 22, 2027",
+            ),
+          ],
+          durations: [],
+          timeCommitments: [],
+          formats: [],
+          locations: [],
+          selectionRules: [],
+          advancement: [],
+          requirements: [],
+          travelRequirements: [],
+        },
+      ],
+      note: null,
+    };
+
+    const sameStage = parseProjected(candidate);
+    expect(sameStage.facts.application_deadline.displayValue).toBe(
+      "Multiple application deadlines — see schedule",
+    );
+    expect(sameStage.facts.application_deadline.note).toBe(
+      "Early deadline: January 8, 2027; Final deadline: January 22, 2027",
+    );
+    expect(sameStage.facts.application_deadline.projection?.claimRefs).toEqual([
+      "early-application-deadline",
+      "final-application-deadline",
+    ]);
+
+    if (candidate.stages.status !== "modeled") throw new Error("fixture setup failed");
+    const [early, final] = candidate.stages.records[0].timings;
+    if (early.status !== "disclosed" || final.status !== "disclosed") {
+      throw new Error("fixture setup failed");
+    }
+    early.value.scope = applicationScope;
+    candidate.variants = {
+      status: "modeled",
+      records: [{
+        id: "priority-cohort",
+        definition: assertion(
+          "priority-cohort-definition",
+          { label: "Priority cohort", kind: "cohort", parentVariantId: null },
+          "Priority cohort",
+        ),
+        eligibilityDifferences: [],
+        notes: [],
+      }],
+      note: null,
+    };
+    final.value.scope = { ...applicationScope, variantIds: ["priority-cohort"] };
+
+    const differentlyScoped = parseProjected(candidate);
+    expect(differentlyScoped.facts.application_deadline.displayValue).toBe(
+      "Varies by program/cohort",
+    );
   });
 
   it("never projects restricted project funding as participant cash", () => {

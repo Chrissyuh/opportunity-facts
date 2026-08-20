@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.0.0",
+  "schemaVersion": "2.1.0",
   "opportunityId": "nasa-techrise-student-challenge",
   "cycle": {
     "status": "modeled",
@@ -1248,7 +1248,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "techrise-future-engineers-administrator-role",
@@ -1795,8 +1795,8 @@
     },
     "selection_process": {
       "status": "disclosed",
-      "value": "Selected-team pathway: Experiment proposal → Proposal review and team selection → Experiment build → NASA-sponsored experiment flight",
-      "displayValue": "Selected-team pathway: Experiment proposal → Proposal review and team selection → Experiment build → NASA-sponsored experiment flight",
+      "value": "Selected-team pathway: Experiment proposal → Proposal review and team selection",
+      "displayValue": "Selected-team pathway: Experiment proposal → Proposal review and team selection",
       "normalizedValue": null,
       "sources": [
         {
@@ -1830,30 +1830,6 @@
           "pageType": "official_rules",
           "accessedAt": "2026-08-11T22:22:30.686Z",
           "excerpt": "A panel of judges (the “Challenge Judges”) appointed by the Sponsor will judge eligible Submissions"
-        },
-        {
-          "id": "techrise-program",
-          "url": "https://www.futureengineers.org/nasatechrise",
-          "title": "Future Engineers :: NASA TechRise Challenge",
-          "pageType": "official_program_page",
-          "accessedAt": "2026-08-11T22:22:30.686Z",
-          "excerpt": "Sixty winning teams will be selected to receive $1500 to build their experiment, technical support from Future Engineers"
-        },
-        {
-          "id": "techrise-program",
-          "url": "https://www.futureengineers.org/nasatechrise",
-          "title": "Future Engineers :: NASA TechRise Challenge",
-          "pageType": "official_program_page",
-          "accessedAt": "2026-08-11T22:22:30.686Z",
-          "excerpt": "an assigned spot for their experiment on a NASA-sponsored flight with an industry provider"
-        },
-        {
-          "id": "techrise-program",
-          "url": "https://www.futureengineers.org/nasatechrise",
-          "title": "Future Engineers :: NASA TechRise Challenge",
-          "pageType": "official_program_page",
-          "accessedAt": "2026-08-11T22:22:30.686Z",
-          "excerpt": "The 2026-27 NASA TechRise Student Challenge suborbital vehicle will be the high-altitude balloon."
         }
       ],
       "note": "The v2 pathway ledger defines the authoritative route; unrelated stages are not inserted into it.",
@@ -1862,18 +1838,14 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.process",
         "claimRefs": [
           "techrise-pathway-definition",
           "techrise-path-step-proposal",
           "techrise-path-step-review",
-          "techrise-path-step-build",
-          "techrise-path-step-flight",
           "techrise-proposal-stage",
-          "techrise-review-stage",
-          "techrise-build-stage",
-          "techrise-flight-stage"
+          "techrise-review-stage"
         ]
       }
     },
@@ -2121,7 +2093,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.mentorship",
         "claimRefs": [
           "techrise-support-definition",
@@ -2177,7 +2149,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.other-benefits",
         "claimRefs": [
           "techrise-build-budget-definition",
@@ -2437,12 +2409,8 @@
       "techrise-pathway-definition",
       "techrise-path-step-proposal",
       "techrise-path-step-review",
-      "techrise-path-step-build",
-      "techrise-path-step-flight",
       "techrise-proposal-stage",
-      "techrise-review-stage",
-      "techrise-build-stage",
-      "techrise-flight-stage"
+      "techrise-review-stage"
     ],
     "mentorship": [
       "techrise-support-definition",

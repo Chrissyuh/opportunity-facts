@@ -84,6 +84,27 @@ describe("same-origin relevant-page discovery", () => {
     ]);
   });
 
+  it.each([
+    ["ranking-colleges", "Ranking colleges"],
+    ["application-requirements", "Application requirements"],
+    ["finalist-selection", "Finalist selection"],
+    ["matching-process", "Matching process"],
+    ["competition-rounds", "Competition stages and rounds"],
+  ])("ranks a target process page (%s) ahead of a generic About page", (path, text) => {
+    const candidates = rankSameOriginLinks(
+      "https://provider.example/programs/aurora-challenge",
+      [
+        link("https://provider.example/about", "About us"),
+        link(`https://provider.example/programs/aurora-challenge/${path}`, text),
+      ],
+      { targetTitle: "Aurora Challenge | Provider", maxPages: 1 },
+    );
+
+    expect(candidates.map((candidate) => candidate.url)).toEqual([
+      `https://provider.example/programs/aurora-challenge/${path}`,
+    ]);
+  });
+
   it("penalizes generic admissions marketing and counseling pages", () => {
     const candidates = rankSameOriginLinks("https://program.example/program", [
       link("https://program.example/admissions-results", "Our admissions results"),
@@ -148,6 +169,50 @@ describe("same-origin relevant-page discovery", () => {
     ]);
   });
 
+  it("rejects a QuestBridge-shaped sibling path despite generic college overlap", () => {
+    const candidates = rankSameOriginLinks(
+      "https://provider.example/apply-to-college/programs/national-college-match",
+      [
+        link(
+          "https://provider.example/apply-to-college/programs/college-prep-scholars-program/eligibility",
+          "College Prep Scholars Program eligibility",
+        ),
+        link(
+          "https://provider.example/apply-to-college/programs/national-college-match/application-requirements",
+          "National College Match application requirements",
+        ),
+        link("https://provider.example/privacy-policy", "Privacy policy"),
+      ],
+      { targetTitle: "QuestBridge National College Match" },
+    );
+
+    expect(candidates.map((candidate) => candidate.url)).toEqual([
+      "https://provider.example/apply-to-college/programs/national-college-match/application-requirements",
+      "https://provider.example/privacy-policy",
+    ]);
+  });
+
+  it("does not let process vocabulary rescue a differently named sibling opportunity", () => {
+    const candidates = rankSameOriginLinks(
+      "https://provider.example/programs/aurora-challenge",
+      [
+        link(
+          "https://provider.example/programs/nebula-fellows/finalist-rounds-and-requirements",
+          "Nebula Fellows finalist rounds, ranking, and requirements",
+        ),
+        link(
+          "https://provider.example/programs/aurora-challenge/finalist-rounds",
+          "Aurora Challenge finalist rounds",
+        ),
+      ],
+      { targetTitle: "Aurora Challenge | Provider" },
+    );
+
+    expect(candidates.map((candidate) => candidate.url)).toEqual([
+      "https://provider.example/programs/aurora-challenge/finalist-rounds",
+    ]);
+  });
+
   it("rejects a differently named same-site opportunity but retains a target-family FAQ", () => {
     const candidates = rankSameOriginLinks(
       "https://provider.example/aurora-fellows",
@@ -174,5 +239,26 @@ describe("same-origin relevant-page discovery", () => {
     expect(candidates.map((candidate) => candidate.url)).not.toContain(
       "https://provider.example/builder-competition",
     );
+  });
+
+  it("does not spend the page budget on a no-path sibling sharing generic identity words", () => {
+    const candidates = rankSameOriginLinks(
+      "https://provider.example/apply",
+      [
+        link(
+          "https://provider.example/conference-information",
+          "National College Admissions Conference fees | QuestBridge",
+        ),
+        link(
+          "https://provider.example/match-faq",
+          "FAQ | QuestBridge National College Match",
+        ),
+      ],
+      { targetTitle: "QuestBridge National College Match" },
+    );
+
+    expect(candidates.map((candidate) => candidate.url)).toEqual([
+      "https://provider.example/match-faq",
+    ]);
   });
 });

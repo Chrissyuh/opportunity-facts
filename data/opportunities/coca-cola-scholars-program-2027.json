@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.0.0",
+  "schemaVersion": "2.1.0",
   "opportunityId": "coca-cola-scholars-program",
   "cycle": {
     "status": "modeled",
@@ -1254,7 +1254,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "coke-foundation-operator",
@@ -1294,7 +1294,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator-kind",
         "claimRefs": [
           "coke-foundation-kind",
@@ -1496,7 +1496,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "cycle.closes",
         "claimRefs": [
           "coke-application-deadline"
@@ -1537,7 +1537,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.starts",
         "claimRefs": [
           "coke-weekend-timing"
@@ -1641,7 +1641,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.formats",
         "claimRefs": [
           "coke-application-format",
@@ -1672,7 +1672,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.locations",
         "claimRefs": [
           "coke-weekend-location"
@@ -1718,12 +1718,11 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "costs.application_fee",
         "claimRefs": [
           "coke-application-fee-definition",
-          "coke-application-fee-amount",
-          "coke-application-fee-basis"
+          "coke-application-fee-amount"
         ]
       }
     },
@@ -1787,12 +1786,11 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "costs.total-incomplete",
         "claimRefs": [
           "coke-application-fee-definition",
-          "coke-application-fee-amount",
-          "coke-application-fee-basis"
+          "coke-application-fee-amount"
         ]
       }
     },
@@ -1944,7 +1942,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.process",
         "claimRefs": [
           "coke-pathway-definition",
@@ -2084,7 +2082,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.tuition_waiver",
         "claimRefs": [
           "coke-scholarship-definition",
@@ -2330,13 +2328,11 @@
     ],
     "application_fee": [
       "coke-application-fee-definition",
-      "coke-application-fee-amount",
-      "coke-application-fee-basis"
+      "coke-application-fee-amount"
     ],
     "estimated_total_mandatory_cost": [
       "coke-application-fee-definition",
-      "coke-application-fee-amount",
-      "coke-application-fee-basis"
+      "coke-application-fee-amount"
     ],
     "tuition_waiver": [
       "coke-scholarship-definition",

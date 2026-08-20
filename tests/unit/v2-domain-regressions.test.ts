@@ -168,6 +168,19 @@ const V1_CARD_PATHS = [
 ] as const;
 
 describe("V2 cost projections", () => {
+  it("labels distinct universal application-plan fees as a matrix rather than cohort variation", () => {
+    const early = costItem("early-action-fee", "application_fee", "required", 85);
+    const regular = costItem("regular-decision-fee", "application_fee", "required", 100);
+    const card = cardWithCosts("application-plan-fees", [early, regular]);
+
+    expect(card.facts.application_fee.status).toBe("disclosed");
+    expect(card.facts.application_fee.displayValue).toBe(
+      "Multiple application fees — see cost details",
+    );
+    expect(card.facts.application_fee.note).toMatch(/early action fee.*\$85/i);
+    expect(card.facts.application_fee.note).toMatch(/regular decision fee.*\$100/i);
+  });
+
   it("calculates an exact total from complete compatible required costs", () => {
     const card = cardWithCosts("exact-cost-total", [
       costItem("application-fee", "application_fee", "required", 50),

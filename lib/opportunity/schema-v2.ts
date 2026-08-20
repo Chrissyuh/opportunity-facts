@@ -38,8 +38,9 @@ import {
   type StageRecord,
   type VariantRecord,
 } from "./structured-schema";
+import { SCHEMA_VERSION } from "./schema-version";
 
-export const SCHEMA_VERSION = "2.0.0" as const;
+export { SCHEMA_VERSION } from "./schema-version";
 
 export const migrationMetadataSchema = z.strictObject({
   schemaVersion: z.literal(V1_SCHEMA_VERSION),
@@ -55,7 +56,7 @@ export const projectionRefsSchema = z
   )
   .default({});
 
-const v2OpportunityCardBaseSchema = z.strictObject({
+export const opportunityCardProjectionInputSchema = z.strictObject({
   schemaVersion: z.literal(SCHEMA_VERSION),
   opportunityId: entityIdSchema.nullable(),
   cycle: cycleContainerSchema,
@@ -200,7 +201,7 @@ function stripFactProjection(facts: z.infer<typeof opportunityFactsSchema>) {
   );
 }
 
-export const opportunityCardSchema = v2OpportunityCardBaseSchema.superRefine(
+export const opportunityCardSchema = opportunityCardProjectionInputSchema.superRefine(
   (card, context) => {
     const legacyFactsValidation = v1OpportunityCardSchema.safeParse({
       schemaVersion: V1_SCHEMA_VERSION,
@@ -416,9 +417,12 @@ export const opportunityCardSchema = v2OpportunityCardBaseSchema.superRefine(
     });
     outcomes.forEach((outcome, index) => {
       const type = outcome.definition.value.outcomeType;
-      const cashTypes = new Set(["personal_cash_prize", "team_cash_prize", "stipend"]);
-      if (cashTypes.has(type) && outcome.monetaryNature?.status === "disclosed" && outcome.monetaryNature.value !== "cash") {
-        addIssue(context, ["outcomes", "records", index, "monetaryNature"], "Cash prizes and stipends must be classified as cash.");
+      const cashTypes = new Set(["personal_cash_prize", "team_cash_prize", "educator_cash_prize", "stipend"]);
+      if (
+        cashTypes.has(type) &&
+        (outcome.monetaryNature?.status !== "disclosed" || outcome.monetaryNature.value !== "cash")
+      ) {
+        addIssue(context, ["outcomes", "records", index, "monetaryNature"], "Cash prizes and stipends require a disclosed cash classification.");
       }
       if (type === "project_budget") {
         if (outcome.monetaryNature?.status !== "disclosed" || outcome.monetaryNature.value !== "restricted_funding") {
@@ -433,6 +437,9 @@ export const opportunityCardSchema = v2OpportunityCardBaseSchema.superRefine(
       }
       if (type === "team_cash_prize" && outcome.recipientScope.status === "disclosed" && outcome.recipientScope.value !== "team") {
         addIssue(context, ["outcomes", "records", index, "recipientScope"], "A team cash prize must have team recipient scope.");
+      }
+      if (type === "educator_cash_prize" && outcome.recipientScope.status === "disclosed" && outcome.recipientScope.value !== "educator") {
+        addIssue(context, ["outcomes", "records", index, "recipientScope"], "An educator cash prize must have educator recipient scope.");
       }
     });
 

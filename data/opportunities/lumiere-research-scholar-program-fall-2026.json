@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.0.0",
+  "schemaVersion": "2.1.0",
   "opportunityId": "lumiere-research-scholar-program",
   "cycle": {
     "status": "modeled",
@@ -3023,7 +3023,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "lumiere-operator-role",
@@ -3063,7 +3063,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator-kind",
         "claimRefs": [
           "lumiere-org-kind",
@@ -3111,7 +3111,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.institution-list",
         "claimRefs": [
           "lumiere-ucsd-credit-relationship",
@@ -3162,7 +3162,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.summary",
         "claimRefs": [
           "lumiere-ucsd-credit-relationship",
@@ -3216,7 +3216,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.explanations",
         "claimRefs": [
           "lumiere-ucsd-credit-relationship",
@@ -3437,7 +3437,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "cycle.closes",
         "claimRefs": [
           "lumiere-application-deadline"
@@ -3481,7 +3481,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "cycle.coverage-start",
         "claimRefs": [
           "lumiere-program-start"
@@ -3531,7 +3531,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.duration",
         "claimRefs": [
           "lumiere-duration-individual",
@@ -3569,7 +3569,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.weekly-hours",
         "claimRefs": [
           "lumiere-weekly-time-commitment"
@@ -3630,7 +3630,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.formats",
         "claimRefs": [
           "lumiere-application-format",
@@ -3667,7 +3667,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.locations",
         "claimRefs": [
           "lumiere-program-location"
@@ -3718,14 +3718,6 @@
           "pageType": "official_program_page",
           "accessedAt": "2026-08-11T22:32:46.281Z",
           "excerpt": "If you are conditionally accepted after the interview, you are required to make a deposit of 200 USD, which will then go towards your tuition fee"
-        },
-        {
-          "id": "lumiere-current-application",
-          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
-          "title": "Lumiere Research Scholar Application",
-          "pageType": "official_program_page",
-          "accessedAt": "2026-08-11T22:32:46.281Z",
-          "excerpt": "will be reimbursed if there is not an appropriate match"
         }
       ],
       "note": null,
@@ -3734,14 +3726,11 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "costs.deposit",
         "claimRefs": [
           "lumiere-deposit-definition",
-          "lumiere-deposit-amount",
-          "lumiere-deposit-treatment",
-          "lumiere-deposit-refundability",
-          "lumiere-deposit-condition"
+          "lumiere-deposit-amount"
         ]
       }
     },
@@ -3765,14 +3754,6 @@
           "title": "Lumiere Research Scholar Application",
           "pageType": "official_program_page",
           "accessedAt": "2026-08-11T22:32:46.281Z",
-          "excerpt": "will be reimbursed if there is not an appropriate match"
-        },
-        {
-          "id": "lumiere-current-application",
-          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
-          "title": "Lumiere Research Scholar Application",
-          "pageType": "official_program_page",
-          "accessedAt": "2026-08-11T22:32:46.281Z",
           "excerpt": "Professor Premium Publication Program – 9900 USD"
         }
       ],
@@ -3782,21 +3763,17 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "costs.tuition-matrix",
         "claimRefs": [
           "cost-tuition-individual-definition",
           "cost-tuition-individual-amount",
-          "cost-tuition-individual-refundability",
           "cost-tuition-premium-definition",
           "cost-tuition-premium-amount",
-          "cost-tuition-premium-refundability",
           "cost-tuition-fellowship-definition",
           "cost-tuition-fellowship-amount",
-          "cost-tuition-fellowship-refundability",
           "cost-tuition-professor-definition",
-          "cost-tuition-professor-amount",
-          "cost-tuition-professor-refundability"
+          "cost-tuition-professor-amount"
         ]
       }
     },
@@ -3833,14 +3810,6 @@
           "title": "Lumiere Research Scholar Application",
           "pageType": "official_program_page",
           "accessedAt": "2026-08-11T22:32:46.281Z",
-          "excerpt": "will be reimbursed if there is not an appropriate match"
-        },
-        {
-          "id": "lumiere-current-application",
-          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
-          "title": "Lumiere Research Scholar Application",
-          "pageType": "official_program_page",
-          "accessedAt": "2026-08-11T22:32:46.281Z",
           "excerpt": "Professor Premium Publication Program – 9900 USD"
         },
         {
@@ -3858,26 +3827,19 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "costs.total-incomplete",
         "claimRefs": [
           "cost-tuition-individual-definition",
           "cost-tuition-individual-amount",
-          "cost-tuition-individual-refundability",
           "cost-tuition-premium-definition",
           "cost-tuition-premium-amount",
-          "cost-tuition-premium-refundability",
           "cost-tuition-fellowship-definition",
           "cost-tuition-fellowship-amount",
-          "cost-tuition-fellowship-refundability",
           "cost-tuition-professor-definition",
           "cost-tuition-professor-amount",
-          "cost-tuition-professor-refundability",
           "lumiere-deposit-definition",
-          "lumiere-deposit-amount",
-          "lumiere-deposit-treatment",
-          "lumiere-deposit-refundability",
-          "lumiere-deposit-condition"
+          "lumiere-deposit-amount"
         ]
       }
     },
@@ -3990,8 +3952,8 @@
     },
     "selection_process": {
       "status": "disclosed",
-      "value": "Common application pathway: Online application → Shortlist interview → Mentor matching and decision → Research program",
-      "displayValue": "Common application pathway: Online application → Shortlist interview → Mentor matching and decision → Research program",
+      "value": "Common application pathway: Online application → Shortlist interview → Mentor matching and decision",
+      "displayValue": "Common application pathway: Online application → Shortlist interview → Mentor matching and decision",
       "normalizedValue": null,
       "sources": [
         {
@@ -4033,22 +3995,6 @@
           "pageType": "official_program_page",
           "accessedAt": "2026-08-11T22:32:46.281Z",
           "excerpt": "You will also be notified of your application decision at this stage."
-        },
-        {
-          "id": "lumiere-current-application",
-          "url": "https://airtable.com/appK9HemdsQBzVefU/shrav6SXijpSQ0Zkp",
-          "title": "Lumiere Research Scholar Application",
-          "pageType": "official_program_page",
-          "accessedAt": "2026-08-11T22:32:46.281Z",
-          "excerpt": "If you are conditionally accepted after the interview"
-        },
-        {
-          "id": "lumiere-programs",
-          "url": "https://www.lumiere-education.com/lumiere-programs",
-          "title": "Programs | Lumiere Education",
-          "pageType": "official_program_page",
-          "accessedAt": "2026-08-11T22:32:46.281Z",
-          "excerpt": "In the Lumiere Research Scholar Program, students work 1-1 with a researcher from a top university to produce an independent research project."
         }
       ],
       "note": "The v2 pathway ledger defines the authoritative route; unrelated stages are not inserted into it.",
@@ -4057,18 +4003,16 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.process",
         "claimRefs": [
           "lumiere-common-pathway",
           "lumiere-path-step-application",
           "lumiere-path-step-interview",
           "lumiere-path-step-matching",
-          "lumiere-path-step-program",
           "lumiere-application-stage",
           "lumiere-interview-stage",
-          "lumiere-matching-stage",
-          "lumiere-program-stage"
+          "lumiere-matching-stage"
         ]
       }
     },
@@ -4220,7 +4164,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.tuition_waiver",
         "claimRefs": [
           "lumiere-aid-definition",
@@ -4260,7 +4204,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.program_seat",
         "claimRefs": [
           "lumiere-program-seat-definition",
@@ -4317,7 +4261,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.college_credit",
         "claimRefs": [
           "lumiere-credit-definition",
@@ -4357,7 +4301,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.mentorship-matrix",
         "claimRefs": [
           "lumiere-mentorship-individual-definition",
@@ -4415,7 +4359,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.other-benefits",
         "claimRefs": [
           "lumiere-paper-definition",
@@ -4691,51 +4635,35 @@
       "lumiere-path-step-application",
       "lumiere-path-step-interview",
       "lumiere-path-step-matching",
-      "lumiere-path-step-program",
       "lumiere-application-stage",
       "lumiere-interview-stage",
-      "lumiere-matching-stage",
-      "lumiere-program-stage"
+      "lumiere-matching-stage"
     ],
     "deposit": [
       "lumiere-deposit-definition",
-      "lumiere-deposit-amount",
-      "lumiere-deposit-treatment",
-      "lumiere-deposit-refundability",
-      "lumiere-deposit-condition"
+      "lumiere-deposit-amount"
     ],
     "tuition": [
       "cost-tuition-individual-definition",
       "cost-tuition-individual-amount",
-      "cost-tuition-individual-refundability",
       "cost-tuition-premium-definition",
       "cost-tuition-premium-amount",
-      "cost-tuition-premium-refundability",
       "cost-tuition-fellowship-definition",
       "cost-tuition-fellowship-amount",
-      "cost-tuition-fellowship-refundability",
       "cost-tuition-professor-definition",
-      "cost-tuition-professor-amount",
-      "cost-tuition-professor-refundability"
+      "cost-tuition-professor-amount"
     ],
     "estimated_total_mandatory_cost": [
       "cost-tuition-individual-definition",
       "cost-tuition-individual-amount",
-      "cost-tuition-individual-refundability",
       "cost-tuition-premium-definition",
       "cost-tuition-premium-amount",
-      "cost-tuition-premium-refundability",
       "cost-tuition-fellowship-definition",
       "cost-tuition-fellowship-amount",
-      "cost-tuition-fellowship-refundability",
       "cost-tuition-professor-definition",
       "cost-tuition-professor-amount",
-      "cost-tuition-professor-refundability",
       "lumiere-deposit-definition",
-      "lumiere-deposit-amount",
-      "lumiere-deposit-treatment",
-      "lumiere-deposit-refundability",
-      "lumiere-deposit-condition"
+      "lumiere-deposit-amount"
     ],
     "tuition_waiver": [
       "lumiere-aid-definition",

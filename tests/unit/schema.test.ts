@@ -110,6 +110,35 @@ describe("opportunity card schema", () => {
     expect(reviewStateSchema.safeParse("verified").success).toBe(false);
   });
 
+  it("rejects a demo card when any conflicting official URL leaves .example", () => {
+    const card = createEmptyCard({ slug: "demo-url-isolation", reviewState: "demo" });
+    const officialUrl = factSchema.parse({
+      status: "conflicting",
+      note: "Two displayed URLs disagree.",
+      conflictingValues: [
+        {
+          value: "https://program.example/official",
+          displayValue: "https://program.example/official",
+          normalizedValue: { kind: "text", value: "https://program.example/official" },
+          sources: [{ ...source, excerpt: "Official page one." }],
+        },
+        {
+          value: "https://example.com/real-organization",
+          displayValue: "https://example.com/real-organization",
+          normalizedValue: { kind: "text", value: "https://example.com/real-organization" },
+          sources: [{ ...source, excerpt: "Official page two." }],
+        },
+      ],
+    });
+
+    expect(() => opportunityCardSchema.parse({
+      ...card,
+      sourcePagesChecked: [sourcePage],
+      conflicts: [{ fieldId: "official_url", summary: "Two displayed URLs disagree." }],
+      facts: { ...card.facts, official_url: officialUrl },
+    })).toThrow(/reserved \.example hostnames/i);
+  });
+
   it("requires checked sources before a card can claim human or organizer review", () => {
     const blank = createEmptyCard({ slug: "blank-reviewed" });
     expect(() =>

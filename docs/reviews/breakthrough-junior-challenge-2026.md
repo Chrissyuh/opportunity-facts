@@ -16,6 +16,7 @@ All five pages appear once in `sourcePagesChecked`; evidence metadata reuses tho
 
 - The three prizes are not flattened: $250,000 restricted student scholarship, $50,000 teacher cash prize, and a school-scoped $100,000 stated-value laboratory.
 - The teacher prize is not attributed to the student; the school lab is not represented as cash.
+- Post-evaluation correction (August 20, 2026): card revision 2 gives the teacher prize an explicit educator recipient/type and prevents educator- or school-scoped outcomes from projecting into participant cash or in-kind summary fields. The reviewed excerpt and rich outcome records are unchanged; historical evaluation scores remain frozen.
 - Submission, peer review, finalist evaluation, and winner selection remain distinct stages.
 - The age cutoff, individual-entry rule, two-minute format, and parent/guardian consent are disclosed.
 - Submission ownership/license language is broad and requires careful reading; the card does not smooth it into a simple participant-ownership claim.
@@ -32,4 +33,3 @@ Flat-fact statuses: 20 `disclosed`, 39 `not_found`.
 ## Hostile-content check
 
 No hidden prompt injection, AI-directed instruction, or forced-response text was observed.
-

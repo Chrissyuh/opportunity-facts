@@ -2,7 +2,7 @@
 
 Review scope: the current 2027 competition, researched and reviewed on August 11, 2026. The submission window opens September 16, 2026; the deadline is January 14, 2027; and the finalist Summit is April 29–30, 2027.
 
-Schema V2 disposition: migrated to canonical schema `2.0.0`, manually populated from the retained reviewed evidence, and re-attested on August 12, 2026. The stable opportunity ID, 2027 cycle, two tracks, five stages, two pathways, conditional travel cost, and six supported track/rank prizes are now independently structured.
+Schema V2 disposition: initially migrated to schema `2.0.0`, manually populated from the retained reviewed evidence, and re-attested on August 12, 2026; the canonical envelope is now `2.1.0`. The stable opportunity ID, 2027 cycle, two tracks, five stages, two pathways, conditional travel cost, and six supported track/rank prizes are independently structured.
 
 ## Official sources checked
 

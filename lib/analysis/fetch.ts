@@ -77,6 +77,12 @@ export interface FetchPublicPageOptions {
   readonly maxRedirects?: number;
   /** When set, redirect destinations must remain on this normalized origin. */
   readonly allowedRedirectOrigin?: string | URL;
+  /**
+   * Allows one transition away from `allowedRedirectOrigin`, then pins every
+   * later redirect to that destination origin. Used only for one ranked
+   * application candidate during bounded same-origin discovery.
+   */
+  readonly allowSinglePublicCrossOriginRedirect?: boolean;
   readonly signal?: AbortSignal;
   readonly now?: () => Date;
 }
@@ -441,8 +447,12 @@ export async function fetchPublicPage(
     controller.abort(new Error("Public page fetch timed out."));
   }, timeoutMs);
 
-  const requestedUrl = input instanceof URL ? input.href : input.trim();
   let current: string | URL = input;
+  let requestedUrl: string | undefined;
+  let requiredRedirectOrigin = options.allowedRedirectOrigin;
+  let crossOriginTransitionAvailable =
+    options.allowSinglePublicCrossOriginRedirect === true &&
+    requiredRedirectOrigin !== undefined;
   const redirects: Array<{ from: string; to: string; status: number }> = [];
 
   try {
@@ -451,6 +461,7 @@ export async function fetchPublicPage(
         resolver: options.resolver,
         signal: controller.signal,
       });
+      requestedUrl ??= validated.url.href;
       const response = await requestValidatedAddress(
         validated.url,
         validated.addresses,
@@ -490,14 +501,19 @@ export async function fetchPublicPage(
           );
         }
 
-        if (
-          options.allowedRedirectOrigin &&
-          !haveSameOrigin(options.allowedRedirectOrigin, destination)
-        ) {
-          throw new PageFetchError(
-            "CROSS_ORIGIN_REDIRECT",
-            "A discovered page redirected outside the submitted page origin.",
-          );
+        if (requiredRedirectOrigin && !haveSameOrigin(requiredRedirectOrigin, destination)) {
+          if (!crossOriginTransitionAvailable) {
+            throw new PageFetchError(
+              "CROSS_ORIGIN_REDIRECT",
+              "A discovered page redirected outside its permitted public origin.",
+            );
+          }
+          // The destination is syntactically public here and is fully
+          // DNS/address revalidated at the top of the next loop iteration.
+          // Consuming the allowance now makes a second origin transition fail
+          // closed even when the first destination redirects immediately.
+          crossOriginTransitionAvailable = false;
+          requiredRedirectOrigin = destination;
         }
 
         if (redirects.length >= maxRedirects) {
@@ -553,7 +569,7 @@ export async function fetchPublicPage(
       }
 
       return {
-        requestedUrl,
+        requestedUrl: requestedUrl ?? validated.url.href,
         url: validated.url.href,
         status: response.status,
         contentType,
@@ -632,13 +648,18 @@ export async function acquirePublicSourcePages(
   const discovered: AcquiredSourcePage[] = [];
   const failures: PageAcquisitionFailure[] = [];
   const finalUrls = new Set([submittedFetched.url]);
+  let applicationRedirectAllowanceAssigned = false;
 
   // Sequential requests keep load on the source site bounded and predictable.
   for (const candidate of candidates) {
+    const allowApplicationRedirect =
+      candidate.topic === "application" && !applicationRedirectAllowanceAssigned;
+    if (allowApplicationRedirect) applicationRedirectAllowanceAssigned = true;
     try {
       const fetched = await fetchPublicPage(candidate.url, {
         ...fetchOptions,
         allowedRedirectOrigin: submittedFetched.url,
+        allowSinglePublicCrossOriginRedirect: allowApplicationRedirect,
       });
       if (finalUrls.has(fetched.url)) {
         continue;

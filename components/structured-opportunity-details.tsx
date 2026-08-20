@@ -85,6 +85,11 @@ const outcomeGroups = [
     types: ["project_budget", "reimbursement"],
   },
   {
+    id: "educator",
+    label: "Benefits for educators",
+    types: ["educator_cash_prize"],
+  },
+  {
     id: "tuition",
     label: "Tuition and scholarship support",
     types: ["tuition_waiver", "scholarship"],
@@ -109,6 +114,7 @@ const outcomeGroups = [
 const outcomeTypeLabels = {
   personal_cash_prize: "Personal cash prize",
   team_cash_prize: "Team cash prize",
+  educator_cash_prize: "Educator cash prize",
   stipend: "Stipend",
   project_budget: "Restricted project budget",
   reimbursement: "Reimbursement",
@@ -644,7 +650,7 @@ export function StructuredOpportunityDetails({
   const Heading = embedded ? "h4" : "h2";
   return (
     <section className="structured-opportunity" aria-label="Structured program details">
-      <details>
+      <details suppressHydrationWarning>
         <summary>
           <span>
             <strong>Explore structured details</strong>

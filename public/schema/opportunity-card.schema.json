@@ -93,7 +93,7 @@
   "$defs": {
     "__schema0": {
       "type": "string",
-      "const": "2.0.0"
+      "const": "2.1.0"
     },
     "__schema1": {
       "anyOf": [
@@ -12866,6 +12866,7 @@
           "enum": [
             "personal_cash_prize",
             "team_cash_prize",
+            "educator_cash_prize",
             "stipend",
             "project_budget",
             "reimbursement",
@@ -12934,7 +12935,8 @@
         "team",
         "project",
         "school",
-        "organization"
+        "organization",
+        "educator"
       ]
     },
     "__schema268": {
@@ -13163,6 +13165,8 @@
           "enum": [
             "participant",
             "team",
+            "educator",
+            "school",
             "registered_venture",
             "service_provider"
           ]
@@ -14545,7 +14549,7 @@
           "properties": {
             "schemaVersion": {
               "type": "string",
-              "const": "2.0.0"
+              "const": "2.1.0"
             },
             "rule": {
               "type": "string",

@@ -8,6 +8,7 @@
 - Never fabricate real organizations, users, traffic, results, accuracy figures, endorsements, or organizer responses. Demo cards must be obviously fictional, use `.example` URLs, and remain labeled Demo data.
 - Every displayed value requires evidence unless its status is `not_found`, `unclear`, or `not_applicable`. Deterministically reject model excerpts that do not match source text.
 - Preserve conflicting supported values and distinguish cash from in-kind value. Never infer university operation, endorsement, acceptance rate, refundability, or legal status from weak signals.
+- Keep participant, team, project, educator, school, and organization outcome recipients distinct. Educator/school outcomes may remain visible in rich details but must never project as participant cash or in-kind benefits.
 - Structured V2 values carry evidence at the atomic claim, not merely on a parent record. Preserve variant/stage/pathway scope, recipient scope, distribution, conditions, and source precision.
 - The 59 flat facts are stable projections where V2 structured records apply. Never hand-edit a projected fact, discard its claim references, select one tier/pathway value as universal, or publish projection drift.
 - A modeled cost list is not automatically complete. Preserve `costItems.completeness`; never calculate a total from an incomplete inventory, even when every recorded item has an amount.
@@ -46,7 +47,7 @@ Server-only modules must start with `import "server-only"` where appropriate. Cl
 - Extend the shared structured schemas and projector rather than writing a component-only relationship, pricing, pathway, or outcome model. Reviewed V2 cards cannot leave structured collections `unassessed`.
 - Keep client/server boundaries explicit and components focused. Prefer semantic HTML and CSS over needless dependencies.
 - Never render fetched HTML or source excerpts through `dangerouslySetInnerHTML`.
-- Keep URL fetching bounded: public HTTP(S), DNS/IP validation, redirect revalidation, response/time limits, safe content types, no cookies/authentication, same-origin discovery only.
+- Keep URL fetching bounded: public HTTP(S) on protocol-default ports, DNS/IP validation, redirect revalidation, response/time limits, safe content types, no cookies/authentication, same-origin discovery only.
 - Keep the extraction model bounded and optional. Tests mock pages and model output and never require external sites or an API key.
 - Preserve unrelated worktree changes. Do not commit, push, deploy, or mutate production resources without Christopher’s explicit instruction.
 

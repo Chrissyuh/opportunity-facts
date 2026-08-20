@@ -147,6 +147,20 @@ describe("bounded public page fetching", () => {
     expect(transport).toHaveBeenCalledTimes(1);
   });
 
+  it("blocks a redirect to a non-default public port before making another request", async () => {
+    const transport = vi.fn<HttpTransport>(async () =>
+      response(302, { location: "https://example.com:8443/program" }),
+    );
+
+    await expect(
+      fetchPublicPage("https://example.com/program", {
+        resolver: publicResolver,
+        transport,
+      }),
+    ).rejects.toMatchObject({ code: "UNSUPPORTED_PORT" });
+    expect(transport).toHaveBeenCalledTimes(1);
+  });
+
   it("blocks a redirect whose DNS answer changes to a private address", async () => {
     const resolver: DnsResolver = async (hostname) =>
       hostname === "internal.example"
@@ -342,5 +356,167 @@ describe("bounded source-page acquisition", () => {
         code: "HTTP_STATUS",
       }),
     ]);
+  });
+
+  it("allows one ranked application candidate to transition to a revalidated public form origin", async () => {
+    const requestedUrls: string[] = [];
+    const transport: HttpTransport = async ({ url }) => {
+      requestedUrls.push(url.href);
+      if (url.pathname === "/program") {
+        return response(
+          200,
+          { "content-type": "text/html" },
+          '<main><a href="/faq">FAQ</a><a href="/apply">Apply now</a></main>',
+        );
+      }
+      if (url.hostname === "example.com" && url.pathname === "/faq") {
+        return response(302, { location: "https://outside.example/faq" });
+      }
+      if (url.hostname === "example.com" && url.pathname === "/apply") {
+        return response(302, {
+          location:
+            "https://forms.example/start?attribution_id=tracking-uuid&utm_source=program&cohort=fall",
+        });
+      }
+      if (
+        url.hostname === "forms.example" &&
+        url.pathname === "/start" &&
+        url.search === "?cohort=fall"
+      ) {
+        return response(302, { location: "/current-cycle" });
+      }
+      return response(
+        200,
+        { "content-type": "text/html" },
+        "<main>Applications close September 15. Interviews follow review.</main>",
+      );
+    };
+
+    const result = await acquirePublicSourcePages("https://example.com/program", {
+      resolver: publicResolver,
+      transport,
+    });
+
+    expect(result.discovered).toHaveLength(1);
+    expect(result.discovered[0]).toMatchObject({
+      fetched: {
+        url: "https://forms.example/current-cycle",
+        redirects: [
+          expect.objectContaining({
+            to: "https://forms.example/start?cohort=fall",
+          }),
+          expect.objectContaining({ to: "https://forms.example/current-cycle" }),
+        ],
+      },
+      discovery: { topic: "application" },
+    });
+    expect(result.discovered[0]?.extracted.text).toContain("Applications close September 15");
+    expect(result.failures).toContainEqual(
+      expect.objectContaining({ url: "https://example.com/faq", code: "CROSS_ORIGIN_REDIRECT" }),
+    );
+    expect(requestedUrls).not.toContain("https://outside.example/faq");
+    expect(requestedUrls).toContain("https://forms.example/start?cohort=fall");
+    expect(requestedUrls).toContain("https://forms.example/current-cycle");
+    expect(requestedUrls.join("\n")).not.toMatch(/attribution_id|utm_source/u);
+  });
+
+  it("blocks a second cross-origin transition after an application form origin is pinned", async () => {
+    const requestedUrls: string[] = [];
+    const transport: HttpTransport = async ({ url }) => {
+      requestedUrls.push(url.href);
+      if (url.pathname === "/program") {
+        return response(
+          200,
+          { "content-type": "text/html" },
+          '<main><a href="/apply">Application</a></main>',
+        );
+      }
+      if (url.hostname === "example.com") {
+        return response(302, { location: "https://forms.example/start" });
+      }
+      return response(302, { location: "https://second-form-origin.example/final" });
+    };
+
+    const result = await acquirePublicSourcePages("https://example.com/program", {
+      resolver: publicResolver,
+      transport,
+    });
+
+    expect(result.discovered).toEqual([]);
+    expect(result.failures).toContainEqual(
+      expect.objectContaining({ url: "https://example.com/apply", code: "CROSS_ORIGIN_REDIRECT" }),
+    );
+    expect(requestedUrls).toEqual([
+      "https://example.com/program",
+      "https://example.com/apply",
+      "https://forms.example/start",
+    ]);
+  });
+
+  it("DNS-revalidates the application form origin before connecting", async () => {
+    const resolver = vi.fn<DnsResolver>(async (hostname) =>
+      hostname === "forms.example"
+        ? [{ address: "10.20.30.40", family: 4 }]
+        : [{ address: "93.184.216.34", family: 4 }],
+    );
+    const requestedUrls: string[] = [];
+    const transport: HttpTransport = async ({ url }) => {
+      requestedUrls.push(url.href);
+      return url.pathname === "/program"
+        ? response(
+            200,
+            { "content-type": "text/html" },
+            '<main><a href="/apply">Apply</a></main>',
+          )
+        : response(302, { location: "https://forms.example/application" });
+    };
+
+    const result = await acquirePublicSourcePages("https://example.com/program", {
+      resolver,
+      transport,
+    });
+
+    expect(resolver).toHaveBeenCalledWith("forms.example", expect.any(AbortSignal));
+    expect(requestedUrls).toEqual([
+      "https://example.com/program",
+      "https://example.com/apply",
+    ]);
+    expect(result.failures).toContainEqual(
+      expect.objectContaining({ url: "https://example.com/apply", code: "BLOCKED_IP" }),
+    );
+  });
+
+  it("assigns the cross-origin allowance to at most one application candidate", async () => {
+    const requestedUrls: string[] = [];
+    const transport: HttpTransport = async ({ url }) => {
+      requestedUrls.push(url.href);
+      if (url.pathname === "/program") {
+        return response(
+          200,
+          { "content-type": "text/html" },
+          '<main><a href="/apply-primary">Apply primary</a><a href="/apply-backup">Apply backup</a></main>',
+        );
+      }
+      if (url.pathname === "/apply-primary") {
+        return response(200, { "content-type": "text/plain" }, "Primary application page");
+      }
+      return response(302, { location: "https://forms.example/backup" });
+    };
+
+    const result = await acquirePublicSourcePages("https://example.com/program", {
+      resolver: publicResolver,
+      transport,
+    });
+
+    expect(result.discovered.map((page) => page.fetched.url)).toEqual([
+      "https://example.com/apply-primary",
+    ]);
+    expect(result.failures).toContainEqual(
+      expect.objectContaining({
+        url: "https://example.com/apply-backup",
+        code: "CROSS_ORIGIN_REDIRECT",
+      }),
+    );
+    expect(requestedUrls).not.toContain("https://forms.example/backup");
   });
 });

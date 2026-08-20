@@ -14,6 +14,7 @@
     "validate:data": "tsx scripts/validate-data.ts",
     "create:card": "tsx scripts/create-card.ts",
     "export:data": "tsx scripts/export-public-data.ts",
+    "reproject:card": "tsx scripts/reproject-card.ts",
     "benchmark:extract": "tsx --conditions=react-server scripts/run-extraction-benchmark.ts",
     "benchmark:score": "tsx scripts/score-extraction-benchmark.ts"
   },

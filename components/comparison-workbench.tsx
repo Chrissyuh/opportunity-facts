@@ -9,7 +9,11 @@ import {
 } from "@/lib/opportunity/fields";
 import { compareOpportunityCards, getCalculationContext } from "@/lib/opportunity/registry";
 import type { Fact, OpportunityCard } from "@/lib/opportunity/schema";
-import { importOpportunityCardJson, parseOpportunityCard } from "@/lib/opportunity/serialization";
+import {
+  importOpportunityCardJson,
+  invalidatePortableReviewAttestation,
+  parseOpportunityCard,
+} from "@/lib/opportunity/serialization";
 import { EvidenceList } from "./evidence-list";
 import { StatusBadge } from "./status-badge";
 import { StructuredComparison } from "./structured-opportunity-details";
@@ -82,6 +86,14 @@ function cardName(card: OpportunityCard) {
   return card.facts.opportunity_name.displayValue ?? card.slug;
 }
 
+function repositoryCardMatches(
+  card: OpportunityCard,
+  publicCards: readonly OpportunityCard[],
+): boolean {
+  const repositoryCard = publicCards.find((candidate) => candidate.slug === card.slug);
+  return repositoryCard !== undefined && JSON.stringify(repositoryCard) === JSON.stringify(card);
+}
+
 function ComparisonFact({
   fact,
   fieldId,
@@ -137,9 +149,14 @@ function statusFallback(status: Fact["status"]) {
 
 export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityCard[] }) {
   const serialized = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-  const selected = parseCards(serialized);
+  const selected = parseCards(serialized).map((card) =>
+    repositoryCardMatches(card, publicCards)
+      ? card
+      : invalidatePortableReviewAttestation(card),
+  );
   const [message, setMessage] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
+  const comparisonScrollRef = useRef<HTMLDivElement>(null);
 
   const available = publicCards.filter(
     (card) => !selected.some((selectedCard) => selectedCard.slug === card.slug),
@@ -147,8 +164,7 @@ export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityC
   const comparisonRows = selected.length >= 2 ? compareOpportunityCards(selected) : [];
 
   function isRepositoryCard(card: OpportunityCard) {
-    const repositoryCard = publicCards.find((candidate) => candidate.slug === card.slug);
-    return repositoryCard !== undefined && JSON.stringify(repositoryCard) === JSON.stringify(card);
+    return repositoryCardMatches(card, publicCards);
   }
 
   function addCard(card: OpportunityCard) {
@@ -188,6 +204,18 @@ export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityC
     } finally {
       if (fileRef.current) fileRef.current.value = "";
     }
+  }
+
+  function moveComparison(direction: -1 | 1) {
+    const scroller = comparisonScrollRef.current;
+    if (!scroller) return;
+    const factColumn = scroller.querySelector("thead th:first-child");
+    const factColumnWidth = factColumn instanceof HTMLElement ? factColumn.offsetWidth : 0;
+    const cardColumnWidth = (scroller.scrollWidth - factColumnWidth) / selected.length;
+    scroller.scrollBy({
+      left: direction * Math.max(240, cardColumnWidth),
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
   }
 
   return (
@@ -233,11 +261,13 @@ export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityC
         </div>
         <p className="action-message" role="status" aria-live="polite">{message}</p>
         {selected.length < 3 && available.length ? (
-          <div className="available-card-list" aria-label="Available demo cards">
+          <div className="available-card-list" role="group" aria-label="Available cards">
             {available.map((card) => (
               <button key={card.slug} type="button" onClick={() => addCard(card)}>
                 <span>{cardName(card)}</span>
-                <small>{card.facts.opportunity_category.displayValue}</small>
+                <small>
+                  {card.facts.opportunity_category.displayValue} · {card.reviewState === "demo" ? "Demo data" : card.reviewState.replaceAll("_", " ")}
+                </small>
                 <strong>Add</strong>
               </button>
             ))}
@@ -256,7 +286,22 @@ export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityC
             </div>
             <p>Cells marked “Different across cards” identify a variation, not an advantage.</p>
           </div>
-          <div className="comparison-scroll" tabIndex={0} aria-label="Scrollable comparison table">
+          <div className="comparison-scroll-shell">
+            <div className="comparison-scroll-cue" id="comparison-scroll-help">
+              <p><strong>Swipe across to compare all {selected.length} cards.</strong> Fact names stay pinned.</p>
+              <div aria-label="Move across comparison columns">
+                <button type="button" aria-label="Show previous comparison card" aria-controls="comparison-table-scroll" onClick={() => moveComparison(-1)}>←</button>
+                <button type="button" aria-label="Show next comparison card" aria-controls="comparison-table-scroll" onClick={() => moveComparison(1)}>→</button>
+              </div>
+            </div>
+            <div
+              ref={comparisonScrollRef}
+              id="comparison-table-scroll"
+              className="comparison-scroll"
+              tabIndex={0}
+              aria-label={`Scrollable comparison table for ${selected.map(cardName).join(", ")}`}
+              aria-describedby="comparison-scroll-help"
+            >
             <table className="comparison-table">
               <caption className="sr-only">Comparison of {selected.map(cardName).join(", ")}</caption>
               <thead>
@@ -312,6 +357,7 @@ export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityC
                 </tbody>
               ))}
             </table>
+            </div>
           </div>
           <div className="card-disclaimer comparison-disclaimer">
             <strong>No winner is calculated.</strong> Cash awards, stipends, tuition waivers,

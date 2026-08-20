@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.0.0",
+  "schemaVersion": "2.1.0",
   "opportunityId": "yale-young-global-scholars",
   "cycle": {
     "status": "modeled",
@@ -1066,7 +1066,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "yygs-yale-operator-claim",
@@ -1098,7 +1098,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator-kind",
         "claimRefs": [
           "yygs-yale-kind",
@@ -1138,7 +1138,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.institution-list",
         "claimRefs": [
           "yygs-yale-operated-claim",
@@ -1178,7 +1178,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.summary",
         "claimRefs": [
           "yygs-yale-operated-claim",
@@ -1218,7 +1218,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.explanations",
         "claimRefs": [
           "yygs-yale-operated-claim",
@@ -1385,7 +1385,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "cycle.coverage-start",
         "claimRefs": [
           "yygs-session-one-start"
@@ -1416,7 +1416,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "cycle.coverage-end",
         "claimRefs": [
           "yygs-session-three-end"
@@ -1448,7 +1448,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.duration",
         "claimRefs": [
           "yygs-program-duration"
@@ -1510,7 +1510,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.formats",
         "claimRefs": [
           "yygs-application-format",
@@ -1539,7 +1539,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.locations",
         "claimRefs": [
           "yygs-program-location"
@@ -1722,8 +1722,8 @@
     },
     "selection_process": {
       "status": "disclosed",
-      "value": "Application to residential session: Application → Residential academic session",
-      "displayValue": "Application to residential session: Application → Residential academic session",
+      "value": "Application to residential session: Application",
+      "displayValue": "Application to residential session: Application",
       "normalizedValue": null,
       "sources": [
         {
@@ -1749,14 +1749,12 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.process",
         "claimRefs": [
           "yygs-pathway-definition",
           "yygs-step-apply",
-          "yygs-step-program",
-          "yygs-application-stage",
-          "yygs-program-stage"
+          "yygs-application-stage"
         ]
       }
     },
@@ -1885,7 +1883,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.program_seat",
         "claimRefs": [
           "yygs-seat-definition",
@@ -2104,9 +2102,7 @@
     "selection_process": [
       "yygs-pathway-definition",
       "yygs-step-apply",
-      "yygs-step-program",
-      "yygs-application-stage",
-      "yygs-program-stage"
+      "yygs-application-stage"
     ],
     "program_seat": [
       "yygs-seat-definition",

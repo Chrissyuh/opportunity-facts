@@ -2,7 +2,7 @@
 
 Review scope: the current Fall 2026 cohort, researched and reviewed on August 11, 2026. The current application deadline was August 23, 2026, and the published cohort start was September 14, 2026.
 
-Schema V2 disposition: migrated to canonical schema `2.0.0`, manually populated from the retained reviewed evidence, and re-attested on August 12, 2026. The stable opportunity ID, Fall 2026 cycle, four program tiers, scoped prices/support, selection stages, credit relationship, and founder/mentor affiliations are now independently structured.
+Schema V2 disposition: initially migrated to schema `2.0.0`, manually populated from the retained reviewed evidence, and re-attested on August 12, 2026; the canonical envelope is now `2.1.0`. The stable opportunity ID, Fall 2026 cycle, four program tiers, scoped prices/support, selection stages, credit relationship, and founder/mentor affiliations are independently structured.
 
 ## Official sources checked
 

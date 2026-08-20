@@ -3,7 +3,7 @@
 ## Completed
 
 - [x] Built a strict Next.js 16 App Router application with TypeScript, React, Tailwind CSS, Zod, Vitest, and Playwright from the empty repository.
-- [x] Implemented authoritative schema `2.0.0`: a stable 59-field projection/registry surface with exactly 13 core assessment areas plus evidence-bearing cycle, organization, variant, stage/pathway, cost, and outcome records.
+- [x] Implemented the authoritative Schema V2 lineage, now `2.1.0`: a stable 59-field projection/registry surface with exactly 13 core assessment areas plus evidence-bearing cycle, organization, variant, stage/pathway, cost, and outcome records. The minor release explicitly models educator outcomes/payees and retains deterministic `2.0.0` import compatibility with current projection rebuilding.
 - [x] Added atomic structured claims, explicit record-assessment states, variant/stage/pathway scopes, provenance, normalization, conflicts, calculation metadata, exact evidence alignment, projection-drift rejection, review/version invariants, and portable JSON import/export.
 - [x] Added seven visibly fictional `.example` demo cards with varied opportunity types, relationships, costs, outcomes, conflicts, and missing information.
 - [x] Added and migrated the first three real human-reviewed ground-truth cards: NASA TechRise 2026–2027, Lumiere Fall 2026, and Diamond Challenge 2027, with source-by-source review records and structured V2 resolution of all nine reality-stress-test P1 comparison losses.
@@ -20,9 +20,13 @@
 - [x] Hardened the production Responses extraction contract, link ranking, semantic validation, structured-family salvage, cycle/scope uncertainty, and prize-matrix handling. Final development-set drafts had 52/54 supported-claim precision, 70/72 semantic evidence correctness, and zero known critical misleading claims; full denominators are in `EXTRACTION_BENCHMARK_POST_FIX.md`.
 - [x] Froze `evaluation-v2-frozen`, preregistered seven structurally diverse opportunities before inference, completed and committed all seven independent human-reviewed V2 cards, and preserved exactly one production-path extraction result per card without tuning or replacement runs.
 - [x] Published the honest out-of-sample evaluation: 82/154 ground-truth claim precision, 188/203 semantic evidence correctness, 16/82 structured recall, four critical misleading claims, and a 462-item correction ledger. The public library now contains ten real reviewed cards plus seven fictional demos.
-- [x] Completed post-evaluation extraction hardening without changing the frozen evaluation: subject/scope validation, first-class cycle resolution, sibling-program isolation, bounded three-family Responses extraction, safe partial completion, static reveal-shell/Schema.org acquisition, clearer draft UX, and a private one-run Lumos judge-path acceptance check with zero critical misleading claims after deterministic validation.
+- [x] Completed and committed the first post-evaluation hardening checkpoint (`3cd7ea1`) without changing the frozen evaluation: subject/scope validation, first-class cycle resolution, sibling-program isolation, bounded three-family Responses extraction, safe partial completion, static reveal-shell/Schema.org acquisition, clearer draft UX, and a private one-run Lumos judge-path development check with zero critical misleading claims after deterministic validation.
+- [x] Implemented the current post-checkpoint hardening: two-wave four-family extraction, stronger typed/entity/cost/outcome guards, explicit cycle ambiguity handling, all-citation sibling isolation, bounded hostile-HTML traversal, route admission/deadline/kill-switch controls, default-port-only acquisition, truthful analyzer status/failure UX, reviewed/demo library separation, and mobile comparison/filter improvements.
+- [x] Independently re-reviewed and revised the Breakthrough Junior Challenge educator/school outcome scopes and Polygence rolling-cycle identity without modifying historical benchmark or evaluation results.
 
-## Final verification
+## Last committed release verification
+
+The checked results below preserve the completed gate for `3cd7ea1`; the newer final gate is recorded immediately afterward.
 
 - [x] `npm run lint`
 - [x] `npm run typecheck`
@@ -38,10 +42,22 @@
 - [x] Production headers, analysis `no-store`, keyless API state, client secret scan, artifact/API parity, and seven research hash pairs
 - [x] Out-of-sample library, Yale/Congressional App Challenge/QuestBridge detail cards, three-way new-card comparison, methodology disclosure, and analyzer pre-run/loading/success/partial-source/provider-failure/evidence states inspected at 1440×900 and 390×844 with no page overflow; non-failure states had no browser diagnostics.
 
+## Current post-evaluation hardening verification
+
+- [x] `npm run export:data` and `npm run validate:data` — 17 public cards (7 demo), 0 drafts, dataset and JSON Schema current
+- [x] `npm run lint` and `npm run typecheck`
+- [x] `npm test` — 32 files / 375 tests passed
+- [x] `npm run test:e2e` — 84 passed, 4 intentional project-inapplicable skips, 0 failed
+- [x] `npm run build` — fail-closed data validation plus 30 generated pages
+- [x] `npm audit --audit-level=high` — 0 vulnerabilities
+- [x] `git diff --check` — no whitespace errors
+- [x] Production browser audit at 1440×900 and 390×844 — homepage, analyzer, reviewed/demo library, Diamond structured details, three-card comparison, and methodology remained within the viewport with no console warnings/errors
+- [x] Independent final security/reliability audit — no remaining P0/P1 commit blocker; secrets and immutable evaluation artifacts remained outside the diff
+
 ## Schema V2 regression coverage
 
 - [x] V1 migration is deterministic, draft-only, digest-recorded, and does not infer cycle or structured semantics.
-- [x] Canonical data tests require all seven demos and three reviewed cards to use schema `2.0.0`; reviewed cards cannot leave structured sections unassessed.
+- [x] Canonical data tests require all seven demos and ten reviewed cards to use schema `2.1.0`; reviewed cards cannot leave structured sections unassessed. Legacy `2.0.0` cards migrate losslessly while unsupported future versions and mislabeled `2.1.0` vocabulary fail closed.
 - [x] Focused unit coverage preserves cycle identity, affiliations, tiered costs, branching pathways, restricted project funding, prize matrices, projection consistency, and reference integrity.
 - [x] Focused browser coverage renders the TechRise, Lumiere, and Diamond distinctions on card and comparison surfaces without horizontal overflow.
 
@@ -51,6 +67,7 @@
 - [x] Run one configured production-path provider smoke test with `gpt-5.6-terra`, strict structured output, `store: false`, and deterministic post-validation.
 - [x] Run the separate preregistered seven-card out-of-sample phase without tuning on its primary results; do not describe seven programs as population-level accuracy.
 - [x] Repair the generalizable subject/scope, wrong-cycle count, invalid-structured-response, cycle omission, and structured-recall failures on a separate development fixture set before any unattended extraction claim.
-- [ ] Deploy only when a target is requested, then verify platform egress, rate/concurrency/spend controls, logs, secrets, headers, and both configured/keyless paths in that environment.
+- [x] Complete and record the current post-checkpoint full deterministic, build, browser, and explicitly budgeted live-development checks without changing historical benchmark/evaluation results.
+- [ ] Deploy only when a target is requested. Keep model-backed public analysis disabled until distributed rate/concurrency controls and a hard provider-or-gateway spend circuit breaker are proven, then verify egress, logs, secrets, headers, and both configured/keyless paths using `docs/DEPLOYMENT_CHECKLIST.md`.
 - [ ] Conduct consented comprehension and extraction studies before publishing any result; public copy correctly remains “Study not yet published.”
 - [ ] Consider the non-gating P2 hardening backlog in `QUALITY.md` after real-data and deployment work establishes priority.

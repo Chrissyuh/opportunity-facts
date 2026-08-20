@@ -14,8 +14,9 @@ import {
   type FieldId,
 } from "./fields";
 import { hasSensitiveUrlQuery, isObviouslyPublicHttpUrl } from "./public-url";
+import { SCHEMA_VERSION, V1_SCHEMA_VERSION } from "./schema-version";
 
-export const V1_SCHEMA_VERSION = "1.0.0" as const;
+export { V1_SCHEMA_VERSION } from "./schema-version";
 export const INITIAL_CARD_VERSION = 1 as const;
 
 const isoDateTimeSchema = z
@@ -156,7 +157,7 @@ export const calculationSchema = z.strictObject({
 });
 
 export const projectionMetadataSchema = z.strictObject({
-  schemaVersion: z.literal("2.0.0"),
+  schemaVersion: z.literal(SCHEMA_VERSION),
   rule: z.string().trim().min(1).max(120),
   // An assessed absence is itself a deterministic projection even though it
   // has no positive source claim to reference.
@@ -660,8 +661,16 @@ export const v1OpportunityCardSchema = z
 
     if (card.reviewState === "demo") {
       const allUrls = card.sourcePagesChecked.map((source) => source.url);
-      const officialUrl = card.facts.official_url.value;
-      if (typeof officialUrl === "string") allUrls.push(officialUrl);
+      const officialUrlFact = card.facts.official_url;
+      if (officialUrlFact.status === "conflicting") {
+        allUrls.push(
+          ...officialUrlFact.conflictingValues.flatMap((candidate) =>
+            typeof candidate.value === "string" ? [candidate.value] : []
+          ),
+        );
+      } else if (typeof officialUrlFact.value === "string") {
+        allUrls.push(officialUrlFact.value);
+      }
       if (allUrls.some((value) => !new URL(value).hostname.endsWith(".example"))) {
         context.addIssue({
           code: "custom",

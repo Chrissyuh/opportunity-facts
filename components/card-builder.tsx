@@ -17,7 +17,9 @@ import {
   createEmptyFact,
   evidenceSourceSchema,
   factSchema,
+  LEGACY_V2_SCHEMA_VERSION,
   opportunityCardSchema,
+  SCHEMA_VERSION,
   sourcePageSchema,
   type EvidenceSource,
   type Fact,
@@ -368,22 +370,26 @@ export function CardBuilder() {
     }
     try {
       const json = await file.text();
-      const input = JSON.parse(json) as { schemaVersion?: unknown };
+      const input = JSON.parse(json) as { schemaVersion?: unknown; reviewState?: unknown };
       const wasV1 = input.schemaVersion === "1.0.0";
-      const importedCard = importOpportunityCardJson(json);
-      const imported = importedCard.reviewState === "draft"
-        ? importedCard
-        : invalidateReview(importedCard);
-      const importedAssessment = importedCard.reviewState === "draft"
-        ? inferredAssessedFields(imported)
-        : FIELD_IDS;
+      const wasV2 =
+        input.schemaVersion === LEGACY_V2_SCHEMA_VERSION ||
+        input.schemaVersion === SCHEMA_VERSION;
+      const wasAttestedV2 =
+        wasV2 &&
+        (input.reviewState === "human_reviewed" || input.reviewState === "organizer_confirmed");
+      const wasDemoV2 = wasV2 && input.reviewState === "demo";
+      const imported = importOpportunityCardJson(json);
+      const importedAssessment = wasAttestedV2 ? FIELD_IDS : inferredAssessedFields(imported);
       setMessage(
         writeCard(imported, importedAssessment)
           ? wasV1
             ? `Schema v1 card migrated to draft schema v2 revision ${imported.cardVersion} and saved locally. Structured sections require review before publication.`
-            : importedCard.reviewState === "draft"
-              ? "Valid schema v2 card imported and saved locally."
-              : `Reviewed card imported as draft revision ${imported.cardVersion} and saved locally.`
+            : wasAttestedV2
+              ? `Attested card imported as draft revision ${imported.cardVersion} and saved locally. Review status does not transfer through a local file.`
+              : wasDemoV2
+                ? "Demo card imported and retained its Demo data label."
+                : "Valid schema v2 card imported and saved locally."
           : "The card is valid, but this browser could not save it.",
       );
     } catch (error) {

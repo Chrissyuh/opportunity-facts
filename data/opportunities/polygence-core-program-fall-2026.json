@@ -1,15 +1,15 @@
 {
-  "schemaVersion": "2.0.0",
+  "schemaVersion": "2.1.0",
   "opportunityId": "polygence-core-program",
   "cycle": {
     "status": "modeled",
     "value": {
-      "id": "poly-cycle-fall-2026",
+      "id": "poly-cycle-rolling",
       "label": {
         "claimId": "poly-cycle-label",
         "status": "disclosed",
-        "value": "Fall 2026 entry",
-        "displayValue": "Fall 2026 entry",
+        "value": "Rolling admissions",
+        "displayValue": "Rolling admissions",
         "claimKind": "source_stated",
         "sources": [
           {
@@ -26,10 +26,10 @@
       },
       "status": {
         "claimId": "poly-cycle-status",
-        "status": "disclosed",
-        "value": "applications_open",
-        "displayValue": "Rolling enrollment",
-        "claimKind": "source_stated",
+        "status": "unclear",
+        "value": null,
+        "displayValue": null,
+        "claimKind": null,
         "sources": [
           {
             "id": "poly-counselors",
@@ -40,49 +40,13 @@
             "excerpt": "Each month, we start a new cohort"
           }
         ],
-        "note": null,
+        "note": "The source describes monthly cohorts but does not explicitly state the current application status.",
         "conflictingValues": []
       },
-      "year": {
-        "claimId": "poly-cycle-year",
-        "status": "disclosed",
-        "value": 2026,
-        "displayValue": "2026",
-        "claimKind": "source_stated",
-        "sources": [
-          {
-            "id": "poly-counselors",
-            "url": "https://www.polygence.org/counselor",
-            "title": "For Counselors - Polygence",
-            "pageType": "official_program_page",
-            "accessedAt": "2026-08-12T06:25:00.000Z",
-            "excerpt": "Each month, we start a new cohort"
-          }
-        ],
-        "note": null,
-        "conflictingValues": []
-      },
+      "year": null,
       "startYear": null,
       "endYear": null,
-      "season": {
-        "claimId": "poly-cycle-season",
-        "status": "disclosed",
-        "value": "fall",
-        "displayValue": "Fall",
-        "claimKind": "source_stated",
-        "sources": [
-          {
-            "id": "poly-counselors",
-            "url": "https://www.polygence.org/counselor",
-            "title": "For Counselors - Polygence",
-            "pageType": "official_program_page",
-            "accessedAt": "2026-08-12T06:25:00.000Z",
-            "excerpt": "Each month, we start a new cohort"
-          }
-        ],
-        "note": null,
-        "conflictingValues": []
-      },
+      "season": null,
       "cycleType": {
         "claimId": "poly-cycle-type",
         "status": "disclosed",
@@ -110,11 +74,11 @@
       }
     }
   },
-  "cardVersion": 1,
+  "cardVersion": 2,
   "slug": "polygence-core-program-fall-2026",
   "summary": "Polygence Core is a rolling online one-to-one research-mentorship program built around ten mentor sessions; reviewed pricing begins around $3,000, but a single exact Core price was not published on the reviewed pages.",
   "reviewState": "human_reviewed",
-  "reviewedAt": "2026-08-12T06:25:00.000Z",
+  "reviewedAt": "2026-08-20T07:42:00.000Z",
   "sourcePagesChecked": [
     {
       "id": "poly-core",
@@ -1119,7 +1083,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "poly-role-operator-claim",
@@ -1159,7 +1123,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator-kind",
         "claimRefs": [
           "poly-org-kind",
@@ -1191,7 +1155,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.institution-list",
         "claimRefs": [
           "poly-independent-claim"
@@ -1222,7 +1186,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.summary",
         "claimRefs": [
           "poly-independent-claim"
@@ -1253,7 +1217,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.explanations",
         "claimRefs": [
           "poly-independent-claim"
@@ -1437,7 +1401,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.duration",
         "claimRefs": [
           "poly-program-duration"
@@ -1494,7 +1458,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.formats",
         "claimRefs": [
           "poly-enrollment-format",
@@ -1575,14 +1539,11 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "costs.tuition-unresolved",
         "claimRefs": [
           "poly-tuition-definition",
-          "poly-tuition-amount",
-          "poly-tuition-basis",
-          "poly-refundability",
-          "poly-included-sessions"
+          "poly-tuition-amount"
         ]
       }
     },
@@ -1598,13 +1559,11 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "costs.other-unresolved",
         "claimRefs": [
           "poly-installment-definition",
-          "poly-installment-amount",
-          "poly-installment-basis",
-          "poly-installment-condition"
+          "poly-installment-amount"
         ]
       }
     },
@@ -1629,18 +1588,13 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "costs.total-unresolved",
         "claimRefs": [
           "poly-tuition-definition",
           "poly-tuition-amount",
-          "poly-tuition-basis",
-          "poly-refundability",
-          "poly-included-sessions",
           "poly-installment-definition",
-          "poly-installment-amount",
-          "poly-installment-basis",
-          "poly-installment-condition"
+          "poly-installment-amount"
         ]
       }
     },
@@ -1741,44 +1695,17 @@
       "projection": null
     },
     "selection_process": {
-      "status": "disclosed",
-      "value": "Enrollment to research project: Enrollment and mentor matching → Core research mentorship",
-      "displayValue": "Enrollment to research project: Enrollment and mentor matching → Core research mentorship",
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
       "normalizedValue": null,
-      "sources": [
-        {
-          "id": "poly-core",
-          "url": "https://www.polygence.org/core-program",
-          "title": "Core Program - Polygence",
-          "pageType": "official_program_page",
-          "accessedAt": "2026-08-12T06:25:00.000Z",
-          "excerpt": "10 one-on-one, hour-long sessions with your mentor"
-        },
-        {
-          "id": "poly-core",
-          "url": "https://www.polygence.org/core-program",
-          "title": "Core Program - Polygence",
-          "pageType": "official_program_page",
-          "accessedAt": "2026-08-12T06:25:00.000Z",
-          "excerpt": "matched with an expert mentor"
-        }
-      ],
-      "note": "The v2 pathway ledger defines the authoritative route; unrelated stages are not inserted into it.",
+      "sources": [],
+      "note": null,
       "confidence": null,
-      "claimKind": "source_stated",
+      "claimKind": null,
       "conflictingValues": [],
       "calculation": null,
-      "projection": {
-        "schemaVersion": "2.0.0",
-        "rule": "stages.process",
-        "claimRefs": [
-          "poly-pathway-definition",
-          "poly-step-enroll",
-          "poly-step-program",
-          "poly-enrollment-stage",
-          "poly-program-stage"
-        ]
-      }
+      "projection": null
     },
     "applicant_count": {
       "status": "not_found",
@@ -1934,7 +1861,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.in_kind_value",
         "claimRefs": [
           "poly-showcase-definition",
@@ -1990,7 +1917,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.mentorship",
         "claimRefs": [
           "poly-mentorship-definition",
@@ -2194,36 +2121,19 @@
       "poly-enrollment-format",
       "poly-program-format"
     ],
-    "selection_process": [
-      "poly-pathway-definition",
-      "poly-step-enroll",
-      "poly-step-program",
-      "poly-enrollment-stage",
-      "poly-program-stage"
-    ],
     "tuition": [
       "poly-tuition-definition",
-      "poly-tuition-amount",
-      "poly-tuition-basis",
-      "poly-refundability",
-      "poly-included-sessions"
+      "poly-tuition-amount"
     ],
     "other_mandatory_costs": [
       "poly-installment-definition",
-      "poly-installment-amount",
-      "poly-installment-basis",
-      "poly-installment-condition"
+      "poly-installment-amount"
     ],
     "estimated_total_mandatory_cost": [
       "poly-tuition-definition",
       "poly-tuition-amount",
-      "poly-tuition-basis",
-      "poly-refundability",
-      "poly-included-sessions",
       "poly-installment-definition",
-      "poly-installment-amount",
-      "poly-installment-basis",
-      "poly-installment-condition"
+      "poly-installment-amount"
     ],
     "in_kind_value": [
       "poly-showcase-definition",

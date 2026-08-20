@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import { opportunityCardSchema, type OpportunityCard } from "@/lib/opportunity/schema";
 import {
@@ -14,7 +14,7 @@ import type { PastedSourceInput, ReviewedPageSummary } from "@/lib/analysis/pipe
 import { FactsCard } from "./facts-card";
 
 type Mode = "url" | "text";
-type Phase = "idle" | "reviewing" | "validating" | "complete" | "error" | "unconfigured";
+type Phase = "idle" | "running" | "complete" | "error" | "unconfigured";
 
 interface AnalysisResponse {
   card: OpportunityCard;
@@ -77,6 +77,51 @@ function parseAnalysisResponse(value: unknown): AnalysisResponse | null {
   };
 }
 
+function formatElapsed(seconds: number) {
+  if (seconds < 60) return `${seconds} sec elapsed`;
+  const minutes = Math.floor(seconds / 60);
+  const remainder = seconds % 60;
+  return `${minutes}:${String(remainder).padStart(2, "0")} elapsed`;
+}
+
+function sanitizePageWarningUrl(value: string) {
+  try {
+    const parsed = new URL(value);
+    if (parsed.protocol !== "http:" && parsed.protocol !== "https:") return null;
+    return `${parsed.origin}${parsed.pathname}`.slice(0, 320);
+  } catch {
+    return null;
+  }
+}
+
+function pageWarningReason(code: string) {
+  switch (code) {
+    case "TIMEOUT":
+      return "The page did not respond before the fetch time limit.";
+    case "ABORTED":
+      return "The page request ended before a response was available.";
+    case "HTTP_STATUS":
+    case "INVALID_STATUS":
+      return "The site returned a response that could not be reviewed.";
+    case "RESPONSE_TOO_LARGE":
+      return "The page exceeded the bounded download size.";
+    case "UNSUPPORTED_CONTENT_TYPE":
+    case "MISSING_CONTENT_TYPE":
+    case "UNSUPPORTED_CONTENT_ENCODING":
+    case "UNSUPPORTED_CHARSET":
+      return "The page format could not be safely converted to visible text.";
+    case "CROSS_ORIGIN_REDIRECT":
+    case "INVALID_REDIRECT":
+    case "REDIRECT_WITHOUT_LOCATION":
+    case "TOO_MANY_REDIRECTS":
+      return "The page redirect could not be followed within the public-source boundary.";
+    case "NETWORK_ERROR":
+      return "The page could not be reached from the analysis server.";
+    default:
+      return "The page could not be acquired within the public-source safety limits.";
+  }
+}
+
 export function AnalysisWorkbench({
   configured,
   initialUrl = "",
@@ -92,6 +137,9 @@ export function AnalysisWorkbench({
   const [result, setResult] = useState<AnalysisResponse | null>(null);
   const [localMessage, setLocalMessage] = useState("");
   const [isConfigured, setIsConfigured] = useState(configured);
+  const [requestStartedAt, setRequestStartedAt] = useState<number | null>(null);
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const activeRequest = useRef<AbortController | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -126,6 +174,15 @@ export function AnalysisWorkbench({
     return () => controller.abort();
   }, []);
 
+  useEffect(() => {
+    if (phase !== "running" || requestStartedAt === null) return;
+    const updateElapsed = () => setElapsedSeconds(Math.floor((Date.now() - requestStartedAt) / 1_000));
+    const timer = window.setInterval(updateElapsed, 1_000);
+    return () => window.clearInterval(timer);
+  }, [phase, requestStartedAt]);
+
+  useEffect(() => () => activeRequest.current?.abort(), []);
+
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError("");
@@ -135,15 +192,20 @@ export function AnalysisWorkbench({
       setPhase("unconfigured");
       return;
     }
-    setPhase("reviewing");
+    const startedAt = Date.now();
+    const controller = new AbortController();
+    activeRequest.current = controller;
+    setRequestStartedAt(startedAt);
+    setElapsedSeconds(0);
+    setPhase("running");
     try {
       const response = await fetch("/api/analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         cache: "no-store",
+        signal: controller.signal,
         body: JSON.stringify(mode === "url" ? { mode, url } : { mode, sources }),
       });
-      setPhase("validating");
       const payload: unknown = await response.json();
       if (!response.ok) {
         const message =
@@ -155,11 +217,25 @@ export function AnalysisWorkbench({
       const parsed = parseAnalysisResponse(payload);
       if (!parsed) throw new Error("The server returned an invalid facts-card response.");
       setResult(parsed);
+      setElapsedSeconds(Math.floor((Date.now() - startedAt) / 1_000));
       setPhase("complete");
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : "The sources could not be analyzed.");
+      setError(
+        controller.signal.aborted
+          ? "Analysis was cancelled. Any incomplete output was discarded."
+          : cause instanceof Error
+            ? cause.message
+            : "The sources could not be analyzed.",
+      );
+      setElapsedSeconds(Math.floor((Date.now() - startedAt) / 1_000));
       setPhase("error");
+    } finally {
+      if (activeRequest.current === controller) activeRequest.current = null;
     }
+  }
+
+  function cancelAnalysis() {
+    activeRequest.current?.abort();
   }
 
   function updateSource(index: number, patch: Partial<PastedSourceInput>) {
@@ -188,6 +264,19 @@ export function AnalysisWorkbench({
     setLocalMessage("The browser could not save this draft. Export the JSON instead.");
   }
 
+  function preparePastedFallback() {
+    if (!result?.pageWarnings.length) return;
+    const failedSources = Array.from(new Set(result.pageWarnings
+      .map((warning) => sanitizePageWarningUrl(warning.url))
+      .filter((warningUrl): warningUrl is string => warningUrl !== null)))
+      .slice(0, 7)
+      .map((warningUrl) => ({ ...blankSource(), url: warningUrl }));
+    setSources(failedSources.length ? failedSources : [blankSource()]);
+    setMode("text");
+    setLocalMessage("Paste mode is ready for the pages automatic acquisition missed.");
+    window.requestAnimationFrame(() => document.getElementById("source-title-0")?.focus());
+  }
+
   return (
     <div className="analysis-layout" data-has-result={result ? "true" : "false"}>
       <section className="analysis-input panel" aria-labelledby="analysis-input-title">
@@ -214,7 +303,7 @@ export function AnalysisWorkbench({
                 onChange={(event) => setUrl(event.target.value)}
                 required
               />
-              <p className="field-help">The server reviews this page and at most six relevant pages on the same origin. Pages that appear to describe a different named program are deprioritized. It does not run page scripts or crawl the wider web. Automated pages are labeled user supplied until a human verifies their provenance.</p>
+              <p className="field-help">The server reviews this page and up to six relevant links found on it. It normally stays on the same site; one application link may redirect to a public form host. Pages for a different named program are skipped. It does not run page scripts or crawl the wider web. Automated pages are labeled user supplied until a human verifies their provenance.</p>
             </div>
           ) : (
             <div className="pasted-source-list">
@@ -251,23 +340,31 @@ export function AnalysisWorkbench({
           )}
 
           {error ? <div className="error-summary" role="alert"><strong>Analysis did not complete.</strong> {error}</div> : null}
-          <button className="button" type="submit" disabled={!isConfigured || phase === "reviewing" || phase === "validating"}>
-            {!isConfigured ? "Automatic extraction unavailable" : phase === "reviewing" || phase === "validating" ? "Reviewing and structuring sources…" : "Start analysis"}
-          </button>
+          <div className="button-row">
+            <button className="button" type="submit" disabled={!isConfigured || phase === "running"}>
+              {!isConfigured ? "Automatic extraction unavailable" : phase === "running" ? "Reviewing and structuring sources…" : "Start analysis"}
+            </button>
+            {phase === "running" ? (
+              <button className="button-quiet" type="button" onClick={cancelAnalysis}>
+                Cancel analysis
+              </button>
+            ) : null}
+          </div>
           <div className="notice">
             <strong>Privacy boundary.</strong> Both URL and paste modes send supplied public source text to OpenAI for this response. Opportunity Facts does not intentionally retain it, but hosting, DNS/network, source-site, and OpenAI logs may exist. Do not submit signed or private URLs, application portals, personal information, or account-only content.
           </div>
         </form>
       </section>
 
-      <aside className="analysis-progress" aria-labelledby="analysis-progress-title" aria-live="polite">
+      <aside className="analysis-progress" aria-labelledby="analysis-progress-title">
         <p className="eyebrow">Analysis record</p>
-        <h2 id="analysis-progress-title">What the pipeline is doing</h2>
+        <h2 id="analysis-progress-title">What the analysis includes</h2>
+        <AnalysisRunStatus phase={phase} elapsedSeconds={elapsedSeconds} />
         <ol>
-          <ProgressStep number="01" title="Validate source boundary" state={phase === "idle" || phase === "unconfigured" ? "waiting" : "complete"} text="Allow only bounded public HTTP(S) or explicitly pasted text." />
-          <ProgressStep number="02" title="Review relevant pages" state={phase === "reviewing" ? "active" : phase === "validating" || phase === "complete" ? "complete" : "waiting"} text="Extract visible text and bounded page metadata; ignore executable scripts, boilerplate, and page instructions." />
-          <ProgressStep number="03" title="Extract bounded sections" state={phase === "validating" ? "active" : phase === "complete" ? "complete" : "waiting"} text="Build summary, identity/cycle, and detailed structures independently so one incomplete section cannot corrupt another." />
-          <ProgressStep number="04" title="Validate every excerpt" state={phase === "complete" ? "complete" : "waiting"} text="Match citations back to normalized source text before displaying support." />
+          <PipelineStep number="01" title="Validate source boundary" text="Allow only bounded public HTTP(S) or explicitly pasted text." />
+          <PipelineStep number="02" title="Review relevant pages" text="Extract visible text and bounded page metadata; ignore executable scripts, boilerplate, and page instructions." />
+          <PipelineStep number="03" title="Extract bounded sections" text="Build summary, identity/cycle, and detailed structures independently so one incomplete section cannot corrupt another." />
+          <PipelineStep number="04" title="Validate every excerpt" text="Match citations back to normalized source text before displaying support." />
         </ol>
         {!isConfigured || phase === "unconfigured" ? (
           <div className="configuration-notice">
@@ -312,7 +409,24 @@ export function AnalysisWorkbench({
                 </li>
               ))}
             </ol>
-            {result.pageWarnings.length ? <p className="fine-print">{result.pageWarnings.length} discovered page{result.pageWarnings.length === 1 ? "" : "s"} could not be reviewed; the card lists only pages actually checked.</p> : null}
+            {result.pageWarnings.length ? (
+              <div className="page-warning-panel">
+                <details>
+                  <summary>{result.pageWarnings.length} discovered page{result.pageWarnings.length === 1 ? " was" : "s were"} not acquired</summary>
+                  <p>The draft lists only pages actually checked. Query strings and fragments are removed below.</p>
+                  <ul>
+                    {result.pageWarnings.map((warning, index) => (
+                      <li key={`${warning.url}-${warning.code}-${index}`}>
+                        <strong>{sanitizePageWarningUrl(warning.url) ?? "Discovered page URL unavailable"}</strong>
+                        <span>{pageWarningReason(warning.code)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+                <p>When a public page blocks automatic access, paste its visible wording instead. Do not paste account-only content or personal information.</p>
+                <button className="button-secondary" type="button" onClick={preparePastedFallback}>Paste text for failed pages</button>
+              </div>
+            ) : null}
             {result.evidenceWarnings.some((warning) => warning.fieldId.startsWith("model.")) ? (
               <div className="notice" role="status">
                 <strong>Part of the automated extraction did not complete.</strong> Independently completed sections were retained; the affected section remains missing or uncertain and needs manual review.
@@ -327,12 +441,38 @@ export function AnalysisWorkbench({
   );
 }
 
-function ProgressStep({ number, title, text, state }: { number: string; title: string; text: string; state: "waiting" | "active" | "complete" }) {
+function AnalysisRunStatus({ phase, elapsedSeconds }: { phase: Phase; elapsedSeconds: number }) {
+  const status = phase === "running"
+    ? {
+        title: "Analysis in progress",
+        text: "Source acquisition, extraction, and excerpt checks run server-side. Per-stage updates are not streamed, so keep this tab open.",
+      }
+    : phase === "complete"
+      ? { title: "Draft response received", text: "Review the acquired-page record and any warnings before trusting individual claims." }
+      : phase === "error"
+        ? { title: "No draft returned", text: "The error above explains what stopped this attempt; incomplete output is not presented as a finished card." }
+        : phase === "unconfigured"
+          ? { title: "Automatic extraction unavailable", text: "No source input has been sent." }
+          : { title: "Ready to analyze", text: "Start with a public page or paste visible source wording." };
   return (
-    <li data-state={state}>
-      <span>{state === "complete" ? "✓" : number}</span>
+    <div className="analysis-run-status" data-state={phase}>
+      <span className="analysis-run-indicator" aria-hidden="true" />
+      <div>
+        <h3 aria-live="polite">{status.title}</h3>
+        <p>{status.text}</p>
+        {phase === "running" || phase === "complete" || phase === "error" ? (
+          <small aria-hidden="true">{formatElapsed(elapsedSeconds)}</small>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
+function PipelineStep({ number, title, text }: { number: string; title: string; text: string }) {
+  return (
+    <li>
+      <span>{number}</span>
       <div><h3>{title}</h3><p>{text}</p></div>
-      <small>{state}</small>
     </li>
   );
 }

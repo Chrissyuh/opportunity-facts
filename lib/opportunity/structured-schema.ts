@@ -98,6 +98,7 @@ export const CHARGE_BASES = [
 export const OUTCOME_TYPES = [
   "personal_cash_prize",
   "team_cash_prize",
+  "educator_cash_prize",
   "stipend",
   "project_budget",
   "reimbursement",
@@ -120,6 +121,7 @@ export const RECIPIENT_SCOPES = [
   "project",
   "school",
   "organization",
+  "educator",
 ] as const;
 
 export const MONETARY_NATURES = [
@@ -513,7 +515,7 @@ export const costItemCollectionSchema = z.discriminatedUnion("status", [
 ]);
 
 export const distributionValueSchema = z.strictObject({
-  payee: z.enum(["participant", "team", "registered_venture", "service_provider"]),
+  payee: z.enum(["participant", "team", "educator", "school", "registered_venture", "service_provider"]),
   method: z.enum(["direct", "equal_split", "shared"]),
   condition: z.string().trim().min(1).max(1_000).nullable().default(null),
 });

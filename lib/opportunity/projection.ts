@@ -7,6 +7,7 @@ import {
   type OpportunityFacts,
 } from "./schema-v1";
 import type { OpportunityCard } from "./schema-v2";
+import { SCHEMA_VERSION } from "./schema-version";
 import type { Scope } from "./structured-schema";
 
 export const STRUCTURED_PROJECTION_FIELDS = [
@@ -74,6 +75,14 @@ function scopedVariationLabel(scopes: readonly Scope[], valuesDiffer: boolean): 
     : `Scoped by ${dimension} \u2014 see details`;
 }
 
+function scopeKey(scope: Scope): string {
+  return JSON.stringify({
+    variantIds: [...scope.variantIds].sort(),
+    stageIds: [...scope.stageIds].sort(),
+    pathwayIds: [...scope.pathwayIds].sort(),
+  });
+}
+
 function distinctSources(sources: readonly EvidenceSource[]): EvidenceSource[] {
   const seen = new Set<string>();
   return sources.filter((source) => {
@@ -104,7 +113,7 @@ function sourceClaimKind(claims: readonly { claimKind: string | null }[]) {
 }
 
 function projectionMetadata(rule: string, refs: string[]) {
-  return { schemaVersion: "2.0.0" as const, rule, claimRefs: refs };
+  return { schemaVersion: SCHEMA_VERSION, rule, claimRefs: refs };
 }
 
 function disclosedProjection({
@@ -395,24 +404,57 @@ function projectStages(
       }));
     }
   }
+  const applicationStageIds = new Set(
+    stages.flatMap((stage) =>
+      isDisclosed(stage.definition) && stage.definition.value.kind === "application"
+        ? [stage.id]
+        : [],
+    ),
+  );
   for (const [event, fieldId] of Object.entries(TIMING_FIELD)) {
     if (fieldId && refsByField[fieldId] !== undefined) continue;
-    const matching = timings.filter((timing) => timing.value.event === event);
+    const matching = stages.flatMap((stage) => {
+      if (
+        fieldId === "application_deadline" &&
+        (!isDisclosed(stage.definition) || stage.definition.value.kind !== "application")
+      ) {
+        return [];
+      }
+      return stage.timings
+        .filter(isDisclosed)
+        .filter((timing) => timing.value.event === event);
+    });
     if (matching.length === 0 || !fieldId) continue;
+    const projectionScopes = matching.map((timing) =>
+      fieldId === "application_deadline"
+        ? {
+            ...timing.value.scope,
+            stageIds: timing.value.scope.stageIds.filter(
+              (stageId) => !applicationStageIds.has(stageId),
+            ),
+          }
+        : timing.value.scope,
+    );
     const displays = [...new Set(matching.map((timing) => timing.displayValue || temporalDisplay(timing.value.when)))];
-    const universal = matching.every((timing) => emptyScope(timing.value.scope));
+    const universal = projectionScopes.every(emptyScope);
     const refs = claimRefs(matching);
     const exactDates = matching.flatMap((timing) =>
       timing.value.when.precision === "date" && timing.value.when.certainty === "stated"
         ? [timing.value.when.date]
         : [],
     );
+    const multipleApplicationDeadlinesInOneScope =
+      fieldId === "application_deadline" &&
+      displays.length > 1 &&
+      new Set(projectionScopes.map(scopeKey)).size === 1;
     const displayValue = displays.length === 1 && universal
       ? displays[0]
-      : scopedVariationLabel(
-          matching.map((timing) => timing.value.scope),
-          displays.length > 1,
-        );
+      : multipleApplicationDeadlinesInOneScope
+        ? "Multiple application deadlines — see schedule"
+         : scopedVariationLabel(
+            projectionScopes,
+            displays.length > 1,
+          );
     setProjection(facts, refsByField, fieldId, disclosedProjection({
       value: displayValue,
       displayValue,
@@ -475,23 +517,46 @@ function projectStages(
     scopedClaimProjection("location", locations, facts, refsByField, "stages.locations");
   }
 
-  const definitions = stages.map((stage) => stage.definition);
+  const selectionKinds = new Set([
+    "application",
+    "interview",
+    "proposal_review",
+    "semifinal",
+    "pitch",
+    "finalist",
+    "summit_final",
+    "winner_selection",
+  ]);
+  const selectionStages = stages.filter((stage) =>
+    selectionKinds.has(stage.definition.value.kind) ||
+    stage.selectionRules.length > 0 ||
+    stage.advancement.length > 0 ||
+    /\b(?:application|apply|interview|review|selection|semifinal|finalist|decision|ranking|match day|winner|pitch)\b/iu.test(
+      stage.definition.value.label,
+    ),
+  );
+  const definitions = selectionStages.map((stage) => stage.definition);
   const stageById = new Map(stages.map((stage) => [stage.id, stage]));
-  let displayValue = [...stages]
+  const selectionStageIds = new Set(selectionStages.map((stage) => stage.id));
+  let displayValue = [...selectionStages]
     .sort((left, right) => left.order - right.order || left.id.localeCompare(right.id))
     .map((stage) => stage.definition.value.label)
     .join(" → ");
   const processClaims: ClaimWithEvidence[] = [];
   if (card.pathways.status === "modeled" && card.pathways.records.length > 0) {
-    displayValue = card.pathways.records.map((pathway) => {
-      processClaims.push(pathway.definition, ...pathway.steps);
-      const labels = pathway.steps.flatMap((step) => {
+    displayValue = card.pathways.records.flatMap((pathway) => {
+      const selectionSteps = pathway.steps.filter((step) =>
+        selectionStageIds.has(step.value.stageId),
+      );
+      if (selectionSteps.length === 0) return [];
+      processClaims.push(pathway.definition, ...selectionSteps);
+      const labels = selectionSteps.flatMap((step) => {
         const stage = stageById.get(step.value.stageId);
         if (!stage) return [];
         processClaims.push(stage.definition);
         return [stage.definition.value.label];
       });
-      return `${pathway.definition.value.label}: ${labels.join(" → ")}`;
+      return [`${pathway.definition.value.label}: ${labels.join(" → ")}`];
     }).join("; ");
   } else {
     processClaims.push(...definitions);
@@ -533,16 +598,10 @@ function moneyDisplay(value: { kind: string; amount?: number; minimum?: number; 
 }
 
 function costRefs(cost: OpportunityCard["costItems"] extends { records: Array<infer T> } ? T : never): ClaimWithEvidence[] {
-  return [
-    cost.definition,
-    cost.amount,
-    ...(cost.chargeBasis ? [cost.chargeBasis] : []),
-    ...(cost.treatment ? [cost.treatment] : []),
-    ...(cost.refundability ? [cost.refundability] : []),
-    ...cost.conditions,
-    ...cost.includedItems,
-    ...cost.excludedItems,
-  ];
+  // Flat cost projections state a cost identity and amount. Keep evidence for
+  // refundability, conditions, inclusions, and exclusions on their atomic rich
+  // claims instead of attaching those excerpts to a different summary claim.
+  return [cost.definition, cost.amount];
 }
 
 type CostRecord = OpportunityCard["costItems"]["records"][number];
@@ -595,7 +654,11 @@ function projectCosts(
   const costs = card.costItems.records;
   for (const [kind, fieldId] of Object.entries(COST_FIELD)) {
     if (!fieldId) continue;
-    const matching = costs.filter((cost) => cost.definition.value.kind === kind);
+    const matching = costs.filter(
+      (cost) =>
+        cost.definition.value.kind === kind &&
+        cost.definition.value.requirement !== "optional",
+    );
     if (matching.length === 0) continue;
     const claims = matching.flatMap(costRefs);
     const refs = claimRefs(claims);
@@ -638,7 +701,9 @@ function projectCosts(
         ? "Conditional — see cost details"
         : universal && uniqueAmounts.size === 1
           ? amounts[0].amount.displayValue!
-          : "Varies by program/cohort";
+          : universal && kind === "application_fee"
+            ? "Multiple application fees — see cost details"
+            : "Varies by program/cohort";
       setProjection(facts, refsByField, fieldId, disclosedProjection({
         value: label,
         displayValue: label,
@@ -864,6 +929,13 @@ function outcomeClaims(outcome: OpportunityCard["outcomes"] extends { records: A
   ];
 }
 
+function isParticipantScopedOutcome(
+  outcome: OpportunityCard["outcomes"] extends { records: Array<infer T> } ? T : never,
+): boolean {
+  return outcome.recipientScope.status === "disclosed" &&
+    ["individual", "team", "project"].includes(outcome.recipientScope.value);
+}
+
 function projectOutcomes(
   card: OpportunityCard,
   facts: OpportunityFacts,
@@ -872,7 +944,13 @@ function projectOutcomes(
   if (card.outcomes.status !== "modeled") return;
   const outcomes = card.outcomes.records;
   for (const [fieldId, types] of Object.entries(OUTCOME_FIELDS) as Array<[keyof typeof OUTCOME_FIELDS, readonly string[]]>) {
-    const matching = outcomes.filter((outcome) => types.includes(outcome.definition.value.outcomeType));
+    const matching = outcomes.filter((outcome) =>
+      types.includes(outcome.definition.value.outcomeType) &&
+      isParticipantScopedOutcome(outcome) &&
+      (fieldId !== "cash_award" && fieldId !== "stipend" ||
+        outcome.monetaryNature?.status === "disclosed" &&
+        outcome.monetaryNature.value === "cash"),
+    );
     if (matching.length === 0) continue;
     const claims = matching.flatMap(outcomeClaims);
     const refs = claimRefs(claims);
@@ -921,7 +999,11 @@ function projectOutcomes(
     }
   }
   const mappedTypes = new Set(Object.values(OUTCOME_FIELDS).flat());
-  const other = outcomes.filter((outcome) => !mappedTypes.has(outcome.definition.value.outcomeType));
+  const other = outcomes.filter((outcome) =>
+    !mappedTypes.has(outcome.definition.value.outcomeType) &&
+    outcome.definition.value.outcomeType !== "educator_cash_prize" &&
+    isParticipantScopedOutcome(outcome),
+  );
   if (other.length > 0) {
     const claims = other.flatMap(outcomeClaims);
     const refs = claimRefs(claims);

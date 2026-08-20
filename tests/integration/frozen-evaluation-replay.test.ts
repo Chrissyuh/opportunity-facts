@@ -78,6 +78,46 @@ function replayArtifact(filename: string): {
 }
 
 describe("closed out-of-sample artifact replay", () => {
+  it("withholds the teacher-only Breakthrough benefit from participant benefits", async () => {
+    const { artifact, sources } = replayArtifact(
+      "breakthrough-junior-challenge-2026-run-01.json",
+    );
+    const result = await extractOpportunityCard(
+      sources,
+      async () => artifact.modelOutput.rawStructuredCandidate,
+    );
+    expect(result.card.facts.other_benefits.status).toBe("unclear");
+    expect(result.card.cycle.status === "modeled" && result.card.cycle.value.label.value).toBe("2026");
+  });
+
+  it("withholds CAC eligibility geography and optional-SMS terms from unrelated fields", async () => {
+    const { artifact, sources } = replayArtifact(
+      "congressional-app-challenge-2026-run-01.json",
+    );
+    const result = await extractOpportunityCard(
+      sources,
+      async () => artifact.modelOutput.rawStructuredCandidate,
+    );
+    expect(result.card.facts.location.status).toBe("unclear");
+    expect(result.card.facts.cancellation_rights.status).toBe("unclear");
+    expect(result.card.facts.material_terms.status).toBe("unclear");
+    expect(result.card.cycle.status === "modeled" && result.card.cycle.value.label.value).toBe("2026");
+  });
+
+  it("keeps the supported MITES selection wording while withholding national reach as eligibility", async () => {
+    const { artifact, sources } = replayArtifact(
+      "mites-summer-2027-run-01.json",
+    );
+    const result = await extractOpportunityCard(
+      sources,
+      async () => artifact.modelOutput.rawStructuredCandidate,
+    );
+    expect(result.card.facts.geographic_restrictions.status).toBe("unclear");
+    expect(result.card.facts.selection_process.status).toBe("disclosed");
+    expect(result.card.facts.selection_process.displayValue).toBe("Holistic selection process");
+    expect(result.card.cycle.status === "modeled" && result.card.cycle.value.label.value).toBe("Summer 2027");
+  });
+
   it("withholds all three Polygence platform/legal subject errors", async () => {
     const { artifact, sources } = replayArtifact(
       "polygence-core-program-fall-2026-run-01.json",
@@ -89,6 +129,7 @@ describe("closed out-of-sample artifact replay", () => {
     expect(result.card.facts.ages.status).toBe("unclear");
     expect(result.card.facts.geographic_restrictions.status).toBe("unclear");
     expect(result.card.facts.sponsor_requirement.status).toBe("unclear");
+    expect(result.card.facts.program_seat.status).toBe("unclear");
   });
 
   it("does not promote the historical QuestBridge count without target-cycle alignment", async () => {
@@ -101,5 +142,23 @@ describe("closed out-of-sample artifact replay", () => {
     );
     expect(result.card.facts.acceptance_count.status).toBe("unclear");
     expect(result.card.facts.acceptance_count.note).toMatch(/target cycle/i);
+    expect(result.card.facts.entry_format.status).toBe("unclear");
+    expect(result.card.facts.entry_format.note).toMatch(/individual entry/i);
+  });
+
+  it("preserves Yale application-plan fees without labeling them cohort variation", async () => {
+    const { artifact, sources } = replayArtifact(
+      "yale-young-global-scholars-summer-2027-run-01.json",
+    );
+    const result = await extractOpportunityCard(
+      sources,
+      async () => artifact.modelOutput.rawStructuredCandidate,
+    );
+    expect(result.card.facts.application_fee.status).toBe("disclosed");
+    expect(result.card.facts.application_fee.displayValue).toBe(
+      "Multiple application fees — see cost details",
+    );
+    expect(result.card.facts.cancellation_rights.status).toBe("unclear");
+    expect(result.card.cycle.status === "modeled" && result.card.cycle.value.label.value).toBe("Summer 2027");
   });
 });

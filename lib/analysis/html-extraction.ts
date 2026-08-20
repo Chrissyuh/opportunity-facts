@@ -3,7 +3,7 @@ import "server-only";
 import { createHash } from "node:crypto";
 
 import { load, type Cheerio, type CheerioAPI } from "cheerio";
-import type { AnyNode } from "domhandler";
+import { hasChildren, isTag, isText, type AnyNode } from "domhandler";
 
 import type {
   ExtractedLink,
@@ -18,6 +18,7 @@ export const MAX_EXTRACTED_LINKS = 500;
 export const MAX_SOURCE_INPUT_CHARACTERS = 2_000_000;
 export const MAX_SOURCE_TITLE_CHARACTERS = 240;
 export const MAX_STRUCTURED_METADATA_CHARACTERS = 50_000;
+export const MAX_STRUCTURED_METADATA_NODES = 10_000;
 
 const HIDDEN_NAME_PATTERN =
   /(?:^|\s)(?:d-none|hidden|invisible|offscreen|screen-reader|sr-only|visually-hidden)(?:$|\s)/iu;
@@ -41,14 +42,45 @@ export function normalizeVisibleText(value: string): string {
     .trim();
 }
 
+function descendantText(
+  element: AnyNode,
+  skipSubtree: (node: AnyNode) => boolean = () => false,
+): string {
+  if (!hasChildren(element)) return "";
+  const text: string[] = [];
+  const stack = [...element.children].reverse();
+  while (stack.length > 0) {
+    const node = stack.pop();
+    if (!node) break;
+    if (skipSubtree(node)) continue;
+    if (isText(node)) {
+      text.push(node.data);
+      continue;
+    }
+    if (isTag(node) && node.name.toLowerCase() === "br") {
+      text.push("\n");
+      continue;
+    }
+    if (hasChildren(node)) {
+      for (const child of [...node.children].reverse()) stack.push(child);
+    }
+  }
+  return text.join("");
+}
+
+function selectionText(selection: Cheerio<AnyNode>): string {
+  return selection.toArray().map((node) => descendantText(node)).join("");
+}
+
 function stablePageId(url: string): string {
   return `page-${createHash("sha256").update(url).digest("hex").slice(0, 16)}`;
 }
 
 function removeCssHiddenElements($: CheerioAPI): void {
-  const selectors = new Set<string>();
+  const hiddenClasses = new Set<string>();
+  const hiddenIds = new Set<string>();
   $("style").each((_index, element) => {
-    const css = $(element).text();
+    const css = descendantText(element);
     const rulePattern = /([^{}]+)\{([^{}]*)\}/gu;
     for (const match of css.matchAll(rulePattern)) {
       if (!HIDDEN_CSS_DECLARATION.test(match[2] ?? "")) {
@@ -57,15 +89,59 @@ function removeCssHiddenElements($: CheerioAPI): void {
       for (const selector of (match[1] ?? "").split(",")) {
         const trimmed = selector.trim();
         if (/^[.#][a-z_][a-z0-9_-]*$/iu.test(trimmed)) {
-          selectors.add(trimmed);
+          const name = trimmed.slice(1);
+          if (trimmed.startsWith(".")) hiddenClasses.add(name);
+          else hiddenIds.add(name);
         }
       }
     }
   });
 
-  for (const selector of selectors) {
-    $(selector).remove();
+  // Querying the full document once per CSS selector is quadratic on a
+  // hostile page with thousands of simple hidden rules. The accepted selector
+  // grammar is deliberately only `.class` and `#id`, so one bounded DOM walk
+  // is equivalent and keeps extraction linear in page size.
+  if (hiddenClasses.size === 0 && hiddenIds.size === 0) return;
+  $("[class], [id]").each((_index, element) => {
+    const node = $(element);
+    const id = node.attr("id");
+    const classes = (node.attr("class") ?? "").split(/\s+/u).filter(Boolean);
+    if (
+      (id !== undefined && hiddenIds.has(id)) ||
+      classes.some((className) => hiddenClasses.has(className))
+    ) {
+      node.remove();
+    }
+  });
+}
+
+function subtreesContainingNavigation($: CheerioAPI): ReadonlySet<AnyNode> {
+  const subtrees = new Set<AnyNode>();
+  const stack: Array<{ node: AnyNode; leaving: boolean }> = $.root()
+    .toArray()
+    .reverse()
+    .map((node) => ({ node, leaving: false }));
+
+  while (stack.length > 0) {
+    const frame = stack.pop();
+    if (!frame) break;
+    if (frame.leaving) {
+      const isNavigation =
+        isTag(frame.node) &&
+        (frame.node.name.toLowerCase() === "footer" || frame.node.name.toLowerCase() === "nav");
+      const hasNavigationChild =
+        hasChildren(frame.node) && frame.node.children.some((child) => subtrees.has(child));
+      if (isNavigation || hasNavigationChild) subtrees.add(frame.node);
+      continue;
+    }
+    stack.push({ node: frame.node, leaving: true });
+    if (hasChildren(frame.node)) {
+      for (const child of [...frame.node.children].reverse()) {
+        stack.push({ node: child, leaving: false });
+      }
+    }
   }
+  return subtrees;
 }
 
 function removeHiddenAndExecutableContent($: CheerioAPI): void {
@@ -79,6 +155,7 @@ function removeHiddenAndExecutableContent($: CheerioAPI): void {
       $(element).remove();
     }
   });
+  const navigationSubtrees = subtreesContainingNavigation($);
   $("[style]").each((_index, element) => {
     const node = $(element);
     const style = node.attr("style") ?? "";
@@ -88,7 +165,7 @@ function removeHiddenAndExecutableContent($: CheerioAPI): void {
       tagName === "article" ||
       (node.attr("role") ?? "").toLowerCase() === "main" ||
       node.parent().is("main, article, [role='main']") ||
-      node.find("footer, nav").length > 0;
+      (hasChildren(element) && element.children.some((child) => navigationSubtrees.has(child)));
     // Some SSR frameworks ship real primary content at opacity 0 with an
     // initial transform, then reveal it during hydration. Preserve only that
     // semantic top-level shell. Arbitrary opacity-hidden nodes stay excluded.
@@ -128,39 +205,49 @@ function extractStructuredMetadataBlocks($: CheerioAPI): readonly ExtractedTextB
     usedCharacters += text.length;
     blocks.push({ kind, text });
   };
-  const visit = (value: unknown): void => {
-    if (Array.isArray(value)) {
-      value.forEach(visit);
-      return;
+  const visit = (root: unknown): void => {
+    const pending: unknown[] = [root];
+    let visitedNodes = 0;
+    while (pending.length > 0 && visitedNodes < MAX_STRUCTURED_METADATA_NODES) {
+      const value = pending.pop();
+      visitedNodes += 1;
+      if (Array.isArray(value)) {
+        for (let index = value.length - 1; index >= 0; index -= 1) {
+          pending.push(value[index]);
+        }
+        continue;
+      }
+      if (typeof value !== "object" || value === null) continue;
+      const record = value as Record<string, unknown>;
+      const types = jsonLdTypes(record["@type"]);
+      if (types.includes("Question")) push("heading", record.name);
+      if (types.includes("Answer")) push("paragraph", record.text);
+      if (types.includes("Course")) {
+        push("heading", record.name);
+        push("paragraph", record.description);
+        push("definition", record.courseMode);
+        push("definition", record.duration);
+        push("definition", record.educationalLevel);
+      }
+      if (types.includes("Offer")) {
+        push("definition", record.price);
+        push("definition", record.priceCurrency);
+      }
+      if (types.includes("Organization")) push("definition", record.name);
+
+      const children: unknown[] = [];
+      if (Array.isArray(record["@graph"])) children.push(record["@graph"]);
+      if (types.includes("FAQPage")) children.push(record.mainEntity);
+      if (types.includes("Question")) children.push(record.acceptedAnswer);
+      if (types.includes("Course")) children.push(record.provider, record.offers);
+      for (let index = children.length - 1; index >= 0; index -= 1) {
+        pending.push(children[index]);
+      }
     }
-    if (typeof value !== "object" || value === null) return;
-    const record = value as Record<string, unknown>;
-    if (Array.isArray(record["@graph"])) visit(record["@graph"]);
-    const types = jsonLdTypes(record["@type"]);
-    if (types.includes("FAQPage")) visit(record.mainEntity);
-    if (types.includes("Question")) {
-      push("heading", record.name);
-      visit(record.acceptedAnswer);
-    }
-    if (types.includes("Answer")) push("paragraph", record.text);
-    if (types.includes("Course")) {
-      push("heading", record.name);
-      push("paragraph", record.description);
-      push("definition", record.courseMode);
-      push("definition", record.duration);
-      push("definition", record.educationalLevel);
-      visit(record.provider);
-      visit(record.offers);
-    }
-    if (types.includes("Offer")) {
-      push("definition", record.price);
-      push("definition", record.priceCurrency);
-    }
-    if (types.includes("Organization")) push("definition", record.name);
   };
 
   $("script[type='application/ld+json']").slice(0, 20).each((_index, element) => {
-    const source = $(element).text();
+    const source = descendantText(element);
     if (!source || source.length > 250_000) return;
     try {
       visit(JSON.parse(source));
@@ -206,7 +293,7 @@ function extractLinks($: CheerioAPI, pageUrl: URL): readonly ExtractedLink[] {
     url.hash = "";
 
     const text = normalizeVisibleText(
-      anchor.text() || anchor.attr("aria-label") || anchor.attr("title") || "",
+      descendantText(element) || anchor.attr("aria-label") || anchor.attr("title") || "",
     ).slice(0, 500);
     if (!text) {
       return;
@@ -238,12 +325,12 @@ function contentScope($: CheerioAPI): Cheerio<AnyNode> {
 }
 
 function textWithoutNestedLists(
-  $: CheerioAPI,
   element: AnyNode,
 ): string {
-  const clone = $(element).clone();
-  clone.find("ol, ul").remove();
-  return normalizeVisibleText(clone.text());
+  return normalizeVisibleText(descendantText(
+    element,
+    (node) => isTag(node) && (node.name.toLowerCase() === "ol" || node.name.toLowerCase() === "ul"),
+  ));
 }
 
 function pushBlock(
@@ -276,25 +363,69 @@ function extractBlocks(
   const structuredSelector =
     "h1, h2, h3, h4, h5, h6, p, li, tr, dt, dd, blockquote, pre, legend, label, a[href]";
   const genericContainerSelector = "article, div, fieldset, form, main, section";
+  const genericContainerTags = new Set(genericContainerSelector.split(", "));
+  const blockTextTags = new Set([
+    "blockquote", "dd", "dt", "h1", "h2", "h3", "h4", "h5", "h6",
+    "label", "legend", "li", "p", "pre", "tr",
+  ]);
   const selector = `${structuredSelector}, ${genericContainerSelector}`;
+  const selectedElements = scope.find(selector).toArray();
+  const selectedSet = new Set<AnyNode>(selectedElements);
+  const selectedWithDescendants = new Set<AnyNode>();
+  const linksWithBlockAncestor = new Set<AnyNode>();
+  const selectedAncestors: AnyNode[] = [];
+  const blockAncestors: AnyNode[] = [];
+  const stack: Array<{ node: AnyNode; leaving: boolean }> = [];
 
-  scope.find(selector).each((_index, element) => {
+  for (const root of scope.toArray().reverse()) {
+    if (!hasChildren(root)) continue;
+    for (const child of [...root.children].reverse()) {
+      stack.push({ node: child, leaving: false });
+    }
+  }
+  while (stack.length > 0) {
+    const frame = stack.pop();
+    if (!frame) break;
+    const isSelected = selectedSet.has(frame.node);
+    const tagName = isTag(frame.node) ? frame.node.name.toLowerCase() : "";
+    const isBlock = blockTextTags.has(tagName);
+    if (frame.leaving) {
+      if (isSelected) selectedAncestors.pop();
+      if (isBlock) blockAncestors.pop();
+      continue;
+    }
+    if (tagName === "a" && blockAncestors.length > 0) {
+      linksWithBlockAncestor.add(frame.node);
+    }
+    if (isSelected) {
+      const selectedParent = selectedAncestors.at(-1);
+      if (selectedParent) selectedWithDescendants.add(selectedParent);
+      selectedAncestors.push(frame.node);
+    }
+    if (isBlock) blockAncestors.push(frame.node);
+    stack.push({ node: frame.node, leaving: true });
+    if (hasChildren(frame.node)) {
+      for (const child of [...frame.node.children].reverse()) {
+        stack.push({ node: child, leaving: false });
+      }
+    }
+  }
+
+  selectedElements.forEach((element) => {
     const node = $(element);
     const tagName = element.type === "tag" ? element.name.toLowerCase() : "";
 
-    if (genericContainerSelector.split(", ").includes(tagName)) {
-      if (
-        node.find(`${structuredSelector}, ${genericContainerSelector}`).length === 0
-      ) {
+    if (genericContainerTags.has(tagName)) {
+      if (!selectedWithDescendants.has(element)) {
         pushBlock(blocks, seenRepeatedProse, {
           kind: "paragraph",
-          text: normalizeVisibleText(node.text()),
+          text: normalizeVisibleText(descendantText(element)),
         });
       }
       return;
     }
 
-    if (tagName === "a" && node.parents("p, li, tr, dt, dd, blockquote, pre, legend, label, h1, h2, h3, h4, h5, h6").length > 0) {
+    if (tagName === "a" && linksWithBlockAncestor.has(element)) {
       return;
     }
 
@@ -302,7 +433,10 @@ function extractBlocks(
       const headingLevel = Number(tagName.slice(1)) as 1 | 2 | 3 | 4 | 5 | 6;
       pushBlock(blocks, seenRepeatedProse, {
         kind: "heading",
-        text: normalizeVisibleText(node.text()),
+        text: normalizeVisibleText(descendantText(
+          element,
+          (child) => isTag(child) && blockTextTags.has(child.name.toLowerCase()),
+        )),
         headingLevel,
       });
       return;
@@ -311,7 +445,7 @@ function extractBlocks(
     if (tagName === "li") {
       pushBlock(blocks, seenRepeatedProse, {
         kind: "list_item",
-        text: textWithoutNestedLists($, element),
+        text: textWithoutNestedLists(element),
       });
       return;
     }
@@ -320,7 +454,10 @@ function extractBlocks(
       const cells = node
         .children("th, td")
         .toArray()
-        .map((cell) => normalizeVisibleText($(cell).text()))
+        .map((cell) => normalizeVisibleText(descendantText(
+          cell,
+          (child) => isTag(child) && child.name.toLowerCase() === "table",
+        )))
         .filter(Boolean);
       pushBlock(blocks, seenRepeatedProse, {
         kind: "table_row",
@@ -338,7 +475,7 @@ function extractBlocks(
       pushBlock(blocks, seenRepeatedProse, {
         kind: "link",
         text: normalizeVisibleText(
-          node.text() || node.attr("aria-label") || node.attr("title") || "",
+          descendantText(element) || node.attr("aria-label") || node.attr("title") || "",
         ),
         href,
       });
@@ -355,14 +492,17 @@ function extractBlocks(
             : "paragraph";
     pushBlock(blocks, seenRepeatedProse, {
       kind,
-      text: normalizeVisibleText(node.text()),
+      text: normalizeVisibleText(descendantText(
+        element,
+        (child) => isTag(child) && blockTextTags.has(child.name.toLowerCase()),
+      )),
     });
   });
 
   if (blocks.length === 0) {
     pushBlock(blocks, seenRepeatedProse, {
       kind: "paragraph",
-      text: normalizeVisibleText(scope.text()),
+      text: normalizeVisibleText(selectionText(scope)),
     });
   }
 
@@ -441,8 +581,8 @@ export function extractHtmlPage(
   const links = extractLinks($, url);
   removeBoilerplate($);
   const scope = contentScope($);
-  const normalizedTitle = normalizeVisibleText($("title").first().text());
-  const normalizedHeading = normalizeVisibleText($("h1").first().text());
+  const normalizedTitle = normalizeVisibleText(selectionText($("title").first()));
+  const normalizedHeading = normalizeVisibleText(selectionText($("h1").first()));
   const title = (normalizedTitle || normalizedHeading || url.hostname).slice(
     0,
     MAX_SOURCE_TITLE_CHARACTERS,

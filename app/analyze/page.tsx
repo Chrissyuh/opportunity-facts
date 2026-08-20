@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AnalysisWorkbench } from "@/components/analysis-workbench";
+import { isAnalysisEnabled } from "@/lib/analysis/admission-control";
 
 export const metadata: Metadata = {
   title: "Analyze sources",
@@ -19,7 +20,9 @@ export default function AnalyzePage() {
         </div>
       </header>
       <div className="shell section">
-        <AnalysisWorkbench configured={Boolean(process.env.OPENAI_API_KEY?.trim())} />
+        <AnalysisWorkbench
+          configured={isAnalysisEnabled() && Boolean(process.env.OPENAI_API_KEY?.trim())}
+        />
       </div>
     </main>
   );

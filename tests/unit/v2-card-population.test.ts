@@ -4,6 +4,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 import {
+  SCHEMA_VERSION,
   opportunityCardSchema,
   type OpportunityCard,
 } from "../../lib/opportunity/schema-v2";
@@ -35,9 +36,9 @@ describe("canonical V2 repository cards", () => {
     expect(demos).toHaveLength(7);
     expect(reviewed).toHaveLength(10);
     for (const card of [...demos, ...reviewed]) {
-      expect(card.schemaVersion).toBe("2.0.0");
+      expect(card.schemaVersion).toBe(SCHEMA_VERSION);
       if (card.migratedFrom === null) {
-        expect(card.cardVersion).toBe(1);
+        expect(card.cardVersion).toBeGreaterThanOrEqual(1);
       } else {
         expect(card.cardVersion).toBe(2);
         expect(card.migratedFrom.schemaVersion).toBe("1.0.0");
@@ -51,7 +52,8 @@ describe("canonical V2 repository cards", () => {
     }
     for (const card of reviewed) {
       expect(card.reviewState).toBe("human_reviewed");
-      expect(card.reviewedAt).toMatch(/^2026-08-12T/);
+      expect(card.reviewedAt).not.toBeNull();
+      expect(Date.parse(card.reviewedAt!)).toBeGreaterThanOrEqual(Date.parse("2026-08-12T00:00:00.000Z"));
       expect(card.opportunityId).not.toBeNull();
       expect(card.cycle.status).toBe("modeled");
       for (const collection of [

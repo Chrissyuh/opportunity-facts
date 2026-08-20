@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.0.0",
+  "schemaVersion": "2.1.0",
   "opportunityId": "questbridge-national-college-match",
   "cycle": {
     "status": "modeled",
@@ -1746,7 +1746,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "qb-role-operator-claim",
@@ -1778,7 +1778,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator-kind",
         "claimRefs": [
           "qb-org-kind",
@@ -1810,7 +1810,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.institution-list",
         "claimRefs": [
           "qb-college-partnership-claim"
@@ -1841,7 +1841,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.summary",
         "claimRefs": [
           "qb-college-partnership-claim"
@@ -1872,7 +1872,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "relationships.explanations",
         "claimRefs": [
           "qb-college-partnership-claim"
@@ -2043,7 +2043,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "cycle.closes",
         "claimRefs": [
           "qb-application-deadline"
@@ -2079,7 +2079,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.decision",
         "claimRefs": [
           "qb-finalist-decision",
@@ -2121,7 +2121,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "cycle.coverage-end",
         "claimRefs": [
           "qb-fall-entry"
@@ -2212,7 +2212,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.formats",
         "claimRefs": [
           "qb-application-format",
@@ -2243,7 +2243,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.locations",
         "claimRefs": [
           "qb-enrollment-location"
@@ -2289,12 +2289,11 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "costs.application_fee",
         "claimRefs": [
           "qb-application-fee-definition",
-          "qb-application-fee-amount",
-          "qb-application-fee-basis"
+          "qb-application-fee-amount"
         ]
       }
     },
@@ -2372,12 +2371,11 @@
         "explanation": "Calculated from complete compatible v2 cost items; credited deposits are not added twice."
       },
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "costs.total-exact",
         "claimRefs": [
           "qb-application-fee-definition",
-          "qb-application-fee-amount",
-          "qb-application-fee-basis"
+          "qb-application-fee-amount"
         ]
       }
     },
@@ -2470,8 +2468,8 @@
     },
     "selection_process": {
       "status": "disclosed",
-      "value": "Ranked Match pathway: QuestBridge application → College ranking → Finalist selection → College Match Requirements → Match Day → College enrollment; QuestBridge Regular Decision pathway: QuestBridge application → Finalist selection → College enrollment",
-      "displayValue": "Ranked Match pathway: QuestBridge application → College ranking → Finalist selection → College Match Requirements → Match Day → College enrollment; QuestBridge Regular Decision pathway: QuestBridge application → Finalist selection → College enrollment",
+      "value": "Ranked Match pathway: QuestBridge application → College ranking → Finalist selection → College Match Requirements → Match Day; QuestBridge Regular Decision pathway: QuestBridge application → Finalist selection",
+      "displayValue": "Ranked Match pathway: QuestBridge application → College ranking → Finalist selection → College Match Requirements → Match Day; QuestBridge Regular Decision pathway: QuestBridge application → Finalist selection",
       "normalizedValue": null,
       "sources": [
         {
@@ -2520,14 +2518,6 @@
           "title": "Dates & Deadlines - QuestBridge",
           "pageType": "official_program_page",
           "accessedAt": "2026-08-12T06:25:00.000Z",
-          "excerpt": "Fall 2027"
-        },
-        {
-          "id": "qb-dates",
-          "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
-          "title": "Dates & Deadlines - QuestBridge",
-          "pageType": "official_program_page",
-          "accessedAt": "2026-08-12T06:25:00.000Z",
           "excerpt": "October 21  | Finalist decisions released"
         },
         {
@@ -2553,14 +2543,6 @@
           "pageType": "official_program_page",
           "accessedAt": "2026-08-12T06:25:00.000Z",
           "excerpt": "QuestBridge Regular Decision"
-        },
-        {
-          "id": "qb-dates",
-          "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
-          "title": "Dates & Deadlines - QuestBridge",
-          "pageType": "official_program_page",
-          "accessedAt": "2026-08-12T06:25:00.000Z",
-          "excerpt": "QuestBridge Regular Decision applicants"
         }
       ],
       "note": "The v2 pathway ledger preserves the branches rather than selecting one route.",
@@ -2569,7 +2551,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.process",
         "claimRefs": [
           "qb-match-pathway-definition",
@@ -2578,17 +2560,14 @@
           "qb-match-step-finalist",
           "qb-match-step-requirements",
           "qb-match-step-match",
-          "qb-match-step-enroll",
           "qb-application-stage",
           "qb-ranking-stage",
           "qb-finalist-stage",
           "qb-requirements-stage",
           "qb-match-stage",
-          "qb-enrollment-stage",
           "qb-rd-pathway-definition",
           "qb-rd-step-apply",
-          "qb-rd-step-finalist",
-          "qb-rd-step-enroll"
+          "qb-rd-step-finalist"
         ]
       }
     },
@@ -2744,7 +2723,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.tuition_waiver",
         "claimRefs": [
           "qb-scholarship-definition",
@@ -2806,7 +2785,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.in_kind_value",
         "claimRefs": [
           "qb-network-definition",
@@ -3066,27 +3045,22 @@
       "qb-match-step-finalist",
       "qb-match-step-requirements",
       "qb-match-step-match",
-      "qb-match-step-enroll",
       "qb-application-stage",
       "qb-ranking-stage",
       "qb-finalist-stage",
       "qb-requirements-stage",
       "qb-match-stage",
-      "qb-enrollment-stage",
       "qb-rd-pathway-definition",
       "qb-rd-step-apply",
-      "qb-rd-step-finalist",
-      "qb-rd-step-enroll"
+      "qb-rd-step-finalist"
     ],
     "application_fee": [
       "qb-application-fee-definition",
-      "qb-application-fee-amount",
-      "qb-application-fee-basis"
+      "qb-application-fee-amount"
     ],
     "estimated_total_mandatory_cost": [
       "qb-application-fee-definition",
-      "qb-application-fee-amount",
-      "qb-application-fee-basis"
+      "qb-application-fee-amount"
     ],
     "tuition_waiver": [
       "qb-scholarship-definition",

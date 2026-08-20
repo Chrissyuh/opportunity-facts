@@ -224,6 +224,233 @@ describe("analysis pipeline", () => {
     expect(payload.every((source) => source.truncatedForModel)).toBe(true);
   });
 
+  it("retains validated positive structures when source coverage is truncated", async () => {
+    const excerpt = "Example Learning operates the Aurora Program. The application fee is $25 USD.";
+    const source: AnalysisSourceContext = {
+      accessedAt: "2026-08-20T07:00:00.000Z",
+      page: {
+        id: "page-long-program",
+        url: "https://aurora.example/programs/aurora",
+        title: "Aurora Program",
+        pageType: "user_supplied",
+        trust: "untrusted_source_text",
+        text: `${excerpt}\n${"x".repeat(MAX_MODEL_INPUT_CHARACTERS + 1)}`,
+        blocks: [{ kind: "paragraph", text: excerpt }],
+        links: [],
+        truncated: false,
+      },
+    };
+    const structures = createEmptyModelStructures();
+    structures.organizations = {
+      status: "modeled",
+      note: null,
+      records: [{
+        id: "example-learning",
+        name: structuredAssertion(
+          source,
+          "example-learning-name",
+          "Example Learning",
+          "Example Learning",
+          excerpt,
+        ),
+        kind: structuredAssertion(
+          source,
+          "example-learning-kind",
+          "education_provider",
+          "Education provider",
+          excerpt,
+        ),
+      }],
+    };
+    structures.costItems = {
+      status: "modeled",
+      completeness: "complete",
+      note: null,
+      records: [{
+        id: "application-fee",
+        definition: structuredAssertion(
+          source,
+          "application-fee-definition",
+          {
+            label: "Application fee",
+            kind: "application_fee",
+            requirement: "required",
+            scope: { variantIds: [], stageIds: [], pathwayIds: [] },
+          },
+          "Application fee",
+          excerpt,
+        ),
+        amount: structuredAssertion(
+          source,
+          "application-fee-amount",
+          { kind: "exact", amount: 25, currency: "USD" },
+          "$25 USD",
+          excerpt,
+        ),
+        chargeBasis: null,
+        treatment: null,
+        refundability: null,
+        includedItems: [],
+        excludedItems: [],
+        conditions: [],
+      }],
+    };
+
+    const result = await extractOpportunityCard([source], async () => ({
+      facts: createEmptyFacts(),
+      structures,
+    }));
+
+    expect(result.card.organizations.status).toBe("modeled");
+    expect(result.card.organizations.records).toHaveLength(1);
+    expect(result.card.costItems.status).toBe("modeled");
+    expect(result.card.costItems.status === "modeled" && result.card.costItems.completeness).toBe("incomplete");
+    expect(result.card.facts.application_fee.status).toBe("disclosed");
+    expect(result.card.facts.estimated_total_mandatory_cost.status).toBe("unclear");
+    expect(result.evidenceWarnings).toEqual(expect.arrayContaining([
+      expect.objectContaining({ fieldId: "structured", message: expect.stringMatching(/positively evidenced/i) }),
+    ]));
+  });
+
+  it("does not resolve the target cycle from a sibling opportunity", async () => {
+    const root: AnalysisSourceContext = {
+      accessedAt: "2026-08-20T07:00:00.000Z",
+      page: {
+        id: "page-target",
+        url: "https://example.org/programs/aurora-challenge",
+        title: "Aurora Challenge | Example",
+        pageType: "user_supplied",
+        trust: "untrusted_source_text",
+        text: "Aurora Challenge applications are open.",
+        blocks: [{ kind: "heading", text: "Aurora Challenge applications are open" }],
+        links: [],
+        truncated: false,
+      },
+    };
+    const sibling: AnalysisSourceContext = {
+      accessedAt: root.accessedAt,
+      page: {
+        id: "page-sibling",
+        url: "https://example.org/programs/builder-competition",
+        title: "Builder Competition | Example",
+        pageType: "user_supplied",
+        trust: "untrusted_source_text",
+        text: "2027 competition cycle",
+        blocks: [{ kind: "heading", text: "2027 competition cycle" }],
+        links: [],
+        truncated: false,
+      },
+    };
+
+    const result = await extractOpportunityCard([root, sibling], async () => ({
+      facts: createEmptyFacts(),
+      structures: createEmptyModelStructures(),
+    }));
+    expect(result.card.cycle.status).toBe("unassessed");
+  });
+
+  it("does not let a model-selected year bypass an ambiguous deterministic cycle", async () => {
+    const source: AnalysisSourceContext = {
+      accessedAt: "2026-08-20T07:00:00.000Z",
+      page: {
+        id: "page-program-years",
+        url: "https://example.org/programs/aurora",
+        title: "Aurora Program cohorts",
+        pageType: "user_supplied",
+        trust: "untrusted_source_text",
+        text: "2025 cohort\n2026 cohort",
+        blocks: [
+          { kind: "heading", text: "2025 cohort" },
+          { kind: "heading", text: "2026 cohort" },
+        ],
+        links: [],
+        truncated: false,
+      },
+    };
+    const structures = createEmptyModelStructures();
+    structures.cycle = {
+      status: "modeled",
+      value: {
+        id: "cycle-2026",
+        label: structuredAssertion(source, "cycle-label", "2026", "2026", "2026 cohort"),
+        status: {
+          claimId: "cycle-status",
+          status: "unclear",
+          value: null,
+          displayValue: null,
+          claimKind: null,
+          sources: [evidence(source, "2026 cohort")],
+          note: "The page does not state whether this cohort is currently active.",
+          conflictingValues: [],
+        },
+        year: structuredAssertion(source, "cycle-year", 2026, "2026", "2026 cohort"),
+        startYear: null,
+        endYear: null,
+        season: null,
+        cycleType: structuredAssertion(source, "cycle-type", "cohort", "Cohort", "2026 cohort"),
+        timingRefs: { opens: null, closes: null, coverageStart: null, coverageEnd: null },
+      },
+    };
+
+    const result = await extractOpportunityCard([source], async () => ({
+      facts: createEmptyFacts(),
+      structures,
+    }));
+    expect(result.card.cycle.status).toBe("unassessed");
+    expect(result.evidenceWarnings).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        fieldId: "structured.cycle",
+        message: expect.stringMatching(/deterministic target cycle|ambiguous/i),
+      }),
+    ]));
+  });
+
+  it("withholds a target-specific fact if any attached citation comes from a sibling program", async () => {
+    const root: AnalysisSourceContext = {
+      accessedAt: "2026-08-20T07:00:00.000Z",
+      page: {
+        id: "page-target",
+        url: "https://example.org/programs/aurora-challenge",
+        title: "Aurora Challenge | Example",
+        pageType: "user_supplied",
+        trust: "untrusted_source_text",
+        text: "Aurora Challenge is open to high school students.",
+        blocks: [],
+        links: [],
+        truncated: false,
+      },
+    };
+    const sibling: AnalysisSourceContext = {
+      accessedAt: root.accessedAt,
+      page: {
+        id: "page-sibling",
+        url: "https://example.org/programs/builder-competition",
+        title: "Builder Competition | Example",
+        pageType: "user_supplied",
+        trust: "untrusted_source_text",
+        text: "Builder Competition is open to high school students.",
+        blocks: [],
+        links: [],
+        truncated: false,
+      },
+    };
+    const facts = createEmptyFacts();
+    facts.grade_levels = factSchema.parse({
+      status: "disclosed",
+      value: "High school students",
+      displayValue: "High school students",
+      claimKind: "source_stated",
+      sources: [
+        evidence(root, "Aurora Challenge is open to high school students."),
+        evidence(sibling, "Builder Competition is open to high school students."),
+      ],
+    });
+
+    const result = await extractOpportunityCard([root, sibling], async () => ({ facts }));
+    expect(result.card.facts.grade_levels.status).toBe("unclear");
+    expect(result.card.facts.grade_levels.note).toMatch(/different opportunity/i);
+  });
+
   it("strips model-authored verdict notes and only normalizes explicit currency codes", async () => {
     const extractor = async (sources: readonly AnalysisSourceContext[]): Promise<ModelExtraction> => {
       const [program] = sources;

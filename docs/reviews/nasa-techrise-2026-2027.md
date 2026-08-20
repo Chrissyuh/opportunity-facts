@@ -2,7 +2,7 @@
 
 Review scope: the announced 2026–2027 cycle, researched and reviewed on August 11, 2026. No application close date or cycle-specific rules were established by the exact excerpts retained in this review record.
 
-Schema V2 disposition: migrated to canonical schema `2.0.0`, manually populated from the retained reviewed evidence, and re-attested on August 12, 2026. The stable opportunity ID, 2026–2027 cycle, NASA/Future Engineers roles, selected-team pathway, and three scoped outcomes are now structured independently of the flat summary.
+Schema V2 disposition: initially migrated to schema `2.0.0`, manually populated from the retained reviewed evidence, and re-attested on August 12, 2026; the canonical envelope is now `2.1.0`. The stable opportunity ID, 2026–2027 cycle, NASA/Future Engineers roles, selected-team pathway, and three scoped outcomes are structured independently of the flat summary.
 
 ## Official sources checked
 

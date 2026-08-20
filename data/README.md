@@ -1,6 +1,6 @@
 # Opportunity Facts data
 
-Repository cards are schema `2.0.0` JSON validated by `lib/opportunity/schema.ts`.
+Repository cards are canonical schema `2.1.0` JSON validated by `lib/opportunity/schema.ts`. Portable `2.0.0` cards remain accepted through deterministic import migration that preserves rich claims/evidence and rebuilds current projections; repository publication always exports the current schema.
 
 - `demo/` contains conspicuously fictional cards. Every URL uses the reserved `.example` domain and every card has the `demo` review state.
 - `drafts/` contains work in progress and is always excluded from public artifacts.

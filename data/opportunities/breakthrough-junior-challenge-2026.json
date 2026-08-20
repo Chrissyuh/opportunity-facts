@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.0.0",
+  "schemaVersion": "2.1.0",
   "opportunityId": "breakthrough-junior-challenge",
   "cycle": {
     "status": "modeled",
@@ -92,11 +92,11 @@
       }
     }
   },
-  "cardVersion": 1,
+  "cardVersion": 2,
   "slug": "breakthrough-junior-challenge-2026",
   "summary": "The 2026 Breakthrough Junior Challenge is an individual global science-video competition for ages 13–18 with a $250,000 student scholarship, $50,000 teacher prize, and $100,000 school laboratory award.",
   "reviewState": "human_reviewed",
-  "reviewedAt": "2026-08-12T06:25:00.000Z",
+  "reviewedAt": "2026-08-20T07:43:00.000Z",
   "sourcePagesChecked": [
     {
       "id": "bjc-home",
@@ -984,7 +984,7 @@
           "status": "disclosed",
           "value": {
             "label": "$50,000 teacher prize",
-            "outcomeType": "personal_cash_prize",
+            "outcomeType": "educator_cash_prize",
             "scope": {
               "variantIds": [],
               "stageIds": [
@@ -1011,7 +1011,7 @@
         "recipientScope": {
           "claimId": "bjc-teacher-recipient",
           "status": "disclosed",
-          "value": "individual",
+          "value": "educator",
           "displayValue": "Winner's teacher",
           "claimKind": "source_stated",
           "sources": [
@@ -1074,7 +1074,7 @@
           "status": "disclosed",
           "value": [
             {
-              "payee": "participant",
+              "payee": "educator",
               "method": "direct",
               "condition": "Paid to the teacher designated under the rules, not the student entrant."
             }
@@ -1340,7 +1340,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "bjc-sponsor-role-claim",
@@ -1548,7 +1548,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "cycle.closes",
         "claimRefs": [
           "bjc-deadline"
@@ -1592,7 +1592,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "cycle.opens",
         "claimRefs": [
           "bjc-open-date"
@@ -1680,7 +1680,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.formats",
         "claimRefs": [
           "bjc-submit-format",
@@ -1910,7 +1910,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "stages.process",
         "claimRefs": [
           "bjc-pathway-definition",
@@ -1991,41 +1991,17 @@
       "projection": null
     },
     "cash_award": {
-      "status": "disclosed",
-      "value": 50000,
-      "displayValue": "$50,000 teacher prize — $50,000/individual",
-      "normalizedValue": {
-        "kind": "money",
-        "amount": 50000,
-        "currency": "USD",
-        "classification": "cash"
-      },
-      "sources": [
-        {
-          "id": "bjc-rules",
-          "url": "https://breakthroughjuniorchallenge.org/rules",
-          "title": "Official Rules - Breakthrough Junior Challenge",
-          "pageType": "official_rules",
-          "accessedAt": "2026-08-12T06:25:00.000Z",
-          "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
-        }
-      ],
-      "note": "Direct to teacher",
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
       "confidence": null,
-      "claimKind": "source_stated",
+      "claimKind": null,
       "conflictingValues": [],
       "calculation": null,
-      "projection": {
-        "schemaVersion": "2.0.0",
-        "rule": "outcomes.cash_award",
-        "claimRefs": [
-          "bjc-teacher-definition",
-          "bjc-teacher-recipient",
-          "bjc-teacher-nature",
-          "bjc-teacher-amount",
-          "bjc-teacher-distribution"
-        ]
-      }
+      "projection": null
     },
     "stipend": {
       "status": "not_found",
@@ -2082,7 +2058,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.0.0",
+        "schemaVersion": "2.1.0",
         "rule": "outcomes.tuition_waiver",
         "claimRefs": [
           "bjc-scholarship-definition",
@@ -2109,42 +2085,17 @@
       "projection": null
     },
     "in_kind_value": {
-      "status": "disclosed",
-      "value": 100000,
-      "displayValue": "$100,000 Breakthrough Science Lab — $100,000 stated value/school",
-      "normalizedValue": {
-        "kind": "money",
-        "amount": 100000,
-        "currency": "USD",
-        "classification": "in_kind"
-      },
-      "sources": [
-        {
-          "id": "bjc-rules",
-          "url": "https://breakthroughjuniorchallenge.org/rules",
-          "title": "Official Rules - Breakthrough Junior Challenge",
-          "pageType": "official_rules",
-          "accessedAt": "2026-08-12T06:25:00.000Z",
-          "excerpt": "a $250,000 post-secondary scholarship for the winner; a $50,000 prize for the winner's teacher; and a $100,000 Breakthrough Science Lab for the winner's school"
-        }
-      ],
-      "note": "Provided to school",
+      "status": "not_found",
+      "value": null,
+      "displayValue": null,
+      "normalizedValue": null,
+      "sources": [],
+      "note": null,
       "confidence": null,
-      "claimKind": "source_stated",
+      "claimKind": null,
       "conflictingValues": [],
       "calculation": null,
-      "projection": {
-        "schemaVersion": "2.0.0",
-        "rule": "outcomes.in_kind_value",
-        "claimRefs": [
-          "bjc-lab-definition",
-          "bjc-lab-recipient",
-          "bjc-lab-nature",
-          "bjc-lab-amount",
-          "bjc-lab-distribution",
-          "bjc-lab-use"
-        ]
-      }
+      "projection": null
     },
     "certificate": {
       "status": "not_found",
@@ -2380,13 +2331,6 @@
       "bjc-finalist-stage",
       "bjc-winner-stage"
     ],
-    "cash_award": [
-      "bjc-teacher-definition",
-      "bjc-teacher-recipient",
-      "bjc-teacher-nature",
-      "bjc-teacher-amount",
-      "bjc-teacher-distribution"
-    ],
     "tuition_waiver": [
       "bjc-scholarship-definition",
       "bjc-scholarship-recipient",
@@ -2395,14 +2339,6 @@
       "bjc-scholarship-distribution",
       "bjc-scholarship-rank",
       "bjc-scholarship-use"
-    ],
-    "in_kind_value": [
-      "bjc-lab-definition",
-      "bjc-lab-recipient",
-      "bjc-lab-nature",
-      "bjc-lab-amount",
-      "bjc-lab-distribution",
-      "bjc-lab-use"
     ]
   },
   "migratedFrom": null

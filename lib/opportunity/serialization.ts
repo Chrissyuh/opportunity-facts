@@ -1,8 +1,9 @@
 import { z } from "zod";
 
-import { migrateV1ToV2 } from "./migration";
+import { migrateV1ToV2, migrateV2_0ToCurrent } from "./migration";
 import { V1_SCHEMA_VERSION } from "./schema-v1";
 import { SCHEMA_VERSION, opportunityCardSchema, type OpportunityCard } from "./schema-v2";
+import { LEGACY_V2_SCHEMA_VERSION } from "./schema-version";
 
 export class OpportunityCardImportError extends Error {
   readonly issues: readonly z.core.$ZodIssue[];
@@ -24,14 +25,25 @@ export function parseOpportunityCard(input: unknown): OpportunityCard {
     } catch (error) {
       const issues = error instanceof z.ZodError ? error.issues : [];
       throw new OpportunityCardImportError(
-        "The v1 card is invalid and could not be migrated to schema 2.0.0.",
+        `The v1 card is invalid and could not be migrated to schema ${SCHEMA_VERSION}.`,
+        issues,
+      );
+    }
+  }
+  if (version === LEGACY_V2_SCHEMA_VERSION) {
+    try {
+      return migrateV2_0ToCurrent(input);
+    } catch (error) {
+      const issues = error instanceof z.ZodError ? error.issues : [];
+      throw new OpportunityCardImportError(
+        `The schema ${LEGACY_V2_SCHEMA_VERSION} card is invalid and could not be migrated to schema ${SCHEMA_VERSION}.`,
         issues,
       );
     }
   }
   if (typeof version === "string" && version !== SCHEMA_VERSION) {
     throw new OpportunityCardImportError(
-      `Schema version ${version} is not supported. This app supports 1.0.0 imports and 2.0.0 cards.`,
+      `Schema version ${version} is not supported. This app supports ${V1_SCHEMA_VERSION} and ${LEGACY_V2_SCHEMA_VERSION} imports plus ${SCHEMA_VERSION} cards.`,
     );
   }
   const result = opportunityCardSchema.safeParse(input);
@@ -53,7 +65,26 @@ export function importOpportunityCardJson(json: string): OpportunityCard {
   } catch {
     throw new OpportunityCardImportError("The selected file is not valid JSON.");
   }
-  return parseOpportunityCard(input);
+  return invalidatePortableReviewAttestation(parseOpportunityCard(input));
+}
+
+export function invalidatePortableReviewAttestation(
+  card: OpportunityCard,
+): OpportunityCard {
+  // A portable JSON file cannot carry the repository's review attestation into
+  // this browser. Keep the reviewed material, but require a new review before
+  // the imported revision can be represented as human- or organizer-reviewed.
+  // `demo` is data provenance rather than review attestation and must remain
+  // visible so fictional content is never relabeled as an ordinary draft.
+  if (card.reviewState !== "human_reviewed" && card.reviewState !== "organizer_confirmed") {
+    return card;
+  }
+  return opportunityCardSchema.parse({
+    ...card,
+    cardVersion: card.cardVersion + 1,
+    reviewState: "draft",
+    reviewedAt: null,
+  });
 }
 
 export function exportOpportunityCardJson(card: OpportunityCard): string {

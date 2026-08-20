@@ -29,6 +29,7 @@ function formatFamily(card: OpportunityCard) {
 }
 
 export function OpportunityLibrary({ cards }: { cards: OpportunityCard[] }) {
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
   const [review, setReview] = useState("all");
@@ -39,6 +40,16 @@ export function OpportunityLibrary({ cards }: { cards: OpportunityCard[] }) {
   const [deadline, setDeadline] = useState("all");
   const today = currentUtcDate();
   const allDemo = cards.length > 0 && cards.every((card) => card.reviewState === "demo");
+  const activeFilterCount = [
+    query.trim(),
+    category !== "all",
+    review !== "all",
+    cost !== "all",
+    refund !== "all",
+    selection !== "all",
+    format !== "all",
+    deadline !== "all",
+  ].filter(Boolean).length;
 
   const categories = useMemo(
     () =>
@@ -73,6 +84,11 @@ export function OpportunityLibrary({ cards }: { cards: OpportunityCard[] }) {
     });
   }, [cards, category, cost, deadline, format, query, refund, review, selection, today]);
 
+  const groupedCards = useMemo(() => ({
+    reviewed: filtered.filter((card) => card.reviewState !== "demo"),
+    demos: filtered.filter((card) => card.reviewState === "demo"),
+  }), [filtered]);
+
   function clearFilters() {
     setQuery("");
     setCategory("all");
@@ -82,6 +98,7 @@ export function OpportunityLibrary({ cards }: { cards: OpportunityCard[] }) {
     setSelection("all");
     setFormat("all");
     setDeadline("all");
+    setFiltersOpen(false);
   }
 
   return (
@@ -89,10 +106,22 @@ export function OpportunityLibrary({ cards }: { cards: OpportunityCard[] }) {
       <aside className="filter-panel" aria-labelledby="filter-title">
         <div className="filter-heading">
           <h2 id="filter-title">Filter the record set</h2>
-          <button className="text-button" type="button" onClick={clearFilters}>
-            Clear all
-          </button>
+          <div className="filter-actions">
+            <button
+              className="filter-toggle button-quiet"
+              type="button"
+              aria-expanded={filtersOpen}
+              aria-controls="library-filter-controls"
+              onClick={() => setFiltersOpen((open) => !open)}
+            >
+              {filtersOpen ? "Hide filters" : `Show filters${activeFilterCount ? ` (${activeFilterCount})` : ""}`}
+            </button>
+            <button className="text-button" type="button" onClick={clearFilters}>
+              Clear all
+            </button>
+          </div>
         </div>
+        <div id="library-filter-controls" className="filter-controls" data-open={filtersOpen ? "true" : "false"}>
         <div className="field">
           <label htmlFor="library-search">Search</label>
           <input
@@ -141,6 +170,7 @@ export function OpportunityLibrary({ cards }: { cards: OpportunityCard[] }) {
             <option value="missing">Not disclosed</option>
           </select>
         </div>
+        </div>
       </aside>
 
       <section aria-labelledby="library-results-title">
@@ -155,10 +185,22 @@ export function OpportunityLibrary({ cards }: { cards: OpportunityCard[] }) {
         </div>
 
         {filtered.length ? (
-          <div className="library-cards">
-            {filtered.map((card) => (
-              <OpportunityLibraryCard key={card.slug} card={card} />
-            ))}
+          <div className="library-groups">
+            {groupedCards.reviewed.length ? (
+              <LibraryGroup
+                title="Reviewed opportunities"
+                description="Real opportunity records. Each card states its exact review level."
+                cards={groupedCards.reviewed}
+              />
+            ) : null}
+            {groupedCards.demos.length ? (
+              <LibraryGroup
+                title="Fictional examples"
+                description="Sample records for exploring the interface, never real opportunities."
+                cards={groupedCards.demos}
+                demo
+              />
+            ) : null}
           </div>
         ) : (
           <div className="empty-state">
@@ -170,6 +212,34 @@ export function OpportunityLibrary({ cards }: { cards: OpportunityCard[] }) {
         )}
       </section>
     </div>
+  );
+}
+
+function LibraryGroup({
+  title,
+  description,
+  cards,
+  demo = false,
+}: {
+  title: string;
+  description: string;
+  cards: OpportunityCard[];
+  demo?: boolean;
+}) {
+  const headingId = `library-group-${demo ? "demo" : "reviewed"}`;
+  return (
+    <section className="library-group" data-demo={demo ? "true" : "false"} aria-labelledby={headingId}>
+      <div className="library-group-heading">
+        <div>
+          <h3 id={headingId}>{title}</h3>
+          <p>{description}</p>
+        </div>
+        <span>{cards.length} {cards.length === 1 ? "card" : "cards"}</span>
+      </div>
+      <div className="library-cards">
+        {cards.map((card) => <OpportunityLibraryCard key={card.slug} card={card} />)}
+      </div>
+    </section>
   );
 }
 
@@ -211,7 +281,7 @@ function OpportunityLibraryCard({ card }: { card: OpportunityCard }) {
       </div>
       <div>
         <p className="library-card-category">{textValue(card, "opportunity_category")}</p>
-        <h3><Link href={`/opportunities/${card.slug}`}>{name}</Link></h3>
+        <h4><Link href={`/opportunities/${card.slug}`}>{name}</Link></h4>
         <p className="library-card-summary">{card.summary}</p>
       </div>
       <dl className="library-card-facts">

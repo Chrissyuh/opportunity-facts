@@ -63,6 +63,7 @@ export function isObviouslyPublicHttpUrl(value: string): boolean {
     const hostname = normalizePublicUrlHostname(url.hostname);
     return (
       (url.protocol === "http:" || url.protocol === "https:") &&
+      url.port === "" &&
       url.username === "" &&
       url.password === "" &&
       !isBlockedPublicHostname(hostname) &&

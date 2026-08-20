@@ -63,6 +63,21 @@ describe("static visible-text extraction", () => {
     expect(JSON.stringify(page)).not.toContain("<script");
   });
 
+  it("preserves a semantic word boundary at HTML line breaks", () => {
+    const page = extractHtmlPage(
+      `<main>
+        <p>$50,000 Prize for your<br>teacher</p>
+        <p>September 15<br>Application opens</p>
+      </main>`,
+      "https://program.example/prizes",
+    );
+
+    expect(page.text).toContain("$50,000 Prize for your teacher");
+    expect(page.text).toContain("September 15 Application opens");
+    expect(page.text).not.toContain("yourteacher");
+    expect(page.text).not.toContain("15Application");
+  });
+
   it("preserves safe link metadata, including relevant links outside main content", () => {
     const page = extractHtmlPage(
       representativeHtml,
@@ -127,6 +142,85 @@ describe("static visible-text extraction", () => {
     }));
   });
 
+  it("removes thousands of simple CSS-hidden nodes without selector-by-selector rescans", () => {
+    const hiddenRuleCount = 10_000;
+    const styles = Array.from(
+      { length: hiddenRuleCount },
+      (_value, index) => `.hidden-${index}{display:none}`,
+    ).join("");
+    const nodes = Array.from(
+      { length: hiddenRuleCount },
+      (_value, index) => `<div class="hidden-${index}">Hidden ${index}</div>`,
+    ).join("");
+
+    const page = extractHtmlPage(
+      `<html><head><title>Bounded CSS</title><style>${styles}</style></head><body><main><h1>Visible program facts</h1>${nodes}</main></body></html>`,
+      "https://program.example/",
+    );
+
+    expect(page.text).toBe("Visible program facts");
+  });
+
+  it("extracts a deeply nested generic container tree without descendant rescans", () => {
+    const nestingDepth = 3_000;
+    const page = extractHtmlPage(
+      `<html><head><title>Nested source</title></head><body><main>${"<div>".repeat(nestingDepth)}Published fact.${"</div>".repeat(nestingDepth)}</main></body></html>`,
+      "https://program.example/",
+    );
+
+    expect(page.text).toBe("Published fact.");
+  });
+
+  it("classifies deeply nested server-rendered reveal shells without descendant rescans", () => {
+    const nestingDepth = 3_000;
+    const shell = `<div style="opacity:0;transform:translateY(1px)">`;
+    const page = extractHtmlPage(
+      `<html><head><title>Nested reveal</title></head><body><main>${shell.repeat(nestingDepth)}<p>Published tuition is $100.</p><footer>Program terms</footer>${"</div>".repeat(nestingDepth)}</main></body></html>`,
+      "https://program.example/",
+    );
+
+    expect(page.text).toBe("Published tuition is $100.");
+  });
+
+  it("extracts deeply nested list items without cloning every descendant subtree", () => {
+    const nestingDepth = 3_000;
+    const nestedItems = Array.from(
+      { length: nestingDepth },
+      (_value, index) => `<ul><li>Level ${index}`,
+    ).join("");
+    const page = extractHtmlPage(
+      `<html><head><title>Nested list</title></head><body><main>${nestedItems}${"</li></ul>".repeat(nestingDepth)}</main></body></html>`,
+      "https://program.example/",
+    );
+
+    const listItems = page.blocks.filter((block) => block.kind === "list_item");
+    expect(listItems).toHaveLength(nestingDepth);
+    expect(listItems[0]?.text).toBe("Level 0");
+    expect(listItems.at(-1)?.text).toBe(`Level ${nestingDepth - 1}`);
+  });
+
+  it("extracts deeply nested quoted and inline text without recursive DOM text walks", () => {
+    const nestingDepth = 3_000;
+    const quotes = Array.from(
+      { length: nestingDepth },
+      (_value, index) => `<blockquote>Quote ${index}`,
+    ).join("");
+    const quoted = extractHtmlPage(
+      `<html><head><title>Nested quotes</title></head><body><main>${quotes}${"</blockquote>".repeat(nestingDepth)}</main></body></html>`,
+      "https://program.example/",
+    );
+    const quoteBlocks = quoted.blocks.filter((block) => block.kind === "quote");
+    expect(quoteBlocks).toHaveLength(nestingDepth);
+    expect(quoteBlocks[0]?.text).toBe("Quote 0");
+    expect(quoteBlocks.at(-1)?.text).toBe(`Quote ${nestingDepth - 1}`);
+
+    const inline = extractHtmlPage(
+      `<html><head><title>Nested inline</title></head><body><main>${"<span>".repeat(nestingDepth)}Published fact.${"</span>".repeat(nestingDepth)}</main></body></html>`,
+      "https://program.example/",
+    );
+    expect(inline.text).toBe("Published fact.");
+  });
+
   it("reads bounded Schema.org course and FAQ metadata without executing scripts", () => {
     const page = extractHtmlPage(
       `<html><head><title>Aurora Program</title>
@@ -167,6 +261,23 @@ describe("static visible-text extraction", () => {
     expect(page.text).toContain("Applications are reviewed before a short interview.");
     expect(page.text).not.toContain("Do not extract arbitrary metadata fields.");
     expect(page.text).not.toContain("globalThis.sourcePageScriptExecuted");
+  });
+
+  it("handles deeply nested allowlisted JSON-LD without recursive stack failure", () => {
+    let metadata = JSON.stringify({
+      "@type": "Organization",
+      name: "Deeply nested public program operator",
+    });
+    for (let depth = 0; depth < 3_000; depth += 1) {
+      metadata = `{"@graph":[${metadata}]}`;
+    }
+    const page = extractHtmlPage(
+      `<main><p>Visible program page.</p></main><script type="application/ld+json">${metadata}</script>`,
+      "https://program.example/deep-metadata",
+    );
+
+    expect(page.text).toContain("Visible program page.");
+    expect(page.text).toContain("Deeply nested public program operator");
   });
 
   it("treats prompt injection as visible source data and never executes source code", () => {

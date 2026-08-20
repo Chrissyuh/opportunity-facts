@@ -17,7 +17,7 @@ export default function DataPage() {
             <h1>The card is portable by design.</h1>
           </div>
           <p className="lede">
-            Schema 2.0 drives the card renderer, builder, comparison, validation,
+            Schema 2.1.0 drives the card renderer, builder, comparison, validation,
             import/export, and structured evidence contract.
           </p>
         </div>
@@ -78,9 +78,10 @@ export default function DataPage() {
           </p>
           <p>
             Imports are validated before they reach rendering or browser storage.
-            Valid schema 1.0 cards migrate only to unassessed draft schema 2.0
-            revisions; unknown or malformed structures return a readable error
-            rather than being partially accepted.
+            Valid schema 1.0 cards migrate only to unassessed draft schema 2.1.0
+            revisions. Schema 2.0.0 cards migrate losslessly to 2.1.0 with current
+            summary projections; unknown or malformed structures return a readable
+            error rather than being partially accepted.
           </p>
           <h2>Public data boundary</h2>
           <p>

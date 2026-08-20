@@ -94,7 +94,14 @@ const TOPIC_RULES: readonly TopicRule[] = [
   {
     topic: "admissions",
     weight: 11,
-    patterns: [/\badmissions?\b/iu, /\bselection\b/iu],
+    patterns: [
+      /\badmissions?\b/iu,
+      /\bselection\b/iu,
+      /\brank(?:ed|ing|ings|s)?\b/iu,
+      /\bfinalists?\b/iu,
+      /\bmatch(?:ed|es|ing)?\b/iu,
+      /\b(?:stages?|rounds?)\b/iu,
+    ],
   },
   {
     topic: "application",
@@ -273,23 +280,28 @@ export function rankSameOriginLinks(
     const identityOverlap = candidateIdentity.tokens.filter((token) =>
       targetIdentity.tokens.includes(token),
     ).length;
-    const siblingPathPenalty =
+    const hasConflictingNamedOpportunityPath =
       targetIdentity.pathIdentity !== null &&
       candidateIdentity.pathIdentity !== null &&
-      candidateIdentity.pathIdentity !== targetIdentity.pathIdentity
-        ? 35
-        : 0;
+      candidateIdentity.pathIdentity !== targetIdentity.pathIdentity;
+    const hasMatchingNamedOpportunityPath =
+      targetIdentity.pathIdentity !== null &&
+      candidateIdentity.pathIdentity === targetIdentity.pathIdentity;
     if (
       options.targetTitle &&
-      identityOverlap === 0 &&
+      !hasMatchingNamedOpportunityPath &&
       looksLikeDifferentNamedOpportunity(link.text, targetIdentity.tokens)
     ) {
       return;
     }
-    if (siblingPathPenalty > 0 && identityOverlap === 0) {
+    // A path explicitly rooted under a different named opportunity is a
+    // sibling even when generic words such as "college", "national", or
+    // "scholars" overlap. Letting that weak overlap rescue the link spends a
+    // bounded source slot on target-specific material for the wrong program.
+    if (hasConflictingNamedOpportunityPath) {
       return;
     }
-    const identityScore = identityOverlap * 5 - siblingPathPenalty;
+    const identityScore = identityOverlap * 5;
     const adjustedScore = classification.score + identityScore;
     if (adjustedScore <= 0) {
       return;

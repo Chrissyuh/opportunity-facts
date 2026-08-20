@@ -122,11 +122,26 @@ test("a blocked clipboard reports a usable correction fallback", async ({ page }
   ).toBeVisible();
 });
 
-test("the opportunity library combines search and disclosure filters", async ({ page }) => {
+test("the opportunity library separates reviewed records from demos and combines filters", async ({ page }, testInfo) => {
   await page.goto("/opportunities");
 
   await expect(page.getByRole("heading", { level: 2, name: "17 cards" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 3, name: "Reviewed opportunities" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 3, name: "Fictional examples" })).toBeVisible();
   await expect(page.locator(".library-card .review-badge").filter({ hasText: "Demo data" })).toHaveCount(7);
+  const filters = page.locator("#library-filter-controls");
+  if (testInfo.project.name === "mobile-chromium") {
+    await expect(page.getByRole("button", { name: "Show filters" })).toBeVisible();
+    await expect(filters).toBeHidden();
+    const firstReviewedCard = page.locator(".library-group[data-demo='false'] .library-card").first();
+    await expect(firstReviewedCard).toBeVisible();
+    expect((await firstReviewedCard.boundingBox())?.y ?? Number.POSITIVE_INFINITY).toBeLessThan(844);
+    await page.getByRole("button", { name: "Show filters" }).click();
+    await expect(filters).toBeVisible();
+  } else {
+    await expect(filters).toBeVisible();
+    await expect(page.getByRole("button", { name: "Show filters" })).toBeHidden();
+  }
   await page.getByRole("searchbox", { name: "Search" }).fill("Lantern Bay");
   await page.getByLabel("Category").selectOption({ label: "Summer program" });
   await page.getByLabel("Review state").selectOption("demo");
@@ -139,6 +154,10 @@ test("the opportunity library combines search and disclosure filters", async ({ 
 
   await page.getByRole("button", { name: "Clear all", exact: true }).click();
   await expect(page.getByRole("heading", { level: 2, name: "17 cards" })).toBeVisible();
+  if (testInfo.project.name === "mobile-chromium") {
+    await expect(filters).toBeHidden();
+    await page.getByRole("button", { name: "Show filters" }).click();
+  }
   await expect(page.getByRole("searchbox", { name: "Search" })).toHaveValue("");
 
   await page.getByLabel("Refund policy").selectOption("not_applicable");
@@ -148,6 +167,8 @@ test("the opportunity library combines search and disclosure filters", async ({ 
 
 test("two cards can be selected and compared without a winner", async ({ page }, testInfo) => {
   await page.goto("/compare");
+
+  await expect(page.getByRole("group", { name: "Available cards" })).toBeVisible();
 
   await page.getByRole("button", { name: /Lantern Bay Robotics Field Lab.*Add/ }).click();
   await page.getByRole("button", { name: /Cipher Finch Student Challenge.*Add/ }).click();
@@ -163,7 +184,14 @@ test("two cards can be selected and compared without a winner", async ({ page },
   const scroll = page.locator(".comparison-scroll");
   if (testInfo.project.name === "mobile-chromium") {
     expect(await scroll.evaluate((element) => element.scrollWidth > element.clientWidth)).toBe(true);
+    await expect(page.getByText(/Swipe across to compare all 2 cards/)).toBeVisible();
+    const startingScroll = await scroll.evaluate((element) => element.scrollLeft);
+    await page.getByRole("button", { name: "Show next comparison card" }).click();
+    await expect.poll(() => scroll.evaluate((element) => element.scrollLeft)).toBeGreaterThan(startingScroll);
+    await expect(comparison.getByRole("rowheader").filter({ hasText: "Opportunity name" })).toHaveCSS("position", "sticky");
     await captureDocumentationScreenshot(page, "compare-mobile.png");
+  } else {
+    await expect(page.locator(".comparison-scroll-cue")).toBeHidden();
   }
 });
 
@@ -202,6 +230,32 @@ test("comparison rejects duplicate local cards and never links them to a public 
 
   await page.getByRole("button", { name: /Cipher Finch Student Challenge.*Add/ }).click();
   const localHeader = page.getByRole("columnheader", { name: /Local Test Card.*Local card/ });
+  await expect(localHeader).toBeVisible();
+  await expect(localHeader.getByRole("link")).toHaveCount(0);
+});
+
+test("comparison does not inherit review attestation from a local file", async ({ page }) => {
+  const reviewed = opportunityCardSchema.parse(
+    JSON.parse(
+      await readFile(join(process.cwd(), "data/opportunities/diamond-challenge-2027.json"), "utf8"),
+    ) as unknown,
+  );
+  const localCopy = opportunityCardSchema.parse({
+    ...reviewed,
+    slug: "local-attested-copy",
+  });
+
+  await page.goto("/compare");
+  await page.locator("#comparison-import").setInputFiles({
+    name: "local-attested-copy.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(localCopy)),
+  });
+  await page.getByRole("button", { name: /Cipher Finch Student Challenge.*Add/ }).click();
+
+  const localHeader = page.getByRole("columnheader", {
+    name: /Diamond Challenge.*draft.*Local card/i,
+  });
   await expect(localHeader).toBeVisible();
   await expect(localHeader.getByRole("link")).toHaveCount(0);
 });
@@ -495,6 +549,7 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
         },
       },
     };
+    await new Promise((resolve) => setTimeout(resolve, 1_100));
     await route.fulfill({
       contentType: "application/json",
       status: 200,
@@ -512,7 +567,13 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
             contentUnavailable: false,
           },
         ],
-        pageWarnings: [],
+        pageWarnings: [
+          {
+            url: "https://mocked-analysis.example/blocked-rules?token=do-not-show#private-fragment",
+            code: "TIMEOUT",
+            message: "private upstream diagnostic that must not be displayed",
+          },
+        ],
         evidenceWarnings: [
           {
             fieldId: "model.foundation",
@@ -529,6 +590,10 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
   await page.getByLabel("Public opportunity URL").fill("https://mocked-analysis.example/program");
   await page.getByRole("button", { name: "Start analysis" }).click();
 
+  await expect(page.getByRole("heading", { level: 3, name: "Analysis in progress" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Cancel analysis" })).toBeVisible();
+  await expect(page.getByText(/\d+ sec elapsed/)).toBeVisible();
+  await expect(page.locator(".analysis-progress [data-state='active']")).toHaveCount(0);
   await expect(page.getByRole("heading", { level: 2, name: "Inspect and correct the draft." })).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: "Mocked Analysis Draft" })).toBeVisible();
   await expect(page.getByText("Mocked source page")).toBeVisible();
@@ -536,6 +601,15 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
   await expect(page.getByText("This is not human reviewed.", { exact: false })).toBeVisible();
   await expect(page.getByText("Missing or inaccessible pages can cause omissions.", { exact: false })).toBeVisible();
   await expect(page.getByText("Part of the automated extraction did not complete.", { exact: false })).toBeVisible();
+  await page.getByText("1 discovered page was not acquired").click();
+  await expect(page.getByText("https://mocked-analysis.example/blocked-rules", { exact: true })).toBeVisible();
+  await expect(page.getByText("The page did not respond before the fetch time limit.")).toBeVisible();
+  await expect(page.getByText("do-not-show", { exact: false })).toHaveCount(0);
+  await expect(page.getByText("private upstream diagnostic", { exact: false })).toHaveCount(0);
+  await page.getByRole("button", { name: "Paste text for failed pages" }).click();
+  await expect(page.getByRole("button", { name: "Paste source text" })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByLabel("Source URL").first()).toHaveValue("https://mocked-analysis.example/blocked-rules");
+  await expect(page.getByRole("status").filter({ hasText: "Paste mode is ready" })).toBeVisible();
   await expect(page.locator(".analysis-progress")).toHaveCSS("position", "static");
   await expect(page.getByRole("button", { name: "Save locally" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Edit in builder" })).toBeVisible();

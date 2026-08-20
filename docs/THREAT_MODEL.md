@@ -83,6 +83,8 @@ The production fetch path is designed around the following defaults:
 
 | Limit/control | Default |
 | --- | ---: |
+| Analysis request body | 600,000 bytes; 10,000 ms total read time |
+| Whole analysis route | 270,000 ms application deadline; 300 s route-segment maximum |
 | URL length | 2,048 characters |
 | DNS answers accepted for inspection | At most 32; all must be public |
 | Whole fetch/redirect-chain timeout | 10,000 ms |
@@ -93,10 +95,10 @@ The production fetch path is designed around the following defaults:
 | Content encoding | Identity only |
 | Extracted visible text | 200,000 characters per page by default |
 | Extracted links considered | 500 per page maximum |
-| Discovery scope | Submitted page plus at most 6 relevant same-origin pages |
+| Discovery scope | Submitted page plus at most 6 relevant links selected from that origin; one selected application link may make one public-origin transition by redirect |
 | Source-text characters sent in a summary request | 120,000 aggregate maximum, excluding fixed instructions/metadata |
 | Source-text characters sent in each structured-family request | 70,000 aggregate maximum selected from exact normalized blocks |
-| Model output | 12,000 summary, 14,000 foundation, and 16,000 detail tokens maximum |
+| Model output | 12,000 summary, 14,000 foundation, 12,000 process, and 12,000 financial tokens maximum |
 
 Relevant code is in `lib/analysis/url-safety.ts` and `lib/analysis/fetch.ts`. If a deployment changes these defaults, the deployed values and tests must be updated together. Per-call overrides are bounded by hard validation; an application route must not expose caller-controlled overrides.
 
@@ -110,14 +112,15 @@ Requests use a descriptive Opportunity Facts user agent, request identity encodi
 
 **Controls:**
 
-- Parse with the platform URL parser and accept only absolute `http:` or `https:` URLs.
+- Parse with the platform URL parser and accept only absolute `http:` or `https:` URLs on their protocol-default ports. Non-default ports are rejected so public fetching cannot become a blind arbitrary-port request primitive.
 - Reject URL user-info, missing hostnames, single-label/local-use hostnames, known metadata hostnames and service addresses (including Azure `168.63.129.16`), overlong URLs, sensitive query or fragment parameter names, and invalid literal addresses.
 - Canonicalize bracketed/trailing-dot/lowercase hostnames before policy checks.
 - Parse IPv4, IPv6, and IPv4-mapped IPv6 with `ipaddr.js`; accept only its public unicast range.
 - Resolve all returned addresses (up to 32) and reject the hostname if **any** answer is non-public. Do not choose a convenient public answer from a mixed set.
 - Never inherit browser cookies, authentication, or an arbitrary request method/body.
+- Reject token-, signature-, session-, auth-, code-, and secret-like query/fragment keys. Strip only a narrow recognized set of marketing identifiers (`utm_*`, common advertising click IDs, and `attribution_id`) before transport and source metadata; preserve ambiguous and functional parameters such as `source`, `ref`, cohort, and form-routing values.
 
-**Residual risk:** IP range libraries and reserved-range policy must be kept current. Plain HTTP exposes the fetched request/response on the network. A public server can itself proxy or publish internal material; destination filtering cannot determine how that server obtained its content. Deployment-level egress policy remains valuable defense in depth.
+**Residual risk:** IP range libraries, reserved-range policy, and the deliberately narrow marketing-key list must be kept current. Unrecognized tracking parameters remain visible to the destination and in source metadata; overbroad stripping could break a public resource, so ambiguous keys are intentionally retained. Plain HTTP exposes the fetched request/response on the network. A public server can itself proxy or publish internal material; destination filtering cannot determine how that server obtained its content. Deployment-level egress policy remains valuable defense in depth.
 
 ### T2. DNS rebinding and time-of-check/time-of-use changes
 
@@ -137,9 +140,9 @@ Requests use a descriptive Opportunity Facts user agent, request identity encodi
 
 **Attack:** A public URL redirects to loopback, private IPv4/IPv6, link-local, metadata, a credential-bearing URL, a disallowed protocol, or an endless chain.
 
-**Controls:** Do not use automatic redirects. Resolve each `Location` against the current URL, re-run the full URL/DNS/public-address policy, pin the new connection, and stop after five redirects. Missing or malformed locations fail closed.
+**Controls:** Do not use automatic redirects. Resolve each `Location` against the current URL, re-run the full URL/DNS/public-address policy, pin the new connection, and stop after five redirects. Missing or malformed locations fail closed. Discovered pages normally remain pinned to the submitted origin. At most one already-ranked `application` candidate may transition once to a different public origin, after which every later redirect must remain on that destination origin. The allowance is consumed by the first eligible application candidate and cannot be transferred to another discovered link.
 
-**Residual risk:** Cross-origin redirects to another public host are permitted for the submitted page if they pass validation. That host sees the request. Query strings are retained across only the redirects constructed by the remote origin; users must not submit signed/private URLs.
+**Residual risk:** Cross-origin redirects to another public host are permitted for the submitted page if they pass validation. The narrow application-link exception also permits one third-party public form host to see a request. An official site with an open redirect can therefore select that one untrusted public destination, but cannot create a general external crawl: the candidate must have been selected from the submitted origin, the transition is allowed only for the first ranked application topic, and a second origin change fails closed. Query strings are retained across only the redirects constructed by the remote origin; users must not submit signed/private URLs. All resulting content remains `user_supplied` and still requires evidence, scope, cycle, and target-entity validation.
 
 ### T4. Oversized, slow, compressed, or malformed responses
 
@@ -152,6 +155,7 @@ Requests use a descriptive Opportunity Facts user agent, request identity encodi
 - Count streamed bytes and abort above 1,500,000 bytes even when length is absent or false.
 - Request `Accept-Encoding: identity` and reject a non-identity `Content-Encoding`, avoiding decompression expansion in the application.
 - Accept only HTML and plain text with a bounded syntactically valid charset declaration.
+- Process accepted simple CSS-hidden selectors, reveal shells, generic content containers, and nested lists with bounded DOM traversals; never rescan or clone a full descendant subtree once per hostile selector or ancestor.
 - Bound page discovery, model input, and model output separately.
 
 **Residual risk:** Public endpoints can still consume DNS, connection, TLS, parsing, and model resources below each per-request limit. The application has no account identity with which to attribute abuse. Production needs platform request-body limits, concurrency/cost monitoring, and rate controls appropriate to its traffic; these should fail without exposing secrets or weakening deterministic tests.
@@ -162,9 +166,9 @@ Identity-only transfer is intentionally conservative: a server that ignores `Acc
 
 **Attack:** Use a page's links to make the server crawl unrelated hosts, private paths, logout/action URLs, or an unbounded site.
 
-**Controls:** Discover only relevant GET pages from the submitted page, require normalized same origin (scheme, hostname, and effective port), rank a fixed set of disclosure-related terms, revalidate every selected URL, and fetch no more than six additional pages. Do not execute JavaScript, submit forms, follow login flows, use credentials, or crawl external links.
+**Controls:** Discover only relevant GET links present on the submitted page, require normalized same origin (scheme, hostname, and effective port) before ranking, rank a fixed set of disclosure-related terms, revalidate every selected URL, and fetch no more than six additional pages. Direct external links are never ranked. One first-ranked `application` candidate may follow one fully revalidated redirect to a different public origin; redirects are then pinned to that destination origin. No other discovered topic gets this exception. Do not execute JavaScript, submit forms, follow login flows, use credentials, or recursively crawl links from either the original site or the form host.
 
-**Residual risk:** Same-origin links can still trigger poorly designed state-changing GET endpoints on the remote site. The descriptive user agent, GET-only behavior, page cap, and no-auth policy reduce but do not eliminate this remote-site design risk. Discovery should reject obvious action/logout paths and remain easy to disable.
+**Residual risk:** Same-origin links and a selected application link's public redirect can still trigger poorly designed state-changing GET endpoints. The descriptive user agent, GET-only behavior, fixed headers, page cap, one-transition limit, no-auth policy, and absence of form submission reduce but do not eliminate this remote-site design risk. Discovery should reject obvious action/logout paths and remain easy to disable.
 
 ### T6. Prompt injection in fetched or pasted text
 
@@ -174,8 +178,8 @@ Identity-only transfer is intentionally conservative: a server that ignores `Acc
 
 - Treat all extracted text as `untrusted_source_text`; visible and hidden prose never becomes a system/developer instruction.
 - Remove script, style, executable markup, repeated navigation, and identifiable boilerplate before model input, while assuming malicious instructions can remain in visible text.
-- Use three bounded strict-output sections: flat summary facts, cycle/identity foundation, and process/cost/outcome details. Foundation and summary can run independently; details may reuse only the candidate foundation IDs and source-backed scopes. Do not give the model network, file, shell, credential, or arbitrary tool access.
-- Send at most 120,000 aggregate characters to the summary section and at most 70,000 exact normalized characters to each structured section. Request at most 12,000, 14,000, and 16,000 output tokens respectively. The server uses `OPENAI_MODEL` when configured and otherwise the code's versioned default.
+- Use four bounded strict-output sections: flat summary facts, cycle/identity foundation, schedule/selection process, and costs/outcomes. Foundation and summary run independently in the first wave; process and financial sections run independently in the second wave and may reuse only the candidate foundation IDs and source-backed scopes. Do not give the model network, file, shell, credential, or arbitrary tool access.
+- Send at most 120,000 aggregate characters to the summary section and at most 70,000 exact normalized characters to each structured section. Request at most 12,000 output tokens for summary facts, 14,000 for foundation, 12,000 for process, and 12,000 for financial extraction. The server uses `OPENAI_MODEL` when configured and otherwise the code's versioned default.
 - Divide the model-input budget across every acquired page before redistributing unused capacity; expose per-page model truncation in the analysis record.
 - Give model requests a 120-second SDK timeout, use low reasoning effort, disable automatic retries, and propagate request cancellation to fetch and model work. The live development benchmark showed that the prior 45-second bound returned no drafts for the production V2 contract.
 - Treat automatically fetched, discovered, and pasted pages as `user_supplied`; topical URL/link terms never prove an `official_*` provenance category.
@@ -226,7 +230,7 @@ Static Cheerio extraction cannot reproduce every browser layout, shadow DOM, cli
 
 **Attack/failure:** Bundle `OPENAI_API_KEY` into client code, leak it in an error/log, accept a user-supplied key, or send undisclosed content to the provider.
 
-**Controls:** Import model integration only from server-only modules. Read `OPENAI_API_KEY` and `OPENAI_MODEL` on the server. Never use a `NEXT_PUBLIC_` name for a secret, serialize environment values into props, or return provider errors verbatim. Every Responses request sets `store: false`, uses strict Zod-backed structured parsing, and gives the model no application tools. The no-key path remains functional and makes no model request. A failed section is never retried automatically; independent completed sections may form a visibly partial draft.
+**Controls:** Import model integration only from server-only modules. Read `OPENAI_API_KEY` and `OPENAI_MODEL` on the server. Never use a `NEXT_PUBLIC_` name for a secret, serialize environment values into props, or return provider errors verbatim. Every Responses request sets `store: false`, uses strict Zod-backed structured parsing, and gives the model no application tools. Only a response whose provider status is exactly `completed` may be parsed as a finished section. The no-key path remains functional and makes no model request. A failed section is never retried automatically; independent completed sections may form a visibly partial draft.
 
 **Residual risk:** When configured, approved source text is sent to OpenAI and is subject to the account/provider's then-current processing and retention terms. This application cannot promise provider-side zero retention. Operators must review those terms/settings, disclose the transfer, minimize input, and rotate/revoke a key exposed in logs or bundles.
 
@@ -242,9 +246,9 @@ Static Cheerio extraction cannot reproduce every browser layout, shadow DOM, cli
 
 **Attack:** Repeated valid public fetches or model calls exhaust function duration, sockets, memory, provider quota, or cost budget.
 
-**Controls:** Bound every stage, cap discovered pages, avoid autonomous loops/retries, keep analysis unauthenticated but stateless, and make missing/exhausted model configuration fail gracefully. Tests use mocked sources/model output and consume no external quota.
+**Controls:** Bound every stage, cap discovered pages, avoid autonomous loops/retries, keep analysis unauthenticated but stateless, and make missing/exhausted model configuration fail gracefully. The route requires JSON, rejects a mismatched browser `Origin`, supports an `ANALYSIS_ENABLED` emergency switch, and admits only a bounded number of simultaneous analyses per Node.js process. Admission covers request-body reading as well as downstream work; a stalled body is cancelled after ten seconds, client aborts propagate, and the slot is released in every controlled exit. A 270-second application deadline aborts acquisition/provider work before the route's explicit 300-second deployment envelope. Tests use mocked sources/model output and consume no external quota.
 
-**Residual risk:** Per-request limits do not create aggregate abuse protection. Platform-level rate limiting, concurrency caps, budget alerts, function-size/duration limits, and log-based anomaly detection are deployment responsibilities. Do not add invasive fingerprinting merely to control cost.
+**Residual risk:** Per-request and per-process limits do not create distributed aggregate abuse protection. Serverless instances do not share the in-memory counter, and clients without an `Origin` header remain supported. Platform-level rate limiting, distributed concurrency caps, provider budget limits/alerts, function-size/duration limits, and log-based anomaly detection are deployment responsibilities. Keep public analysis disabled until a durable aggregate rate/concurrency boundary and hard provider-or-gateway spend circuit breaker are configured; see `docs/DEPLOYMENT_CHECKLIST.md`. Do not add invasive fingerprinting merely to control cost.
 
 ### T13. Supply-chain and deployment compromise
 
@@ -268,7 +272,7 @@ Static Cheerio extraction cannot reproduce every browser layout, shadow DOM, cli
 
 | Data | Application behavior | Persistence outside the application |
 | --- | --- | --- |
-| Submitted URL | Homepage handoff uses short-lived session storage and clears it; the server uses the URL for one request and keeps no application database record | Remote host and DNS observe the request; host/runtime operational logs may retain request metadata. Common sensitive query/fragment parameter names are rejected, but users must still submit only public URLs. |
+| Submitted URL | Homepage handoff uses short-lived session storage and clears it; the server uses the URL for one request and keeps no application database record | Remote host and DNS observe the request; host/runtime operational logs may retain request metadata. Common sensitive query/fragment parameter names are rejected, and recognized marketing IDs are removed before transport/source metadata, but users must still submit only public URLs. |
 | Fetched page bytes/text | Held transiently during bounded analysis; not written to repository/database | Remote host observes request; host/runtime may retain operational logs or crash artifacts |
 | Pasted source text | Processed transiently; not written to an application database | May reach the configured model provider; browser extensions/device memory remain out of scope |
 | Model request/output | Used transiently to make a draft; not a public card automatically | Provider handling depends on account, configuration, and current terms |

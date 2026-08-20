@@ -52,6 +52,9 @@ describe("preregistered out-of-sample human ground truth", () => {
     if (value.institutionRelationships.status !== "modeled" || value.costItems.status !== "modeled") return;
     expect(value.institutionRelationships.records[0].assertion.status === "disclosed" && value.institutionRelationships.records[0].assertion.value.relationshipType).toBe("independent");
     expect(value.costItems.records[0].amount.status).toBe("unclear");
+    expect(value.cycle.status === "modeled" && value.cycle.value.label.value).toBe("Rolling admissions");
+    expect(value.cycle.status === "modeled" && value.cycle.value.year).toBeNull();
+    expect(value.cycle.status === "modeled" && value.cycle.value.season).toBeNull();
   });
 
   it("keeps MITES free covered costs separate from unknown travel", async () => {
@@ -74,12 +77,12 @@ describe("preregistered out-of-sample human ground truth", () => {
     if (value.outcomes.status !== "modeled") return;
     expect(value.outcomes.records.map((outcome) => outcome.definition.value.outcomeType)).toEqual([
       "scholarship",
-      "personal_cash_prize",
+      "educator_cash_prize",
       "equipment",
     ]);
     expect(value.outcomes.records.map((outcome) => outcome.recipientScope.status === "disclosed" ? outcome.recipientScope.value : null)).toEqual([
       "individual",
-      "individual",
+      "educator",
       "school",
     ]);
     expect(value.outcomes.records.map((outcome) => outcome.monetaryNature?.status === "disclosed" ? outcome.monetaryNature.value : null)).toEqual([
@@ -87,6 +90,20 @@ describe("preregistered out-of-sample human ground truth", () => {
       "cash",
       "source_stated_estimated_value",
     ]);
+    expect(value.facts.cash_award.status).toBe("not_found");
+    expect(value.facts.in_kind_value.status).toBe("not_found");
+
+    const wrongRecipient = structuredClone(value);
+    if (wrongRecipient.outcomes.status === "modeled") {
+      const educatorPrize = wrongRecipient.outcomes.records.find((outcome) =>
+        outcome.definition.value.outcomeType === "educator_cash_prize"
+      );
+      if (educatorPrize?.recipientScope.status === "disclosed") {
+        educatorPrize.recipientScope.value = "individual";
+        educatorPrize.recipientScope.displayValue = "Individual";
+      }
+    }
+    expect(opportunityCardSchema.safeParse(wrongRecipient).success).toBe(false);
   });
 
   it("keeps QuestBridge partner funding and admission pathways distinct", async () => {
