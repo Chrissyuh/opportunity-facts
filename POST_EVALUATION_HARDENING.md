@@ -169,7 +169,7 @@ No hostname, organization name, expected Lumos value, Lumos-specific prompt, or 
 - Deterministic lexical/typed guards materially reduce false claims but cannot prove every semantic entailment or the truth of publisher text.
 - The four-family split still depends on model recall; missing remains preferable to unsupported structure.
 - Per-process admission cannot enforce a deployment-wide request, concurrency, or spend limit.
-- The private Lumos result is not an independent benchmark; its post-repair result is an offline replay of the one paid four-family candidate, not a replacement provider run.
+- The private Lumos result is not an independent benchmark. The final paid provider confirmation is a tuned development acceptance check, not out-of-sample evidence or a population-level accuracy claim.
 
 ## Verification status
 
