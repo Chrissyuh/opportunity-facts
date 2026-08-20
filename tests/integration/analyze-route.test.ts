@@ -41,7 +41,11 @@ describe("analysis route boundary", () => {
 
     expect(response.status).toBe(200);
     expect(response.headers.get("cache-control")).toBe("no-store, max-age=0");
-    await expect(response.json()).resolves.toEqual({ configured: false, model: null });
+    await expect(response.json()).resolves.toEqual({
+      configured: false,
+      analyzerVersion: "student-research-v1",
+      model: null,
+    });
   });
 
   it("honors the server-side analysis kill switch", async () => {
@@ -49,7 +53,11 @@ describe("analysis route boundary", () => {
     process.env.ANALYSIS_ENABLED = "false";
 
     const configuration = await GET();
-    await expect(configuration.json()).resolves.toEqual({ configured: false, model: null });
+    await expect(configuration.json()).resolves.toEqual({
+      configured: false,
+      analyzerVersion: "student-research-v1",
+      model: null,
+    });
 
     const response = await POST(jsonRequest({ mode: "url", url: "https://program.example/" }));
     expect(response.status).toBe(503);

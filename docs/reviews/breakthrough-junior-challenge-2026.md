@@ -12,7 +12,7 @@ Review scope: the current 2026 global competition rules, reviewed August 12, 202
 
 All five pages appear once in `sourcePagesChecked`; evidence metadata reuses those records exactly.
 
-## Human-review decisions
+## AI-audit decisions
 
 - The three prizes are not flattened: $250,000 restricted student scholarship, $50,000 teacher cash prize, and a school-scoped $100,000 stated-value laboratory.
 - The teacher prize is not attributed to the student; the school lab is not represented as cash.

@@ -23,11 +23,35 @@ export type EvidenceStatus = (typeof EVIDENCE_STATUSES)[number];
 export const REVIEW_STATES = [
   "demo",
   "draft",
+  "automated_draft",
+  "ai_audited",
   "human_reviewed",
   "organizer_confirmed",
 ] as const;
 
 export type ReviewState = (typeof REVIEW_STATES)[number];
+
+export function isDraftLikeReviewState(
+  state: ReviewState,
+): state is "draft" | "automated_draft" {
+  return state === "draft" || state === "automated_draft";
+}
+
+export function isReviewAttestationState(
+  state: ReviewState,
+): state is "ai_audited" | "human_reviewed" | "organizer_confirmed" {
+  return (
+    state === "ai_audited" ||
+    state === "human_reviewed" ||
+    state === "organizer_confirmed"
+  );
+}
+
+export function isPublicReviewState(
+  state: ReviewState,
+): state is "demo" | "ai_audited" | "human_reviewed" | "organizer_confirmed" {
+  return state === "demo" || isReviewAttestationState(state);
+}
 
 export const PAGE_TYPES = [
   "official_program_page",

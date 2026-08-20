@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import type { OpportunityCard } from "@/lib/opportunity/schema";
 import { parseOpportunityCard } from "@/lib/opportunity/serialization";
 
@@ -40,7 +40,7 @@ function readComparison(): OpportunityCard[] {
   }
 }
 
-export function CardActions({ card }: { card: OpportunityCard }) {
+export function CardActions({ card, compact = false, secondaryActions }: { card: OpportunityCard; compact?: boolean; secondaryActions?: ReactNode }) {
   const [message, setMessage] = useState("");
 
   function addToComparison() {
@@ -70,12 +70,14 @@ export function CardActions({ card }: { card: OpportunityCard }) {
         <button className="button" type="button" onClick={addToComparison}>
           Add to comparison
         </button>
-        <button className="button-secondary" type="button" onClick={() => downloadCard(card)}>
-          Export JSON
-        </button>
-        <button className="button-quiet" type="button" onClick={() => window.print()}>
-          Print card
-        </button>
+        {compact ? (
+          <details className="save-export-menu">
+            <summary>Save or export</summary>
+            <div><button className="button-secondary" type="button" onClick={() => downloadCard(card)}>Export JSON</button><button className="button-quiet" type="button" onClick={() => window.print()}>Print card</button><div className="card-secondary-actions">{secondaryActions}</div></div>
+          </details>
+        ) : (
+          <div className="card-secondary-actions"><button className="button-secondary" type="button" onClick={() => downloadCard(card)}>Export JSON</button><button className="button-quiet" type="button" onClick={() => window.print()}>Print card</button>{secondaryActions}</div>
+        )}
       </div>
       <p className="action-message no-print" role="status" aria-live="polite">
         {message}

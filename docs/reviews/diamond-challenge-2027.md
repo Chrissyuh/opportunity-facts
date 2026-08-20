@@ -14,7 +14,7 @@ Schema V2 disposition: initially migrated to schema `2.0.0`, manually populated 
 
 All five URLs appear once in `sourcePagesChecked`; evidence metadata exactly reuses those records.
 
-## Human-review decisions
+## AI-audit decisions
 
 - Horn Entrepreneurship at the University of Delaware is the operator, and the relationship is `institution_operated`. Affiliated organizations administer local live pitch events under the competition's standards; they are not represented as co-operators of the entire competition.
 - Eligibility is a team of two to four high-school students ages 14–18 at the submission deadline, with one official adult adviser age 21 or older. Worldwide reach is disclosed; no citizenship restriction is inferred.

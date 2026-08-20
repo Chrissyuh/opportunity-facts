@@ -11,6 +11,8 @@ const statusLabels: Record<EvidenceStatus, string> = {
 const reviewLabels: Record<ReviewState, string> = {
   demo: "Demo data",
   draft: "Draft",
+  automated_draft: "Automated draft",
+  ai_audited: "AI-audited",
   human_reviewed: "Human reviewed",
   organizer_confirmed: "Organizer confirmed",
 };

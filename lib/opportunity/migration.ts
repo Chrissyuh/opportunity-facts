@@ -11,7 +11,10 @@ import {
   opportunityCardSchema,
   type OpportunityCard,
 } from "./schema-v2";
-import { LEGACY_V2_SCHEMA_VERSION } from "./schema-version";
+import {
+  LEGACY_V2_SCHEMA_VERSION,
+  PRIOR_V2_SCHEMA_VERSION,
+} from "./schema-version";
 
 function unassessedCollection() {
   return { status: "unassessed" as const, records: [], note: null };
@@ -68,7 +71,16 @@ function claimValues(claim: unknown): unknown[] {
   return values;
 }
 
+function assertLegacyReviewState(input: Record<string, unknown>): void {
+  if (input.reviewState === "ai_audited" || input.reviewState === "automated_draft") {
+    throw new Error(
+      `Schema ${String(input.schemaVersion)} cannot use the ${input.reviewState} review state introduced in schema 2.2.0.`,
+    );
+  }
+}
+
 function assertLegacyV2Vocabulary(input: Record<string, unknown>): void {
+  assertLegacyReviewState(input);
   const outcomes = input.outcomes;
   if (!isRecord(outcomes) || !Array.isArray(outcomes.records)) return;
 
@@ -105,7 +117,10 @@ function assertLegacyV2Vocabulary(input: Record<string, unknown>): void {
   }
 }
 
-function migrateLegacyProjectionVersions(facts: unknown): unknown {
+function migrateLegacyProjectionVersions(
+  facts: unknown,
+  sourceVersion: typeof LEGACY_V2_SCHEMA_VERSION | typeof PRIOR_V2_SCHEMA_VERSION,
+): unknown {
   if (!isRecord(facts)) return facts;
   return Object.fromEntries(
     Object.entries(facts).map(([fieldId, fact]) => {
@@ -114,10 +129,10 @@ function migrateLegacyProjectionVersions(facts: unknown): unknown {
       }
       if (
         !isRecord(fact.projection) ||
-        fact.projection.schemaVersion !== LEGACY_V2_SCHEMA_VERSION
+        fact.projection.schemaVersion !== sourceVersion
       ) {
         throw new Error(
-          `Schema 2.0.0 fact ${fieldId} must use 2.0.0 projection metadata.`,
+          `Schema ${sourceVersion} fact ${fieldId} must use ${sourceVersion} projection metadata.`,
         );
       }
       return [
@@ -152,10 +167,28 @@ export function migrateV2_0ToCurrent(input: unknown): OpportunityCard {
   const normalized = opportunityCardProjectionInputSchema.parse({
     ...input,
     schemaVersion: SCHEMA_VERSION,
-    facts: migrateLegacyProjectionVersions(input.facts),
+    facts: migrateLegacyProjectionVersions(input.facts, LEGACY_V2_SCHEMA_VERSION),
   });
   // Projection rules are versioned with the card contract. Preserve the rich
   // structured source of truth and its evidence, but deterministically rebuild
   // the 59-field summary so a retired projection rule cannot survive import.
+  return opportunityCardSchema.parse(applyOpportunityProjections(normalized));
+}
+
+/**
+ * Upgrades schema 2.1.0 to the current review-provenance contract. Rich
+ * claims, evidence, review state, reviewed timestamp, and card revision remain
+ * unchanged. Derived projections are rebuilt with current metadata.
+ */
+export function migrateV2_1ToCurrent(input: unknown): OpportunityCard {
+  if (!isRecord(input) || input.schemaVersion !== PRIOR_V2_SCHEMA_VERSION) {
+    throw new Error(`Expected an Opportunity Facts schema ${PRIOR_V2_SCHEMA_VERSION} card.`);
+  }
+  assertLegacyReviewState(input);
+  const normalized = opportunityCardProjectionInputSchema.parse({
+    ...input,
+    schemaVersion: SCHEMA_VERSION,
+    facts: migrateLegacyProjectionVersions(input.facts, PRIOR_V2_SCHEMA_VERSION),
+  });
   return opportunityCardSchema.parse(applyOpportunityProjections(normalized));
 }

@@ -119,7 +119,7 @@ function baseCard(slug: string, opportunityId: string, summary: string, sources:
 
 function finish(card: OpportunityCard): OpportunityCard {
   const projected = applyOpportunityProjections(card);
-  projected.reviewState = "human_reviewed";
+  projected.reviewState = "ai_audited";
   projected.reviewedAt = REVIEWED_AT;
   return opportunityCardSchema.parse(projected);
 }

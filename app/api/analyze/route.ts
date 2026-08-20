@@ -9,10 +9,17 @@ import {
   ModelExtractionError,
 } from "@/lib/analysis/model-extraction";
 import {
-  analyzeRequest,
   analyzeRequestSchema,
 } from "@/lib/analysis/pipeline";
+import { runProductAnalysis, type AnalysisProductResult } from "@/lib/analysis/product-run";
+import { createSequencedProgressSink } from "@/lib/analysis/progress";
+import {
+  acceptsAnalysisStream,
+  ANALYSIS_STREAM_CONTENT_TYPE,
+  encodeAnalysisStreamMessage,
+} from "@/lib/analysis/stream-protocol";
 import { UrlSafetyError } from "@/lib/analysis/url-safety";
+import { ANALYZER_VERSION } from "@/lib/analysis/analyzer-version";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -144,10 +151,83 @@ class RequestBodyReadError extends Error {
   }
 }
 
+function safeAnalysisError(error: unknown): { code: string; message: string } {
+  if (error instanceof UrlSafetyError) return { code: error.code, message: error.message };
+  if (error instanceof PageFetchError) return { code: error.code, message: error.message };
+  if (error instanceof ModelConfigurationError) return { code: "MODEL_NOT_CONFIGURED", message: error.message };
+  if (error instanceof ModelExtractionError || error instanceof ZodError) {
+    return { code: "EXTRACTION_FAILED", message: error instanceof ModelExtractionError ? error.message : "The extraction service returned an invalid structured result." };
+  }
+  if (error instanceof RangeError) return { code: "INPUT_TOO_LARGE", message: error.message };
+  return { code: "ANALYSIS_FAILED", message: "The sources could not be analyzed. No submitted content was stored." };
+}
+
+function streamedAnalysisResponse(
+  input: Parameters<typeof runProductAnalysis>[0],
+  request: Request,
+  analysisController: AbortController,
+  releaseSlot: () => void,
+): Response {
+  let streamClosed = false;
+  const stream = new ReadableStream<Uint8Array>({
+    start(controller) {
+      let timedOut = false;
+      const send = (message: Parameters<typeof encodeAnalysisStreamMessage>[0]) => {
+        if (!streamClosed) controller.enqueue(encodeAnalysisStreamMessage(message));
+      };
+      const progress = createSequencedProgressSink((event) => send({ type: "progress", event }));
+      progress({ type: "accepted" });
+      const abort = () => analysisController.abort(request.signal.reason);
+      if (request.signal.aborted) abort();
+      else request.signal.addEventListener("abort", abort, { once: true });
+      const timeout = setTimeout(() => {
+        timedOut = true;
+        analysisController.abort(new Error("The analysis request reached its total deadline."));
+      }, MAX_ANALYSIS_REQUEST_MS);
+      const heartbeat = setInterval(() => progress({ type: "heartbeat" }), 15_000);
+      void runProductAnalysis(input, {
+        signal: analysisController.signal,
+        onProgress: progress,
+      }).then((result: AnalysisProductResult) => {
+        send({ type: "complete", result });
+      }).catch((error: unknown) => {
+        const payload = timedOut
+          ? { code: "ANALYSIS_TIMEOUT", message: "The analysis did not complete within the service time limit." }
+          : analysisController.signal.aborted
+            ? { code: "ANALYSIS_ABORTED", message: "The analysis request was cancelled." }
+          : safeAnalysisError(error);
+        send({ type: "error", ...payload });
+      }).finally(() => {
+        clearTimeout(timeout);
+        clearInterval(heartbeat);
+        request.signal.removeEventListener("abort", abort);
+        releaseSlot();
+        if (!streamClosed) {
+          streamClosed = true;
+          controller.close();
+        }
+      });
+    },
+    cancel(reason) {
+      streamClosed = true;
+      analysisController.abort(reason);
+    },
+  });
+  return new Response(stream, {
+    headers: {
+      ...noStoreHeaders,
+      "Content-Type": ANALYSIS_STREAM_CONTENT_TYPE,
+      "X-Content-Type-Options": "nosniff",
+      "X-Accel-Buffering": "no",
+    },
+  });
+}
+
 export async function GET() {
   const configured = isAnalysisEnabled() && Boolean(process.env.OPENAI_API_KEY?.trim());
   return json({
     configured,
+    analyzerVersion: ANALYZER_VERSION,
     model: configured
       ? process.env.OPENAI_MODEL?.trim() || "gpt-5.6-terra"
       : null,
@@ -250,7 +330,17 @@ export async function POST(request: Request) {
         503,
       );
     }
-    const result = await analyzeRequest(parsedInput.data, {
+    if (acceptsAnalysisStream(request)) {
+      if (analysisTimeout !== null) clearTimeout(analysisTimeout);
+      analysisTimeout = null;
+      request.signal.removeEventListener("abort", abortAnalysis);
+      const streamController = analysisController;
+      const streamRelease = releaseSlot;
+      analysisController = null;
+      releaseSlot = null;
+      return streamedAnalysisResponse(parsedInput.data, request, streamController, streamRelease);
+    }
+    const result = await runProductAnalysis(parsedInput.data, {
       signal: analysisController.signal,
     });
     if (analysisTimedOut || request.signal.aborted) {

@@ -14,7 +14,7 @@ Review scope: the current 2026 National College Match and its Fall 2027 enrollme
 
 All seven pages appear once in `sourcePagesChecked`; evidence metadata reuses those records exactly.
 
-## Human-review decisions
+## AI-audit decisions
 
 - QuestBridge administers the application/match; 55 partner colleges make admission decisions and directly provide Match Scholarships.
 - The partner set is represented as a multi-institution relationship, not one named university or QuestBridge-operated college.

@@ -10,7 +10,7 @@ Review scope: the scholarship cycle for students graduating in the 2026–2027 a
 
 All three pages appear once in `sourcePagesChecked`; evidence metadata reuses those records exactly.
 
-## Human-review decisions
+## AI-audit decisions
 
 - Coca-Cola Scholars Foundation is the operator; The Coca-Cola Company and bottlers are modeled only as funders.
 - The $20,000 outcome is a restricted individual scholarship, not unrestricted personal cash.
@@ -30,4 +30,3 @@ Flat-fact statuses: 18 `disclosed`, 1 `unclear`, 38 `not_found`, 2 `not_applicab
 ## Hostile-content check
 
 No hidden prompt injection, AI-directed instruction, or forced-response text was observed.
-

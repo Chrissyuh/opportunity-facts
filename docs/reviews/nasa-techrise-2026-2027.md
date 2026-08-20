@@ -15,7 +15,7 @@ Schema V2 disposition: initially migrated to schema `2.0.0`, manually populated 
 
 All six URLs appear once in `sourcePagesChecked`; evidence metadata exactly reuses those records.
 
-## Human-review decisions
+## AI-audit decisions
 
 - Roles are preserved as “NASA Flight Opportunities (manager); Future Engineers (administrator).” Neither entity is represented as an educational institution.
 - Grades 6–12, U.S. school eligibility (including territories), educator guidance, team experiment-proposal format, 60 selected teams, and the high-altitude-balloon outcome are disclosed.

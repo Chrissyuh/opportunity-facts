@@ -1,6 +1,6 @@
 # Opportunity Facts data
 
-Repository cards are canonical schema `2.1.0` JSON validated by `lib/opportunity/schema.ts`. Portable `2.0.0` cards remain accepted through deterministic import migration that preserves rich claims/evidence and rebuilds current projections; repository publication always exports the current schema.
+Repository cards are canonical schema `2.2.0` JSON validated by `lib/opportunity/schema.ts`. Portable `2.0.0` and `2.1.0` cards remain accepted through deterministic import migration that preserves rich claims/evidence and rebuilds current projections; repository publication always exports the current schema.
 
 - `demo/` contains conspicuously fictional cards. Every URL uses the reserved `.example` domain and every card has the `demo` review state.
 - `drafts/` contains work in progress and is always excluded from public artifacts.
@@ -41,4 +41,4 @@ npm run validate:data
 npm test
 ```
 
-Do not claim `human_reviewed` until a reviewer has checked value, excerpt, and source alignment. Do not claim `organizer_confirmed` unless the organizer supplied or confirmed the information; that state is still not independent verification.
+Use `ai_audited` only after a separate AI-assisted audit checks value, excerpt, source, scope, and projection alignment. Do not claim `human_reviewed` until a person independently performs the relevant checks. Do not claim `organizer_confirmed` unless the organizer supplied or confirmed the information; that state is still not independent verification.

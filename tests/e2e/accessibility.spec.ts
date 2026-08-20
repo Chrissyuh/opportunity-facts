@@ -6,6 +6,8 @@ const primaryRoutes = [
   { name: "homepage", path: "/" },
   { name: "library", path: "/opportunities" },
   { name: "sample facts card", path: "/opportunities/lantern-bay-robotics-field-lab" },
+  { name: "full research record", path: "/opportunities/lantern-bay-robotics-field-lab/record" },
+  { name: "batch analysis", path: "/analyze/batch" },
   { name: "comparison", path: "/compare" },
   { name: "manual builder", path: "/build" },
   { name: "analysis", path: "/analyze" },
@@ -38,7 +40,7 @@ for (const route of primaryRoutes) {
 }
 
 test("expanded facts-card disclosures have no serious or critical violations", async ({ page }) => {
-  await page.goto("/opportunities/lantern-bay-robotics-field-lab");
+  await page.goto("/opportunities/lantern-bay-robotics-field-lab/record");
   await page.waitForLoadState("networkidle");
   for (const summary of await page.locator("details > summary").all()) await summary.click();
   await expect(page.locator("details.evidence-disclosure blockquote").first()).toBeVisible();

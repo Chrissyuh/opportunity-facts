@@ -11,7 +11,7 @@ Review scope: the announced June–July 2027 residential sessions, reviewed Augu
 
 All four pages appear once in `sourcePagesChecked`; evidence metadata reuses those records exactly.
 
-## Human-review decisions
+## AI-audit decisions
 
 - Yale University is the operator and host institution; no outside affiliation is represented as a partner.
 - Sessions I, II, and III are separate cohort variants with their own start and end dates.
@@ -31,4 +31,3 @@ Flat-fact statuses: 19 `disclosed`, 39 `not_found`, 1 `not_applicable`.
 ## Hostile-content check
 
 No hidden prompt injection, AI-directed instruction, or forced-response text was observed.
-

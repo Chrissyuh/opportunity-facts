@@ -1,6 +1,10 @@
 import { z } from "zod";
 
-import { FIELD_IDS } from "./fields";
+import {
+  FIELD_IDS,
+  isReviewAttestationState,
+  type ReviewState,
+} from "./fields";
 import { getProjectionDrift } from "./projection";
 import {
   INITIAL_CARD_VERSION,
@@ -12,7 +16,6 @@ import {
   reviewStateSchema,
   sourcePageSchema,
   v1OpportunityCardSchema,
-  type CreateCardOptions,
   type EvidenceSource,
 } from "./schema-v1";
 import {
@@ -208,7 +211,12 @@ export const opportunityCardSchema = opportunityCardProjectionInputSchema.superR
       cardVersion: card.cardVersion,
       slug: card.slug,
       summary: card.summary,
-      reviewState: card.reviewState,
+      reviewState:
+        card.reviewState === "ai_audited"
+          ? "human_reviewed"
+          : card.reviewState === "automated_draft"
+            ? "draft"
+            : card.reviewState,
       reviewedAt: card.reviewedAt,
       sourcePagesChecked: card.sourcePagesChecked,
       conflicts: card.conflicts,
@@ -242,7 +250,7 @@ export const opportunityCardSchema = opportunityCardProjectionInputSchema.superR
       }
     }
 
-    const isAttested = card.reviewState === "human_reviewed" || card.reviewState === "organizer_confirmed";
+    const isAttested = isReviewAttestationState(card.reviewState);
     if (isAttested) {
       if (card.opportunityId === null) {
         addIssue(context, ["opportunityId"], "A reviewed v2 card requires a cycle-independent opportunity ID.");
@@ -519,6 +527,12 @@ export const opportunityCardSchema = opportunityCardProjectionInputSchema.superR
 export type OpportunityCard = z.infer<typeof opportunityCardSchema>;
 export type V2OpportunityCard = OpportunityCard;
 export type MigrationMetadata = z.infer<typeof migrationMetadataSchema>;
+
+interface CreateCardOptions {
+  slug: string;
+  summary?: string;
+  reviewState?: Extract<ReviewState, "demo" | "draft" | "automated_draft">;
+}
 
 function unassessedCollection() {
   return { status: "unassessed" as const, records: [], note: null };

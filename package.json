@@ -19,6 +19,7 @@
     "benchmark:score": "tsx scripts/score-extraction-benchmark.ts"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^4.6.1",
     "cheerio": "^1.1.2",
     "ipaddr.js": "^2.2.0",
     "next": "16.3.0",

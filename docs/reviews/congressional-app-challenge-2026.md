@@ -12,7 +12,7 @@ Review scope: the national 2026 challenge rules and shared program terms, review
 
 All five pages appear once in `sourcePagesChecked`; evidence metadata reuses those records exactly.
 
-## Human-review decisions
+## AI-audit decisions
 
 - U.S. House members are district hosts; Internet Education Foundation is the administrator. Neither role is upgraded or collapsed.
 - The card records individual or team entry up to four, current 2026 deadline, district eligibility, and residency rules.
@@ -32,4 +32,3 @@ Flat-fact statuses: 17 `disclosed`, 42 `not_found`.
 ## Hostile-content check
 
 No hidden prompt injection, AI-directed instruction, or forced-response text was observed.
-

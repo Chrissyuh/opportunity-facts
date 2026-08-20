@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.1.0",
+  "schemaVersion": "2.2.0",
   "opportunityId": "yale-young-global-scholars",
   "cycle": {
     "status": "modeled",
@@ -110,10 +110,10 @@
       }
     }
   },
-  "cardVersion": 1,
+  "cardVersion": 2,
   "slug": "yale-young-global-scholars-summer-2027",
   "summary": "Yale Young Global Scholars has announced three residential two-week sessions at Yale for June and July 2027; 2027 tuition and application deadlines were not yet published on the reviewed pages.",
-  "reviewState": "human_reviewed",
+  "reviewState": "ai_audited",
   "reviewedAt": "2026-08-12T06:25:00.000Z",
   "sourcePagesChecked": [
     {
@@ -1066,7 +1066,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "yygs-yale-operator-claim",
@@ -1098,7 +1098,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "organizations.primary-operator-kind",
         "claimRefs": [
           "yygs-yale-kind",
@@ -1138,7 +1138,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "relationships.institution-list",
         "claimRefs": [
           "yygs-yale-operated-claim",
@@ -1178,7 +1178,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "relationships.summary",
         "claimRefs": [
           "yygs-yale-operated-claim",
@@ -1218,7 +1218,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "relationships.explanations",
         "claimRefs": [
           "yygs-yale-operated-claim",
@@ -1385,7 +1385,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "cycle.coverage-start",
         "claimRefs": [
           "yygs-session-one-start"
@@ -1416,7 +1416,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "cycle.coverage-end",
         "claimRefs": [
           "yygs-session-three-end"
@@ -1448,7 +1448,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.duration",
         "claimRefs": [
           "yygs-program-duration"
@@ -1510,7 +1510,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.formats",
         "claimRefs": [
           "yygs-application-format",
@@ -1539,7 +1539,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.locations",
         "claimRefs": [
           "yygs-program-location"
@@ -1749,7 +1749,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.process",
         "claimRefs": [
           "yygs-pathway-definition",
@@ -1883,7 +1883,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.program_seat",
         "claimRefs": [
           "yygs-seat-definition",

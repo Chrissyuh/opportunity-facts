@@ -34,6 +34,12 @@ const publicHttpUrlSchema = z
 
 export const evidenceStatusSchema = z.enum(EVIDENCE_STATUSES);
 export const reviewStateSchema = z.enum(REVIEW_STATES);
+const v1ReviewStateSchema = z.enum([
+  "demo",
+  "draft",
+  "human_reviewed",
+  "organizer_confirmed",
+]);
 export const pageTypeSchema = z.enum(PAGE_TYPES);
 export const claimKindSchema = z.enum(CLAIM_KINDS);
 export const relationshipTypeSchema = z.enum(RELATIONSHIP_TYPES);
@@ -380,7 +386,7 @@ export const v1OpportunityCardSchema = z
     cardVersion: z.number().int().positive(),
     slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(100),
     summary: z.string().trim().min(1).max(500),
-    reviewState: reviewStateSchema,
+    reviewState: v1ReviewStateSchema,
     reviewedAt: isoDateTimeSchema.nullable().default(null),
     sourcePagesChecked: z.array(sourcePageSchema).default([]),
     conflicts: z.array(cardConflictSchema).default([]),
@@ -639,7 +645,8 @@ export const v1OpportunityCardSchema = z
     }
 
     if (
-      (card.reviewState === "human_reviewed" || card.reviewState === "organizer_confirmed") &&
+      (card.reviewState === "human_reviewed" ||
+        card.reviewState === "organizer_confirmed") &&
       card.reviewedAt === null
     ) {
       context.addIssue({
@@ -649,7 +656,8 @@ export const v1OpportunityCardSchema = z
       });
     }
     if (
-      (card.reviewState === "human_reviewed" || card.reviewState === "organizer_confirmed") &&
+      (card.reviewState === "human_reviewed" ||
+        card.reviewState === "organizer_confirmed") &&
       card.sourcePagesChecked.length === 0
     ) {
       context.addIssue({

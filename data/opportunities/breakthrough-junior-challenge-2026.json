@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.1.0",
+  "schemaVersion": "2.2.0",
   "opportunityId": "breakthrough-junior-challenge",
   "cycle": {
     "status": "modeled",
@@ -92,10 +92,10 @@
       }
     }
   },
-  "cardVersion": 2,
+  "cardVersion": 3,
   "slug": "breakthrough-junior-challenge-2026",
   "summary": "The 2026 Breakthrough Junior Challenge is an individual global science-video competition for ages 13–18 with a $250,000 student scholarship, $50,000 teacher prize, and $100,000 school laboratory award.",
-  "reviewState": "human_reviewed",
+  "reviewState": "ai_audited",
   "reviewedAt": "2026-08-20T07:43:00.000Z",
   "sourcePagesChecked": [
     {
@@ -1340,7 +1340,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "bjc-sponsor-role-claim",
@@ -1548,7 +1548,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "cycle.closes",
         "claimRefs": [
           "bjc-deadline"
@@ -1592,7 +1592,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "cycle.opens",
         "claimRefs": [
           "bjc-open-date"
@@ -1680,7 +1680,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.formats",
         "claimRefs": [
           "bjc-submit-format",
@@ -1910,7 +1910,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.process",
         "claimRefs": [
           "bjc-pathway-definition",
@@ -2058,7 +2058,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.tuition_waiver",
         "claimRefs": [
           "bjc-scholarship-definition",

@@ -1,4 +1,4 @@
-import { mkdir, readFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { createEmptyCard, opportunityCardSchema } from "../../lib/opportunity/schema";
 import { expect, expectNoPageOverflow, test } from "./support";
@@ -18,38 +18,40 @@ async function captureDocumentationScreenshot(
   }));
   expect(skipLinkState.focused).toBe(false);
   expect(skipLinkState.bottom).toBeLessThanOrEqual(0);
-  await page.screenshot({
+  const screenshot = await page.screenshot({
     animations: "disabled",
     fullPage: true,
-    path: `docs/screenshots/${filename}`,
     // Chromium's full-page stitcher can expose off-canvas fixed elements while it scrolls.
     style: ".skip-link { display: none !important; }",
   });
+  const screenshotPath = `docs/screenshots/${filename}`;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      await writeFile(screenshotPath, screenshot);
+      break;
+    } catch (error) {
+      if (attempt === 2) throw error;
+      await new Promise((resolve) => setTimeout(resolve, 100 * (attempt + 1)));
+    }
+  }
 }
 
-test("homepage loads cleanly and opens the complete sample in one click", async ({ page }, testInfo) => {
+test("homepage makes URL analysis primary and opens a real example", async ({ page }, testInfo) => {
   await page.goto("/");
 
   await expect(page.getByRole("heading", { level: 1, name: /Know what you/ })).toBeVisible();
-  await expect(page.getByText("Opportunity Facts reports what reviewed sources disclose.")).toBeVisible();
+  await expect(page.getByLabel("Paste a public opportunity URL")).toBeVisible();
+  await expect(page.getByText("AI-audited reference opportunities")).toBeVisible();
   await expectNoPageOverflow(page);
   if (testInfo.project.name === "desktop-chromium") {
     await captureDocumentationScreenshot(page, "home-desktop.png");
   }
 
-  await page.getByRole("link", { name: "Try a sample", exact: true }).click();
+  await page.getByRole("link", { name: /See an analyzed example/ }).click();
 
-  await expect(page).toHaveURL(/\/opportunities\/lantern-bay-robotics-field-lab$/, {
-    timeout: 30_000,
-  });
-  await expect(page.getByRole("heading", { level: 1, name: "Lantern Bay Robotics Field Lab" })).toBeVisible();
-  await expect(page.getByText("Demo data", { exact: true })).toHaveCount(1);
-  await expect(page.getByText(/of \d+ applicable core facts disclosed/)).toBeVisible();
-  await expect(page.getByText(/of 13 core areas assessed/)).toBeVisible();
-  await expect(page.getByLabel("Evidence status key")).toContainText("Disclosed");
-  await expect(page.getByLabel("Evidence status key")).toContainText("Not found");
-  await expect(page.getByLabel("Evidence status key")).toContainText("Unclear");
-  await expect(page.getByLabel("Evidence status key")).toContainText("Conflicting");
+  await expect(page).toHaveURL(/\/opportunities\//, { timeout: 30_000 });
+  await expect(page.getByRole("heading", { level: 2, name: "At a glance" })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Open full research record/ })).toBeVisible();
   if (testInfo.project.name === "desktop-chromium") {
     await captureDocumentationScreenshot(page, "sample-card-desktop.png");
   }
@@ -68,7 +70,7 @@ test("homepage hands an analysis URL off without putting it in browser history",
 });
 
 test("a source excerpt can be opened with the keyboard", async ({ page }) => {
-  await page.goto("/opportunities/lantern-bay-robotics-field-lab");
+  await page.goto("/opportunities/lantern-bay-robotics-field-lab/record");
 
   const disclosure = page.locator("details.evidence-disclosure").first();
   const summary = disclosure.locator("summary");
@@ -82,7 +84,7 @@ test("a source excerpt can be opened with the keyboard", async ({ page }) => {
 });
 
 test("calculated claims describe their actual inputs", async ({ page }) => {
-  await page.goto("/opportunities/redwood-comet-summer-studio");
+  await page.goto("/opportunities/redwood-comet-summer-studio/record");
   const totalCost = page.locator("article.fact-row").filter({
     has: page.getByRole("heading", { name: "Estimated total mandatory cost" }),
   });
@@ -91,7 +93,7 @@ test("calculated claims describe their actual inputs", async ({ page }) => {
 });
 
 test("a blocked clipboard reports a usable correction fallback", async ({ page }) => {
-  await page.goto("/opportunities/lantern-bay-robotics-field-lab");
+  await page.goto("/opportunities/lantern-bay-robotics-field-lab/record");
   await page.evaluate(() => {
     Object.defineProperty(navigator, "clipboard", {
       configurable: true,
@@ -126,7 +128,7 @@ test("the opportunity library separates reviewed records from demos and combines
   await page.goto("/opportunities");
 
   await expect(page.getByRole("heading", { level: 2, name: "17 cards" })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 3, name: "Reviewed opportunities" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 3, name: "AI-audited opportunities" })).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: "Fictional examples" })).toBeVisible();
   await expect(page.locator(".library-card .review-badge").filter({ hasText: "Demo data" })).toHaveCount(7);
   const filters = page.locator("#library-filter-controls");
@@ -188,7 +190,7 @@ test("two cards can be selected and compared without a winner", async ({ page },
     const startingScroll = await scroll.evaluate((element) => element.scrollLeft);
     await page.getByRole("button", { name: "Show next comparison card" }).click();
     await expect.poll(() => scroll.evaluate((element) => element.scrollLeft)).toBeGreaterThan(startingScroll);
-    await expect(comparison.getByRole("rowheader").filter({ hasText: "Opportunity name" })).toHaveCSS("position", "sticky");
+    await expect(comparison.locator('tbody th[scope="row"]').first()).toHaveCSS("position", "sticky");
     await captureDocumentationScreenshot(page, "compare-mobile.png");
   } else {
     await expect(page.locator(".comparison-scroll-cue")).toBeHidden();
@@ -273,6 +275,7 @@ test("comparison labels a source-free blank draft as unassessed", async ({ page 
   const blankColumn = page.getByRole("columnheader", { name: /blank-local-draft.*Local card/i });
   await expect(blankColumn).toBeVisible();
   const table = page.getByRole("table");
+  await page.getByRole("button", { name: "Full Record" }).click();
   await expect(table.getByText("Not assessed in this draft").first()).toBeVisible();
   await expect(table.getByText("Not found in reviewed sources").first()).toBeVisible();
 });
@@ -291,7 +294,7 @@ test("builder blocks source-free assessments and incomplete review-state promoti
   await page.getByRole("button", { name: "Add checked page" }).click();
   await page.getByLabel("Review state").selectOption("human_reviewed");
   await page.getByRole("button", { name: "Save card metadata" }).click();
-  await expect(page.locator(".error-summary")).toContainText("every field to be explicitly assessed");
+  await expect(page.locator(".error-summary")).toContainText("every field and structured section to be explicitly assessed");
   await expect(page.locator(".builder-preview .review-badge")).toHaveText("Draft");
   await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem("opportunity-facts:builder:v1") ?? "null")?.reviewState)).toBe("draft");
 
@@ -511,7 +514,7 @@ test("missing analysis configuration provides useful local fallbacks", async ({ 
   await expect(page.getByText("Extraction not configured", { exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: "The public product still works." })).toBeVisible();
   await expect(page.getByText("Your input has not been sent.")).toBeVisible();
-  await expect(page.getByRole("link", { name: "Try the sample" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Open a reference example" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Create manually" })).toBeVisible();
 
   await expect(page.getByRole("button", { name: "Automatic extraction unavailable" })).toBeDisabled();
@@ -537,7 +540,7 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
     const card = {
       ...sample,
       slug: "mocked-analysis-draft",
-      reviewState: "draft",
+      reviewState: "automated_draft",
       reviewedAt: null,
       summary: "A draft produced from a deterministic mocked analysis response.",
       facts: {
@@ -669,14 +672,14 @@ test("mobile navigation opens, closes through navigation, and avoids page overfl
   await menu.click();
   await expect(page.getByRole("button", { name: "Close" })).toHaveAttribute("aria-expanded", "true");
   await expect(navigation).toBeVisible();
-  await navigation.getByRole("link", { name: "Browse" }).click();
+    await navigation.getByRole("link", { name: "Examples" }).click();
   await expect(page).toHaveURL(/\/opportunities$/);
   await expect(page.getByRole("button", { name: "Menu" })).toHaveAttribute("aria-expanded", "false");
   await expectNoPageOverflow(page);
 });
 
 test("print media keeps the facts record and removes interactive chrome", async ({ page }, testInfo) => {
-  await page.goto("/opportunities/lantern-bay-robotics-field-lab");
+  await page.goto("/opportunities/lantern-bay-robotics-field-lab/record");
   await page.emulateMedia({ media: "print" });
 
   await expect(page.locator(".site-header")).toBeHidden();

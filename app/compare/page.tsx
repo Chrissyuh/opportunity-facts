@@ -14,11 +14,11 @@ export default function ComparePage() {
         <div className="shell page-header-grid">
           <div>
             <p className="eyebrow">Compare · Two or three records</p>
-            <h1>Differences, without a verdict.</h1>
+            <h1>Find the differences that matter.</h1>
           </div>
           <p className="lede">
-            Align equivalent facts, preserve evidence, and see missing or conflicting
-            disclosures without reducing an opportunity to a score.
+            Start with eligibility, dates, cost, format, and outcomes. Open the
+            complete record only when you need it. No ranking or winner is calculated.
           </p>
         </div>
       </header>

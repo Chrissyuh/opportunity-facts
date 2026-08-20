@@ -1,213 +1,200 @@
 import Link from "next/link";
 import { UrlQuickstart } from "@/components/url-quickstart";
+import { getAllCards } from "@/lib/opportunity/data";
+import type { OpportunityCard } from "@/lib/opportunity/schema";
 
-const sampleSlug = "lantern-bay-robotics-field-lab";
+function value(card: OpportunityCard, field: keyof OpportunityCard["facts"]) {
+  return card.facts[field].displayValue;
+}
+
+function ExampleCard({ card }: { card: OpportunityCard }) {
+  const cost =
+    value(card, "estimated_total_mandatory_cost") ??
+    value(card, "tuition") ??
+    "Not established";
+  return (
+    <article className="home-example-card">
+      <div className="home-example-meta">
+        <span>{value(card, "opportunity_category")}</span>
+        <span>AI-audited</span>
+      </div>
+      <h3>
+        <Link href={`/opportunities/${card.slug}`}>
+          {value(card, "opportunity_name") ?? card.slug}
+        </Link>
+      </h3>
+      <dl>
+        <div>
+          <dt>Deadline</dt>
+          <dd>{value(card, "application_deadline") ?? "Not established"}</dd>
+        </div>
+        <div>
+          <dt>Cost</dt>
+          <dd>{cost}</dd>
+        </div>
+        <div>
+          <dt>Format</dt>
+          <dd>{value(card, "participation_format") ?? "Not established"}</dd>
+        </div>
+      </dl>
+      <p>
+        {value(card, "operating_organization") ?? "Operator not established"}
+      </p>
+    </article>
+  );
+}
 
 export default function HomePage() {
+  const realCards = getAllCards().filter((card) => card.reviewState !== "demo");
+  const examples = realCards.slice(0, 3);
   return (
     <main id="main-content" className="page-main">
-      <section className="home-hero">
-        <div className="shell hero-grid">
+      <section className="home-hero home-hero-product">
+        <div className="shell product-hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">Source-backed student opportunity disclosures</p>
+            <p className="eyebrow">
+              AI-assisted research · source-backed results
+            </p>
             <h1>Know what you’re applying to.</h1>
             <p className="lede">
-              Turn a student opportunity into a clear, source-backed facts card.
+              See who runs it, what it costs, what you actually get, and what
+              the official pages leave unclear.
             </p>
             <UrlQuickstart />
-            <div className="button-row hero-actions">
-              <Link className="button-secondary" href={`/opportunities/${sampleSlug}`}>
-                Try a sample
-              </Link>
-              <Link className="button-quiet" href="/build">
-                Create one manually
-              </Link>
+            <div className="hero-reassurance">
+              <span>Creates an automated draft</span>
+              <span>Evidence stays attached</span>
+              <span>No rankings or verdicts</span>
             </div>
-            <div className="rule-box hero-clarification">
-              <p>
-                Opportunity Facts reports what reviewed sources disclose. It does
-                not rate legitimacy, quality, prestige, or value.
-              </p>
-            </div>
+            {examples[0] ? (
+              <Link
+                className="sample-text-link"
+                href={`/opportunities/${examples[0].slug}`}
+              >
+                See an analyzed example <span aria-hidden="true">→</span>
+              </Link>
+            ) : null}
           </div>
-
-          <Link
-            className="sample-sheet"
-            href={`/opportunities/${sampleSlug}`}
-            aria-label="Open the Lantern Bay Robotics Field Lab sample facts card"
+          <aside
+            className="hero-research-note"
+            aria-label="What the analysis checks"
           >
-            <div className="sample-sheet-top">
-              <span className="demo-ribbon">Demo data</span>
-              <span className="sample-file-number">OF · SAMPLE 01</span>
-            </div>
-            <div className="sample-title-row">
-              <div>
-                <span className="sample-kicker">Summer program · Residential</span>
-                <h2>Lantern Bay Robotics Field Lab</h2>
-              </div>
-              <span className="sample-arrow" aria-hidden="true">
-                ↗
-              </span>
-            </div>
-            <dl className="sample-facts">
-              <div>
-                <dt>Operated by</dt>
-                <dd>
-                  <span>Lantern Bay Learning Cooperative</span>
-                  <span className="status-badge status-disclosed">Disclosed</span>
-                </dd>
-              </div>
-              <div>
-                <dt>Institution relationship</dt>
-                <dd>
-                  <span>Hosted at — not institution-operated</span>
-                  <span className="status-badge status-disclosed">Disclosed</span>
-                </dd>
-              </div>
-              <div>
-                <dt>Refund policy</dt>
-                <dd>
-                  <span>Two official pages give different deadlines</span>
-                  <span className="status-badge status-conflicting">Conflicting</span>
-                </dd>
-              </div>
-              <div>
-                <dt>College credit</dt>
-                <dd>
-                  <span>Not found in the pages checked</span>
-                  <span className="status-badge status-not_found">Not found</span>
-                </dd>
-              </div>
-            </dl>
-            <div className="sample-sheet-footer">
-              <span>Open the complete card</span>
-              <span>Evidence attached to each fact</span>
-            </div>
-          </Link>
+            <p className="eyebrow">One link, practical answers</p>
+            <h2>What you need before you apply.</h2>
+            <ul>
+              <li>Eligibility and deadlines</li>
+              <li>True cost and financial aid</li>
+              <li>Dates, format, and location</li>
+              <li>Operator and institution relationships</li>
+              <li>Selection process and outcomes</li>
+              <li>Missing or conflicting information</li>
+            </ul>
+          </aside>
         </div>
       </section>
-
       <section className="home-proof">
-        <div className="shell proof-row" aria-label="Opportunity Facts principles">
+        <div
+          className="shell proof-row"
+          aria-label="Opportunity Facts principles"
+        >
           <div>
-            <span className="proof-label">One shared format</span>
-            <strong>Identity · cost · dates · selection · outcomes · terms</strong>
+            <span className="proof-number">{realCards.length}</span>
+            <span>
+              <strong>AI-audited reference opportunities</strong>
+              <small>See what a finished record can contain</small>
+            </span>
           </div>
           <div>
-            <span className="proof-label">Every disclosed value</span>
-            <strong>Source URL + exact excerpt + access date</strong>
+            <span className="proof-icon" aria-hidden="true">
+              ↗
+            </span>
+            <span>
+              <strong>Evidence beside supported claims</strong>
+              <small>Official wording remains inspectable</small>
+            </span>
           </div>
           <div>
-            <span className="proof-label">No verdict layer</span>
-            <strong>Compare facts without declaring a winner</strong>
+            <span className="proof-icon" aria-hidden="true">
+              ?
+            </span>
+            <span>
+              <strong>Uncertainty stays visible</strong>
+              <small>Missing and conflicting facts are not smoothed away</small>
+            </span>
           </div>
         </div>
       </section>
-
-      <section className="section">
+      <section className="section home-examples-section">
         <div className="shell">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">A disclosure workflow</p>
-              <h2>From scattered pages to one inspectable record.</h2>
+              <p className="eyebrow">Reviewed examples</p>
+              <h2>See the research, then bring your own link.</h2>
             </div>
             <p>
-              The system keeps the source trail visible. Automation can organize
-              evidence, but it cannot turn ambiguity into certainty.
+              These real reference records show the output without using an
+              analysis call.
+            </p>
+          </div>
+          <div className="home-example-grid">
+            {examples.map((card) => (
+              <ExampleCard key={card.slug} card={card} />
+            ))}
+          </div>
+          <div className="section-action">
+            <Link className="button-secondary" href="/opportunities">
+              Explore all examples
+            </Link>
+            <Link className="button-quiet" href="/compare">
+              Compare opportunities
+            </Link>
+          </div>
+        </div>
+      </section>
+      <section className="section home-how">
+        <div className="shell">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow">How it works</p>
+              <h2>Public pages become an inspectable draft.</h2>
+            </div>
+            <p>
+              AI organizes the research. Deterministic checks withhold
+              unsupported excerpts. You decide what the evidence means for you.
             </p>
           </div>
           <ol className="home-steps">
             <li>
               <span>01</span>
               <div>
-                <h3>Add the source</h3>
+                <h3>Paste the official page</h3>
                 <p>
-                  Paste a public URL, add source text for a blocked page, or build a
-                  card manually.
+                  Opportunity Facts finds related public program, cost, rules,
+                  terms, and privacy pages.
                 </p>
               </div>
             </li>
             <li>
               <span>02</span>
               <div>
-                <h3>Inspect the evidence</h3>
+                <h3>Review supported answers</h3>
                 <p>
-                  Review the operator, real cost, schedule, selection evidence,
-                  outcomes, and material terms with excerpts attached.
+                  Claims appear with their source excerpts. Missing access and
+                  unresolved facts stay visible.
                 </p>
               </div>
             </li>
             <li>
               <span>03</span>
               <div>
-                <h3>Correct or compare</h3>
+                <h3>Compare or inspect deeply</h3>
                 <p>
-                  Edit a draft, export the record, prepare a correction packet, or
-                  line up two or three cards without a winner label.
+                  Use the practical Overview first, then open the Full Record
+                  when every detail matters.
                 </p>
               </div>
             </li>
           </ol>
-        </div>
-      </section>
-
-      <section className="section uncertainty-section">
-        <div className="shell uncertainty-grid">
-          <div>
-            <p className="eyebrow">Make uncertainty visible</p>
-            <h2>Missing is a finding. Conflict is a finding.</h2>
-            <p className="lede">
-              A blank field hides what happened. A status explains what the reviewed
-              sources did—or did not—support.
-            </p>
-            <div className="button-row uncertainty-actions">
-              <Link className="button" href="/opportunities">
-                Browse demo cards
-              </Link>
-              <Link className="button-secondary" href="/methodology#language">
-                Read status definitions
-              </Link>
-            </div>
-          </div>
-          <dl className="status-ledger">
-            <div>
-              <dt><span className="status-badge status-disclosed">Disclosed</span></dt>
-              <dd>An identified source states the information.</dd>
-            </div>
-            <div>
-              <dt><span className="status-badge status-not_found">Not found</span></dt>
-              <dd>It was not located in the identified pages reviewed.</dd>
-            </div>
-            <div>
-              <dt><span className="status-badge status-unclear">Unclear</span></dt>
-              <dd>Relevant wording does not support one precise value.</dd>
-            </div>
-            <div>
-              <dt><span className="status-badge status-conflicting">Conflicting</span></dt>
-              <dd>Reviewed sources support different current values.</dd>
-            </div>
-            <div>
-              <dt><span className="status-badge status-not_applicable">Not applicable</span></dt>
-              <dd>The fact does not apply to this opportunity.</dd>
-            </div>
-          </dl>
-        </div>
-      </section>
-
-      <section className="section home-final">
-        <div className="shell home-final-inner">
-          <div>
-            <p className="eyebrow">Bring your own evidence</p>
-            <h2>Publish a clear Opportunity Facts card.</h2>
-            <p>
-              The builder uses the same schema as the public library. Save locally,
-              import or export JSON, and never claim human review without checking
-              the cited sources.
-            </p>
-          </div>
-          <Link className="button" href="/build">
-            Open the card builder
-          </Link>
         </div>
       </section>
     </main>

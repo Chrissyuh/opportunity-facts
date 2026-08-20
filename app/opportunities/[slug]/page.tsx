@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { FactsCard } from "@/components/facts-card";
+import { OpportunityOverview } from "@/components/opportunity-overview";
 import { getAllCards, loadCardBySlug } from "@/lib/opportunity/data";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -26,7 +26,7 @@ export default async function OpportunityPage({ params }: PageProps) {
 
   return (
     <main id="main-content" className="page-main">
-      <FactsCard card={card} />
+      <OpportunityOverview card={card} />
     </main>
   );
 }

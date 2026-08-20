@@ -185,7 +185,7 @@ describe("analysis pipeline", () => {
       { extractor, now: () => new Date("2026-08-10T12:00:00.000Z") },
     );
 
-    expect(result.card.reviewState).toBe("draft");
+    expect(result.card.reviewState).toBe("automated_draft");
     expect(result.card.slug).toBe("copper-finch-engineering-week");
     expect(result.card.summary).toMatch(/^Automated draft from 2 user-supplied source pages/);
     expect(result.card.facts.operating_organization.status).toBe("disclosed");
@@ -670,7 +670,7 @@ describe("analysis pipeline", () => {
       structures,
     }));
 
-    expect(result.card.reviewState).toBe("draft");
+    expect(result.card.reviewState).toBe("automated_draft");
     expect(result.card.outcomes.status).toBe("modeled");
     expect(result.card.facts.cash_award.status).toBe("not_found");
     expect(result.card.facts.other_benefits.displayValue).toContain(

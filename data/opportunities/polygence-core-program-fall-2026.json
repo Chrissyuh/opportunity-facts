@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.1.0",
+  "schemaVersion": "2.2.0",
   "opportunityId": "polygence-core-program",
   "cycle": {
     "status": "modeled",
@@ -74,10 +74,10 @@
       }
     }
   },
-  "cardVersion": 2,
+  "cardVersion": 3,
   "slug": "polygence-core-program-fall-2026",
   "summary": "Polygence Core is a rolling online one-to-one research-mentorship program built around ten mentor sessions; reviewed pricing begins around $3,000, but a single exact Core price was not published on the reviewed pages.",
-  "reviewState": "human_reviewed",
+  "reviewState": "ai_audited",
   "reviewedAt": "2026-08-20T07:42:00.000Z",
   "sourcePagesChecked": [
     {
@@ -1083,7 +1083,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "poly-role-operator-claim",
@@ -1123,7 +1123,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "organizations.primary-operator-kind",
         "claimRefs": [
           "poly-org-kind",
@@ -1155,7 +1155,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "relationships.institution-list",
         "claimRefs": [
           "poly-independent-claim"
@@ -1186,7 +1186,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "relationships.summary",
         "claimRefs": [
           "poly-independent-claim"
@@ -1217,7 +1217,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "relationships.explanations",
         "claimRefs": [
           "poly-independent-claim"
@@ -1401,7 +1401,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.duration",
         "claimRefs": [
           "poly-program-duration"
@@ -1458,7 +1458,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.formats",
         "claimRefs": [
           "poly-enrollment-format",
@@ -1539,7 +1539,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "costs.tuition-unresolved",
         "claimRefs": [
           "poly-tuition-definition",
@@ -1559,7 +1559,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "costs.other-unresolved",
         "claimRefs": [
           "poly-installment-definition",
@@ -1588,7 +1588,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "costs.total-unresolved",
         "claimRefs": [
           "poly-tuition-definition",
@@ -1861,7 +1861,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.in_kind_value",
         "claimRefs": [
           "poly-showcase-definition",
@@ -1917,7 +1917,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.mentorship",
         "claimRefs": [
           "poly-mentorship-definition",

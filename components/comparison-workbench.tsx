@@ -15,12 +15,19 @@ import {
   parseOpportunityCard,
 } from "@/lib/opportunity/serialization";
 import { EvidenceList } from "./evidence-list";
-import { StatusBadge } from "./status-badge";
+import { ReviewBadge, StatusBadge, reviewLabels } from "./status-badge";
 import { StructuredComparison } from "./structured-opportunity-details";
 
 const storageKey = "opportunity-facts:comparison:v1";
 const storageEvent = "opportunity-facts:comparison-change";
 const MAX_IMPORT_BYTES = 1_000_000;
+type ComparisonMode = "differences" | "core" | "full";
+const KEY_FIELDS = new Set<FieldId>([
+  "grade_levels", "ages", "application_deadline", "start_date", "duration",
+  "participation_format", "location", "estimated_total_mandatory_cost", "financial_aid",
+  "operating_organization", "institution_relationship", "selection_process", "cash_award",
+  "tuition_waiver", "program_seat", "other_benefits",
+]);
 
 const sectionLabels: Record<OpportunitySection, string> = {
   identity: "Identity",
@@ -155,6 +162,7 @@ export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityC
       : invalidatePortableReviewAttestation(card),
   );
   const [message, setMessage] = useState("");
+  const [mode, setMode] = useState<ComparisonMode>("differences");
   const fileRef = useRef<HTMLInputElement>(null);
   const comparisonScrollRef = useRef<HTMLDivElement>(null);
 
@@ -162,6 +170,7 @@ export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityC
     (card) => !selected.some((selectedCard) => selectedCard.slug === card.slug),
   );
   const comparisonRows = selected.length >= 2 ? compareOpportunityCards(selected) : [];
+  const visibleRows = comparisonRows.filter((row) => mode === "full" || (mode === "core" ? row.field.core : row.differs && KEY_FIELDS.has(row.field.id)));
 
   function isRepositoryCard(card: OpportunityCard) {
     return repositoryCardMatches(card, publicCards);
@@ -266,7 +275,7 @@ export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityC
               <button key={card.slug} type="button" onClick={() => addCard(card)}>
                 <span>{cardName(card)}</span>
                 <small>
-                  {card.facts.opportunity_category.displayValue} · {card.reviewState === "demo" ? "Demo data" : card.reviewState.replaceAll("_", " ")}
+                  {card.facts.opportunity_category.displayValue} · {reviewLabels[card.reviewState]}
                 </small>
                 <strong>Add</strong>
               </button>
@@ -277,12 +286,17 @@ export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityC
 
       {selected.length >= 2 ? (
         <>
-          <StructuredComparison cards={selected} />
+          <nav className="comparison-modes no-print" aria-label="Comparison detail level">
+            <button type="button" aria-pressed={mode === "differences"} onClick={() => setMode("differences")}>Key Differences</button>
+            <button type="button" aria-pressed={mode === "core"} onClick={() => setMode("core")}>Core Facts</button>
+            <button type="button" aria-pressed={mode === "full"} onClick={() => setMode("full")}>Full Record</button>
+          </nav>
+          {mode === "full" ? <StructuredComparison cards={selected} /> : null}
           <section aria-labelledby="comparison-table-title">
           <div className="comparison-table-heading">
             <div>
-              <p className="eyebrow">Aligned facts</p>
-              <h2 id="comparison-table-title">Side-by-side disclosure record</h2>
+              <p className="eyebrow">{mode === "differences" ? "Decision-relevant differences" : mode === "core" ? "Standardized dimensions" : "Complete comparison"}</p>
+              <h2 id="comparison-table-title">{mode === "differences" ? "Key differences" : mode === "core" ? "Core facts" : "Full record"}</h2>
             </div>
             <p>Cells marked “Different across cards” identify a variation, not an advantage.</p>
           </div>
@@ -314,18 +328,18 @@ export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityC
                       ) : (
                         <strong>{cardName(card)}</strong>
                       )}
-                      <span>{card.reviewState.replaceAll("_", " ")}</span>
+                      <ReviewBadge state={card.reviewState} />
                       {!isRepositoryCard(card) ? <span>Local card</span> : null}
                     </th>
                   ))}
                 </tr>
               </thead>
-              {SECTIONS.map((section) => (
+              {SECTIONS.filter((section) => visibleRows.some((row) => row.field.section === section)).map((section) => (
                 <tbody key={section}>
                   <tr className="comparison-section-row">
                     <th colSpan={selected.length + 1} scope="rowgroup">{sectionLabels[section]}</th>
                   </tr>
-                  {comparisonRows.filter((row) => row.field.section === section).map((row) => {
+                  {visibleRows.filter((row) => row.field.section === section).map((row) => {
                     const field = row.field;
                     return (
                       <tr key={field.id}>
@@ -357,6 +371,7 @@ export function ComparisonWorkbench({ publicCards }: { publicCards: OpportunityC
                 </tbody>
               ))}
             </table>
+            {visibleRows.length === 0 ? <div className="comparison-no-differences"><strong>No material differences in the prioritized facts.</strong><p>Switch to Core Facts or Full Record to inspect everything.</p></div> : null}
             </div>
           </div>
           <div className="card-disclaimer comparison-disclaimer">

@@ -15,7 +15,9 @@ describe("demo dataset", () => {
       createEmptyCard({ slug: "private-draft", reviewState: "draft" }),
     ]);
 
-    expect(() => parsePublicDataset(dataset)).toThrow(/cannot contain draft cards/i);
+    expect(() => parsePublicDataset(dataset)).toThrow(
+      /cannot contain draft or automated-draft cards/i,
+    );
   });
 
   it("keys opportunity-cycle uniqueness to stable IDs instead of display labels", async () => {

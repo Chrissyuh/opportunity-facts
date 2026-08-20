@@ -178,13 +178,15 @@ A calculation is allowed only when:
 ## 8. Review-state and migration rules
 
 - `demo`: obviously fictional `.example` data, persistently labeled Demo data.
-- `draft`: incomplete, automated, imported, or not yet source-aligned by a human reviewer.
-- `human_reviewed`: a reviewer checked every displayed value, excerpt, URL, provenance, normalization, status, conflict, and calculation against the recorded sources.
+- `draft`: manual, imported, migrated, or incomplete working record without review attestation.
+- `automated_draft`: normal URL or pasted-source analysis output after deterministic retention checks; not separately audited.
+- `ai_audited`: a separate AI-assisted audit checked every displayed value, excerpt, URL, provenance, normalization, status, conflict, calculation, scope, and projection against the recorded sources; no person completed the full review.
+- `human_reviewed`: a person independently checked every displayed value, excerpt, URL, provenance, normalization, status, conflict, calculation, scope, and projection against the recorded sources.
 - `organizer_confirmed`: the organizer confirmed or supplied the information. This is not independent verification and does not replace evidence.
 
 A V1 import is recovery input, not reviewed V2 data. Conservative migration preserves legacy facts/evidence, advances one revision, clears review attestation, records the prior digest, and leaves cycle and structured collections unassessed. Never infer V2 roles, scopes, pathways, recipients, or funding types from V1 prose. Re-review and re-attest the populated V2 card before publication.
 
-Do not select `human_reviewed` merely because a card passed schema validation. Do not convert `organizer_confirmed` into an endorsement badge. Record review date and version for either state.
+Do not select an attested state merely because a card passed schema validation. Do not represent an AI-assisted audit as human review, and do not convert `organizer_confirmed` into an endorsement badge. Record review date and version for every attested state.
 
 ## 9. Two-pass audit
 
@@ -218,7 +220,7 @@ On any substantive change:
 - update the review date and source inventory;
 - retain a reviewable Git history;
 - rerun schema/data validation and relevant tests;
-- avoid carrying forward `human_reviewed` if the affected value/source alignment has not been rechecked.
+- avoid carrying forward any review attestation if the affected value/source alignment has not been rechecked at the level that state promises.
 
 ## 11. Using card audits as a disclosure study
 

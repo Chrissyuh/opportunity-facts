@@ -3,6 +3,8 @@ import path from "node:path";
 
 import { z } from "zod";
 
+import { isPublicReviewState, isReviewAttestationState } from "./fields";
+
 import {
   SCHEMA_VERSION,
   opportunityCardSchema,
@@ -69,8 +71,8 @@ export async function readRepositoryCards(root = process.cwd()): Promise<Opportu
     ),
     readCardDirectory(
       path.join(root, "data", "opportunities"),
-      (state) => state === "human_reviewed" || state === "organizer_confirmed",
-      "must be human_reviewed or organizer_confirmed before publication.",
+      isReviewAttestationState,
+      "must be ai_audited, human_reviewed, or organizer_confirmed before publication.",
     ),
   ]);
   const cards = [...demoCards, ...reviewedCards];
@@ -116,15 +118,11 @@ const publicDatasetSchema = z
     const slugs = new Set<string>();
     const opportunityCycles = new Set<string>();
     dataset.cards.forEach((card, index) => {
-      if (
-        card.reviewState !== "demo" &&
-        card.reviewState !== "human_reviewed" &&
-        card.reviewState !== "organizer_confirmed"
-      ) {
+      if (!isPublicReviewState(card.reviewState)) {
         context.addIssue({
           code: "custom",
           path: ["cards", index, "reviewState"],
-          message: "A public dataset cannot contain draft cards.",
+          message: "A public dataset cannot contain draft or automated-draft cards.",
         });
       }
       if (slugs.has(card.slug)) {

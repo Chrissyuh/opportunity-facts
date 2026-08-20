@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.1.0",
+  "schemaVersion": "2.2.0",
   "opportunityId": "congressional-app-challenge",
   "cycle": {
     "status": "modeled",
@@ -92,10 +92,10 @@
       }
     }
   },
-  "cardVersion": 1,
+  "cardVersion": 2,
   "slug": "congressional-app-challenge-2026",
   "summary": "The 2026 Congressional App Challenge is a district-based U.S. House coding competition for eligible middle- and high-school students entering individually or in teams of up to four.",
-  "reviewState": "human_reviewed",
+  "reviewState": "ai_audited",
   "reviewedAt": "2026-08-12T06:25:00.000Z",
   "sourcePagesChecked": [
     {
@@ -942,7 +942,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "cac-house-host-claim",
@@ -1161,7 +1161,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "cycle.closes",
         "claimRefs": [
           "cac-submission-deadline"
@@ -1205,7 +1205,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "cycle.opens",
         "claimRefs": [
           "cac-launch-date"
@@ -1288,7 +1288,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.formats",
         "claimRefs": [
           "cac-submission-format"
@@ -1509,7 +1509,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.process",
         "claimRefs": [
           "cac-pathway-definition",
@@ -1668,7 +1668,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.in_kind_value-matrix",
         "claimRefs": [
           "cac-capitol-definition",

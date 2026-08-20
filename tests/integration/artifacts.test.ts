@@ -29,10 +29,15 @@ async function makeRepository(): Promise<string> {
   return root;
 }
 
-async function writeCard(root: string, directory: string, slug: string): Promise<void> {
+async function writeCard(
+  root: string,
+  directory: string,
+  slug: string,
+  reviewState: "draft" | "automated_draft" = "draft",
+): Promise<void> {
   await writeFile(
     path.join(root, "data", directory, `${slug}.json`),
-    `${JSON.stringify(createEmptyCard({ slug }), null, 2)}\n`,
+    `${JSON.stringify(createEmptyCard({ slug, reviewState }), null, 2)}\n`,
     "utf8",
   );
 }
@@ -46,7 +51,14 @@ describe("public artifact boundary", () => {
     const root = await makeRepository();
     await writeCard(root, "opportunities", "unreviewed-draft");
 
-    await expect(readRepositoryCards(root)).rejects.toThrow(/human_reviewed or organizer_confirmed/i);
+    await expect(readRepositoryCards(root)).rejects.toThrow(/ai_audited, human_reviewed, or organizer_confirmed/i);
+  });
+
+  it("fails closed when an automated draft is placed in data/opportunities", async () => {
+    const root = await makeRepository();
+    await writeCard(root, "opportunities", "automated-draft", "automated_draft");
+
+    await expect(readRepositoryCards(root)).rejects.toThrow(/before publication/i);
   });
 
   it("fails closed when a non-demo card is placed in data/demo", async () => {

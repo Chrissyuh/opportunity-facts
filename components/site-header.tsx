@@ -5,10 +5,9 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const links = [
-  { href: "/opportunities", label: "Browse" },
   { href: "/compare", label: "Compare" },
-  { href: "/methodology", label: "Methodology" },
-  { href: "/build", label: "Create a card" },
+  { href: "/opportunities", label: "Examples" },
+  { href: "/methodology", label: "How it works" },
 ];
 
 export function SiteHeader() {
@@ -54,7 +53,7 @@ export function SiteHeader() {
             </Link>
           ))}
           <Link className="nav-cta" href="/analyze" onClick={() => setOpen(false)}>
-            Analyze a URL
+            Analyze an opportunity
           </Link>
         </nav>
       </div>

@@ -22,7 +22,7 @@ Do not put participant, applicant, or other unnecessary personal information in 
 
 ## 1. Opportunity, cycle, and identity
 
-- [ ] `schemaVersion` is the current exported version (`2.1.0`) and `opportunityId` excludes the cycle/year/cohort suffix.
+- [ ] `schemaVersion` is the current exported version (`2.2.0`) and `opportunityId` excludes the cycle/year/cohort suffix.
 - [ ] The modeled cycle has a stable ID and evidence-bearing label/status/year metadata.
 - [ ] Cycle opening/closing/coverage references point to the correct disclosed stage timing claims.
 - [ ] `cardVersion` describes only this record revision; it was not used as cycle identity.
@@ -64,7 +64,7 @@ Do not put participant, applicant, or other unnecessary personal information in 
 - [ ] `modeled` collections contain at least one record.
 - [ ] Empty assessed collections use `none_found` or `not_applicable` with a reason.
 - [ ] `unassessed` is used only while the card remains a draft.
-- [ ] A proposed `human_reviewed` or `organizer_confirmed` card has no unassessed structured section.
+- [ ] A proposed `ai_audited`, `human_reviewed`, or `organizer_confirmed` card has no unassessed structured section.
 - [ ] Record IDs are globally unique; organization, variant, stage, pathway, cost-credit, and cycle-timing references resolve in the same card.
 
 ## 5. Scope, variants, stages, and pathways
@@ -137,8 +137,9 @@ Do not put participant, applicant, or other unnecessary personal information in 
 - [ ] The card remained in `data/drafts/` until both flat and structured review were complete.
 - [ ] Automated/pasted sources remain `user_supplied`; `official_*` or `public_record` was assigned only after publisher/document-kind review.
 - [ ] Fictional data uses reserved `.example` URLs and remains visibly `demo` / Demo data.
-- [ ] Automated, migrated, imported reviewed/confirmed, or incompletely checked real cards remain `draft`; imported V2 fictional cards retain `demo` provenance.
-- [ ] `human_reviewed` means a human checked every displayed value, excerpt, source, scope, relationship, projection, conflict, and the full inventory.
+- [ ] Normal automated analysis remains `automated_draft`; manual, migrated, imported-attestation, or incompletely checked work remains `draft`; imported V2 fictional cards retain `demo` provenance.
+- [ ] `ai_audited` means a separate AI-assisted audit checked every displayed value, excerpt, source, scope, relationship, projection, conflict, and the full inventory, with no claim that a person completed the review.
+- [ ] `human_reviewed` means a person independently checked every displayed value, excerpt, source, scope, relationship, projection, conflict, and the full inventory.
 - [ ] `organizer_confirmed` states organizer involvement and is not presented as independent verification.
 - [ ] A non-demo reviewed state has a valid current `reviewedAt` timestamp.
 - [ ] No real organization, response, endorsement, user count, accuracy/traffic figure, or research result was fabricated.
@@ -207,4 +208,4 @@ Record concise evidence, not “looks good.”
 | Automated validation | |
 | Browser/print verification | |
 | Remaining uncertainty | |
-| Decision (`draft`, `human_reviewed`, `organizer_confirmed`) | |
+| Decision (`draft`, `automated_draft`, `ai_audited`, `human_reviewed`, `organizer_confirmed`) | |

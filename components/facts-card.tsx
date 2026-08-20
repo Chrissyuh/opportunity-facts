@@ -28,8 +28,12 @@ const sectionLabels: Record<OpportunitySection, string> = {
 const reviewExplanations: Record<OpportunityCard["reviewState"], string> = {
   demo: "Fictional data created to demonstrate the product. No real organization is described.",
   draft: "A working card that has not completed human source review.",
+  automated_draft:
+    "AI-assisted research organized these sources into a draft. Check every important claim and evidence excerpt before relying on it.",
+  ai_audited:
+    "An independent AI-assisted audit checked that displayed values and excerpts align with the cited sources. No person has yet completed the full review.",
   human_reviewed:
-    "A reviewer checked that displayed values and excerpts match the cited sources; the underlying claims were not independently audited.",
+    "A person independently checked the relevant displayed claims against their cited sources; the underlying organizer claims were not independently verified.",
   organizer_confirmed:
     "The organizer confirmed or supplied information. This is not independent verification.",
 };

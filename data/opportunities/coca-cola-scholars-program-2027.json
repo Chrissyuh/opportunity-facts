@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.1.0",
+  "schemaVersion": "2.2.0",
   "opportunityId": "coca-cola-scholars-program",
   "cycle": {
     "status": "modeled",
@@ -128,10 +128,10 @@
       }
     }
   },
-  "cardVersion": 1,
+  "cardVersion": 2,
   "slug": "coca-cola-scholars-program-2027",
   "summary": "The 2027 Coca-Cola Scholars Program will select 150 U.S. high-school seniors for individual $20,000 achievement-based scholarships through application, semifinalist, interview, and Scholars Weekend stages.",
-  "reviewState": "human_reviewed",
+  "reviewState": "ai_audited",
   "reviewedAt": "2026-08-12T06:25:00.000Z",
   "sourcePagesChecked": [
     {
@@ -1254,7 +1254,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "coke-foundation-operator",
@@ -1294,7 +1294,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "organizations.primary-operator-kind",
         "claimRefs": [
           "coke-foundation-kind",
@@ -1496,7 +1496,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "cycle.closes",
         "claimRefs": [
           "coke-application-deadline"
@@ -1537,7 +1537,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.starts",
         "claimRefs": [
           "coke-weekend-timing"
@@ -1641,7 +1641,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.formats",
         "claimRefs": [
           "coke-application-format",
@@ -1672,7 +1672,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.locations",
         "claimRefs": [
           "coke-weekend-location"
@@ -1718,7 +1718,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "costs.application_fee",
         "claimRefs": [
           "coke-application-fee-definition",
@@ -1786,7 +1786,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "costs.total-incomplete",
         "claimRefs": [
           "coke-application-fee-definition",
@@ -1942,7 +1942,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.process",
         "claimRefs": [
           "coke-pathway-definition",
@@ -2082,7 +2082,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.tuition_waiver",
         "claimRefs": [
           "coke-scholarship-definition",

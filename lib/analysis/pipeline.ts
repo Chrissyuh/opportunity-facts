@@ -2,6 +2,7 @@ import "server-only";
 
 import { z } from "zod";
 import type { OpportunityCard } from "@/lib/opportunity/schema";
+import { formatFact } from "@/lib/opportunity/format";
 import {
   hasSensitiveUrlQuery,
   isObviouslyPublicHttpUrl,
@@ -17,6 +18,11 @@ import {
 } from "./model-extraction";
 import { parsePublicHttpUrl } from "./url-safety";
 import type { PageAcquisitionFailure } from "./types";
+import type { AttentionItem } from "./attention";
+import { sourceTextFingerprint } from "./failure-cache";
+import type { AnalysisProgressSink } from "./progress";
+import { assessAnalysisQuality, type AnalysisQualityAssessment, type AnalysisValidationStats } from "./quality-gate";
+import type { AnalysisTelemetrySink } from "./telemetry";
 
 export const MAX_PASTED_SOURCES = 7;
 export const MAX_PASTED_SOURCE_CHARACTERS = 80_000;
@@ -101,6 +107,11 @@ export interface AnalysisPipelineResult {
   readonly reviewedPages: readonly ReviewedPageSummary[];
   readonly pageWarnings: readonly PageAcquisitionFailure[];
   readonly evidenceWarnings: readonly EvidenceWarning[];
+  readonly attentionItems: readonly AttentionItem[];
+  readonly quality: AnalysisQualityAssessment;
+  readonly validationStats: AnalysisValidationStats;
+  readonly sourceFingerprint: string | null;
+  readonly familyFailures: readonly import("./model-extraction").ModelFamilyFailure[];
 }
 
 export interface AnalyzePipelineOptions {
@@ -108,6 +119,8 @@ export interface AnalyzePipelineOptions {
   readonly fetch?: AcquirePublicSourcePagesOptions;
   readonly now?: () => Date;
   readonly signal?: AbortSignal;
+  readonly onProgress?: AnalysisProgressSink;
+  readonly onTelemetry?: AnalysisTelemetrySink;
 }
 
 function summarizeSources(sources: readonly AnalysisSourceContext[]): ReviewedPageSummary[] {
@@ -131,13 +144,56 @@ async function finishAnalysis(
   pageWarnings: readonly PageAcquisitionFailure[],
   extractor?: ModelExtractor,
   signal?: AbortSignal,
+  onProgress?: AnalysisProgressSink,
+  onTelemetry?: AnalysisTelemetrySink,
 ): Promise<AnalysisPipelineResult> {
-  const extracted = await extractOpportunityCard(sources, extractor, { signal });
-  return {
+  const extracted = await extractOpportunityCard(sources, extractor, { signal, onProgress, onTelemetry });
+  const reviewedPages = summarizeSources(sources);
+  const qualityStartedAt = performance.now();
+  const quality = assessAnalysisQuality({
     card: extracted.card,
-    reviewedPages: summarizeSources(sources),
+    acquiredPages: reviewedPages.length,
     pageWarnings,
     evidenceWarnings: extracted.evidenceWarnings,
+    attentionItems: extracted.attentionItems,
+    validationStats: extracted.validationStats,
+    familyFailures: extracted.familyFailures,
+  });
+  onTelemetry?.({ stage: "quality_gate", durationMs: performance.now() - qualityStartedAt, outcome: "completed" });
+  const previewFields = [
+    "opportunity_name",
+    "application_deadline",
+    "participation_format",
+    "estimated_total_mandatory_cost",
+    "financial_aid",
+    "operating_organization",
+    "selection_process",
+    "other_benefits",
+  ] as const;
+  for (const fieldId of previewFields) {
+    const fact = extracted.card.facts[fieldId];
+    if (fact.status !== "disclosed" && fact.status !== "conflicting") continue;
+    onProgress?.({
+      type: "validated_fact",
+      fieldId,
+      label: fieldId.replaceAll("_", " "),
+      displayValue: formatFact(fact),
+      evidenceCount: fact.status === "conflicting"
+        ? fact.conflictingValues.reduce((sum, candidate) => sum + candidate.sources.length, 0)
+        : fact.sources.length,
+    });
+  }
+  onProgress?.({ type: "quality_complete", outcome: quality.outcome });
+  return {
+    card: extracted.card,
+    reviewedPages,
+    pageWarnings,
+    evidenceWarnings: extracted.evidenceWarnings,
+    attentionItems: extracted.attentionItems,
+    quality,
+    validationStats: extracted.validationStats,
+    sourceFingerprint: sources[0]?.page.text ? sourceTextFingerprint(sources[0].page.text) : null,
+    familyFailures: extracted.familyFailures,
   };
 }
 
@@ -146,15 +202,47 @@ export async function analyzePublicUrl(
   options: AnalyzePipelineOptions = {},
 ): Promise<AnalysisPipelineResult> {
   const acquired = await acquirePublicSourcePages(url, {
-    ...options.fetch,
-    signal: options.signal ?? options.fetch?.signal,
-  });
+      ...options.fetch,
+      signal: options.signal ?? options.fetch?.signal,
+      onPageAcquired(page) {
+        options.fetch?.onPageAcquired?.(page);
+        options.onProgress?.({
+          type: "source_acquired",
+          sourceId: page.extracted.id,
+          title: page.extracted.title,
+          url: page.fetched.url,
+        });
+      },
+      onPageFailure(failure) {
+        options.fetch?.onPageFailure?.(failure);
+        options.onProgress?.({ type: "source_failed", code: failure.code, url: failure.url });
+      },
+      onDiscoveryComplete(candidateCount) {
+        options.fetch?.onDiscoveryComplete?.(candidateCount);
+      },
+      onTiming(stage, durationMs) {
+        options.fetch?.onTiming?.(stage, durationMs);
+        options.onTelemetry?.({ stage, durationMs, outcome: "completed" });
+      },
+    });
   const sourcePages = [acquired.submitted, ...acquired.discovered];
   const sources = sourcePages.map(({ fetched, extracted }) => ({
     page: extracted,
     accessedAt: fetched.fetchedAt,
   }));
-  return finishAnalysis(sources, acquired.failures, options.extractor, options.signal);
+  options.onProgress?.({
+    type: "source_set_complete",
+    acquired: sourcePages.length,
+    failed: acquired.failures.length,
+  });
+  return finishAnalysis(
+    sources,
+    acquired.failures,
+    options.extractor,
+    options.signal,
+    options.onProgress,
+    options.onTelemetry,
+  );
 }
 
 export async function analyzePastedSources(
@@ -170,7 +258,23 @@ export async function analyzePastedSources(
     }),
     accessedAt,
   }));
-  return finishAnalysis(sources, [], options.extractor, options.signal);
+  for (const source of sources) {
+    options.onProgress?.({
+      type: "source_acquired",
+      sourceId: source.page.id,
+      title: source.page.title,
+      url: source.page.url,
+    });
+  }
+  options.onProgress?.({ type: "source_set_complete", acquired: sources.length, failed: 0 });
+  return finishAnalysis(
+    sources,
+    [],
+    options.extractor,
+    options.signal,
+    options.onProgress,
+    options.onTelemetry,
+  );
 }
 
 export async function analyzeRequest(

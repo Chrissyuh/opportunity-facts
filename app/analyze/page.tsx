@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { AnalysisWorkbench } from "@/components/analysis-workbench";
+import Link from "next/link";
 import { isAnalysisEnabled } from "@/lib/analysis/admission-control";
 
 export const metadata: Metadata = {
-  title: "Analyze sources",
+  title: "Analyze an opportunity",
   description: "Create a draft Opportunity Facts card from a public URL or pasted source text.",
 };
 
@@ -14,9 +15,9 @@ export default function AnalyzePage() {
         <div className="shell page-header-grid">
           <div>
             <p className="eyebrow">Analyze · Draft, then review</p>
-            <h1>Turn source pages into an inspectable card.</h1>
+            <h1>Paste an opportunity.</h1>
           </div>
-          <p className="lede">Automatic extraction organizes evidence. It does not decide whether an opportunity is trustworthy or worthwhile.</p>
+          <div><p className="lede">We’ll review its public pages and build a source-backed draft.</p><Link className="batch-link" href="/analyze/batch">Need to check several? Batch analyze up to 5 →</Link></div>
         </div>
       </header>
       <div className="shell section">

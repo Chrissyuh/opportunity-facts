@@ -1,9 +1,9 @@
 {
-  "schemaVersion": "2.1.0",
+  "schemaVersion": "2.2.0",
   "generatedAt": "2026-08-20T07:43:00.000Z",
   "cards": [
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": "breakthrough-junior-challenge",
       "cycle": {
         "status": "modeled",
@@ -96,10 +96,10 @@
           }
         }
       },
-      "cardVersion": 2,
+      "cardVersion": 3,
       "slug": "breakthrough-junior-challenge-2026",
       "summary": "The 2026 Breakthrough Junior Challenge is an individual global science-video competition for ages 13–18 with a $250,000 student scholarship, $50,000 teacher prize, and $100,000 school laboratory award.",
-      "reviewState": "human_reviewed",
+      "reviewState": "ai_audited",
       "reviewedAt": "2026-08-20T07:43:00.000Z",
       "sourcePagesChecked": [
         {
@@ -1344,7 +1344,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator",
             "claimRefs": [
               "bjc-sponsor-role-claim",
@@ -1552,7 +1552,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "cycle.closes",
             "claimRefs": [
               "bjc-deadline"
@@ -1596,7 +1596,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "cycle.opens",
             "claimRefs": [
               "bjc-open-date"
@@ -1684,7 +1684,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.formats",
             "claimRefs": [
               "bjc-submit-format",
@@ -1914,7 +1914,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.process",
             "claimRefs": [
               "bjc-pathway-definition",
@@ -2062,7 +2062,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.tuition_waiver",
             "claimRefs": [
               "bjc-scholarship-definition",
@@ -2348,7 +2348,7 @@
       "migratedFrom": null
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": null,
       "cycle": {
         "status": "unassessed",
@@ -3583,7 +3583,7 @@
       }
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": "coca-cola-scholars-program",
       "cycle": {
         "status": "modeled",
@@ -3712,10 +3712,10 @@
           }
         }
       },
-      "cardVersion": 1,
+      "cardVersion": 2,
       "slug": "coca-cola-scholars-program-2027",
       "summary": "The 2027 Coca-Cola Scholars Program will select 150 U.S. high-school seniors for individual $20,000 achievement-based scholarships through application, semifinalist, interview, and Scholars Weekend stages.",
-      "reviewState": "human_reviewed",
+      "reviewState": "ai_audited",
       "reviewedAt": "2026-08-12T06:25:00.000Z",
       "sourcePagesChecked": [
         {
@@ -4838,7 +4838,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator",
             "claimRefs": [
               "coke-foundation-operator",
@@ -4878,7 +4878,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator-kind",
             "claimRefs": [
               "coke-foundation-kind",
@@ -5080,7 +5080,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "cycle.closes",
             "claimRefs": [
               "coke-application-deadline"
@@ -5121,7 +5121,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.starts",
             "claimRefs": [
               "coke-weekend-timing"
@@ -5225,7 +5225,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.formats",
             "claimRefs": [
               "coke-application-format",
@@ -5256,7 +5256,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.locations",
             "claimRefs": [
               "coke-weekend-location"
@@ -5302,7 +5302,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "costs.application_fee",
             "claimRefs": [
               "coke-application-fee-definition",
@@ -5370,7 +5370,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "costs.total-incomplete",
             "claimRefs": [
               "coke-application-fee-definition",
@@ -5526,7 +5526,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.process",
             "claimRefs": [
               "coke-pathway-definition",
@@ -5666,7 +5666,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.tuition_waiver",
             "claimRefs": [
               "coke-scholarship-definition",
@@ -5930,7 +5930,7 @@
       "migratedFrom": null
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": "congressional-app-challenge",
       "cycle": {
         "status": "modeled",
@@ -6023,10 +6023,10 @@
           }
         }
       },
-      "cardVersion": 1,
+      "cardVersion": 2,
       "slug": "congressional-app-challenge-2026",
       "summary": "The 2026 Congressional App Challenge is a district-based U.S. House coding competition for eligible middle- and high-school students entering individually or in teams of up to four.",
-      "reviewState": "human_reviewed",
+      "reviewState": "ai_audited",
       "reviewedAt": "2026-08-12T06:25:00.000Z",
       "sourcePagesChecked": [
         {
@@ -6873,7 +6873,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator",
             "claimRefs": [
               "cac-house-host-claim",
@@ -7092,7 +7092,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "cycle.closes",
             "claimRefs": [
               "cac-submission-deadline"
@@ -7136,7 +7136,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "cycle.opens",
             "claimRefs": [
               "cac-launch-date"
@@ -7219,7 +7219,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.formats",
             "claimRefs": [
               "cac-submission-format"
@@ -7440,7 +7440,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.process",
             "claimRefs": [
               "cac-pathway-definition",
@@ -7599,7 +7599,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.in_kind_value-matrix",
             "claimRefs": [
               "cac-capitol-definition",
@@ -7855,7 +7855,7 @@
       "migratedFrom": null
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": "diamond-challenge",
       "cycle": {
         "status": "modeled",
@@ -7984,10 +7984,10 @@
           }
         }
       },
-      "cardVersion": 2,
+      "cardVersion": 3,
       "slug": "diamond-challenge-2027",
       "summary": "A worldwide 2027 high-school team entrepreneurship competition operated by Horn Entrepreneurship at the University of Delaware, with business and social innovation tracks, live or virtual pitching pathways, an in-person finalist summit, and six source-supported team cash awards across the two tracks.",
-      "reviewState": "human_reviewed",
+      "reviewState": "ai_audited",
       "reviewedAt": "2026-08-12T00:27:28.180Z",
       "sourcePagesChecked": [
         {
@@ -10954,7 +10954,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator",
             "claimRefs": [
               "diamond-horn-operator-role",
@@ -10994,7 +10994,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator-kind",
             "claimRefs": [
               "diamond-horn-kind",
@@ -11034,7 +11034,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.institution-list",
             "claimRefs": [
               "diamond-udel-operated-relationship",
@@ -11074,7 +11074,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.summary",
             "claimRefs": [
               "diamond-udel-operated-relationship",
@@ -11114,7 +11114,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.explanations",
             "claimRefs": [
               "diamond-udel-operated-relationship",
@@ -11339,7 +11339,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "cycle.closes",
             "claimRefs": [
               "diamond-submission-deadline"
@@ -11375,7 +11375,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.notification",
             "claimRefs": [
               "diamond-pitch-invite-notification",
@@ -11407,7 +11407,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "cycle.opens",
             "claimRefs": [
               "diamond-submission-opens"
@@ -11438,7 +11438,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "cycle.coverage-end",
             "claimRefs": [
               "diamond-summit-ends"
@@ -11466,7 +11466,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.duration",
             "claimRefs": [
               "diamond-summit-duration"
@@ -11545,7 +11545,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.formats",
             "claimRefs": [
               "diamond-live-pitch-format",
@@ -11583,7 +11583,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.locations",
             "claimRefs": [
               "diamond-live-pitch-location",
@@ -11697,7 +11697,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "costs.total-unresolved",
             "claimRefs": [
               "diamond-travel-cost-definition",
@@ -11844,7 +11844,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.process",
             "claimRefs": [
               "diamond-live-pathway-definition",
@@ -11995,7 +11995,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.cash_award-matrix",
             "claimRefs": [
               "diamond-business-1-definition",
@@ -12090,7 +12090,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.program_seat",
             "claimRefs": [
               "diamond-summit-seat-definition",
@@ -12121,7 +12121,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.in_kind_value",
             "claimRefs": [
               "diamond-resources-definition",
@@ -12205,7 +12205,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.other-benefits",
             "claimRefs": [
               "diamond-feedback-definition",
@@ -12689,7 +12689,7 @@
       }
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": null,
       "cycle": {
         "status": "unassessed",
@@ -13980,7 +13980,7 @@
       }
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": null,
       "cycle": {
         "status": "unassessed",
@@ -15471,7 +15471,7 @@
       }
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": "lumiere-research-scholar-program",
       "cycle": {
         "status": "modeled",
@@ -15582,10 +15582,10 @@
           }
         }
       },
-      "cardVersion": 2,
+      "cardVersion": 3,
       "slug": "lumiere-research-scholar-program-fall-2026",
       "summary": "A selective online Fall 2026 research mentorship operated by Lumiere Education, with four current application price tiers, one-to-one mentorship, and eligibility after successful completion for three UC San Diego Extended Studies post-baccalaureate credits.",
-      "reviewState": "human_reviewed",
+      "reviewState": "ai_audited",
       "reviewedAt": "2026-08-12T00:27:28.180Z",
       "sourcePagesChecked": [
         {
@@ -18495,7 +18495,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator",
             "claimRefs": [
               "lumiere-operator-role",
@@ -18535,7 +18535,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator-kind",
             "claimRefs": [
               "lumiere-org-kind",
@@ -18583,7 +18583,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.institution-list",
             "claimRefs": [
               "lumiere-ucsd-credit-relationship",
@@ -18634,7 +18634,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.summary",
             "claimRefs": [
               "lumiere-ucsd-credit-relationship",
@@ -18688,7 +18688,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.explanations",
             "claimRefs": [
               "lumiere-ucsd-credit-relationship",
@@ -18909,7 +18909,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "cycle.closes",
             "claimRefs": [
               "lumiere-application-deadline"
@@ -18953,7 +18953,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "cycle.coverage-start",
             "claimRefs": [
               "lumiere-program-start"
@@ -19003,7 +19003,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.duration",
             "claimRefs": [
               "lumiere-duration-individual",
@@ -19041,7 +19041,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.weekly-hours",
             "claimRefs": [
               "lumiere-weekly-time-commitment"
@@ -19102,7 +19102,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.formats",
             "claimRefs": [
               "lumiere-application-format",
@@ -19139,7 +19139,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.locations",
             "claimRefs": [
               "lumiere-program-location"
@@ -19198,7 +19198,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "costs.deposit",
             "claimRefs": [
               "lumiere-deposit-definition",
@@ -19235,7 +19235,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "costs.tuition-matrix",
             "claimRefs": [
               "cost-tuition-individual-definition",
@@ -19299,7 +19299,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "costs.total-incomplete",
             "claimRefs": [
               "cost-tuition-individual-definition",
@@ -19475,7 +19475,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.process",
             "claimRefs": [
               "lumiere-common-pathway",
@@ -19636,7 +19636,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.tuition_waiver",
             "claimRefs": [
               "lumiere-aid-definition",
@@ -19676,7 +19676,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.program_seat",
             "claimRefs": [
               "lumiere-program-seat-definition",
@@ -19733,7 +19733,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.college_credit",
             "claimRefs": [
               "lumiere-credit-definition",
@@ -19773,7 +19773,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.mentorship-matrix",
             "claimRefs": [
               "lumiere-mentorship-individual-definition",
@@ -19831,7 +19831,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.other-benefits",
             "claimRefs": [
               "lumiere-paper-definition",
@@ -20190,7 +20190,7 @@
       }
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": "mites-summer",
       "cycle": {
         "status": "modeled",
@@ -20301,10 +20301,10 @@
           }
         }
       },
-      "cardVersion": 1,
+      "cardVersion": 2,
       "slug": "mites-summer-2027",
       "summary": "MITES Summer is a free six-week residential STEM program operated within MIT's School of Engineering for eligible rising high-school seniors; 2027 exact program dates were not yet published.",
-      "reviewState": "human_reviewed",
+      "reviewState": "ai_audited",
       "reviewedAt": "2026-08-12T06:25:00.000Z",
       "sourcePagesChecked": [
         {
@@ -21511,7 +21511,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator",
             "claimRefs": [
               "mites-role-operator-claim",
@@ -21551,7 +21551,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator-kind",
             "claimRefs": [
               "mites-org-kind",
@@ -21591,7 +21591,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.institution-list",
             "claimRefs": [
               "mites-mit-operated-claim",
@@ -21631,7 +21631,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.summary",
             "claimRefs": [
               "mites-mit-operated-claim",
@@ -21671,7 +21671,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.explanations",
             "claimRefs": [
               "mites-mit-operated-claim",
@@ -21883,7 +21883,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.duration",
             "claimRefs": [
               "mites-program-duration"
@@ -21916,7 +21916,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.weekly-hours",
             "claimRefs": [
               "mites-program-hours"
@@ -21965,7 +21965,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.formats",
             "claimRefs": [
               "mites-application-format",
@@ -21994,7 +21994,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.locations",
             "claimRefs": [
               "mites-program-location"
@@ -22066,7 +22066,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "costs.tuition",
             "claimRefs": [
               "mites-tuition-definition",
@@ -22099,7 +22099,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "costs.total-unresolved",
             "claimRefs": [
               "mites-tuition-definition",
@@ -22273,7 +22273,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.process",
             "claimRefs": [
               "mites-pathway-definition",
@@ -22407,7 +22407,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.program_seat",
             "claimRefs": [
               "mites-seat-definition",
@@ -22453,7 +22453,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.in_kind_value",
             "claimRefs": [
               "mites-evaluation-definition",
@@ -22686,7 +22686,7 @@
       "migratedFrom": null
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": "nasa-techrise-student-challenge",
       "cycle": {
         "status": "modeled",
@@ -22797,10 +22797,10 @@
           }
         }
       },
-      "cardVersion": 2,
+      "cardVersion": 3,
       "slug": "nasa-techrise-student-challenge-2026-2027",
       "summary": "The 2026â€“2027 cycle is a grades 6â€“12 U.S. school-team experiment challenge with 60 teams slated for restricted build funding, technical support, and a NASA-sponsored high-altitude-balloon flight spot.",
-      "reviewState": "human_reviewed",
+      "reviewState": "ai_audited",
       "reviewedAt": "2026-08-12T00:27:28.180Z",
       "sourcePagesChecked": [
         {
@@ -23935,7 +23935,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator",
             "claimRefs": [
               "techrise-future-engineers-administrator-role",
@@ -24525,7 +24525,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.process",
             "claimRefs": [
               "techrise-pathway-definition",
@@ -24780,7 +24780,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.mentorship",
             "claimRefs": [
               "techrise-support-definition",
@@ -24836,7 +24836,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.other-benefits",
             "claimRefs": [
               "techrise-build-budget-definition",
@@ -25126,7 +25126,7 @@
       }
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": null,
       "cycle": {
         "status": "unassessed",
@@ -26365,7 +26365,7 @@
       }
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": null,
       "cycle": {
         "status": "unassessed",
@@ -27614,7 +27614,7 @@
       }
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": "polygence-core-program",
       "cycle": {
         "status": "modeled",
@@ -27689,10 +27689,10 @@
           }
         }
       },
-      "cardVersion": 2,
+      "cardVersion": 3,
       "slug": "polygence-core-program-fall-2026",
       "summary": "Polygence Core is a rolling online one-to-one research-mentorship program built around ten mentor sessions; reviewed pricing begins around $3,000, but a single exact Core price was not published on the reviewed pages.",
-      "reviewState": "human_reviewed",
+      "reviewState": "ai_audited",
       "reviewedAt": "2026-08-20T07:42:00.000Z",
       "sourcePagesChecked": [
         {
@@ -28698,7 +28698,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator",
             "claimRefs": [
               "poly-role-operator-claim",
@@ -28738,7 +28738,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator-kind",
             "claimRefs": [
               "poly-org-kind",
@@ -28770,7 +28770,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.institution-list",
             "claimRefs": [
               "poly-independent-claim"
@@ -28801,7 +28801,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.summary",
             "claimRefs": [
               "poly-independent-claim"
@@ -28832,7 +28832,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.explanations",
             "claimRefs": [
               "poly-independent-claim"
@@ -29016,7 +29016,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.duration",
             "claimRefs": [
               "poly-program-duration"
@@ -29073,7 +29073,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.formats",
             "claimRefs": [
               "poly-enrollment-format",
@@ -29154,7 +29154,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "costs.tuition-unresolved",
             "claimRefs": [
               "poly-tuition-definition",
@@ -29174,7 +29174,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "costs.other-unresolved",
             "claimRefs": [
               "poly-installment-definition",
@@ -29203,7 +29203,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "costs.total-unresolved",
             "claimRefs": [
               "poly-tuition-definition",
@@ -29476,7 +29476,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.in_kind_value",
             "claimRefs": [
               "poly-showcase-definition",
@@ -29532,7 +29532,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.mentorship",
             "claimRefs": [
               "poly-mentorship-definition",
@@ -29765,7 +29765,7 @@
       "migratedFrom": null
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": "questbridge-national-college-match",
       "cycle": {
         "status": "modeled",
@@ -29894,10 +29894,10 @@
           }
         }
       },
-      "cardVersion": 1,
+      "cardVersion": 2,
       "slug": "questbridge-national-college-match-2026",
       "summary": "The 2026 National College Match is a free, multi-stage college application and ranking process for eligible high-achieving seniors from low-income backgrounds, leading to Fall 2027 admission pathways and partner-funded full four-year scholarships for matched finalists.",
-      "reviewState": "human_reviewed",
+      "reviewState": "ai_audited",
       "reviewedAt": "2026-08-12T06:25:00.000Z",
       "sourcePagesChecked": [
         {
@@ -31512,7 +31512,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator",
             "claimRefs": [
               "qb-role-operator-claim",
@@ -31544,7 +31544,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator-kind",
             "claimRefs": [
               "qb-org-kind",
@@ -31576,7 +31576,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.institution-list",
             "claimRefs": [
               "qb-college-partnership-claim"
@@ -31607,7 +31607,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.summary",
             "claimRefs": [
               "qb-college-partnership-claim"
@@ -31638,7 +31638,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.explanations",
             "claimRefs": [
               "qb-college-partnership-claim"
@@ -31809,7 +31809,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "cycle.closes",
             "claimRefs": [
               "qb-application-deadline"
@@ -31845,7 +31845,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.decision",
             "claimRefs": [
               "qb-finalist-decision",
@@ -31887,7 +31887,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "cycle.coverage-end",
             "claimRefs": [
               "qb-fall-entry"
@@ -31978,7 +31978,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.formats",
             "claimRefs": [
               "qb-application-format",
@@ -32009,7 +32009,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.locations",
             "claimRefs": [
               "qb-enrollment-location"
@@ -32055,7 +32055,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "costs.application_fee",
             "claimRefs": [
               "qb-application-fee-definition",
@@ -32137,7 +32137,7 @@
             "explanation": "Calculated from complete compatible v2 cost items; credited deposits are not added twice."
           },
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "costs.total-exact",
             "claimRefs": [
               "qb-application-fee-definition",
@@ -32317,7 +32317,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.process",
             "claimRefs": [
               "qb-match-pathway-definition",
@@ -32489,7 +32489,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.tuition_waiver",
             "claimRefs": [
               "qb-scholarship-definition",
@@ -32551,7 +32551,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.in_kind_value",
             "claimRefs": [
               "qb-network-definition",
@@ -32845,7 +32845,7 @@
       "migratedFrom": null
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": null,
       "cycle": {
         "status": "unassessed",
@@ -34197,7 +34197,7 @@
       }
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": null,
       "cycle": {
         "status": "unassessed",
@@ -35490,7 +35490,7 @@
       }
     },
     {
-      "schemaVersion": "2.1.0",
+      "schemaVersion": "2.2.0",
       "opportunityId": "yale-young-global-scholars",
       "cycle": {
         "status": "modeled",
@@ -35601,10 +35601,10 @@
           }
         }
       },
-      "cardVersion": 1,
+      "cardVersion": 2,
       "slug": "yale-young-global-scholars-summer-2027",
       "summary": "Yale Young Global Scholars has announced three residential two-week sessions at Yale for June and July 2027; 2027 tuition and application deadlines were not yet published on the reviewed pages.",
-      "reviewState": "human_reviewed",
+      "reviewState": "ai_audited",
       "reviewedAt": "2026-08-12T06:25:00.000Z",
       "sourcePagesChecked": [
         {
@@ -36557,7 +36557,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator",
             "claimRefs": [
               "yygs-yale-operator-claim",
@@ -36589,7 +36589,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "organizations.primary-operator-kind",
             "claimRefs": [
               "yygs-yale-kind",
@@ -36629,7 +36629,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.institution-list",
             "claimRefs": [
               "yygs-yale-operated-claim",
@@ -36669,7 +36669,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.summary",
             "claimRefs": [
               "yygs-yale-operated-claim",
@@ -36709,7 +36709,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "relationships.explanations",
             "claimRefs": [
               "yygs-yale-operated-claim",
@@ -36876,7 +36876,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "cycle.coverage-start",
             "claimRefs": [
               "yygs-session-one-start"
@@ -36907,7 +36907,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "cycle.coverage-end",
             "claimRefs": [
               "yygs-session-three-end"
@@ -36939,7 +36939,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.duration",
             "claimRefs": [
               "yygs-program-duration"
@@ -37001,7 +37001,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.formats",
             "claimRefs": [
               "yygs-application-format",
@@ -37030,7 +37030,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.locations",
             "claimRefs": [
               "yygs-program-location"
@@ -37240,7 +37240,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "stages.process",
             "claimRefs": [
               "yygs-pathway-definition",
@@ -37374,7 +37374,7 @@
           "conflictingValues": [],
           "calculation": null,
           "projection": {
-            "schemaVersion": "2.1.0",
+            "schemaVersion": "2.2.0",
             "rule": "outcomes.program_seat",
             "claimRefs": [
               "yygs-seat-definition",

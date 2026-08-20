@@ -21,7 +21,7 @@ export default function MethodologyPage() {
       <header className="page-header">
         <div className="shell page-header-grid">
           <div>
-            <p className="eyebrow">Methodology · Schema 2.1.0</p>
+            <p className="eyebrow">Methodology · Schema 2.2.0</p>
             <h1>Facts, with their uncertainty attached.</h1>
           </div>
           <p className="lede">
@@ -43,11 +43,13 @@ export default function MethodologyPage() {
         <h2 id="language">What the labels mean</h2>
         <p>
           “Disclosed” means an identified source states a fact. It does not mean
-          Opportunity Facts independently proved the statement true. “Human
-          reviewed” means a reviewer checked that the value and excerpt match the
-          cited source; it is not an audit. “Organizer confirmed” means the
-          organization confirmed or supplied information, not that an independent
-          party verified it.
+          Opportunity Facts independently proved the statement true. “Automated
+          draft” is normal analyzer output after deterministic retention checks.
+          “AI-audited” means a separate AI-assisted pass checked source, value,
+          excerpt, scope, and projection alignment; no person completed the full
+          review. “Human reviewed” is reserved for a person’s independent
+          source-by-source check. “Organizer confirmed” records organizer
+          involvement and is not independent verification.
         </p>
         <dl className="definition-list">
           {statuses.map(([term, description]) => (
@@ -146,8 +148,8 @@ export default function MethodologyPage() {
           Automated results are drafts. Sources were collected automatically,
           inaccessible or missed pages can create omissions, and every excerpt still
           needs human checking. A draft cannot establish truth, legitimacy, quality,
-          prestige, or value. The <em>human reviewed</em> label is reserved for a
-          separate source-by-source review.
+          prestige, or value. AI-audited and human-reviewed are separate labels:
+          only the latter states that a person completed the source-by-source review.
         </p>
 
         <h2 id="evaluation">Development and out-of-sample evaluation</h2>
@@ -168,11 +170,18 @@ export default function MethodologyPage() {
           review. Full denominators, failures, and limitations are published in the
           repository evaluation report.
         </p>
+        <p>
+          The frozen development and out-of-sample reports retain the review-state
+          terminology used when they were written. The ten current reference cards
+          are now labeled AI-audited because their documented review was completed
+          by AI/Codex rather than a person. That provenance correction did not alter
+          their evidence or any historical benchmark result.
+        </p>
 
         <h2 id="structured-model">Why the card has structured detail</h2>
         <p>
           A single row cannot truthfully represent four tuition tiers, two selection
-          routes, several organizations, or a prize matrix. Schema 2.1.0 keeps the 59
+          routes, several organizations, or a prize matrix. Schema 2.2.0 keeps the 59
           summary fields for scanning and adds source-backed cycle, organization,
           program/cohort, stage/pathway, cost, and outcome records. Cards and
           comparison reveal those details progressively; summary projections are

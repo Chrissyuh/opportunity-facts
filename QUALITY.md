@@ -8,7 +8,7 @@ Opportunity Facts is release-gated by repository tests, deterministic public art
 | --- | --- | --- |
 | Configuration and bounded input | Fixed `.env.example` tracking, streamed request-size enforcement, pre-configuration input validation, sanitized errors, and `no-store` analysis responses. | Route/security tests cover oversized streams, invalid/canonical-duplicate inputs, keyless operation, and downstream failures. |
 | Domain truthfulness | Centralized all 59 fields and 13 core dimensions; enforced review scope, `not_applicable` reasons, source inventory reuse, review/version invalidation, calculated-claim arithmetic, cost completeness, and organizer-stated acceptance-rate attribution. | Schema, normalization, builder, analysis, and data-validation regressions. |
-| Heterogeneous real-card fidelity | Added Schema V2 atomic claims, explicit assessment states, scoped organizations/variants/stages/pathways/costs/outcomes, deterministic flat-fact projections, and conservative V1 migration. Schema `2.1.0` further distinguishes educator outcomes/payees from participant benefits while retaining lossless `2.0.0` imports. The reviewed cards no longer flatten the demonstrated reality-test distinctions. | `schema-v2`, canonical-card population, serialization/version migration, registry, and structured desktop/mobile browser regressions; full disposition in `REALITY_STRESS_TEST_RESOLUTION.md`. |
+| Heterogeneous real-card fidelity | Added Schema V2 atomic claims, explicit assessment states, scoped organizations/variants/stages/pathways/costs/outcomes, deterministic flat-fact projections, and conservative V1 migration. Schema `2.2.0` retains educator-recipient safeguards, distinguishes AI-audited evidence alignment from human review, and retains lossless `2.0.0`/`2.1.0` imports. | `schema-v2`, canonical-card population, serialization/version migration, registry, and structured desktop/mobile browser regressions; full disposition in `REALITY_STRESS_TEST_RESOLUTION.md`. |
 | URL and SSRF boundaries | Added shared literal-host screening plus server DNS validation, address pinning, redirect revalidation, same-origin discovery limits, Azure platform-service blocking, and sensitive query/fragment rejection. | Security tests cover IPv4/IPv6/mapped forms, metadata/local/service addresses, mixed DNS, redirects, byte/time/content bounds, fragments, and pinned transport behavior. |
 | Automated extraction | Four bounded provider-compatible strict-output families, fair source input, two-wave execution, 120-second low-reasoning/no-retry configuration, cancellation, hostile-output sanitization, exact excerpts, typed value/relationship/cost/outcome checks, subject/recipient scope checks, first-class cycle resolution, sibling-program isolation, safe family-level salvage, durable coverage limitations, neutral summaries/slugs, and no automatic acceptance-rate inference. Static acquisition also preserves semantic reveal shells and reads a bounded allowlist of non-executable Schema.org metadata. | Analysis integration tests include strict-schema budgets, hostile notes, unsupported calculations, platform/legal/program scope confusion, historical-cycle mixing, sibling pages, entity-reference mismatches, optional/mandatory cost confusion, restricted-funding/cash confusion, empty shells, currency/date/enum mismatches, incomplete prize matrices, truncation/timeout, and structured-family salvage. |
 | Publication and local drafts | Drafts are excluded from public export; public states and artifact parity fail closed at validation/build and runtime load. Local writes roll back on partial failure. Imported drafts cannot create dead public links or duplicate comparison columns. | Temporary-repository artifact tests, runtime dataset tests, browser import/persistence flows, and `build` running `validate:data` first. |
@@ -30,7 +30,7 @@ The results below describe committed checkpoint `3cd7ea1`. They remain historica
 | `npm run lint` | Pass |
 | `npm run typecheck` | Pass |
 | `npm test` | 27 files, 234 tests passed |
-| `npm run export:data` | Exported 17 cards (7 demo, 10 human reviewed) and the JSON Schema |
+| `npm run export:data` | Exported 17 cards (7 demo, 10 then-labeled human reviewed) and the JSON Schema |
 | `npm run validate:data` | 17 public cards (7 demo), 0 drafts, both artifacts valid and current |
 | `npm run test:e2e` | 86 total: 82 passed, 4 intentional project-inapplicable skips, 0 failed |
 | `npm run build` | Pass; data validation ran first and Next generated 30 pages |
@@ -39,7 +39,7 @@ The results below describe committed checkpoint `3cd7ea1`. They remain historica
 | Populated mobile builder | Fresh import and 1440-to-390 resize both remained 390px wide; 0 serious/critical axe violations |
 | Production security | Strict CSP without `unsafe-eval`, nosniff, referrer, frame, COOP, permissions, HSTS, and analysis `no-store`; no API-key identifier or key-shaped value in client static bundles |
 | Research publication | All 7 public research files are SHA-256 identical to their source copies; templates remain empty/not-run and the site says “Study not yet published” |
-| First real-card render | TechRise, Lumiere, and Diamond passed expanded-evidence inspection at 1440×900 and 390×844 with exact viewport-width documents, Human reviewed badges, no demo markers, and no console warnings/errors |
+| First real-card render | TechRise, Lumiere, and Diamond passed expanded-evidence inspection at 1440×900 and 390×844 with exact viewport-width documents. Their review-state wording has since been corrected to AI-audited without changing evidence or frozen metrics. |
 | Live extraction benchmark | Production-path smoke and three final development runs completed on exact model `gpt-5.6-terra`; 52/54 supported claims and 70/72 evidence attachments were semantically correct, with zero known critical misleading claims after validation |
 | Analyzer state audit | Pre-run, loading, malformed-provider failure, successful partial-family draft, explicit non-human-review warning, and expanded evidence inspected at 1440×900 and 390×844 without horizontal overflow or unexpected browser diagnostics |
 | Preregistered out-of-sample extraction | Frozen seven-card set, one run per card, no replacement runs or tuning; 82/154 ground-truth claim precision, 188/203 semantic evidence correctness, 16/82 structured recall, and 4 critical misleading claims. Machine ledgers and full limitations are preserved under `research/extraction-evaluation/`. |
@@ -70,9 +70,24 @@ Implemented and release-gated after `3cd7ea1`:
 | Production browser audit | Homepage, analyzer, 17-card library, complex reviewed card, three-card comparison, structured details, and methodology inspected at 1440×900 and 390×844; exact page width and no console warnings/errors |
 | Independent final audit | No remaining P0/P1 implementation or commit blocker; secrets and immutable evaluation history remained outside the diff |
 
+## Current student-product release gate
+
+The analyzer-first redesign adds streamed observable progress, deterministic quality outcomes, grounded attention items, cache-safe retry suppression, five-URL batch orchestration, practical Overview and Full Record surfaces, decision-focused comparison, corrected AI-audited provenance, and two selectable-text PDF formats.
+
+| Command or check | Result |
+| --- | --- |
+| `npm run export:data` / `npm run validate:data` | 17 public cards (10 AI-audited, 7 demo), 0 drafts, public dataset and Schema `2.2.0` current |
+| `npm run lint` / `npm run typecheck` | Pass |
+| `npm test` | 39 files, 400 tests passed |
+| `npm run test:e2e` | 108 total: 104 passed, 4 intentional project-inapplicable skips, 0 failed |
+| `npm run build` | Pass; fail-closed data validation ran first and Next generated 48 pages |
+| PDF audit | Summary and Full Record downloads passed in a real browser; selectable text, exact links, page numbering, grounded attention, and zero PDF console errors |
+| Accessibility/browser audit | Primary analyzer, Overview, Full Record, examples, comparison, batch, builder, methodology, data, and expanded evidence passed desktop/mobile serious/critical axe checks and overflow regressions |
+| Live latency sample | Three one-shot `gpt-5.6-terra` runs: 117.942s minimum, 122.464s median, 195.622s maximum; provider generation dominated wall time; one process-family timeout was safely isolated |
+
 ## Honest remaining boundaries
 
-- The repository now contains ten real cards completed through line-by-line human source review plus seven visibly fictional demo cards. Scoring exposed incomplete frozen human ground truth on some claims, especially Yale; future evaluations require a second blind review and adjudication before inference.
+- The repository now contains ten real cards completed through line-by-line AI-assisted source auditing plus seven visibly fictional demo cards. Their current state is `ai_audited`, not human reviewed. Scoring exposed incomplete frozen ground truth on some claims, especially Yale; future evaluations require a second blind human review and adjudication before inference.
 - Schema V2 is grounded in those three reviewed cards. The age-band limitation remains a non-gating P2; broader ontologies, workflow engines, generalized recurrence, and currency conversion remain intentionally out of scope until evidence justifies them.
 - Live OpenAI Responses requests were made for the controlled three-card development benchmark, exactly seven preregistered out-of-sample primary runs, and the private post-evaluation Lumos development check documented in `POST_EVALUATION_HARDENING.md`. Exact benchmark/evaluation settings, acquired pages, usage, drafts/failure, warnings, and semantic ledgers are preserved under `research/extraction-benchmark/` and `research/extraction-evaluation/`; no key or authorization header is retained.
 - Nothing was deployed. The repository now has local per-process admission controls, but aggregate rate limiting, distributed concurrency, a hard spend circuit breaker, outbound egress controls, provider/host log retention, and secret governance remain deployment responsibilities. Keep public analysis disabled until every required item in `docs/DEPLOYMENT_CHECKLIST.md` is proven in the target environment.

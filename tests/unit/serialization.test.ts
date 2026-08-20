@@ -5,51 +5,38 @@ import { join } from "node:path";
 import {
   OpportunityCardImportError,
   LEGACY_V2_SCHEMA_VERSION,
+  PRIOR_V2_SCHEMA_VERSION,
   SCHEMA_VERSION,
   createEmptyCard,
   createEmptyV1Card,
   exportOpportunityCardJson,
   importOpportunityCardJson,
+  opportunityCardSchema,
   parseOpportunityCard,
 } from "../../lib/opportunity";
 
-function asLegacyV2(input: unknown): unknown {
+function asLegacyVersion(
+  input: unknown,
+  version: typeof LEGACY_V2_SCHEMA_VERSION | typeof PRIOR_V2_SCHEMA_VERSION,
+): unknown {
   const legacy = structuredClone(input) as {
     schemaVersion: string;
+    reviewState?: string;
     facts?: Record<string, { projection?: { schemaVersion?: string } | null }>;
   };
-  legacy.schemaVersion = LEGACY_V2_SCHEMA_VERSION;
+  legacy.schemaVersion = version;
+  if (legacy.reviewState === "ai_audited") legacy.reviewState = "human_reviewed";
+  if (legacy.reviewState === "automated_draft") legacy.reviewState = "draft";
   for (const fact of Object.values(legacy.facts ?? {})) {
     if (fact.projection !== null && fact.projection !== undefined) {
-      fact.projection.schemaVersion = LEGACY_V2_SCHEMA_VERSION;
+      fact.projection.schemaVersion = version;
     }
   }
   return legacy;
 }
 
-function asLegacyV2Representable(input: unknown): unknown {
-  const legacy = structuredClone(input) as {
-    outcomes?: {
-      records?: Array<{
-        definition?: { value?: { outcomeType?: string } };
-        recipientScope?: { value?: string };
-        distribution?: { value?: Array<{ payee?: string }> } | null;
-      }>;
-    };
-  };
-  for (const outcome of legacy.outcomes?.records ?? []) {
-    if (outcome.definition?.value?.outcomeType === "educator_cash_prize") {
-      outcome.definition.value.outcomeType = "personal_cash_prize";
-    }
-    if (outcome.recipientScope?.value === "educator") {
-      outcome.recipientScope.value = "individual";
-    }
-    for (const distribution of outcome.distribution?.value ?? []) {
-      if (distribution.payee === "educator") distribution.payee = "participant";
-      if (distribution.payee === "school") distribution.payee = "service_provider";
-    }
-  }
-  return asLegacyV2(legacy);
+function asLegacyV2(input: unknown): unknown {
+  return asLegacyVersion(input, LEGACY_V2_SCHEMA_VERSION);
 }
 
 describe("Opportunity Card JSON import and export", () => {
@@ -60,18 +47,29 @@ describe("Opportunity Card JSON import and export", () => {
     expect(json.endsWith("\n")).toBe(true);
   });
 
-  it("invalidates review attestation carried by a portable v2 file", () => {
-    const reviewed = JSON.parse(
+  it("invalidates every portable review attestation without discarding card evidence", () => {
+    const audited = parseOpportunityCard(JSON.parse(
       readFileSync(
         join(process.cwd(), "data/opportunities/diamond-challenge-2027.json"),
         "utf8",
       ),
-    ) as unknown;
-    const original = importOpportunityCardJson(JSON.stringify(reviewed));
+    ) as unknown);
 
-    expect(original.reviewState).toBe("draft");
-    expect(original.reviewedAt).toBeNull();
-    expect(original.cardVersion).toBe((reviewed as { cardVersion: number }).cardVersion + 1);
+    for (const reviewState of [
+      "ai_audited",
+      "human_reviewed",
+      "organizer_confirmed",
+    ] as const) {
+      const portable = opportunityCardSchema.parse({ ...audited, reviewState });
+      const imported = importOpportunityCardJson(JSON.stringify(portable));
+
+      expect(imported.reviewState).toBe("draft");
+      expect(imported.reviewedAt).toBeNull();
+      expect(imported.cardVersion).toBe(portable.cardVersion + 1);
+      expect(imported.sourcePagesChecked).toEqual(portable.sourcePagesChecked);
+      expect(imported.facts).toEqual(portable.facts);
+      expect(imported.outcomes).toEqual(portable.outcomes);
+    }
   });
 
   it("preserves the Demo data label on portable fictional cards", () => {
@@ -112,10 +110,12 @@ describe("Opportunity Card JSON import and export", () => {
       ),
     ) as { cardVersion: number; facts: { cash_award: unknown }; outcomes: unknown };
 
-    const migrated = parseOpportunityCard(asLegacyV2(current));
+    const legacy = asLegacyV2(current) as typeof current & { reviewState: string };
+    const migrated = parseOpportunityCard(legacy);
 
     expect(migrated.schemaVersion).toBe(SCHEMA_VERSION);
     expect(migrated.cardVersion).toBe(current.cardVersion);
+    expect(migrated.reviewState).toBe("human_reviewed");
     expect(migrated.facts.cash_award).toEqual(current.facts.cash_award);
     expect(migrated.outcomes).toEqual(current.outcomes);
     for (const fact of Object.values(migrated.facts)) {
@@ -125,7 +125,7 @@ describe("Opportunity Card JSON import and export", () => {
     }
   });
 
-  it("imports legacy-compatible forms of all 17 canonical cards and preserves rich semantics", () => {
+  it("imports schema 2.1.0 forms of all 17 canonical cards and preserves rich semantics", () => {
     const files = ["demo", "opportunities"].flatMap((directory) =>
       readdirSync(join(process.cwd(), "data", directory))
         .filter((file) => file.endsWith(".json"))
@@ -137,7 +137,13 @@ describe("Opportunity Card JSON import and export", () => {
       const current = JSON.parse(readFileSync(file, "utf8")) as {
         cardVersion: number;
         reviewState: string;
+        reviewedAt: string | null;
+        opportunityId: string | null;
         sourcePagesChecked: unknown;
+        facts: unknown;
+        conflicts: unknown;
+        projectionRefs: unknown;
+        migratedFrom: unknown;
         cycle: unknown;
         organizations: unknown;
         organizationRoles: unknown;
@@ -148,13 +154,19 @@ describe("Opportunity Card JSON import and export", () => {
         costItems: unknown;
         outcomes: unknown;
       };
-      const legacy = asLegacyV2Representable(current) as typeof current;
+      const legacy = asLegacyVersion(current, PRIOR_V2_SCHEMA_VERSION) as typeof current;
       const migrated = parseOpportunityCard(legacy);
 
       expect(migrated.schemaVersion).toBe(SCHEMA_VERSION);
       expect(migrated.cardVersion).toBe(current.cardVersion);
-      expect(migrated.reviewState).toBe(current.reviewState);
+      expect(migrated.reviewState).toBe(legacy.reviewState);
+      expect(migrated.reviewedAt).toBe(current.reviewedAt);
+      expect(migrated.opportunityId).toBe(current.opportunityId);
       expect(migrated.sourcePagesChecked).toEqual(current.sourcePagesChecked);
+      expect(migrated.facts).toEqual(current.facts);
+      expect(migrated.conflicts).toEqual(current.conflicts);
+      expect(migrated.projectionRefs).toEqual(current.projectionRefs);
+      expect(migrated.migratedFrom).toEqual(current.migratedFrom);
       for (const key of [
         "cycle",
         "organizations",
@@ -169,6 +181,22 @@ describe("Opportunity Card JSON import and export", () => {
         expect(migrated[key]).toEqual(legacy[key]);
       }
     }
+  });
+
+  it("rejects review states introduced in 2.2.0 when carried under an older schema label", () => {
+    const current = JSON.parse(
+      readFileSync(
+        join(process.cwd(), "data/opportunities/diamond-challenge-2027.json"),
+        "utf8",
+      ),
+    ) as { facts: Record<string, { projection: { schemaVersion: string } | null }> } & Record<string, unknown>;
+    const mislabeled = structuredClone(current);
+    mislabeled.schemaVersion = PRIOR_V2_SCHEMA_VERSION;
+    for (const fact of Object.values(mislabeled.facts)) {
+      if (fact.projection !== null) fact.projection.schemaVersion = PRIOR_V2_SCHEMA_VERSION;
+    }
+
+    expect(() => parseOpportunityCard(mislabeled)).toThrow(/schema 2\.1\.0 card is invalid/i);
   });
 
   it("does not accept schema 2.1-only educator vocabulary under a 2.0.0 label", () => {

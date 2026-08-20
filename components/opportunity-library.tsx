@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { getDisclosureCount } from "@/lib/opportunity/registry";
 import { currentUtcDate, opportunityDeadlineState } from "@/lib/opportunity/library";
 import type { OpportunityCard } from "@/lib/opportunity/schema";
 import { ReviewBadge, StatusBadge } from "./status-badge";
@@ -85,7 +84,9 @@ export function OpportunityLibrary({ cards }: { cards: OpportunityCard[] }) {
   }, [cards, category, cost, deadline, format, query, refund, review, selection, today]);
 
   const groupedCards = useMemo(() => ({
-    reviewed: filtered.filter((card) => card.reviewState !== "demo"),
+    aiAudited: filtered.filter((card) => card.reviewState === "ai_audited"),
+    humanReviewed: filtered.filter((card) => card.reviewState === "human_reviewed"),
+    organizerConfirmed: filtered.filter((card) => card.reviewState === "organizer_confirmed"),
     demos: filtered.filter((card) => card.reviewState === "demo"),
   }), [filtered]);
 
@@ -145,6 +146,8 @@ export function OpportunityLibrary({ cards }: { cards: OpportunityCard[] }) {
             <option value="all">All review states</option>
             <option value="demo">Demo data</option>
             <option value="draft">Draft</option>
+            <option value="automated_draft">Automated draft</option>
+            <option value="ai_audited">AI-audited</option>
             <option value="human_reviewed">Human reviewed</option>
             <option value="organizer_confirmed">Organizer confirmed</option>
           </select>
@@ -186,13 +189,15 @@ export function OpportunityLibrary({ cards }: { cards: OpportunityCard[] }) {
 
         {filtered.length ? (
           <div className="library-groups">
-            {groupedCards.reviewed.length ? (
+            {groupedCards.aiAudited.length ? (
               <LibraryGroup
-                title="Reviewed opportunities"
-                description="Real opportunity records. Each card states its exact review level."
-                cards={groupedCards.reviewed}
+                title="AI-audited opportunities"
+                description="An independent AI review checked source, excerpt, and value alignment. No human review is claimed."
+                cards={groupedCards.aiAudited}
               />
             ) : null}
+            {groupedCards.humanReviewed.length ? <LibraryGroup title="Human-reviewed opportunities" description="A person independently checked the relevant claims against their source evidence." cards={groupedCards.humanReviewed} /> : null}
+            {groupedCards.organizerConfirmed.length ? <LibraryGroup title="Organizer-confirmed opportunities" description="The organizer supplied or confirmed information; this is not independent verification." cards={groupedCards.organizerConfirmed} /> : null}
             {groupedCards.demos.length ? (
               <LibraryGroup
                 title="Fictional examples"
@@ -226,7 +231,7 @@ function LibraryGroup({
   cards: OpportunityCard[];
   demo?: boolean;
 }) {
-  const headingId = `library-group-${demo ? "demo" : "reviewed"}`;
+  const headingId = `library-group-${title.toLowerCase().replaceAll(/[^a-z0-9]+/g, "-")}`;
   return (
     <section className="library-group" data-demo={demo ? "true" : "false"} aria-labelledby={headingId}>
       <div className="library-group-heading">
@@ -270,9 +275,11 @@ function DisclosureSelect({
 function OpportunityLibraryCard({ card }: { card: OpportunityCard }) {
   const name = textValue(card, "opportunity_name") || card.slug;
   const operator = textValue(card, "operating_organization") || "Operator not found";
-  const count = getDisclosureCount(card);
   const cost = card.facts.estimated_total_mandatory_cost;
   const format = card.facts.participation_format;
+  const deadline = card.facts.application_deadline;
+  const eligibility = card.facts.grade_levels;
+  const outcome = card.facts.cash_award.displayValue ?? card.facts.program_seat.displayValue ?? card.facts.other_benefits.displayValue;
 
   return (
     <article className="library-card">
@@ -285,7 +292,7 @@ function OpportunityLibraryCard({ card }: { card: OpportunityCard }) {
         <p className="library-card-summary">{card.summary}</p>
       </div>
       <dl className="library-card-facts">
-        <div><dt>Operator</dt><dd>{operator}</dd></div>
+        <div><dt>Deadline</dt><dd>{deadline.displayValue ?? <StatusBadge status={deadline.status} />}</dd></div>
         <div>
           <dt>Total mandatory cost</dt>
           <dd>{cost.displayValue ?? <StatusBadge status={cost.status} />}</dd>
@@ -294,10 +301,13 @@ function OpportunityLibraryCard({ card }: { card: OpportunityCard }) {
           <dt>Format</dt>
           <dd>{format.displayValue ?? <StatusBadge status={format.status} />}</dd>
         </div>
+        <div><dt>Eligibility</dt><dd>{eligibility.displayValue ?? <StatusBadge status={eligibility.status} />}</dd></div>
+        <div><dt>Main outcome</dt><dd>{outcome ?? "See overview"}</dd></div>
       </dl>
+      <p className="library-card-operator">Operated by {operator}</p>
       <div className="library-card-footer">
-        <span>{count.label}</span>
-        <Link href={`/opportunities/${card.slug}`}>Open facts card <span aria-hidden="true">→</span></Link>
+        <span>Evidence-backed reference</span>
+        <Link href={`/opportunities/${card.slug}`}>Open overview <span aria-hidden="true">→</span></Link>
       </div>
     </article>
   );

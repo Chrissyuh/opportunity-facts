@@ -15,7 +15,7 @@ Post-evaluation correction (August 20, 2026): the retained counselor-page excerp
 
 All six pages appear once in `sourcePagesChecked`; evidence metadata reuses those records exactly.
 
-## Human-review decisions
+## AI-audit decisions
 
 - Polygence, Inc. is an independent operator. Mentor or founder university affiliations are not upgraded to institutional partnership.
 - The program is modeled as rolling and online, with enrollment/matching followed by a 3–6 month research stage.

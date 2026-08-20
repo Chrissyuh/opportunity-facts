@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.1.0",
+  "schemaVersion": "2.2.0",
   "opportunityId": "nasa-techrise-student-challenge",
   "cycle": {
     "status": "modeled",
@@ -110,10 +110,10 @@
       }
     }
   },
-  "cardVersion": 2,
+  "cardVersion": 3,
   "slug": "nasa-techrise-student-challenge-2026-2027",
   "summary": "The 2026â€“2027 cycle is a grades 6â€“12 U.S. school-team experiment challenge with 60 teams slated for restricted build funding, technical support, and a NASA-sponsored high-altitude-balloon flight spot.",
-  "reviewState": "human_reviewed",
+  "reviewState": "ai_audited",
   "reviewedAt": "2026-08-12T00:27:28.180Z",
   "sourcePagesChecked": [
     {
@@ -1248,7 +1248,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "techrise-future-engineers-administrator-role",
@@ -1838,7 +1838,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.process",
         "claimRefs": [
           "techrise-pathway-definition",
@@ -2093,7 +2093,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.mentorship",
         "claimRefs": [
           "techrise-support-definition",
@@ -2149,7 +2149,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.other-benefits",
         "claimRefs": [
           "techrise-build-budget-definition",

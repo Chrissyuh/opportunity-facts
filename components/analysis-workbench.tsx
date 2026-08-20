@@ -5,22 +5,29 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import { opportunityCardSchema, type OpportunityCard } from "@/lib/opportunity/schema";
+import { ATTENTION_CATEGORIES, type AttentionItem } from "@/lib/analysis/attention";
+import { FIELD_IDS } from "@/lib/opportunity/fields";
 import {
   BUILDER_STORAGE_EVENT,
   ANALYSIS_URL_HANDOFF_KEY,
   writeBuilderDraftStorage,
 } from "@/lib/opportunity/browser-storage";
 import type { PastedSourceInput, ReviewedPageSummary } from "@/lib/analysis/pipeline";
-import { FactsCard } from "./facts-card";
+import type { AnalysisProgressEvent } from "@/lib/analysis/progress";
+import { ANALYZER_VERSION } from "@/lib/analysis/analyzer-version";
+import { OpportunityOverview } from "./opportunity-overview";
 
 type Mode = "url" | "text";
-type Phase = "idle" | "running" | "complete" | "error" | "unconfigured";
+type Phase = "idle" | "running" | "complete" | "insufficient" | "error" | "unconfigured";
+type QualityFailure = { reasons: Array<{ title: string; explanation: string }>; expiresAt: string; cached: boolean };
+const LOCAL_QUALITY_PREFIX = "opportunity-facts:quality-failure:";
 
 interface AnalysisResponse {
   card: OpportunityCard;
   reviewedPages: ReviewedPageSummary[];
   pageWarnings: Array<{ url: string; code: string; message: string }>;
   evidenceWarnings: Array<{ fieldId: string; sourceId: string; message: string }>;
+  attentionItems: AttentionItem[];
 }
 
 const reviewedPageSchema = z.strictObject({
@@ -42,6 +49,11 @@ const evidenceWarningSchema = z.strictObject({
   fieldId: z.string(),
   sourceId: z.string(),
   message: z.string(),
+});
+const attentionItemSchema = z.strictObject({
+  id: z.string(), category: z.enum(ATTENTION_CATEGORIES), priority: z.enum(["high", "medium", "low"]),
+  title: z.string(), explanation: z.string(), fieldIds: z.array(z.enum(FIELD_IDS)), claimIds: z.array(z.string()),
+  sourceIds: z.array(z.string()), suggestedNextStep: z.string().nullable(), origin: z.enum(["model_grounded", "deterministic_fallback"]),
 });
 
 const blankSource = (): PastedSourceInput => ({
@@ -68,13 +80,38 @@ function parseAnalysisResponse(value: unknown): AnalysisResponse | null {
   const reviewedPages = z.array(reviewedPageSchema).safeParse(record.reviewedPages);
   const pageWarnings = z.array(warningSchema).safeParse(record.pageWarnings ?? []);
   const evidenceWarnings = z.array(evidenceWarningSchema).safeParse(record.evidenceWarnings ?? []);
-  if (!card.success || !reviewedPages.success || !pageWarnings.success || !evidenceWarnings.success) return null;
+  const attentionItems = z.array(attentionItemSchema).safeParse(record.attentionItems ?? []);
+  if (!card.success || !reviewedPages.success || !pageWarnings.success || !evidenceWarnings.success || !attentionItems.success) return null;
   return {
     card: card.data,
     reviewedPages: reviewedPages.data,
     pageWarnings: pageWarnings.data,
     evidenceWarnings: evidenceWarnings.data,
+    attentionItems: attentionItems.data,
   };
+}
+
+async function readAnalysisStream(response: Response, onProgress: (event: AnalysisProgressEvent) => void): Promise<unknown> {
+  if (!response.ok) return response.json();
+  if (!response.headers.get("content-type")?.includes("application/x-ndjson")) return response.json();
+  const reader = response.body?.getReader();
+  if (!reader) throw new Error("The research stream was unavailable.");
+  const decoder = new TextDecoder();
+  let buffer = "";
+  while (true) {
+    const { done, value } = await reader.read();
+    buffer += decoder.decode(value ?? new Uint8Array(), { stream: !done });
+    const lines = buffer.split("\n"); buffer = lines.pop() ?? "";
+    for (const line of lines) {
+      if (!line.trim()) continue;
+      const message = JSON.parse(line) as { type: string; event?: AnalysisProgressEvent; result?: unknown; message?: string };
+      if (message.type === "progress" && message.event) onProgress(message.event);
+      if (message.type === "error") throw new Error(message.message ?? "The sources could not be analyzed.");
+      if (message.type === "complete") return message.result;
+    }
+    if (done) break;
+  }
+  throw new Error("The research stream ended before a complete result arrived.");
 }
 
 function formatElapsed(seconds: number) {
@@ -139,6 +176,8 @@ export function AnalysisWorkbench({
   const [isConfigured, setIsConfigured] = useState(configured);
   const [requestStartedAt, setRequestStartedAt] = useState<number | null>(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const [progressEvents, setProgressEvents] = useState<AnalysisProgressEvent[]>([]);
+  const [qualityFailure, setQualityFailure] = useState<QualityFailure | null>(null);
   const activeRequest = useRef<AbortController | null>(null);
   const resultSection = useRef<HTMLElement | null>(null);
   const resultTitle = useRef<HTMLHeadingElement | null>(null);
@@ -201,10 +240,25 @@ export function AnalysisWorkbench({
     event.preventDefault();
     setError("");
     setResult(null);
+    setQualityFailure(null);
     setLocalMessage("");
     if (!isConfigured) {
       setPhase("unconfigured");
       return;
+    }
+    if (mode === "url") {
+      try {
+        const canonical = new URL(url).href;
+        const stored = localStorage.getItem(`${LOCAL_QUALITY_PREFIX}${ANALYZER_VERSION}:${canonical}`);
+        if (stored) {
+          const parsed = JSON.parse(stored) as QualityFailure;
+          if (Date.parse(parsed.expiresAt) > Date.now() && Array.isArray(parsed.reasons)) {
+            const reasons = parsed.reasons.flatMap((reason) => reason && typeof reason === "object" && typeof reason.title === "string" && typeof reason.explanation === "string" ? [reason] : []);
+            setQualityFailure({ ...parsed, reasons, cached: true }); setPhase("insufficient"); return;
+          }
+          localStorage.removeItem(`${LOCAL_QUALITY_PREFIX}${ANALYZER_VERSION}:${canonical}`);
+        }
+      } catch { /* Server validation provides the user-facing URL error. */ }
     }
     const startedAt = Date.now();
     const controller = new AbortController();
@@ -212,21 +266,36 @@ export function AnalysisWorkbench({
     setRequestStartedAt(startedAt);
     setElapsedSeconds(0);
     setPhase("running");
+    setProgressEvents([]);
     try {
       const response = await fetch("/api/analyze", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/x-ndjson" },
         cache: "no-store",
         signal: controller.signal,
         body: JSON.stringify(mode === "url" ? { mode, url } : { mode, sources }),
       });
-      const payload: unknown = await response.json();
+      const payload: unknown = await readAnalysisStream(response, (progressEvent) => {
+        if (progressEvent.type !== "heartbeat") setProgressEvents((current) => [...current, progressEvent]);
+      });
       if (!response.ok) {
         const message =
           payload && typeof payload === "object" && "message" in payload && typeof payload.message === "string"
             ? payload.message
             : "The sources could not be analyzed.";
         throw new Error(message);
+      }
+      if (payload && typeof payload === "object" && "kind" in payload && payload.kind === "quality_failure") {
+        const reasons = "quality" in payload && payload.quality && typeof payload.quality === "object" && "reasons" in payload.quality && Array.isArray(payload.quality.reasons)
+          ? payload.quality.reasons.flatMap((reason) => reason && typeof reason === "object" && "explanation" in reason && typeof reason.explanation === "string" ? [{ title: "title" in reason && typeof reason.title === "string" ? reason.title : "Source quality issue", explanation: reason.explanation }] : []).slice(0, 3)
+          : [];
+        const expiresAt = "quality" in payload && payload.quality && typeof payload.quality === "object" && "expiresAt" in payload.quality && typeof payload.quality.expiresAt === "string" ? payload.quality.expiresAt : new Date(Date.now() + 14 * 86_400_000).toISOString();
+        const failure = { reasons, expiresAt, cached: "cached" in payload && payload.cached === true };
+        setQualityFailure(failure);
+        const cacheEligible = "cacheEligible" in payload && payload.cacheEligible === true;
+        if (mode === "url" && cacheEligible) { try { localStorage.setItem(`${LOCAL_QUALITY_PREFIX}${ANALYZER_VERSION}:${new URL(url).href}`, JSON.stringify(failure)); } catch { /* A durable server cache still prevents repeated work. */ } }
+        setPhase("insufficient");
+        return;
       }
       const parsed = parseAnalysisResponse(payload);
       if (!parsed) throw new Error("The server returned an invalid facts-card response.");
@@ -317,7 +386,7 @@ export function AnalysisWorkbench({
                 onChange={(event) => setUrl(event.target.value)}
                 required
               />
-              <p className="field-help">The server reviews this page and up to six relevant links found on it. It normally stays on the same site; one application link may redirect to a public form host. Pages for a different named program are skipped. It does not run page scripts or crawl the wider web. Automated pages are labeled user supplied until a human verifies their provenance.</p>
+              <details className="analysis-boundary"><summary>How URL analysis works</summary><p>The server reviews this page and up to six relevant links found on it. It normally stays on the same site; one application link may redirect to a public form host. Pages for a different named program are skipped. It does not run page scripts or crawl the wider web. Automated pages are labeled user supplied until a human verifies their provenance.</p></details>
             </div>
           ) : (
             <div className="pasted-source-list">
@@ -364,16 +433,14 @@ export function AnalysisWorkbench({
               </button>
             ) : null}
           </div>
-          <div className="notice">
-            <strong>Privacy boundary.</strong> Both URL and paste modes send supplied public source text to OpenAI for this response. Opportunity Facts does not intentionally retain it, but hosting, DNS/network, source-site, and OpenAI logs may exist. Do not submit signed or private URLs, application portals, personal information, or account-only content.
-          </div>
+          <details className="analysis-boundary"><summary>Privacy and source boundaries</summary><p>Both URL and paste modes send supplied public source text to OpenAI for this response. Opportunity Facts does not intentionally retain it, but hosting, DNS/network, source-site, and OpenAI logs may exist. Do not submit signed or private URLs, application portals, personal information, or account-only content.</p></details>
         </form>
       </section>
 
       <aside className="analysis-progress" aria-labelledby="analysis-progress-title">
         <p className="eyebrow">Analysis record</p>
         <h2 id="analysis-progress-title">What the analysis includes</h2>
-        <AnalysisRunStatus phase={phase} elapsedSeconds={elapsedSeconds} />
+        <AnalysisRunStatus phase={phase} elapsedSeconds={elapsedSeconds} events={progressEvents} />
         <ol>
           <PipelineStep number="01" title="Validate source boundary" text="Allow only bounded public HTTP(S) or explicitly pasted text." />
           <PipelineStep number="02" title="Review relevant pages" text="Extract visible text and bounded page metadata; ignore executable scripts, boilerplate, and page instructions." />
@@ -386,12 +453,20 @@ export function AnalysisWorkbench({
             <h3>The public product still works.</h3>
             <p>No server API key is available, so URL and pasted-text extraction are both paused. Your input has not been sent.</p>
             <div className="button-row">
-              <Link className="button-secondary" href="/opportunities/lantern-bay-robotics-field-lab">Try the sample</Link>
+              <Link className="button-secondary" href="/opportunities/breakthrough-junior-challenge-2026">Open a reference example</Link>
               <Link className="button-quiet" href="/build">Create manually</Link>
             </div>
           </div>
         ) : null}
       </aside>
+
+      {phase === "insufficient" && qualityFailure ? <section className="analysis-insufficient" aria-labelledby="analysis-insufficient-title">
+        <p className="eyebrow">Reliable result withheld</p><h2 id="analysis-insufficient-title">We couldn’t build a reliable Opportunity Facts card from this page.</h2>
+        <p>Too much important information was missing, ambiguous, inaccessible, or internally incomplete.</p>
+        {qualityFailure.reasons.length ? <ul>{qualityFailure.reasons.slice(0, 3).map((reason) => <li key={`${reason.title}:${reason.explanation}`}><strong>{reason.title}</strong><span>{reason.explanation}</span></li>)}</ul> : null}
+        {qualityFailure.cached ? <p><strong>We already checked this unchanged page.</strong> No new model analysis was started.</p> : null}
+        <div className="button-row"><button className="button-secondary" type="button" onClick={() => { setQualityFailure(null); setPhase("idle"); document.getElementById("analysis-url")?.focus(); }}>Try a better official page</button><button className="button-quiet" type="button" onClick={() => { setMode("text"); setQualityFailure(null); setPhase("idle"); }}>Paste missing source text</button><button className="button-quiet" type="button" onClick={() => { setUrl(""); setQualityFailure(null); setPhase("idle"); window.requestAnimationFrame(() => document.getElementById("analysis-url")?.focus()); }}>Analyze another opportunity</button></div>
+      </section> : null}
 
       {result ? (
         <section ref={resultSection} className="analysis-result" aria-labelledby="analysis-result-title">
@@ -450,23 +525,25 @@ export function AnalysisWorkbench({
             ) : null}
             {result.evidenceWarnings.length ? <div className="notice"><strong>{result.evidenceWarnings.length} automated candidate warning{result.evidenceWarnings.length === 1 ? " was" : "s were"} recorded.</strong> Unsupported citations, mismatched subjects, and unsafe scopes were withheld; facts retain only other validated support or an explicit uncertainty state.</div> : null}
           </div>
-          <FactsCard card={result.card} embedded />
+          <OpportunityOverview card={result.card} embedded attentionItems={result.attentionItems} />
         </section>
       ) : null}
     </div>
   );
 }
 
-function AnalysisRunStatus({ phase, elapsedSeconds }: { phase: Phase; elapsedSeconds: number }) {
+function AnalysisRunStatus({ phase, elapsedSeconds, events }: { phase: Phase; elapsedSeconds: number; events: AnalysisProgressEvent[] }) {
   const status = phase === "running"
     ? {
         title: "Analysis in progress",
-        text: "Source acquisition, extraction, and excerpt checks run server-side. Per-stage updates are not streamed, so keep this tab open.",
+        text: "Researching public pages and validating source-backed facts. Keep this tab open; completed work will appear here as the server reports it.",
       }
     : phase === "complete"
       ? { title: "Draft response received", text: "Review the acquired-page record and any warnings before trusting individual claims." }
       : phase === "error"
         ? { title: "No draft returned", text: "The error above explains what stopped this attempt; incomplete output is not presented as a finished card." }
+        : phase === "insufficient"
+          ? { title: "Reliable result withheld", text: "Use a stronger official page or add missing public source text." }
         : phase === "unconfigured"
           ? { title: "Automatic extraction unavailable", text: "No source input has been sent." }
           : { title: "Ready to analyze", text: "Start with a public page or paste visible source wording." };
@@ -480,6 +557,21 @@ function AnalysisRunStatus({ phase, elapsedSeconds }: { phase: Phase; elapsedSec
           <small aria-hidden="true">{formatElapsed(elapsedSeconds)}</small>
         ) : null}
       </div>
+      {phase === "running" && events.length ? <ol className="research-activity" aria-label="Live research activity">
+        {events.slice(-7).map((event) => {
+          let label: string | null = null;
+          if (event.type === "source_acquired") label = `${event.title} reviewed`;
+          else if (event.type === "source_failed") label = "A discovered page could not be acquired";
+          else if (event.type === "cycle_resolved") label = event.status === "resolved" ? `${event.label ?? "Cycle"} identified` : "Cycle needs clarification";
+          else if (event.type === "family_started") label = `Reviewing ${event.family.replaceAll("_", " ")}`;
+          else if (event.type === "family_completed") label = `${event.family.replaceAll("_", " ")} review complete`;
+          else if (event.type === "validated_fact") label = `${event.label}: ${event.displayValue}`;
+          else if (event.type === "validation_complete") label = `${event.retained} supported facts retained; ${event.withheld} withheld`;
+          else if (event.type === "attention_ready") label = `${event.count} item${event.count === 1 ? "" : "s"} need attention`;
+          else if (event.type === "quality_complete") label = "Result quality checked";
+          return label ? <li key={event.sequence}><span aria-hidden="true">{event.type === "family_started" ? "◌" : "✓"}</span><span>{label}</span><time>{Math.round(event.elapsedMs / 1000)}s</time></li> : null;
+        })}
+      </ol> : null}
     </div>
   );
 }

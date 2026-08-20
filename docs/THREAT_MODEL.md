@@ -262,7 +262,7 @@ Static Cheerio extraction cannot reproduce every browser layout, shadow DOM, cli
 
 **Attack/failure:** Users interpret “disclosed,” “human reviewed,” completeness, or security controls as proof of legitimacy, correctness, safety, legal compliance, or value.
 
-**Controls:** Keep definitions visible: disclosed means a source states the fact; human reviewed means value/excerpt/source alignment was checked; organizer confirmed is not independent verification. Preserve `not_found`, `unclear`, and `conflicting`. Never produce a legitimacy, scam, prestige, worth, admissions-impact, or composite trust score.
+**Controls:** Keep definitions visible: disclosed means a source states the fact; AI-audited means a separate AI-assisted pass checked claim/evidence alignment; human reviewed means a person independently checked the relevant claims against their cited sources; organizer confirmed is not independent verification. Preserve `not_found`, `unclear`, and `conflicting`. Never produce a legitimacy, scam, prestige, worth, admissions-impact, or composite trust score.
 
 **Residual risk:** Users may still over-rely on a polished card. Neutral copy, visible sources, review dates, limitations, and correction/version history mitigate but cannot remove judgment risk.
 
@@ -335,5 +335,5 @@ Security-sensitive changes to `lib/analysis/`, schema/evidence validation, impor
 - Models can omit, misclassify, or misunderstand disclosures and prompt injection remains an active risk.
 - “No permanent server storage” does not cover browser/device persistence, downloads, logs, backups, remote origins, DNS, or provider retention.
 - Public HTTP sources can change after review; dates, hashes where retained, versions, and corrections are necessary.
-- The application response includes CSP and security headers, but the policy permits the inline styles/scripts required by the current Next.js runtime and must be rechecked after framework or deployment changes; React escaping alone is not a complete XSS defense.
+- The application response includes CSP and security headers, but the policy permits the inline styles/scripts required by the current Next.js runtime and `data:` connections for the locally bundled PDF renderer's WASM module. `data:` is not permitted by `script-src`. The complete policy must be rechecked after framework, PDF-engine, or deployment changes; React escaping alone is not a complete XSS defense.
 - Opportunity Facts is not a legal, safety, legitimacy, admissions, or value determination.

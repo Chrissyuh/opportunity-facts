@@ -194,7 +194,7 @@ describe("bounded model-family reliability", () => {
     expect(raw.structures?.stages.status).toBe("unassessed");
 
     const card = await extractOpportunityCard([source()], async () => raw);
-    expect(card.card.reviewState).toBe("draft");
+    expect(card.card.reviewState).toBe("automated_draft");
     expect(card.evidenceWarnings).toEqual([
       expect.objectContaining({ fieldId: "model.foundation", message: expect.stringMatching(/retained/i) }),
     ]);

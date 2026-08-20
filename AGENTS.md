@@ -20,7 +20,7 @@
 - `components/`: accessible reusable product and form components.
 - `lib/opportunity/`: authoritative V1/V2 schemas, atomic structured claims, field registry, deterministic projections, conservative migration, formatting, evidence, comparison, persistence, and data loading.
 - `lib/analysis/`: server-only URL safety, fetching, extraction, model integration, and analysis orchestration.
-- `data/demo/`: fictional demo JSON; `data/drafts/`: non-public work in progress; `data/opportunities/`: human-reviewed or organizer-confirmed public cards.
+- `data/demo/`: fictional demo JSON; `data/drafts/`: non-public work in progress; `data/opportunities/`: AI-audited, human-reviewed, or organizer-confirmed public cards.
 - `scripts/`: data validation and card creation helpers.
 - `tests/`: unit, security, integration, fixtures, and Playwright tests.
 - `docs/`, `research/`, `public/schema/`, and `public/data/`: durable documentation and machine-readable exports.

@@ -12,7 +12,7 @@ Review scope: the announced 2027 MITES Summer cycle and stable program structure
 
 All five pages appear once in `sourcePagesChecked`; evidence metadata reuses those records exactly.
 
-## Human-review decisions
+## AI-audit decisions
 
 - MITES is modeled as an MIT School of Engineering unit; MIT is the operator/host institution.
 - The 2027 Summer cohort is modeled without importing exact 2026 dates.
@@ -32,4 +32,3 @@ Flat-fact statuses: 23 `disclosed`, 35 `not_found`, 1 `not_applicable`.
 ## Hostile-content check
 
 No hidden prompt injection, AI-directed instruction, or forced-response text was observed.
-

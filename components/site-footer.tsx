@@ -7,20 +7,21 @@ export function SiteFooter() {
         <div>
           <p className="footer-title">Opportunity Facts</p>
           <p className="footer-copy">
-            Source-backed disclosure cards for student opportunities. Facts are
-            reported, uncertainty is preserved, and no verdict is assigned.
+            AI-assisted research for student opportunities. Supported answers keep
+            their source evidence, and uncertainty stays visible.
           </p>
         </div>
         <nav className="footer-links" aria-label="Product links">
           <span className="footer-label">Product</span>
-          <Link href="/opportunities">Browse the library</Link>
-          <Link href="/compare">Compare cards</Link>
-          <Link href="/build">Publish a clear card</Link>
-          <Link href="/analyze">Analyze sources</Link>
+          <Link href="/analyze">Analyze an opportunity</Link>
+          <Link href="/analyze/batch">Batch analyze</Link>
+          <Link href="/compare">Compare opportunities</Link>
+          <Link href="/opportunities">Reviewed examples</Link>
         </nav>
         <nav className="footer-links" aria-label="Project links">
-          <span className="footer-label">Accountability</span>
-          <Link href="/methodology">Methodology & limitations</Link>
+          <span className="footer-label">Learn</span>
+          <Link href="/methodology">How it works & limitations</Link>
+          <Link href="/build">Manual card builder</Link>
           <Link href="/data">Schema & data</Link>
           <Link href="/research">Research</Link>
           <Link href="/methodology#corrections">Correction policy</Link>

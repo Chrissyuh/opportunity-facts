@@ -7,6 +7,7 @@ import {
   FIELD_IDS,
   PAGE_TYPES,
   SECTIONS,
+  isReviewAttestationState,
   type EvidenceStatus,
   type FieldId,
   type OpportunitySection,
@@ -18,6 +19,7 @@ import {
   evidenceSourceSchema,
   factSchema,
   LEGACY_V2_SCHEMA_VERSION,
+  PRIOR_V2_SCHEMA_VERSION,
   opportunityCardSchema,
   SCHEMA_VERSION,
   sourcePageSchema,
@@ -103,7 +105,8 @@ function getTouchedSnapshot() {
 
 function inferredAssessedFields(card: OpportunityCard): FieldId[] {
   if (
-    card.reviewState !== "draft" ||
+    card.reviewState === "demo" ||
+    isReviewAttestationState(card.reviewState) ||
     (card.migratedFrom !== null && card.migratedFrom.reviewedAt !== null)
   ) return FIELD_IDS;
   return FIELD_IDS.filter((fieldId) => card.facts[fieldId].status !== "not_found");
@@ -263,9 +266,9 @@ export function CardBuilder() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const reviewState = String(data.get("reviewState") ?? "draft") as ReviewState;
-    if (reviewState !== "draft" && !canExport) {
+    if (isReviewAttestationState(reviewState) && !canExport) {
       setMetadataError(
-        "Human-reviewed and organizer-confirmed cards require every field to be explicitly assessed against the checked source inventory.",
+        "AI-audited, human-reviewed, and organizer-confirmed cards require every field and structured section to be explicitly assessed against the checked source inventory.",
       );
       return;
     }
@@ -278,8 +281,7 @@ export function CardBuilder() {
         opportunityId !== card.opportunityId ||
         summary !== card.summary ||
         reviewState !== card.reviewState ||
-        reviewState === "human_reviewed" ||
-        reviewState === "organizer_confirmed");
+        isReviewAttestationState(reviewState));
     const result = opportunityCardSchema.safeParse({
       ...card,
       slug,
@@ -288,7 +290,7 @@ export function CardBuilder() {
       cardVersion: createsRevision ? card.cardVersion + 1 : card.cardVersion,
       reviewState,
       reviewedAt:
-        reviewState === "human_reviewed" || reviewState === "organizer_confirmed"
+        isReviewAttestationState(reviewState)
           ? new Date().toISOString()
           : null,
     });
@@ -374,10 +376,13 @@ export function CardBuilder() {
       const wasV1 = input.schemaVersion === "1.0.0";
       const wasV2 =
         input.schemaVersion === LEGACY_V2_SCHEMA_VERSION ||
+        input.schemaVersion === PRIOR_V2_SCHEMA_VERSION ||
         input.schemaVersion === SCHEMA_VERSION;
       const wasAttestedV2 =
         wasV2 &&
-        (input.reviewState === "human_reviewed" || input.reviewState === "organizer_confirmed");
+        (input.reviewState === "ai_audited" ||
+          input.reviewState === "human_reviewed" ||
+          input.reviewState === "organizer_confirmed");
       const wasDemoV2 = wasV2 && input.reviewState === "demo";
       const imported = importOpportunityCardJson(json);
       const importedAssessment = wasAttestedV2 ? FIELD_IDS : inferredAssessedFields(imported);
@@ -533,8 +538,17 @@ export function CardBuilder() {
               </div>
               <div className="field">
                 <label htmlFor="builder-review-state">Review state</label>
-                <select id="builder-review-state" name="reviewState" defaultValue={card.reviewState === "demo" ? "draft" : card.reviewState}>
+                <select
+                  id="builder-review-state"
+                  name="reviewState"
+                  defaultValue={
+                    card.reviewState === "demo" || card.reviewState === "automated_draft"
+                      ? "draft"
+                      : card.reviewState
+                  }
+                >
                   <option value="draft">Draft</option>
+                  <option value="ai_audited">AI-audited</option>
                   <option value="human_reviewed">Human reviewed</option>
                   <option value="organizer_confirmed">Organizer confirmed</option>
                 </select>
@@ -545,7 +559,7 @@ export function CardBuilder() {
               <textarea id="builder-summary" name="summary" defaultValue={card.summary} required />
             </div>
             <div className="notice">
-              <strong>Review-state warning.</strong> Do not select human reviewed unless a person actually checked every displayed value and excerpt against its cited source. Organizer confirmation is not independent verification.
+              <strong>Review-state integrity.</strong> Use AI-audited only after a separate AI-assisted evidence audit. Use human reviewed only after a person independently checks the relevant claims against their cited sources. Organizer confirmation is not independent verification.
             </div>
             <button className="button-secondary" type="submit">Save card metadata</button>
           </form>

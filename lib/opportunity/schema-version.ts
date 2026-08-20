@@ -5,10 +5,16 @@ export const V1_SCHEMA_VERSION = "1.0.0" as const;
 // deterministic projection rules so educator- and school-scoped benefits
 // cannot appear as participant benefits.
 export const LEGACY_V2_SCHEMA_VERSION = "2.0.0" as const;
-export const SCHEMA_VERSION = "2.1.0" as const;
+export const PRIOR_V2_SCHEMA_VERSION = "2.1.0" as const;
+
+// Schema 2.2.0 distinguishes independent AI-assisted source auditing from a
+// review completed by a person. No evidence or structured domain vocabulary
+// changed in this revision.
+export const SCHEMA_VERSION = "2.2.0" as const;
 
 export const SUPPORTED_IMPORT_SCHEMA_VERSIONS = [
   V1_SCHEMA_VERSION,
   LEGACY_V2_SCHEMA_VERSION,
+  PRIOR_V2_SCHEMA_VERSION,
   SCHEMA_VERSION,
 ] as const;

@@ -101,7 +101,7 @@ function factSources(
 
 function finalizeReviewed(card: OpportunityCard): OpportunityCard {
   const projected = applyOpportunityProjections(card);
-  projected.reviewState = "human_reviewed";
+  projected.reviewState = "ai_audited";
   projected.reviewedAt = V2_REVIEWED_AT;
   return opportunityCardSchema.parse(projected);
 }

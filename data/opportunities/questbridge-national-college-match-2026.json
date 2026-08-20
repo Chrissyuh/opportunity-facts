@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.1.0",
+  "schemaVersion": "2.2.0",
   "opportunityId": "questbridge-national-college-match",
   "cycle": {
     "status": "modeled",
@@ -128,10 +128,10 @@
       }
     }
   },
-  "cardVersion": 1,
+  "cardVersion": 2,
   "slug": "questbridge-national-college-match-2026",
   "summary": "The 2026 National College Match is a free, multi-stage college application and ranking process for eligible high-achieving seniors from low-income backgrounds, leading to Fall 2027 admission pathways and partner-funded full four-year scholarships for matched finalists.",
-  "reviewState": "human_reviewed",
+  "reviewState": "ai_audited",
   "reviewedAt": "2026-08-12T06:25:00.000Z",
   "sourcePagesChecked": [
     {
@@ -1746,7 +1746,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "qb-role-operator-claim",
@@ -1778,7 +1778,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "organizations.primary-operator-kind",
         "claimRefs": [
           "qb-org-kind",
@@ -1810,7 +1810,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "relationships.institution-list",
         "claimRefs": [
           "qb-college-partnership-claim"
@@ -1841,7 +1841,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "relationships.summary",
         "claimRefs": [
           "qb-college-partnership-claim"
@@ -1872,7 +1872,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "relationships.explanations",
         "claimRefs": [
           "qb-college-partnership-claim"
@@ -2043,7 +2043,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "cycle.closes",
         "claimRefs": [
           "qb-application-deadline"
@@ -2079,7 +2079,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.decision",
         "claimRefs": [
           "qb-finalist-decision",
@@ -2121,7 +2121,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "cycle.coverage-end",
         "claimRefs": [
           "qb-fall-entry"
@@ -2212,7 +2212,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.formats",
         "claimRefs": [
           "qb-application-format",
@@ -2243,7 +2243,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.locations",
         "claimRefs": [
           "qb-enrollment-location"
@@ -2289,7 +2289,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "costs.application_fee",
         "claimRefs": [
           "qb-application-fee-definition",
@@ -2371,7 +2371,7 @@
         "explanation": "Calculated from complete compatible v2 cost items; credited deposits are not added twice."
       },
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "costs.total-exact",
         "claimRefs": [
           "qb-application-fee-definition",
@@ -2551,7 +2551,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.process",
         "claimRefs": [
           "qb-match-pathway-definition",
@@ -2723,7 +2723,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.tuition_waiver",
         "claimRefs": [
           "qb-scholarship-definition",
@@ -2785,7 +2785,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.in_kind_value",
         "claimRefs": [
           "qb-network-definition",

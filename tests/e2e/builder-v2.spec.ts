@@ -99,7 +99,7 @@ test("mapped summaries are read-only and a structured change autosaves its proje
   expect(stored.facts.operating_organization).toMatchObject({
     status: "disclosed",
     displayValue: "Builder Research Lab",
-    projection: { schemaVersion: "2.1.0" },
+    projection: { schemaVersion: "2.2.0" },
   });
 
   const projectedEditor = page.locator(".projected-fact-editor").filter({
@@ -133,7 +133,7 @@ test("a V1 import migrates deterministically but remains blocked on structured r
     await page.evaluate((key) => JSON.parse(localStorage.getItem(key) ?? "null") as unknown, builderCardKey),
   );
   expect(migrated).toMatchObject({
-    schemaVersion: "2.1.0",
+    schemaVersion: "2.2.0",
     cardVersion: legacy.cardVersion + 1,
     reviewState: "draft",
     reviewedAt: null,
@@ -148,7 +148,7 @@ test("a V1 import migrates deterministically but remains blocked on structured r
 
   await page.getByLabel("Review state").selectOption("human_reviewed");
   await page.getByRole("button", { name: "Save card metadata" }).click();
-  await expect(page.locator(".error-summary")).toContainText("every field to be explicitly assessed");
+  await expect(page.locator(".error-summary")).toContainText("every field and structured section to be explicitly assessed");
 });
 
 test("absence assessments clear incompatible migrated summary values", async ({ page }) => {
@@ -424,5 +424,5 @@ test("a source-scope change invalidates publication and autosaves the assessment
 
   await page.getByLabel("Review state").selectOption("human_reviewed");
   await page.getByRole("button", { name: "Save card metadata" }).click();
-  await expect(page.locator(".error-summary")).toContainText("every field to be explicitly assessed");
+  await expect(page.locator(".error-summary")).toContainText("every field and structured section to be explicitly assessed");
 });

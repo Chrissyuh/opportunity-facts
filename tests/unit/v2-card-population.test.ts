@@ -11,6 +11,19 @@ import {
 
 const root = process.cwd();
 
+const AI_AUDITED_REVISIONS: Readonly<Record<string, number>> = {
+  "breakthrough-junior-challenge-2026": 3,
+  "coca-cola-scholars-program-2027": 2,
+  "congressional-app-challenge-2026": 2,
+  "diamond-challenge-2027": 3,
+  "lumiere-research-scholar-program-fall-2026": 3,
+  "mites-summer-2027": 2,
+  "nasa-techrise-student-challenge-2026-2027": 3,
+  "polygence-core-program-fall-2026": 3,
+  "questbridge-national-college-match-2026": 2,
+  "yale-young-global-scholars-summer-2027": 2,
+};
+
 async function readCards(directory: "demo" | "opportunities"): Promise<OpportunityCard[]> {
   const dataDirectory = path.join(root, "data", directory);
   const files = (await readdir(dataDirectory)).filter((file) => file.endsWith(".json")).sort();
@@ -40,7 +53,7 @@ describe("canonical V2 repository cards", () => {
       if (card.migratedFrom === null) {
         expect(card.cardVersion).toBeGreaterThanOrEqual(1);
       } else {
-        expect(card.cardVersion).toBe(2);
+        expect(card.cardVersion).toBeGreaterThan(card.migratedFrom.cardVersion);
         expect(card.migratedFrom.schemaVersion).toBe("1.0.0");
         expect(card.migratedFrom.cardVersion).toBe(1);
         expect(card.migratedFrom.cardSha256).toMatch(/^[a-f0-9]{64}$/);
@@ -51,7 +64,8 @@ describe("canonical V2 repository cards", () => {
       expect(card.cycle.status).toBe("unassessed");
     }
     for (const card of reviewed) {
-      expect(card.reviewState).toBe("human_reviewed");
+      expect(card.reviewState).toBe("ai_audited");
+      expect(card.cardVersion).toBe(AI_AUDITED_REVISIONS[card.slug]);
       expect(card.reviewedAt).not.toBeNull();
       expect(Date.parse(card.reviewedAt!)).toBeGreaterThanOrEqual(Date.parse("2026-08-12T00:00:00.000Z"));
       expect(card.opportunityId).not.toBeNull();

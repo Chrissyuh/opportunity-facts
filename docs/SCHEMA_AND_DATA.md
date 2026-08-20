@@ -1,6 +1,6 @@
 # Schema and data guide
 
-Opportunity Facts uses one strict current schema `2.1.0` card contract with two complementary layers:
+Opportunity Facts uses one strict current schema `2.2.0` card contract with two complementary layers:
 
 1. a stable 59-field fact map for scanning, search, baseline comparison, completeness reporting, and compatibility;
 2. evidence-bearing structured records for distinctions that cannot be represented truthfully as one scalar.
@@ -36,7 +36,7 @@ JSON Schema can express structure but not every Zod cross-field rule. Repository
 
 ## Versions and identity
 
-- `schemaVersion` is `2.1.0`. It defines the interpretation and allowed card structure.
+- `schemaVersion` is `2.2.0`. It defines the interpretation and allowed card structure.
 - `opportunityId` identifies the continuing opportunity independently of one cycle or public URL slug.
 - `cycle.id` plus its source-backed label/status/year claims identifies the reviewed application/cohort/competition cycle.
 - `cardVersion` is only the positive-integer revision of that card.
@@ -44,15 +44,16 @@ JSON Schema can express structure but not every Zod cross-field rule. Repository
 
 A reviewed card requires a non-null cycle-independent `opportunityId` and a modeled cycle. Public artifacts reject duplicate slugs and duplicate normalized `(opportunityId, cycle label)` pairs.
 
-A substantive source, fact, structured-record, or attestation change advances `cardVersion` under the builder/version policy. The conservative V1 migration advances the revision because it creates a new draft with unassessed V2 structures. The lossless `2.0.0` to `2.1.0` envelope/projection-metadata migration does not change card content or revision. Neither version number is a year or cohort.
+A substantive source, fact, structured-record, or attestation change advances `cardVersion` under the builder/version policy. The conservative V1 migration advances the revision because it creates a new draft with unassessed V2 structures. Lossless `2.0.0`/`2.1.0` import migration does not change card content or revision. Reclassifying the ten repository records from human-reviewed to AI-audited corrects substantive attestation metadata and therefore advances each card revision once without changing its evidence. Neither version number is a year or cohort.
 
 Version compatibility is intentionally one-way:
 
-- `1.0.0` imports become new draft `2.1.0` revisions with unassessed structured sections;
-- `2.0.0` imports retain rich structured claims, evidence, review state, and card revision while the derived 59-field summary is deterministically rebuilt under `2.1.0` projection rules;
+- `1.0.0` imports become new draft `2.2.0` revisions with unassessed structured sections;
+- `2.0.0` and `2.1.0` imports retain rich structured claims, evidence, their legacy review state, and card revision while the derived 59-field summary is deterministically rebuilt under `2.2.0` projection rules;
 - `2.0.0` files cannot claim vocabulary introduced in `2.1.0` (`educator_cash_prize`, educator recipient scope, or educator/school distribution payees);
+- older schema labels cannot claim `automated_draft` or `ai_audited`, which were introduced in `2.2.0`;
 - unsupported future versions fail closed with a clear import error;
-- repository cards and public exports are canonical `2.1.0` only.
+- repository cards and public exports are canonical `2.2.0` only.
 
 ## Top-level V2 card
 
@@ -60,7 +61,7 @@ The strict shape is conceptually:
 
 ```ts
 interface OpportunityCardV2 {
-  schemaVersion: "2.1.0";
+  schemaVersion: "2.2.0";
   opportunityId: string | null;       // required for reviewed/confirmed cards
   cycle: CycleContainer;
   cardVersion: number;
@@ -173,7 +174,7 @@ type RecordCollection<T> =
 - `not_applicable` requires an affirmative reason.
 - `modeled` requires at least one record.
 
-`human_reviewed` and `organizer_confirmed` cards cannot leave cycle or any structured collection unassessed. Demo cards may retain unassessed structured sections because they are explicitly fictional product fixtures rather than real-card source audits.
+`ai_audited`, `human_reviewed`, and `organizer_confirmed` cards cannot leave cycle or any structured collection unassessed. Demo cards may retain unassessed structured sections because they are explicitly fictional product fixtures rather than real-card source audits.
 
 `costItems` uses the same four states, with one additional requirement on `modeled`: `completeness` is `complete` or `incomplete`. This records whether the reviewer established that the ledger contains every relevant participant cost, not merely whether each listed item is well formed. Lumiere and Diamond intentionally remain `incomplete` because the retained sources do not establish a complete general refund/participant-cost inventory.
 
@@ -256,7 +257,7 @@ interface Fact {
   conflictingValues: ConflictingValue[];
   calculation: Calculation | null;
   projection: {
-    schemaVersion: "2.1.0";
+    schemaVersion: "2.2.0";
     rule: string;
     claimRefs: ClaimId[];
   } | null;
@@ -327,11 +328,13 @@ This is assessment coverage, never quality, legitimacy, safety, prestige, admiss
 | State | Meaning |
 | --- | --- |
 | `demo` | Obviously fictional `.example` card, persistently labeled Demo data. |
-| `draft` | Automated, imported, migrated, incomplete, or not fully aligned by a human. |
-| `human_reviewed` | A reviewer checked value/excerpt/source/scope/projection alignment; not an independent audit. |
+| `draft` | Manual, imported, migrated, or incomplete working record without review attestation. |
+| `automated_draft` | Normal URL or pasted-source analysis output after deterministic retention checks; not separately audited. |
+| `ai_audited` | A separate AI-assisted audit checked value/excerpt/source/scope/projection alignment; no person completed the full review. |
+| `human_reviewed` | A person independently checked the relevant claims against their cited sources; not an audit of organizer truth. |
 | `organizer_confirmed` | The organizer supplied or confirmed information; not independent verification. |
 
-Reviewed/confirmed cards require `reviewedAt`, modeled cycle identity, and assessed structured collections. Passing schema validation alone does not qualify a card for review attestation.
+AI-audited, human-reviewed, and organizer-confirmed cards require `reviewedAt`, modeled cycle identity, and assessed structured collections. Passing schema validation alone does not qualify a card for review attestation. Portable files cannot transfer any of those three attestations into a browser; import creates a new manual draft revision. Demo provenance remains visible.
 
 ## Conservative V1 import
 

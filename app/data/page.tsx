@@ -17,7 +17,7 @@ export default function DataPage() {
             <h1>The card is portable by design.</h1>
           </div>
           <p className="lede">
-            Schema 2.1.0 drives the card renderer, builder, comparison, validation,
+            Schema 2.2.0 drives the card renderer, builder, comparison, validation,
             import/export, and structured evidence contract.
           </p>
         </div>
@@ -30,7 +30,7 @@ export default function DataPage() {
             <h2 id="downloads-title">Use the same records we do.</h2>
           </div>
           <p>
-            The current public dataset contains ten human-reviewed real cards and
+            The current public dataset contains ten AI-audited real cards and
             seven fictional demonstration cards. Each `.example` record remains
             visibly labeled and exists to exercise the product—not to describe a real
             organization.
@@ -58,8 +58,8 @@ export default function DataPage() {
             <li>Submit the record for independent review before publication.</li>
           </ol>
           <p className="fine-print">
-            Do not mark a card human reviewed until every displayed value and excerpt
-            has actually been checked against its cited page.
+            AI-audited means a separate AI-assisted source-alignment pass. Human
+            reviewed is reserved for records a person independently checked.
           </p>
         </section>
       </div>
@@ -78,23 +78,25 @@ export default function DataPage() {
           </p>
           <p>
             Imports are validated before they reach rendering or browser storage.
-            Valid schema 1.0 cards migrate only to unassessed draft schema 2.1.0
-            revisions. Schema 2.0.0 cards migrate losslessly to 2.1.0 with current
-            summary projections; unknown or malformed structures return a readable
-            error rather than being partially accepted.
+            Valid schema 1.0 cards migrate only to unassessed draft schema 2.2.0
+            revisions. Schema 2.0.0 and 2.1.0 cards migrate losslessly to 2.2.0
+            with current summary projections; unknown or malformed structures return
+            a readable error rather than being partially accepted.
           </p>
           <h2>Public data boundary</h2>
           <p>
-            Repository JSON under `data/demo` is fictional. Human-reviewed records
-            belong under `data/opportunities`. Browser-created drafts are not added
-            to the public dataset automatically, and the server does not provide a
-            hidden permanent store.
+            Repository JSON under `data/demo` is fictional. AI-audited,
+            human-reviewed, and organizer-confirmed records belong under
+            `data/opportunities`. Browser-created drafts are not added to the public
+            dataset automatically, and the server does not provide a hidden permanent
+            store.
           </p>
           <p>
             Three reviewed cards formed the extraction development set. Seven more
             were selected before inference and evaluated once as a preregistered
-            out-of-sample set. Their reviewed cards are public records; the automated
-            outputs remain separate evaluation artifacts and never replace them.
+            out-of-sample set. Their current AI-audited cards are public records; the
+            automated outputs remain separate evaluation artifacts and never replace
+            them.
           </p>
           <div className="button-row no-print">
             <Link className="button" href="/build">

@@ -606,6 +606,13 @@ export async function fetchPublicPage(
 export interface AcquirePublicSourcePagesOptions
   extends FetchPublicPageOptions {
   readonly maxDiscoveredPages?: number;
+  readonly onPageAcquired?: (page: AcquiredSourcePage) => void;
+  readonly onPageFailure?: (failure: PageAcquisitionFailure) => void;
+  readonly onDiscoveryComplete?: (candidateCount: number) => void;
+  readonly onTiming?: (
+    stage: "submitted_source_acquisition" | "source_discovery" | "discovered_source_acquisition" | "text_processing",
+    durationMs: number,
+  ) => void;
 }
 
 function acquisitionFailure(
@@ -631,12 +638,25 @@ export async function acquirePublicSourcePages(
   input: string | URL,
   options: AcquirePublicSourcePagesOptions = {},
 ): Promise<AcquiredSourceSet> {
-  const { maxDiscoveredPages, ...fetchOptions } = options;
+  const {
+    maxDiscoveredPages,
+    onPageAcquired,
+    onPageFailure,
+    onDiscoveryComplete,
+    onTiming,
+    ...fetchOptions
+  } = options;
+  const submittedFetchStartedAt = performance.now();
   const submittedFetched = await fetchPublicPage(input, fetchOptions);
+  onTiming?.("submitted_source_acquisition", performance.now() - submittedFetchStartedAt);
+  const submittedProcessingStartedAt = performance.now();
   const submitted: AcquiredSourcePage = {
     fetched: submittedFetched,
     extracted: extractFetchedPage(submittedFetched),
   };
+  onTiming?.("text_processing", performance.now() - submittedProcessingStartedAt);
+  onPageAcquired?.(submitted);
+  const discoveryStartedAt = performance.now();
   const candidates = rankSameOriginLinks(
     submittedFetched.url,
     submitted.extracted.links,
@@ -645,6 +665,8 @@ export async function acquirePublicSourcePages(
       targetTitle: submitted.extracted.title,
     },
   );
+  onTiming?.("source_discovery", performance.now() - discoveryStartedAt);
+  onDiscoveryComplete?.(candidates.length);
   const discovered: AcquiredSourcePage[] = [];
   const failures: PageAcquisitionFailure[] = [];
   const finalUrls = new Set([submittedFetched.url]);
@@ -656,22 +678,29 @@ export async function acquirePublicSourcePages(
       candidate.topic === "application" && !applicationRedirectAllowanceAssigned;
     if (allowApplicationRedirect) applicationRedirectAllowanceAssigned = true;
     try {
+      const discoveredFetchStartedAt = performance.now();
       const fetched = await fetchPublicPage(candidate.url, {
         ...fetchOptions,
         allowedRedirectOrigin: submittedFetched.url,
         allowSinglePublicCrossOriginRedirect: allowApplicationRedirect,
       });
+      onTiming?.("discovered_source_acquisition", performance.now() - discoveredFetchStartedAt);
       if (finalUrls.has(fetched.url)) {
         continue;
       }
       finalUrls.add(fetched.url);
+      const discoveredProcessingStartedAt = performance.now();
       discovered.push({
         fetched,
         extracted: extractFetchedPage(fetched),
         discovery: candidate,
       });
+      onTiming?.("text_processing", performance.now() - discoveredProcessingStartedAt);
+      onPageAcquired?.(discovered.at(-1)!);
     } catch (error) {
-      failures.push(acquisitionFailure(error, candidate.url));
+      const failure = acquisitionFailure(error, candidate.url);
+      failures.push(failure);
+      onPageFailure?.(failure);
     }
   }
 

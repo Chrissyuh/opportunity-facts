@@ -17,7 +17,7 @@ Schema V2 disposition: initially migrated to schema `2.0.0`, manually populated 
 
 All eight URLs appear once in `sourcePagesChecked`; evidence metadata exactly reuses those records.
 
-## Human-review decisions
+## AI-audit decisions
 
 - Lumiere Education is the operator. Harvard and Oxford are founder affiliations; Harvard, Stanford, Oxford, MIT, and other universities named in the FAQ are mentor affiliations. None is represented as an operator, sponsor, institutional partner, or endorser.
 - The one institutional relationship recorded is Lumiere's explicit statement of a credit partnership with the University of California, San Diego Extended Studies. No separate UC San Diego public page naming Lumiere was found, so that source limitation is visible in the card.

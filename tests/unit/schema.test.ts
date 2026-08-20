@@ -100,10 +100,12 @@ describe("opportunity card schema", () => {
     expect(() => factSchema.parse({ ...conflict, value: "$100" })).toThrow(/silently select/i);
   });
 
-  it("supports only the four documented review states", () => {
+  it("supports the documented provenance and review states", () => {
     expect(reviewStateSchema.options).toEqual([
       "demo",
       "draft",
+      "automated_draft",
+      "ai_audited",
       "human_reviewed",
       "organizer_confirmed",
     ]);
@@ -139,15 +141,21 @@ describe("opportunity card schema", () => {
     })).toThrow(/reserved \.example hostnames/i);
   });
 
-  it("requires checked sources before a card can claim human or organizer review", () => {
+  it("requires checked sources before a card can claim AI, human, or organizer review", () => {
     const blank = createEmptyCard({ slug: "blank-reviewed" });
-    expect(() =>
-      opportunityCardSchema.parse({
-        ...blank,
-        reviewState: "human_reviewed",
-        reviewedAt: "2026-08-11T12:00:00Z",
-      }),
-    ).toThrow(/checked source page/i);
+    for (const reviewState of [
+      "ai_audited",
+      "human_reviewed",
+      "organizer_confirmed",
+    ] as const) {
+      expect(() =>
+        opportunityCardSchema.parse({
+          ...blank,
+          reviewState,
+          reviewedAt: "2026-08-11T12:00:00Z",
+        }),
+      ).toThrow(/checked source page/i);
+    }
   });
 
   it("enforces field-specific money classifications", () => {

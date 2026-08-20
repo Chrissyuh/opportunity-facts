@@ -1,5 +1,6 @@
 export {
   LEGACY_V2_SCHEMA_VERSION,
+  PRIOR_V2_SCHEMA_VERSION,
   SUPPORTED_IMPORT_SCHEMA_VERSIONS,
 } from "./schema-version";
 export * from "./schema-v1";

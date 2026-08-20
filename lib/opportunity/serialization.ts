@@ -1,9 +1,17 @@
 import { z } from "zod";
 
-import { migrateV1ToV2, migrateV2_0ToCurrent } from "./migration";
+import { isReviewAttestationState } from "./fields";
+import {
+  migrateV1ToV2,
+  migrateV2_0ToCurrent,
+  migrateV2_1ToCurrent,
+} from "./migration";
 import { V1_SCHEMA_VERSION } from "./schema-v1";
 import { SCHEMA_VERSION, opportunityCardSchema, type OpportunityCard } from "./schema-v2";
-import { LEGACY_V2_SCHEMA_VERSION } from "./schema-version";
+import {
+  LEGACY_V2_SCHEMA_VERSION,
+  PRIOR_V2_SCHEMA_VERSION,
+} from "./schema-version";
 
 export class OpportunityCardImportError extends Error {
   readonly issues: readonly z.core.$ZodIssue[];
@@ -41,9 +49,20 @@ export function parseOpportunityCard(input: unknown): OpportunityCard {
       );
     }
   }
+  if (version === PRIOR_V2_SCHEMA_VERSION) {
+    try {
+      return migrateV2_1ToCurrent(input);
+    } catch (error) {
+      const issues = error instanceof z.ZodError ? error.issues : [];
+      throw new OpportunityCardImportError(
+        `The schema ${PRIOR_V2_SCHEMA_VERSION} card is invalid and could not be migrated to schema ${SCHEMA_VERSION}.`,
+        issues,
+      );
+    }
+  }
   if (typeof version === "string" && version !== SCHEMA_VERSION) {
     throw new OpportunityCardImportError(
-      `Schema version ${version} is not supported. This app supports ${V1_SCHEMA_VERSION} and ${LEGACY_V2_SCHEMA_VERSION} imports plus ${SCHEMA_VERSION} cards.`,
+      `Schema version ${version} is not supported. This app supports ${V1_SCHEMA_VERSION}, ${LEGACY_V2_SCHEMA_VERSION}, and ${PRIOR_V2_SCHEMA_VERSION} imports plus ${SCHEMA_VERSION} cards.`,
     );
   }
   const result = opportunityCardSchema.safeParse(input);
@@ -73,10 +92,11 @@ export function invalidatePortableReviewAttestation(
 ): OpportunityCard {
   // A portable JSON file cannot carry the repository's review attestation into
   // this browser. Keep the reviewed material, but require a new review before
-  // the imported revision can be represented as human- or organizer-reviewed.
+  // the imported revision can be represented as AI-audited, human-reviewed,
+  // or organizer-confirmed.
   // `demo` is data provenance rather than review attestation and must remain
   // visible so fictional content is never relabeled as an ordinary draft.
-  if (card.reviewState !== "human_reviewed" && card.reviewState !== "organizer_confirmed") {
+  if (!isReviewAttestationState(card.reviewState)) {
     return card;
   }
   return opportunityCardSchema.parse({

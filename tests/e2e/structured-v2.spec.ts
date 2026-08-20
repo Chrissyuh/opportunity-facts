@@ -12,7 +12,7 @@ async function openStructuredDetails(page: Parameters<typeof expectNoPageOverflo
 }
 
 test("TechRise keeps restricted build funding separate from participant cash", async ({ page }) => {
-  await page.goto("/opportunities/nasa-techrise-student-challenge-2026-2027");
+  await page.goto("/opportunities/nasa-techrise-student-challenge-2026-2027/record");
   const details = await openStructuredDetails(page);
   const outcomes = details.getByRole("heading", { name: "Outcomes and prizes" }).locator("..");
 
@@ -33,7 +33,7 @@ test("TechRise keeps restricted build funding separate from participant cash", a
 });
 
 test("Lumiere keeps affiliations, credit partnership, and tier prices distinct", async ({ page }) => {
-  await page.goto("/opportunities/lumiere-research-scholar-program-fall-2026");
+  await page.goto("/opportunities/lumiere-research-scholar-program-fall-2026/record");
   const details = await openStructuredDetails(page);
 
   await expect(details.getByText("Credit partnership", { exact: true })).toBeVisible();
@@ -50,7 +50,7 @@ test("Lumiere keeps affiliations, credit partnership, and tier prices distinct",
 });
 
 test("Diamond retains two selection paths and team-level prize rows", async ({ page }) => {
-  await page.goto("/opportunities/diamond-challenge-2027");
+  await page.goto("/opportunities/diamond-challenge-2027/record");
   const details = await openStructuredDetails(page);
 
   const process = details.getByRole("heading", { name: "Schedule and selection paths" }).locator("..");
@@ -69,6 +69,7 @@ test("structured comparison progressively reveals real distinctions without page
   await page.getByRole("button", { name: /NASA TechRise Student Challenge.*Add/ }).click();
   await page.getByRole("button", { name: /Lumiere Research Scholar Program.*Add/ }).click();
   await page.getByRole("button", { name: /Diamond Challenge.*Add/ }).click();
+  await page.getByRole("button", { name: "Full Record" }).click();
 
   const comparison = page.getByRole("region", { name: "Compare distinctions the summary rows cannot hold." });
   await expect(comparison).toBeVisible();

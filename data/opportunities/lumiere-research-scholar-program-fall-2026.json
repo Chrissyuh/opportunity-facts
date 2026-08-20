@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.1.0",
+  "schemaVersion": "2.2.0",
   "opportunityId": "lumiere-research-scholar-program",
   "cycle": {
     "status": "modeled",
@@ -110,10 +110,10 @@
       }
     }
   },
-  "cardVersion": 2,
+  "cardVersion": 3,
   "slug": "lumiere-research-scholar-program-fall-2026",
   "summary": "A selective online Fall 2026 research mentorship operated by Lumiere Education, with four current application price tiers, one-to-one mentorship, and eligibility after successful completion for three UC San Diego Extended Studies post-baccalaureate credits.",
-  "reviewState": "human_reviewed",
+  "reviewState": "ai_audited",
   "reviewedAt": "2026-08-12T00:27:28.180Z",
   "sourcePagesChecked": [
     {
@@ -3023,7 +3023,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "lumiere-operator-role",
@@ -3063,7 +3063,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "organizations.primary-operator-kind",
         "claimRefs": [
           "lumiere-org-kind",
@@ -3111,7 +3111,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "relationships.institution-list",
         "claimRefs": [
           "lumiere-ucsd-credit-relationship",
@@ -3162,7 +3162,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "relationships.summary",
         "claimRefs": [
           "lumiere-ucsd-credit-relationship",
@@ -3216,7 +3216,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "relationships.explanations",
         "claimRefs": [
           "lumiere-ucsd-credit-relationship",
@@ -3437,7 +3437,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "cycle.closes",
         "claimRefs": [
           "lumiere-application-deadline"
@@ -3481,7 +3481,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "cycle.coverage-start",
         "claimRefs": [
           "lumiere-program-start"
@@ -3531,7 +3531,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.duration",
         "claimRefs": [
           "lumiere-duration-individual",
@@ -3569,7 +3569,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.weekly-hours",
         "claimRefs": [
           "lumiere-weekly-time-commitment"
@@ -3630,7 +3630,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.formats",
         "claimRefs": [
           "lumiere-application-format",
@@ -3667,7 +3667,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.locations",
         "claimRefs": [
           "lumiere-program-location"
@@ -3726,7 +3726,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "costs.deposit",
         "claimRefs": [
           "lumiere-deposit-definition",
@@ -3763,7 +3763,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "costs.tuition-matrix",
         "claimRefs": [
           "cost-tuition-individual-definition",
@@ -3827,7 +3827,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "costs.total-incomplete",
         "claimRefs": [
           "cost-tuition-individual-definition",
@@ -4003,7 +4003,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.process",
         "claimRefs": [
           "lumiere-common-pathway",
@@ -4164,7 +4164,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.tuition_waiver",
         "claimRefs": [
           "lumiere-aid-definition",
@@ -4204,7 +4204,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.program_seat",
         "claimRefs": [
           "lumiere-program-seat-definition",
@@ -4261,7 +4261,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.college_credit",
         "claimRefs": [
           "lumiere-credit-definition",
@@ -4301,7 +4301,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.mentorship-matrix",
         "claimRefs": [
           "lumiere-mentorship-individual-definition",
@@ -4359,7 +4359,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.other-benefits",
         "claimRefs": [
           "lumiere-paper-definition",

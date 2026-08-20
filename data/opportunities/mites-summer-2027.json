@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "2.1.0",
+  "schemaVersion": "2.2.0",
   "opportunityId": "mites-summer",
   "cycle": {
     "status": "modeled",
@@ -110,10 +110,10 @@
       }
     }
   },
-  "cardVersion": 1,
+  "cardVersion": 2,
   "slug": "mites-summer-2027",
   "summary": "MITES Summer is a free six-week residential STEM program operated within MIT's School of Engineering for eligible rising high-school seniors; 2027 exact program dates were not yet published.",
-  "reviewState": "human_reviewed",
+  "reviewState": "ai_audited",
   "reviewedAt": "2026-08-12T06:25:00.000Z",
   "sourcePagesChecked": [
     {
@@ -1320,7 +1320,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "organizations.primary-operator",
         "claimRefs": [
           "mites-role-operator-claim",
@@ -1360,7 +1360,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "organizations.primary-operator-kind",
         "claimRefs": [
           "mites-org-kind",
@@ -1400,7 +1400,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "relationships.institution-list",
         "claimRefs": [
           "mites-mit-operated-claim",
@@ -1440,7 +1440,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "relationships.summary",
         "claimRefs": [
           "mites-mit-operated-claim",
@@ -1480,7 +1480,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "relationships.explanations",
         "claimRefs": [
           "mites-mit-operated-claim",
@@ -1692,7 +1692,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.duration",
         "claimRefs": [
           "mites-program-duration"
@@ -1725,7 +1725,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.weekly-hours",
         "claimRefs": [
           "mites-program-hours"
@@ -1774,7 +1774,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.formats",
         "claimRefs": [
           "mites-application-format",
@@ -1803,7 +1803,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.locations",
         "claimRefs": [
           "mites-program-location"
@@ -1875,7 +1875,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "costs.tuition",
         "claimRefs": [
           "mites-tuition-definition",
@@ -1908,7 +1908,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "costs.total-unresolved",
         "claimRefs": [
           "mites-tuition-definition",
@@ -2082,7 +2082,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "stages.process",
         "claimRefs": [
           "mites-pathway-definition",
@@ -2216,7 +2216,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.program_seat",
         "claimRefs": [
           "mites-seat-definition",
@@ -2262,7 +2262,7 @@
       "conflictingValues": [],
       "calculation": null,
       "projection": {
-        "schemaVersion": "2.1.0",
+        "schemaVersion": "2.2.0",
         "rule": "outcomes.in_kind_value",
         "claimRefs": [
           "mites-evaluation-definition",
