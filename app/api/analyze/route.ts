@@ -11,7 +11,11 @@ import {
 import {
   analyzeRequestSchema,
 } from "@/lib/analysis/pipeline";
-import { runProductAnalysis, type AnalysisProductResult } from "@/lib/analysis/product-run";
+import {
+  failureSuppressionDecision,
+  runProductAnalysis,
+  type AnalysisProductResult,
+} from "@/lib/analysis/product-run";
 import { createSequencedProgressSink } from "@/lib/analysis/progress";
 import {
   acceptsAnalysisStream,
@@ -223,14 +227,27 @@ function streamedAnalysisResponse(
   });
 }
 
-export async function GET() {
+export async function GET(request?: Request) {
   const configured = isAnalysisEnabled() && Boolean(process.env.OPENAI_API_KEY?.trim());
+  const suppressionUrl = request ? new URL(request.url).searchParams.get("suppressionUrl") : null;
+  let failureSuppression;
+  if (suppressionUrl !== null) {
+    const parsed = analyzeRequestSchema.safeParse({ mode: "url", url: suppressionUrl });
+    if (!parsed.success) {
+      return json({ code: "INVALID_URL", message: "Enter a valid public opportunity URL." }, 400);
+    }
+    if (parsed.data.mode !== "url") {
+      return json({ code: "INVALID_URL", message: "Enter a valid public opportunity URL." }, 400);
+    }
+    failureSuppression = failureSuppressionDecision(parsed.data.url);
+  }
   return json({
     configured,
     analyzerVersion: ANALYZER_VERSION,
     model: configured
       ? process.env.OPENAI_MODEL?.trim() || "gpt-5.6-terra"
       : null,
+    ...(failureSuppression ? { failureSuppression } : {}),
   });
 }
 

@@ -41,7 +41,7 @@ test("homepage makes URL analysis primary and opens a real example", async ({ pa
 
   await expect(page.getByRole("heading", { level: 1, name: /Know what you/ })).toBeVisible();
   await expect(page.getByLabel("Paste a public opportunity URL")).toBeVisible();
-  await expect(page.getByText("AI-audited reference opportunities")).toBeVisible();
+  await expect(page.getByText("Real reference opportunities")).toBeVisible();
   await expectNoPageOverflow(page);
   if (testInfo.project.name === "desktop-chromium") {
     await captureDocumentationScreenshot(page, "home-desktop.png");
@@ -591,13 +591,13 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
   await page.goto("/analyze");
   await expect(page.getByText("Extraction not configured", { exact: true })).toHaveCount(0);
   await page.getByLabel("Public opportunity URL").fill("https://mocked-analysis.example/program");
-  await page.getByRole("button", { name: "Start analysis" }).click();
+  await page.getByRole("button", { name: "Analyze", exact: true }).click();
 
   await expect(page.getByRole("heading", { level: 3, name: "Analysis in progress" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Cancel analysis" })).toBeVisible();
   await expect(page.getByText(/\d+ sec elapsed/)).toBeVisible();
   await expect(page.locator(".analysis-progress [data-state='active']")).toHaveCount(0);
-  const resultTitle = page.getByRole("heading", { level: 2, name: "Inspect and correct the draft." });
+  const resultTitle = page.getByRole("heading", { level: 2, name: "Your opportunity overview is ready." });
   await expect(resultTitle).toBeVisible();
   await expect(resultTitle).toBeFocused();
   const resultTop = async () => (await page.locator(".analysis-result").boundingBox())?.y ?? Number.POSITIVE_INFINITY;
@@ -605,7 +605,7 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
   await expect.poll(resultTop).toBeLessThan(40);
   await expect(page.getByRole("heading", { level: 3, name: "Mocked Analysis Draft" })).toBeVisible();
   await expect(page.getByText("Mocked source page")).toBeVisible();
-  await expect(page.getByText("Draft ready", { exact: false })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 3, name: "Overview ready" })).toBeVisible();
   await expect(page.getByText("This is not human reviewed.", { exact: false })).toBeVisible();
   await expect(page.getByText("Missing or inaccessible pages can cause omissions.", { exact: false })).toBeVisible();
   await expect(page.getByText("Part of the automated extraction did not complete.", { exact: false })).toBeVisible();
@@ -653,12 +653,12 @@ test("a malformed configured-provider result leaves a professional recoverable s
 
   await page.goto("/analyze");
   await page.getByLabel("Public opportunity URL").fill("https://program.example/current");
-  await page.getByRole("button", { name: "Start analysis" }).click();
+  await page.getByRole("button", { name: "Analyze", exact: true }).click();
 
   const alert = page.locator(".error-summary");
   await expect(alert).toContainText("Analysis did not complete.");
   await expect(alert).toContainText("invalid facts-card response");
-  await expect(page.getByRole("button", { name: "Start analysis" })).toBeEnabled();
+  await expect(page.getByRole("button", { name: "Analyze", exact: true })).toBeEnabled();
 });
 
 test("mobile navigation opens, closes through navigation, and avoids page overflow", async ({ page }, testInfo) => {

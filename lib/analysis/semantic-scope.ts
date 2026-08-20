@@ -34,7 +34,7 @@ const PROGRAM_REQUIREMENT =
 const PARTICIPATION_LOCATION =
   /\b(participat|attend|held at|takes place|session|event|campus|online|virtual|remote|residential|in[ -]person)\b/iu;
 const GEOGRAPHIC_ELIGIBILITY =
-  /\b(eligible|eligibility|open to|may apply|who can apply|must (?:live|reside|attend school|be based)|residents? of|students? from|based in)\b/iu;
+  /\b(eligible|eligibility|open to|may apply|who can apply|can join from|must (?:live|reside|attend school|be based)|residents? of|students? from|based in)\b/iu;
 const SELECTION_SEMANTICS =
   /\b(apply|application|review(?:ed)?|interview|select(?:ed|ion)?|judg(?:e|ed|ing)|criteria|decision|shortlist|semifinal|finalist|advance|matching|lottery|first[ -]come|admission)\b/iu;
 const OPTIONAL_CHARGE = /\b(optional|elective|add[ -]?on|not required)\b/iu;
@@ -129,7 +129,7 @@ function sourceSupportsField(fieldId: FieldId, source: EvidenceSource): boolean 
     if (LEGAL_CONTEXT.test(text) && !PROGRAM_SUBJECT.test(text)) return false;
     if (
       fieldId === "geographic_restrictions" &&
-      /\b(national|global|international|worldwide)\b/iu.test(text) &&
+      /\b(national|global|international|worldwide|anywhere in the world)\b/iu.test(text) &&
       !GEOGRAPHIC_ELIGIBILITY.test(text)
     ) {
       return false;

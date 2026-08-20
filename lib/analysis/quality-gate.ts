@@ -5,7 +5,7 @@ import type { AttentionItem } from "./attention";
 import type { PageAcquisitionFailure } from "./types";
 import type { AnalysisQualityOutcome } from "./progress";
 
-export const QUALITY_GATE_VERSION = "student-research-v1";
+export const QUALITY_GATE_VERSION = "student-research-v2-fast";
 
 export type QualityReasonCode =
   | "TARGET_IDENTITY_UNRESOLVED"
@@ -60,6 +60,22 @@ const DECISION_FIELDS = [
   "grade_levels",
   "application_deadline",
   "participation_format",
+  "estimated_total_mandatory_cost",
+  "financial_aid",
+  "selection_process",
+  "other_benefits",
+] as const satisfies readonly FieldId[];
+
+const FAST_DECISION_FIELDS = [
+  "operating_organization",
+  "grade_levels",
+  "ages",
+  "application_deadline",
+  "start_date",
+  "duration",
+  "participation_format",
+  "location",
+  "tuition",
   "estimated_total_mandatory_cost",
   "financial_aid",
   "selection_process",
@@ -228,5 +244,102 @@ export function assessAnalysisQuality(input: {
     reasons,
     signals,
     cacheEligible: outcome === "insufficient_quality" && !hasTransientFailure && failed.size === 0,
+  };
+}
+
+/**
+ * The normal result is judged on safe decision usefulness, not whether the
+ * optional research workspace has been exhaustively populated.
+ */
+export function assessFastAnalysisQuality(input: {
+  readonly card: OpportunityCard;
+  readonly acquiredPages: number;
+  readonly pageWarnings: readonly PageAcquisitionFailure[];
+  readonly evidenceWarnings: readonly EvidenceWarning[];
+  readonly attentionItems: readonly AttentionItem[];
+  readonly validationStats: AnalysisValidationStats;
+}): AnalysisQualityAssessment {
+  const supportedSummaryFacts = Object.values(input.card.facts).filter((fact) =>
+    fact.status === "disclosed" || fact.status === "conflicting",
+  ).length;
+  const practicalAreas = FAST_DECISION_FIELDS.filter((fieldId) => {
+    const status = input.card.facts[fieldId].status;
+    return status === "disclosed" || status === "conflicting" || status === "not_applicable";
+  }).length;
+  const coreStatuses = CORE_FIELD_IDS.map((fieldId) => input.card.facts[fieldId].status);
+  const applicableCoreFacts = coreStatuses.filter((status) => status !== "not_applicable").length;
+  const disclosedCoreFacts = coreStatuses.filter((status) => status === "disclosed" || status === "conflicting").length;
+  const unresolvedCoreFacts = coreStatuses.filter((status) => status === "not_found" || status === "unclear").length;
+  const cycleMaterial = ["application_deadline", "start_date", "end_date", "decision_date"]
+    .some((fieldId) => ["disclosed", "conflicting"].includes(input.card.facts[fieldId as FieldId].status));
+  const rejectionRatio = input.validationStats.attemptedSupportedClaims > 0
+    ? input.validationStats.withheldSupportedClaims / input.validationStats.attemptedSupportedClaims
+    : 0;
+  const importantPageFailures = input.pageWarnings.filter((warning) => IMPORTANT_FAILURE_CODES.has(warning.code)).length;
+  const reasons: QualityReason[] = [];
+  if (input.card.facts.opportunity_name.status !== "disclosed") reasons.push({
+    code: "TARGET_IDENTITY_UNRESOLVED",
+    priority: "high",
+    title: "Opportunity identity could not be established",
+    explanation: "The retained evidence does not establish the name of the specific opportunity represented by this page.",
+  });
+  if (supportedSummaryFacts < 5 || practicalAreas < 3) reasons.push({
+    code: "TOO_FEW_SUPPORTED_FACTS",
+    priority: "high",
+    title: "Too little practical information survived validation",
+    explanation: "The normal analysis did not retain enough evidence-backed identity, eligibility, timing, cost, format, selection, or outcome information for a reliable overview.",
+  });
+  if (input.validationStats.attemptedSupportedClaims >= 6 && rejectionRatio >= 0.75 && supportedSummaryFacts < 8) reasons.push({
+    code: "EXCESSIVE_CANDIDATE_REJECTION",
+    priority: "high",
+    title: "Most candidate claims were withheld",
+    explanation: "Deterministic evidence and scope checks rejected most proposed claims, leaving too little safe information for a normal result.",
+  });
+  if (cycleMaterial && input.card.cycle.status !== "modeled" && practicalAreas < 5) reasons.push({
+    code: "CYCLE_CONTEXT_UNRESOLVED",
+    priority: "high",
+    title: "The applicable cycle could not be identified",
+    explanation: "Cycle-sensitive dates appear in the retained record, but their target cycle remains unresolved and the rest of the practical overview is sparse.",
+  });
+  if (input.acquiredPages <= 1 && importantPageFailures >= 2 && practicalAreas < 5) reasons.push({
+    code: "INSUFFICIENT_SOURCE_COVERAGE",
+    priority: "high",
+    title: "Important source coverage was insufficient",
+    explanation: "Too few practical areas could be established after multiple relevant source pages failed acquisition.",
+  });
+  const insufficient = reasons.some((reason) => reason.priority === "high");
+  const highAttention = input.attentionItems.filter((item) => item.priority === "high").length;
+  if (!insufficient && highAttention > 0) reasons.push({
+    code: "HIGH_PRIORITY_CAVEATS",
+    priority: "medium",
+    title: "Important questions still need checking",
+    explanation: "At least one cost, deadline, eligibility, relationship, or other decision-critical issue remains unresolved.",
+  });
+  const outcome: AnalysisQualityOutcome = insufficient
+    ? "insufficient_quality"
+    : highAttention === 0 && practicalAreas >= 7
+      ? "good"
+      : "usable_with_caveats";
+  const hasTransientFailure = input.pageWarnings.some((warning) => TRANSIENT_FAILURE_CODES.has(warning.code));
+  return {
+    version: QUALITY_GATE_VERSION,
+    outcome,
+    reasons,
+    signals: {
+      completedFamilies: 1,
+      failedFamilies: 0,
+      supportedSummaryFacts,
+      supportedStructuredClaims: countStructuredClaims({ cycle: input.card.cycle }),
+      applicableCoreFacts,
+      disclosedCoreFacts,
+      unresolvedCoreFacts,
+      attemptedSupportedClaims: input.validationStats.attemptedSupportedClaims,
+      withheldSupportedClaims: input.validationStats.withheldSupportedClaims,
+      acquiredPages: input.acquiredPages,
+      importantPageFailures,
+      cycleMaterial,
+      cycleResolved: input.card.cycle.status === "modeled",
+    },
+    cacheEligible: outcome === "insufficient_quality" && !hasTransientFailure,
   };
 }

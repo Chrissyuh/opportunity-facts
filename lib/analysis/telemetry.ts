@@ -9,6 +9,9 @@ export type AnalysisTimingStage =
   | "discovered_source_acquisition"
   | "text_processing"
   | "cycle_resolution"
+  | "normal_model"
+  | "extended_details_model"
+  | "extended_financial_model"
   | "facts_model"
   | "foundation_model"
   | "process_model"
@@ -22,7 +25,7 @@ export interface AnalysisTiming {
   readonly stage: AnalysisTimingStage;
   readonly durationMs: number;
   readonly outcome: "completed" | "failed" | "cancelled";
-  readonly family?: ModelExtractionStage;
+  readonly family?: ModelExtractionStage | "normal" | "extended_details" | "extended_financial";
   readonly usage?: ModelUsageTelemetry | null;
 }
 

@@ -25,7 +25,9 @@
 - [x] Independently re-reviewed and revised the Breakthrough Junior Challenge educator/school outcome scopes and Polygence rolling-cycle identity without modifying historical benchmark or evaluation results.
 - [x] Repositioned the product around URL analysis: an analyzer-first homepage, truthful streamed research activity, practical Overview, dedicated Full Record workspace, grounded Needs Attention, deterministic result-quality gating, durable quality-failure caching, bounded five-URL batch analysis, decision-focused comparison, and reviewed examples as secondary proof.
 - [x] Corrected review-state integrity in Schema `2.2.0`: the ten independently researched records are now `ai_audited`; only a documented person-led review may use `human_reviewed`. Portable attestations still demote safely on import.
-- [x] Added deterministic student/parent Summary PDFs and evidence-complete Full Record PDFs with selectable bundled fonts, exact source links, structured scope/context, projections, calculations, and no external PDF service.
+- [x] Added deterministic student/parent Summary and Full Evidence PDFs with selectable bundled fonts, exact source links, structured scope/context, and no external PDF service; the later compact redesign below removed raw projection/calculation serialization from the reader-facing report.
+- [x] Replaced the always-on four-family analysis with a one-request compact Analyze path plus optional Extended Research. Normal Analyze now emits sparse practical claims, reuses deterministic cycle/evidence/semantic guards, and records assessed-field coverage instead of treating all 59 storage slots as a generation quota. Extended Research reuses acquired sources and the validated normal card through an opaque bounded-TTL session; partial failure or cancellation cannot erase the Overview.
+- [x] Compressed PDF output into student-usable reports: current real-card Summary PDFs are 3–4 pages and representative Full Evidence PDFs are 9–14 pages, with selectable text, exact links, compact deduplicated evidence, and no raw schema serialization dump.
 
 ## Last committed release verification
 
@@ -67,6 +69,20 @@ The checked results below preserve the completed gate for `3cd7ea1`; the newer f
 - [x] Browser PDF generation — Summary and Full Record downloads succeeded with selectable text, exact links, visible page numbering, grounded attention items, and no console errors
 - [x] Three controlled live latency runs used `gpt-5.6-terra`, `store: false`, low reasoning, and no retry. Total times were 117.942s, 122.464s, and 195.622s; one bounded process-family timeout was safely salvaged. Full timing and cost accounting is in `docs/ANALYSIS_LATENCY.md`.
 
+## Current fast-analysis and Extended Research verification
+
+- [x] `npm run export:data` / `npm run validate:data` — 17 public cards (10 AI-audited, 7 demo), 0 drafts, public dataset and Schema `2.2.0` current
+- [x] `npm run lint` / `npm run typecheck`
+- [x] `npm test` — 42 files / 435 tests passed
+- [x] `npm run test:e2e` — 120 passed, 4 intentional project-inapplicable skips, 0 failed across desktop and mobile
+- [x] `npm run build` — fail-closed data validation plus 48 generated pages, including the normal and Extended API routes
+- [x] `npm audit --audit-level=high` — 0 vulnerabilities; `git diff --check` — no whitespace errors
+- [x] High-confidence secret scan found no key/private-key material; `.env.local` remained ignored; immutable benchmark, out-of-sample, and reality-stress artifacts were unchanged
+- [x] Tablet production audit at 768×1024 covered homepage, analyzer, real Overview, and comparison with exact viewport width, one `h1`, and zero console/page diagnostics; desktop/mobile two-stage states passed axe and overflow checks in the full browser matrix
+- [x] Representative PDF audit: Diamond Summary/Full 3/14 pages, Lumiere 4/13, TechRise 3/9; selectable text, exact links, visible page numbers, deduplicated evidence, and no executable/attachment payloads
+- [x] Current compact live sample: 23.446s minimum, 25.829s median, 31.224s maximum; 2,410–3,267 output tokens; $0.154568 total estimated cost across three final normal measurements. Extended Research added 39.357–56.330s and reused all acquired source contexts. Exact stage/usage accounting is in `docs/ANALYSIS_LATENCY.md`.
+- [x] Final private Lumos compact run: 23.446s, `good`, 13 supported practical facts, 3 grounded attention items, zero evidence warnings, modeled Fall 2026, correct final deadline/start/tuition/aid/refund/selection semantics, and no observed critical misleading claim. No Lumos production branch or public card exists.
+
 ## Schema V2 regression coverage
 
 - [x] V1 migration is deterministic, draft-only, digest-recorded, and does not infer cycle or structured semantics.
@@ -82,5 +98,6 @@ The checked results below preserve the completed gate for `3cd7ea1`; the newer f
 - [x] Repair the generalizable subject/scope, wrong-cycle count, invalid-structured-response, cycle omission, and structured-recall failures on a separate development fixture set before any unattended extraction claim.
 - [x] Complete and record the current post-checkpoint full deterministic, build, browser, and explicitly budgeted live-development checks without changing historical benchmark/evaluation results.
 - [ ] Deploy only when a target is requested. Keep model-backed public analysis disabled until distributed rate/concurrency controls and a hard provider-or-gateway spend circuit breaker are proven, then verify egress, logs, secrets, headers, and both configured/keyless paths using `docs/DEPLOYMENT_CHECKLIST.md`.
+- [ ] Complete the separately requested final professionalism/judge-path pass before deployment; do not reopen extraction architecture or historical evaluation results unless that pass finds a concrete blocker.
 - [ ] Conduct consented comprehension and extraction studies before publishing any result; public copy correctly remains “Study not yet published.”
 - [ ] Consider the non-gating P2 hardening backlog in `QUALITY.md` after real-data and deployment work establishes priority.

@@ -51,8 +51,11 @@ const overviewItems: OverviewItem[] = [
   },
 ];
 
-function meaningfulFacts(card: OpportunityCard, fieldIds: FieldId[]) {
-  const facts = fieldIds.map((id) => ({ id, fact: card.facts[id] }));
+function meaningfulFacts(card: OpportunityCard, fieldIds: FieldId[], assessedFieldIds?: ReadonlySet<FieldId>) {
+  const includedFieldIds = assessedFieldIds
+    ? fieldIds.filter((id) => assessedFieldIds.has(id))
+    : fieldIds;
+  const facts = includedFieldIds.map((id) => ({ id, fact: card.facts[id] }));
   const disclosed = facts.filter(
     ({ fact }) => fact.status === "disclosed" || fact.status === "conflicting",
   );
@@ -82,17 +85,23 @@ export function OpportunityOverview({
   card,
   embedded = false,
   attentionItems,
+  attentionLimit = 5,
+  fullEvidenceAvailable = true,
+  assessedFieldIds,
 }: {
   card: OpportunityCard;
   embedded?: boolean;
   attentionItems?: readonly AttentionItem[];
+  attentionLimit?: number;
+  fullEvidenceAvailable?: boolean;
+  assessedFieldIds?: readonly FieldId[];
 }) {
   const name = card.facts.opportunity_name.displayValue ?? card.slug;
   const cycle =
     card.cycle.status === "modeled" ? card.cycle.value.label.value : null;
   const attention = (
     attentionItems ?? groundAttentionCandidates(card, [])
-  ).slice(0, 5);
+  ).slice(0, attentionLimit);
   const HeroHeading = embedded ? "h3" : "h1";
   const SectionHeading = embedded ? "h4" : "h2";
   const stagePreview = `${card.stages.records.length} stage${card.stages.records.length === 1 ? "" : "s"} · ${card.pathways.records.length} path${card.pathways.records.length === 1 ? "" : "s"}`;
@@ -102,6 +111,16 @@ export function OpportunityOverview({
   const variantPreview = card.variants.records.length
     ? `${card.variants.records.length} program or cohort variant${card.variants.records.length === 1 ? "" : "s"}`
     : "No separate program variants modeled";
+  const hasProcessDetails = card.stages.records.length > 0 || card.pathways.records.length > 0;
+  const hasCostDetails = card.costItems.records.length > 0;
+  const hasOutcomeDetails = card.outcomes.records.length > 0;
+  const hasRelationshipDetails = card.organizations.records.length > 0 || card.institutionRelationships.records.length > 0;
+  const hasVariantDetails = card.variants.records.length > 0;
+  const hasRichDetails = hasProcessDetails || hasCostDetails || hasOutcomeDetails || hasRelationshipDetails || hasVariantDetails;
+  const assessedFieldSet = assessedFieldIds ? new Set(assessedFieldIds) : undefined;
+  const visibleOverviewItems = assessedFieldSet
+    ? overviewItems.filter((item) => item.fieldIds.some((id) => assessedFieldSet.has(id)))
+    : overviewItems;
 
   return (
     <article
@@ -126,8 +145,9 @@ export function OpportunityOverview({
           <CardActions
             card={card}
             compact
-            secondaryActions={<PdfDownloadActions card={card} attentionItems={attention} />}
+            secondaryActions={!embedded ? <PdfDownloadActions card={card} attentionItems={attention} fullEvidenceAvailable={fullEvidenceAvailable} assessedFieldIds={assessedFieldIds} /> : undefined}
           />
+          {embedded ? <PdfDownloadActions card={card} attentionItems={attention} fullEvidenceAvailable={fullEvidenceAvailable} assessedFieldIds={assessedFieldIds} /> : null}
           {!embedded ? (
             <Link
               className="record-link"
@@ -153,8 +173,8 @@ export function OpportunityOverview({
           <p>Open evidence beside any answer to check the official wording.</p>
         </div>
         <dl className="glance-grid">
-          {overviewItems.map((item) => {
-            const facts = meaningfulFacts(card, item.fieldIds);
+          {visibleOverviewItems.map((item) => {
+            const facts = meaningfulFacts(card, item.fieldIds, assessedFieldSet);
             return (
               <div className="glance-fact" key={item.label}>
                 <dt>{item.label}</dt>
@@ -229,8 +249,8 @@ export function OpportunityOverview({
         </section>
       ) : null}
 
-      <section className="overview-rich-sections" aria-label="Program details">
-        <details className="overview-rich-disclosure">
+      {hasRichDetails ? <section className="overview-rich-sections" aria-label="Program details">
+        {hasProcessDetails ? <details className="overview-rich-disclosure">
           <summary>
             <span>
               <strong>Timeline and selection process</strong>
@@ -239,8 +259,8 @@ export function OpportunityOverview({
             <span>View details</span>
           </summary>
           <StagePathwayPanel card={card} />
-        </details>
-        <details className="overview-rich-disclosure">
+        </details> : null}
+        {hasCostDetails ? <details className="overview-rich-disclosure">
           <summary>
             <span>
               <strong>Cost breakdown and aid</strong>
@@ -249,8 +269,8 @@ export function OpportunityOverview({
             <span>View details</span>
           </summary>
           <CostPanel card={card} />
-        </details>
-        <details className="overview-rich-disclosure">
+        </details> : null}
+        {hasOutcomeDetails ? <details className="overview-rich-disclosure">
           <summary>
             <span>
               <strong>Outcomes and prizes</strong>
@@ -259,8 +279,8 @@ export function OpportunityOverview({
             <span>View details</span>
           </summary>
           <OutcomePanel card={card} />
-        </details>
-        <details className="overview-rich-disclosure">
+        </details> : null}
+        {hasRelationshipDetails ? <details className="overview-rich-disclosure">
           <summary>
             <span>
               <strong>Who runs it and institution relationships</strong>
@@ -269,8 +289,8 @@ export function OpportunityOverview({
             <span>View details</span>
           </summary>
           <OrganizationRelationshipPanel card={card} />
-        </details>
-        <details className="overview-rich-disclosure">
+        </details> : null}
+        {hasVariantDetails ? <details className="overview-rich-disclosure">
           <summary>
             <span>
               <strong>Programs and cohorts</strong>
@@ -279,10 +299,10 @@ export function OpportunityOverview({
             <span>View details</span>
           </summary>
           <VariantPanel card={card} />
-        </details>
-      </section>
+        </details> : null}
+      </section> : null}
 
-      <section className="overview-next-step">
+      {!embedded ? <section className="overview-next-step">
         <div>
           <p className="eyebrow">Need every detail?</p>
           <SectionHeading>
@@ -293,15 +313,13 @@ export function OpportunityOverview({
             details, evidence excerpts, source inventory, and version metadata.
           </p>
         </div>
-        {!embedded ? (
-          <Link
-            className="button-secondary"
-            href={`/opportunities/${card.slug}/record`}
-          >
-            Open Full Record
-          </Link>
-        ) : null}
-      </section>
+        <Link
+          className="button-secondary"
+          href={`/opportunities/${card.slug}/record`}
+        >
+          Open Full Record
+        </Link>
+      </section> : null}
     </article>
   );
 }

@@ -12,6 +12,7 @@ vi.mock("openai", () => ({
 import {
   buildModelStageTextFormats,
   createEmptyModelStructures,
+  createOpenAIFastExtractor,
   createOpenAIExtractor,
   extractOpportunityCard,
   ModelExtractionError,
@@ -162,6 +163,30 @@ afterEach(() => {
 });
 
 describe("bounded model-family reliability", () => {
+  it("uses one low-verbosity bounded request for normal Analyze", async () => {
+    createResponse.mockResolvedValue(response({ facts: [], attentionCandidates: [] }, "normal-response"));
+    await createOpenAIFastExtractor()([source()]);
+    expect(createResponse).toHaveBeenCalledOnce();
+    expect(createResponse.mock.calls[0]?.[0]).toMatchObject({
+      store: false,
+      max_output_tokens: 4_800,
+      reasoning: { effort: "low" },
+      text: { verbosity: "low", format: { name: "opportunity_facts_normal" } },
+    });
+  });
+
+  it("retains provider usage telemetry when normal output is incomplete", async () => {
+    createResponse.mockResolvedValue(response("", "normal-incomplete", "incomplete"));
+    const telemetry = vi.fn();
+    await expect(createOpenAIFastExtractor()([source()], { onTelemetry: telemetry }))
+      .rejects.toThrow(/complete structured result/i);
+    expect(telemetry).toHaveBeenCalledWith(expect.objectContaining({
+      stage: "normal_model",
+      outcome: "failed",
+      usage: expect.objectContaining({ inputTokens: 100, outputTokens: 50 }),
+    }));
+  });
+
   it("uses four bounded strict contracts", () => {
     const formats = buildModelStageTextFormats();
     expect(Object.keys(formats)).toEqual([

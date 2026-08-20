@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import type { FieldId } from "@/lib/opportunity/fields";
 import type { OpportunityCard } from "@/lib/opportunity/schema";
 import type {
   OpportunityPdfMode,
@@ -19,9 +20,15 @@ function safeFilename(value: string): string {
 export function PdfDownloadActions({
   card,
   attentionItems = [],
+  fullEvidenceAvailable = true,
+  assessedFieldIds,
 }: {
   card: OpportunityCard;
   attentionItems?: readonly PdfAttentionItem[];
+  /** Repository records default to both exports; normal analysis opts out until Extended Research. */
+  fullEvidenceAvailable?: boolean;
+  /** Omits schema placeholders that the compact normal analysis did not assess. */
+  assessedFieldIds?: readonly FieldId[];
 }) {
   const [workingMode, setWorkingMode] = useState<OpportunityPdfMode | null>(null);
   const [error, setError] = useState("");
@@ -38,6 +45,7 @@ export function PdfDownloadActions({
         card,
         mode,
         attentionItems,
+        assessedFieldIds,
       });
       const blob = await pdf(document).toBlob();
       const url = URL.createObjectURL(blob);
@@ -64,14 +72,16 @@ export function PdfDownloadActions({
       >
         {workingMode === "summary" ? "Building summary…" : "Download summary PDF"}
       </button>
-      <button
-        className="button-quiet"
-        type="button"
-        disabled={workingMode !== null}
-        onClick={() => void download("full")}
-      >
-        {workingMode === "full" ? "Building evidence PDF…" : "Download full evidence PDF"}
-      </button>
+      {fullEvidenceAvailable ? (
+        <button
+          className="button-quiet"
+          type="button"
+          disabled={workingMode !== null}
+          onClick={() => void download("full")}
+        >
+          {workingMode === "full" ? "Building evidence PDF…" : "Download Full Evidence PDF"}
+        </button>
+      ) : null}
       {error ? <p className="form-error" role="alert">{error}</p> : null}
     </div>
   );

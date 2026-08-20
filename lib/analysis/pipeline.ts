@@ -11,6 +11,7 @@ import { acquirePublicSourcePages, type AcquirePublicSourcePagesOptions } from "
 import { extractPlainTextPage } from "./html-extraction";
 import {
   buildBoundedSourcePayload,
+  createOpenAIFastExtractor,
   extractOpportunityCard,
   type AnalysisSourceContext,
   type EvidenceWarning,
@@ -21,7 +22,7 @@ import type { PageAcquisitionFailure } from "./types";
 import type { AttentionItem } from "./attention";
 import { sourceTextFingerprint } from "./failure-cache";
 import type { AnalysisProgressSink } from "./progress";
-import { assessAnalysisQuality, type AnalysisQualityAssessment, type AnalysisValidationStats } from "./quality-gate";
+import { assessAnalysisQuality, assessFastAnalysisQuality, type AnalysisQualityAssessment, type AnalysisValidationStats } from "./quality-gate";
 import type { AnalysisTelemetrySink } from "./telemetry";
 
 export const MAX_PASTED_SOURCES = 7;
@@ -121,6 +122,12 @@ export interface AnalyzePipelineOptions {
   readonly signal?: AbortSignal;
   readonly onProgress?: AnalysisProgressSink;
   readonly onTelemetry?: AnalysisTelemetrySink;
+  /** Internal handoff for bounded server-side Extended Research reuse. */
+  readonly onSourcesReady?: (
+    sources: readonly AnalysisSourceContext[],
+    pageWarnings: readonly PageAcquisitionFailure[],
+  ) => void;
+  readonly qualityMode?: "normal" | "extended";
 }
 
 function summarizeSources(sources: readonly AnalysisSourceContext[]): ReviewedPageSummary[] {
@@ -146,19 +153,28 @@ async function finishAnalysis(
   signal?: AbortSignal,
   onProgress?: AnalysisProgressSink,
   onTelemetry?: AnalysisTelemetrySink,
+  qualityMode: "normal" | "extended" = "normal",
 ): Promise<AnalysisPipelineResult> {
-  const extracted = await extractOpportunityCard(sources, extractor, { signal, onProgress, onTelemetry });
+  const extracted = await extractOpportunityCard(
+    sources,
+    extractor ?? createOpenAIFastExtractor(),
+    { signal, onProgress, onTelemetry, analysisDepth: qualityMode },
+  );
   const reviewedPages = summarizeSources(sources);
   const qualityStartedAt = performance.now();
-  const quality = assessAnalysisQuality({
+  const attentionItems = extracted.attentionItems.slice(0, qualityMode === "normal" ? 3 : 5);
+  const qualityInput = {
     card: extracted.card,
     acquiredPages: reviewedPages.length,
     pageWarnings,
     evidenceWarnings: extracted.evidenceWarnings,
-    attentionItems: extracted.attentionItems,
+    attentionItems,
     validationStats: extracted.validationStats,
     familyFailures: extracted.familyFailures,
-  });
+  };
+  const quality = qualityMode === "normal"
+    ? assessFastAnalysisQuality(qualityInput)
+    : assessAnalysisQuality(qualityInput);
   onTelemetry?.({ stage: "quality_gate", durationMs: performance.now() - qualityStartedAt, outcome: "completed" });
   const previewFields = [
     "opportunity_name",
@@ -189,7 +205,7 @@ async function finishAnalysis(
     reviewedPages,
     pageWarnings,
     evidenceWarnings: extracted.evidenceWarnings,
-    attentionItems: extracted.attentionItems,
+    attentionItems,
     quality,
     validationStats: extracted.validationStats,
     sourceFingerprint: sources[0]?.page.text ? sourceTextFingerprint(sources[0].page.text) : null,
@@ -230,6 +246,7 @@ export async function analyzePublicUrl(
     page: extracted,
     accessedAt: fetched.fetchedAt,
   }));
+  options.onSourcesReady?.(sources, acquired.failures);
   options.onProgress?.({
     type: "source_set_complete",
     acquired: sourcePages.length,
@@ -242,6 +259,7 @@ export async function analyzePublicUrl(
     options.signal,
     options.onProgress,
     options.onTelemetry,
+    options.qualityMode,
   );
 }
 
@@ -258,6 +276,7 @@ export async function analyzePastedSources(
     }),
     accessedAt,
   }));
+  options.onSourcesReady?.(sources, []);
   for (const source of sources) {
     options.onProgress?.({
       type: "source_acquired",
@@ -274,6 +293,25 @@ export async function analyzePastedSources(
     options.signal,
     options.onProgress,
     options.onTelemetry,
+    options.qualityMode,
+  );
+}
+
+/** Reuses an already-acquired, server-held source set without fetching again. */
+export async function analyzeSourceContexts(
+  sources: readonly AnalysisSourceContext[],
+  pageWarnings: readonly PageAcquisitionFailure[],
+  options: AnalyzePipelineOptions = {},
+): Promise<AnalysisPipelineResult> {
+  options.onSourcesReady?.(sources, pageWarnings);
+  return finishAnalysis(
+    sources,
+    pageWarnings,
+    options.extractor,
+    options.signal,
+    options.onProgress,
+    options.onTelemetry,
+    options.qualityMode ?? "extended",
   );
 }
 

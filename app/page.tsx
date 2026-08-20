@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { UrlQuickstart } from "@/components/url-quickstart";
+import { reviewLabels } from "@/components/status-badge";
 import { getAllCards } from "@/lib/opportunity/data";
 import type { OpportunityCard } from "@/lib/opportunity/schema";
 
@@ -16,7 +17,7 @@ function ExampleCard({ card }: { card: OpportunityCard }) {
     <article className="home-example-card">
       <div className="home-example-meta">
         <span>{value(card, "opportunity_category")}</span>
-        <span>AI-audited</span>
+        <span>{reviewLabels[card.reviewState]}</span>
       </div>
       <h3>
         <Link href={`/opportunities/${card.slug}`}>
@@ -100,7 +101,7 @@ export default function HomePage() {
           <div>
             <span className="proof-number">{realCards.length}</span>
             <span>
-              <strong>AI-audited reference opportunities</strong>
+              <strong>Real reference opportunities</strong>
               <small>See what a finished record can contain</small>
             </span>
           </div>

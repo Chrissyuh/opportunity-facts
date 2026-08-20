@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  buildExtendedModelTextFormats,
+  buildFastModelTextFormat,
   buildModelStageTextFormats,
   buildModelTextFormat,
 } from "@/lib/analysis/model-extraction";
@@ -75,6 +77,18 @@ describe("model structured-output compatibility", () => {
 
   it("keeps every production family below the provider schema limits", () => {
     for (const format of Object.values(buildModelStageTextFormats())) {
+      const limits = inspectSchema(format.schema);
+      expect(format.strict).toBe(true);
+      expect(JSON.stringify(format)).not.toContain('"not"');
+      expect(limits.propertyCount).toBeLessThanOrEqual(5_000);
+      expect(limits.maximumDepth).toBeLessThanOrEqual(10);
+      expect(limits.stringBudget).toBeLessThanOrEqual(120_000);
+      expect([...limits.formats]).not.toContain("uri");
+    }
+  });
+
+  it("keeps normal and Extended Research contracts strict and provider-compatible", () => {
+    for (const format of [buildFastModelTextFormat(), ...Object.values(buildExtendedModelTextFormats())]) {
       const limits = inspectSchema(format.schema);
       expect(format.strict).toBe(true);
       expect(JSON.stringify(format)).not.toContain('"not"');

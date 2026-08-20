@@ -63,6 +63,16 @@ async function analyzeFact(
 }
 
 describe("flat eligibility value alignment", () => {
+  it("accepts explicit worldwide participant eligibility stated as joining from anywhere", async () => {
+    const result = await analyzeFact(
+      "geographic_restrictions",
+      "Worldwide",
+      "Worldwide",
+      "The fellowship is fully online, and students can join from anywhere in the world.",
+    );
+    expect(result.card.facts.geographic_restrictions.status).toBe("disclosed");
+  });
+
   it.each([
     {
       fieldId: "ages" as const,

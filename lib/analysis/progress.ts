@@ -18,6 +18,9 @@ export type AnalysisProgressEvent = ProgressBase & (
   | { readonly type: "source_failed"; readonly code: string; readonly url: string }
   | { readonly type: "source_set_complete"; readonly acquired: number; readonly failed: number }
   | { readonly type: "cycle_resolved"; readonly status: "resolved" | "ambiguous"; readonly label?: string }
+  | { readonly type: "normal_model_started" }
+  | { readonly type: "normal_model_completed" }
+  | { readonly type: "normal_model_failed"; readonly message: string }
   | { readonly type: "family_started"; readonly family: ModelExtractionStage }
   | { readonly type: "family_completed"; readonly family: ModelExtractionStage }
   | { readonly type: "family_failed"; readonly family: ModelExtractionStage; readonly message: string }
@@ -25,6 +28,18 @@ export type AnalysisProgressEvent = ProgressBase & (
   | { readonly type: "validation_complete"; readonly retained: number; readonly withheld: number }
   | { readonly type: "attention_ready"; readonly count: number }
   | { readonly type: "quality_complete"; readonly outcome: AnalysisQualityOutcome }
+  | { readonly type: "extended_started" }
+  | { readonly type: "extended_section_started"; readonly section: "details" | "financial" }
+  | { readonly type: "extended_section_completed"; readonly section: "details" | "financial" }
+  | { readonly type: "extended_section_failed"; readonly section: "details" | "financial"; readonly message: string }
+  | {
+      readonly type: "extended_validation_complete";
+      readonly retained: number;
+      readonly withheld: number;
+      readonly completedSections: readonly ("details" | "financial")[];
+      readonly failedSections: readonly ("details" | "financial")[];
+    }
+  | { readonly type: "extended_complete"; readonly partial: boolean }
   | { readonly type: "heartbeat" }
 );
 

@@ -131,10 +131,36 @@ function fallback(
   return { id, category, priority, title, explanation, fieldIds, claimIds: [], sourceIds: [], suggestedNextStep, origin: "deterministic_fallback" };
 }
 
+const SELECTIVITY_CONTEXT = /\b(selective|selection|review(?:ed|ing)?|interview|finalist|semifinal|rank(?:ed|ing)?|advance(?:ment|s|d)?|limited (?:seats?|spots?|places?)|accepted cohort|chosen|competitive)\b/iu;
+
+function hasMaterialSelectivityContext(card: OpportunityCard): boolean {
+  const selectionFacts = [
+    card.facts.selection_process,
+    card.facts.selection_evidence,
+  ];
+  if (selectionFacts.some((fact) => {
+    if (fact.status !== "disclosed" && fact.status !== "conflicting") return false;
+    const text = [
+      fact.displayValue ?? "",
+      fact.note ?? "",
+      ...fact.sources.map((source) => source.excerpt),
+      ...fact.conflictingValues.flatMap((value) => [value.displayValue, ...value.sources.map((source) => source.excerpt)]),
+    ].join(" ");
+    return SELECTIVITY_CONTEXT.test(text);
+  })) return true;
+  if (card.stages.status !== "modeled") return false;
+  return card.stages.records.some((stage) => {
+    const text = JSON.stringify(stage);
+    return SELECTIVITY_CONTEXT.test(text);
+  });
+}
+
 export function deriveDeterministicAttention(card: OpportunityCard): AttentionItem[] {
   const items: AttentionItem[] = [];
   const fact = (fieldId: FieldId) => card.facts[fieldId];
   if (fact("estimated_total_mandatory_cost").status === "unclear" ||
+      (["disclosed", "conflicting"].includes(fact("tuition").status) &&
+        fact("estimated_total_mandatory_cost").status === "not_found") ||
       (card.costItems.status === "modeled" && card.costItems.completeness === "incomplete")) {
     items.push(fallback(
       "mandatory-cost-incomplete",
@@ -192,7 +218,8 @@ export function deriveDeterministicAttention(card: OpportunityCard): AttentionIt
   }
   if (["not_found", "unclear"].includes(fact("applicant_count").status) &&
       ["not_found", "unclear"].includes(fact("acceptance_count").status) &&
-      ["not_found", "unclear"].includes(fact("acceptance_rate_claim").status)) {
+      ["not_found", "unclear"].includes(fact("acceptance_rate_claim").status) &&
+      hasMaterialSelectivityContext(card)) {
     items.push(fallback(
       "selectivity-not-quantified",
       "selection",

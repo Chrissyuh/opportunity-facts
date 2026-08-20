@@ -1,6 +1,10 @@
 import Link from "next/link";
 
-export function SiteFooter() {
+export function SiteFooter({
+  batchAnalysisEnabled,
+}: {
+  batchAnalysisEnabled: boolean;
+}) {
   return (
     <footer className="site-footer">
       <div className="shell footer-grid">
@@ -14,7 +18,7 @@ export function SiteFooter() {
         <nav className="footer-links" aria-label="Product links">
           <span className="footer-label">Product</span>
           <Link href="/analyze">Analyze an opportunity</Link>
-          <Link href="/analyze/batch">Batch analyze</Link>
+          {batchAnalysisEnabled ? <Link href="/analyze/batch">Batch analyze</Link> : null}
           <Link href="/compare">Compare opportunities</Link>
           <Link href="/opportunities">Reviewed examples</Link>
         </nav>

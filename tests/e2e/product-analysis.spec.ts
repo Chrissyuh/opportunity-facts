@@ -96,7 +96,7 @@ test("streamed research shows only observable work and validated preview facts",
 
   await page.goto("/analyze");
   await page.getByLabel("Public opportunity URL").fill("https://streamed.example/program");
-  await page.getByRole("button", { name: "Start analysis" }).click();
+  await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await expect(page.getByText("Current program page reviewed")).toBeVisible();
   await expect(page.getByText("Reviewing facts")).toBeVisible();
   await expect(page.getByText("Tuition: $450")).toBeVisible();
@@ -112,7 +112,7 @@ test("eligible minefield failures suppress cards and block an unchanged same-bro
   let posts = 0;
   await page.route("**/api/analyze", async (route) => {
     if (route.request().method() === "GET") {
-      await route.fulfill({ contentType: "application/json", body: JSON.stringify({ configured: true, model: "browser-fixture" }) });
+        await route.fulfill({ contentType: "application/json", body: JSON.stringify({ configured: true, model: "browser-fixture", failureSuppression: { bypass: false, allowLocalSuppression: true } }) });
       return;
     }
     posts += 1;
@@ -139,21 +139,21 @@ test("eligible minefield failures suppress cards and block an unchanged same-bro
   });
   await page.goto("/analyze");
   await page.getByLabel("Public opportunity URL").fill("https://minefield.example/program");
-  await page.getByRole("button", { name: "Start analysis" }).click();
+  await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await expect(page.getByRole("heading", { name: "We couldn’t build a reliable Opportunity Facts card from this page." })).toBeVisible();
   await expect(page.getByText("Too little source-backed information")).toBeVisible();
   await expect(page.locator(".analysis-result")).toHaveCount(0);
-  await page.getByRole("button", { name: "Try a better official page" }).click();
-  await page.getByRole("button", { name: "Start analysis" }).click();
+  await page.getByRole("button", { name: "Try another official page" }).click();
+  await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await expect(page.getByText("We already checked this unchanged page.")).toBeVisible();
   expect(posts).toBe(1);
 });
 
-test("transiently influenced quality failures are never remembered by the browser", async ({ page }) => {
+test("same-browser cooldown reuses an insufficient result even when durable caching is ineligible", async ({ page }) => {
   let posts = 0;
   await page.route("**/api/analyze", async (route) => {
     if (route.request().method() === "GET") {
-      await route.fulfill({ contentType: "application/json", body: JSON.stringify({ configured: true }) });
+      await route.fulfill({ contentType: "application/json", body: JSON.stringify({ configured: true, failureSuppression: { bypass: false, allowLocalSuppression: true } }) });
       return;
     }
     posts += 1;
@@ -172,11 +172,12 @@ test("transiently influenced quality failures are never remembered by the browse
   });
   await page.goto("/analyze");
   await page.getByLabel("Public opportunity URL").fill("https://temporary.example/program");
-  await page.getByRole("button", { name: "Start analysis" }).click();
+  await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await expect(page.getByText("A source was temporarily unavailable")).toBeVisible();
-  await page.getByRole("button", { name: "Try a better official page" }).click();
-  await page.getByRole("button", { name: "Start analysis" }).click();
-  await expect.poll(() => posts).toBe(2);
+  await page.getByRole("button", { name: "Try another official page" }).click();
+  await page.getByRole("button", { name: "Analyze", exact: true }).click();
+  await expect(page.getByText("We already checked this unchanged page.")).toBeVisible();
+  expect(posts).toBe(1);
 });
 
 test("batch analysis limits concurrency, skips a cancelled queue item, and isolates one failure", async ({ page }) => {

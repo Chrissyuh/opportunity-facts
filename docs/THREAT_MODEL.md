@@ -96,9 +96,9 @@ The production fetch path is designed around the following defaults:
 | Extracted visible text | 200,000 characters per page by default |
 | Extracted links considered | 500 per page maximum |
 | Discovery scope | Submitted page plus at most 6 relevant links selected from that origin; one selected application link may make one public-origin transition by redirect |
-| Source-text characters sent in a summary request | 120,000 aggregate maximum, excluding fixed instructions/metadata |
-| Source-text characters sent in each structured-family request | 70,000 aggregate maximum selected from exact normalized blocks |
-| Model output | 12,000 summary, 14,000 foundation, 12,000 process, and 12,000 financial tokens maximum |
+| Source-text characters sent in normal Analyze | 55,000 aggregate maximum, excluding fixed instructions/metadata |
+| Source-text characters sent in each Extended Research request | 70,000 aggregate maximum selected from exact normalized blocks |
+| Model output | Normal Analyze: 4,800 tokens maximum. Extended Research: 8,000 detailed-process and 8,000 financial/outcome tokens maximum, independently salvageable. |
 
 Relevant code is in `lib/analysis/url-safety.ts` and `lib/analysis/fetch.ts`. If a deployment changes these defaults, the deployed values and tests must be updated together. Per-call overrides are bounded by hard validation; an application route must not expose caller-controlled overrides.
 
@@ -178,8 +178,9 @@ Identity-only transfer is intentionally conservative: a server that ignores `Acc
 
 - Treat all extracted text as `untrusted_source_text`; visible and hidden prose never becomes a system/developer instruction.
 - Remove script, style, executable markup, repeated navigation, and identifiable boilerplate before model input, while assuming malicious instructions can remain in visible text.
-- Use four bounded strict-output sections: flat summary facts, cycle/identity foundation, schedule/selection process, and costs/outcomes. Foundation and summary run independently in the first wave; process and financial sections run independently in the second wave and may reuse only the candidate foundation IDs and source-backed scopes. Do not give the model network, file, shell, credential, or arbitrary tool access.
-- Send at most 120,000 aggregate characters to the summary section and at most 70,000 exact normalized characters to each structured section. Request at most 12,000 output tokens for summary facts, 14,000 for foundation, 12,000 for process, and 12,000 for financial extraction. The server uses `OPENAI_MODEL` when configured and otherwise the code's versioned default.
+- Use one compact normal strict-output section containing only sparse decision-useful claims plus grounded attention candidates. Source metadata is carried once and the provider returns bounded source IDs/excerpts rather than complete authoritative Fact objects. Do not give the model network, file, shell, credential, or arbitrary tool access.
+- Send at most 55,000 aggregate normalized source characters to normal Analyze and request at most 4,800 output tokens. Optional Extended Research reuses the server-held source contexts and validated normal card, then runs independently salvageable detailed-process and financial/outcome sections with at most 8,000 output tokens each. The server uses `OPENAI_MODEL` when configured and otherwise the code's versioned default.
+- Carry Extended Research state only through an opaque UUID referencing an instance-local, 30-minute, size- and count-bounded session. Never accept a browser-supplied card as authoritative continuation state. Expired, incompatible, or unavailable sessions fail without modifying the normal result.
 - Divide the model-input budget across every acquired page before redistributing unused capacity; expose per-page model truncation in the analysis record.
 - Give model requests a 120-second SDK timeout, use low reasoning effort, disable automatic retries, and propagate request cancellation to fetch and model work. The live development benchmark showed that the prior 45-second bound returned no drafts for the production V2 contract.
 - Treat automatically fetched, discovered, and pasted pages as `user_supplied`; topical URL/link terms never prove an `official_*` provenance category.

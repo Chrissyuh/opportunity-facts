@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { isBatchAnalysisEnabled } from "@/lib/product-features";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  const batchAnalysisEnabled = isBatchAnalysisEnabled();
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body>
@@ -35,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="site-frame">
           <SiteHeader />
           {children}
-          <SiteFooter />
+          <SiteFooter batchAnalysisEnabled={batchAnalysisEnabled} />
         </div>
       </body>
     </html>

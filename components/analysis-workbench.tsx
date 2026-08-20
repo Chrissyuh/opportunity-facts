@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import { opportunityCardSchema, type OpportunityCard } from "@/lib/opportunity/schema";
 import { ATTENTION_CATEGORIES, type AttentionItem } from "@/lib/analysis/attention";
-import { FIELD_IDS } from "@/lib/opportunity/fields";
+import { FIELD_IDS, type FieldId } from "@/lib/opportunity/fields";
 import {
   BUILDER_STORAGE_EVENT,
   ANALYSIS_URL_HANDOFF_KEY,
@@ -17,10 +18,33 @@ import type { AnalysisProgressEvent } from "@/lib/analysis/progress";
 import { ANALYZER_VERSION } from "@/lib/analysis/analyzer-version";
 import { OpportunityOverview } from "./opportunity-overview";
 
+const AnalyzedFullRecord = dynamic(() =>
+  import("./analyzed-full-record").then((module) => module.AnalyzedFullRecord));
+
 type Mode = "url" | "text";
 type Phase = "idle" | "running" | "complete" | "insufficient" | "error" | "unconfigured";
-type QualityFailure = { reasons: Array<{ title: string; explanation: string }>; expiresAt: string; cached: boolean };
+type ExtendedPhase = "idle" | "running" | "complete" | "error";
+type ResearchDepth = "normal" | "extended";
+type ResearchMetadata = {
+  depth: ResearchDepth;
+  extendedAvailable: boolean;
+  sessionId: string | null;
+  assessedFieldIds: FieldId[];
+  completedSections?: Array<"details" | "financial">;
+  failedSections?: Array<"details" | "financial">;
+  reused?: boolean;
+};
+type FailureSuppression = { bypass: boolean; allowLocalSuppression: boolean };
+type QualityFailure = {
+  reasons: Array<{ title: string; explanation: string }>;
+  expiresAt: string;
+  cached: boolean;
+  cacheEligible: boolean;
+  allowLocalSuppression: boolean;
+  result: AnalysisResponse | null;
+};
 const LOCAL_QUALITY_PREFIX = "opportunity-facts:quality-failure:";
+const LOCAL_RETRY_COOLDOWN_MS = 10 * 60 * 1_000;
 
 interface AnalysisResponse {
   card: OpportunityCard;
@@ -28,6 +52,8 @@ interface AnalysisResponse {
   pageWarnings: Array<{ url: string; code: string; message: string }>;
   evidenceWarnings: Array<{ fieldId: string; sourceId: string; message: string }>;
   attentionItems: AttentionItem[];
+  research: ResearchMetadata;
+  failureSuppression: FailureSuppression;
 }
 
 const reviewedPageSchema = z.strictObject({
@@ -54,6 +80,19 @@ const attentionItemSchema = z.strictObject({
   id: z.string(), category: z.enum(ATTENTION_CATEGORIES), priority: z.enum(["high", "medium", "low"]),
   title: z.string(), explanation: z.string(), fieldIds: z.array(z.enum(FIELD_IDS)), claimIds: z.array(z.string()),
   sourceIds: z.array(z.string()), suggestedNextStep: z.string().nullable(), origin: z.enum(["model_grounded", "deterministic_fallback"]),
+});
+const researchSchema = z.object({
+  depth: z.enum(["normal", "extended"]),
+  extendedAvailable: z.boolean(),
+  sessionId: z.string().min(1).nullable(),
+  assessedFieldIds: z.array(z.enum(FIELD_IDS)).optional(),
+  completedSections: z.array(z.enum(["details", "financial"])).optional(),
+  failedSections: z.array(z.enum(["details", "financial"])).optional(),
+  reused: z.boolean().optional(),
+});
+const failureSuppressionSchema = z.strictObject({
+  bypass: z.boolean(),
+  allowLocalSuppression: z.boolean(),
 });
 
 const blankSource = (): PastedSourceInput => ({
@@ -82,13 +121,78 @@ function parseAnalysisResponse(value: unknown): AnalysisResponse | null {
   const evidenceWarnings = z.array(evidenceWarningSchema).safeParse(record.evidenceWarnings ?? []);
   const attentionItems = z.array(attentionItemSchema).safeParse(record.attentionItems ?? []);
   if (!card.success || !reviewedPages.success || !pageWarnings.success || !evidenceWarnings.success || !attentionItems.success) return null;
+  const research = researchSchema.safeParse(record.research);
+  const failureSuppression = failureSuppressionSchema.safeParse(record.failureSuppression);
   return {
     card: card.data,
     reviewedPages: reviewedPages.data,
     pageWarnings: pageWarnings.data,
     evidenceWarnings: evidenceWarnings.data,
     attentionItems: attentionItems.data,
+    research: research.success
+      ? { ...research.data, assessedFieldIds: research.data.assessedFieldIds ?? [...FIELD_IDS] }
+      : { depth: "normal", extendedAvailable: false, sessionId: null, assessedFieldIds: [...FIELD_IDS] },
+    failureSuppression: failureSuppression.success
+      ? failureSuppression.data
+      : { bypass: false, allowLocalSuppression: true },
   };
+}
+
+function parseQualityFailure(value: unknown): QualityFailure | null {
+  if (!value || typeof value !== "object") return null;
+  const record = value as Record<string, unknown>;
+  if (record.kind !== "quality_failure") return null;
+  const quality = record.quality;
+  if (!quality || typeof quality !== "object") return null;
+  const qualityRecord = quality as Record<string, unknown>;
+  const reasons = Array.isArray(qualityRecord.reasons)
+    ? qualityRecord.reasons.flatMap((reason) =>
+      reason && typeof reason === "object" && "explanation" in reason && typeof reason.explanation === "string"
+        ? [{
+            title: "title" in reason && typeof reason.title === "string" ? reason.title : "Source quality issue",
+            explanation: reason.explanation,
+          }]
+        : [])
+      .slice(0, 3)
+    : [];
+  const suppression = failureSuppressionSchema.safeParse(record.failureSuppression);
+  return {
+    reasons,
+    expiresAt: typeof qualityRecord.expiresAt === "string"
+      ? qualityRecord.expiresAt
+      : new Date(Date.now() + LOCAL_RETRY_COOLDOWN_MS).toISOString(),
+    cached: record.cached === true,
+    cacheEligible: record.cacheEligible === true,
+    allowLocalSuppression: suppression.success
+      ? suppression.data.allowLocalSuppression
+      : true,
+    result: parseAnalysisResponse(record.incompleteResult ?? record.result),
+  };
+}
+
+function parseStoredQualityFailure(value: string): QualityFailure | null {
+  try {
+    const record = JSON.parse(value) as unknown;
+    if (!record || typeof record !== "object") return null;
+    const stored = record as Record<string, unknown>;
+    const reasons = Array.isArray(stored.reasons)
+      ? stored.reasons.flatMap((reason) =>
+        reason && typeof reason === "object" && typeof (reason as { title?: unknown }).title === "string" && typeof (reason as { explanation?: unknown }).explanation === "string"
+          ? [{ title: (reason as { title: string }).title, explanation: (reason as { explanation: string }).explanation }]
+          : [])
+      : [];
+    if (typeof stored.expiresAt !== "string" || Date.parse(stored.expiresAt) <= Date.now()) return null;
+    return {
+      reasons,
+      expiresAt: stored.expiresAt,
+      cached: true,
+      cacheEligible: stored.cacheEligible === true,
+      allowLocalSuppression: stored.allowLocalSuppression !== false,
+      result: parseAnalysisResponse(stored.result),
+    };
+  } catch {
+    return null;
+  }
 }
 
 async function readAnalysisStream(response: Response, onProgress: (event: AnalysisProgressEvent) => void): Promise<unknown> {
@@ -178,6 +282,13 @@ export function AnalysisWorkbench({
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [progressEvents, setProgressEvents] = useState<AnalysisProgressEvent[]>([]);
   const [qualityFailure, setQualityFailure] = useState<QualityFailure | null>(null);
+  const [qualityOverrideConfirmation, setQualityOverrideConfirmation] = useState(false);
+  const [qualityOverride, setQualityOverride] = useState(false);
+  const [extendedPhase, setExtendedPhase] = useState<ExtendedPhase>("idle");
+  const [extendedError, setExtendedError] = useState("");
+  const [extendedProgressEvents, setExtendedProgressEvents] = useState<AnalysisProgressEvent[]>([]);
+  const [extendedStartedAt, setExtendedStartedAt] = useState<number | null>(null);
+  const [extendedElapsedSeconds, setExtendedElapsedSeconds] = useState(0);
   const activeRequest = useRef<AbortController | null>(null);
   const resultSection = useRef<HTMLElement | null>(null);
   const resultTitle = useRef<HTMLHeadingElement | null>(null);
@@ -222,10 +333,17 @@ export function AnalysisWorkbench({
     return () => window.clearInterval(timer);
   }, [phase, requestStartedAt]);
 
+  useEffect(() => {
+    if (extendedPhase !== "running" || extendedStartedAt === null) return;
+    const updateElapsed = () => setExtendedElapsedSeconds(Math.floor((Date.now() - extendedStartedAt) / 1_000));
+    const timer = window.setInterval(updateElapsed, 1_000);
+    return () => window.clearInterval(timer);
+  }, [extendedPhase, extendedStartedAt]);
+
   useEffect(() => () => activeRequest.current?.abort(), []);
 
   useEffect(() => {
-    if (phase !== "complete" || !result) return;
+    if ((phase !== "complete" && !qualityOverride) || !result) return;
     const frame = window.requestAnimationFrame(() => {
       resultTitle.current?.focus({ preventScroll: true });
       resultSection.current?.scrollIntoView({
@@ -234,13 +352,33 @@ export function AnalysisWorkbench({
       });
     });
     return () => window.cancelAnimationFrame(frame);
-  }, [phase, result]);
+  }, [phase, qualityOverride, result]);
+
+  async function allowsRememberedFailure(canonicalUrl: string): Promise<boolean> {
+    try {
+      const response = await fetch(`/api/analyze?suppressionUrl=${encodeURIComponent(canonicalUrl)}`, {
+        cache: "no-store",
+      });
+      if (!response.ok) return false;
+      const payload: unknown = await response.json();
+      if (!payload || typeof payload !== "object") return false;
+      const suppression = failureSuppressionSchema.safeParse((payload as Record<string, unknown>).failureSuppression);
+      return suppression.success && suppression.data.allowLocalSuppression;
+    } catch {
+      // A configuration check failure must not let stale browser state block a
+      // host that the server may now require to receive a fresh analysis.
+      return false;
+    }
+  }
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setError("");
-    setResult(null);
-    setQualityFailure(null);
+    setQualityOverrideConfirmation(false);
+    setQualityOverride(false);
+    setExtendedPhase("idle");
+    setExtendedError("");
+    setExtendedProgressEvents([]);
     setLocalMessage("");
     if (!isConfigured) {
       setPhase("unconfigured");
@@ -249,17 +387,22 @@ export function AnalysisWorkbench({
     if (mode === "url") {
       try {
         const canonical = new URL(url).href;
-        const stored = localStorage.getItem(`${LOCAL_QUALITY_PREFIX}${ANALYZER_VERSION}:${canonical}`);
+        const storageKey = `${LOCAL_QUALITY_PREFIX}${ANALYZER_VERSION}:${canonical}`;
+        const stored = localStorage.getItem(storageKey);
         if (stored) {
-          const parsed = JSON.parse(stored) as QualityFailure;
-          if (Date.parse(parsed.expiresAt) > Date.now() && Array.isArray(parsed.reasons)) {
-            const reasons = parsed.reasons.flatMap((reason) => reason && typeof reason === "object" && typeof reason.title === "string" && typeof reason.explanation === "string" ? [reason] : []);
-            setQualityFailure({ ...parsed, reasons, cached: true }); setPhase("insufficient"); return;
+          const parsed = parseStoredQualityFailure(stored);
+          if (parsed && await allowsRememberedFailure(canonical)) {
+            setQualityFailure(parsed);
+            setResult(parsed.result);
+            setPhase("insufficient");
+            return;
           }
-          localStorage.removeItem(`${LOCAL_QUALITY_PREFIX}${ANALYZER_VERSION}:${canonical}`);
+          localStorage.removeItem(storageKey);
         }
       } catch { /* Server validation provides the user-facing URL error. */ }
     }
+    setResult(null);
+    setQualityFailure(null);
     const startedAt = Date.now();
     const controller = new AbortController();
     activeRequest.current = controller;
@@ -285,15 +428,23 @@ export function AnalysisWorkbench({
             : "The sources could not be analyzed.";
         throw new Error(message);
       }
-      if (payload && typeof payload === "object" && "kind" in payload && payload.kind === "quality_failure") {
-        const reasons = "quality" in payload && payload.quality && typeof payload.quality === "object" && "reasons" in payload.quality && Array.isArray(payload.quality.reasons)
-          ? payload.quality.reasons.flatMap((reason) => reason && typeof reason === "object" && "explanation" in reason && typeof reason.explanation === "string" ? [{ title: "title" in reason && typeof reason.title === "string" ? reason.title : "Source quality issue", explanation: reason.explanation }] : []).slice(0, 3)
-          : [];
-        const expiresAt = "quality" in payload && payload.quality && typeof payload.quality === "object" && "expiresAt" in payload.quality && typeof payload.quality.expiresAt === "string" ? payload.quality.expiresAt : new Date(Date.now() + 14 * 86_400_000).toISOString();
-        const failure = { reasons, expiresAt, cached: "cached" in payload && payload.cached === true };
+      const failure = parseQualityFailure(payload);
+      if (failure) {
         setQualityFailure(failure);
-        const cacheEligible = "cacheEligible" in payload && payload.cacheEligible === true;
-        if (mode === "url" && cacheEligible) { try { localStorage.setItem(`${LOCAL_QUALITY_PREFIX}${ANALYZER_VERSION}:${new URL(url).href}`, JSON.stringify(failure)); } catch { /* A durable server cache still prevents repeated work. */ } }
+        setResult(failure.result);
+        if (mode === "url") {
+          const storageKey = `${LOCAL_QUALITY_PREFIX}${ANALYZER_VERSION}:${new URL(url).href}`;
+          try {
+            if (failure.allowLocalSuppression) {
+              const localExpiry = failure.cacheEligible
+                ? failure.expiresAt
+                : new Date(Date.now() + LOCAL_RETRY_COOLDOWN_MS).toISOString();
+              localStorage.setItem(storageKey, JSON.stringify({ ...failure, expiresAt: localExpiry }));
+            } else {
+              localStorage.removeItem(storageKey);
+            }
+          } catch { /* Browser storage is an optimization; server policy remains authoritative. */ }
+        }
         setPhase("insufficient");
         return;
       }
@@ -318,6 +469,60 @@ export function AnalysisWorkbench({
   }
 
   function cancelAnalysis() {
+    activeRequest.current?.abort();
+  }
+
+  async function runExtendedResearch() {
+    const sessionId = result?.research.sessionId;
+    if (!result || !result.research.extendedAvailable || !sessionId) return;
+    const startedAt = Date.now();
+    const controller = new AbortController();
+    activeRequest.current = controller;
+    setExtendedStartedAt(startedAt);
+    setExtendedElapsedSeconds(0);
+    setExtendedError("");
+    setExtendedProgressEvents([]);
+    setExtendedPhase("running");
+    try {
+      const response = await fetch("/api/analyze/extended", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/x-ndjson" },
+        cache: "no-store",
+        signal: controller.signal,
+        body: JSON.stringify({ sessionId }),
+      });
+      const payload: unknown = await readAnalysisStream(response, (progressEvent) => {
+        if (progressEvent.type !== "heartbeat") {
+          setExtendedProgressEvents((current) => [...current, progressEvent]);
+        }
+      });
+      if (!response.ok) {
+        const message = payload && typeof payload === "object" && "message" in payload && typeof payload.message === "string"
+          ? payload.message
+          : "Extended Research could not complete.";
+        throw new Error(message);
+      }
+      const parsed = parseAnalysisResponse(payload);
+      if (!parsed) throw new Error("The server returned an invalid Extended Research response.");
+      setResult(parsed);
+      setExtendedElapsedSeconds(Math.floor((Date.now() - startedAt) / 1_000));
+      setExtendedPhase("complete");
+    } catch (cause) {
+      setExtendedError(
+        controller.signal.aborted
+          ? "Extended Research was cancelled. Your original overview is unchanged."
+          : cause instanceof Error
+            ? cause.message
+            : "Extended Research could not complete.",
+      );
+      setExtendedElapsedSeconds(Math.floor((Date.now() - startedAt) / 1_000));
+      setExtendedPhase("error");
+    } finally {
+      if (activeRequest.current === controller) activeRequest.current = null;
+    }
+  }
+
+  function cancelExtendedResearch() {
     activeRequest.current?.abort();
   }
 
@@ -360,8 +565,10 @@ export function AnalysisWorkbench({
     window.requestAnimationFrame(() => document.getElementById("source-title-0")?.focus());
   }
 
+  const resultIsVisible = result !== null && (phase !== "insufficient" || qualityOverride);
+
   return (
-    <div className="analysis-layout" data-has-result={result ? "true" : "false"}>
+    <div className="analysis-layout" data-has-result={resultIsVisible ? "true" : "false"}>
       <section className="analysis-input panel" aria-labelledby="analysis-input-title">
         <div className="analysis-input-header">
           <p className="eyebrow">Source input</p>
@@ -424,8 +631,8 @@ export function AnalysisWorkbench({
 
           {error ? <div className="error-summary" role="alert"><strong>Analysis did not complete.</strong> {error}</div> : null}
           <div className="button-row">
-            <button className="button" type="submit" disabled={!isConfigured || phase === "running"}>
-              {!isConfigured ? "Automatic extraction unavailable" : phase === "running" ? "Reviewing and structuring sources…" : "Start analysis"}
+            <button className="button" type="submit" disabled={!isConfigured || phase === "running" || extendedPhase === "running"}>
+              {!isConfigured ? "Automatic extraction unavailable" : phase === "running" ? "Researching sources…" : "Analyze"}
             </button>
             {phase === "running" ? (
               <button className="button-quiet" type="button" onClick={cancelAnalysis}>
@@ -444,7 +651,7 @@ export function AnalysisWorkbench({
         <ol>
           <PipelineStep number="01" title="Validate source boundary" text="Allow only bounded public HTTP(S) or explicitly pasted text." />
           <PipelineStep number="02" title="Review relevant pages" text="Extract visible text and bounded page metadata; ignore executable scripts, boilerplate, and page instructions." />
-          <PipelineStep number="03" title="Extract bounded sections" text="Build summary, identity/cycle, and detailed structures independently so one incomplete section cannot corrupt another." />
+          <PipelineStep number="03" title="Answer practical questions" text="Focus on the decision-useful facts a student needs first." />
           <PipelineStep number="04" title="Validate every excerpt" text="Match citations back to normalized source text before displaying support." />
         </ol>
         {!isConfigured || phase === "unconfigured" ? (
@@ -460,21 +667,42 @@ export function AnalysisWorkbench({
         ) : null}
       </aside>
 
-      {phase === "insufficient" && qualityFailure ? <section className="analysis-insufficient" aria-labelledby="analysis-insufficient-title">
+      {phase === "insufficient" && qualityFailure && !qualityOverride ? <section className="analysis-insufficient" aria-labelledby="analysis-insufficient-title">
         <p className="eyebrow">Reliable result withheld</p><h2 id="analysis-insufficient-title">We couldn’t build a reliable Opportunity Facts card from this page.</h2>
         <p>Too much important information was missing, ambiguous, inaccessible, or internally incomplete.</p>
         {qualityFailure.reasons.length ? <ul>{qualityFailure.reasons.slice(0, 3).map((reason) => <li key={`${reason.title}:${reason.explanation}`}><strong>{reason.title}</strong><span>{reason.explanation}</span></li>)}</ul> : null}
         {qualityFailure.cached ? <p><strong>We already checked this unchanged page.</strong> No new model analysis was started.</p> : null}
-        <div className="button-row"><button className="button-secondary" type="button" onClick={() => { setQualityFailure(null); setPhase("idle"); document.getElementById("analysis-url")?.focus(); }}>Try a better official page</button><button className="button-quiet" type="button" onClick={() => { setMode("text"); setQualityFailure(null); setPhase("idle"); }}>Paste missing source text</button><button className="button-quiet" type="button" onClick={() => { setUrl(""); setQualityFailure(null); setPhase("idle"); window.requestAnimationFrame(() => document.getElementById("analysis-url")?.focus()); }}>Analyze another opportunity</button></div>
+        <div className="button-row">
+          <button className="button-secondary" type="button" onClick={() => { setQualityFailure(null); setResult(null); setPhase("idle"); document.getElementById("analysis-url")?.focus(); }}>Try another official page</button>
+          <button className="button-quiet" type="button" onClick={() => { setMode("text"); setQualityFailure(null); setResult(null); setPhase("idle"); }}>Add source text</button>
+          <button className="button-quiet" type="button" onClick={() => { setUrl(""); setQualityFailure(null); setResult(null); setPhase("idle"); window.requestAnimationFrame(() => document.getElementById("analysis-url")?.focus()); }}>Analyze another opportunity</button>
+          {qualityFailure.result ? <button className="button-quiet" type="button" onClick={() => setQualityOverrideConfirmation(true)}>{qualityFailure.cached ? "View previous incomplete result" : "View incomplete result anyway"}</button> : null}
+        </div>
+        {qualityOverrideConfirmation && qualityFailure.result ? (
+          <div className="quality-override-confirmation" role="alert">
+            <h3>Before you open this unfinished draft</h3>
+            <p>This result failed Opportunity Facts’ quality checks. Important facts may be missing, ambiguous, or structurally incomplete. Treat it as an unfinished AI draft and verify claims against the attached sources.</p>
+            <div className="button-row">
+              <button className="button-warning" type="button" onClick={() => { setResult(qualityFailure.result); setQualityOverride(true); }}>View incomplete result</button>
+              <button className="button-quiet" type="button" onClick={() => setQualityOverrideConfirmation(false)}>Keep it hidden</button>
+            </div>
+          </div>
+        ) : null}
       </section> : null}
 
-      {result ? (
+      {resultIsVisible && result ? (
         <section ref={resultSection} className="analysis-result" aria-labelledby="analysis-result-title">
+          {qualityOverride ? (
+            <div className="quality-override-warning" role="status">
+              <strong>Incomplete result · quality gate overridden</strong>
+              <span>Important facts may be missing, ambiguous, or structurally incomplete. Verify every claim against its attached source.</span>
+            </div>
+          ) : null}
           <div className="analysis-result-heading">
             <div>
-              <p className="eyebrow">Draft ready · Automated checks applied</p>
+              <p className="eyebrow">{qualityOverride ? "Unfinished AI draft" : result.research.depth === "extended" ? "Extended Research complete" : "Overview ready · Automated checks applied"}</p>
               <h2 ref={resultTitle} id="analysis-result-title" tabIndex={-1}>
-                Inspect and correct the draft.
+                {qualityOverride ? "Inspect this incomplete result carefully." : "Your opportunity overview is ready."}
               </h2>
             </div>
             <div className="button-row no-print">
@@ -487,6 +715,17 @@ export function AnalysisWorkbench({
           <div className="notice">
             <strong>This is not human reviewed.</strong> Automatic checks confirm that retained excerpts exist in the fetched text; they do not prove that every interpretation or scope is correct. Missing or inaccessible pages can cause omissions. Check the source identity, meaning, and attachment of every claim before changing the review state. This analysis does not establish truth, legitimacy, prestige, quality, or value.
           </div>
+          {!qualityOverride && (result.research.extendedAvailable || extendedPhase !== "idle") ? (
+            <ExtendedResearchPanel
+              phase={extendedPhase}
+              elapsedSeconds={extendedElapsedSeconds}
+              events={extendedProgressEvents}
+              error={extendedError}
+              partial={Boolean(result.research.failedSections?.length)}
+              onStart={() => void runExtendedResearch()}
+              onCancel={cancelExtendedResearch}
+            />
+          ) : null}
           <div className="reviewed-page-list">
             <h3>Pages fetched for review</h3>
             <ol>
@@ -525,10 +764,101 @@ export function AnalysisWorkbench({
             ) : null}
             {result.evidenceWarnings.length ? <div className="notice"><strong>{result.evidenceWarnings.length} automated candidate warning{result.evidenceWarnings.length === 1 ? " was" : "s were"} recorded.</strong> Unsupported citations, mismatched subjects, and unsafe scopes were withheld; facts retain only other validated support or an explicit uncertainty state.</div> : null}
           </div>
-          <OpportunityOverview card={result.card} embedded attentionItems={result.attentionItems} />
+          <OpportunityOverview
+            card={result.card}
+            embedded
+            attentionItems={result.attentionItems}
+            attentionLimit={result.research.depth === "extended" ? 5 : 3}
+            fullEvidenceAvailable={result.research.depth === "extended"}
+            assessedFieldIds={result.research.assessedFieldIds}
+          />
+          {result.research.depth === "extended" ? (
+            <details className="analysis-full-record">
+              <summary>
+                <span><strong>Full Record</strong><small>Search every retained fact, structure, source, and evidence attachment.</small></span>
+                <span>Open research workspace</span>
+              </summary>
+              <div className="analysis-full-record-content">
+                <AnalyzedFullRecord card={result.card} assessedFieldIds={result.research.assessedFieldIds} />
+              </div>
+            </details>
+          ) : null}
         </section>
       ) : null}
     </div>
+  );
+}
+
+function progressEventPresentation(event: AnalysisProgressEvent): { label: string; active: boolean } | null {
+  if (event.type === "source_acquired") return { label: `${event.title} reviewed`, active: false };
+  if (event.type === "source_failed") return { label: "A discovered page could not be acquired", active: false };
+  if (event.type === "cycle_resolved") return { label: event.status === "resolved" ? `${event.label ?? "Cycle"} identified` : "Cycle needs clarification", active: false };
+  if (event.type === "normal_model_started") return { label: "Answering the practical questions", active: true };
+  if (event.type === "normal_model_completed") return { label: "Practical questions reviewed", active: false };
+  if (event.type === "normal_model_failed") return { label: "The compact research response did not complete", active: false };
+  if (event.type === "family_started") return { label: `Reviewing ${event.family.replaceAll("_", " ")}`, active: true };
+  if (event.type === "family_completed") return { label: `${event.family.replaceAll("_", " ")} review complete`, active: false };
+  if (event.type === "family_failed") return { label: `${event.family.replaceAll("_", " ")} review could not complete`, active: false };
+  if (event.type === "validated_fact") return { label: `${event.label}: ${event.displayValue}`, active: false };
+  if (event.type === "validation_complete") return { label: `${event.retained} supported facts retained; ${event.withheld} withheld`, active: false };
+  if (event.type === "attention_ready") return { label: `${event.count} item${event.count === 1 ? "" : "s"} need attention`, active: false };
+  if (event.type === "quality_complete") return { label: "Result quality checked", active: false };
+  if (event.type === "extended_started") return { label: "Extended Research started", active: true };
+  if (event.type === "extended_section_started") return { label: event.section === "financial" ? "Reviewing detailed costs and outcomes" : "Reviewing terms, relationships, and pathways", active: true };
+  if (event.type === "extended_section_completed") return { label: event.section === "financial" ? "Detailed costs and outcomes checked" : "Terms, relationships, and pathways checked", active: false };
+  if (event.type === "extended_section_failed") return { label: event.section === "financial" ? "Some financial details could not be completed" : "Some program details could not be completed", active: false };
+  if (event.type === "extended_validation_complete") return { label: `${event.retained} extended claims retained; ${event.withheld} withheld`, active: false };
+  if (event.type === "extended_complete") return { label: event.partial ? "Extended Research completed with some sections unavailable" : "Extended Research complete", active: false };
+  return null;
+}
+
+function ResearchActivity({ events }: { events: AnalysisProgressEvent[] }) {
+  if (!events.length) return null;
+  return (
+    <ol className="research-activity" aria-label="Live research activity">
+      {events.slice(-7).map((event) => {
+        const presentation = progressEventPresentation(event);
+        return presentation ? <li key={event.sequence}><span aria-hidden="true">{presentation.active ? "◌" : "✓"}</span><span>{presentation.label}</span><time>{Math.round(event.elapsedMs / 1000)}s</time></li> : null;
+      })}
+    </ol>
+  );
+}
+
+function ExtendedResearchPanel({
+  phase,
+  elapsedSeconds,
+  events,
+  error,
+  partial,
+  onStart,
+  onCancel,
+}: {
+  phase: ExtendedPhase;
+  elapsedSeconds: number;
+  events: AnalysisProgressEvent[];
+  error: string;
+  partial: boolean;
+  onStart: () => void;
+  onCancel: () => void;
+}) {
+  return (
+    <section className="extended-research" aria-labelledby="extended-research-title" data-state={phase}>
+      <div>
+        <p className="eyebrow">Optional follow-up</p>
+        <h3 id="extended-research-title">Extended Research</h3>
+        {phase === "idle" ? <p>Check more details about costs, terms, pathways, outcomes, relationships, and source evidence. Usually takes longer.</p> : null}
+        {phase === "running" ? <p role="status">Your overview remains available while additional details are researched and validated.</p> : null}
+        {phase === "complete" ? <p role="status">{partial ? "Extended Research completed with some sections unavailable. Safely completed details were retained; your original overview is unchanged." : "Additional supported details are now included. Full Record and Full Evidence PDF are available below."}</p> : null}
+        {phase === "error" ? <p className="extended-research-error" role="alert"><strong>Extended Research could not complete.</strong> {error || "Your original overview remains unchanged."}</p> : null}
+        {phase !== "idle" ? <small>{formatElapsed(elapsedSeconds)}</small> : null}
+        {phase === "running" ? <ResearchActivity events={events} /> : null}
+      </div>
+      <div className="button-row no-print">
+        {phase === "idle" ? <button className="button-secondary" type="button" onClick={onStart}>Extended Research</button> : null}
+        {phase === "running" ? <button className="button-quiet" type="button" onClick={onCancel}>Cancel Extended Research</button> : null}
+        {phase === "complete" ? <span className="extended-complete-mark">✓ Extended Research complete</span> : null}
+      </div>
+    </section>
   );
 }
 
@@ -539,7 +869,7 @@ function AnalysisRunStatus({ phase, elapsedSeconds, events }: { phase: Phase; el
         text: "Researching public pages and validating source-backed facts. Keep this tab open; completed work will appear here as the server reports it.",
       }
     : phase === "complete"
-      ? { title: "Draft response received", text: "Review the acquired-page record and any warnings before trusting individual claims." }
+      ? { title: "Overview ready", text: "Review the acquired-page record and any warnings before relying on individual claims." }
       : phase === "error"
         ? { title: "No draft returned", text: "The error above explains what stopped this attempt; incomplete output is not presented as a finished card." }
         : phase === "insufficient"
@@ -557,21 +887,7 @@ function AnalysisRunStatus({ phase, elapsedSeconds, events }: { phase: Phase; el
           <small aria-hidden="true">{formatElapsed(elapsedSeconds)}</small>
         ) : null}
       </div>
-      {phase === "running" && events.length ? <ol className="research-activity" aria-label="Live research activity">
-        {events.slice(-7).map((event) => {
-          let label: string | null = null;
-          if (event.type === "source_acquired") label = `${event.title} reviewed`;
-          else if (event.type === "source_failed") label = "A discovered page could not be acquired";
-          else if (event.type === "cycle_resolved") label = event.status === "resolved" ? `${event.label ?? "Cycle"} identified` : "Cycle needs clarification";
-          else if (event.type === "family_started") label = `Reviewing ${event.family.replaceAll("_", " ")}`;
-          else if (event.type === "family_completed") label = `${event.family.replaceAll("_", " ")} review complete`;
-          else if (event.type === "validated_fact") label = `${event.label}: ${event.displayValue}`;
-          else if (event.type === "validation_complete") label = `${event.retained} supported facts retained; ${event.withheld} withheld`;
-          else if (event.type === "attention_ready") label = `${event.count} item${event.count === 1 ? "" : "s"} need attention`;
-          else if (event.type === "quality_complete") label = "Result quality checked";
-          return label ? <li key={event.sequence}><span aria-hidden="true">{event.type === "family_started" ? "◌" : "✓"}</span><span>{label}</span><time>{Math.round(event.elapsedMs / 1000)}s</time></li> : null;
-        })}
-      </ol> : null}
+      {phase === "running" ? <ResearchActivity events={events} /> : null}
     </div>
   );
 }

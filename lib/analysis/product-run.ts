@@ -21,15 +21,47 @@ import {
 import { ANALYZER_VERSION } from "./analyzer-version";
 import type { AnalysisProgressSink } from "./progress";
 import type { AnalysisTelemetrySink } from "./telemetry";
+import type { AnalysisSourceContext } from "./model-extraction";
+import { FAST_ANALYSIS_FIELD_IDS } from "./model-extraction";
+import type { FieldId } from "@/lib/opportunity/fields";
+import type { PageAcquisitionFailure } from "./types";
+import {
+  createResearchSessionStore,
+  type ResearchSessionStore,
+} from "./research-session";
+
+export interface FailureSuppressionDecision {
+  readonly bypass: boolean;
+  readonly allowLocalSuppression: boolean;
+}
+
+export interface AnalysisResearchState {
+  readonly depth: "normal" | "extended";
+  readonly extendedAvailable: boolean;
+  readonly sessionId: string | null;
+  readonly completedSections?: readonly ("details" | "financial")[];
+  readonly failedSections?: readonly ("details" | "financial")[];
+  readonly reused?: boolean;
+  /** Authoritative mask; unlisted 59-field slots were not researched at this depth. */
+  readonly assessedFieldIds: readonly FieldId[];
+}
 
 export type AnalysisProductResult =
-  | ({ readonly kind: "card" } & AnalysisPipelineResult)
+  | ({
+      readonly kind: "card";
+      readonly research: AnalysisResearchState;
+      readonly failureSuppression: FailureSuppressionDecision;
+    } & AnalysisPipelineResult)
   | {
       readonly kind: "quality_failure";
       readonly cached: boolean;
       /** Safe to retain for same-browser and durable retry suppression. */
       readonly cacheEligible: boolean;
       readonly quality: Pick<CachedQualityFailure, "classification" | "reasons" | "createdAt" | "expiresAt" | "analyzerVersion">;
+      /** Present for a freshly generated minefield result; revealing it costs no new model call. */
+      readonly incompleteResult?: AnalysisPipelineResult;
+      readonly research: AnalysisResearchState;
+      readonly failureSuppression: FailureSuppressionDecision;
     };
 
 export interface RunProductAnalysisOptions extends AnalyzePipelineOptions {
@@ -38,6 +70,7 @@ export interface RunProductAnalysisOptions extends AnalyzePipelineOptions {
   readonly revalidateFailureCache?: FailureCacheFreshnessRevalidator;
   readonly onProgress?: AnalysisProgressSink;
   readonly onTelemetry?: AnalysisTelemetrySink;
+  readonly researchSessionStore?: ResearchSessionStore;
 }
 
 export type FailureCacheFreshnessRevalidator = (
@@ -53,6 +86,11 @@ export const revalidateSubmittedPageFingerprint: FailureCacheFreshnessRevalidato
   return sourceTextFingerprint(extractFetchedPage(fetched).text);
 };
 
+export function failureSuppressionDecision(url: string): FailureSuppressionDecision {
+  const bypass = shouldBypassFailureCache(url);
+  return { bypass, allowLocalSuppression: !bypass };
+}
+
 export async function runProductAnalysis(
   input: AnalyzeRequest,
   options: RunProductAnalysisOptions = {},
@@ -66,12 +104,16 @@ export async function runProductAnalysis(
     const {
       failureCache,
       revalidateFailureCache = revalidateSubmittedPageFingerprint,
+      researchSessionStore = createResearchSessionStore(),
       ...pipelineOptions
     } = options;
     const cache = failureCache ?? createAnalysisFailureCache();
     const canonicalStartedAt = performance.now();
     const url = input.mode === "url" ? input.url : null;
-    const bypass = url !== null && shouldBypassFailureCache(url);
+    const suppression = url === null
+      ? { bypass: false, allowLocalSuppression: true }
+      : failureSuppressionDecision(url);
+    const bypass = suppression.bypass;
     const key = url === null || bypass ? null : analysisFailureCacheKey(url);
     options.onTelemetry?.({ stage: "canonical_url", durationMs: performance.now() - canonicalStartedAt, outcome: "completed" });
     if (bypass) {
@@ -119,6 +161,13 @@ export async function runProductAnalysis(
               expiresAt: cached.expiresAt,
               analyzerVersion: cached.analyzerVersion,
             },
+            research: {
+              depth: "normal",
+              extendedAvailable: false,
+              sessionId: null,
+              assessedFieldIds: FAST_ANALYSIS_FIELD_IDS,
+            },
+            failureSuppression: suppression,
           });
         }
         await deleteFailureCacheSafely(cache, key, options.signal);
@@ -129,8 +178,36 @@ export async function runProductAnalysis(
       });
     }
 
-    const result = await analyzeRequest(input, pipelineOptions);
-    if (result.quality.outcome !== "insufficient_quality") return finish({ kind: "card", ...result });
+    let acquiredSources: readonly AnalysisSourceContext[] = [];
+    let acquisitionWarnings: readonly PageAcquisitionFailure[] = [];
+    const result = await analyzeRequest(input, {
+      ...pipelineOptions,
+      qualityMode: "normal",
+      onSourcesReady(sources, pageWarnings) {
+        acquiredSources = sources;
+        acquisitionWarnings = pageWarnings;
+        pipelineOptions.onSourcesReady?.(sources, pageWarnings);
+      },
+    });
+    const sessionId = result.quality.outcome !== "insufficient_quality"
+      ? researchSessionStore.create({
+          sources: acquiredSources,
+          pageWarnings: acquisitionWarnings,
+          normalResult: result,
+        })
+      : null;
+    const research: AnalysisResearchState = {
+      depth: "normal",
+      extendedAvailable: sessionId !== null,
+      sessionId,
+      assessedFieldIds: FAST_ANALYSIS_FIELD_IDS,
+    };
+    if (result.quality.outcome !== "insufficient_quality") return finish({
+      kind: "card",
+      ...result,
+      research,
+      failureSuppression: suppression,
+    });
     if (key !== null && result.quality.cacheEligible) {
       await writeFailureCacheSafely(
         cache,
@@ -150,6 +227,9 @@ export async function runProductAnalysis(
         expiresAt: new Date(Date.now() + ANALYSIS_FAILURE_CACHE_TTL_SECONDS * 1_000).toISOString(),
         analyzerVersion: ANALYZER_VERSION,
       },
+      incompleteResult: result,
+      research,
+      failureSuppression: suppression,
     });
   } catch (error) {
     options.onTelemetry?.({

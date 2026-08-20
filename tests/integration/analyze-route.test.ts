@@ -11,6 +11,7 @@ import { tryAcquireAnalysisSlot } from "@/lib/analysis/admission-control";
 const previousApiKey = process.env.OPENAI_API_KEY;
 const previousAnalysisEnabled = process.env.ANALYSIS_ENABLED;
 const previousAnalysisMaxConcurrency = process.env.ANALYSIS_MAX_CONCURRENCY;
+const previousBypassHosts = process.env.ANALYSIS_FAILURE_CACHE_BYPASS_HOSTS;
 
 afterEach(() => {
   vi.useRealTimers();
@@ -20,6 +21,8 @@ afterEach(() => {
   else process.env.ANALYSIS_ENABLED = previousAnalysisEnabled;
   if (previousAnalysisMaxConcurrency === undefined) delete process.env.ANALYSIS_MAX_CONCURRENCY;
   else process.env.ANALYSIS_MAX_CONCURRENCY = previousAnalysisMaxConcurrency;
+  if (previousBypassHosts === undefined) delete process.env.ANALYSIS_FAILURE_CACHE_BYPASS_HOSTS;
+  else process.env.ANALYSIS_FAILURE_CACHE_BYPASS_HOSTS = previousBypassHosts;
 });
 
 function jsonRequest(body: unknown): Request {
@@ -43,7 +46,7 @@ describe("analysis route boundary", () => {
     expect(response.headers.get("cache-control")).toBe("no-store, max-age=0");
     await expect(response.json()).resolves.toEqual({
       configured: false,
-      analyzerVersion: "student-research-v1",
+      analyzerVersion: "student-research-v2-fast-extended",
       model: null,
     });
   });
@@ -55,13 +58,21 @@ describe("analysis route boundary", () => {
     const configuration = await GET();
     await expect(configuration.json()).resolves.toEqual({
       configured: false,
-      analyzerVersion: "student-research-v1",
+      analyzerVersion: "student-research-v2-fast-extended",
       model: null,
     });
 
     const response = await POST(jsonRequest({ mode: "url", url: "https://program.example/" }));
     expect(response.status).toBe(503);
     await expect(response.json()).resolves.toMatchObject({ code: "ANALYSIS_DISABLED" });
+  });
+
+  it("returns an authoritative failure-suppression decision without exposing the host list", async () => {
+    process.env.ANALYSIS_FAILURE_CACHE_BYPASS_HOSTS = "program.example";
+    const response = await GET(new Request("http://localhost/api/analyze?suppressionUrl=https%3A%2F%2Fprogram.example%2Fapply"));
+    const payload = await response.json();
+    expect(payload.failureSuppression).toEqual({ bypass: true, allowLocalSuppression: false });
+    expect(JSON.stringify(payload)).not.toContain("failureCacheBypassHosts");
   });
 
   it("requires JSON and rejects browser requests from another origin", async () => {
