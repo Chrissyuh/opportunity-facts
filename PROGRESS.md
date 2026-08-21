@@ -89,7 +89,7 @@ The checked results below preserve the completed gate for `3cd7ea1`; the newer f
 ## Current competition-release verification
 
 - [x] `npm run export:data` / `npm run validate:data` — 17 public cards (10 AI-audited, 7 demo), 0 drafts, public dataset and Schema `2.2.0` current
-- [x] `npm run lint` / `npm run typecheck`; `npm test` — 46 files / 460 tests passed
+- [x] `npm run lint` / `npm run typecheck`; `npm test` — 47 files / 461 tests passed
 - [x] `npm run test:e2e` — 132 passed, 4 intentional project-inapplicable skips, 0 failed across desktop and mobile
 - [x] `npm run build` — fail-closed data validation plus 49 generated pages; `npm audit --audit-level=high` — 0 vulnerabilities; `git diff --check` — no whitespace errors
 - [x] Production headers — HTTPS, CSP, HSTS, frame denial, MIME sniffing denial, referrer policy, and permissions policy present; `/review` hard-404s and Batch remains hidden

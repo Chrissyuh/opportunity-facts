@@ -8,7 +8,9 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
   async headers() {
-    const scriptSources = ["'self'", "'unsafe-inline'"];
+    // @react-pdf/yoga compiles its bundled WebAssembly module in the browser.
+    // Allow that narrow operation without enabling general string evaluation.
+    const scriptSources = ["'self'", "'unsafe-inline'", "'wasm-unsafe-eval'"];
     if (process.env.NODE_ENV !== "production") {
       // React's development runtime uses eval for source maps. Keep this out of production CSP.
       scriptSources.push("'unsafe-eval'");

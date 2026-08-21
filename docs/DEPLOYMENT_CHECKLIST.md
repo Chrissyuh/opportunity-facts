@@ -95,7 +95,9 @@ guarantee.
 - `BATCH_ANALYSIS_ENABLED=false`; the implementation remains in the repository but
   is absent from competition-facing navigation and calls to action.
 - HTTPS and the deployed CSP, HSTS, frame, MIME, referrer, and permissions headers
-  were verified. The local human-review workspace returns 404 in production.
+  were verified. The CSP permits only the narrow `wasm-unsafe-eval` operation
+  required by the bundled PDF renderer, not general `unsafe-eval`. The local
+  human-review workspace returns 404 in production.
 - A production runtime-log scan found no submitted target URL, source excerpt,
   prompt, API-key identifier, or authorization header. Hosting/provider retention
   settings and platform egress policy remain external account-level assumptions.

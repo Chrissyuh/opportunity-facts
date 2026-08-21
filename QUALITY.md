@@ -120,7 +120,7 @@ The analyzer-first redesign adds streamed observable progress, deterministic qua
 | --- | --- |
 | `npm run export:data` / `npm run validate:data` | 17 public cards (10 AI-audited, 7 demo), 0 drafts, public dataset and Schema `2.2.0` current |
 | `npm run lint` / `npm run typecheck` | Pass |
-| `npm test` | 46 files, 460 tests passed |
+| `npm test` | 47 files, 461 tests passed |
 | `npm run test:e2e` | 136 total: 132 passed, 4 intentional project-inapplicable skips, 0 failed |
 | `npm run build` | Pass; fail-closed data validation ran first and Next generated 49 pages |
 | `npm audit --audit-level=high` / `git diff --check` | 0 vulnerabilities; no whitespace errors |
