@@ -4154,6 +4154,12 @@ select[aria-invalid="true"] {
   justify-content: flex-start;
 }
 
+/* Completion moves focus here for assistive technology. The heading is not an
+   interactive control, so it should not inherit the generic control outline. */
+.analysis-result-heading h2[tabindex="-1"]:focus {
+  outline: none;
+}
+
 .sample-result-heading p {
   margin: 0.15rem 0 0;
   color: var(--muted);
