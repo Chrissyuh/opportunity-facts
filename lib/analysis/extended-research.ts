@@ -1,6 +1,6 @@
 import "server-only";
 
-import { opportunityCardSchema } from "@/lib/opportunity/schema";
+import { opportunityCardSchema, type OpportunityCard } from "@/lib/opportunity/schema";
 import {
   createOpenAIExtendedExtractor,
   EXTENDED_RESEARCH_FIELD_IDS,
@@ -97,6 +97,23 @@ export function mergeExtendedAttention(
   return deduplicateAttentionItems([...stillApplies, ...extended.attentionItems]).slice(0, 5);
 }
 
+export function preserveNormalSupportedFacts(
+  normal: OpportunityCard,
+  extended: OpportunityCard,
+): OpportunityCard {
+  const facts = structuredClone(extended.facts);
+  for (const [fieldId, baselineFact] of Object.entries(normal.facts)) {
+    if (
+      baselineFact.status === "disclosed" ||
+      baselineFact.status === "conflicting" ||
+      baselineFact.status === "not_applicable"
+    ) {
+      facts[fieldId as keyof typeof facts] = baselineFact;
+    }
+  }
+  return opportunityCardSchema.parse({ ...extended, facts });
+}
+
 function asExtendedResult(
   sessionId: string,
   normal: AnalysisPipelineResult,
@@ -105,13 +122,19 @@ function asExtendedResult(
   failedSections: readonly ("details" | "financial")[],
   reused: boolean,
 ): ExtendedResearchResult {
-  const attentionItems = mergeExtendedAttention(normal, result);
-  const card = opportunityCardSchema.parse({
+  const projectedCard = opportunityCardSchema.parse({
     ...result.card,
     slug: normal.card.slug,
     summary: normal.card.summary,
     cardVersion: normal.card.cardVersion,
   });
+  // Rich projection can conservatively withhold a universal value after a
+  // compact fact was already validated. Extended Research is additive: it may
+  // enrich an unresolved fact, but never downgrade or rewrite a supported
+  // normal result.
+  const card = preserveNormalSupportedFacts(normal.card, projectedCard);
+  const protectedResult = { ...result, card };
+  const attentionItems = mergeExtendedAttention(normal, protectedResult);
   const quality = assessAnalysisQuality({
     card,
     acquiredPages: result.reviewedPages.length,

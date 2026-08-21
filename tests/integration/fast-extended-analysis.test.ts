@@ -3,7 +3,11 @@ import { describe, expect, it, vi } from "vitest";
 vi.mock("server-only", () => ({}));
 
 import { deriveDeterministicAttention } from "@/lib/analysis/attention";
-import { mergeExtendedAttention, runExtendedResearch } from "@/lib/analysis/extended-research";
+import {
+  mergeExtendedAttention,
+  preserveNormalSupportedFacts,
+  runExtendedResearch,
+} from "@/lib/analysis/extended-research";
 import {
   buildExtendedDetailSourcePayload,
   buildFastAnalysisInstructions,
@@ -336,6 +340,27 @@ describe("fast Analyze and Extended Research", () => {
     expect(result.card.facts.project_ownership.status).toBe("disclosed");
     expect(result.research.completedSections).toEqual(["details"]);
     expect(result.research.failedSections).toEqual(["financial"]);
+  });
+
+  it("does not let rich projection downgrade a validated normal fact", async () => {
+    const context = source("North Star Research Program\nOperated by North Star Learning\nStudents in grades 9â€“12 may apply\nApplications close October 1, 2026\nThe program is online\nTuition is $500\nApplications are reviewed and finalists interview\nThe program lasts 6 weeks\nParticipants retain ownership of their projects.");
+    const normal = (await normalResult(context)).card;
+    normal.facts.duration = disclosed(context, "The program lasts 6 weeks", "6 weeks");
+    const extended = structuredClone(normal);
+    extended.facts.duration = factSchema.parse({
+      status: "unclear",
+      note: "A richer projection could not establish one universal duration.",
+      sources: [evidence(context, "The program lasts 6 weeks")],
+    });
+    extended.facts.project_ownership = disclosed(
+      context,
+      "Participants retain ownership of their projects.",
+      "Participants retain project ownership",
+    );
+
+    const protectedCard = preserveNormalSupportedFacts(normal, extended);
+    expect(protectedCard.facts.duration).toEqual(normal.facts.duration);
+    expect(protectedCard.facts.project_ownership.status).toBe("disclosed");
   });
 
   it("deduplicates concurrent and repeated Extended Research calls", async () => {
