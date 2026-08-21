@@ -79,7 +79,7 @@ test("streamed research shows only observable work and validated preview facts",
         { delay: 40, value: { type: "progress", event: { type: "source_acquired", sourceId: "program", title: "Current program page", url: "https://streamed.example/program", sequence: 2, elapsedMs: 40 } } },
         { delay: 90, value: { type: "progress", event: { type: "family_started", family: "facts", sequence: 3, elapsedMs: 90 } } },
         { delay: 380, value: { type: "progress", event: { type: "validated_fact", fieldId: "tuition", label: "Tuition", displayValue: "$450", evidenceCount: 1, sequence: 4, elapsedMs: 380 } } },
-        { delay: 10_000, value: { type: "complete", result: completedResult } },
+        { delay: 8_000, value: { type: "complete", result: completedResult } },
       ];
       return new Response(new ReadableStream({
         start(controller) {
@@ -104,6 +104,20 @@ test("streamed research shows only observable work and validated preview facts",
   await expect(validated.getByText("Cost", { exact: true })).toBeVisible();
   await expect(validated.getByText("$450", { exact: true })).toHaveText("$450");
   await expect(validated.getByText("1 source checked", { exact: true })).toHaveText("1 source checked");
+  if ((page.viewportSize()?.width ?? 0) > 1050) {
+    const inputBox = await page.locator(".analysis-input").boundingBox();
+    const progressBox = await page.locator(".analysis-progress").boundingBox();
+    const overviewBox = await validated.boundingBox();
+    const activityBox = await page.locator(".research-running-grid > .research-activity").boundingBox();
+    expect(inputBox).not.toBeNull();
+    expect(progressBox).not.toBeNull();
+    expect(overviewBox).not.toBeNull();
+    expect(activityBox).not.toBeNull();
+    expect(progressBox!.width).toBeGreaterThan(inputBox!.width);
+    expect(overviewBox!.width).toBeGreaterThan(300);
+    expect(activityBox!.width).toBeGreaterThan(200);
+    expect(overviewBox!.x + overviewBox!.width).toBeLessThanOrEqual(activityBox!.x + 1);
+  }
   await expect(page.getByText("Unsupported candidate", { exact: false })).toHaveCount(0);
   await expect(page.getByRole("heading", { level: 3, name: "Streamed Student Research Draft" })).toBeVisible();
   await expect(page.locator(".attention-item")).toHaveCount(1);

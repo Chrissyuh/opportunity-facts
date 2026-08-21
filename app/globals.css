@@ -3140,6 +3140,18 @@ select[aria-invalid="true"] {
   align-items: start;
 }
 
+.analysis-layout[data-phase="running"] {
+  grid-template-columns: minmax(300px, 0.42fr) minmax(0, 1fr);
+}
+
+.analysis-layout[data-phase="running"] .analysis-progress {
+  position: static;
+}
+
+.analysis-layout[data-phase="running"] .analysis-progress > ol {
+  display: none;
+}
+
 .analysis-input {
   overflow: hidden;
 }
@@ -3496,6 +3508,10 @@ select[aria-invalid="true"] {
   }
 
   .analysis-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .analysis-layout[data-phase="running"] {
     grid-template-columns: 1fr;
   }
 
