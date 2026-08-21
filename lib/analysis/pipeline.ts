@@ -15,6 +15,7 @@ import {
   extractOpportunityCard,
   type AnalysisSourceContext,
   type EvidenceWarning,
+  type FastCoreAreaAssessment,
   type ModelExtractor,
 } from "./model-extraction";
 import { parsePublicHttpUrl } from "./url-safety";
@@ -113,6 +114,7 @@ export interface AnalysisPipelineResult {
   readonly validationStats: AnalysisValidationStats;
   readonly sourceFingerprint: string | null;
   readonly familyFailures: readonly import("./model-extraction").ModelFamilyFailure[];
+  readonly coreAreaAssessments: readonly FastCoreAreaAssessment[];
 }
 
 export interface AnalyzePipelineOptions {
@@ -171,6 +173,7 @@ async function finishAnalysis(
     attentionItems,
     validationStats: extracted.validationStats,
     familyFailures: extracted.familyFailures,
+    coreAreaAssessments: extracted.coreAreaAssessments,
   };
   const quality = qualityMode === "normal"
     ? assessFastAnalysisQuality(qualityInput)
@@ -210,6 +213,7 @@ async function finishAnalysis(
     validationStats: extracted.validationStats,
     sourceFingerprint: sources[0]?.page.text ? sourceTextFingerprint(sources[0].page.text) : null,
     familyFailures: extracted.familyFailures,
+    coreAreaAssessments: extracted.coreAreaAssessments,
   };
 }
 

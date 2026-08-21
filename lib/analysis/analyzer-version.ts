@@ -1,1 +1,1 @@
-export const ANALYZER_VERSION = "student-research-v2-fast-extended";
+export const ANALYZER_VERSION = "student-research-v2-fast-core-extended";

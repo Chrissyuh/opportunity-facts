@@ -67,6 +67,7 @@ const normalResult = {
   validationStats: { attemptedSupportedClaims: 0, retainedSupportedClaims: 0, withheldSupportedClaims: 0 },
   sourceFingerprint: null,
   familyFailures: [],
+  coreAreaAssessments: [],
 } satisfies AnalysisPipelineResult;
 
 describe("durable Extended Research sessions", () => {

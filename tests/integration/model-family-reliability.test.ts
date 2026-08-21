@@ -11,6 +11,7 @@ vi.mock("openai", () => ({
 
 import {
   buildModelStageTextFormats,
+  createEmptyFastCoreChecks,
   createEmptyModelStructures,
   createOpenAIFastExtractor,
   createOpenAIExtractor,
@@ -164,7 +165,10 @@ afterEach(() => {
 
 describe("bounded model-family reliability", () => {
   it("uses one low-verbosity bounded request for normal Analyze", async () => {
-    createResponse.mockResolvedValue(response({ facts: [], attentionCandidates: [] }, "normal-response"));
+    createResponse.mockResolvedValue(response({
+      coreChecks: createEmptyFastCoreChecks(),
+      attentionCandidates: [],
+    }, "normal-response"));
     await createOpenAIFastExtractor()([source()]);
     expect(createResponse).toHaveBeenCalledOnce();
     expect(createResponse.mock.calls[0]?.[0]).toMatchObject({

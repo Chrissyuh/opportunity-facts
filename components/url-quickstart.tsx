@@ -27,7 +27,7 @@ export function UrlQuickstart() {
 
   return (
     <form className="url-quickstart" onSubmit={submit}>
-      <label htmlFor="homepage-url">Paste a public opportunity URL</label>
+      <label className="sr-only" htmlFor="homepage-url">Paste an opportunity URL</label>
       <div className="url-quickstart-row">
         <input
           id="homepage-url"
@@ -35,12 +35,11 @@ export function UrlQuickstart() {
           type="text"
           inputMode="url"
           autoComplete="url"
-          placeholder="program.org/apply"
+          placeholder="Paste an opportunity URL"
           required
         />
         <button className="button" type="submit">Analyze</button>
       </div>
-      <p className="field-help">Use a public page you can open without signing in. Never paste an application or personal information.</p>
       {error ? <p className="action-message" role="alert">{error}</p> : null}
     </form>
   );

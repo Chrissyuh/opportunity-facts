@@ -1,6 +1,11 @@
 import { CORE_FIELD_IDS, type FieldId } from "@/lib/opportunity/fields";
 import type { OpportunityCard } from "@/lib/opportunity/schema";
-import type { EvidenceWarning, ModelFamilyFailure } from "./model-extraction";
+import type {
+  EvidenceWarning,
+  FastCoreAreaAssessment,
+  FastCoreAreaId,
+  ModelFamilyFailure,
+} from "./model-extraction";
 import type { AttentionItem } from "./attention";
 import type { PageAcquisitionFailure } from "./types";
 import type { AnalysisQualityOutcome } from "./progress";
@@ -15,6 +20,8 @@ export type QualityReasonCode =
   | "EXCESSIVE_CANDIDATE_REJECTION"
   | "CYCLE_CONTEXT_UNRESOLVED"
   | "INSUFFICIENT_SOURCE_COVERAGE"
+  | "CORE_CLAIMS_WITHHELD"
+  | "PRIMARY_COVERAGE_GAPS"
   | "HIGH_PRIORITY_CAVEATS"
   | "PARTIAL_EXTRACTION";
 
@@ -45,6 +52,10 @@ export interface AnalysisQualitySignals {
   readonly importantPageFailures: number;
   readonly cycleMaterial: boolean;
   readonly cycleResolved: boolean;
+  readonly activelyCheckedCoreAreas: number;
+  readonly retainedCoreAreas: number;
+  readonly unresolvedPrimaryAreas: number;
+  readonly withheldCoreAreas: number;
 }
 
 export interface AnalysisQualityAssessment {
@@ -81,6 +92,14 @@ const FAST_DECISION_FIELDS = [
   "selection_process",
   "other_benefits",
 ] as const satisfies readonly FieldId[];
+
+const FAST_PRIMARY_AREAS = [
+  "eligibility",
+  "deadline",
+  "schedule",
+  "format_location",
+  "cost",
+] as const satisfies readonly FastCoreAreaId[];
 
 const IMPORTANT_FAILURE_CODES = new Set([
   "UNSUPPORTED_CONTENT_TYPE",
@@ -171,6 +190,10 @@ export function assessAnalysisQuality(input: {
     importantPageFailures,
     cycleMaterial,
     cycleResolved: card.cycle.status === "modeled",
+    activelyCheckedCoreAreas: 0,
+    retainedCoreAreas: 0,
+    unresolvedPrimaryAreas: 0,
+    withheldCoreAreas: 0,
   };
 
   const reasons: QualityReason[] = [];
@@ -258,6 +281,7 @@ export function assessFastAnalysisQuality(input: {
   readonly evidenceWarnings: readonly EvidenceWarning[];
   readonly attentionItems: readonly AttentionItem[];
   readonly validationStats: AnalysisValidationStats;
+  readonly coreAreaAssessments?: readonly FastCoreAreaAssessment[];
 }): AnalysisQualityAssessment {
   const supportedSummaryFacts = Object.values(input.card.facts).filter((fact) =>
     fact.status === "disclosed" || fact.status === "conflicting",
@@ -276,6 +300,16 @@ export function assessFastAnalysisQuality(input: {
     ? input.validationStats.withheldSupportedClaims / input.validationStats.attemptedSupportedClaims
     : 0;
   const importantPageFailures = input.pageWarnings.filter((warning) => IMPORTANT_FAILURE_CODES.has(warning.code)).length;
+  const coreAreaAssessments = input.coreAreaAssessments ?? [];
+  const primaryAreas = new Set<FastCoreAreaId>(FAST_PRIMARY_AREAS);
+  const unresolvedPrimaryAreas = coreAreaAssessments.filter((assessment) =>
+    primaryAreas.has(assessment.area) &&
+    (assessment.status === "checked_not_found" || assessment.status === "unclear" || assessment.status === "withheld"),
+  ).length;
+  const withheldCoreAreas = coreAreaAssessments.filter((assessment) => assessment.status === "withheld").length;
+  const retainedCoreAreas = coreAreaAssessments.filter((assessment) =>
+    assessment.status === "retained" || assessment.status === "not_applicable",
+  ).length;
   const reasons: QualityReason[] = [];
   if (input.card.facts.opportunity_name.status !== "disclosed") reasons.push({
     code: "TARGET_IDENTITY_UNRESOLVED",
@@ -309,6 +343,18 @@ export function assessFastAnalysisQuality(input: {
   });
   const insufficient = reasons.some((reason) => reason.priority === "high");
   const highAttention = input.attentionItems.filter((item) => item.priority === "high").length;
+  if (!insufficient && withheldCoreAreas > 0) reasons.push({
+    code: "CORE_CLAIMS_WITHHELD",
+    priority: "medium",
+    title: "A core answer did not survive verification",
+    explanation: "At least one candidate in a required practical area was withheld by evidence, scope, cycle, or projection checks. It is unresolved rather than treated as absent from the source.",
+  });
+  if (!insufficient && unresolvedPrimaryAreas >= 3) reasons.push({
+    code: "PRIMARY_COVERAGE_GAPS",
+    priority: "medium",
+    title: "Several primary questions remain unresolved",
+    explanation: "The compact analysis did not establish at least three of eligibility, deadline, schedule, format or location, and cost. This does not claim those details are absent from the source.",
+  });
   if (!insufficient && highAttention > 0) reasons.push({
     code: "HIGH_PRIORITY_CAVEATS",
     priority: "medium",
@@ -317,7 +363,7 @@ export function assessFastAnalysisQuality(input: {
   });
   const outcome: AnalysisQualityOutcome = insufficient
     ? "insufficient_quality"
-    : highAttention === 0 && practicalAreas >= 7
+    : highAttention === 0 && practicalAreas >= 7 && withheldCoreAreas === 0 && unresolvedPrimaryAreas < 3
       ? "good"
       : "usable_with_caveats";
   const hasTransientFailure = input.pageWarnings.some((warning) => TRANSIENT_FAILURE_CODES.has(warning.code));
@@ -339,6 +385,10 @@ export function assessFastAnalysisQuality(input: {
       importantPageFailures,
       cycleMaterial,
       cycleResolved: input.card.cycle.status === "modeled",
+      activelyCheckedCoreAreas: coreAreaAssessments.length,
+      retainedCoreAreas,
+      unresolvedPrimaryAreas,
+      withheldCoreAreas,
     },
     cacheEligible: outcome === "insufficient_quality" && !hasTransientFailure,
   };

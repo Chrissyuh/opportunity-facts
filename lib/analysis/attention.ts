@@ -140,6 +140,40 @@ function overlapsExistingAttention(left: AttentionItem, right: AttentionItem): b
   return concernsSelectivityMeasurement(left) && concernsSelectivityMeasurement(right);
 }
 
+const SUBSTITUTE_SCHEDULE_FIELDS = new Set<FieldId>([
+  "start_date",
+  "end_date",
+  "duration",
+]);
+
+function hasResolvedFact(card: OpportunityCard, fieldId: FieldId): boolean {
+  return card.facts[fieldId].status === "disclosed";
+}
+
+/**
+ * A separately published end date is not a decision-important gap when the
+ * retained evidence already establishes both when participation starts and
+ * how long it lasts. This only suppresses pure schema-completion warnings:
+ * conflicts, ambiguous end dates, and items tied to another material field or
+ * structured claim remain visible.
+ */
+function isRedundantMissingEndDate(
+  card: OpportunityCard,
+  item: AttentionItem,
+): boolean {
+  if (card.facts.end_date.status !== "not_found") return false;
+  if (!hasResolvedFact(card, "start_date") || !hasResolvedFact(card, "duration")) return false;
+  if (!item.fieldIds.includes("end_date") || item.claimIds.length > 0) return false;
+  return item.fieldIds.every((fieldId) => SUBSTITUTE_SCHEDULE_FIELDS.has(fieldId));
+}
+
+export function filterMaterialAttentionItems(
+  card: OpportunityCard,
+  items: readonly AttentionItem[],
+): AttentionItem[] {
+  return items.filter((item) => !isRedundantMissingEndDate(card, item));
+}
+
 export function deduplicateAttentionItems(
   items: readonly AttentionItem[],
 ): AttentionItem[] {
@@ -326,7 +360,10 @@ export function groundAttentionCandidates(
       origin: "model_grounded",
     }];
   });
-  return deduplicateAttentionItems([...grounded, ...deriveDeterministicAttention(card)]);
+  return deduplicateAttentionItems(filterMaterialAttentionItems(
+    card,
+    [...grounded, ...deriveDeterministicAttention(card)],
+  ));
 }
 
 export function evidenceForAttentionItem(

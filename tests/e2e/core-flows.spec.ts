@@ -36,19 +36,21 @@ async function captureDocumentationScreenshot(
   }
 }
 
-test("homepage makes URL analysis primary and explains the research path", async ({ page }, testInfo) => {
+test("homepage makes URL analysis the single dominant task", async ({ page }, testInfo) => {
   await page.goto("/");
 
   await expect(page.getByRole("heading", { level: 1, name: /Know what you/ })).toBeVisible();
-  await expect(page.getByLabel("Paste a public opportunity URL")).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "The answers that matter." })).toBeVisible();
-  await expect(page.getByText("Missing information kept visible")).toBeVisible();
+  await expect(page.getByLabel("Paste an opportunity URL")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2 })).toHaveCount(0);
+  await expect(page.getByText("Research across the pages that matter.")).toHaveCount(0);
   await expectNoPageOverflow(page);
   if (testInfo.project.name === "desktop-chromium") {
     await captureDocumentationScreenshot(page, "home-desktop.png");
+  } else {
+    await page.getByRole("button", { name: "Menu" }).click();
   }
 
-  await page.getByRole("link", { name: /See how the checks work/ }).click();
+  await page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "How it works" }).click();
   await expect(page).toHaveURL(/\/how-it-works$/);
   await expect(page.getByRole("heading", { level: 1, name: "From one link to answers you can inspect." })).toBeVisible();
 });
@@ -69,18 +71,17 @@ test("homepage normalizes a bare domain and immediately starts analysis without 
   });
   await page.goto("/");
   const target = "  www.program.example/apply?cycle=2027  ";
-  await page.getByLabel("Paste a public opportunity URL").fill(target);
+  await page.getByLabel("Paste an opportunity URL").fill(target);
   await page.getByRole("button", { name: "Analyze" }).click();
 
   await expect(page).toHaveURL(/\/analyze$/);
   expect(page.url()).not.toContain("program.example");
-  await expect(page.getByLabel("Public opportunity URL")).toHaveValue("https://www.program.example/apply?cycle=2027");
   await expect.poll(() => submittedUrl).toBe("https://www.program.example/apply?cycle=2027");
 });
 
 test("homepage reports a malformed opportunity URL without navigating", async ({ page }) => {
   await page.goto("/");
-  await page.getByLabel("Paste a public opportunity URL").fill("not a domain");
+  await page.getByLabel("Paste an opportunity URL").fill("not a domain");
   await page.getByRole("button", { name: "Analyze" }).click();
   await expect(page).toHaveURL(/\/$/);
   await expect(page.getByRole("alert").filter({ hasText: "Enter a valid public opportunity URL" }))
@@ -524,7 +525,7 @@ test("missing analysis configuration provides useful local fallbacks", async ({ 
   await expect(page.getByRole("heading", { level: 3, name: "Live analysis is paused." })).toBeVisible();
   await expect(page.getByText("Your input has not been sent.")).toBeVisible();
   await expect(page.getByRole("link", { name: "Try a sample" })).toBeVisible();
-  await expect(page.getByLabel("What the analysis includes").getByRole("link", { name: "How it works" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "How it works" }).last()).toBeVisible();
 
   await expect(page.getByRole("button", { name: "Automatic extraction unavailable" })).toBeDisabled();
   expect(analysisPosts).toBe(0);
@@ -602,10 +603,10 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
   await page.getByLabel("Public opportunity URL").fill("https://mocked-analysis.example/program");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
 
-  await expect(page.getByRole("heading", { level: 3, name: "Analysis in progress" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Opportunity research" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Cancel analysis" })).toBeVisible();
-  await expect(page.getByText(/\d+ sec elapsed/)).toBeVisible();
-  await expect(page.locator(".analysis-progress [data-state='active']")).toHaveCount(0);
+  await expect(page.locator(".research-workspace-controls time")).toContainText(/\d+ sec/);
+  await expect(page.locator(".analysis-input")).toHaveCount(0);
   const resultTitle = page.getByRole("heading", { level: 2, name: "Analysis complete" });
   await expect(resultTitle).toBeVisible();
   await expect(resultTitle).toBeFocused();
@@ -615,7 +616,6 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
   await expect(page.getByRole("heading", { level: 3, name: "Mocked Analysis Draft" })).toBeVisible();
   await page.locator("details.analysis-sources > summary").click();
   await expect(page.getByText("Mocked source page")).toBeVisible();
-  await expect(page.getByRole("heading", { level: 3, name: "Overview ready" })).toBeVisible();
   await page.locator("details.analysis-draft-note > summary").click();
   await expect(page.getByText("This is not human review or a verdict", { exact: false })).toBeVisible();
   await expect(page.getByText("1 candidate warning withheld.", { exact: false })).toBeVisible();
@@ -626,7 +626,7 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
   await expect(page.getByText("private upstream diagnostic", { exact: false })).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Paste text for failed pages" })).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Paste source text" })).toHaveCount(0);
-  await expect(page.locator(".analysis-progress")).toHaveCSS("position", "static");
+  await expect(page.locator(".analysis-progress")).toHaveCount(0);
   await page.locator("details.analysis-more-actions > summary").click();
   await expect(page.getByRole("button", { name: "Save locally" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Edit draft" })).toBeVisible();

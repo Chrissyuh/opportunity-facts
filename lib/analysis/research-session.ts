@@ -68,9 +68,15 @@ function isSourceContext(value: unknown): value is AnalysisSourceContext {
 
 function isPipelineResult(value: unknown): value is AnalysisPipelineResult {
   if (typeof value !== "object" || value === null) return false;
-  const result = value as { readonly card?: unknown; readonly reviewedPages?: unknown; readonly pageWarnings?: unknown };
+  const result = value as {
+    readonly card?: unknown;
+    readonly reviewedPages?: unknown;
+    readonly pageWarnings?: unknown;
+    readonly coreAreaAssessments?: unknown;
+  };
   return opportunityCardSchema.safeParse(result.card).success &&
-    Array.isArray(result.reviewedPages) && Array.isArray(result.pageWarnings);
+    Array.isArray(result.reviewedPages) && Array.isArray(result.pageWarnings) &&
+    Array.isArray(result.coreAreaAssessments);
 }
 
 function parseStoredSession(value: unknown, now = Date.now()): ResearchSession | null {

@@ -12,15 +12,16 @@ test("replays a saved analysis without calling the provider route", async ({ pag
   await sampleIndicator.click();
   await expect(sampleIndicator).toHaveAttribute(
     "data-description",
-    /replay of an actual saved analyzer run/i,
+    /replays a previously completed Opportunity Facts analysis/i,
   );
-  await expect(page.getByLabel("Submitted public URL")).toHaveValue("https://mites.mit.edu/discover-mites/mites-summer/");
+  await expect(page.getByText("mites.mit.edu", { exact: true })).toBeVisible();
+  await expect(page.locator(".research-workspace")).toBeVisible();
   await page.getByRole("button", { name: "Skip to result" }).click();
   await expect(page.getByRole("heading", { name: "Sample analysis result" })).toBeVisible();
   await expect(page.getByLabel("Sample analysis result").getByRole("heading", { name: "MITES Summer", exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Needs attention" })).toBeVisible();
   await page.goto("/");
-  await expect(page.getByRole("link", { name: /Try another sample/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Try a sample", exact: true })).toBeVisible();
   expect(providerRequests).toEqual([]);
 });
 

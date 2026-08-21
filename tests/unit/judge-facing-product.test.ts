@@ -21,7 +21,8 @@ describe("judge-facing product language", () => {
     expect(homepage).toContain("<SampleLauncher />");
     const launcher = readFileSync("components/sample-launcher.tsx", "utf8");
     expect(launcher).toContain('href="/analyze?sample=next"');
-    expect(launcher).toContain("Try another sample");
+    expect(launcher).toContain("Try a sample");
+    expect(launcher).not.toContain("Try another sample");
   });
 
   it("routes the primary How it works navigation to the accessible product explanation", () => {

@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 
 vi.mock("server-only", () => ({}));
 
-import { deriveDeterministicAttention } from "@/lib/analysis/attention";
+import { deriveDeterministicAttention, groundAttentionCandidates } from "@/lib/analysis/attention";
 import {
   mergeExtendedAttention,
   preserveNormalSupportedFacts,
@@ -281,6 +281,83 @@ describe("fast Analyze and Extended Research", () => {
     expect(deriveDeterministicAttention(open).map((item) => item.id)).not.toContain("selectivity-not-quantified");
   });
 
+  it("suppresses a missing end-date warning when a supported start date and duration already establish the useful schedule", () => {
+    const context = source("The program starts September 8, 2026 and lasts 6 weeks.");
+    const card = createEmptyCard({ slug: "scheduled", summary: "Draft", reviewState: "automated_draft" });
+    card.facts.start_date = disclosed(context, "The program starts September 8, 2026", "September 8, 2026");
+    card.facts.duration = disclosed(context, "lasts 6 weeks", "6 weeks");
+
+    const items = groundAttentionCandidates(card, [{
+      id: "program-end-date-not-found",
+      category: "other",
+      priority: "low",
+      title: "Program end date was not found",
+      explanation: "The reviewed sources did not state a separate program end date.",
+      fieldIds: ["start_date", "end_date", "duration"],
+      claimIds: [],
+    }]);
+
+    expect(items.map((item) => item.id)).not.toContain("program-end-date-not-found");
+    expect(items.map((item) => item.id)).toContain("deadline-unresolved");
+  });
+
+  it("retains an end-date conflict even when start date and duration are supported", () => {
+    const context = source("The program starts September 8, 2026, lasts 6 weeks, and lists October 16 and October 20 as end dates.");
+    const card = createEmptyCard({ slug: "conflicting-schedule", summary: "Draft", reviewState: "automated_draft" });
+    card.facts.start_date = disclosed(context, "The program starts September 8, 2026", "September 8, 2026");
+    card.facts.duration = disclosed(context, "lasts 6 weeks", "6 weeks");
+    card.facts.end_date = factSchema.parse({
+      status: "conflicting",
+      note: "Two official end dates are retained.",
+      conflictingValues: [
+        {
+          value: "October 16, 2026",
+          displayValue: "October 16, 2026",
+          normalizedValue: { kind: "date", isoDate: "2026-10-16" },
+          sources: [evidence(context, "October 16")],
+        },
+        {
+          value: "October 20, 2026",
+          displayValue: "October 20, 2026",
+          normalizedValue: { kind: "date", isoDate: "2026-10-20" },
+          sources: [evidence(context, "October 20")],
+        },
+      ],
+    });
+
+    const items = groundAttentionCandidates(card, [{
+      id: "program-end-dates-conflict",
+      category: "other",
+      priority: "medium",
+      title: "Program end dates conflict",
+      explanation: "The retained record supports two different program end dates.",
+      fieldIds: ["end_date"],
+      claimIds: [],
+    }]);
+
+    expect(items.map((item) => item.id)).toContain("program-end-dates-conflict");
+  });
+
+  it("retains end-date attention tied to another material requirement", () => {
+    const context = source("The program starts September 8, 2026, lasts 6 weeks, and participants arrange return travel.");
+    const card = createEmptyCard({ slug: "travel-schedule", summary: "Draft", reviewState: "automated_draft" });
+    card.facts.start_date = disclosed(context, "The program starts September 8, 2026", "September 8, 2026");
+    card.facts.duration = disclosed(context, "lasts 6 weeks", "6 weeks");
+    card.facts.travel_requirements = disclosed(context, "participants arrange return travel", "Participants arrange return travel");
+
+    const items = groundAttentionCandidates(card, [{
+      id: "return-travel-date-needs-checking",
+      category: "other",
+      priority: "medium",
+      title: "Return travel date needs checking",
+      explanation: "The exact end date may matter for the supported return travel requirement.",
+      fieldIds: ["end_date", "travel_requirements"],
+      claimIds: [],
+    }]);
+
+    expect(items.map((item) => item.id)).toContain("return-travel-date-needs-checking");
+  });
+
   it("flags an unknown total when tuition is supported but the rest of the mandatory cost inventory is not", () => {
     const card = createEmptyCard({ slug: "paid", summary: "Draft", reviewState: "automated_draft" });
     card.facts.tuition = factSchema.parse({
@@ -343,7 +420,7 @@ describe("fast Analyze and Extended Research", () => {
   });
 
   it("does not let rich projection downgrade a validated normal fact", async () => {
-    const context = source("North Star Research Program\nOperated by North Star Learning\nStudents in grades 9â€“12 may apply\nApplications close October 1, 2026\nThe program is online\nTuition is $500\nApplications are reviewed and finalists interview\nThe program lasts 6 weeks\nParticipants retain ownership of their projects.");
+    const context = source("North Star Research Program\nOperated by North Star Learning\nStudents in grades 9–12 may apply\nApplications close October 1, 2026\nThe program is online\nTuition is $500\nApplications are reviewed and finalists interview\nThe program lasts 6 weeks\nParticipants retain ownership of their projects.");
     const normal = (await normalResult(context)).card;
     normal.facts.duration = disclosed(context, "The program lasts 6 weeks", "6 weeks");
     const extended = structuredClone(normal);
@@ -436,6 +513,7 @@ describe("Extended Research session security", () => {
     quality: { version: "student-research-v2-fast", outcome: "insufficient_quality", reasons: [], signals: {} as never, cacheEligible: false },
     validationStats: { attemptedSupportedClaims: 0, retainedSupportedClaims: 0, withheldSupportedClaims: 0 },
     sourceFingerprint: null, familyFailures: [],
+    coreAreaAssessments: [],
   } satisfies AnalysisPipelineResult;
 
   it("uses opaque bounded versioned sessions and rejects browser-supplied cards", () => {

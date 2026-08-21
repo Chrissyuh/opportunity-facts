@@ -47,7 +47,7 @@ describe("analysis route boundary", () => {
     expect(response.headers.get("cache-control")).toBe("no-store, max-age=0");
     await expect(response.json()).resolves.toEqual({
       configured: false,
-      analyzerVersion: "student-research-v2-fast-extended",
+      analyzerVersion: "student-research-v2-fast-core-extended",
       model: null,
     });
   });
@@ -59,7 +59,7 @@ describe("analysis route boundary", () => {
     const configuration = await GET();
     await expect(configuration.json()).resolves.toEqual({
       configured: false,
-      analyzerVersion: "student-research-v2-fast-extended",
+      analyzerVersion: "student-research-v2-fast-core-extended",
       model: null,
     });
 

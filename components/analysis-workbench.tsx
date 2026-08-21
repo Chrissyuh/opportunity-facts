@@ -18,6 +18,7 @@ import type { AnalysisProgressEvent } from "@/lib/analysis/progress";
 import { ANALYZER_VERSION } from "@/lib/analysis/analyzer-version";
 import { normalizeAnalysisUrlInput } from "@/lib/opportunity/url-input";
 import { OpportunityOverview } from "./opportunity-overview";
+import { ResearchActivity as SharedResearchActivity, ResearchWorkspace } from "./research-workspace";
 
 const AnalyzedFullRecord = dynamic(() =>
   import("./analyzed-full-record").then((module) => module.AnalyzedFullRecord));
@@ -567,9 +568,20 @@ export function AnalysisWorkbench({
   }
 
   const resultIsVisible = result !== null && (phase !== "insufficient" || qualityOverride);
+  const normalizedDisplayUrl = normalizeAnalysisUrlInput(url);
+  const researchHost = normalizedDisplayUrl.ok ? new URL(normalizedDisplayUrl.url).hostname : url;
 
   return (
     <div className="analysis-layout" data-has-result={resultIsVisible ? "true" : "false"} data-phase={phase} aria-busy={phase === "running"}>
+      {phase === "running" ? (
+        <ResearchWorkspace
+          events={progressEvents}
+          elapsedMs={elapsedSeconds * 1_000}
+          fallbackName="Opportunity research"
+          context={researchHost}
+          actions={<button className="button-quiet" type="button" onClick={cancelAnalysis}>Cancel analysis</button>}
+        />
+      ) : phase !== "complete" && phase !== "insufficient" ? <>
       <section className="analysis-input panel" aria-labelledby="analysis-input-title">
         <div className="analysis-input-header">
           <p className="eyebrow">Source input</p>
@@ -595,41 +607,25 @@ export function AnalysisWorkbench({
 
           {error ? <div className="error-summary" role="alert"><strong>Analysis did not complete.</strong> {error}</div> : null}
           <div className="button-row">
-            <button className="button" type="submit" disabled={!isConfigured || phase === "running" || extendedPhase === "running"}>
-              {!isConfigured ? "Automatic extraction unavailable" : phase === "running" ? "Researching sources…" : "Analyze"}
+            <button className="button" type="submit" disabled={!isConfigured || extendedPhase === "running"}>
+              {!isConfigured ? "Automatic extraction unavailable" : "Analyze"}
             </button>
-            {phase === "running" ? (
-              <button className="button-quiet" type="button" onClick={cancelAnalysis}>
-                Cancel analysis
-              </button>
-            ) : null}
           </div>
           <details className="analysis-boundary"><summary>Privacy and source boundaries</summary><p>Public page text is sent to OpenAI for this response. Opportunity Facts keeps a bounded continuation session for up to 30 minutes when Extended Research is available; hosting, DNS/network, source-site, and provider logs may also exist. Do not submit signed or private URLs, application portals, personal information, or account-only content.</p></details>
+          {!isConfigured || phase === "unconfigured" ? (
+            <div className="configuration-notice">
+              <span className="review-badge">Extraction not configured</span>
+              <h3>Live analysis is paused.</h3>
+              <p>Your input has not been sent.</p>
+              <div className="button-row">
+                <Link className="button-secondary" href="/analyze?sample=next">Try a sample</Link>
+                <Link className="button-quiet" href="/how-it-works">How it works</Link>
+              </div>
+            </div>
+          ) : null}
         </form>
       </section>
-
-      <aside className="analysis-progress" aria-labelledby="analysis-progress-title">
-        <p className="eyebrow">Analysis record</p>
-        <h2 id="analysis-progress-title">What the analysis includes</h2>
-        <AnalysisRunStatus phase={phase} elapsedSeconds={elapsedSeconds} events={progressEvents} />
-        <ol>
-          <PipelineStep number="01" title="Validate source boundary" text="Allow only bounded public HTTP(S) pages." />
-          <PipelineStep number="02" title="Review relevant pages" text="Extract visible text and bounded page metadata; ignore executable scripts, boilerplate, and page instructions." />
-          <PipelineStep number="03" title="Answer practical questions" text="Focus on the decision-useful facts a student needs first." />
-          <PipelineStep number="04" title="Validate every excerpt" text="Match citations back to normalized source text before displaying support." />
-        </ol>
-        {!isConfigured || phase === "unconfigured" ? (
-          <div className="configuration-notice">
-            <span className="review-badge">Extraction not configured</span>
-            <h3>Live analysis is paused.</h3>
-            <p>Your input has not been sent.</p>
-            <div className="button-row">
-              <Link className="button-secondary" href="/analyze?sample=next">Try a sample</Link>
-              <Link className="button-quiet" href="/how-it-works">How it works</Link>
-            </div>
-          </div>
-        ) : null}
-      </aside>
+      </> : null}
 
       {phase === "insufficient" && qualityFailure && !qualityOverride ? <section className="analysis-insufficient" aria-labelledby="analysis-insufficient-title">
         <p className="eyebrow">Reliable result withheld</p><h2 id="analysis-insufficient-title">We couldn’t build a reliable Opportunity Facts card from this page.</h2>
@@ -744,92 +740,6 @@ export function AnalysisWorkbench({
   );
 }
 
-function progressEventPresentation(event: AnalysisProgressEvent): { label: string; active: boolean } | null {
-  if (event.type === "source_acquired") return { label: `${event.title} reviewed`, active: false };
-  if (event.type === "source_failed") return { label: "A discovered page could not be acquired", active: false };
-  if (event.type === "cycle_resolved") return { label: event.status === "resolved" ? `${event.label ?? "Cycle"} identified` : "Cycle needs clarification", active: false };
-  if (event.type === "normal_model_started") return { label: "Answering the practical questions", active: true };
-  if (event.type === "normal_model_completed") return { label: "Practical questions reviewed", active: false };
-  if (event.type === "normal_model_failed") return { label: "The compact research response did not complete", active: false };
-  if (event.type === "family_started") return { label: `Reviewing ${event.family.replaceAll("_", " ")}`, active: true };
-  if (event.type === "family_completed") return { label: `${event.family.replaceAll("_", " ")} review complete`, active: false };
-  if (event.type === "family_failed") return { label: `${event.family.replaceAll("_", " ")} review could not complete`, active: false };
-  if (event.type === "validated_fact") return { label: `${event.label}: ${event.displayValue}`, active: false };
-  if (event.type === "validation_complete") return { label: `${event.retained} supported facts retained; ${event.withheld} withheld`, active: false };
-  if (event.type === "attention_ready") return { label: `${event.count} item${event.count === 1 ? "" : "s"} need attention`, active: false };
-  if (event.type === "quality_complete") return { label: "Result quality checked", active: false };
-  if (event.type === "extended_started") return { label: "Extended Research started", active: true };
-  if (event.type === "extended_section_started") return { label: event.section === "financial" ? "Reviewing detailed costs and outcomes" : "Reviewing terms, relationships, and pathways", active: true };
-  if (event.type === "extended_section_completed") return { label: event.section === "financial" ? "Detailed costs and outcomes checked" : "Terms, relationships, and pathways checked", active: false };
-  if (event.type === "extended_section_failed") return { label: event.section === "financial" ? "Some financial details could not be completed" : "Some program details could not be completed", active: false };
-  if (event.type === "extended_validation_complete") return { label: `${event.retained} extended claims retained; ${event.withheld} withheld`, active: false };
-  if (event.type === "extended_complete") return { label: event.partial ? "Extended Research completed with some sections unavailable" : "Extended Research complete", active: false };
-  return null;
-}
-
-function ResearchActivity({ events }: { events: AnalysisProgressEvent[] }) {
-  if (!events.length) return null;
-  return (
-    <ol className="research-activity" aria-label="Live research activity">
-      {events.slice(-7).map((event) => {
-        const presentation = progressEventPresentation(event);
-        return presentation ? <li key={event.sequence}><span aria-hidden="true">{presentation.active ? "◌" : "✓"}</span><span>{presentation.label}</span><time>{Math.round(event.elapsedMs / 1000)}s</time></li> : null;
-      })}
-    </ol>
-  );
-}
-
-const LIVE_RESEARCH_ROWS: ReadonlyArray<{
-  label: string;
-  fieldIds: readonly FieldId[];
-}> = [
-  { label: "Opportunity", fieldIds: ["opportunity_name", "operating_organization", "institution_relationship"] },
-  { label: "Eligibility", fieldIds: ["grade_levels", "ages", "geographic_restrictions", "citizenship_restrictions"] },
-  { label: "Deadline", fieldIds: ["application_deadline"] },
-  { label: "Dates / duration", fieldIds: ["start_date", "end_date", "duration", "weekly_hours", "required_live_hours"] },
-  { label: "Format / location", fieldIds: ["participation_format", "location"] },
-  { label: "Cost", fieldIds: ["estimated_total_mandatory_cost", "tuition", "application_fee"] },
-  { label: "Aid", fieldIds: ["financial_aid"] },
-  { label: "Selection", fieldIds: ["selection_process"] },
-  { label: "Outcomes", fieldIds: ["cash_award", "tuition_waiver", "program_seat", "other_benefits"] },
-];
-
-function ValidatedFactWorkspace({ events }: { events: AnalysisProgressEvent[] }) {
-  const facts = new Map<FieldId, Extract<AnalysisProgressEvent, { type: "validated_fact" }>>();
-  for (const event of events) {
-    if (event.type === "validated_fact") facts.set(event.fieldId, event);
-  }
-  return (
-    <section className="validated-fact-workspace" aria-labelledby="validated-facts-title" aria-live="polite">
-      <div className="validated-fact-heading">
-        <h3 id="validated-facts-title">Research overview</h3>
-        <small>{facts.size} source-backed fact{facts.size === 1 ? "" : "s"}</small>
-      </div>
-      <dl className="validated-fact-groups">
-        {LIVE_RESEARCH_ROWS.map((row) => {
-          const rowFacts = row.fieldIds.flatMap((fieldId) => {
-            const fact = facts.get(fieldId);
-            return fact ? [fact] : [];
-          });
-          return (
-            <div className="validated-fact-row" data-resolved={rowFacts.length ? "true" : "false"} key={row.label}>
-              <dt>{row.label}</dt>
-              <dd>
-                {rowFacts.length ? rowFacts.map((fact) => (
-                  <span key={fact.fieldId}>
-                    <strong>{fact.displayValue}</strong>
-                    <small>{fact.evidenceCount} source{fact.evidenceCount === 1 ? "" : "s"} checked</small>
-                  </span>
-                )) : <span className="validated-fact-pending">Checking sources...</span>}
-              </dd>
-            </div>
-          );
-        })}
-      </dl>
-    </section>
-  );
-}
-
 function ExtendedResearchPanel({
   phase,
   elapsedSeconds,
@@ -857,7 +767,7 @@ function ExtendedResearchPanel({
         {phase === "complete" ? <p role="status">{partial ? "Extended Research completed with some sections unavailable. Safely completed details were retained; your original overview is unchanged." : "Additional supported details are now included. Full Record and Full Evidence PDF are available below."}</p> : null}
         {phase === "error" ? <p className="extended-research-error" role="alert"><strong>Extended Research could not complete.</strong> {error || "Your original overview remains unchanged."}</p> : null}
         {phase !== "idle" ? <small>{formatElapsed(elapsedSeconds)}</small> : null}
-        {phase === "running" ? <ResearchActivity events={events} /> : null}
+        {phase === "running" ? <SharedResearchActivity events={events} /> : null}
       </div>
       <div className="button-row no-print">
         {phase === "idle" ? <button className="button-secondary" type="button" onClick={onStart}>Extended Research</button> : null}
@@ -865,49 +775,5 @@ function ExtendedResearchPanel({
         {phase === "complete" ? <span className="extended-complete-mark">✓ Extended Research complete</span> : null}
       </div>
     </section>
-  );
-}
-
-function AnalysisRunStatus({ phase, elapsedSeconds, events }: { phase: Phase; elapsedSeconds: number; events: AnalysisProgressEvent[] }) {
-  const status = phase === "running"
-    ? {
-        title: "Analysis in progress",
-        text: "Researching public pages and validating source-backed facts. Keep this tab open; completed work will appear here as the server reports it.",
-      }
-    : phase === "complete"
-      ? { title: "Overview ready", text: "Review the acquired-page record and any warnings before relying on individual claims." }
-      : phase === "error"
-        ? { title: "No draft returned", text: "The error above explains what stopped this attempt; incomplete output is not presented as a finished card." }
-        : phase === "insufficient"
-          ? { title: "Reliable result withheld", text: "Try a stronger official page for this opportunity." }
-        : phase === "unconfigured"
-          ? { title: "Automatic extraction unavailable", text: "No source input has been sent." }
-          : { title: "Ready to analyze", text: "Start with a public opportunity page." };
-  return (
-    <div className="analysis-run-status" data-state={phase}>
-      <span className="analysis-run-indicator" aria-hidden="true" />
-      <div>
-        <h3 aria-live="polite">{status.title}</h3>
-        <p>{status.text}</p>
-        {phase === "running" || phase === "complete" || phase === "error" ? (
-          <small aria-hidden="true">{formatElapsed(elapsedSeconds)}</small>
-        ) : null}
-      </div>
-      {phase === "running" ? (
-        <div className="research-running-grid">
-          <ValidatedFactWorkspace events={events} />
-          <ResearchActivity events={events.filter((event) => event.type !== "validated_fact")} />
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
-function PipelineStep({ number, title, text }: { number: string; title: string; text: string }) {
-  return (
-    <li>
-      <span>{number}</span>
-      <div><h3>{title}</h3><p>{text}</p></div>
-    </li>
   );
 }

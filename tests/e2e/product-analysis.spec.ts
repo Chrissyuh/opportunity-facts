@@ -105,16 +105,15 @@ test("streamed research shows only observable work and validated preview facts",
   await expect(validated.getByText("$450", { exact: true })).toHaveText("$450");
   await expect(validated.getByText("1 source checked", { exact: true })).toHaveText("1 source checked");
   if ((page.viewportSize()?.width ?? 0) > 1050) {
-    const inputBox = await page.locator(".analysis-input").boundingBox();
-    const progressBox = await page.locator(".analysis-progress").boundingBox();
+    const workspaceBox = await page.locator(".research-workspace").boundingBox();
     const overviewBox = await validated.boundingBox();
-    const activityBox = await page.locator(".research-running-grid > .research-activity").boundingBox();
-    expect(inputBox).not.toBeNull();
-    expect(progressBox).not.toBeNull();
+    const activityBox = await page.locator(".research-activity-panel").boundingBox();
+    await expect(page.locator(".analysis-input")).toHaveCount(0);
+    await expect(page.getByText("What the analysis includes")).toHaveCount(0);
+    expect(workspaceBox).not.toBeNull();
     expect(overviewBox).not.toBeNull();
     expect(activityBox).not.toBeNull();
-    expect(progressBox!.width).toBeGreaterThan(inputBox!.width);
-    expect(overviewBox!.width).toBeGreaterThan(300);
+    expect(overviewBox!.width).toBeGreaterThan(500);
     expect(activityBox!.width).toBeGreaterThan(200);
     expect(overviewBox!.x + overviewBox!.width).toBeLessThanOrEqual(activityBox!.x + 1);
   }
