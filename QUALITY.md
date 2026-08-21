@@ -128,3 +128,5 @@ The analyzer-first redesign adds streamed observable progress, deterministic qua
 | Production security/privacy | CSP, HSTS, frame/MIME/referrer/permissions headers present; review workspace hard-404s; Batch hidden; runtime-log scan found no target URL, API-key identifier, authorization header, prompt, or source excerpt |
 | Production smokes | Lumos normal and Extended plus MITES and Diamond normal paths completed. No run was repeated to improve its output; these are deployment checks, not a benchmark. |
 | PDF audit | Production Lumos artifact renders as a 2-page Summary and 9-page Full Evidence report with selectable text, exact links, page numbering, and visually clean section boundaries |
+
+The final page-boundary pass keeps the private production Lumos artifact at 2/9 pages. Three deliberately complex reviewed records render at 3–4 Summary pages and 11–17 Full Evidence pages. The two hardest examples exceed the 8–15-page design target slightly so structured records and exact evidence remain readable; all pages retain Letter dimensions, running context, page numbering, selectable text, and exact links.

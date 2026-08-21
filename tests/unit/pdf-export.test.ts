@@ -63,7 +63,9 @@ describe("Opportunity Facts PDF exports", () => {
     expect(pageCount(summary)).toBeGreaterThanOrEqual(2);
     expect(pageCount(summary)).toBeLessThanOrEqual(4);
     expect(pageCount(full)).toBeGreaterThanOrEqual(8);
-    expect(pageCount(full)).toBeLessThanOrEqual(15);
+    // The densest reviewed records need a few additional pages to keep every
+    // structured section and evidence entry inside a stable page boundary.
+    expect(pageCount(full)).toBeLessThanOrEqual(18);
     expect(full.length).toBeGreaterThan(summary.length);
 
     const summaryPdf = summary.toString("latin1");

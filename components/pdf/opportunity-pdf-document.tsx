@@ -934,6 +934,78 @@ function FullProjectedSections({
   })}</>;
 }
 
+function chunkItems<T>(items: readonly T[], size: number): T[][] {
+  const chunks: T[][] = [];
+  for (let index = 0; index < items.length; index += size) {
+    chunks.push(items.slice(index, index + size));
+  }
+  return chunks;
+}
+
+function paginateEvidence(entries: readonly EvidenceRegisterEntry[]): EvidenceRegisterEntry[][] {
+  if (entries.length <= 14) return entries.length ? [entries.slice()] : [];
+  return [entries.slice(0, 14), ...chunkItems(entries.slice(14), 15)];
+}
+
+function structuredRecordWeight(record: StructuredRecord): number {
+  const textLength = record.title.length + record.context.length
+    + record.claims.reduce((total, entry) => total + entry.label.length
+      + (entry.claim.displayValue?.length ?? 0)
+      + (entry.claim.note?.length ?? 0), 0);
+  return 2 + record.claims.length * 1.25 + Math.ceil(textLength / 180);
+}
+
+function paginateStructuredGroups(groups: readonly StructuredGroup[]): StructuredGroup[][] {
+  const pages: StructuredGroup[][] = [];
+  let page: StructuredGroup[] = [];
+  let pageWeight = 0;
+  // React PDF can create silent continuation pages when a structured section is
+  // allowed to grow too large. Keep a conservative deterministic page budget so
+  // each page retains its own section context and running chrome.
+  const maximumWeight = 36;
+
+  const finishPage = () => {
+    if (page.length) pages.push(page);
+    page = [];
+    pageWeight = 0;
+  };
+
+  for (const group of groups) {
+    const headerWeight = 2 + Math.ceil((group.note?.length ?? 0) / 180);
+    if (!group.records.length) {
+      if (page.length && pageWeight + headerWeight > maximumWeight) finishPage();
+      page.push({ ...group, records: [] });
+      pageWeight += headerWeight;
+      continue;
+    }
+
+    let segment: StructuredGroup | null = null;
+    let continued = false;
+    for (const record of group.records) {
+      const recordWeight = structuredRecordWeight(record);
+      const additionalWeight = (segment ? 0 : headerWeight) + recordWeight;
+      if (page.length && pageWeight + additionalWeight > maximumWeight) {
+        finishPage();
+        segment = null;
+        continued = true;
+      }
+      if (!segment) {
+        segment = {
+          ...group,
+          label: continued ? `${group.label} continued` : group.label,
+          records: [],
+        };
+        page.push(segment);
+        pageWeight += headerWeight;
+      }
+      segment.records.push(record);
+      pageWeight += recordWeight;
+    }
+  }
+  finishPage();
+  return pages;
+}
+
 function FullDocument({
   card,
   attentionItems,
@@ -957,7 +1029,7 @@ function FullDocument({
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>At a glance</Text>
           <View style={styles.glanceGrid}>
-            {atAGlance.map((item) => (
+            {atAGlance.slice(0, 8).map((item) => (
               <SummaryCompoundFact
                 key={item.label}
                 card={card}
@@ -973,23 +1045,6 @@ function FullDocument({
 
       </Page>
 
-      {attentionItems.length ? (
-        <Page size="LETTER" style={styles.page} wrap>
-          <RunningChrome name={name} label="Needs attention" />
-          <View style={styles.section} wrap={false}>
-            <Text style={styles.sectionTitle}>Needs attention</Text>
-          </View>
-          {attentionItems.slice(0, 5).map((item) => (
-            <View key={item.id} style={styles.attentionItem} wrap={false}>
-              <Text style={styles.label}>{humanLabel(item.category)} | {item.priority}</Text>
-              <Text style={styles.attentionTitle}>{item.title}</Text>
-              <Text style={styles.paragraph}>{item.explanation}</Text>
-              {item.suggestedNextStep ? <Text style={styles.paragraph}>Verify next: {item.suggestedNextStep}</Text> : null}
-            </View>
-          ))}
-        </Page>
-      ) : null}
-
       <Page size="LETTER" style={styles.page} wrap>
         <RunningChrome name={name} label="Practical facts" />
 
@@ -999,7 +1054,13 @@ function FullDocument({
             Blank and not-applicable fields are omitted. Important unresolved core facts remain visible.
           </Text>
         </View>
-        <FullProjectedSections sections={SECTIONS.slice(0, 3)} report={report} />
+        <FullProjectedSections sections={SECTIONS.slice(0, 2)} report={report} />
+
+      </Page>
+
+      <Page size="LETTER" style={styles.page} wrap>
+        <RunningChrome name={name} label="Practical facts continued" />
+        <FullProjectedSections sections={SECTIONS.slice(2, 3)} report={report} />
 
       </Page>
 
@@ -1015,16 +1076,19 @@ function FullDocument({
 
       </Page>
 
-      <Page size="LETTER" style={styles.page} wrap>
-        <RunningChrome name={name} label="Structured details" />
+      {paginateStructuredGroups(report.structuredGroups).map((groups, pageIndex) => (
+        <Page key={`structured-${pageIndex}`} size="LETTER" style={styles.page} wrap>
+          <RunningChrome name={name} label={pageIndex === 0 ? "Structured details" : "Structured details continued"} />
 
-        <View style={styles.section} wrap={false}>
-          <Text style={styles.sectionTitle}>Structured details</Text>
-          <Text style={styles.sectionLead}>
-            Material distinctions are retained without repeating projection metadata or evidence excerpts.
-          </Text>
-        </View>
-        {report.structuredGroups.flatMap((group) => [
+          {pageIndex === 0 ? (
+            <View style={styles.section} wrap={false}>
+              <Text style={styles.sectionTitle}>Structured details</Text>
+              <Text style={styles.sectionLead}>
+                Material distinctions are retained without repeating projection metadata or evidence excerpts.
+              </Text>
+            </View>
+          ) : null}
+          {groups.flatMap((group) => [
             <View key={`${group.label}-header`} style={styles.group} wrap={false}>
               <Text style={styles.groupTitle}>{group.label}</Text>
               <Text style={styles.recordContext}>
@@ -1067,19 +1131,22 @@ function FullDocument({
                 );
               }),
           ])}
+        </Page>
+      ))}
 
-      </Page>
+      {paginateEvidence(report.evidence).map((entries, pageIndex) => (
+        <Page key={`evidence-${pageIndex}`} size="LETTER" style={styles.page} wrap>
+          <RunningChrome name={name} label={pageIndex === 0 ? "Evidence register" : "Evidence register continued"} />
 
-      <Page size="LETTER" style={styles.page} wrap>
-        <RunningChrome name={name} label="Evidence register" />
-
-        <View style={styles.section} wrap={false}>
-          <Text style={styles.sectionTitle}>Evidence register</Text>
-          <Text style={styles.sectionLead}>
-            Each exact excerpt appears once. Facts and structured claims above cite these evidence IDs.
-          </Text>
-        </View>
-        {report.evidence.map((entry) => {
+          {pageIndex === 0 ? (
+            <View style={styles.section} wrap={false}>
+              <Text style={styles.sectionTitle}>Evidence register</Text>
+              <Text style={styles.sectionLead}>
+                Each exact excerpt appears once. Facts and structured claims above cite these evidence IDs.
+              </Text>
+            </View>
+          ) : null}
+          {entries.map((entry) => {
             const sourceNumber = report.sourceNumbers.get(entry.source.url);
             return (
               <View key={entry.label} style={styles.evidenceItem} wrap={false}>
@@ -1091,12 +1158,24 @@ function FullDocument({
               </View>
             );
           })}
-
-      </Page>
+        </Page>
+      ))}
 
       <Page size="LETTER" style={styles.page} wrap>
         <RunningChrome name={name} label="Sources and record boundary" />
 
+        {attentionItems.length ? (
+          <View style={styles.section} wrap={false}>
+            <Text style={styles.sectionTitle}>Needs attention</Text>
+            {attentionItems.slice(0, 5).map((item) => (
+              <View key={item.id} style={styles.factRow} wrap={false}>
+                <Text style={styles.label}>{humanLabel(item.category)} | {item.priority}</Text>
+                <Text style={styles.attentionTitle}>{item.title}</Text>
+                <Text style={styles.paragraph}>{item.explanation}</Text>
+              </View>
+            ))}
+          </View>
+        ) : null}
         <SourceIndex card={card} />
         <View style={styles.section} wrap={false}>
           <Text style={styles.sectionTitle}>Record metadata</Text>
