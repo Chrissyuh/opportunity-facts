@@ -74,3 +74,28 @@ query string. Hosting access/runtime logs therefore need only retain route, stat
 duration, and platform metadata. Confirm the production project's current log
 retention and drain settings separately; platform defaults are not a repository
 guarantee.
+
+## Verified competition deployment (August 20, 2026)
+
+- Production URL: `https://opportunityfacts.vercel.app`.
+- Upstash-backed shared controls are required; production paid work fails closed
+  when Redis or mandatory control configuration is unavailable.
+- Normal and Extended requests have independent HMAC-minimized per-address limits.
+  Global provider concurrency is weighted: normal consumes one slot and Extended
+  consumes two.
+- Daily and total demo-budget ledgers reserve a conservative maximum before any
+  provider operation. The budget epoch is changed only by an explicit operator
+  reset; budget values are never returned publicly.
+- Extended sessions are opaque, analyzer-version-bound, size-bounded, and expire
+  after 30 minutes. A real shared-store continuation completed after normal
+  analysis without refetching the source set.
+- `ANALYSIS_FAILURE_CACHE_BYPASS_HOSTS=lumosfellows.com` is configured solely for
+  failure suppression. Tests prove this setting cannot change fetching, prompts,
+  model selection, validation, quality rules, evidence, or result semantics.
+- `BATCH_ANALYSIS_ENABLED=false`; the implementation remains in the repository but
+  is absent from competition-facing navigation and calls to action.
+- HTTPS and the deployed CSP, HSTS, frame, MIME, referrer, and permissions headers
+  were verified. The local human-review workspace returns 404 in production.
+- A production runtime-log scan found no submitted target URL, source excerpt,
+  prompt, API-key identifier, or authorization header. Hosting/provider retention
+  settings and platform egress policy remain external account-level assumptions.

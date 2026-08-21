@@ -780,7 +780,7 @@ function SummaryDocument({
         <RunningChrome name={name} label="Student summary" />
         <DocumentHeader card={card} generatedAt={generatedAt} reportLabel="Student summary" />
 
-        <View style={styles.section}>
+        <View style={styles.section} wrap={false}>
           <Text style={styles.sectionTitle}>At a glance</Text>
           <View style={styles.glanceGrid}>
             {atAGlance.map((item) => (
@@ -892,6 +892,48 @@ function SummaryDocument({
   );
 }
 
+function FullProjectedSections({
+  sections,
+  report,
+}: {
+  sections: readonly OpportunitySection[];
+  report: OpportunityPdfReportModel;
+}) {
+  return <>{sections.flatMap((section) => {
+    const rows = report.projectedFacts.filter(({ fieldId }) =>
+      FIELD_DEFINITIONS.find((field) => field.id === fieldId)?.section === section,
+    );
+    if (!rows.length) return [];
+    return [
+      <View key={`${section}-header`} style={styles.group} wrap={false}>
+        <Text style={styles.groupTitle}>{sectionLabels[section]}</Text>
+      </View>,
+      ...rows.map(({ fieldId, label, fact }) => {
+        const sources = fact.status === "conflicting"
+          ? fact.conflictingValues.flatMap((candidate) => candidate.sources)
+          : fact.sources;
+        const refs = evidenceRefs(sources, report.evidenceLabelsByKey);
+        return (
+          <View key={fieldId} style={styles.factRow} wrap={false}>
+            <View style={styles.factTop}>
+              <Text style={styles.factLabel}>{label}</Text>
+              <Text style={styles.factStatus}>{statusLabels[fact.status]}</Text>
+            </View>
+            <Text style={styles.valueRegular}>{factDisplay(fact)}</Text>
+            {fact.note && fact.status !== "unclear" ? <Text style={styles.paragraph}>{fact.note}</Text> : null}
+            {fact.status === "conflicting" ? fact.conflictingValues.map((candidate, index) => (
+              <Text key={`${fieldId}-${index}`} style={styles.paragraph}>
+                Supported value {index + 1}: {candidate.displayValue}
+              </Text>
+            )) : null}
+            {refs ? <Text style={styles.refs}>Evidence {refs}</Text> : null}
+          </View>
+        );
+      }),
+    ];
+  })}</>;
+}
+
 function FullDocument({
   card,
   attentionItems,
@@ -929,84 +971,74 @@ function FullDocument({
           </View>
         </View>
 
-        {attentionItems.length ? (
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Needs attention</Text>
-            {attentionItems.slice(0, 5).map((item) => (
-              <View key={item.id} style={styles.attentionItem} wrap={false}>
-                <Text style={styles.label}>{humanLabel(item.category)} | {item.priority}</Text>
-                <Text style={styles.attentionTitle}>{item.title}</Text>
-                <Text style={styles.paragraph}>{item.explanation}</Text>
-                {item.suggestedNextStep ? <Text style={styles.paragraph}>Verify next: {item.suggestedNextStep}</Text> : null}
-              </View>
-            ))}
-          </View>
-        ) : null}
+      </Page>
 
-        <View style={styles.section}>
+      {attentionItems.length ? (
+        <Page size="LETTER" style={styles.page} wrap>
+          <RunningChrome name={name} label="Needs attention" />
+          <View style={styles.section} wrap={false}>
+            <Text style={styles.sectionTitle}>Needs attention</Text>
+          </View>
+          {attentionItems.slice(0, 5).map((item) => (
+            <View key={item.id} style={styles.attentionItem} wrap={false}>
+              <Text style={styles.label}>{humanLabel(item.category)} | {item.priority}</Text>
+              <Text style={styles.attentionTitle}>{item.title}</Text>
+              <Text style={styles.paragraph}>{item.explanation}</Text>
+              {item.suggestedNextStep ? <Text style={styles.paragraph}>Verify next: {item.suggestedNextStep}</Text> : null}
+            </View>
+          ))}
+        </Page>
+      ) : null}
+
+      <Page size="LETTER" style={styles.page} wrap>
+        <RunningChrome name={name} label="Practical facts" />
+
+        <View style={styles.section} wrap={false}>
           <Text style={styles.sectionTitle}>Standardized practical facts</Text>
           <Text style={styles.sectionLead}>
             Blank and not-applicable fields are omitted. Important unresolved core facts remain visible.
           </Text>
-          {SECTIONS.map((section) => {
-            const rows = report.projectedFacts.filter(({ fieldId }) =>
-              FIELD_DEFINITIONS.find((field) => field.id === fieldId)?.section === section,
-            );
-            if (!rows.length) return null;
-            return (
-              <View key={section} style={styles.group}>
-                <Text style={styles.groupTitle}>{sectionLabels[section]}</Text>
-                {rows.map(({ fieldId, label, fact }) => {
-                  const sources = fact.status === "conflicting"
-                    ? fact.conflictingValues.flatMap((candidate) => candidate.sources)
-                    : fact.sources;
-                  const refs = evidenceRefs(sources, report.evidenceLabelsByKey);
-                  return (
-                    <View key={fieldId} style={styles.factRow} wrap={false}>
-                      <View style={styles.factTop}>
-                        <Text style={styles.factLabel}>{label}</Text>
-                        <Text style={styles.factStatus}>{statusLabels[fact.status]}</Text>
-                      </View>
-                      <Text style={styles.valueRegular}>{factDisplay(fact)}</Text>
-                      {fact.note && fact.status !== "unclear" ? <Text style={styles.paragraph}>{fact.note}</Text> : null}
-                      {fact.status === "conflicting" ? fact.conflictingValues.map((candidate, index) => (
-                        <Text key={`${fieldId}-${index}`} style={styles.paragraph}>
-                          Supported value {index + 1}: {candidate.displayValue}
-                        </Text>
-                      )) : null}
-                      {refs ? <Text style={styles.refs}>Evidence {refs}</Text> : null}
-                    </View>
-                  );
-                })}
-              </View>
-            );
-          })}
         </View>
+        <FullProjectedSections sections={SECTIONS.slice(0, 3)} report={report} />
+
+      </Page>
+
+      <Page size="LETTER" style={styles.page} wrap>
+        <RunningChrome name={name} label="Practical facts continued" />
+        <FullProjectedSections sections={SECTIONS.slice(3, 6)} report={report} />
+
+      </Page>
+
+      <Page size="LETTER" style={styles.page} wrap>
+        <RunningChrome name={name} label="Terms and privacy" />
+        <FullProjectedSections sections={SECTIONS.slice(6)} report={report} />
 
       </Page>
 
       <Page size="LETTER" style={styles.page} wrap>
         <RunningChrome name={name} label="Structured details" />
 
-        <View style={styles.section}>
+        <View style={styles.section} wrap={false}>
           <Text style={styles.sectionTitle}>Structured details</Text>
           <Text style={styles.sectionLead}>
             Material distinctions are retained without repeating projection metadata or evidence excerpts.
           </Text>
-          {report.structuredGroups.map((group) => (
-            <View key={group.label} style={styles.group}>
+        </View>
+        {report.structuredGroups.flatMap((group) => [
+            <View key={`${group.label}-header`} style={styles.group} wrap={false}>
               <Text style={styles.groupTitle}>{group.label}</Text>
               <Text style={styles.recordContext}>
                 {humanLabel(group.status)}
                 {group.completeness ? ` | ${humanLabel(group.completeness)} inventory` : ""}
                 {group.note ? ` | ${group.note}` : ""}
               </Text>
-              {group.records.map((record) => {
+            </View>,
+            ...group.records.map((record) => {
                 const definitionRefs = record.definitionClaim
                   ? evidenceRefs(claimSources(record.definitionClaim), report.evidenceLabelsByKey)
                   : "";
                 return (
-                  <View key={record.id} style={styles.record}>
+                  <View key={record.id} style={styles.record} wrap={false}>
                     <Text style={styles.recordTitle}>
                       {record.title}{definitionRefs ? ` [${definitionRefs}]` : ""}
                     </Text>
@@ -1033,22 +1065,21 @@ function FullDocument({
                     })}
                   </View>
                 );
-              })}
-            </View>
-          ))}
-        </View>
+              }),
+          ])}
 
       </Page>
 
       <Page size="LETTER" style={styles.page} wrap>
         <RunningChrome name={name} label="Evidence register" />
 
-        <View style={styles.section}>
+        <View style={styles.section} wrap={false}>
           <Text style={styles.sectionTitle}>Evidence register</Text>
           <Text style={styles.sectionLead}>
             Each exact excerpt appears once. Facts and structured claims above cite these evidence IDs.
           </Text>
-          {report.evidence.map((entry) => {
+        </View>
+        {report.evidence.map((entry) => {
             const sourceNumber = report.sourceNumbers.get(entry.source.url);
             return (
               <View key={entry.label} style={styles.evidenceItem} wrap={false}>
@@ -1060,7 +1091,6 @@ function FullDocument({
               </View>
             );
           })}
-        </View>
 
       </Page>
 

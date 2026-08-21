@@ -28,6 +28,9 @@
 - [x] Added deterministic student/parent Summary and Full Evidence PDFs with selectable bundled fonts, exact source links, structured scope/context, and no external PDF service; the later compact redesign below removed raw projection/calculation serialization from the reader-facing report.
 - [x] Replaced the always-on four-family analysis with a one-request compact Analyze path plus optional Extended Research. Normal Analyze now emits sparse practical claims, reuses deterministic cycle/evidence/semantic guards, and records assessed-field coverage instead of treating all 59 storage slots as a generation quota. Extended Research reuses acquired sources and the validated normal card through an opaque bounded-TTL session; partial failure or cancellation cannot erase the Overview.
 - [x] Compressed PDF output into student-usable reports: current real-card Summary PDFs are 3–4 pages and representative Full Evidence PDFs are 9–14 pages, with selectable text, exact links, compact deduplicated evidence, and no raw schema serialization dump.
+- [x] Completed the competition-facing professionalism pass: a concise How It Works layer, accessible review-state explanations, tightened judge-path copy, and a local-only digest-bound human-review workspace for MITES, Lumiere, and Diamond. All ten real records remain AI-audited until Christopher completes that workflow.
+- [x] Replaced instance-local continuation and paid-request protection with a shared Upstash-backed production boundary: 30-minute opaque Extended sessions, HMAC-minimized per-address limits, weighted global concurrency, daily/total spend reservations, and fail-closed admission when shared controls are unavailable.
+- [x] Deployed the protected application to `https://opportunityfacts.vercel.app`, enabled normal analysis only after shared controls passed a real Redis round trip and rejection checks, and completed controlled Lumos, MITES, and Diamond production smokes without treating them as a new benchmark.
 
 ## Last committed release verification
 
@@ -83,6 +86,19 @@ The checked results below preserve the completed gate for `3cd7ea1`; the newer f
 - [x] Current compact live sample: 23.446s minimum, 25.829s median, 31.224s maximum; 2,410–3,267 output tokens; $0.154568 total estimated cost across three final normal measurements. Extended Research added 39.357–56.330s and reused all acquired source contexts. Exact stage/usage accounting is in `docs/ANALYSIS_LATENCY.md`.
 - [x] Final private Lumos compact run: 23.446s, `good`, 13 supported practical facts, 3 grounded attention items, zero evidence warnings, modeled Fall 2026, correct final deadline/start/tuition/aid/refund/selection semantics, and no observed critical misleading claim. No Lumos production branch or public card exists.
 
+## Current competition-release verification
+
+- [x] `npm run export:data` / `npm run validate:data` — 17 public cards (10 AI-audited, 7 demo), 0 drafts, public dataset and Schema `2.2.0` current
+- [x] `npm run lint` / `npm run typecheck`; `npm test` — 46 files / 460 tests passed
+- [x] `npm run test:e2e` — 132 passed, 4 intentional project-inapplicable skips, 0 failed across desktop and mobile
+- [x] `npm run build` — fail-closed data validation plus 49 generated pages; `npm audit --audit-level=high` — 0 vulnerabilities; `git diff --check` — no whitespace errors
+- [x] Production headers — HTTPS, CSP, HSTS, frame denial, MIME sniffing denial, referrer policy, and permissions policy present; `/review` hard-404s and Batch remains hidden
+- [x] Shared-control proof — real Redis round trip and TTL, weighted concurrency rejection, independent rate-limit rejection, and hard budget rejection all passed before paid analysis was enabled
+- [x] Production Lumos normal smoke — `usable_with_caveats`, four pages acquired, practical deadline/start/duration/format/tuition/aid/refund/selection facts retained, three grounded attention items, and no unsafe operator inference
+- [x] Production Extended smoke — completed across the durable opaque session in 33.318s without source reacquisition; an observed projection regression was repaired and replayed against the exact saved artifacts so validated normal facts cannot be downgraded
+- [x] Production generic smokes — MITES completed in 25.712s with 16 supported facts; Diamond completed in 24.874s with 13 supported facts. These are deployment smokes, not accuracy measurements.
+- [x] Final PDF audit — saved production Lumos result rendered as a 2-page Summary and 9-page Full Evidence report with explicit page-safe sections, selectable text, exact links, and no clipped continuation content
+
 ## Schema V2 regression coverage
 
 - [x] V1 migration is deterministic, draft-only, digest-recorded, and does not infer cycle or structured semantics.
@@ -97,7 +113,7 @@ The checked results below preserve the completed gate for `3cd7ea1`; the newer f
 - [x] Run the separate preregistered seven-card out-of-sample phase without tuning on its primary results; do not describe seven programs as population-level accuracy.
 - [x] Repair the generalizable subject/scope, wrong-cycle count, invalid-structured-response, cycle omission, and structured-recall failures on a separate development fixture set before any unattended extraction claim.
 - [x] Complete and record the current post-checkpoint full deterministic, build, browser, and explicitly budgeted live-development checks without changing historical benchmark/evaluation results.
-- [ ] Deploy only when a target is requested. Keep model-backed public analysis disabled until distributed rate/concurrency controls and a hard provider-or-gateway spend circuit breaker are proven, then verify egress, logs, secrets, headers, and both configured/keyless paths using `docs/DEPLOYMENT_CHECKLIST.md`.
-- [ ] Complete the separately requested final professionalism/judge-path pass before deployment; do not reopen extraction architecture or historical evaluation results unless that pass finds a concrete blocker.
+- [x] Deploy only when a target is requested. The requested Vercel deployment now uses shared rate/concurrency/spend controls, protected durable continuation state, strict headers, and privacy-safe application logging; operational provider/hosting retention and egress settings remain account-level responsibilities.
+- [x] Complete the separately requested final professionalism/judge-path pass without reopening historical evaluation results or adding Lumos-specific extraction behavior.
 - [ ] Conduct consented comprehension and extraction studies before publishing any result; public copy correctly remains “Study not yet published.”
 - [ ] Consider the non-gating P2 hardening backlog in `QUALITY.md` after real-data and deployment work establishes priority.
