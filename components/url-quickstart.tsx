@@ -19,9 +19,9 @@ export function UrlQuickstart() {
     }
     try {
       sessionStorage.setItem(ANALYSIS_URL_HANDOFF_KEY, normalized.url);
-      router.push("/analyze");
+      router.push("/analyze?start=1");
     } catch {
-      setError("This browser could not transfer the URL privately. Open Analyze and paste it there.");
+      setError("This browser could not start the analysis. Refresh the page and try again.");
     }
   }
 

@@ -4,11 +4,11 @@ import { type SampleAnalysisId } from "./catalog";
 import { sampleAnalysisSchema, type SampleAnalysis } from "./schema";
 
 const sampleLoaders: Record<SampleAnalysisId, () => Promise<unknown>> = {
-  "mites-summer": () => import("@/data/sample-analyses/mites-summer.json").then((module) => module.default),
-  "diamond-challenge": () => import("@/data/sample-analyses/diamond-challenge.json").then((module) => module.default),
-  "questbridge-national-college-match": () => import("@/data/sample-analyses/questbridge-national-college-match.json").then((module) => module.default),
-  "yale-young-global-scholars": () => import("@/data/sample-analyses/yale-young-global-scholars.json").then((module) => module.default),
-  "breakthrough-junior-challenge": () => import("@/data/sample-analyses/breakthrough-junior-challenge.json").then((module) => module.default),
+  "horizon-academic-essay-prize": () => import("@/data/sample-analyses/horizon-academic-essay-prize.json").then((module) => module.default),
+  "youngarts-national-arts-competition": () => import("@/data/sample-analyses/youngarts-national-arts-competition.json").then((module) => module.default),
+  "american-rocketry-challenge": () => import("@/data/sample-analyses/american-rocketry-challenge.json").then((module) => module.default),
+  "ocean-awareness-contest": () => import("@/data/sample-analyses/ocean-awareness-contest.json").then((module) => module.default),
+  "flmd-2026-high-school-essay-contest": () => import("@/data/sample-analyses/flmd-2026-high-school-essay-contest.json").then((module) => module.default),
 };
 
 export async function getSampleAnalysis(id: SampleAnalysisId): Promise<SampleAnalysis> {

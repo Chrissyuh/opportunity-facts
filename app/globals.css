@@ -4206,6 +4206,23 @@ select[aria-invalid="true"] {
   }
 }
 
+@media (max-width: 820px) {
+  .main-nav-single {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .main-nav-single a {
+    min-height: 44px;
+    border-bottom: 2px solid transparent;
+  }
+}
+
 @media (max-width: 600px) {
   .home-primary {
     padding: 3.3rem 0 4.5rem;
@@ -5469,13 +5486,16 @@ select[aria-invalid="true"] {
 
 .validated-fact-row dt {
   color: var(--muted);
-  font-size: 0.6rem;
+  font-size: 0.64rem;
+  font-weight: 750;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
 }
 
 .validated-fact-row dd {
   min-width: 0;
   margin: 0;
-  font-size: 0.65rem;
+  font-size: 0.82rem;
   font-weight: 750;
 }
 
@@ -5500,9 +5520,9 @@ select[aria-invalid="true"] {
 }
 
 .validated-fact-pending {
-  color: var(--muted);
-  font-size: 0.58rem;
-  font-weight: 600;
+  color: var(--ink-soft);
+  font-size: 0.76rem;
+  font-weight: 700;
 }
 
 .research-running-grid > .research-activity {
@@ -5824,6 +5844,20 @@ select[aria-invalid="true"] {
 
 .sample-analysis-badge .review-badge::after {
   pointer-events: none;
+}
+
+.glance-fact[data-priority="primary"] .glance-value strong {
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.glance-fact[data-priority="secondary"] {
+  background: #fafbfd;
+}
+
+.glance-fact[data-priority="secondary"] .glance-value strong {
+  color: var(--ink-soft);
+  font-size: 0.82rem;
 }
 
 @media (max-width: 900px) {

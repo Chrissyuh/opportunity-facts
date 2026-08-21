@@ -1,164 +1,186 @@
 {
-  "artifactVersion": "1.0.0",
-  "id": "diamond-challenge",
-  "label": "Diamond Challenge",
-  "category": "Team entrepreneurship competition",
-  "submittedUrl": "https://diamondchallenge.org/competition/",
-  "recordedAt": "2026-08-21T03:46:57.726Z",
-  "recordedDurationMs": 24658,
+  "artifactVersion": "2.0.0",
+  "analyzerVersion": "student-research-v2-fast-core-extended",
+  "captureDigest": "6b53cc50fe3516864eeedcdd6e0c860e3062583e872f00b8814a8e7a58aa7e0f",
+  "id": "american-rocketry-challenge",
+  "label": "American Rocketry Challenge",
+  "category": "Team engineering competition",
+  "submittedUrl": "https://www.rocketrychallenge.org/faq/",
+  "recordedAt": "2026-08-21T11:21:03.520Z",
+  "recordedDurationMs": 33414,
   "captureKind": "compact_production",
   "progressProvenance": "captured_stream",
-  "sourceArtifact": ".codex-runtime/production-diamond-normal.ndjson",
+  "sourceArtifact": ".codex-runtime/sample-captures-current/american-rocketry-challenge.json",
   "progress": [
     {
-      "replayAtMs": 0,
-      "event": {
-        "type": "accepted",
-        "sequence": 1,
-        "elapsedMs": 0
-      }
-    },
-    {
-      "replayAtMs": 77,
+      "replayAtMs": 5,
       "event": {
         "type": "cache_checked",
-        "state": "miss",
+        "state": "unavailable",
+        "sequence": 1,
+        "elapsedMs": 5
+      }
+    },
+    {
+      "replayAtMs": 1067,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-5ab6bc12586ad198",
+        "title": "FAQ - American Rocketry Challenge",
+        "url": "https://www.rocketrychallenge.org/faq/",
         "sequence": 2,
-        "elapsedMs": 77
+        "elapsedMs": 1067
       }
     },
     {
-      "replayAtMs": 456,
+      "replayAtMs": 1855,
       "event": {
         "type": "source_acquired",
-        "sourceId": "page-13f3083976d9a6f9",
-        "title": "Competition - Diamond Challenge",
-        "url": "https://diamondchallenge.org/competition/",
+        "sourceId": "page-479058a70b5c765a",
+        "title": "Privacy Policy - American Rocketry Challenge",
+        "url": "https://www.rocketrychallenge.org/privacy-policy-2/",
         "sequence": 3,
-        "elapsedMs": 456
+        "elapsedMs": 1855
       }
     },
     {
-      "replayAtMs": 686,
+      "replayAtMs": 2709,
       "event": {
         "type": "source_acquired",
-        "sourceId": "page-41c9b0a86d30b5c3",
-        "title": "Diamond Challenge - Diamond Challenge",
-        "url": "https://diamondchallenge.org/",
+        "sourceId": "page-70a548c382d8631b",
+        "title": "2027 American Rocketry Challenge Rules - American Rocketry Challenge",
+        "url": "https://www.rocketrychallenge.org/resource/2027-american-rocketry-challenge-rules/",
         "sequence": 4,
-        "elapsedMs": 686
+        "elapsedMs": 2709
       }
     },
     {
-      "replayAtMs": 687,
+      "replayAtMs": 3531,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-6ec6178a7fefb755",
+        "title": "Awards - American Rocketry Challenge",
+        "url": "https://www.rocketrychallenge.org/awards/",
+        "sequence": 5,
+        "elapsedMs": 3531
+      }
+    },
+    {
+      "replayAtMs": 4519,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-40b28659c66e2780",
+        "title": "About - American Rocketry Challenge",
+        "url": "https://www.rocketrychallenge.org/about/",
+        "sequence": 6,
+        "elapsedMs": 4519
+      }
+    },
+    {
+      "replayAtMs": 5599,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-fdd85c5e7ed6e40e",
+        "title": "Rocketry Mentors - American Rocketry Challenge",
+        "url": "https://www.rocketrychallenge.org/mentors/",
+        "sequence": 7,
+        "elapsedMs": 5599
+      }
+    },
+    {
+      "replayAtMs": 5599,
       "event": {
         "type": "source_set_complete",
-        "acquired": 2,
+        "acquired": 6,
         "failed": 0,
-        "sequence": 5,
-        "elapsedMs": 687
+        "sequence": 8,
+        "elapsedMs": 5599
       }
     },
     {
-      "replayAtMs": 699,
+      "replayAtMs": 5615,
       "event": {
         "type": "cycle_resolved",
         "status": "resolved",
         "label": "2027",
-        "sequence": 6,
-        "elapsedMs": 699
+        "sequence": 9,
+        "elapsedMs": 5615
       }
     },
     {
-      "replayAtMs": 699,
+      "replayAtMs": 5616,
       "event": {
         "type": "normal_model_started",
-        "sequence": 7,
-        "elapsedMs": 699
+        "sequence": 10,
+        "elapsedMs": 5616
       }
     },
     {
-      "replayAtMs": 24566,
+      "replayAtMs": 13811,
+      "event": {
+        "type": "normal_model_output_started",
+        "sequence": 11,
+        "elapsedMs": 13811
+      }
+    },
+    {
+      "replayAtMs": 33343,
       "event": {
         "type": "normal_model_completed",
-        "sequence": 9,
-        "elapsedMs": 24566
+        "sequence": 12,
+        "elapsedMs": 33343
       }
     },
     {
-      "replayAtMs": 24658,
+      "replayAtMs": 33410,
       "event": {
         "type": "validation_complete",
-        "retained": 16,
-        "withheld": 5,
-        "sequence": 10,
-        "elapsedMs": 24658
+        "retained": 19,
+        "withheld": 4,
+        "sequence": 13,
+        "elapsedMs": 33410
       }
     },
     {
-      "replayAtMs": 24658,
+      "replayAtMs": 33410,
       "event": {
         "type": "attention_ready",
         "count": 1,
-        "sequence": 11,
-        "elapsedMs": 24658
+        "sequence": 14,
+        "elapsedMs": 33410
       }
     },
     {
-      "replayAtMs": 24658,
+      "replayAtMs": 33411,
       "event": {
         "type": "validated_fact",
         "fieldId": "opportunity_name",
         "label": "opportunity name",
-        "displayValue": "Diamond Challenge",
+        "displayValue": "The American Rocketry Challenge",
         "evidenceCount": 1,
-        "sequence": 12,
-        "elapsedMs": 24658
+        "sequence": 15,
+        "elapsedMs": 33411
       }
     },
     {
-      "replayAtMs": 24658,
+      "replayAtMs": 33411,
       "event": {
         "type": "validated_fact",
         "fieldId": "application_deadline",
         "label": "application deadline",
-        "displayValue": "January 14, 2027, 5 PM EST",
+        "displayValue": "December 6, 2026, 11:59 PM ET",
         "evidenceCount": 1,
-        "sequence": 13,
-        "elapsedMs": 24658
+        "sequence": 16,
+        "elapsedMs": 33411
       }
     },
     {
-      "replayAtMs": 24658,
-      "event": {
-        "type": "validated_fact",
-        "fieldId": "selection_process",
-        "label": "selection process",
-        "displayValue": "Judged submission; minimum score required to advance",
-        "evidenceCount": 1,
-        "sequence": 14,
-        "elapsedMs": 24658
-      }
-    },
-    {
-      "replayAtMs": 24658,
-      "event": {
-        "type": "validated_fact",
-        "fieldId": "other_benefits",
-        "label": "other benefits",
-        "displayValue": "Network growth, feedback, and potential future collaborations",
-        "evidenceCount": 1,
-        "sequence": 15,
-        "elapsedMs": 24658
-      }
-    },
-    {
-      "replayAtMs": 24658,
+      "replayAtMs": 33411,
       "event": {
         "type": "quality_complete",
         "outcome": "usable_with_caveats",
-        "sequence": 16,
-        "elapsedMs": 24658
+        "sequence": 17,
+        "elapsedMs": 33411
       }
     }
   ],
@@ -178,12 +200,12 @@
             "claimKind": "source_stated",
             "sources": [
               {
-                "id": "page-13f3083976d9a6f9",
-                "url": "https://diamondchallenge.org/competition/",
-                "title": "Competition - Diamond Challenge",
+                "id": "page-5ab6bc12586ad198",
+                "url": "https://www.rocketrychallenge.org/faq/",
+                "title": "FAQ - American Rocketry Challenge",
                 "pageType": "user_supplied",
-                "accessedAt": "2026-08-21T03:46:57.726Z",
-                "excerpt": "2027 Competition Timeline"
+                "accessedAt": "2026-08-21T11:21:04.539Z",
+                "excerpt": "When is the deadline to enter the 2027 competition?"
               }
             ],
             "note": null,
@@ -197,12 +219,12 @@
             "claimKind": null,
             "sources": [
               {
-                "id": "page-13f3083976d9a6f9",
-                "url": "https://diamondchallenge.org/competition/",
-                "title": "Competition - Diamond Challenge",
+                "id": "page-5ab6bc12586ad198",
+                "url": "https://www.rocketrychallenge.org/faq/",
+                "title": "FAQ - American Rocketry Challenge",
                 "pageType": "user_supplied",
-                "accessedAt": "2026-08-21T03:46:57.726Z",
-                "excerpt": "2027 Competition Timeline"
+                "accessedAt": "2026-08-21T11:21:04.539Z",
+                "excerpt": "When is the deadline to enter the 2027 competition?"
               }
             ],
             "note": "The source identifies the cycle but does not clearly state its current application status.",
@@ -216,12 +238,12 @@
             "claimKind": "source_stated",
             "sources": [
               {
-                "id": "page-13f3083976d9a6f9",
-                "url": "https://diamondchallenge.org/competition/",
-                "title": "Competition - Diamond Challenge",
+                "id": "page-5ab6bc12586ad198",
+                "url": "https://www.rocketrychallenge.org/faq/",
+                "title": "FAQ - American Rocketry Challenge",
                 "pageType": "user_supplied",
-                "accessedAt": "2026-08-21T03:46:57.726Z",
-                "excerpt": "2027 Competition Timeline"
+                "accessedAt": "2026-08-21T11:21:04.539Z",
+                "excerpt": "When is the deadline to enter the 2027 competition?"
               }
             ],
             "note": null,
@@ -238,12 +260,12 @@
             "claimKind": "source_stated",
             "sources": [
               {
-                "id": "page-13f3083976d9a6f9",
-                "url": "https://diamondchallenge.org/competition/",
-                "title": "Competition - Diamond Challenge",
+                "id": "page-5ab6bc12586ad198",
+                "url": "https://www.rocketrychallenge.org/faq/",
+                "title": "FAQ - American Rocketry Challenge",
                 "pageType": "user_supplied",
-                "accessedAt": "2026-08-21T03:46:57.726Z",
-                "excerpt": "2027 Competition Timeline"
+                "accessedAt": "2026-08-21T11:21:04.539Z",
+                "excerpt": "When is the deadline to enter the 2027 competition?"
               }
             ],
             "note": null,
@@ -258,24 +280,52 @@
         }
       },
       "cardVersion": 1,
-      "slug": "diamond-challenge",
-      "summary": "Automated draft from 2 user-supplied source pages; review every value, excerpt, and attribution before use.",
+      "slug": "the-american-rocketry-challenge",
+      "summary": "Automated draft from 6 user-supplied source pages; review every value, excerpt, and attribution before use.",
       "reviewState": "automated_draft",
       "reviewedAt": null,
       "sourcePagesChecked": [
         {
-          "id": "page-13f3083976d9a6f9",
-          "url": "https://diamondchallenge.org/competition/",
-          "title": "Competition - Diamond Challenge",
+          "id": "page-5ab6bc12586ad198",
+          "url": "https://www.rocketrychallenge.org/faq/",
+          "title": "FAQ - American Rocketry Challenge",
           "pageType": "user_supplied",
-          "accessedAt": "2026-08-21T03:46:57.726Z"
+          "accessedAt": "2026-08-21T11:21:04.539Z"
         },
         {
-          "id": "page-41c9b0a86d30b5c3",
-          "url": "https://diamondchallenge.org/",
-          "title": "Diamond Challenge - Diamond Challenge",
+          "id": "page-479058a70b5c765a",
+          "url": "https://www.rocketrychallenge.org/privacy-policy-2/",
+          "title": "Privacy Policy - American Rocketry Challenge",
           "pageType": "user_supplied",
-          "accessedAt": "2026-08-21T03:46:58.064Z"
+          "accessedAt": "2026-08-21T11:21:05.365Z"
+        },
+        {
+          "id": "page-70a548c382d8631b",
+          "url": "https://www.rocketrychallenge.org/resource/2027-american-rocketry-challenge-rules/",
+          "title": "2027 American Rocketry Challenge Rules - American Rocketry Challenge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T11:21:06.220Z"
+        },
+        {
+          "id": "page-6ec6178a7fefb755",
+          "url": "https://www.rocketrychallenge.org/awards/",
+          "title": "Awards - American Rocketry Challenge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T11:21:07.042Z"
+        },
+        {
+          "id": "page-40b28659c66e2780",
+          "url": "https://www.rocketrychallenge.org/about/",
+          "title": "About - American Rocketry Challenge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T11:21:08.030Z"
+        },
+        {
+          "id": "page-fdd85c5e7ed6e40e",
+          "url": "https://www.rocketrychallenge.org/mentors/",
+          "title": "Rocketry Mentors - American Rocketry Challenge",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T11:21:09.083Z"
         }
       ],
       "conflicts": [],
@@ -322,20 +372,20 @@
       "facts": {
         "opportunity_name": {
           "status": "disclosed",
-          "value": "Diamond Challenge",
-          "displayValue": "Diamond Challenge",
+          "value": "The American Rocketry Challenge",
+          "displayValue": "The American Rocketry Challenge",
           "normalizedValue": {
             "kind": "text",
-            "value": "Diamond Challenge"
+            "value": "The American Rocketry Challenge"
           },
           "sources": [
             {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "The Diamond Challenge, a philanthropic education initiative by Horn Entrepreneurship at the University of Delaware"
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "The American Rocketry Challenge"
             }
           ],
           "note": null,
@@ -346,21 +396,24 @@
           "projection": null
         },
         "opportunity_category": {
-          "status": "unclear",
-          "value": null,
-          "displayValue": null,
-          "normalizedValue": null,
+          "status": "disclosed",
+          "value": "Rocketry competition",
+          "displayValue": "Rocketry competition",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Rocketry competition"
+          },
           "sources": [
             {
-              "id": "page-41c9b0a86d30b5c3",
-              "url": "https://diamondchallenge.org/",
-              "title": "Diamond Challenge - Diamond Challenge",
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:58.064Z",
-              "excerpt": "THE ULTIMATE HIGH SCHOOL ENTREPRENEURSHIP CHALLENGE"
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "2027 Competition"
             }
           ],
-          "note": "The cited page describes a different opportunity on the same organization site, so it cannot support this target-specific fact.",
+          "note": null,
           "confidence": null,
           "claimKind": "source_stated",
           "conflictingValues": [],
@@ -368,14 +421,26 @@
           "projection": null
         },
         "official_url": {
-          "status": "not_found",
-          "value": null,
-          "displayValue": null,
-          "normalizedValue": null,
-          "sources": [],
+          "status": "disclosed",
+          "value": "https://www.rocketrychallenge.org/faq/",
+          "displayValue": "https://www.rocketrychallenge.org/faq/",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "https://www.rocketrychallenge.org/faq/"
+          },
+          "sources": [
+            {
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "Frequently Asked Questions"
+            }
+          ],
           "note": null,
           "confidence": null,
-          "claimKind": null,
+          "claimKind": "source_stated",
           "conflictingValues": [],
           "calculation": null,
           "projection": null
@@ -387,12 +452,20 @@
           "normalizedValue": null,
           "sources": [
             {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "The Diamond Challenge, a philanthropic education initiative by Horn Entrepreneurship at the University of Delaware"
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "One co-organizer for this program is the National Association of Rocketry (NAR)."
+            },
+            {
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "The Aerospace Industries Association, the other co-organizer of the competition"
             }
           ],
           "note": "The excerpt names an organization or opportunity but does not explicitly support the primary operator role.",
@@ -416,76 +489,40 @@
           "projection": null
         },
         "named_institution": {
-          "status": "disclosed",
-          "value": "University of Delaware",
-          "displayValue": "University of Delaware",
-          "normalizedValue": {
-            "kind": "text",
-            "value": "University of Delaware"
-          },
-          "sources": [
-            {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
-              "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "The Diamond Challenge, a philanthropic education initiative by Horn Entrepreneurship at the University of Delaware"
-            }
-          ],
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
           "note": null,
           "confidence": null,
-          "claimKind": "source_stated",
+          "claimKind": null,
           "conflictingValues": [],
           "calculation": null,
           "projection": null
         },
         "institution_relationship": {
-          "status": "disclosed",
-          "value": "institution_operated",
-          "displayValue": "Operated through Horn Entrepreneurship at the University of Delaware",
-          "normalizedValue": {
-            "kind": "relationship",
-            "value": "institution_operated"
-          },
-          "sources": [
-            {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
-              "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "The Diamond Challenge, a philanthropic education initiative by Horn Entrepreneurship at the University of Delaware"
-            }
-          ],
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
           "note": null,
           "confidence": null,
-          "claimKind": "source_stated",
+          "claimKind": null,
           "conflictingValues": [],
           "calculation": null,
           "projection": null
         },
         "relationship_explanation": {
-          "status": "disclosed",
-          "value": "The Challenge is described as a philanthropic education initiative by Horn Entrepreneurship at the University of Delaware.",
-          "displayValue": "Initiative by Horn Entrepreneurship at the University of Delaware",
-          "normalizedValue": {
-            "kind": "text",
-            "value": "The Challenge is described as a philanthropic education initiative by Horn Entrepreneurship at the University of Delaware."
-          },
-          "sources": [
-            {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
-              "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "The Diamond Challenge, a philanthropic education initiative by Horn Entrepreneurship at the University of Delaware"
-            }
-          ],
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
           "note": null,
           "confidence": null,
-          "claimKind": "source_stated",
+          "claimKind": null,
           "conflictingValues": [],
           "calculation": null,
           "projection": null
@@ -493,23 +530,23 @@
         "grade_levels": {
           "status": "disclosed",
           "value": [
-            "High school"
+            "Grades 6-12"
           ],
-          "displayValue": "High school students",
+          "displayValue": "Grades 6–12",
           "normalizedValue": {
             "kind": "text_list",
             "values": [
-              "High school"
+              "Grades 6-12"
             ]
           },
           "sources": [
             {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "Teams must consist of 2-4 high school students aged 14-18 at the submission deadline."
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "Teams of 3-10 students currently enrolled in grades 6 through 12 (regardless of age)."
             }
           ],
           "note": null,
@@ -520,46 +557,37 @@
           "projection": null
         },
         "ages": {
-          "status": "disclosed",
-          "value": "14–18 at the submission deadline",
-          "displayValue": "Ages 14–18 at the submission deadline",
-          "normalizedValue": {
-            "kind": "text",
-            "value": "14-18 at the submission deadline"
-          },
-          "sources": [
-            {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
-              "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "Teams must consist of 2-4 high school students aged 14-18 at the submission deadline."
-            }
-          ],
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
           "note": null,
           "confidence": null,
-          "claimKind": "source_stated",
+          "claimKind": null,
           "conflictingValues": [],
           "calculation": null,
           "projection": null
         },
         "geographic_restrictions": {
-          "status": "unclear",
-          "value": null,
-          "displayValue": null,
-          "normalizedValue": null,
+          "status": "disclosed",
+          "value": "Students must be enrolled in a U.S. school or homeschool.",
+          "displayValue": "U.S. school or homeschool students",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Students must be enrolled in a U.S. school or homeschool."
+          },
           "sources": [
             {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "Any Idea, Any Team, Any Country"
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "Team members must be students who are currently enrolled in grades 6 through 12 in a U.S. school or homeschool."
             }
           ],
-          "note": "The displayed typed value was withheld because its participant geography does not match the cited excerpt.",
+          "note": null,
           "confidence": null,
           "claimKind": "source_stated",
           "conflictingValues": [],
@@ -594,20 +622,20 @@
         },
         "entry_format": {
           "status": "disclosed",
-          "value": "Teams of 2–4 students",
-          "displayValue": "Teams of 2–4 students",
+          "value": "Teams of 3-10 students",
+          "displayValue": "Teams of 3–10 students",
           "normalizedValue": {
             "kind": "text",
-            "value": "Teams of 2-4 students"
+            "value": "Teams of 3-10 students"
           },
           "sources": [
             {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "Teams must consist of 2-4 high school students aged 14-18 at the submission deadline."
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "Teams of 3-10 students currently enrolled in grades 6 through 12 (regardless of age)."
             }
           ],
           "note": null,
@@ -619,20 +647,28 @@
         },
         "sponsor_requirement": {
           "status": "disclosed",
-          "value": "One adult advisor age 21 or older is required per team.",
-          "displayValue": "One adult advisor (age 21+) required",
+          "value": "Application must come from a Host School or Organization; teams require an Adult Team Advisor or Adult Representative.",
+          "displayValue": "Host organization plus approved adult supervision required",
           "normalizedValue": {
             "kind": "text",
-            "value": "One adult advisor age 21 or older is required per team."
+            "value": "Application must come from a Host School or Organization; teams require an Adult Team Advisor or Adult Representative."
           },
           "sources": [
             {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "Each team is required to have one adult advisor aged 21 or older."
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "The application for a team must come from a Host School or Organization as described in the ARC rules."
+            },
+            {
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "Teams must be supervised by an Adult Team Advisor approved by the principal of the school, or by an Adult Representative the youth organization."
             }
           ],
           "note": null,
@@ -644,20 +680,17 @@
         },
         "application_deadline": {
           "status": "disclosed",
-          "value": "2027-01-14",
-          "displayValue": "January 14, 2027, 5 PM EST",
-          "normalizedValue": {
-            "kind": "date",
-            "isoDate": "2027-01-14"
-          },
+          "value": "December 6, 2026, 11:59 PM ET",
+          "displayValue": "December 6, 2026, 11:59 PM ET",
+          "normalizedValue": null,
           "sources": [
             {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "January 14 | Submission Deadline (5PM EST)"
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "The deadline for a new team to complete and submit their registration form, including receipt of the $195 Registration Fee, is December 6, 2026, at 11:59 PM ET."
             }
           ],
           "note": null,
@@ -669,20 +702,20 @@
         },
         "decision_date": {
           "status": "disclosed",
-          "value": "2027-03-09",
-          "displayValue": "March 9, 2027 (finalists announced)",
+          "value": "April 13, 2027",
+          "displayValue": "Top 100 announced no later than April 13, 2027",
           "normalizedValue": {
             "kind": "date",
-            "isoDate": "2027-03-09"
+            "isoDate": "2027-04-13"
           },
           "sources": [
             {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "March 9 | Finalists Announced"
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "The Top 100 teams will be announced no later than April 13, 2027."
             }
           ],
           "note": null,
@@ -693,27 +726,51 @@
           "projection": null
         },
         "start_date": {
-          "status": "not_found",
-          "value": null,
-          "displayValue": null,
-          "normalizedValue": null,
-          "sources": [],
+          "status": "disclosed",
+          "value": "July 15, 2026",
+          "displayValue": "Qualification flights begin July 15, 2026",
+          "normalizedValue": {
+            "kind": "date",
+            "isoDate": "2026-07-15"
+          },
+          "sources": [
+            {
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "Fly your rocket in front of an observer from the National Association of Rocketry (NAR) a minimum of two and up to three times for an official qualification score between July 15, 2026, and April 4, 2027."
+            }
+          ],
           "note": null,
           "confidence": null,
-          "claimKind": null,
+          "claimKind": "source_stated",
           "conflictingValues": [],
           "calculation": null,
           "projection": null
         },
         "end_date": {
-          "status": "not_found",
-          "value": null,
-          "displayValue": null,
-          "normalizedValue": null,
-          "sources": [],
+          "status": "disclosed",
+          "value": "May 15, 2027",
+          "displayValue": "National Finals: May 15, 2027",
+          "normalizedValue": {
+            "kind": "date",
+            "isoDate": "2027-05-15"
+          },
+          "sources": [
+            {
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "The official date is Saturday, May 15, 2027, at Great Meadow in The Plains, VA, about 50 miles west of Washington, DC."
+            }
+          ],
           "note": null,
           "confidence": null,
-          "claimKind": null,
+          "claimKind": "source_stated",
           "conflictingValues": [],
           "calculation": null,
           "projection": null
@@ -764,20 +821,12 @@
           "normalizedValue": null,
           "sources": [
             {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "Upon initial submission, each team is required to choose a competition track (business innovation or social innovation) as well as a pitch round format (live pitch event or virtual/pre-recorded)."
-            },
-            {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
-              "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "Student teams qualifying for the final round of competition at the Limitless World Summit will be required to attend in-person to compete."
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "each team must conduct a minimum of two and no more than three qualification flight attempts in the actual presence of a current adult (age 21 or above) member of the NAR"
             }
           ],
           "note": "The displayed typed value was withheld because its participation format does not match the cited excerpt and display value.",
@@ -788,14 +837,34 @@
           "projection": null
         },
         "location": {
-          "status": "not_found",
-          "value": null,
-          "displayValue": null,
-          "normalizedValue": null,
-          "sources": [],
+          "status": "disclosed",
+          "value": "National Finals at Great Meadow, The Plains, Virginia; qualification flights are arranged locally.",
+          "displayValue": "Finals: Great Meadow, The Plains, VA; local qualification flights",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "National Finals at Great Meadow, The Plains, Virginia; qualification flights are arranged locally."
+          },
+          "sources": [
+            {
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "The official date is Saturday, May 15, 2027, at Great Meadow in The Plains, VA, about 50 miles west of Washington, DC."
+            },
+            {
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "you can also use any adult NAR member in your local area"
+            }
+          ],
           "note": null,
           "confidence": null,
-          "claimKind": null,
+          "claimKind": "source_stated",
           "conflictingValues": [],
           "calculation": null,
           "projection": null
@@ -814,14 +883,23 @@
           "projection": null
         },
         "application_fee": {
-          "status": "not_found",
-          "value": null,
-          "displayValue": null,
+          "status": "disclosed",
+          "value": 195,
+          "displayValue": "$195 per team registration fee",
           "normalizedValue": null,
-          "sources": [],
+          "sources": [
+            {
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "Submit an application for a team of three to ten students (grades 6-12) on or before December 6, 2026, and issue payment of $195 per team."
+            }
+          ],
           "note": null,
           "confidence": null,
-          "claimKind": null,
+          "claimKind": "source_stated",
           "conflictingValues": [],
           "calculation": null,
           "projection": null
@@ -840,14 +918,23 @@
           "projection": null
         },
         "tuition": {
-          "status": "not_found",
+          "status": "unclear",
           "value": null,
           "displayValue": null,
           "normalizedValue": null,
-          "sources": [],
-          "note": null,
+          "sources": [
+            {
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "The registration fee for a team to attend the 2027 National Finals is $395."
+            }
+          ],
+          "note": "The displayed typed value was withheld because its money amount does not match the cited excerpt and display value.",
           "confidence": null,
-          "claimKind": null,
+          "claimKind": "source_stated",
           "conflictingValues": [],
           "calculation": null,
           "projection": null
@@ -957,24 +1044,29 @@
           "projection": null
         },
         "selection_process": {
-          "status": "disclosed",
-          "value": "Submission-round teams are evaluated by judges and must meet a minimum score to advance to the pitching round.",
-          "displayValue": "Judged submission; minimum score required to advance",
-          "normalizedValue": {
-            "kind": "text",
-            "value": "Submission-round teams are evaluated by judges and must meet a minimum score to advance to the pitching round."
-          },
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
           "sources": [
             {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "Teams who participate in the submission round will be evaluated by a series of judges and must meet the minimum score to advance to the pitching round."
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "Fly your rocket in front of an observer from the National Association of Rocketry (NAR) a minimum of two and up to three times for an official qualification score between July 15, 2026, and April 4, 2027."
+            },
+            {
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "If your score from the sum of your two best qualification flights is one of the 100 best, you will be invited to compete for a share of the $100,000 in awards at the National Finals on May 15, 2027."
             }
           ],
-          "note": null,
+          "note": "The cited wording describes the opportunity but does not establish an application, review, selection, or advancement process.",
           "confidence": null,
           "claimKind": "source_stated",
           "conflictingValues": [],
@@ -995,14 +1087,27 @@
           "projection": null
         },
         "acceptance_count": {
-          "status": "not_found",
-          "value": null,
-          "displayValue": null,
-          "normalizedValue": null,
-          "sources": [],
+          "status": "disclosed",
+          "value": 100,
+          "displayValue": "100 teams",
+          "normalizedValue": {
+            "kind": "number",
+            "value": 100,
+            "unit": "people"
+          },
+          "sources": [
+            {
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "If your score from the sum of your two best qualification flights is one of the 100 best, you will be invited to compete"
+            }
+          ],
           "note": null,
           "confidence": null,
-          "claimKind": null,
+          "claimKind": "source_stated",
           "conflictingValues": [],
           "calculation": null,
           "projection": null
@@ -1035,20 +1140,20 @@
         },
         "selection_evidence": {
           "status": "disclosed",
-          "value": "Descriptive judging criteria and advancement threshold are published; no current-cycle acceptance count or rate is stated.",
-          "displayValue": "Descriptive",
+          "value": "Descriptive; 100 teams advance to National Finals.",
+          "displayValue": "Descriptive; 100 teams advance",
           "normalizedValue": {
             "kind": "text",
-            "value": "Descriptive judging criteria and advancement threshold are published; no current-cycle acceptance count or rate is stated."
+            "value": "Descriptive; 100 teams advance to National Finals."
           },
           "sources": [
             {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "Teams who participate in the submission round will be evaluated by a series of judges and must meet the minimum score to advance to the pitching round."
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "our National Finals in Northern Virginia can only accommodate 100 teams."
             }
           ],
           "note": null,
@@ -1065,15 +1170,15 @@
           "normalizedValue": null,
           "sources": [
             {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
+              "id": "page-5ab6bc12586ad198",
+              "url": "https://www.rocketrychallenge.org/faq/",
+              "title": "FAQ - American Rocketry Challenge",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "Young minds embark on a global journey to turn their passions into business or social venture concepts – competing for a $100K prize pool."
+              "accessedAt": "2026-08-21T11:21:04.539Z",
+              "excerpt": "you will be invited to compete for a share of the $100,000 in awards at the National Finals"
             }
           ],
-          "note": "The displayed typed value was withheld because its money amount does not match the cited excerpt and display value.",
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
           "confidence": null,
           "claimKind": "source_stated",
           "conflictingValues": [],
@@ -1159,6 +1264,31 @@
           "projection": null
         },
         "mentorship": {
+          "status": "disclosed",
+          "value": "Official NAR mentors can teach teams rocketry design, build specifications, supplies, and launch-site planning.",
+          "displayValue": "Access to NAR rocketry mentors",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Official NAR mentors can teach teams rocketry design, build specifications, supplies, and launch-site planning."
+          },
+          "sources": [
+            {
+              "id": "page-fdd85c5e7ed6e40e",
+              "url": "https://www.rocketrychallenge.org/mentors/",
+              "title": "Rocketry Mentors - American Rocketry Challenge",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:21:09.083Z",
+              "excerpt": "Our nationwide network of official mentors from the National Association of Rocketry can teach you everything you need to know about rocketry! From design and build specifications, to a list of supplies and the perfect launch site"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_benefits": {
           "status": "not_found",
           "value": null,
           "displayValue": null,
@@ -1167,39 +1297,6 @@
           "note": null,
           "confidence": null,
           "claimKind": null,
-          "conflictingValues": [],
-          "calculation": null,
-          "projection": null
-        },
-        "other_benefits": {
-          "status": "disclosed",
-          "value": [
-            "Network growth",
-            "Feedback",
-            "Potential future collaborations"
-          ],
-          "displayValue": "Network growth, feedback, and potential future collaborations",
-          "normalizedValue": {
-            "kind": "text_list",
-            "values": [
-              "Network growth",
-              "Feedback",
-              "Potential future collaborations"
-            ]
-          },
-          "sources": [
-            {
-              "id": "page-13f3083976d9a6f9",
-              "url": "https://diamondchallenge.org/competition/",
-              "title": "Competition - Diamond Challenge",
-              "pageType": "user_supplied",
-              "accessedAt": "2026-08-21T03:46:57.726Z",
-              "excerpt": "Every participant has the opportunity to grow their network, gain valuable feedback, and discover potential future collaborations."
-            }
-          ],
-          "note": null,
-          "confidence": null,
-          "claimKind": "source_stated",
           "conflictingValues": [],
           "calculation": null,
           "projection": null
@@ -1314,21 +1411,61 @@
     },
     "reviewedPages": [
       {
-        "id": "page-13f3083976d9a6f9",
-        "url": "https://diamondchallenge.org/competition/",
-        "title": "Competition - Diamond Challenge",
+        "id": "page-5ab6bc12586ad198",
+        "url": "https://www.rocketrychallenge.org/faq/",
+        "title": "FAQ - American Rocketry Challenge",
         "pageType": "user_supplied",
-        "accessedAt": "2026-08-21T03:46:57.726Z",
+        "accessedAt": "2026-08-21T11:21:04.539Z",
         "truncated": false,
         "truncatedForModel": false,
         "contentUnavailable": false
       },
       {
-        "id": "page-41c9b0a86d30b5c3",
-        "url": "https://diamondchallenge.org/",
-        "title": "Diamond Challenge - Diamond Challenge",
+        "id": "page-479058a70b5c765a",
+        "url": "https://www.rocketrychallenge.org/privacy-policy-2/",
+        "title": "Privacy Policy - American Rocketry Challenge",
         "pageType": "user_supplied",
-        "accessedAt": "2026-08-21T03:46:58.064Z",
+        "accessedAt": "2026-08-21T11:21:05.365Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-70a548c382d8631b",
+        "url": "https://www.rocketrychallenge.org/resource/2027-american-rocketry-challenge-rules/",
+        "title": "2027 American Rocketry Challenge Rules - American Rocketry Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T11:21:06.220Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-6ec6178a7fefb755",
+        "url": "https://www.rocketrychallenge.org/awards/",
+        "title": "Awards - American Rocketry Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T11:21:07.042Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-40b28659c66e2780",
+        "url": "https://www.rocketrychallenge.org/about/",
+        "title": "About - American Rocketry Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T11:21:08.030Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-fdd85c5e7ed6e40e",
+        "url": "https://www.rocketrychallenge.org/mentors/",
+        "title": "Rocketry Mentors - American Rocketry Challenge",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T11:21:09.083Z",
         "truncated": false,
         "truncatedForModel": false,
         "contentUnavailable": false
@@ -1338,20 +1475,20 @@
     "evidenceWarnings": [],
     "attentionItems": [
       {
-        "id": "selectivity-not-quantified",
-        "category": "selection",
+        "id": "award-allocation",
+        "category": "outcome",
         "priority": "medium",
-        "title": "Numerical selectivity data was not found",
-        "explanation": "The retained record does not contain current-cycle applicant totals, acceptance totals, or a published acceptance rate. This does not establish whether the opportunity is or is not selective.",
+        "title": "Award amount per team is unspecified",
+        "explanation": "The source states a $100,000 awards pool but does not state the amount a particular finalist or winner receives.",
         "fieldIds": [
-          "applicant_count",
-          "acceptance_count",
-          "acceptance_rate_claim"
+          "cash_award"
         ],
         "claimIds": [],
-        "sourceIds": [],
+        "sourceIds": [
+          "page-5ab6bc12586ad198"
+        ],
         "suggestedNextStep": null,
-        "origin": "deterministic_fallback"
+        "origin": "model_grounded"
       }
     ],
     "qualityOutcome": "usable_with_caveats",

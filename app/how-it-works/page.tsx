@@ -36,7 +36,7 @@ export default function HowItWorksPage() {
               AI researches the public pages. Deterministic checks keep supported
               claims tied to evidence and leave uncertainty visible.
             </p>
-            <Link className="button" href="/analyze">
+            <Link className="button" href="/">
               Analyze an opportunity
             </Link>
           </div>

@@ -1692,9 +1692,10 @@ export function createOpenAIFastExtractor(
     let responseUsage: ModelUsageTelemetry | null | undefined;
     requestOptions?.onProgress?.({ type: "normal_model_started" });
     try {
-      const response = await client.responses.create({
+      const stream = await client.responses.create({
         model,
         store: false,
+        stream: true,
         reasoning: { effort: MODEL_REASONING_EFFORT },
         max_output_tokens: FAST_MODEL_OUTPUT_TOKENS,
         input: [
@@ -1703,22 +1704,66 @@ export function createOpenAIFastExtractor(
         ],
         text: { format: buildFastModelTextFormat(), verbosity: "low" },
       }, { signal: requestOptions?.signal });
-      const usage = modelUsageTelemetry(response.usage);
+      const outputParts = new Map<string, string>();
+      let responseId: string | null = null;
+      let responseStatus: "completed" | "failed" | "incomplete" | null = null;
+      let responseUsageRaw: Parameters<typeof modelUsageTelemetry>[0] = null;
+      let outputStarted = false;
+      for await (const event of stream) {
+        // Strict Structured Outputs applies to the completed JSON document. A
+        // text delta can be syntactically incomplete or later superseded by a
+        // duplicate JSON key, so deltas are observable progress only. Candidate
+        // facts still enter the UI solely after full parsing and deterministic
+        // evidence/scope validation below.
+        if (event.type === "response.output_text.delta") {
+          const key = `${event.output_index}:${event.content_index}`;
+          outputParts.set(key, `${outputParts.get(key) ?? ""}${event.delta}`);
+          if (!outputStarted && event.delta.length > 0) {
+            outputStarted = true;
+            requestOptions?.onProgress?.({ type: "normal_model_output_started" });
+          }
+          continue;
+        }
+        if (event.type === "response.output_text.done") {
+          const key = `${event.output_index}:${event.content_index}`;
+          outputParts.set(key, event.text);
+          if (!outputStarted && event.text.length > 0) {
+            outputStarted = true;
+            requestOptions?.onProgress?.({ type: "normal_model_output_started" });
+          }
+          continue;
+        }
+        if (
+          event.type === "response.completed" ||
+          event.type === "response.failed" ||
+          event.type === "response.incomplete"
+        ) {
+          responseId = event.response.id;
+          responseStatus = event.type === "response.completed"
+            ? "completed"
+            : event.type === "response.failed"
+              ? "failed"
+              : "incomplete";
+          responseUsageRaw = event.response.usage;
+        }
+      }
+      const usage = modelUsageTelemetry(responseUsageRaw);
       responseUsage = usage;
       extractorOptions.onResponse?.({
         family: "normal",
         model,
-        responseId: response.id,
+        responseId: responseId ?? "unknown-response",
         usage,
         durationMs: performance.now() - startedAt,
-        outcome: response.status === "completed" ? "completed" : "failed",
+        outcome: responseStatus === "completed" ? "completed" : "failed",
       });
-      if (response.status !== "completed" || !response.output_text) {
+      const outputText = [...outputParts.values()].join("");
+      if (responseStatus !== "completed" || !outputText) {
         throw new ModelExtractionError("Normal analysis did not return a complete structured result.");
       }
       let raw: unknown;
       try {
-        raw = JSON.parse(response.output_text);
+        raw = JSON.parse(outputText);
       } catch (error) {
         throw new ModelExtractionError("Normal analysis returned invalid structured JSON.", { cause: error });
       }

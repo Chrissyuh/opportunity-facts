@@ -20,47 +20,70 @@ import {
   VariantPanel,
 } from "./structured-opportunity-details";
 
-type OverviewItem = { label: string; fieldIds: FieldId[] };
+type OverviewItem = {
+  label: string;
+  fieldIds: FieldId[];
+  priority: "primary" | "secondary";
+  alwaysIncludeFieldIds?: FieldId[];
+};
 
 const overviewItems: OverviewItem[] = [
-  { label: "Who can apply", fieldIds: ["grade_levels", "ages"] },
-  { label: "Application deadline", fieldIds: ["application_deadline"] },
+  { label: "Application deadline", fieldIds: ["application_deadline"], priority: "primary" },
   {
-    label: "When it happens",
+    label: "Cost",
+    fieldIds: ["estimated_total_mandatory_cost", "tuition", "financial_aid"],
+    priority: "primary",
+    alwaysIncludeFieldIds: ["financial_aid"],
+  },
+  {
+    label: "Dates and schedule",
     fieldIds: ["start_date", "end_date", "duration"],
+    priority: "primary",
   },
   {
     label: "Format and location",
     fieldIds: ["participation_format", "location"],
+    priority: "primary",
   },
-  { label: "Cost", fieldIds: ["estimated_total_mandatory_cost", "tuition"] },
-  { label: "Financial aid", fieldIds: ["financial_aid"] },
-  { label: "Operated by", fieldIds: ["operating_organization"] },
+  { label: "Who can apply", fieldIds: ["grade_levels", "ages"], priority: "primary" },
+  { label: "Selection", fieldIds: ["selection_process"], priority: "primary" },
+  {
+    label: "What participants receive",
+    fieldIds: ["cash_award", "tuition_waiver", "program_seat", "other_benefits"],
+    priority: "secondary",
+  },
+  { label: "Operated by", fieldIds: ["operating_organization"], priority: "secondary" },
   {
     label: "Institution relationships",
     fieldIds: ["institution_relationship"],
-  },
-  { label: "Selection", fieldIds: ["selection_process"] },
-  {
-    label: "What participants receive",
-    fieldIds: [
-      "cash_award",
-      "tuition_waiver",
-      "program_seat",
-      "other_benefits",
-    ],
+    priority: "secondary",
   },
 ];
 
-function meaningfulFacts(card: OpportunityCard, fieldIds: FieldId[], assessedFieldIds?: ReadonlySet<FieldId>) {
+function meaningfulFacts(
+  card: OpportunityCard,
+  fieldIds: FieldId[],
+  assessedFieldIds?: ReadonlySet<FieldId>,
+  alwaysIncludeFieldIds: readonly FieldId[] = [],
+) {
   const includedFieldIds = assessedFieldIds
     ? fieldIds.filter((id) => assessedFieldIds.has(id))
     : fieldIds;
   const facts = includedFieldIds.map((id) => ({ id, fact: card.facts[id] }));
-  const disclosed = facts.filter(
-    ({ fact }) => fact.status === "disclosed" || fact.status === "conflicting",
+  const selected = facts.filter(
+    ({ id, fact }) =>
+      fact.status === "disclosed" ||
+      fact.status === "conflicting" ||
+      alwaysIncludeFieldIds.includes(id),
   );
-  return disclosed.length ? disclosed : facts.slice(0, 1);
+  if (selected.length) {
+    const hasPrimaryValue = selected.some(({ id }) => !alwaysIncludeFieldIds.includes(id));
+    const firstPrimaryFallback = facts.find(({ id }) => !alwaysIncludeFieldIds.includes(id));
+    return hasPrimaryValue || !firstPrimaryFallback
+      ? selected
+      : [firstPrimaryFallback, ...selected];
+  }
+  return facts.slice(0, 1);
 }
 
 function FactValue({ fact }: { fact: Fact }) {
@@ -71,12 +94,13 @@ function FactValue({ fact }: { fact: Fact }) {
       </>
     );
   }
+  if (fact.status === "unclear") {
+    return <>Unclear from checked sources</>;
+  }
   const fallback =
     fact.status === "not_found"
       ? "Not found in checked sources"
-      : fact.status === "unclear"
-        ? "The source wording is unclear"
-        : fact.status === "not_applicable"
+      : fact.status === "not_applicable"
           ? "Does not apply"
           : "No supported value";
   return <>{fact.displayValue ?? fact.note ?? fallback}</>;
@@ -168,9 +192,14 @@ export function OpportunityOverview({
         </div>
         <dl className="glance-grid">
           {visibleOverviewItems.map((item) => {
-            const facts = meaningfulFacts(card, item.fieldIds, assessedFieldSet);
+            const facts = meaningfulFacts(
+              card,
+              item.fieldIds,
+              assessedFieldSet,
+              item.alwaysIncludeFieldIds,
+            );
             return (
-              <div className="glance-fact" key={item.label}>
+              <div className="glance-fact" data-priority={item.priority} key={item.label}>
                 <dt>{item.label}</dt>
                 <dd>
                   {facts.map(({ id, fact }, index) => (

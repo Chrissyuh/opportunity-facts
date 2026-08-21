@@ -29,6 +29,7 @@ export function progressEventPresentation(event: AnalysisProgressEvent): { label
   if (event.type === "source_set_complete") return { label: `${event.acquired} relevant page${event.acquired === 1 ? "" : "s"} acquired`, active: false };
   if (event.type === "cycle_resolved") return { label: event.status === "resolved" ? `${event.label ?? "Cycle"} identified` : "Cycle needs clarification", active: false };
   if (event.type === "normal_model_started") return { label: "Reviewing the practical questions", active: true };
+  if (event.type === "normal_model_output_started") return { label: "Extracting source-backed candidates", active: true };
   if (event.type === "normal_model_completed") return { label: "Practical questions reviewed", active: false };
   if (event.type === "normal_model_failed") return { label: "The compact research response did not complete", active: false };
   if (event.type === "family_started") return { label: `Reviewing ${event.family.replaceAll("_", " ")}`, active: true };
@@ -94,7 +95,7 @@ function ValidatedFacts({ events }: { events: readonly AnalysisProgressEvent[] }
                     <strong>{fact.displayValue}</strong>
                     <small>{fact.evidenceCount} source{fact.evidenceCount === 1 ? "" : "s"} checked</small>
                   </span>
-                )) : <span className="validated-fact-pending">Checking sources…</span>}
+                )) : <span className="validated-fact-pending">Checking sources...</span>}
               </dd>
             </div>
           );

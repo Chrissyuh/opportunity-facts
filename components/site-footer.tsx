@@ -17,9 +17,8 @@ export function SiteFooter({
         </div>
         <nav className="footer-links" aria-label="Product links">
           <span className="footer-label">Product</span>
-          <Link href="/analyze">Analyze</Link>
+          <Link href="/">Analyze</Link>
           {batchAnalysisEnabled ? <Link href="/analyze/batch">Batch analyze</Link> : null}
-          <Link href="/compare">Compare</Link>
           <Link href="/how-it-works">How it works</Link>
         </nav>
         <nav className="footer-links" aria-label="Project links">

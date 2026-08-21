@@ -1,0 +1,1456 @@
+{
+  "artifactVersion": "2.0.0",
+  "analyzerVersion": "student-research-v2-fast-core-extended",
+  "captureDigest": "e057c3649b4600dd168e0db59ecc6cae81b49519b20722edf3e52f57084db7e5",
+  "id": "youngarts-national-arts-competition",
+  "label": "YoungArts National Arts Competition",
+  "category": "National multidisciplinary arts competition",
+  "submittedUrl": "https://youngarts.org/apply/",
+  "recordedAt": "2026-08-21T12:02:58.979Z",
+  "recordedDurationMs": 19805,
+  "captureKind": "compact_production",
+  "progressProvenance": "captured_stream",
+  "sourceArtifact": ".codex-runtime/sample-captures-current/youngarts-national-arts-competition.json",
+  "progress": [
+    {
+      "replayAtMs": 2,
+      "event": {
+        "type": "cache_checked",
+        "state": "unavailable",
+        "sequence": 1,
+        "elapsedMs": 2
+      }
+    },
+    {
+      "replayAtMs": 257,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-3d25d072826524b3",
+        "title": "Apply to the National Arts Competition | YoungArts",
+        "url": "https://youngarts.org/apply/",
+        "sequence": 2,
+        "elapsedMs": 257
+      }
+    },
+    {
+      "replayAtMs": 385,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-4fd8de57f7d12888",
+        "title": "YoungArts Website Privacy Policy - YoungArts",
+        "url": "https://youngarts.org/privacy-policy/",
+        "sequence": 3,
+        "elapsedMs": 385
+      }
+    },
+    {
+      "replayAtMs": 535,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-7e6d585de59d5f5a",
+        "title": "Terms and Privacy Policy - YoungArts",
+        "url": "https://youngarts.org/terms/",
+        "sequence": 4,
+        "elapsedMs": 535
+      }
+    },
+    {
+      "replayAtMs": 702,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-6d8783d64be15108",
+        "title": "Frequently Asked Questions | About YoungArts & Our Programs",
+        "url": "https://youngarts.org/faq/",
+        "sequence": 5,
+        "elapsedMs": 702
+      }
+    },
+    {
+      "replayAtMs": 863,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-f6b79d77561760d1",
+        "title": "Grants & Awards for Artists (Ages 15-18) | YoungArts",
+        "url": "https://youngarts.org/grants-and-awards/",
+        "sequence": 6,
+        "elapsedMs": 863
+      }
+    },
+    {
+      "replayAtMs": 988,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-479fa1fa6d58ac3a",
+        "title": "2027 National Arts Competition Application Requirements - YoungArts",
+        "url": "https://youngarts.org/apply/requirements/",
+        "sequence": 7,
+        "elapsedMs": 988
+      }
+    },
+    {
+      "replayAtMs": 1139,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-490357c2d4417aae",
+        "title": "Get Updates | 2027 YoungArts Competition - YoungArts",
+        "url": "https://youngarts.org/competition/email-signup/?wpf3748_11=website_apply",
+        "sequence": 8,
+        "elapsedMs": 1139
+      }
+    },
+    {
+      "replayAtMs": 1139,
+      "event": {
+        "type": "source_set_complete",
+        "acquired": 7,
+        "failed": 0,
+        "sequence": 9,
+        "elapsedMs": 1139
+      }
+    },
+    {
+      "replayAtMs": 1154,
+      "event": {
+        "type": "cycle_resolved",
+        "status": "resolved",
+        "label": "2027",
+        "sequence": 10,
+        "elapsedMs": 1154
+      }
+    },
+    {
+      "replayAtMs": 1154,
+      "event": {
+        "type": "normal_model_started",
+        "sequence": 11,
+        "elapsedMs": 1154
+      }
+    },
+    {
+      "replayAtMs": 7367,
+      "event": {
+        "type": "normal_model_output_started",
+        "sequence": 12,
+        "elapsedMs": 7367
+      }
+    },
+    {
+      "replayAtMs": 19764,
+      "event": {
+        "type": "normal_model_completed",
+        "sequence": 13,
+        "elapsedMs": 19764
+      }
+    },
+    {
+      "replayAtMs": 19802,
+      "event": {
+        "type": "validation_complete",
+        "retained": 10,
+        "withheld": 5,
+        "sequence": 14,
+        "elapsedMs": 19802
+      }
+    },
+    {
+      "replayAtMs": 19802,
+      "event": {
+        "type": "attention_ready",
+        "count": 0,
+        "sequence": 15,
+        "elapsedMs": 19802
+      }
+    },
+    {
+      "replayAtMs": 19803,
+      "event": {
+        "type": "validated_fact",
+        "fieldId": "opportunity_name",
+        "label": "opportunity name",
+        "displayValue": "National Arts Competition",
+        "evidenceCount": 1,
+        "sequence": 16,
+        "elapsedMs": 19803
+      }
+    },
+    {
+      "replayAtMs": 19803,
+      "event": {
+        "type": "validated_fact",
+        "fieldId": "application_deadline",
+        "label": "application deadline",
+        "displayValue": "October 6, 2026, 8 PM ET",
+        "evidenceCount": 1,
+        "sequence": 17,
+        "elapsedMs": 19803
+      }
+    },
+    {
+      "replayAtMs": 19803,
+      "event": {
+        "type": "validated_fact",
+        "fieldId": "other_benefits",
+        "label": "other benefits",
+        "displayValue": "Creative/professional support, an artist network, and national recognition",
+        "evidenceCount": 3,
+        "sequence": 18,
+        "elapsedMs": 19803
+      }
+    },
+    {
+      "replayAtMs": 19803,
+      "event": {
+        "type": "quality_complete",
+        "outcome": "usable_with_caveats",
+        "sequence": 19,
+        "elapsedMs": 19803
+      }
+    }
+  ],
+  "result": {
+    "card": {
+      "schemaVersion": "2.2.0",
+      "opportunityId": null,
+      "cycle": {
+        "status": "modeled",
+        "value": {
+          "id": "cycle-2027",
+          "label": {
+            "claimId": "cycle-2027-label",
+            "status": "disclosed",
+            "value": "2027",
+            "displayValue": "2027",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "page-3d25d072826524b3",
+                "url": "https://youngarts.org/apply/",
+                "title": "Apply to the National Arts Competition | YoungArts",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T12:02:59.196Z",
+                "excerpt": "2027 National Competition"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          "status": {
+            "claimId": "cycle-2027-status",
+            "status": "unclear",
+            "value": null,
+            "displayValue": null,
+            "claimKind": null,
+            "sources": [
+              {
+                "id": "page-3d25d072826524b3",
+                "url": "https://youngarts.org/apply/",
+                "title": "Apply to the National Arts Competition | YoungArts",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T12:02:59.196Z",
+                "excerpt": "2027 National Competition"
+              }
+            ],
+            "note": "The source identifies the cycle but does not clearly state its current application status.",
+            "conflictingValues": []
+          },
+          "year": {
+            "claimId": "cycle-2027-year",
+            "status": "disclosed",
+            "value": 2027,
+            "displayValue": "2027",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "page-3d25d072826524b3",
+                "url": "https://youngarts.org/apply/",
+                "title": "Apply to the National Arts Competition | YoungArts",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T12:02:59.196Z",
+                "excerpt": "2027 National Competition"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          "startYear": null,
+          "endYear": null,
+          "season": null,
+          "cycleType": {
+            "claimId": "cycle-2027-type",
+            "status": "disclosed",
+            "value": "competition_cycle",
+            "displayValue": "Competition cycle",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "page-3d25d072826524b3",
+                "url": "https://youngarts.org/apply/",
+                "title": "Apply to the National Arts Competition | YoungArts",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T12:02:59.196Z",
+                "excerpt": "2027 National Competition"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          "timingRefs": {
+            "opens": null,
+            "closes": null,
+            "coverageStart": null,
+            "coverageEnd": null
+          }
+        }
+      },
+      "cardVersion": 1,
+      "slug": "national-arts-competition",
+      "summary": "Automated draft from 7 user-supplied source pages; review every value, excerpt, and attribution before use.",
+      "reviewState": "automated_draft",
+      "reviewedAt": null,
+      "sourcePagesChecked": [
+        {
+          "id": "page-3d25d072826524b3",
+          "url": "https://youngarts.org/apply/",
+          "title": "Apply to the National Arts Competition | YoungArts",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T12:02:59.196Z"
+        },
+        {
+          "id": "page-4fd8de57f7d12888",
+          "url": "https://youngarts.org/privacy-policy/",
+          "title": "YoungArts Website Privacy Policy - YoungArts",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T12:02:59.350Z"
+        },
+        {
+          "id": "page-7e6d585de59d5f5a",
+          "url": "https://youngarts.org/terms/",
+          "title": "Terms and Privacy Policy - YoungArts",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T12:02:59.501Z"
+        },
+        {
+          "id": "page-6d8783d64be15108",
+          "url": "https://youngarts.org/faq/",
+          "title": "Frequently Asked Questions | About YoungArts & Our Programs",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T12:02:59.656Z"
+        },
+        {
+          "id": "page-f6b79d77561760d1",
+          "url": "https://youngarts.org/grants-and-awards/",
+          "title": "Grants & Awards for Artists (Ages 15-18) | YoungArts",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T12:02:59.830Z"
+        },
+        {
+          "id": "page-479fa1fa6d58ac3a",
+          "url": "https://youngarts.org/apply/requirements/",
+          "title": "2027 National Arts Competition Application Requirements - YoungArts",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T12:02:59.956Z"
+        },
+        {
+          "id": "page-490357c2d4417aae",
+          "url": "https://youngarts.org/competition/email-signup/?wpf3748_11=website_apply",
+          "title": "Get Updates | 2027 YoungArts Competition - YoungArts",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T12:03:00.109Z"
+        }
+      ],
+      "conflicts": [],
+      "organizations": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "organizationRoles": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "institutionRelationships": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "variants": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "stages": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "pathways": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "costItems": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "outcomes": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "facts": {
+        "opportunity_name": {
+          "status": "disclosed",
+          "value": "National Arts Competition",
+          "displayValue": "National Arts Competition",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "National Arts Competition"
+          },
+          "sources": [
+            {
+              "id": "page-3d25d072826524b3",
+              "url": "https://youngarts.org/apply/",
+              "title": "Apply to the National Arts Competition | YoungArts",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:02:59.196Z",
+              "excerpt": "Apply to the National Arts Competition"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "opportunity_category": {
+          "status": "disclosed",
+          "value": "National arts competition",
+          "displayValue": "National arts competition",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "National arts competition"
+          },
+          "sources": [
+            {
+              "id": "page-6d8783d64be15108",
+              "url": "https://youngarts.org/faq/",
+              "title": "Frequently Asked Questions | About YoungArts & Our Programs",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:02:59.656Z",
+              "excerpt": "The below FAQ contains information related to the 2027 national arts competition cycle."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "official_url": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "operating_organization": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-7e6d585de59d5f5a",
+              "url": "https://youngarts.org/terms/",
+              "title": "Terms and Privacy Policy - YoungArts",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:02:59.501Z",
+              "excerpt": "These Terms constitute a binding legal agreement between you and National Foundation for Advancement in the Arts, Inc. and/or its affiliates (collectively, “YoungArts,” “we” or “us”)."
+            }
+          ],
+          "note": "The excerpt names an organization or opportunity but does not explicitly support the primary operator role.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "organization_type": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "named_institution": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "institution_relationship": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "relationship_explanation": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "grade_levels": {
+          "status": "disclosed",
+          "value": [
+            "Grades 10, 11, or 12 as of December 1, 2026"
+          ],
+          "displayValue": "Grades 10, 11, or 12 as of December 1, 2026",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Grades 10, 11, or 12 as of December 1, 2026"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-3d25d072826524b3",
+              "url": "https://youngarts.org/apply/",
+              "title": "Apply to the National Arts Competition | YoungArts",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:02:59.196Z",
+              "excerpt": "As of December 1, 2026, will you be in grade 10, 11 or 12?"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "ages": {
+          "status": "disclosed",
+          "value": "15–18 as of December 1, 2026",
+          "displayValue": "15–18 as of December 1, 2026",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "15-18 as of December 1, 2026"
+          },
+          "sources": [
+            {
+              "id": "page-3d25d072826524b3",
+              "url": "https://youngarts.org/apply/",
+              "title": "Apply to the National Arts Competition | YoungArts",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:02:59.196Z",
+              "excerpt": "As of December 1, 2026, will you be age 15-18?"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "geographic_restrictions": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "citizenship_restrictions": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-3d25d072826524b3",
+              "url": "https://youngarts.org/apply/",
+              "title": "Apply to the National Arts Competition | YoungArts",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:02:59.196Z",
+              "excerpt": "Are you either a citizen of the United States, a permanent resident or legally able to receive taxable income in the U.S. (i.e., have a social security number)?"
+            }
+          ],
+          "note": "The displayed typed value was withheld because its citizenship or residency value does not match the cited excerpt.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "prerequisite_skills": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "entry_format": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "sponsor_requirement": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_deadline": {
+          "status": "disclosed",
+          "value": "2026-10-06",
+          "displayValue": "October 6, 2026, 8 PM ET",
+          "normalizedValue": {
+            "kind": "date",
+            "isoDate": "2026-10-06"
+          },
+          "sources": [
+            {
+              "id": "page-3d25d072826524b3",
+              "url": "https://youngarts.org/apply/",
+              "title": "Apply to the National Arts Competition | YoungArts",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:02:59.196Z",
+              "excerpt": "The 2027 YoungArts application closes on Tuesday, October 6, 2026 at 8 PM ET."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "decision_date": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "start_date": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "end_date": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "duration": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "weekly_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "required_live_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "participation_format": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "location": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_requirements": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_fee": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "deposit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_mandatory_costs": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "estimated_total_mandatory_cost": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "lodging_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "meals_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "financial_aid": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "refund_policy": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_policy": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_process": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-f6b79d77561760d1",
+              "url": "https://youngarts.org/grants-and-awards/",
+              "title": "Grants & Awards for Artists (Ages 15-18) | YoungArts",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:02:59.830Z",
+              "excerpt": "We employ professional artists with an established practice in their field to review submissions of work."
+            },
+            {
+              "id": "page-f6b79d77561760d1",
+              "url": "https://youngarts.org/grants-and-awards/",
+              "title": "Grants & Awards for Artists (Ages 15-18) | YoungArts",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:02:59.830Z",
+              "excerpt": "reviewers are tasked with evaluating applications, including assessing artistic excellence, funding potential, and technical expertise, based on the needs and guidelines of each specific program."
+            }
+          ],
+          "note": "The cited wording describes the opportunity but does not establish an application, review, selection, or advancement process.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "applicant_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_rate_claim": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "calculated_acceptance_rate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_evidence": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-f6b79d77561760d1",
+              "url": "https://youngarts.org/grants-and-awards/",
+              "title": "Grants & Awards for Artists (Ages 15-18) | YoungArts",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:02:59.830Z",
+              "excerpt": "reviewers are tasked with evaluating applications, including assessing artistic excellence, funding potential, and technical expertise, based on the needs and guidelines of each specific program."
+            }
+          ],
+          "note": "The cited page describes a different opportunity on the same organization site, so it cannot support this target-specific fact.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cash_award": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-3d25d072826524b3",
+              "url": "https://youngarts.org/apply/",
+              "title": "Apply to the National Arts Competition | YoungArts",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:02:59.196Z",
+              "excerpt": "All YoungArts award winners receive cash prizes between $250 and $10,000."
+            }
+          ],
+          "note": "The displayed typed value was withheld because its money amount does not match the cited excerpt and display value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "stipend": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition_waiver": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "program_seat": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "in_kind_value": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "certificate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "college_credit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "mentorship": {
+          "status": "disclosed",
+          "value": "Mentorship opportunities with accomplished artists",
+          "displayValue": "Mentorship opportunities with accomplished artists",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Mentorship opportunities with accomplished artists"
+          },
+          "sources": [
+            {
+              "id": "page-3d25d072826524b3",
+              "url": "https://youngarts.org/apply/",
+              "title": "Apply to the National Arts Competition | YoungArts",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:02:59.196Z",
+              "excerpt": "We provide mentorship opportunities with accomplished artists to help award winners prepare for and navigate a career in the arts."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_benefits": {
+          "status": "disclosed",
+          "value": [
+            "Resources and opportunities supporting a sustainable practice",
+            "Long-term artist network",
+            "National recognition"
+          ],
+          "displayValue": "Creative/professional support, an artist network, and national recognition",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Resources and opportunities supporting a sustainable practice",
+              "Long-term artist network",
+              "National recognition"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-3d25d072826524b3",
+              "url": "https://youngarts.org/apply/",
+              "title": "Apply to the National Arts Competition | YoungArts",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:02:59.196Z",
+              "excerpt": "Artists access resources and opportunities at every stage of their development to support a sustainable practice."
+            },
+            {
+              "id": "page-3d25d072826524b3",
+              "url": "https://youngarts.org/apply/",
+              "title": "Apply to the National Arts Competition | YoungArts",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:02:59.196Z",
+              "excerpt": "YoungArts award winners join a community of distinguished artists that provides a long–term, robust network to help artists at all stages of their education and career."
+            },
+            {
+              "id": "page-3d25d072826524b3",
+              "url": "https://youngarts.org/apply/",
+              "title": "Apply to the National Arts Competition | YoungArts",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:02:59.196Z",
+              "excerpt": "The prestigious award gives emerging artists a headstart by demonstrating that they have received national recognition"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "personal_information": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "data_sharing": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_ownership": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_license": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "publicity_rights": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "confidentiality": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_rights": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "material_terms": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        }
+      },
+      "projectionRefs": {},
+      "migratedFrom": null
+    },
+    "reviewedPages": [
+      {
+        "id": "page-3d25d072826524b3",
+        "url": "https://youngarts.org/apply/",
+        "title": "Apply to the National Arts Competition | YoungArts",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T12:02:59.196Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-4fd8de57f7d12888",
+        "url": "https://youngarts.org/privacy-policy/",
+        "title": "YoungArts Website Privacy Policy - YoungArts",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T12:02:59.350Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-7e6d585de59d5f5a",
+        "url": "https://youngarts.org/terms/",
+        "title": "Terms and Privacy Policy - YoungArts",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T12:02:59.501Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-6d8783d64be15108",
+        "url": "https://youngarts.org/faq/",
+        "title": "Frequently Asked Questions | About YoungArts & Our Programs",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T12:02:59.656Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-f6b79d77561760d1",
+        "url": "https://youngarts.org/grants-and-awards/",
+        "title": "Grants & Awards for Artists (Ages 15-18) | YoungArts",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T12:02:59.830Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-479fa1fa6d58ac3a",
+        "url": "https://youngarts.org/apply/requirements/",
+        "title": "2027 National Arts Competition Application Requirements - YoungArts",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T12:02:59.956Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-490357c2d4417aae",
+        "url": "https://youngarts.org/competition/email-signup/?wpf3748_11=website_apply",
+        "title": "Get Updates | 2027 YoungArts Competition - YoungArts",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T12:03:00.109Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      }
+    ],
+    "pageWarnings": [],
+    "evidenceWarnings": [],
+    "attentionItems": [],
+    "qualityOutcome": "usable_with_caveats",
+    "assessedFieldIds": [
+      "opportunity_name",
+      "opportunity_category",
+      "official_url",
+      "operating_organization",
+      "named_institution",
+      "institution_relationship",
+      "relationship_explanation",
+      "grade_levels",
+      "ages",
+      "geographic_restrictions",
+      "citizenship_restrictions",
+      "entry_format",
+      "sponsor_requirement",
+      "application_deadline",
+      "decision_date",
+      "start_date",
+      "end_date",
+      "duration",
+      "weekly_hours",
+      "participation_format",
+      "location",
+      "application_fee",
+      "tuition",
+      "estimated_total_mandatory_cost",
+      "financial_aid",
+      "refund_policy",
+      "selection_process",
+      "selection_evidence",
+      "applicant_count",
+      "acceptance_count",
+      "acceptance_rate_claim",
+      "cash_award",
+      "stipend",
+      "tuition_waiver",
+      "program_seat",
+      "in_kind_value",
+      "mentorship",
+      "other_benefits"
+    ]
+  }
+}

@@ -52,7 +52,7 @@ export function SampleAnalysisReplay({ sample }: { sample: SampleAnalysis }) {
           </div>
           <div className="sample-result-actions no-print">
             <Link className="button-secondary" href="/analyze?sample=next">Try another sample</Link>
-            <Link className="button" href="/analyze">Analyze your own URL</Link>
+            <Link className="button" href="/">Analyze your own URL</Link>
           </div>
           {sample.result.pageWarnings.length ? <p className="analysis-warning-note"><strong>{sample.result.pageWarnings.length} relevant page{sample.result.pageWarnings.length === 1 ? " couldn’t" : "s couldn’t"} be accessed.</strong></p> : null}
           <OpportunityOverview card={sample.result.card} embedded attentionItems={sample.result.attentionItems} attentionLimit={3} fullEvidenceAvailable={false} assessedFieldIds={sample.result.assessedFieldIds} />

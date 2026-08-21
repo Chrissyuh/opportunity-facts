@@ -59,6 +59,57 @@ function response(
   };
 }
 
+function streamedResponse(
+  output: unknown,
+  id: string,
+  status: "completed" | "failed" | "incomplete" = "completed",
+  chunkCount = 2,
+) {
+  const text = typeof output === "string" ? output : JSON.stringify(output);
+  const chunkSize = Math.max(1, Math.ceil(text.length / chunkCount));
+  const chunks = Array.from(
+    { length: Math.ceil(text.length / chunkSize) },
+    (_, index) => text.slice(index * chunkSize, (index + 1) * chunkSize),
+  );
+  const terminalResponse = {
+    id,
+    status,
+    usage: {
+      input_tokens: 100,
+      output_tokens: 50,
+      total_tokens: 150,
+    },
+  };
+  return {
+    async *[Symbol.asyncIterator]() {
+      for (const delta of chunks) {
+        yield {
+          type: "response.output_text.delta",
+          output_index: 0,
+          content_index: 0,
+          delta,
+        };
+      }
+      if (text) {
+        yield {
+          type: "response.output_text.done",
+          output_index: 0,
+          content_index: 0,
+          text,
+        };
+      }
+      yield {
+        type: status === "completed"
+          ? "response.completed"
+          : status === "failed"
+            ? "response.failed"
+            : "response.incomplete",
+        response: terminalResponse,
+      };
+    },
+  };
+}
+
 function stageOutput(name: string) {
   const structures = createEmptyModelStructures();
   if (name === "opportunity_facts_summary") return { facts: createEmptyFacts() };
@@ -165,22 +216,30 @@ afterEach(() => {
 
 describe("bounded model-family reliability", () => {
   it("uses one low-verbosity bounded request for normal Analyze", async () => {
-    createResponse.mockResolvedValue(response({
+    createResponse.mockResolvedValue(streamedResponse({
       coreChecks: createEmptyFastCoreChecks(),
       attentionCandidates: [],
     }, "normal-response"));
-    await createOpenAIFastExtractor()([source()]);
+    const progress = vi.fn();
+    await createOpenAIFastExtractor()([source()], { onProgress: progress });
     expect(createResponse).toHaveBeenCalledOnce();
     expect(createResponse.mock.calls[0]?.[0]).toMatchObject({
       store: false,
+      stream: true,
       max_output_tokens: 4_800,
       reasoning: { effort: "low" },
       text: { verbosity: "low", format: { name: "opportunity_facts_normal" } },
     });
+    expect(progress.mock.calls.map(([event]) => event.type)).toEqual([
+      "cycle_resolved",
+      "normal_model_started",
+      "normal_model_output_started",
+      "normal_model_completed",
+    ]);
   });
 
   it("retains provider usage telemetry when normal output is incomplete", async () => {
-    createResponse.mockResolvedValue(response("", "normal-incomplete", "incomplete"));
+    createResponse.mockResolvedValue(streamedResponse("", "normal-incomplete", "incomplete"));
     const telemetry = vi.fn();
     await expect(createOpenAIFastExtractor()([source()], { onTelemetry: telemetry }))
       .rejects.toThrow(/complete structured result/i);
@@ -189,6 +248,33 @@ describe("bounded model-family reliability", () => {
       outcome: "failed",
       usage: expect.objectContaining({ inputTokens: 100, outputTokens: 50 }),
     }));
+  });
+
+  it("never emits a validated-fact preview from unvalidated streamed JSON", async () => {
+    const coreChecks = createEmptyFastCoreChecks();
+    coreChecks.cost = {
+      status: "supported",
+      facts: [{
+        fieldId: "tuition",
+        status: "disclosed",
+        value: 4500,
+        displayValue: "$4,500",
+        normalizedValue: null,
+        claimKind: "source_stated",
+        sources: [{ sourceId: "page-program", excerpt: "Tuition is $4,500." }],
+        note: null,
+      }],
+    };
+    createResponse.mockResolvedValue(streamedResponse({
+      coreChecks,
+      attentionCandidates: [],
+    }, "normal-streamed"));
+    const progress = vi.fn();
+
+    await createOpenAIFastExtractor()([source()], { onProgress: progress });
+
+    expect(progress).toHaveBeenCalledWith({ type: "normal_model_output_started" });
+    expect(progress).not.toHaveBeenCalledWith(expect.objectContaining({ type: "validated_fact" }));
   });
 
   it("uses four bounded strict contracts", () => {

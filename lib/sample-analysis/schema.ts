@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { ATTENTION_CATEGORIES } from "@/lib/analysis/attention";
+import { ANALYZER_VERSION } from "@/lib/analysis/analyzer-version";
 import type { AnalysisProgressEvent } from "@/lib/analysis/progress";
 import { FIELD_IDS } from "@/lib/opportunity/fields";
 import { opportunityCardSchema } from "@/lib/opportunity/schema";
@@ -43,7 +44,9 @@ const progressEventSchema = z.custom<AnalysisProgressEvent>((value) => {
 }, "Invalid saved analysis progress event.");
 
 export const sampleAnalysisSchema = z.strictObject({
-  artifactVersion: z.literal("1.0.0"),
+  artifactVersion: z.literal("2.0.0"),
+  analyzerVersion: z.literal(ANALYZER_VERSION),
+  captureDigest: z.string().regex(/^[a-f0-9]{64}$/u),
   id: sampleIdSchema,
   label: z.string().min(1),
   category: z.string().min(1),
@@ -51,7 +54,7 @@ export const sampleAnalysisSchema = z.strictObject({
   recordedAt: z.string().datetime({ offset: true }),
   recordedDurationMs: z.number().int().positive(),
   captureKind: z.literal("compact_production"),
-  progressProvenance: z.enum(["captured_stream", "recorded_stage_telemetry"]),
+  progressProvenance: z.literal("captured_stream"),
   sourceArtifact: z.string().min(1),
   progress: z.array(z.strictObject({
     replayAtMs: z.number().int().nonnegative(),

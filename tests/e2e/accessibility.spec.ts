@@ -10,7 +10,7 @@ const primaryRoutes = [
   { name: "batch analysis", path: "/analyze/batch" },
   { name: "comparison", path: "/compare" },
   { name: "manual builder", path: "/build" },
-  { name: "analysis", path: "/analyze" },
+  { name: "analysis", path: "/analyze?start=1" },
   { name: "how it works", path: "/how-it-works" },
   { name: "methodology", path: "/methodology" },
   { name: "data documentation", path: "/data" },
@@ -56,10 +56,12 @@ test("a populated comparison has no serious or critical violations", async ({ pa
   await expectNoSeriousOrCriticalViolations(page);
 });
 
-test("the open mobile menu has no serious or critical violations", async ({ page }, testInfo) => {
+test("the compact mobile navigation has no serious or critical violations", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "mobile-chromium", "Mobile-only navigation state");
   await page.goto("/");
-  await page.getByRole("button", { name: "Menu" }).click();
-  await expect(page.getByRole("navigation", { name: "Main navigation" })).toBeVisible();
+  const navigation = page.getByRole("navigation", { name: "Main navigation" });
+  await expect(navigation).toBeVisible();
+  await expect(navigation.getByRole("link", { name: "How it works" })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Menu|Close/ })).toHaveCount(0);
   await expectNoSeriousOrCriticalViolations(page);
 });

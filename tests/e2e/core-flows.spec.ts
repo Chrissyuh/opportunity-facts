@@ -46,8 +46,6 @@ test("homepage makes URL analysis the single dominant task", async ({ page }, te
   await expectNoPageOverflow(page);
   if (testInfo.project.name === "desktop-chromium") {
     await captureDocumentationScreenshot(page, "home-desktop.png");
-  } else {
-    await page.getByRole("button", { name: "Menu" }).click();
   }
 
   await page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "How it works" }).click();
@@ -74,7 +72,7 @@ test("homepage normalizes a bare domain and immediately starts analysis without 
   await page.getByLabel("Paste an opportunity URL").fill(target);
   await page.getByRole("button", { name: "Analyze" }).click();
 
-  await expect(page).toHaveURL(/\/analyze$/);
+  await expect(page).toHaveURL(/\/analyze\?start=1$/);
   expect(page.url()).not.toContain("program.example");
   await expect.poll(() => submittedUrl).toBe("https://www.program.example/apply?cycle=2027");
 });
@@ -519,7 +517,7 @@ test("missing analysis configuration provides useful local fallbacks", async ({ 
     analysisPosts += 1;
     await route.abort("failed");
   });
-  await page.goto("/analyze");
+  await page.goto("/analyze?start=1");
 
   await expect(page.getByText("Extraction not configured", { exact: true })).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: "Live analysis is paused." })).toBeVisible();
@@ -598,7 +596,7 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
     });
   });
 
-  await page.goto("/analyze");
+  await page.goto("/analyze?start=1");
   await expect(page.getByText("Extraction not configured", { exact: true })).toHaveCount(0);
   await page.getByLabel("Public opportunity URL").fill("https://mocked-analysis.example/program");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
@@ -658,7 +656,7 @@ test("a malformed configured-provider result leaves a professional recoverable s
     });
   });
 
-  await page.goto("/analyze");
+  await page.goto("/analyze?start=1");
   await page.getByLabel("Public opportunity URL").fill("https://program.example/current");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
 
@@ -668,20 +666,16 @@ test("a malformed configured-provider result leaves a professional recoverable s
   await expect(page.getByRole("button", { name: "Analyze", exact: true })).toBeEnabled();
 });
 
-test("mobile navigation opens, closes through navigation, and avoids page overflow", async ({ page }, testInfo) => {
+test("mobile navigation stays compact and avoids page overflow", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "mobile-chromium", "Mobile-only navigation behavior");
   await page.goto("/");
 
-  const menu = page.getByRole("button", { name: "Menu" });
   const navigation = page.getByRole("navigation", { name: "Main navigation" });
-  await expect(menu).toHaveAttribute("aria-expanded", "false");
-  await expect(navigation).toBeHidden();
-  await menu.click();
-  await expect(page.getByRole("button", { name: "Close" })).toHaveAttribute("aria-expanded", "true");
   await expect(navigation).toBeVisible();
+  await expect(page.getByRole("button", { name: /Menu|Close/ })).toHaveCount(0);
   await navigation.getByRole("link", { name: "How it works" }).click();
   await expect(page).toHaveURL(/\/how-it-works$/);
-  await expect(page.getByRole("button", { name: "Menu" })).toHaveAttribute("aria-expanded", "false");
+  await expect(page.getByRole("navigation", { name: "Main navigation" })).toBeVisible();
   await expectNoPageOverflow(page);
 });
 

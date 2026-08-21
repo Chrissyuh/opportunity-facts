@@ -1,28 +1,28 @@
 export const SAMPLE_ANALYSIS_CATALOG = [
   {
-    id: "mites-summer",
-    label: "MITES Summer",
-    category: "Free residential STEM program",
+    id: "horizon-academic-essay-prize",
+    label: "Horizon Academic Essay Prize",
+    category: "International academic essay competition",
   },
   {
-    id: "diamond-challenge",
-    label: "Diamond Challenge",
-    category: "Team entrepreneurship competition",
+    id: "youngarts-national-arts-competition",
+    label: "YoungArts National Arts Competition",
+    category: "National multidisciplinary arts competition",
   },
   {
-    id: "questbridge-national-college-match",
-    label: "QuestBridge National College Match",
-    category: "Multi-stage college scholarship program",
+    id: "american-rocketry-challenge",
+    label: "American Rocketry Challenge",
+    category: "Team engineering competition",
   },
   {
-    id: "yale-young-global-scholars",
-    label: "Yale Young Global Scholars",
-    category: "International residential academic program",
+    id: "ocean-awareness-contest",
+    label: "Ocean Awareness Contest",
+    category: "International environmental arts contest",
   },
   {
-    id: "breakthrough-junior-challenge",
-    label: "Breakthrough Junior Challenge",
-    category: "Global science-video competition",
+    id: "flmd-2026-high-school-essay-contest",
+    label: "2026 High School Essay Contest - Jacksonville",
+    category: "Federal court civic essay competition",
   },
 ] as const;
 

@@ -1,0 +1,1474 @@
+{
+  "artifactVersion": "2.0.0",
+  "analyzerVersion": "student-research-v2-fast-core-extended",
+  "captureDigest": "f4d5b0d148b0494a50fbb42c54376e34e8d7ce052420427c3d727f476fa6cedc",
+  "id": "flmd-2026-high-school-essay-contest",
+  "label": "2026 High School Essay Contest - Jacksonville",
+  "category": "Federal court civic essay competition",
+  "submittedUrl": "https://www.flmd.uscourts.gov/node/2483",
+  "recordedAt": "2026-08-21T12:13:04.113Z",
+  "recordedDurationMs": 28533,
+  "captureKind": "compact_production",
+  "progressProvenance": "captured_stream",
+  "sourceArtifact": ".codex-runtime/sample-captures-current/flmd-2026-high-school-essay-contest.json",
+  "progress": [
+    {
+      "replayAtMs": 2,
+      "event": {
+        "type": "cache_checked",
+        "state": "unavailable",
+        "sequence": 1,
+        "elapsedMs": 2
+      }
+    },
+    {
+      "replayAtMs": 397,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-adbea38fe037f66e",
+        "title": "2026 High School Essay Contest - Jacksonville | Homepage | Middle District of Florida | United States District Court",
+        "url": "https://www.flmd.uscourts.gov/node/2483",
+        "sequence": 2,
+        "elapsedMs": 397
+      }
+    },
+    {
+      "replayAtMs": 726,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-32e53fffab8a587e",
+        "title": "Privacy Policy | Middle District of Florida | United States District Court",
+        "url": "https://www.flmd.uscourts.gov/privacy-policy",
+        "sequence": 3,
+        "elapsedMs": 726
+      }
+    },
+    {
+      "replayAtMs": 1027,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-f542ba7e7ff4b831",
+        "title": "2026 High School Essay Contest - Jacksonville | Rules | Middle District of Florida | United States District Court",
+        "url": "https://www.flmd.uscourts.gov/2026-high-school-essay-contest-jacksonville-rules",
+        "sequence": 4,
+        "elapsedMs": 1027
+      }
+    },
+    {
+      "replayAtMs": 1331,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-1a5edea9b4b822d6",
+        "title": "Fees | Middle District of Florida | United States District Court",
+        "url": "https://www.flmd.uscourts.gov/fees",
+        "sequence": 5,
+        "elapsedMs": 1331
+      }
+    },
+    {
+      "replayAtMs": 1695,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-d68b51539957ed41",
+        "title": "Frequently Asked Questions: Jury | Middle District of Florida | United States District Court",
+        "url": "https://www.flmd.uscourts.gov/faqs/jury",
+        "sequence": 6,
+        "elapsedMs": 1695
+      }
+    },
+    {
+      "replayAtMs": 2013,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-a00e7c9b117baf53",
+        "title": "Annual High School Essay Contests | Middle District of Florida | United States District Court",
+        "url": "https://www.flmd.uscourts.gov/programs/annual-high-school-essay-contests",
+        "sequence": 7,
+        "elapsedMs": 2013
+      }
+    },
+    {
+      "replayAtMs": 2331,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-1d275a6a0e0fa734",
+        "title": "Practice in the Middle District | Middle District of Florida | United States District Court",
+        "url": "https://www.flmd.uscourts.gov/for-lawyers",
+        "sequence": 8,
+        "elapsedMs": 2331
+      }
+    },
+    {
+      "replayAtMs": 2331,
+      "event": {
+        "type": "source_set_complete",
+        "acquired": 7,
+        "failed": 0,
+        "sequence": 9,
+        "elapsedMs": 2331
+      }
+    },
+    {
+      "replayAtMs": 2346,
+      "event": {
+        "type": "cycle_resolved",
+        "status": "resolved",
+        "label": "2026",
+        "sequence": 10,
+        "elapsedMs": 2346
+      }
+    },
+    {
+      "replayAtMs": 2346,
+      "event": {
+        "type": "normal_model_started",
+        "sequence": 11,
+        "elapsedMs": 2346
+      }
+    },
+    {
+      "replayAtMs": 12032,
+      "event": {
+        "type": "normal_model_output_started",
+        "sequence": 12,
+        "elapsedMs": 12032
+      }
+    },
+    {
+      "replayAtMs": 28499,
+      "event": {
+        "type": "normal_model_completed",
+        "sequence": 13,
+        "elapsedMs": 28499
+      }
+    },
+    {
+      "replayAtMs": 28531,
+      "event": {
+        "type": "validation_complete",
+        "retained": 9,
+        "withheld": 7,
+        "sequence": 14,
+        "elapsedMs": 28531
+      }
+    },
+    {
+      "replayAtMs": 28531,
+      "event": {
+        "type": "attention_ready",
+        "count": 1,
+        "sequence": 15,
+        "elapsedMs": 28531
+      }
+    },
+    {
+      "replayAtMs": 28532,
+      "event": {
+        "type": "validated_fact",
+        "fieldId": "opportunity_name",
+        "label": "opportunity name",
+        "displayValue": "2026 High School Essay Contest - Jacksonville",
+        "evidenceCount": 1,
+        "sequence": 16,
+        "elapsedMs": 28532
+      }
+    },
+    {
+      "replayAtMs": 28532,
+      "event": {
+        "type": "validated_fact",
+        "fieldId": "application_deadline",
+        "label": "application deadline",
+        "displayValue": "September 23, 2026, 12:00 p.m. EST",
+        "evidenceCount": 1,
+        "sequence": 17,
+        "elapsedMs": 28532
+      }
+    },
+    {
+      "replayAtMs": 28532,
+      "event": {
+        "type": "validated_fact",
+        "fieldId": "participation_format",
+        "label": "participation format",
+        "displayValue": "Online submission",
+        "evidenceCount": 1,
+        "sequence": 18,
+        "elapsedMs": 28532
+      }
+    },
+    {
+      "replayAtMs": 28532,
+      "event": {
+        "type": "validated_fact",
+        "fieldId": "other_benefits",
+        "label": "other benefits",
+        "displayValue": "First-place judge-shadowing opportunity",
+        "evidenceCount": 1,
+        "sequence": 19,
+        "elapsedMs": 28532
+      }
+    },
+    {
+      "replayAtMs": 28532,
+      "event": {
+        "type": "quality_complete",
+        "outcome": "usable_with_caveats",
+        "sequence": 20,
+        "elapsedMs": 28532
+      }
+    }
+  ],
+  "result": {
+    "card": {
+      "schemaVersion": "2.2.0",
+      "opportunityId": null,
+      "cycle": {
+        "status": "modeled",
+        "value": {
+          "id": "cycle-2026",
+          "label": {
+            "claimId": "cycle-2026-label",
+            "status": "disclosed",
+            "value": "2026",
+            "displayValue": "2026",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "page-adbea38fe037f66e",
+                "url": "https://www.flmd.uscourts.gov/node/2483",
+                "title": "2026 High School Essay Contest - Jacksonville | Homepage | Middle District of Florida | United States District Court",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T12:13:04.474Z",
+                "excerpt": "Submission Deadline: September 23, 2026"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          "status": {
+            "claimId": "cycle-2026-status",
+            "status": "unclear",
+            "value": null,
+            "displayValue": null,
+            "claimKind": null,
+            "sources": [
+              {
+                "id": "page-adbea38fe037f66e",
+                "url": "https://www.flmd.uscourts.gov/node/2483",
+                "title": "2026 High School Essay Contest - Jacksonville | Homepage | Middle District of Florida | United States District Court",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T12:13:04.474Z",
+                "excerpt": "Submission Deadline: September 23, 2026"
+              }
+            ],
+            "note": "The source identifies the cycle but does not clearly state its current application status.",
+            "conflictingValues": []
+          },
+          "year": {
+            "claimId": "cycle-2026-year",
+            "status": "disclosed",
+            "value": 2026,
+            "displayValue": "2026",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "page-adbea38fe037f66e",
+                "url": "https://www.flmd.uscourts.gov/node/2483",
+                "title": "2026 High School Essay Contest - Jacksonville | Homepage | Middle District of Florida | United States District Court",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T12:13:04.474Z",
+                "excerpt": "Submission Deadline: September 23, 2026"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          "startYear": null,
+          "endYear": null,
+          "season": null,
+          "cycleType": {
+            "claimId": "cycle-2026-type",
+            "status": "unclear",
+            "value": null,
+            "displayValue": null,
+            "claimKind": null,
+            "sources": [
+              {
+                "id": "page-adbea38fe037f66e",
+                "url": "https://www.flmd.uscourts.gov/node/2483",
+                "title": "2026 High School Essay Contest - Jacksonville | Homepage | Middle District of Florida | United States District Court",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T12:13:04.474Z",
+                "excerpt": "Submission Deadline: September 23, 2026"
+              }
+            ],
+            "note": "The source identifies the target cycle but does not explicitly establish a standard cycle type.",
+            "conflictingValues": []
+          },
+          "timingRefs": {
+            "opens": null,
+            "closes": null,
+            "coverageStart": null,
+            "coverageEnd": null
+          }
+        }
+      },
+      "cardVersion": 1,
+      "slug": "2026-high-school-essay-contest-jacksonville",
+      "summary": "Automated draft from 7 user-supplied source pages; review every value, excerpt, and attribution before use.",
+      "reviewState": "automated_draft",
+      "reviewedAt": null,
+      "sourcePagesChecked": [
+        {
+          "id": "page-adbea38fe037f66e",
+          "url": "https://www.flmd.uscourts.gov/node/2483",
+          "title": "2026 High School Essay Contest - Jacksonville | Homepage | Middle District of Florida | United States District Court",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T12:13:04.474Z"
+        },
+        {
+          "id": "page-32e53fffab8a587e",
+          "url": "https://www.flmd.uscourts.gov/privacy-policy",
+          "title": "Privacy Policy | Middle District of Florida | United States District Court",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T12:13:04.820Z"
+        },
+        {
+          "id": "page-f542ba7e7ff4b831",
+          "url": "https://www.flmd.uscourts.gov/2026-high-school-essay-contest-jacksonville-rules",
+          "title": "2026 High School Essay Contest - Jacksonville | Rules | Middle District of Florida | United States District Court",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T12:13:05.122Z"
+        },
+        {
+          "id": "page-1a5edea9b4b822d6",
+          "url": "https://www.flmd.uscourts.gov/fees",
+          "title": "Fees | Middle District of Florida | United States District Court",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T12:13:05.421Z"
+        },
+        {
+          "id": "page-d68b51539957ed41",
+          "url": "https://www.flmd.uscourts.gov/faqs/jury",
+          "title": "Frequently Asked Questions: Jury | Middle District of Florida | United States District Court",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T12:13:05.786Z"
+        },
+        {
+          "id": "page-a00e7c9b117baf53",
+          "url": "https://www.flmd.uscourts.gov/programs/annual-high-school-essay-contests",
+          "title": "Annual High School Essay Contests | Middle District of Florida | United States District Court",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T12:13:06.111Z"
+        },
+        {
+          "id": "page-1d275a6a0e0fa734",
+          "url": "https://www.flmd.uscourts.gov/for-lawyers",
+          "title": "Practice in the Middle District | Middle District of Florida | United States District Court",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T12:13:06.423Z"
+        }
+      ],
+      "conflicts": [],
+      "organizations": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "organizationRoles": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "institutionRelationships": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "variants": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "stages": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "pathways": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "costItems": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "outcomes": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "facts": {
+        "opportunity_name": {
+          "status": "disclosed",
+          "value": "2026 High School Essay Contest - Jacksonville",
+          "displayValue": "2026 High School Essay Contest - Jacksonville",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "2026 High School Essay Contest - Jacksonville"
+          },
+          "sources": [
+            {
+              "id": "page-adbea38fe037f66e",
+              "url": "https://www.flmd.uscourts.gov/node/2483",
+              "title": "2026 High School Essay Contest - Jacksonville | Homepage | Middle District of Florida | United States District Court",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:13:04.474Z",
+              "excerpt": "2026 High School Essay Contest - Jacksonville"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "opportunity_category": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "official_url": {
+          "status": "disclosed",
+          "value": "https://www.flmd.uscourts.gov/node/2483",
+          "displayValue": "https://www.flmd.uscourts.gov/node/2483",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "https://www.flmd.uscourts.gov/node/2483"
+          },
+          "sources": [
+            {
+              "id": "page-adbea38fe037f66e",
+              "url": "https://www.flmd.uscourts.gov/node/2483",
+              "title": "2026 High School Essay Contest - Jacksonville | Homepage | Middle District of Florida | United States District Court",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:13:04.474Z",
+              "excerpt": "2026 High School Essay Contest - Jacksonville | Homepage"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "operating_organization": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-a00e7c9b117baf53",
+              "url": "https://www.flmd.uscourts.gov/programs/annual-high-school-essay-contests",
+              "title": "Annual High School Essay Contests | Middle District of Florida | United States District Court",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:13:06.111Z",
+              "excerpt": "The Middle District of Florida is pleased to host annual high school essay contests."
+            }
+          ],
+          "note": "The excerpt names an organization or opportunity but does not explicitly support the primary operator role.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "organization_type": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "named_institution": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Automated extraction cannot establish that this field does not apply; human review is required.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "institution_relationship": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "relationship_explanation": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "grade_levels": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-f542ba7e7ff4b831",
+              "url": "https://www.flmd.uscourts.gov/2026-high-school-essay-contest-jacksonville-rules",
+              "title": "2026 High School Essay Contest - Jacksonville | Rules | Middle District of Florida | United States District Court",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:13:05.122Z",
+              "excerpt": "Students in the 9th through 12th grades attending public, private, parochial, or charter schools, and home-school or virtual students of equivalent grade status are invited to participate."
+            }
+          ],
+          "note": "The displayed typed value was withheld because its grade-level value does not match the cited excerpt.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "ages": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "geographic_restrictions": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-f542ba7e7ff4b831",
+              "url": "https://www.flmd.uscourts.gov/2026-high-school-essay-contest-jacksonville-rules",
+              "title": "2026 High School Essay Contest - Jacksonville | Rules | Middle District of Florida | United States District Court",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:13:05.122Z",
+              "excerpt": "The contest is open to high school students in counties in the Jacksonville Division of the Middle District of Florida: Baker, Bradford, Clay, Columbia, Duval, Flagler, Hamilton, Nassau, Putnam, St. Johns, Suwannee, and Union."
+            }
+          ],
+          "note": "The displayed typed value was withheld because its participant geography does not match the cited excerpt.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "citizenship_restrictions": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "prerequisite_skills": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "entry_format": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-f542ba7e7ff4b831",
+              "url": "https://www.flmd.uscourts.gov/2026-high-school-essay-contest-jacksonville-rules",
+              "title": "2026 High School Essay Contest - Jacksonville | Rules | Middle District of Florida | United States District Court",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:13:05.122Z",
+              "excerpt": "Only one essay may be submitted per student."
+            }
+          ],
+          "note": "The displayed typed value was withheld because individual entry is not explicitly stated by the cited excerpt.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "sponsor_requirement": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_deadline": {
+          "status": "disclosed",
+          "value": "2026-09-23",
+          "displayValue": "September 23, 2026, 12:00 p.m. EST",
+          "normalizedValue": {
+            "kind": "date",
+            "isoDate": "2026-09-23"
+          },
+          "sources": [
+            {
+              "id": "page-f542ba7e7ff4b831",
+              "url": "https://www.flmd.uscourts.gov/2026-high-school-essay-contest-jacksonville-rules",
+              "title": "2026 High School Essay Contest - Jacksonville | Rules | Middle District of Florida | United States District Court",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:13:05.122Z",
+              "excerpt": "September 23, 2026, by 12:00 p.m. (noon) EST."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "decision_date": {
+          "status": "disclosed",
+          "value": "2026-12-02",
+          "displayValue": "Winners announced December 2, 2026",
+          "normalizedValue": {
+            "kind": "date",
+            "isoDate": "2026-12-02"
+          },
+          "sources": [
+            {
+              "id": "page-adbea38fe037f66e",
+              "url": "https://www.flmd.uscourts.gov/node/2483",
+              "title": "2026 High School Essay Contest - Jacksonville | Homepage | Middle District of Florida | United States District Court",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:13:04.474Z",
+              "excerpt": "Winners Announced: December 2, 2026"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "start_date": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "end_date": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "duration": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "weekly_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "required_live_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "participation_format": {
+          "status": "disclosed",
+          "value": "Online submission",
+          "displayValue": "Online submission",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-f542ba7e7ff4b831",
+              "url": "https://www.flmd.uscourts.gov/2026-high-school-essay-contest-jacksonville-rules",
+              "title": "2026 High School Essay Contest - Jacksonville | Rules | Middle District of Florida | United States District Court",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:13:05.122Z",
+              "excerpt": "All essays must be submitted online on or before the submission deadline. Hard-copy or late submissions will not be accepted."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "location": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_requirements": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_fee": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "deposit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_mandatory_costs": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "estimated_total_mandatory_cost": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "lodging_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "meals_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "financial_aid": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "refund_policy": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_policy": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_process": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-f542ba7e7ff4b831",
+              "url": "https://www.flmd.uscourts.gov/2026-high-school-essay-contest-jacksonville-rules",
+              "title": "2026 High School Essay Contest - Jacksonville | Rules | Middle District of Florida | United States District Court",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:13:05.122Z",
+              "excerpt": "Submitting an essay that (1) does not comply with these Contest Rules, (2) is not the student's original, authored work, or is the product of an AI program such as ChatGPT, (3) provides fake entry information, or (4) plagiarizes content."
+            },
+            {
+              "id": "page-f542ba7e7ff4b831",
+              "url": "https://www.flmd.uscourts.gov/2026-high-school-essay-contest-jacksonville-rules",
+              "title": "2026 High School Essay Contest - Jacksonville | Rules | Middle District of Florida | United States District Court",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:13:05.122Z",
+              "excerpt": "Scoring of Qualifying Submissions"
+            }
+          ],
+          "note": "The cited wording describes the opportunity but does not establish an application, review, selection, or advancement process.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "applicant_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_rate_claim": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "calculated_acceptance_rate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_evidence": {
+          "status": "disclosed",
+          "value": "Descriptive scoring evidence published",
+          "displayValue": "Descriptive scoring evidence published",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Descriptive scoring evidence published"
+          },
+          "sources": [
+            {
+              "id": "page-f542ba7e7ff4b831",
+              "url": "https://www.flmd.uscourts.gov/2026-high-school-essay-contest-jacksonville-rules",
+              "title": "2026 High School Essay Contest - Jacksonville | Rules | Middle District of Florida | United States District Court",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:13:05.122Z",
+              "excerpt": "Adheres to proper writing style conventions and has few to no errors (10%)."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cash_award": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-adbea38fe037f66e",
+              "url": "https://www.flmd.uscourts.gov/node/2483",
+              "title": "2026 High School Essay Contest - Jacksonville | Homepage | Middle District of Florida | United States District Court",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:13:04.474Z",
+              "excerpt": "First Place: $ 2,000.00"
+            }
+          ],
+          "note": "The displayed typed value was withheld because its money amount does not match the cited excerpt and display value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "stipend": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition_waiver": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "program_seat": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "in_kind_value": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "certificate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "college_credit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "mentorship": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_benefits": {
+          "status": "disclosed",
+          "value": [
+            "First-place winner may shadow a Jacksonville Division United States District Judge for a day"
+          ],
+          "displayValue": "First-place judge-shadowing opportunity",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "First-place winner may shadow a Jacksonville Division United States District Judge for a day"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-adbea38fe037f66e",
+              "url": "https://www.flmd.uscourts.gov/node/2483",
+              "title": "2026 High School Essay Contest - Jacksonville | Homepage | Middle District of Florida | United States District Court",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T12:13:04.474Z",
+              "excerpt": "The first place winner also will have an opportunity to shadow a Jacksonville Division United States District Judge for a day."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "personal_information": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "data_sharing": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_ownership": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_license": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "publicity_rights": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "confidentiality": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_rights": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "material_terms": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        }
+      },
+      "projectionRefs": {},
+      "migratedFrom": null
+    },
+    "reviewedPages": [
+      {
+        "id": "page-adbea38fe037f66e",
+        "url": "https://www.flmd.uscourts.gov/node/2483",
+        "title": "2026 High School Essay Contest - Jacksonville | Homepage | Middle District of Florida | United States District Court",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T12:13:04.474Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-32e53fffab8a587e",
+        "url": "https://www.flmd.uscourts.gov/privacy-policy",
+        "title": "Privacy Policy | Middle District of Florida | United States District Court",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T12:13:04.820Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-f542ba7e7ff4b831",
+        "url": "https://www.flmd.uscourts.gov/2026-high-school-essay-contest-jacksonville-rules",
+        "title": "2026 High School Essay Contest - Jacksonville | Rules | Middle District of Florida | United States District Court",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T12:13:05.122Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-1a5edea9b4b822d6",
+        "url": "https://www.flmd.uscourts.gov/fees",
+        "title": "Fees | Middle District of Florida | United States District Court",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T12:13:05.421Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-d68b51539957ed41",
+        "url": "https://www.flmd.uscourts.gov/faqs/jury",
+        "title": "Frequently Asked Questions: Jury | Middle District of Florida | United States District Court",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T12:13:05.786Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-a00e7c9b117baf53",
+        "url": "https://www.flmd.uscourts.gov/programs/annual-high-school-essay-contests",
+        "title": "Annual High School Essay Contests | Middle District of Florida | United States District Court",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T12:13:06.111Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-1d275a6a0e0fa734",
+        "url": "https://www.flmd.uscourts.gov/for-lawyers",
+        "title": "Practice in the Middle District | Middle District of Florida | United States District Court",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T12:13:06.423Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      }
+    ],
+    "pageWarnings": [],
+    "evidenceWarnings": [
+      {
+        "fieldId": "opportunity_category",
+        "sourceId": "page-adbea38fe037f66e",
+        "message": "The cited excerpt was not found in the normalized source text."
+      }
+    ],
+    "attentionItems": [
+      {
+        "id": "schedule-not-published",
+        "category": "cycle",
+        "priority": "medium",
+        "title": "No contest schedule beyond deadlines and announcement dates",
+        "explanation": "The supplied passages do not state a start date, end date, duration, or expected weekly workload.",
+        "fieldIds": [
+          "start_date",
+          "end_date",
+          "duration",
+          "weekly_hours"
+        ],
+        "claimIds": [],
+        "sourceIds": [],
+        "suggestedNextStep": null,
+        "origin": "model_grounded"
+      }
+    ],
+    "qualityOutcome": "usable_with_caveats",
+    "assessedFieldIds": [
+      "opportunity_name",
+      "opportunity_category",
+      "official_url",
+      "operating_organization",
+      "named_institution",
+      "institution_relationship",
+      "relationship_explanation",
+      "grade_levels",
+      "ages",
+      "geographic_restrictions",
+      "citizenship_restrictions",
+      "entry_format",
+      "sponsor_requirement",
+      "application_deadline",
+      "decision_date",
+      "start_date",
+      "end_date",
+      "duration",
+      "weekly_hours",
+      "participation_format",
+      "location",
+      "application_fee",
+      "tuition",
+      "estimated_total_mandatory_cost",
+      "financial_aid",
+      "refund_policy",
+      "selection_process",
+      "selection_evidence",
+      "applicant_count",
+      "acceptance_count",
+      "acceptance_rate_claim",
+      "cash_award",
+      "stipend",
+      "tuition_waiver",
+      "program_seat",
+      "in_kind_value",
+      "mentorship",
+      "other_benefits"
+    ]
+  }
+}

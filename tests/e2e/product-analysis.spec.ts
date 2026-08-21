@@ -94,7 +94,7 @@ test("streamed research shows only observable work and validated preview facts",
     };
   }, { completedResult: result });
 
-  await page.goto("/analyze");
+  await page.goto("/analyze?start=1");
   await page.getByLabel("Public opportunity URL").fill("https://streamed.example/program");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await expect(page.getByText("Current program page reviewed")).toBeVisible();
@@ -158,7 +158,7 @@ test("eligible minefield failures suppress cards and block an unchanged same-bro
       }),
     });
   });
-  await page.goto("/analyze");
+  await page.goto("/analyze?start=1");
   await page.getByLabel("Public opportunity URL").fill("https://minefield.example/program");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await expect(page.getByRole("heading", { name: "We couldn’t build a reliable Opportunity Facts card from this page." })).toBeVisible();
@@ -195,7 +195,7 @@ test("same-browser cooldown reuses an insufficient result even when durable cach
       }),
     });
   });
-  await page.goto("/analyze");
+  await page.goto("/analyze?start=1");
   await page.getByLabel("Public opportunity URL").fill("https://temporary.example/program");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await expect(page.getByText("A source was temporarily unavailable")).toBeVisible();

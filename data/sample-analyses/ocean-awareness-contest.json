@@ -1,174 +1,221 @@
 {
-  "artifactVersion": "1.0.0",
-  "id": "questbridge-national-college-match",
-  "label": "QuestBridge National College Match",
-  "category": "Multi-stage college scholarship program",
-  "submittedUrl": "https://www.questbridge.org/high-school-students/national-college-match",
-  "recordedAt": "2026-08-20T21:23:18.356Z",
-  "recordedDurationMs": 25829,
+  "artifactVersion": "2.0.0",
+  "analyzerVersion": "student-research-v2-fast-core-extended",
+  "captureDigest": "51898355562a334dd70e1066b02fc3774179a142bd019ddac4499eb546f58142",
+  "id": "ocean-awareness-contest",
+  "label": "Ocean Awareness Contest",
+  "category": "International environmental arts contest",
+  "submittedUrl": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+  "recordedAt": "2026-08-21T11:19:42.541Z",
+  "recordedDurationMs": 20273,
   "captureKind": "compact_production",
-  "progressProvenance": "recorded_stage_telemetry",
-  "sourceArtifact": ".codex-runtime/two-stage-live/questbridge-ncm-2026-08-20T21-23-18.356Z.json",
+  "progressProvenance": "captured_stream",
+  "sourceArtifact": ".codex-runtime/sample-captures-current/ocean-awareness-contest.json",
   "progress": [
     {
-      "replayAtMs": 0,
-      "event": {
-        "type": "accepted",
-        "sequence": 1,
-        "elapsedMs": 0
-      }
-    },
-    {
-      "replayAtMs": 25,
+      "replayAtMs": 2,
       "event": {
         "type": "cache_checked",
-        "state": "miss",
-        "sequence": 2,
+        "state": "unavailable",
+        "sequence": 1,
         "elapsedMs": 2
       }
     },
     {
-      "replayAtMs": 905,
+      "replayAtMs": 386,
       "event": {
         "type": "source_acquired",
-        "sourceId": "page-489197c11071d3e6",
-        "title": "National College Match | QuestBridge",
-        "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
+        "sourceId": "page-872c0733ec3667f0",
+        "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
+        "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+        "sequence": 2,
+        "elapsedMs": 386
+      }
+    },
+    {
+      "replayAtMs": 796,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-57c36f9d870c73d0",
+        "title": "Privacy Policy | Bow Seat Creative Action for Conservation",
+        "url": "https://bowseat.org/privacy-policy/",
         "sequence": 3,
-        "elapsedMs": 905
+        "elapsedMs": 796
       }
     },
     {
-      "replayAtMs": 2111,
+      "replayAtMs": 1119,
       "event": {
         "type": "source_acquired",
-        "sourceId": "page-8b34ff34564cb741",
-        "title": "Apply to the National College Match | QuestBridge",
-        "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
+        "sourceId": "page-4a45b920a7282ccd",
+        "title": "Terms of Use | Bow Seat Creative Action for Conservation",
+        "url": "https://bowseat.org/terms-of-use/",
         "sequence": 4,
-        "elapsedMs": 2111
+        "elapsedMs": 1119
       }
     },
     {
-      "replayAtMs": 2411,
+      "replayAtMs": 1484,
       "event": {
         "type": "source_acquired",
-        "sourceId": "page-6105ccbdffc87dd5",
-        "title": "The Match Scholarship | QuestBridge",
-        "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/the-match-scholarship",
+        "sourceId": "page-1645da1d384db74a",
+        "title": "FAQs | Ocean Awareness Contest | Bow Seat Creative Action for Conservation",
+        "url": "https://bowseat.org/programs/ocean-awareness-contest/faqs/",
         "sequence": 5,
-        "elapsedMs": 2411
+        "elapsedMs": 1484
       }
     },
     {
-      "replayAtMs": 2711,
+      "replayAtMs": 1805,
       "event": {
         "type": "source_acquired",
-        "sourceId": "page-73177402e77695e6",
-        "title": "Dates & Deadlines | QuestBridge",
-        "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
+        "sourceId": "page-e22b84b1e5b99430",
+        "title": "Ocean Awareness Art Contest Overview | AWARDS | Bow Seat Creative Action for Conservation",
+        "url": "https://bowseat.org/programs/ocean-awareness-contest/awards/",
         "sequence": 6,
-        "elapsedMs": 2711
+        "elapsedMs": 1805
       }
     },
     {
-      "replayAtMs": 3278,
+      "replayAtMs": 2310,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-f92b8b9519a816bc",
+        "title": "Our Story | Making Waves Through the Arts | Bow Seat Creative Action for Conservation",
+        "url": "https://bowseat.org/about/our-story/",
+        "sequence": 7,
+        "elapsedMs": 2310
+      }
+    },
+    {
+      "replayAtMs": 2696,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-7cbb6c6a57571f5f",
+        "title": "COPPA Privacy Notice | Bow Seat Creative Action for Conservation",
+        "url": "https://bowseat.org/coppa-privacy-notice/",
+        "sequence": 8,
+        "elapsedMs": 2696
+      }
+    },
+    {
+      "replayAtMs": 2696,
       "event": {
         "type": "source_set_complete",
-        "acquired": 4,
+        "acquired": 7,
         "failed": 0,
-        "sequence": 7,
-        "elapsedMs": 3278
+        "sequence": 9,
+        "elapsedMs": 2696
       }
     },
     {
-      "replayAtMs": 3296,
+      "replayAtMs": 2713,
       "event": {
         "type": "cycle_resolved",
         "status": "resolved",
-        "label": "2026 / Fall 2027 entry",
-        "sequence": 8,
-        "elapsedMs": 3296
+        "label": "2026",
+        "sequence": 10,
+        "elapsedMs": 2713
       }
     },
     {
-      "replayAtMs": 3296,
+      "replayAtMs": 2713,
       "event": {
         "type": "normal_model_started",
-        "sequence": 9,
-        "elapsedMs": 3296
+        "sequence": 11,
+        "elapsedMs": 2713
       }
     },
     {
-      "replayAtMs": 25749,
+      "replayAtMs": 7626,
+      "event": {
+        "type": "normal_model_output_started",
+        "sequence": 12,
+        "elapsedMs": 7626
+      }
+    },
+    {
+      "replayAtMs": 20229,
       "event": {
         "type": "normal_model_completed",
-        "sequence": 10,
-        "elapsedMs": 25749
+        "sequence": 13,
+        "elapsedMs": 20229
       }
     },
     {
-      "replayAtMs": 25813,
+      "replayAtMs": 20270,
       "event": {
         "type": "validation_complete",
-        "retained": 12,
-        "withheld": 0,
-        "sequence": 11,
-        "elapsedMs": 25813
+        "retained": 14,
+        "withheld": 4,
+        "sequence": 14,
+        "elapsedMs": 20270
       }
     },
     {
-      "replayAtMs": 25813,
+      "replayAtMs": 20270,
       "event": {
         "type": "attention_ready",
-        "count": 3,
-        "sequence": 12,
-        "elapsedMs": 25813
+        "count": 1,
+        "sequence": 15,
+        "elapsedMs": 20270
       }
     },
     {
-      "replayAtMs": 25813,
+      "replayAtMs": 20271,
       "event": {
         "type": "validated_fact",
         "fieldId": "opportunity_name",
-        "label": "Opportunity name",
-        "displayValue": "National College Match",
+        "label": "opportunity name",
+        "displayValue": "Ocean Awareness Contest",
         "evidenceCount": 1,
-        "sequence": 13,
-        "elapsedMs": 25813
+        "sequence": 16,
+        "elapsedMs": 20271
       }
     },
     {
-      "replayAtMs": 25813,
+      "replayAtMs": 20271,
       "event": {
         "type": "validated_fact",
-        "fieldId": "selection_process",
-        "label": "Selection process",
-        "displayValue": "Holistic review; Finalists may rank up to 15 colleges and submit additional requirements",
-        "evidenceCount": 2,
-        "sequence": 14,
-        "elapsedMs": 25813
+        "fieldId": "application_deadline",
+        "label": "application deadline",
+        "displayValue": "June 8, 2026, 11:59 PM ET",
+        "evidenceCount": 1,
+        "sequence": 17,
+        "elapsedMs": 20271
       }
     },
     {
-      "replayAtMs": 25813,
+      "replayAtMs": 20271,
+      "event": {
+        "type": "validated_fact",
+        "fieldId": "participation_format",
+        "label": "participation format",
+        "displayValue": "Online submission",
+        "evidenceCount": 1,
+        "sequence": 18,
+        "elapsedMs": 20271
+      }
+    },
+    {
+      "replayAtMs": 20271,
       "event": {
         "type": "validated_fact",
         "fieldId": "other_benefits",
-        "label": "Other participant benefits",
-        "displayValue": "Scholarship coverage and a lifelong Scholar/Alumni community",
-        "evidenceCount": 3,
-        "sequence": 15,
-        "elapsedMs": 25813
+        "label": "other benefits",
+        "displayValue": "Potential showcases and publication opportunities for winners",
+        "evidenceCount": 2,
+        "sequence": 19,
+        "elapsedMs": 20271
       }
     },
     {
-      "replayAtMs": 25819,
+      "replayAtMs": 20271,
       "event": {
         "type": "quality_complete",
         "outcome": "usable_with_caveats",
-        "sequence": 16,
-        "elapsedMs": 25819
+        "sequence": 20,
+        "elapsedMs": 20271
       }
     }
   ],
@@ -179,143 +226,81 @@
       "cycle": {
         "status": "modeled",
         "value": {
-          "id": "cycle-2026-fall-2027-entry",
+          "id": "cycle-2026",
           "label": {
-            "claimId": "cycle-2026-fall-2027-entry-label",
+            "claimId": "cycle-2026-label",
             "status": "disclosed",
-            "value": "2026 / Fall 2027 entry",
-            "displayValue": "2026 / Fall 2027 entry",
+            "value": "2026",
+            "displayValue": "2026",
             "claimKind": "source_stated",
             "sources": [
               {
-                "id": "page-8b34ff34564cb741",
-                "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
-                "title": "Apply to the National College Match | QuestBridge",
+                "id": "page-872c0733ec3667f0",
+                "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+                "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
                 "pageType": "user_supplied",
-                "accessedAt": "2026-08-20T21:23:20.467Z",
-                "excerpt": "2026 Early Application Policy"
-              },
-              {
-                "id": "page-73177402e77695e6",
-                "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
-                "title": "Dates & Deadlines | QuestBridge",
-                "pageType": "user_supplied",
-                "accessedAt": "2026-08-20T21:23:20.797Z",
-                "excerpt": "Fall 2027 | Celebrate! Any Finalist who attends a college partner through the Match, QuestBridge Regular Decision, or any other admission round joins the QuestBridge community. | Finalists attending a college partner"
+                "accessedAt": "2026-08-21T11:19:42.886Z",
+                "excerpt": "All submissions must be received by June 8, 2026, at 11:59 PM Eastern Time (ET) to be considered in the 2026 Ocean Awareness Contest. The online platform will close automatically at the Contest deadline. Please plan accordingly!"
               }
             ],
             "note": null,
             "conflictingValues": []
           },
           "status": {
-            "claimId": "cycle-2026-fall-2027-entry-status",
+            "claimId": "cycle-2026-status",
             "status": "unclear",
             "value": null,
             "displayValue": null,
             "claimKind": null,
             "sources": [
               {
-                "id": "page-8b34ff34564cb741",
-                "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
-                "title": "Apply to the National College Match | QuestBridge",
+                "id": "page-872c0733ec3667f0",
+                "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+                "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
                 "pageType": "user_supplied",
-                "accessedAt": "2026-08-20T21:23:20.467Z",
-                "excerpt": "2026 Early Application Policy"
+                "accessedAt": "2026-08-21T11:19:42.886Z",
+                "excerpt": "All submissions must be received by June 8, 2026, at 11:59 PM Eastern Time (ET) to be considered in the 2026 Ocean Awareness Contest. The online platform will close automatically at the Contest deadline. Please plan accordingly!"
               }
             ],
             "note": "The source identifies the cycle but does not clearly state its current application status.",
             "conflictingValues": []
           },
           "year": {
-            "claimId": "cycle-2026-fall-2027-entry-year",
+            "claimId": "cycle-2026-year",
             "status": "disclosed",
             "value": 2026,
             "displayValue": "2026",
             "claimKind": "source_stated",
             "sources": [
               {
-                "id": "page-8b34ff34564cb741",
-                "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
-                "title": "Apply to the National College Match | QuestBridge",
+                "id": "page-872c0733ec3667f0",
+                "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+                "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
                 "pageType": "user_supplied",
-                "accessedAt": "2026-08-20T21:23:20.467Z",
-                "excerpt": "2026 Early Application Policy"
+                "accessedAt": "2026-08-21T11:19:42.886Z",
+                "excerpt": "All submissions must be received by June 8, 2026, at 11:59 PM Eastern Time (ET) to be considered in the 2026 Ocean Awareness Contest. The online platform will close automatically at the Contest deadline. Please plan accordingly!"
               }
             ],
             "note": null,
             "conflictingValues": []
           },
-          "startYear": {
-            "claimId": "cycle-2026-fall-2027-entry-start-year",
-            "status": "disclosed",
-            "value": 2026,
-            "displayValue": "2026",
-            "claimKind": "source_stated",
-            "sources": [
-              {
-                "id": "page-8b34ff34564cb741",
-                "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
-                "title": "Apply to the National College Match | QuestBridge",
-                "pageType": "user_supplied",
-                "accessedAt": "2026-08-20T21:23:20.467Z",
-                "excerpt": "2026 Early Application Policy"
-              }
-            ],
-            "note": null,
-            "conflictingValues": []
-          },
-          "endYear": {
-            "claimId": "cycle-2026-fall-2027-entry-end-year",
-            "status": "disclosed",
-            "value": 2027,
-            "displayValue": "2027",
-            "claimKind": "source_stated",
-            "sources": [
-              {
-                "id": "page-73177402e77695e6",
-                "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
-                "title": "Dates & Deadlines | QuestBridge",
-                "pageType": "user_supplied",
-                "accessedAt": "2026-08-20T21:23:20.797Z",
-                "excerpt": "Fall 2027 | Celebrate! Any Finalist who attends a college partner through the Match, QuestBridge Regular Decision, or any other admission round joins the QuestBridge community. | Finalists attending a college partner"
-              }
-            ],
-            "note": null,
-            "conflictingValues": []
-          },
-          "season": {
-            "claimId": "cycle-2026-fall-2027-entry-season",
-            "status": "disclosed",
-            "value": "fall",
-            "displayValue": "Fall",
-            "claimKind": "source_stated",
-            "sources": [
-              {
-                "id": "page-73177402e77695e6",
-                "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
-                "title": "Dates & Deadlines | QuestBridge",
-                "pageType": "user_supplied",
-                "accessedAt": "2026-08-20T21:23:20.797Z",
-                "excerpt": "Fall 2027 | Celebrate! Any Finalist who attends a college partner through the Match, QuestBridge Regular Decision, or any other admission round joins the QuestBridge community. | Finalists attending a college partner"
-              }
-            ],
-            "note": null,
-            "conflictingValues": []
-          },
+          "startYear": null,
+          "endYear": null,
+          "season": null,
           "cycleType": {
-            "claimId": "cycle-2026-fall-2027-entry-type",
+            "claimId": "cycle-2026-type",
             "status": "unclear",
             "value": null,
             "displayValue": null,
             "claimKind": null,
             "sources": [
               {
-                "id": "page-8b34ff34564cb741",
-                "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
-                "title": "Apply to the National College Match | QuestBridge",
+                "id": "page-872c0733ec3667f0",
+                "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+                "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
                 "pageType": "user_supplied",
-                "accessedAt": "2026-08-20T21:23:20.467Z",
-                "excerpt": "2026 Early Application Policy"
+                "accessedAt": "2026-08-21T11:19:42.886Z",
+                "excerpt": "All submissions must be received by June 8, 2026, at 11:59 PM Eastern Time (ET) to be considered in the 2026 Ocean Awareness Contest. The online platform will close automatically at the Contest deadline. Please plan accordingly!"
               }
             ],
             "note": "The source identifies the target cycle but does not explicitly establish a standard cycle type.",
@@ -330,59 +315,59 @@
         }
       },
       "cardVersion": 1,
-      "slug": "national-college-match",
+      "slug": "ocean-awareness-contest",
       "summary": "Automated draft from 7 user-supplied source pages; review every value, excerpt, and attribution before use.",
       "reviewState": "automated_draft",
       "reviewedAt": null,
       "sourcePagesChecked": [
         {
-          "id": "page-489197c11071d3e6",
-          "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
-          "title": "National College Match | QuestBridge",
+          "id": "page-872c0733ec3667f0",
+          "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+          "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
           "pageType": "user_supplied",
-          "accessedAt": "2026-08-20T21:23:19.261Z"
+          "accessedAt": "2026-08-21T11:19:42.886Z"
         },
         {
-          "id": "page-6105ccbdffc87dd5",
-          "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/the-match-scholarship",
-          "title": "The Match Scholarship | QuestBridge",
+          "id": "page-57c36f9d870c73d0",
+          "url": "https://bowseat.org/privacy-policy/",
+          "title": "Privacy Policy | Bow Seat Creative Action for Conservation",
           "pageType": "user_supplied",
-          "accessedAt": "2026-08-20T21:23:19.689Z"
+          "accessedAt": "2026-08-21T11:19:43.318Z"
         },
         {
-          "id": "page-ab5b5eaa659bd9ab",
-          "url": "https://www.questbridge.org/privacy-policy",
-          "title": "Privacy Policy | QuestBridge",
+          "id": "page-4a45b920a7282ccd",
+          "url": "https://bowseat.org/terms-of-use/",
+          "title": "Terms of Use | Bow Seat Creative Action for Conservation",
           "pageType": "user_supplied",
-          "accessedAt": "2026-08-20T21:23:20.106Z"
+          "accessedAt": "2026-08-21T11:19:43.646Z"
         },
         {
-          "id": "page-8b34ff34564cb741",
-          "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
-          "title": "Apply to the National College Match | QuestBridge",
+          "id": "page-1645da1d384db74a",
+          "url": "https://bowseat.org/programs/ocean-awareness-contest/faqs/",
+          "title": "FAQs | Ocean Awareness Contest | Bow Seat Creative Action for Conservation",
           "pageType": "user_supplied",
-          "accessedAt": "2026-08-20T21:23:20.467Z"
+          "accessedAt": "2026-08-21T11:19:44.005Z"
         },
         {
-          "id": "page-73177402e77695e6",
-          "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
-          "title": "Dates & Deadlines | QuestBridge",
+          "id": "page-e22b84b1e5b99430",
+          "url": "https://bowseat.org/programs/ocean-awareness-contest/awards/",
+          "title": "Ocean Awareness Art Contest Overview | AWARDS | Bow Seat Creative Action for Conservation",
           "pageType": "user_supplied",
-          "accessedAt": "2026-08-20T21:23:20.797Z"
+          "accessedAt": "2026-08-21T11:19:44.333Z"
         },
         {
-          "id": "page-94712eca0717ae1f",
-          "url": "https://www.questbridge.org/terms-of-use",
-          "title": "Terms of Use | QuestBridge",
+          "id": "page-f92b8b9519a816bc",
+          "url": "https://bowseat.org/about/our-story/",
+          "title": "Our Story | Making Waves Through the Arts | Bow Seat Creative Action for Conservation",
           "pageType": "user_supplied",
-          "accessedAt": "2026-08-20T21:23:21.156Z"
+          "accessedAt": "2026-08-21T11:19:44.840Z"
         },
         {
-          "id": "page-7c070c0044c1322f",
-          "url": "https://www.questbridge.org/apply-to-college",
-          "title": "Apply to College | QuestBridge",
+          "id": "page-7cbb6c6a57571f5f",
+          "url": "https://bowseat.org/coppa-privacy-notice/",
+          "title": "COPPA Privacy Notice | Bow Seat Creative Action for Conservation",
           "pageType": "user_supplied",
-          "accessedAt": "2026-08-20T21:23:21.600Z"
+          "accessedAt": "2026-08-21T11:19:45.226Z"
         }
       ],
       "conflicts": [],
@@ -429,20 +414,20 @@
       "facts": {
         "opportunity_name": {
           "status": "disclosed",
-          "value": "National College Match",
-          "displayValue": "National College Match",
+          "value": "Ocean Awareness Contest",
+          "displayValue": "Ocean Awareness Contest",
           "normalizedValue": {
             "kind": "text",
-            "value": "National College Match"
+            "value": "Ocean Awareness Contest"
           },
           "sources": [
             {
-              "id": "page-489197c11071d3e6",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
-              "title": "National College Match | QuestBridge",
+              "id": "page-1645da1d384db74a",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/faqs/",
+              "title": "FAQs | Ocean Awareness Contest | Bow Seat Creative Action for Conservation",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:19.261Z",
-              "excerpt": "National College Match"
+              "accessedAt": "2026-08-21T11:19:44.005Z",
+              "excerpt": "How do I enter the Ocean Awareness Contest?"
             }
           ],
           "note": null,
@@ -454,20 +439,20 @@
         },
         "opportunity_category": {
           "status": "disclosed",
-          "value": "College admission and scholarship match program",
-          "displayValue": "College admission and scholarship match program",
+          "value": "International creative arts contest",
+          "displayValue": "International creative arts contest",
           "normalizedValue": {
             "kind": "text",
-            "value": "College admission and scholarship match program"
+            "value": "International creative arts contest"
           },
           "sources": [
             {
-              "id": "page-8b34ff34564cb741",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
-              "title": "Apply to the National College Match | QuestBridge",
+              "id": "page-872c0733ec3667f0",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+              "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:20.467Z",
-              "excerpt": "high-achieving high school seniors from low-income backgrounds can apply for early admission and full four-year scholarships"
+              "accessedAt": "2026-08-21T11:19:42.886Z",
+              "excerpt": "This is an international Contest"
             }
           ],
           "note": null,
@@ -478,26 +463,14 @@
           "projection": null
         },
         "official_url": {
-          "status": "disclosed",
-          "value": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
-          "displayValue": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
-          "normalizedValue": {
-            "kind": "text",
-            "value": "https://www.questbridge.org/apply-to-college/programs/national-college-match"
-          },
-          "sources": [
-            {
-              "id": "page-489197c11071d3e6",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
-              "title": "National College Match | QuestBridge",
-              "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:19.261Z",
-              "excerpt": "National College Match"
-            }
-          ],
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
           "note": null,
           "confidence": null,
-          "claimKind": "source_stated",
+          "claimKind": null,
           "conflictingValues": [],
           "calculation": null,
           "projection": null
@@ -509,12 +482,12 @@
           "normalizedValue": null,
           "sources": [
             {
-              "id": "page-489197c11071d3e6",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
-              "title": "National College Match | QuestBridge",
+              "id": "page-f92b8b9519a816bc",
+              "url": "https://bowseat.org/about/our-story/",
+              "title": "Our Story | Making Waves Through the Arts | Bow Seat Creative Action for Conservation",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:19.261Z",
-              "excerpt": "Through QuestBridge, high-achieving students from low-income backgrounds can apply"
+              "accessedAt": "2026-08-21T11:19:44.840Z",
+              "excerpt": "Bow Seat: Creative Action for Conservation, Inc. is a 501(c)(3) nonprofit organization"
             }
           ],
           "note": "The excerpt names an organization or opportunity but does not explicitly support the primary operator role.",
@@ -538,110 +511,6 @@
           "projection": null
         },
         "named_institution": {
-          "status": "disclosed",
-          "value": "QuestBridge's 55 college partners",
-          "displayValue": "QuestBridge's 55 college partners",
-          "normalizedValue": {
-            "kind": "text",
-            "value": "QuestBridge's 55 college partners"
-          },
-          "sources": [
-            {
-              "id": "page-489197c11071d3e6",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
-              "title": "National College Match | QuestBridge",
-              "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:19.261Z",
-              "excerpt": "full four-year scholarships to 55 top colleges through QuestBridge"
-            }
-          ],
-          "note": null,
-          "confidence": null,
-          "claimKind": "source_stated",
-          "conflictingValues": [],
-          "calculation": null,
-          "projection": null
-        },
-        "institution_relationship": {
-          "status": "disclosed",
-          "value": "institution_partnered",
-          "displayValue": "Partnered with institutions",
-          "normalizedValue": {
-            "kind": "relationship",
-            "value": "institution_partnered"
-          },
-          "sources": [
-            {
-              "id": "page-6105ccbdffc87dd5",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/the-match-scholarship",
-              "title": "The Match Scholarship | QuestBridge",
-              "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:19.689Z",
-              "excerpt": "Match Scholarships are provided directly by our college partners."
-            }
-          ],
-          "note": null,
-          "confidence": null,
-          "claimKind": "source_stated",
-          "conflictingValues": [],
-          "calculation": null,
-          "projection": null
-        },
-        "relationship_explanation": {
-          "status": "disclosed",
-          "value": "QuestBridge works with 55 college partners; those partners provide the Match Scholarships directly.",
-          "displayValue": "QuestBridge works with 55 college partners; those partners provide the Match Scholarships directly.",
-          "normalizedValue": {
-            "kind": "text",
-            "value": "QuestBridge works with 55 college partners; those partners provide the Match Scholarships directly."
-          },
-          "sources": [
-            {
-              "id": "page-6105ccbdffc87dd5",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/the-match-scholarship",
-              "title": "The Match Scholarship | QuestBridge",
-              "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:19.689Z",
-              "excerpt": "Match Scholarships are provided directly by our college partners."
-            }
-          ],
-          "note": null,
-          "confidence": null,
-          "claimKind": "source_stated",
-          "conflictingValues": [],
-          "calculation": null,
-          "projection": null
-        },
-        "grade_levels": {
-          "status": "disclosed",
-          "value": [
-            "High school senior"
-          ],
-          "displayValue": "High school senior",
-          "normalizedValue": {
-            "kind": "text_list",
-            "values": [
-              "High school senior"
-            ]
-          },
-          "sources": [
-            {
-              "id": "page-8b34ff34564cb741",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
-              "title": "Apply to the National College Match | QuestBridge",
-              "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:20.467Z",
-              "excerpt": "It is open to any high school senior currently attending high school in the U.S."
-            }
-          ],
-          "note": null,
-          "confidence": null,
-          "claimKind": "source_stated",
-          "conflictingValues": [],
-          "calculation": null,
-          "projection": null
-        },
-        "ages": {
           "status": "not_found",
           "value": null,
           "displayValue": null,
@@ -654,6 +523,90 @@
           "calculation": null,
           "projection": null
         },
+        "institution_relationship": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "relationship_explanation": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "grade_levels": {
+          "status": "disclosed",
+          "value": [
+            "Middle school",
+            "High school",
+            "Homeschool equivalent"
+          ],
+          "displayValue": "Middle or high school; homeschool equivalent",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Middle school",
+              "High school",
+              "Homeschool equivalent"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-872c0733ec3667f0",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+              "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:19:42.886Z",
+              "excerpt": "enrolled in middle school or high school (or the homeschool equivalent)"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "ages": {
+          "status": "disclosed",
+          "value": "11–18",
+          "displayValue": "Ages 11–18",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "11-18"
+          },
+          "sources": [
+            {
+              "id": "page-872c0733ec3667f0",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+              "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:19:42.886Z",
+              "excerpt": "open to students ages 11-18"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
         "geographic_restrictions": {
           "status": "unclear",
           "value": null,
@@ -661,15 +614,15 @@
           "normalizedValue": null,
           "sources": [
             {
-              "id": "page-8b34ff34564cb741",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
-              "title": "Apply to the National College Match | QuestBridge",
+              "id": "page-872c0733ec3667f0",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+              "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:20.467Z",
-              "excerpt": "It is open to any high school senior currently attending high school in the U.S. and U.S. Citizens and Permanent Residents living abroad. International students living outside the U.S. are not eligible."
+              "accessedAt": "2026-08-21T11:19:42.886Z",
+              "excerpt": "worldwide"
             }
           ],
-          "note": "The displayed typed value was withheld because its participant geography does not match the cited excerpt.",
+          "note": "The cited geography language governs legal/service availability rather than participant eligibility.",
           "confidence": null,
           "claimKind": "source_stated",
           "conflictingValues": [],
@@ -703,55 +656,74 @@
           "projection": null
         },
         "entry_format": {
-          "status": "not_found",
-          "value": null,
-          "displayValue": null,
-          "normalizedValue": null,
-          "sources": [],
+          "status": "disclosed",
+          "value": "Individual or group of unlimited size",
+          "displayValue": "Individual or group of unlimited size",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Individual or group of unlimited size"
+          },
+          "sources": [
+            {
+              "id": "page-872c0733ec3667f0",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+              "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:19:42.886Z",
+              "excerpt": "Entries may be submitted by an individual or group of unlimited size."
+            }
+          ],
           "note": null,
           "confidence": null,
-          "claimKind": null,
+          "claimKind": "source_stated",
           "conflictingValues": [],
           "calculation": null,
           "projection": null
         },
         "sponsor_requirement": {
-          "status": "not_found",
-          "value": null,
-          "displayValue": null,
-          "normalizedValue": null,
-          "sources": [],
+          "status": "disclosed",
+          "value": "Adult Sponsor contact information required",
+          "displayValue": "Adult Sponsor contact information required",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Adult Sponsor contact information required"
+          },
+          "sources": [
+            {
+              "id": "page-872c0733ec3667f0",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+              "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:19:42.886Z",
+              "excerpt": "Students must provide the contact information for an Adult Sponsor"
+            }
+          ],
           "note": null,
           "confidence": null,
-          "claimKind": null,
+          "claimKind": "source_stated",
           "conflictingValues": [],
           "calculation": null,
           "projection": null
         },
         "application_deadline": {
-          "status": "unclear",
-          "value": null,
-          "displayValue": null,
-          "normalizedValue": null,
+          "status": "disclosed",
+          "value": "2026-06-08",
+          "displayValue": "June 8, 2026, 11:59 PM ET",
+          "normalizedValue": {
+            "kind": "date",
+            "isoDate": "2026-06-08"
+          },
           "sources": [
             {
-              "id": "page-73177402e77695e6",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
-              "title": "Dates & Deadlines | QuestBridge",
+              "id": "page-872c0733ec3667f0",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+              "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:20.797Z",
-              "excerpt": "October 1 | National College Match application deadline."
-            },
-            {
-              "id": "page-73177402e77695e6",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
-              "title": "Dates & Deadlines | QuestBridge",
-              "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:20.797Z",
-              "excerpt": "All deadlines occur at 11:59 p.m. Pacific Time."
+              "accessedAt": "2026-08-21T11:19:42.886Z",
+              "excerpt": "All submissions must be received by June 8, 2026, at 11:59 PM Eastern Time (ET)"
             }
           ],
-          "note": "The displayed typed value was withheld because its date does not match the cited excerpt and display value.",
+          "note": null,
           "confidence": null,
           "claimKind": "source_stated",
           "conflictingValues": [],
@@ -765,12 +737,12 @@
           "normalizedValue": null,
           "sources": [
             {
-              "id": "page-73177402e77695e6",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
-              "title": "Dates & Deadlines | QuestBridge",
+              "id": "page-1645da1d384db74a",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/faqs/",
+              "title": "FAQs | Ocean Awareness Contest | Bow Seat Creative Action for Conservation",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:20.797Z",
-              "excerpt": "December 1 | Match Day! Match results released through the Manage page."
+              "accessedAt": "2026-08-21T11:19:44.005Z",
+              "excerpt": "2026 Contest winners will be announced in November 2026."
             }
           ],
           "note": "The displayed typed value was withheld because its date does not match the cited excerpt and display value.",
@@ -846,14 +818,26 @@
           "projection": null
         },
         "participation_format": {
-          "status": "not_found",
-          "value": null,
-          "displayValue": null,
-          "normalizedValue": null,
-          "sources": [],
+          "status": "disclosed",
+          "value": "Online",
+          "displayValue": "Online submission",
+          "normalizedValue": {
+            "kind": "participation_format",
+            "value": "online"
+          },
+          "sources": [
+            {
+              "id": "page-872c0733ec3667f0",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+              "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:19:42.886Z",
+              "excerpt": "submit their work through our online system"
+            }
+          ],
           "note": null,
           "confidence": null,
-          "claimKind": null,
+          "claimKind": "source_stated",
           "conflictingValues": [],
           "calculation": null,
           "projection": null
@@ -887,7 +871,7 @@
         "application_fee": {
           "status": "disclosed",
           "value": 0,
-          "displayValue": "Free",
+          "displayValue": "No fee",
           "normalizedValue": {
             "kind": "money",
             "amount": 0,
@@ -896,12 +880,12 @@
           },
           "sources": [
             {
-              "id": "page-73177402e77695e6",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
-              "title": "Dates & Deadlines | QuestBridge",
+              "id": "page-872c0733ec3667f0",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+              "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:20.797Z",
-              "excerpt": "High-achieving students from low-income backgrounds can apply for free to our college partners through the National College Match."
+              "accessedAt": "2026-08-21T11:19:42.886Z",
+              "excerpt": "There is no fee to enter the Contest."
             }
           ],
           "note": null,
@@ -1042,32 +1026,29 @@
           "projection": null
         },
         "selection_process": {
-          "status": "disclosed",
-          "value": "QuestBridge reviews applications holistically with no absolute GPA, test-score, income, or other cutoffs. Applicants selected as Finalists may rank up to 15 college partners; Finalists submit each ranked college's additional requirements by November 1.",
-          "displayValue": "Holistic review; Finalists may rank up to 15 colleges and submit additional requirements",
-          "normalizedValue": {
-            "kind": "text",
-            "value": "QuestBridge reviews applications holistically with no absolute GPA, test-score, income, or other cutoffs. Applicants selected as Finalists may rank up to 15 college partners; Finalists submit each ranked college's additional requirements by November 1."
-          },
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
           "sources": [
             {
-              "id": "page-8b34ff34564cb741",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
-              "title": "Apply to the National College Match | QuestBridge",
+              "id": "page-1645da1d384db74a",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/faqs/",
+              "title": "FAQs | Ocean Awareness Contest | Bow Seat Creative Action for Conservation",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:20.467Z",
-              "excerpt": "We review all applications holistically, and there are no absolute criteria or cut-offs for GPA, standardized test scores, income, or other factors."
+              "accessedAt": "2026-08-21T11:19:44.005Z",
+              "excerpt": "If a submission meets category requirements (such as length, file type, etc.)."
             },
             {
-              "id": "page-8b34ff34564cb741",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
-              "title": "Apply to the National College Match | QuestBridge",
+              "id": "page-1645da1d384db74a",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/faqs/",
+              "title": "FAQs | Ocean Awareness Contest | Bow Seat Creative Action for Conservation",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:20.467Z",
-              "excerpt": "Rank up to 15 college partners to be considered for early admission and a full four-year scholarship."
+              "accessedAt": "2026-08-21T11:19:44.005Z",
+              "excerpt": "Judging begins immediately after the Ocean Awareness Contest ends"
             }
           ],
-          "note": null,
+          "note": "The cited wording describes the opportunity but does not establish an application, review, selection, or advancement process.",
           "confidence": null,
           "claimKind": "source_stated",
           "conflictingValues": [],
@@ -1129,19 +1110,19 @@
         "selection_evidence": {
           "status": "disclosed",
           "value": "Descriptive",
-          "displayValue": "Descriptive",
+          "displayValue": "Descriptive selection information; no acceptance count or rate stated",
           "normalizedValue": {
             "kind": "text",
             "value": "Descriptive"
           },
           "sources": [
             {
-              "id": "page-8b34ff34564cb741",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
-              "title": "Apply to the National College Match | QuestBridge",
+              "id": "page-1645da1d384db74a",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/faqs/",
+              "title": "FAQs | Ocean Awareness Contest | Bow Seat Creative Action for Conservation",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:20.467Z",
-              "excerpt": "We review all applications holistically, and there are no absolute criteria or cut-offs for GPA, standardized test scores, income, or other factors."
+              "accessedAt": "2026-08-21T11:19:44.005Z",
+              "excerpt": "We receive thousands of submissions each year and our team of judges collectively puts in thousands of hours reviewing your work."
             }
           ],
           "note": null,
@@ -1152,14 +1133,23 @@
           "projection": null
         },
         "cash_award": {
-          "status": "not_found",
-          "value": null,
-          "displayValue": null,
+          "status": "disclosed",
+          "value": "Cash awards for winners in all categories and both age divisions",
+          "displayValue": "Cash awards for winners",
           "normalizedValue": null,
-          "sources": [],
+          "sources": [
+            {
+              "id": "page-e22b84b1e5b99430",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/awards/",
+              "title": "Ocean Awareness Art Contest Overview | AWARDS | Bow Seat Creative Action for Conservation",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T11:19:44.333Z",
+              "excerpt": "Cash awards are presented to winners in all of the categories at both the Junior and Senior Division levels."
+            }
+          ],
           "note": null,
           "confidence": null,
-          "claimKind": null,
+          "claimKind": "source_stated",
           "conflictingValues": [],
           "calculation": null,
           "projection": null
@@ -1191,45 +1181,27 @@
           "projection": null
         },
         "program_seat": {
-          "status": "unclear",
+          "status": "not_found",
           "value": null,
           "displayValue": null,
           "normalizedValue": null,
-          "sources": [
-            {
-              "id": "page-6105ccbdffc87dd5",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/the-match-scholarship",
-              "title": "The Match Scholarship | QuestBridge",
-              "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:19.689Z",
-              "excerpt": "By ranking colleges, you could be “matched” — admitted early with a guaranteed full four-year Match Scholarship to one of our college partners."
-            }
-          ],
-          "note": "The cited admission or enrollment is to an external college, university, school, institution, or employer rather than a seat in this opportunity.",
+          "sources": [],
+          "note": null,
           "confidence": null,
-          "claimKind": "source_stated",
+          "claimKind": null,
           "conflictingValues": [],
           "calculation": null,
           "projection": null
         },
         "in_kind_value": {
-          "status": "disclosed",
-          "value": 360000,
-          "displayValue": "Over $360,000",
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
           "normalizedValue": null,
-          "sources": [
-            {
-              "id": "page-6105ccbdffc87dd5",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/the-match-scholarship",
-              "title": "The Match Scholarship | QuestBridge",
-              "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:19.689Z",
-              "excerpt": "Worth over $360,000, Match Scholarships cover tuition, housing, food, and other expenses."
-            }
-          ],
+          "sources": [],
           "note": null,
           "confidence": null,
-          "claimKind": "source_stated",
+          "claimKind": null,
           "conflictingValues": [],
           "calculation": null,
           "projection": null
@@ -1276,41 +1248,31 @@
         "other_benefits": {
           "status": "disclosed",
           "value": [
-            "Match Scholarship covers tuition and fees, housing, and food; no parental contribution or student loans",
-            "Lifelong QuestBridge Scholars and Alumni community, networking, and opportunities"
+            "Potential art exhibitions, pop-up shows, social-media campaigns, publication opportunities, and online-gallery showcase"
           ],
-          "displayValue": "Scholarship coverage and a lifelong Scholar/Alumni community",
+          "displayValue": "Potential showcases and publication opportunities for winners",
           "normalizedValue": {
             "kind": "text_list",
             "values": [
-              "Match Scholarship covers tuition and fees, housing, and food; no parental contribution or student loans",
-              "Lifelong QuestBridge Scholars and Alumni community, networking, and opportunities"
+              "Potential art exhibitions, pop-up shows, social-media campaigns, publication opportunities, and online-gallery showcase"
             ]
           },
           "sources": [
             {
-              "id": "page-6105ccbdffc87dd5",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/the-match-scholarship",
-              "title": "The Match Scholarship | QuestBridge",
+              "id": "page-e22b84b1e5b99430",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/awards/",
+              "title": "Ocean Awareness Art Contest Overview | AWARDS | Bow Seat Creative Action for Conservation",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:19.689Z",
-              "excerpt": "All Match Scholarship packages: Have NO parental contribution Have NO student loans"
+              "accessedAt": "2026-08-21T11:19:44.333Z",
+              "excerpt": "As a winner, you may have a special opportunity to showcase your talents worldwide"
             },
             {
-              "id": "page-6105ccbdffc87dd5",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/the-match-scholarship",
-              "title": "The Match Scholarship | QuestBridge",
+              "id": "page-e22b84b1e5b99430",
+              "url": "https://bowseat.org/programs/ocean-awareness-contest/awards/",
+              "title": "Ocean Awareness Art Contest Overview | AWARDS | Bow Seat Creative Action for Conservation",
               "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:19.689Z",
-              "excerpt": "The Match Scholarship covers the full cost of attendance, including: Tuition and fees Housing and food"
-            },
-            {
-              "id": "page-489197c11071d3e6",
-              "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
-              "title": "National College Match | QuestBridge",
-              "pageType": "user_supplied",
-              "accessedAt": "2026-08-20T21:23:19.261Z",
-              "excerpt": "you will join a supportive community of over 35,000 QuestBridge Scholars and Alumni for lifelong opportunities, networking, and more."
+              "accessedAt": "2026-08-21T11:19:44.333Z",
+              "excerpt": "Bow Seat organizes art exhibitions, pop-up shows, and social media campaigns; curates anthologies of art and poetry; finds opportunities to publish student writing; and showcases all winning student work in our online gallery."
             }
           ],
           "note": null,
@@ -1430,41 +1392,71 @@
     },
     "reviewedPages": [
       {
-        "id": "page-489197c11071d3e6",
-        "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match",
-        "title": "National College Match | QuestBridge",
+        "id": "page-872c0733ec3667f0",
+        "url": "https://bowseat.org/programs/ocean-awareness-contest/rules-eligibility/",
+        "title": "Rules & Eligibility | Bow Seat Creative Action for Conservation",
         "pageType": "user_supplied",
-        "accessedAt": "2026-08-20T21:23:19.261Z",
+        "accessedAt": "2026-08-21T11:19:42.886Z",
         "truncated": false,
         "truncatedForModel": false,
         "contentUnavailable": false
       },
       {
-        "id": "page-8b34ff34564cb741",
-        "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply",
-        "title": "Apply to the National College Match | QuestBridge",
+        "id": "page-57c36f9d870c73d0",
+        "url": "https://bowseat.org/privacy-policy/",
+        "title": "Privacy Policy | Bow Seat Creative Action for Conservation",
         "pageType": "user_supplied",
-        "accessedAt": "2026-08-20T21:23:20.467Z",
+        "accessedAt": "2026-08-21T11:19:43.318Z",
         "truncated": false,
         "truncatedForModel": false,
         "contentUnavailable": false
       },
       {
-        "id": "page-6105ccbdffc87dd5",
-        "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/the-match-scholarship",
-        "title": "The Match Scholarship | QuestBridge",
+        "id": "page-4a45b920a7282ccd",
+        "url": "https://bowseat.org/terms-of-use/",
+        "title": "Terms of Use | Bow Seat Creative Action for Conservation",
         "pageType": "user_supplied",
-        "accessedAt": "2026-08-20T21:23:19.689Z",
+        "accessedAt": "2026-08-21T11:19:43.646Z",
         "truncated": false,
         "truncatedForModel": false,
         "contentUnavailable": false
       },
       {
-        "id": "page-73177402e77695e6",
-        "url": "https://www.questbridge.org/apply-to-college/programs/national-college-match/apply/dates-and-deadlines",
-        "title": "Dates & Deadlines | QuestBridge",
+        "id": "page-1645da1d384db74a",
+        "url": "https://bowseat.org/programs/ocean-awareness-contest/faqs/",
+        "title": "FAQs | Ocean Awareness Contest | Bow Seat Creative Action for Conservation",
         "pageType": "user_supplied",
-        "accessedAt": "2026-08-20T21:23:20.797Z",
+        "accessedAt": "2026-08-21T11:19:44.005Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-e22b84b1e5b99430",
+        "url": "https://bowseat.org/programs/ocean-awareness-contest/awards/",
+        "title": "Ocean Awareness Art Contest Overview | AWARDS | Bow Seat Creative Action for Conservation",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T11:19:44.333Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-f92b8b9519a816bc",
+        "url": "https://bowseat.org/about/our-story/",
+        "title": "Our Story | Making Waves Through the Arts | Bow Seat Creative Action for Conservation",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T11:19:44.840Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-7cbb6c6a57571f5f",
+        "url": "https://bowseat.org/coppa-privacy-notice/",
+        "title": "COPPA Privacy Notice | Bow Seat Creative Action for Conservation",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T11:19:45.226Z",
         "truncated": false,
         "truncatedForModel": false,
         "contentUnavailable": false
@@ -1474,55 +1466,20 @@
     "evidenceWarnings": [],
     "attentionItems": [
       {
-        "id": "deadline-unresolved",
-        "category": "deadline",
-        "priority": "high",
-        "title": "Application deadline is unresolved",
-        "explanation": "The reviewed material did not establish one applicable application deadline.",
+        "id": "selectivity-not-quantified",
+        "category": "selection",
+        "priority": "medium",
+        "title": "Numerical selectivity data was not found",
+        "explanation": "The retained record does not contain current-cycle applicant totals, acceptance totals, or a published acceptance rate. This does not establish whether the opportunity is or is not selective.",
         "fieldIds": [
-          "application_deadline"
+          "applicant_count",
+          "acceptance_count",
+          "acceptance_rate_claim"
         ],
         "claimIds": [],
         "sourceIds": [],
-        "suggestedNextStep": "Check the current application or schedule page for your exact cycle.",
+        "suggestedNextStep": null,
         "origin": "deterministic_fallback"
-      },
-      {
-        "id": "binding-match-policy",
-        "category": "selection",
-        "priority": "high",
-        "title": "Ranking colleges can create a binding commitment",
-        "explanation": "Applicants who rank colleges enter a binding agreement if matched, except for MIT; assess this before using the ranking portion of the selection process.",
-        "fieldIds": [
-          "selection_process",
-          "program_seat"
-        ],
-        "claimIds": [],
-        "sourceIds": [
-          "page-8b34ff34564cb741",
-          "page-6105ccbdffc87dd5"
-        ],
-        "suggestedNextStep": null,
-        "origin": "model_grounded"
-      },
-      {
-        "id": "scholarship-is-match-contingent",
-        "category": "outcome",
-        "priority": "high",
-        "title": "Scholarship and admission are contingent on matching",
-        "explanation": "The early-admission seat and stated scholarship value apply to Finalists who match, not all applicants or Finalists.",
-        "fieldIds": [
-          "selection_process",
-          "program_seat",
-          "in_kind_value"
-        ],
-        "claimIds": [],
-        "sourceIds": [
-          "page-8b34ff34564cb741",
-          "page-6105ccbdffc87dd5"
-        ],
-        "suggestedNextStep": null,
-        "origin": "model_grounded"
       }
     ],
     "qualityOutcome": "usable_with_caveats",
@@ -1531,7 +1488,6 @@
       "opportunity_category",
       "official_url",
       "operating_organization",
-      "organization_type",
       "named_institution",
       "institution_relationship",
       "relationship_explanation",
@@ -1539,7 +1495,6 @@
       "ages",
       "geographic_restrictions",
       "citizenship_restrictions",
-      "prerequisite_skills",
       "entry_format",
       "sponsor_requirement",
       "application_deadline",
@@ -1548,44 +1503,25 @@
       "end_date",
       "duration",
       "weekly_hours",
-      "required_live_hours",
       "participation_format",
       "location",
-      "travel_requirements",
       "application_fee",
-      "deposit",
       "tuition",
-      "other_mandatory_costs",
       "estimated_total_mandatory_cost",
-      "travel_included",
-      "lodging_included",
-      "meals_included",
       "financial_aid",
       "refund_policy",
-      "cancellation_policy",
       "selection_process",
+      "selection_evidence",
       "applicant_count",
       "acceptance_count",
       "acceptance_rate_claim",
-      "calculated_acceptance_rate",
-      "selection_evidence",
       "cash_award",
       "stipend",
       "tuition_waiver",
       "program_seat",
       "in_kind_value",
-      "certificate",
-      "college_credit",
       "mentorship",
-      "other_benefits",
-      "personal_information",
-      "data_sharing",
-      "project_ownership",
-      "project_license",
-      "publicity_rights",
-      "confidentiality",
-      "cancellation_rights",
-      "material_terms"
+      "other_benefits"
     ]
   }
 }

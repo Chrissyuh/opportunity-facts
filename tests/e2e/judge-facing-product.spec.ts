@@ -46,5 +46,14 @@ test("homepage keeps the analyzer dominant and leaves examples out of primary na
   await expect(page.getByRole("heading", { level: 2 })).toHaveCount(0);
   await expect(page.getByText("Source-backed facts from the public pages that matter.")).toBeVisible();
   await expect(page.getByRole("navigation", { name: "Main navigation" }).getByText("Examples", { exact: true })).toHaveCount(0);
+  await expect(page.getByRole("navigation", { name: "Main navigation" }).getByText("Compare", { exact: true })).toHaveCount(0);
+  await expect(page.getByRole("navigation", { name: "Main navigation" }).getByText("Analyze", { exact: true })).toHaveCount(0);
+  await expect(page.getByRole("navigation", { name: "Main navigation" }).getByText("How it works", { exact: true })).toBeVisible();
   await expect(page.getByText("AI-audited", { exact: true })).toHaveCount(0);
+});
+
+test("bare analysis navigation returns to the single public entry point", async ({ page }) => {
+  await page.goto("/analyze");
+  await expect(page).toHaveURL(/\/$/);
+  await expect(page.getByLabel("Paste an opportunity URL")).toBeVisible();
 });

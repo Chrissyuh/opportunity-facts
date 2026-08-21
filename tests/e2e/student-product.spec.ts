@@ -3,9 +3,26 @@ import { expect, expectNoPageOverflow, test } from "./support";
 test("a real opportunity opens with practical answers, not schema metadata", async ({ page }) => {
   await page.goto("/opportunities/diamond-challenge-2027");
   await expect(page.getByRole("heading", { level: 1, name: "Diamond Challenge" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Add to comparison" })).toHaveCount(0);
   await expect(page.getByRole("heading", { level: 2, name: "At a glance" })).toBeVisible();
   await expect(page.getByText("Application deadline", { exact: true })).toBeVisible();
   await expect(page.getByText("Cost", { exact: true })).toBeVisible();
+  await expect(page.locator('.glance-fact[data-priority="primary"] dt')).toHaveText([
+    "Application deadline",
+    "Cost",
+    "Dates and schedule",
+    "Format and location",
+    "Who can apply",
+    "Selection",
+  ]);
+  await expect(
+    page.locator('.glance-fact[data-priority="primary"]').filter({ hasText: "Cost" }),
+  ).toContainText("Financial aid");
+  await expect(page.locator('.glance-fact[data-priority="secondary"] dt')).toHaveText([
+    "What participants receive",
+    "Operated by",
+    "Institution relationships",
+  ]);
   await expect(page.getByRole("heading", { level: 2, name: "Needs attention" })).toBeVisible();
   await expect(page.locator(".attention-item")).toHaveCount(2);
   await expect(page.getByText(/schema 2\./i)).toHaveCount(0);

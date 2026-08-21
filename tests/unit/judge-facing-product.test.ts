@@ -28,7 +28,8 @@ describe("judge-facing product language", () => {
   it("routes the primary How it works navigation to the accessible product explanation", () => {
     const header = readFileSync("components/site-header.tsx", "utf8");
     expect(header).toContain('{ href: "/how-it-works", label: "How it works" }');
-    expect(header).toContain('{ href: "/analyze", label: "Analyze" }');
+    expect(header).not.toContain('{ href: "/", label: "Analyze" }');
+    expect(header).not.toContain('{ href: "/compare", label: "Compare" }');
     expect(header).not.toContain('label: "Examples"');
     expect(header).not.toContain("wordmark-mark");
   });

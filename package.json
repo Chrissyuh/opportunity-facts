@@ -16,6 +16,8 @@
     "export:data": "tsx scripts/export-public-data.ts",
     "reproject:card": "tsx scripts/reproject-card.ts",
     "review:promote": "tsx scripts/promote-human-review.ts",
+    "sample:capture": "tsx --conditions=react-server scripts/capture-sample-analysis.ts",
+    "sample:generate": "tsx scripts/generate-sample-analyses.ts",
     "benchmark:extract": "tsx --conditions=react-server scripts/run-extraction-benchmark.ts",
     "benchmark:score": "tsx scripts/score-extraction-benchmark.ts"
   },

@@ -19,6 +19,7 @@ export type AnalysisProgressEvent = ProgressBase & (
   | { readonly type: "source_set_complete"; readonly acquired: number; readonly failed: number }
   | { readonly type: "cycle_resolved"; readonly status: "resolved" | "ambiguous"; readonly label?: string }
   | { readonly type: "normal_model_started" }
+  | { readonly type: "normal_model_output_started" }
   | { readonly type: "normal_model_completed" }
   | { readonly type: "normal_model_failed"; readonly message: string }
   | { readonly type: "family_started"; readonly family: ModelExtractionStage }

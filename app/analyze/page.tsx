@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import { AnalysisWorkbench } from "@/components/analysis-workbench";
 import { SampleAnalysisReplay } from "@/components/sample-analysis-replay";
 import { SampleAnalysisResolver } from "@/components/sample-analysis-resolver";
@@ -11,10 +12,14 @@ export const metadata: Metadata = {
   description: "Research a public opportunity page into a source-backed draft.",
 };
 
-export default async function AnalyzePage({ searchParams }: { searchParams: Promise<{ sample?: string | string[] }> }) {
+export default async function AnalyzePage({ searchParams }: { searchParams: Promise<{ sample?: string | string[]; start?: string | string[] }> }) {
   const query = await searchParams;
   const requestedSample = typeof query.sample === "string" ? query.sample : null;
-  const sample = requestedSample && isSampleAnalysisId(requestedSample) ? await getSampleAnalysis(requestedSample) : null;
+  const validSampleRequested = requestedSample !== null && isSampleAnalysisId(requestedSample);
+  const nextSampleRequested = requestedSample === "next";
+  const startRequested = query.start === "1";
+  if (!validSampleRequested && !nextSampleRequested && !startRequested) redirect("/");
+  const sample = validSampleRequested ? await getSampleAnalysis(requestedSample) : null;
   return (
     <main id="main-content" className="page-main analyze-page">
       <div className="shell section">

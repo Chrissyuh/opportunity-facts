@@ -116,7 +116,7 @@ test("normal analysis feels complete and Extended Research enriches it in place"
     };
   }, { normalResult: normal, extendedResult: extended });
 
-  await page.goto("/analyze");
+  await page.goto("/analyze?start=1");
   await page.getByLabel("Public opportunity URL").fill("https://two-stage.example/program");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Analysis complete" })).toBeVisible();
@@ -161,11 +161,12 @@ test("normal analysis renders a finished result without pretending all 59 fields
     }
     await route.fulfill({ contentType: "application/json", body: JSON.stringify(compact) });
   });
-  await page.goto("/analyze");
+  await page.goto("/analyze?start=1");
   await page.getByLabel("Public opportunity URL").fill("https://two-stage.example/program");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Analysis complete" })).toBeVisible();
-  await expect(page.locator(".glance-fact")).toHaveCount(3);
+  await expect(page.locator(".glance-fact")).toHaveCount(2);
+  await expect(page.locator(".glance-fact").filter({ hasText: "Cost" })).toContainText("Financial aid");
   await expect(page.locator(".glance-fact").filter({ hasText: "Who can apply" })).toHaveCount(0);
   await expect(page.getByText("Not assessed by normal analysis", { exact: false })).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Extended Research", exact: true })).toBeVisible();
@@ -185,7 +186,7 @@ test("Extended Research cancellation preserves the successful overview", async (
     }
     await route.fulfill({ contentType: "application/json", body: JSON.stringify(result(card, "normal")) });
   });
-  await page.goto("/analyze");
+  await page.goto("/analyze?start=1");
   await page.getByLabel("Public opportunity URL").fill("https://two-stage.example/program");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await page.getByRole("button", { name: "Extended Research", exact: true }).click();
@@ -210,7 +211,7 @@ test("Extended Research provider failure preserves the successful overview", asy
     }
     await route.fulfill({ contentType: "application/json", body: JSON.stringify(result(card, "normal")) });
   });
-  await page.goto("/analyze");
+  await page.goto("/analyze?start=1");
   await page.getByLabel("Public opportunity URL").fill("https://two-stage.example/program");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await page.getByRole("button", { name: "Extended Research", exact: true }).click();
@@ -242,7 +243,7 @@ test("safe partial Extended Research retains completed sections and the original
       body: JSON.stringify(route.request().url().endsWith("/extended") ? partial : result(card, "normal")),
     });
   });
-  await page.goto("/analyze");
+  await page.goto("/analyze?start=1");
   await page.getByLabel("Public opportunity URL").fill("https://two-stage.example/program");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await page.getByRole("button", { name: "Extended Research", exact: true }).click();
@@ -275,7 +276,7 @@ test("incomplete result override is explicit, persistent, and performs no new an
       }),
     });
   });
-  await page.goto("/analyze");
+  await page.goto("/analyze?start=1");
   await page.getByLabel("Public opportunity URL").fill("https://minefield.example/program");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await expect(page.locator(".analysis-result")).toHaveCount(0);
@@ -321,7 +322,7 @@ test("server bypass authority clears stale local suppression without changing th
       body: JSON.stringify({ failureSuppression: { bypass: true, allowLocalSuppression: false } }),
     });
   });
-  await page.goto("/analyze");
+  await page.goto("/analyze?start=1");
   await page.getByLabel("Public opportunity URL").fill(canonical);
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Analysis complete" })).toBeVisible();
@@ -332,7 +333,7 @@ test("server bypass authority clears stale local suppression without changing th
 });
 
 test("competition-facing navigation hides batch analysis when the flag is disabled", async ({ page }) => {
-  await page.goto("/analyze");
+  await page.goto("/analyze?start=1");
   await expect(page.getByRole("link", { name: /Batch analyze/i })).toHaveCount(0);
   await page.goto("/");
   await expect(page.getByRole("link", { name: /Batch analyze/i })).toHaveCount(0);

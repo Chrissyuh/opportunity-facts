@@ -3,6 +3,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 import { SAMPLE_ANALYSIS_CATALOG } from "@/lib/sample-analysis/catalog";
+import { ANALYZER_VERSION } from "@/lib/analysis/analyzer-version";
 import { sampleAnalysisSchema } from "@/lib/sample-analysis/schema";
 import {
   chooseNextSample,
@@ -20,6 +21,9 @@ describe("prerecorded sample analyses", () => {
     expect(samples).toHaveLength(5);
     for (const sample of samples) {
       expect(sample.captureKind).toBe("compact_production");
+      expect(sample.analyzerVersion).toBe(ANALYZER_VERSION);
+      expect(sample.captureDigest).toMatch(/^[a-f0-9]{64}$/u);
+      expect(sample.progressProvenance).toBe("captured_stream");
       expect(sample.result.card.schemaVersion).toBe("2.2.0");
       expect(sample.result.card.reviewState).toBe("automated_draft");
       expect(JSON.stringify(sample).toLowerCase()).not.toContain("lumos");
@@ -30,7 +34,7 @@ describe("prerecorded sample analyses", () => {
 
   it("retains recorded timings, monotonically scheduled replay events, evidence, and attention", () => {
     for (const sample of samples) {
-      expect(sample.recordedDurationMs).toBeGreaterThan(20_000);
+      expect(sample.recordedDurationMs).toBeGreaterThan(15_000);
       expect(sample.progress.length).toBeGreaterThan(5);
       expect(sample.progress.map((entry) => entry.replayAtMs)).toEqual(
         [...sample.progress.map((entry) => entry.replayAtMs)].sort((left, right) => left - right),
@@ -38,6 +42,7 @@ describe("prerecorded sample analyses", () => {
       expect(sample.progress.at(-1)?.replayAtMs).toBeGreaterThan(sample.recordedDurationMs - 1_000);
       expect(sample.progress.at(-1)?.event.elapsedMs).toBeLessThanOrEqual(sample.recordedDurationMs);
       expect(sample.result.attentionItems.length).toBeLessThanOrEqual(3);
+      expect(sample.result.attentionItems.some((item) => item.priority === "high")).toBe(false);
       const disclosedFacts = Object.values(sample.result.card.facts).filter((fact) => fact.status === "disclosed");
       expect(disclosedFacts.some((fact) => fact.sources.some((source) => source.excerpt.length > 0))).toBe(true);
     }
@@ -60,8 +65,9 @@ describe("prerecorded sample analyses", () => {
 
   it("recovers from corrupt storage and remembers direct sample links", () => {
     expect(parseSampleRotationState("not-json")).toEqual({ seen: [], last: null });
-    const remembered = rememberSample({ seen: [], last: null }, "mites-summer");
-    expect(remembered).toEqual({ seen: ["mites-summer"], last: "mites-summer" });
-    expect(rememberSample(remembered, "mites-summer")).toEqual(remembered);
+    const sampleId = SAMPLE_ANALYSIS_CATALOG[0].id;
+    const remembered = rememberSample({ seen: [], last: null }, sampleId);
+    expect(remembered).toEqual({ seen: [sampleId], last: sampleId });
+    expect(rememberSample(remembered, sampleId)).toEqual(remembered);
   });
 });

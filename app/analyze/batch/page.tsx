@@ -27,7 +27,7 @@ export default function BatchAnalyzePage() {
             <p>
               <strong>Demo limit: up to 5 opportunities per batch.</strong>
             </p>
-            <Link href="/analyze">Analyze one opportunity instead</Link>
+            <Link href="/">Analyze one opportunity instead</Link>
           </div>
         </div>
       </header>

@@ -1,222 +1,99 @@
-import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { mkdir, readFile, readdir, rename, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import type { AnalysisProgressEvent, AnalysisProgressInput } from "../lib/analysis/progress";
-import { FIELD_DEFINITIONS, FIELD_IDS, type FieldId } from "../lib/opportunity/fields";
-import { opportunityCardSchema, type OpportunityCard } from "../lib/opportunity/schema";
-import { SAMPLE_ANALYSIS_CATALOG } from "../lib/sample-analysis/catalog";
+import { ANALYZER_VERSION } from "../lib/analysis/analyzer-version";
+import type { AnalysisProgressEvent } from "../lib/analysis/progress";
+import { FIELD_IDS, type FieldId } from "../lib/opportunity/fields";
+import { SAMPLE_ANALYSIS_CATALOG, type SampleAnalysisId } from "../lib/sample-analysis/catalog";
 import { sampleAnalysisSchema, type SampleAnalysis } from "../lib/sample-analysis/schema";
 
 type JsonRecord = Record<string, unknown>;
-type SourceReference = OpportunityCard["facts"]["opportunity_name"]["sources"][number];
 
-type NdjsonSampleId = "mites-summer" | "diamond-challenge";
-type JsonSampleId = "yale-young-global-scholars" | "breakthrough-junior-challenge";
+const captureDirectory = path.join(process.cwd(), ".codex-runtime", "sample-captures-current");
+const outputDirectory = path.join(process.cwd(), "data", "sample-analyses");
+const stagingDirectory = path.join(process.cwd(), ".codex-runtime", `sample-stage-${process.pid}`);
 
-const compactCaptures: Readonly<Record<NdjsonSampleId, {
-  artifactPath: string;
-  submittedUrl: string;
-  qualityOutcome: "good" | "usable_with_caveats";
-}>> = {
-  "mites-summer": {
-    artifactPath: ".codex-runtime/production-mites-normal.ndjson",
-    submittedUrl: "https://mites.mit.edu/discover-mites/mites-summer/",
-    qualityOutcome: "good",
-  },
-  "diamond-challenge": {
-    artifactPath: ".codex-runtime/production-diamond-normal.ndjson",
-    submittedUrl: "https://diamondchallenge.org/competition/",
-    qualityOutcome: "usable_with_caveats",
-  },
-};
-
-const jsonCaptures: Readonly<Record<JsonSampleId, { artifactPath: string }>> = {
-  "yale-young-global-scholars": {
-    artifactPath: ".codex-runtime/sample-captures/yale-young-global-scholars.json",
-  },
-  "breakthrough-junior-challenge": {
-    artifactPath: ".codex-runtime/sample-captures/breakthrough-junior-challenge.json",
-  },
-};
-
-const questbridgeCapture = {
-  artifactPath: ".codex-runtime/two-stage-live/questbridge-ncm-2026-08-20T21-23-18.356Z.json",
-  submittedUrl: "https://www.questbridge.org/high-school-students/national-college-match",
-  qualityOutcome: "usable_with_caveats" as const,
-};
-
-function record(value: unknown): JsonRecord {
-  if (!value || typeof value !== "object" || Array.isArray(value)) {
-    throw new Error("Expected an object in a captured compact-analysis artifact.");
-  }
+function record(value: unknown, message: string): JsonRecord {
+  if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(message);
   return value as JsonRecord;
 }
 
 function scheduleReplay(events: readonly AnalysisProgressEvent[]) {
   return events.map((event, index) => ({
-    replayAtMs: Math.max(index * 25, event.elapsedMs),
+    replayAtMs: Math.max(index * 25, Math.round(event.elapsedMs)),
     event,
   })).sort((left, right) => left.replayAtMs - right.replayAtMs || left.event.sequence - right.event.sequence);
 }
 
-function labelFor(fieldId: FieldId) {
-  return FIELD_DEFINITIONS.find((field) => field.id === fieldId)?.label ?? fieldId;
+function assertCapturedProgress(events: readonly AnalysisProgressEvent[], durationMs: number) {
+  if (events.length < 6) throw new Error("A sample capture must contain the complete progress stream.");
+  for (let index = 0; index < events.length; index += 1) {
+    const event = events[index]!;
+    if (event.sequence !== index + 1) throw new Error("Sample progress sequence is not contiguous.");
+    if (index > 0 && event.elapsedMs < events[index - 1]!.elapsedMs) {
+      throw new Error("Sample progress elapsed time is not monotonic.");
+    }
+    if (event.elapsedMs > durationMs) throw new Error("Sample progress exceeds recorded duration.");
+  }
+  if (events.at(-1)?.type !== "quality_complete") {
+    throw new Error("A sample capture must end with a real quality-complete event.");
+  }
 }
 
-function importantPreviews(card: OpportunityCard): FieldId[] {
-  const preferred: readonly FieldId[] = [
-    "opportunity_name",
-    "application_deadline",
-    "participation_format",
-    "tuition",
-    "financial_aid",
-    "selection_process",
-    "other_benefits",
-  ];
-  return preferred.filter((fieldId) => card.facts[fieldId].status === "disclosed").slice(0, 4);
-}
-
-function reviewedPagesFromCard(card: OpportunityCard) {
-  const sources = new Map<string, SourceReference>();
-  for (const fact of Object.values(card.facts)) {
-    for (const source of fact.sources) sources.set(source.id, source);
-    if (fact.status === "conflicting") {
-      for (const claim of fact.conflictingValues) {
-        for (const source of claim.sources) sources.set(source.id, source);
-      }
+function assertPreviewIntegrity(events: readonly AnalysisProgressEvent[], result: JsonRecord) {
+  const card = record(result.card, "Captured result is missing its card.");
+  const facts = record(card.facts, "Captured card is missing facts.");
+  for (const event of events) {
+    if (event.type !== "validated_fact") continue;
+    const fact = record(facts[event.fieldId], `Preview references missing fact ${event.fieldId}.`);
+    if (fact.status !== "disclosed" || fact.displayValue !== event.displayValue) {
+      throw new Error(`Preview ${event.fieldId} does not match the retained fact.`);
     }
   }
-  return [...sources.values()].map((source) => ({
-    id: source.id,
-    url: source.url,
-    title: source.title,
-    pageType: source.pageType,
-    accessedAt: source.accessedAt,
-    truncated: false,
-    truncatedForModel: false,
-    contentUnavailable: false,
-  }));
 }
 
-function telemetryProgress(
-  card: OpportunityCard,
-  reviewedPages: ReturnType<typeof reviewedPagesFromCard>,
-  runtimeMs: number,
-  attentionCount: number,
-  startedAt: string,
-  telemetry: readonly JsonRecord[],
-): AnalysisProgressEvent[] {
-  let sequence = 0;
-  let elapsedMs = 0;
-  const events: AnalysisProgressEvent[] = [];
-  const add = (event: AnalysisProgressInput, at: number) => {
-    events.push({ ...event, sequence: ++sequence, elapsedMs: Math.round(at) } as AnalysisProgressEvent);
-  };
-  add({ type: "accepted" }, 0);
-  add({ type: "cache_checked", state: "miss" }, 2);
-  for (const page of reviewedPages) {
-    const accessed = Date.parse(page.accessedAt) - Date.parse(startedAt);
-    elapsedMs = Math.max(elapsedMs + 300, Number.isFinite(accessed) ? accessed : elapsedMs + 300);
-    add({ type: "source_acquired", sourceId: page.id, title: page.title, url: page.url }, elapsedMs);
+async function buildSample(id: SampleAnalysisId): Promise<SampleAnalysis> {
+  const artifactPath = path.join(captureDirectory, `${id}.json`);
+  const rawText = await readFile(artifactPath, "utf8");
+  const captureDigest = createHash("sha256").update(rawText).digest("hex");
+  const artifact = record(JSON.parse(rawText) as unknown, `Invalid capture ${artifactPath}.`);
+  if (artifact.artifactVersion !== "current-compact-v2" || artifact.analyzerVersion !== ANALYZER_VERSION) {
+    throw new Error(`${id} was not captured with the current compact analyzer.`);
   }
-  let cumulativeMs = 0;
-  const stageTimes = new Map<string, { start: number; end: number }>();
-  for (const stage of telemetry) {
-    const duration = Number(stage.durationMs);
-    const start = cumulativeMs;
-    cumulativeMs += Number.isFinite(duration) ? duration : 0;
-    stageTimes.set(String(stage.stage), { start, end: cumulativeMs });
+  if (artifact.id !== id || artifact.secretsRetained !== false) throw new Error(`${id} capture identity is invalid.`);
+  const result = record(artifact.result, `${id} has no result.`);
+  if (result.kind !== "card") throw new Error(`${id} did not produce a publishable card result.`);
+  const quality = record(result.quality, `${id} has no quality result.`);
+  if (quality.outcome !== "good" && quality.outcome !== "usable_with_caveats") {
+    throw new Error(`${id} did not pass the normal quality gate.`);
   }
-  const acquisitionFinished = stageTimes.get("cycle_resolution")?.start ?? elapsedMs;
-  add({ type: "source_set_complete", acquired: reviewedPages.length, failed: 0 }, acquisitionFinished);
-  add({
-    type: "cycle_resolved",
-    status: card.cycle.status === "modeled" ? "resolved" : "ambiguous",
-    ...(card.cycle.status === "modeled"
-      ? { label: card.cycle.value.label.displayValue ?? card.cycle.value.label.value }
-      : {}),
-  }, stageTimes.get("cycle_resolution")?.end ?? acquisitionFinished);
-  add({ type: "normal_model_started" }, stageTimes.get("normal_model")?.start ?? acquisitionFinished);
-  add({ type: "normal_model_completed" }, stageTimes.get("normal_model")?.end ?? runtimeMs - 72);
-  const retained = FIELD_IDS.filter((fieldId) => card.facts[fieldId].status === "disclosed").length;
-  const validationFinished = stageTimes.get("deterministic_validation")?.end ?? runtimeMs - 7;
-  add({ type: "validation_complete", retained, withheld: 0 }, validationFinished);
-  add({ type: "attention_ready", count: attentionCount }, validationFinished);
-  for (const fieldId of importantPreviews(card)) {
-    const fact = card.facts[fieldId];
-    add({
-      type: "validated_fact",
-      fieldId,
-      label: labelFor(fieldId),
-      displayValue: fact.displayValue!,
-      evidenceCount: fact.sources.length,
-    }, validationFinished);
+  const progress = (artifact.progress as unknown[])
+    .map((event) => record(event, "Invalid progress event.") as unknown as AnalysisProgressEvent)
+    .filter((event) => event.type !== "heartbeat");
+  const durationMs = Math.round(Number(artifact.runtimeMs));
+  assertCapturedProgress(progress, durationMs);
+  assertPreviewIntegrity(progress, result);
+  const terminal = progress.at(-1);
+  if (terminal?.type !== "quality_complete" || terminal.outcome !== quality.outcome) {
+    throw new Error(`${id} quality metadata disagrees with its captured stream.`);
   }
-  add({ type: "quality_complete", outcome: "usable_with_caveats" }, stageTimes.get("quality_gate")?.end ?? runtimeMs);
-  return events;
-}
-
-async function compactSample(id: NdjsonSampleId): Promise<SampleAnalysis> {
-  const definition = compactCaptures[id];
-  const lines = (await readFile(definition.artifactPath, "utf8"))
-    .split(/\r?\n/u)
-    .filter(Boolean)
-    .map((line) => record(JSON.parse(line) as unknown));
-  const progress = lines
-    .filter((message) => message.type === "progress" && record(message.event).type !== "heartbeat")
-    .map((message) => record(message.event) as unknown as AnalysisProgressEvent);
-  const complete = lines.find((message) => message.type === "complete");
-  if (!complete) throw new Error(`No complete result in ${definition.artifactPath}.`);
-  const result = record(complete.result);
-  const card = opportunityCardSchema.parse(result.card);
-  const research = record(result.research);
-  const reviewedPages = result.reviewedPages as JsonRecord[];
-  const catalog = SAMPLE_ANALYSIS_CATALOG.find((sample) => sample.id === id)!;
+  const research = record(result.research, `${id} has no research metadata.`);
+  const catalog = SAMPLE_ANALYSIS_CATALOG.find((entry) => entry.id === id)!;
   return sampleAnalysisSchema.parse({
-    artifactVersion: "1.0.0",
-    id,
-    label: catalog.label,
-    category: catalog.category,
-    submittedUrl: definition.submittedUrl,
-    recordedAt: reviewedPages[0]?.accessedAt,
-    recordedDurationMs: Math.max(...progress.map((event) => event.elapsedMs)),
-    captureKind: "compact_production",
-    progressProvenance: "captured_stream",
-    sourceArtifact: definition.artifactPath,
-    progress: scheduleReplay(progress),
-    result: {
-      card,
-      reviewedPages,
-      pageWarnings: result.pageWarnings ?? [],
-      evidenceWarnings: result.evidenceWarnings ?? [],
-      attentionItems: (result.attentionItems as unknown[]).slice(0, 3),
-      qualityOutcome: definition.qualityOutcome,
-      assessedFieldIds: research.assessedFieldIds ?? FIELD_IDS,
-    },
-  });
-}
-
-async function capturedJsonSample(id: JsonSampleId): Promise<SampleAnalysis> {
-  const definition = jsonCaptures[id];
-  const artifact = record(JSON.parse(await readFile(definition.artifactPath, "utf8")) as unknown);
-  const result = record(artifact.result);
-  if (result.kind !== "card") throw new Error(`${definition.artifactPath} is not a completed card result.`);
-  const quality = record(result.quality);
-  const research = record(result.research);
-  const catalog = SAMPLE_ANALYSIS_CATALOG.find((sample) => sample.id === id)!;
-  const progress = (artifact.progress as unknown[]).map((event) => record(event) as unknown as AnalysisProgressEvent);
-  return sampleAnalysisSchema.parse({
-    artifactVersion: "1.0.0",
+    artifactVersion: "2.0.0",
+    analyzerVersion: ANALYZER_VERSION,
+    captureDigest,
     id,
     label: catalog.label,
     category: catalog.category,
     submittedUrl: artifact.submittedUrl,
     recordedAt: artifact.startedAt,
-    recordedDurationMs: artifact.runtimeMs,
+    recordedDurationMs: durationMs,
     captureKind: "compact_production",
     progressProvenance: "captured_stream",
-    sourceArtifact: definition.artifactPath,
-    progress: scheduleReplay(progress.filter((event) => event.type !== "heartbeat")),
+    sourceArtifact: path.relative(process.cwd(), artifactPath).replaceAll("\\", "/"),
+    progress: scheduleReplay(progress),
     result: {
       card: result.card,
       reviewedPages: result.reviewedPages,
@@ -224,67 +101,39 @@ async function capturedJsonSample(id: JsonSampleId): Promise<SampleAnalysis> {
       evidenceWarnings: result.evidenceWarnings ?? [],
       attentionItems: (result.attentionItems as unknown[]).slice(0, 3),
       qualityOutcome: quality.outcome,
-      assessedFieldIds: research.assessedFieldIds ?? FIELD_IDS,
-    },
-  });
-}
-
-async function questbridgeSample(): Promise<SampleAnalysis> {
-  const artifact = record(JSON.parse(await readFile(questbridgeCapture.artifactPath, "utf8")) as unknown);
-  const normal = record(artifact.normal);
-  const result = record(normal.detail);
-  const card = opportunityCardSchema.parse(result.card);
-  const reviewedPages = reviewedPagesFromCard(card);
-  const attentionItems = result.attentionItems as unknown[];
-  const runtimeMs = Math.round(Number(normal.runtimeMs));
-  const telemetry = (normal.telemetry as unknown[]).map(record);
-  const catalog = SAMPLE_ANALYSIS_CATALOG.find((sample) => sample.id === "questbridge-national-college-match")!;
-  return sampleAnalysisSchema.parse({
-    artifactVersion: "1.0.0",
-    id: "questbridge-national-college-match",
-    label: catalog.label,
-    category: catalog.category,
-    submittedUrl: questbridgeCapture.submittedUrl,
-    recordedAt: artifact.startedAt,
-    recordedDurationMs: runtimeMs,
-    captureKind: "compact_production",
-    progressProvenance: "recorded_stage_telemetry",
-    sourceArtifact: questbridgeCapture.artifactPath,
-    progress: scheduleReplay(telemetryProgress(card, reviewedPages, runtimeMs, attentionItems.length, String(artifact.startedAt), telemetry)),
-    result: {
-      card,
-      reviewedPages,
-      pageWarnings: result.pageWarnings ?? [],
-      evidenceWarnings: result.evidenceWarnings ?? [],
-      attentionItems: attentionItems.slice(0, 3),
-      qualityOutcome: questbridgeCapture.qualityOutcome,
-      assessedFieldIds: FIELD_IDS,
+      assessedFieldIds: research.assessedFieldIds ?? (FIELD_IDS as readonly FieldId[]),
     },
   });
 }
 
 async function main() {
-  const outputDirectory = path.join(process.cwd(), "data", "sample-analyses");
-  await rm(outputDirectory, { recursive: true, force: true });
-  await mkdir(outputDirectory, { recursive: true });
-  const samples = [
-    await compactSample("mites-summer"),
-    await compactSample("diamond-challenge"),
-    await questbridgeSample(),
-    await capturedJsonSample("yale-young-global-scholars"),
-    await capturedJsonSample("breakthrough-junior-challenge"),
-  ];
+await rm(stagingDirectory, { recursive: true, force: true });
+await mkdir(stagingDirectory, { recursive: true });
+try {
+  const samples = await Promise.all(SAMPLE_ANALYSIS_CATALOG.map((entry) => buildSample(entry.id)));
   for (const sample of samples) {
-    await writeFile(
-      path.join(outputDirectory, `${sample.id}.json`),
-      `${JSON.stringify(sample, null, 2)}\n`,
-      "utf8",
-    );
+    await writeFile(path.join(stagingDirectory, `${sample.id}.json`), `${JSON.stringify(sample, null, 2)}\n`, "utf8");
   }
-  process.stdout.write(`Generated ${samples.length} prerecorded compact-analysis samples.\n`);
+  for (const sample of samples) {
+    sampleAnalysisSchema.parse(JSON.parse(await readFile(path.join(stagingDirectory, `${sample.id}.json`), "utf8")) as unknown);
+  }
+  await mkdir(outputDirectory, { recursive: true });
+  const retainedFiles = new Set(samples.map((sample) => `${sample.id}.json`));
+  for (const filename of await readdir(outputDirectory)) {
+    if (filename.endsWith(".json") && !retainedFiles.has(filename)) {
+      await rm(path.join(outputDirectory, filename), { force: true });
+    }
+  }
+  for (const sample of samples) {
+    await rename(path.join(stagingDirectory, `${sample.id}.json`), path.join(outputDirectory, `${sample.id}.json`));
+  }
+  console.log(`Generated ${samples.length} validated current-pipeline sample analyses.`);
+} finally {
+  await rm(stagingDirectory, { recursive: true, force: true });
+}
 }
 
 void main().catch((error: unknown) => {
-  process.stderr.write(`${error instanceof Error ? error.message : String(error)}\n`);
+  console.error(error instanceof Error ? error.message : "Sample generation failed.");
   process.exitCode = 1;
 });
