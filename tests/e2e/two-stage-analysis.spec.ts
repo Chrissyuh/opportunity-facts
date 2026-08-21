@@ -314,6 +314,13 @@ test("server bypass authority clears stale local suppression without changing th
     submittedBody = route.request().postDataJSON();
     await route.fulfill({ contentType: "application/json", body: JSON.stringify(result(card, "normal")) });
   });
+  await page.route("**/api/analyze/suppression", async (route) => {
+    expect(route.request().postDataJSON()).toEqual({ mode: "url", url: canonical });
+    await route.fulfill({
+      contentType: "application/json",
+      body: JSON.stringify({ failureSuppression: { bypass: true, allowLocalSuppression: false } }),
+    });
+  });
   await page.goto("/analyze");
   await page.getByLabel("Public opportunity URL").fill(canonical);
   await page.getByRole("button", { name: "Analyze", exact: true }).click();

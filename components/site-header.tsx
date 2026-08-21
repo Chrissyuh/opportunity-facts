@@ -7,7 +7,7 @@ import { useState } from "react";
 const links = [
   { href: "/compare", label: "Compare" },
   { href: "/opportunities", label: "Examples" },
-  { href: "/methodology", label: "How it works" },
+  { href: "/how-it-works", label: "How it works" },
 ];
 
 export function SiteHeader() {

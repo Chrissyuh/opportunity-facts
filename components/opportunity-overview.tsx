@@ -10,7 +10,11 @@ import type { Fact, OpportunityCard } from "@/lib/opportunity/schema";
 import { CardActions } from "./card-actions";
 import { EvidenceList } from "./evidence-list";
 import { PdfDownloadActions } from "./pdf/pdf-download-actions";
-import { ReviewBadge, StatusBadge } from "./status-badge";
+import {
+  ReviewBadge,
+  StatusBadge,
+  reviewShortDescriptions,
+} from "./status-badge";
 import {
   CostPanel,
   OrganizationRelationshipPanel,
@@ -136,9 +140,9 @@ export function OpportunityOverview({
           <HeroHeading>{name}</HeroHeading>
           <p className="lede">{card.summary}</p>
           <p className="overview-review-note">
-            {card.reviewState === "ai_audited"
-              ? "An independent AI review checked source, excerpt, and value alignment. No human reviewer is claimed."
-              : "This label describes how the record was reviewed, not whether the opportunity is good or trustworthy."}
+            {reviewShortDescriptions[card.reviewState]} Review state describes
+            the checking process, not whether an opportunity is good or
+            trustworthy.
           </p>
         </div>
         <div className="overview-actions">

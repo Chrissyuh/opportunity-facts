@@ -256,9 +256,10 @@ test("comparison does not inherit review attestation from a local file", async (
   await page.getByRole("button", { name: /Cipher Finch Student Challenge.*Add/ }).click();
 
   const localHeader = page.getByRole("columnheader", {
-    name: /Diamond Challenge.*draft.*Local card/i,
+    name: /Diamond Challenge.*Local card/i,
   });
   await expect(localHeader).toBeVisible();
+  await expect(localHeader.getByText("Draft", { exact: true })).toBeVisible();
   await expect(localHeader.getByRole("link")).toHaveCount(0);
 });
 
@@ -280,7 +281,7 @@ test("comparison labels a source-free blank draft as unassessed", async ({ page 
   await expect(table.getByText("Not found in reviewed sources").first()).toBeVisible();
 });
 
-test("builder blocks source-free assessments and incomplete review-state promotion", async ({ page }) => {
+test("builder blocks source-free assessments and excludes human-review promotion", async ({ page }) => {
   await page.goto("/build");
   const nameEditor = page.locator("form.fact-editor").filter({
     has: page.getByRole("heading", { level: 3, name: /Opportunity name/ }),
@@ -292,10 +293,9 @@ test("builder blocks source-free assessments and incomplete review-state promoti
   await page.getByLabel("Page URL", { exact: true }).fill("https://builder-review.example/program");
   await page.getByLabel("Page title", { exact: true }).fill("Program page");
   await page.getByRole("button", { name: "Add checked page" }).click();
-  await page.getByLabel("Review state").selectOption("human_reviewed");
-  await page.getByRole("button", { name: "Save card metadata" }).click();
-  await expect(page.locator(".error-summary")).toContainText("every field and structured section to be explicitly assessed");
-  await expect(page.locator(".builder-preview .review-badge")).toHaveText("Draft");
+  await expect(page.getByLabel("Review state").locator('option[value="human_reviewed"]')).toHaveCount(0);
+  await expect(page.getByText(/Human reviewed is issued only through the local repository review workflow/)).toBeVisible();
+  await expect(page.locator(".builder-preview .review-badge > span").first()).toHaveText("Draft");
   await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem("opportunity-facts:builder:v1") ?? "null")?.reviewState)).toBe("draft");
 
   page.once("dialog", (dialog) => void dialog.accept());
@@ -306,7 +306,7 @@ test("builder blocks source-free assessments and incomplete review-state promoti
   await expect(page.locator(".builder-preview").getByText("Not assessed in this draft").first()).toBeVisible();
 });
 
-test("builder review attestation is newly stamped and invalidated by later edits", async ({ page }) => {
+test("builder imports invalidate review attestation and later edits remain drafts", async ({ page }) => {
   const sample = opportunityCardSchema.parse(
     JSON.parse(
       await readFile(join(process.cwd(), "data/opportunities/diamond-challenge-2027.json"), "utf8"),
@@ -329,22 +329,13 @@ test("builder review attestation is newly stamped and invalidated by later edits
   }
   await expect(page.getByRole("status")).toContainText(`draft revision ${sample.cardVersion + 1}`);
 
-  await page.getByLabel("Review state").selectOption("human_reviewed");
-  await page.getByRole("button", { name: "Save card metadata" }).click();
-  const reviewed = opportunityCardSchema.parse(
+  await expect(page.getByLabel("Review state").locator('option[value="human_reviewed"]')).toHaveCount(0);
+  const importedDraft = opportunityCardSchema.parse(
     await page.evaluate(() => JSON.parse(localStorage.getItem("opportunity-facts:builder:v1") ?? "null") as unknown),
   );
-  expect(reviewed.reviewState).toBe("human_reviewed");
-  expect(reviewed.reviewedAt).not.toBe(sample.reviewedAt);
-  expect(reviewed.cardVersion).toBe(sample.cardVersion + 1);
-
-  await expect(page.locator(".builder-preview .review-badge")).toHaveText("Human reviewed");
-  await page.getByRole("button", { name: "Save card metadata" }).click();
-  const reattested = opportunityCardSchema.parse(
-    await page.evaluate(() => JSON.parse(localStorage.getItem("opportunity-facts:builder:v1") ?? "null") as unknown),
-  );
-  expect(reattested.cardVersion).toBe(reviewed.cardVersion + 1);
-  expect(reattested.reviewedAt).not.toBe(reviewed.reviewedAt);
+  expect(importedDraft.reviewState).toBe("draft");
+  expect(importedDraft.reviewedAt).toBeNull();
+  expect(importedDraft.cardVersion).toBe(sample.cardVersion + 1);
 
   const identitySection = page.locator(".builder-form-column details").filter({
     has: page.getByText("Identity", { exact: true }),
@@ -357,9 +348,9 @@ test("builder review attestation is newly stamped and invalidated by later edits
   await categoryStatus.selectOption("not_applicable");
   await categoryEditor.getByLabel("Why this fact does not apply").fill("The checked sources explicitly state that no program category applies.");
   await categoryEditor.getByRole("button", { name: "Apply category" }).click();
-  await expect(page.locator(".builder-preview .review-badge")).toHaveText("Draft");
+  await expect(page.locator(".builder-preview .review-badge > span").first()).toHaveText("Draft");
   await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem("opportunity-facts:builder:v1") ?? "null")?.reviewedAt)).toBeNull();
-  await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem("opportunity-facts:builder:v1") ?? "null")?.cardVersion)).toBe(sample.cardVersion + 3);
+  await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem("opportunity-facts:builder:v1") ?? "null")?.facts?.opportunity_category?.status)).toBe("not_applicable");
 });
 
 test("changing builder source scope requires non-missing facts to be reassessed", async ({ page }) => {

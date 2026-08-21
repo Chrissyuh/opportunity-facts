@@ -266,6 +266,12 @@ export function CardBuilder() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const reviewState = String(data.get("reviewState") ?? "draft") as ReviewState;
+    if (reviewState === "human_reviewed") {
+      setMetadataError(
+        "Human reviewed can be issued only by the local repository review workflow after explicit human sign-off.",
+      );
+      return;
+    }
     if (isReviewAttestationState(reviewState) && !canExport) {
       setMetadataError(
         "AI-audited, human-reviewed, and organizer-confirmed cards require every field and structured section to be explicitly assessed against the checked source inventory.",
@@ -549,7 +555,6 @@ export function CardBuilder() {
                 >
                   <option value="draft">Draft</option>
                   <option value="ai_audited">AI-audited</option>
-                  <option value="human_reviewed">Human reviewed</option>
                   <option value="organizer_confirmed">Organizer confirmed</option>
                 </select>
               </div>
@@ -559,7 +564,7 @@ export function CardBuilder() {
               <textarea id="builder-summary" name="summary" defaultValue={card.summary} required />
             </div>
             <div className="notice">
-              <strong>Review-state integrity.</strong> Use AI-audited only after a separate AI-assisted evidence audit. Use human reviewed only after a person independently checks the relevant claims against their cited sources. Organizer confirmation is not independent verification.
+              <strong>Review-state integrity.</strong> Use AI-audited only after a separate AI-assisted evidence audit. Human reviewed is issued only through the local repository review workflow after a person completes its digest-bound checklist and interactive sign-off. Organizer confirmation is not independent verification.
             </div>
             <button className="button-secondary" type="submit">Save card metadata</button>
           </form>

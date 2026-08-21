@@ -1,6 +1,15 @@
 import { ZodError } from "zod";
-import { isAnalysisEnabled, tryAcquireAnalysisSlot } from "@/lib/analysis/admission-control";
 import {
+  acquireSharedAnalysisAdmission,
+  AnalysisUsageCostTracker,
+  isAnalysisEnabled,
+  tryAcquireAnalysisSlot,
+  type SharedAdmissionLease,
+  type SharedAdmissionRejection,
+} from "@/lib/analysis/admission-control";
+import {
+  ResearchSessionInProgressError,
+  ResearchSessionStorageUnavailableError,
   ResearchSessionUnavailableError,
   runExtendedResearch,
   type ExtendedResearchResult,
@@ -23,8 +32,8 @@ export const MAX_EXTENDED_BODY_READ_MS = 10_000;
 const MAX_EXTENDED_REQUEST_MS = 150_000;
 const noStoreHeaders = { "Cache-Control": "no-store, max-age=0", Pragma: "no-cache" } as const;
 
-function json(body: unknown, status = 200) {
-  return Response.json(body, { status, headers: noStoreHeaders });
+function json(body: unknown, status = 200, headers: Readonly<Record<string, string>> = {}) {
+  return Response.json(body, { status, headers: { ...noStoreHeaders, ...headers } });
 }
 
 function allowedRequest(request: Request) {
@@ -46,11 +55,28 @@ function allowedRequest(request: Request) {
 
 function safeError(error: unknown) {
   if (error instanceof ResearchSessionUnavailableError) return { code: "RESEARCH_SESSION_UNAVAILABLE", message: error.message };
+  if (error instanceof ResearchSessionInProgressError) return { code: "EXTENDED_RESEARCH_IN_PROGRESS", message: error.message };
+  if (error instanceof ResearchSessionStorageUnavailableError) return { code: "EXTENDED_RESEARCH_UNAVAILABLE", message: error.message };
   if (error instanceof ModelConfigurationError) return { code: "MODEL_NOT_CONFIGURED", message: error.message };
   if (error instanceof ModelExtractionError || error instanceof ZodError) {
     return { code: "EXTENDED_RESEARCH_FAILED", message: "Extended Research could not complete. Your original result remains available." };
   }
   return { code: "EXTENDED_RESEARCH_FAILED", message: "Extended Research could not complete. Your original result remains available." };
+}
+
+function sharedAdmissionError(decision: SharedAdmissionRejection) {
+  const payload = decision.code === "RATE_LIMITED"
+    ? { code: "RATE_LIMITED", message: "This connection has reached the current Extended Research limit. Try again later." }
+    : decision.code === "ANALYSIS_BUSY"
+      ? { code: "ANALYSIS_BUSY", message: "The research service is at its current concurrency limit. Try again shortly." }
+      : decision.code === "DEMO_BUDGET_EXHAUSTED"
+        ? { code: "ANALYSIS_CAP_REACHED", message: "Extended Research has reached the current demo limit. Your original result remains available." }
+        : { code: "ANALYSIS_CONTROLS_UNAVAILABLE", message: "Extended Research is temporarily unavailable. Your original result remains available." };
+  return json(
+    payload,
+    decision.code === "RATE_LIMITED" || decision.code === "ANALYSIS_BUSY" ? 429 : 503,
+    { "Retry-After": String(decision.retryAfterSeconds) },
+  );
 }
 
 class ExtendedBodyReadError extends Error {
@@ -113,6 +139,7 @@ function streamResponse(
   request: Request,
   controller: AbortController,
   release: () => void,
+  sharedLease: SharedAdmissionLease,
 ) {
   let closed = false;
   const stream = new ReadableStream<Uint8Array>({
@@ -121,6 +148,8 @@ function streamResponse(
         if (!closed) streamController.enqueue(encodeAnalysisStreamMessage(message));
       };
       const progress = createSequencedProgressSink((event) => send({ type: "progress", event }));
+      const usage = new AnalysisUsageCostTracker();
+      let actualCost: number | null = null;
       const abort = () => controller.abort(request.signal.reason);
       if (request.signal.aborted) abort();
       else request.signal.addEventListener("abort", abort, { once: true });
@@ -130,21 +159,28 @@ function streamResponse(
         controller.abort(new Error("Extended Research reached its deadline."));
       }, MAX_EXTENDED_REQUEST_MS);
       const heartbeat = setInterval(() => progress({ type: "heartbeat" }), 15_000);
-      void runExtendedResearch(sessionId, { signal: controller.signal, onProgress: progress })
-        .then((result: ExtendedResearchResult) => send({ type: "complete", result }))
-        .catch((error: unknown) => send({
+      void runExtendedResearch(sessionId, { signal: controller.signal, onProgress: progress, onTelemetry: usage.telemetry })
+        .then((result: ExtendedResearchResult) => {
+          actualCost = result.research.reused ? 0 : usage.estimatedMilliUsd();
+          send({ type: "complete", result });
+        })
+        .catch((error: unknown) => {
+          if (error instanceof ResearchSessionUnavailableError || error instanceof ResearchSessionInProgressError || error instanceof ResearchSessionStorageUnavailableError) actualCost = 0;
+          send({
           type: "error",
           ...(timedOut
             ? { code: "EXTENDED_RESEARCH_TIMEOUT", message: "Extended Research took too long. Your original result remains available." }
             : controller.signal.aborted
               ? { code: "EXTENDED_RESEARCH_ABORTED", message: "Extended Research was cancelled. Your original result remains available." }
               : safeError(error)),
-        }))
-        .finally(() => {
+          });
+        })
+        .finally(async () => {
           clearTimeout(timeout);
           clearInterval(heartbeat);
           request.signal.removeEventListener("abort", abort);
           release();
+          await sharedLease.release(actualCost);
           if (!closed) {
             closed = true;
             streamController.close();
@@ -178,6 +214,8 @@ export async function POST(request: Request) {
   }
   const release = tryAcquireAnalysisSlot();
   if (!release) return json({ code: "ANALYSIS_BUSY", message: "The analysis service is at its current concurrency limit. Try again shortly." }, 429);
+  let sharedLease: SharedAdmissionLease | null = null;
+  let actualCost: number | null = null;
   let handedOff = false;
   const controller = new AbortController();
   const abort = () => controller.abort(request.signal.reason);
@@ -194,27 +232,37 @@ export async function POST(request: Request) {
     }
     const parsed = extendedResearchRequestSchema.safeParse(body);
     if (!parsed.success) return json({ code: "INVALID_INPUT", message: "A valid Extended Research session is required." }, 400);
+    const sharedAdmission = await acquireSharedAnalysisAdmission(request, "extended");
+    if (!sharedAdmission.allowed) return sharedAdmissionError(sharedAdmission);
+    sharedLease = sharedAdmission;
     if (acceptsAnalysisStream(request)) {
       handedOff = true;
       request.signal.removeEventListener("abort", abort);
-      return streamResponse(parsed.data.sessionId, request, controller, release);
+      const streamSharedLease = sharedLease;
+      sharedLease = null;
+      return streamResponse(parsed.data.sessionId, request, controller, release, streamSharedLease);
     }
     const timeout = setTimeout(() => controller.abort(new Error("Extended Research reached its deadline.")), MAX_EXTENDED_REQUEST_MS);
     try {
-      return json(await runExtendedResearch(parsed.data.sessionId, { signal: controller.signal }));
+      const usage = new AnalysisUsageCostTracker();
+      const result = await runExtendedResearch(parsed.data.sessionId, { signal: controller.signal, onTelemetry: usage.telemetry });
+      actualCost = result.research.reused ? 0 : usage.estimatedMilliUsd();
+      return json(result);
     } finally {
       clearTimeout(timeout);
     }
   } catch (error) {
+    if (error instanceof ResearchSessionUnavailableError || error instanceof ResearchSessionInProgressError || error instanceof ResearchSessionStorageUnavailableError) actualCost = 0;
     if (error instanceof ExtendedBodyReadError) {
       return json({ code: error.code, message: "The Extended Research request body was not received in time." }, 408);
     }
     const payload = controller.signal.aborted
       ? { code: "EXTENDED_RESEARCH_ABORTED", message: "Extended Research stopped. Your original result remains available." }
       : safeError(error);
-    return json(payload, error instanceof ResearchSessionUnavailableError ? 410 : 502);
+    return json(payload, error instanceof ResearchSessionUnavailableError ? 410 : error instanceof ResearchSessionInProgressError ? 409 : 502);
   } finally {
     request.signal.removeEventListener("abort", abort);
     if (!handedOff) release();
+    if (!handedOff) await sharedLease?.release(actualCost);
   }
 }

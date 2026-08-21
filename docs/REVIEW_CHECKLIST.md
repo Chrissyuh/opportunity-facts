@@ -4,6 +4,37 @@ Use this checklist before adding or updating a public Opportunity Facts card. It
 
 Passing establishes source-to-card alignment at the recorded date. It does **not** certify the opportunity, audit organizer claims, give legal advice, or rate legitimacy, quality, prestige, admissions impact, or value.
 
+## Local human-review workflow
+
+Repository cards cannot become `human_reviewed` through the public builder or an
+automated analyzer. A person performs the review in the local workspace and then
+completes a separate interactive terminal sign-off:
+
+1. Put `HUMAN_REVIEW_WORKSPACE_ENABLED=true` in `.env.local` and run `npm run dev`.
+2. Open `http://localhost:3000/review` (or the port shown by Next.js).
+3. Choose a card. Open every source link and check each fact, structured claim,
+   evidence excerpt, uncertainty state, and final cross-record item.
+4. Enter the human reviewer's name or identifier, explicitly acknowledge the
+   source-to-card review, and download the completed packet.
+5. From an interactive PowerShell terminal, run
+   `npm run review:promote -- <path-to-downloaded-packet.json>`.
+6. Read the meaning of the attestation and type the exact confirmation sentence.
+7. Run `npm run export:data`, `npm run validate:data`, and the release gate before
+   committing the card plus `data/reviews/<slug>.human-review.json`.
+
+The packet is bound to the exact reviewed-content SHA-256 digest, opportunity ID,
+schema version, current card revision, proposed next revision, and complete
+manifest of review items. The promotion command refuses redirected/noninteractive
+execution. Any content change, schema change, or later card revision makes the
+attestation stale instead of carrying it forward silently. Production returns 404
+for `/review` even if the workspace flag is accidentally set.
+
+The recommended first three cards are MITES Summer 2027, Lumiere Research Scholar
+Program — Fall 2026, and Diamond Challenge — 2027. Together they exercise a free
+institution-operated selective program, a paid private program with aid and
+affiliations, and a team competition with pathways and a multi-prize outcome
+matrix. They remain AI-audited until Christopher personally completes this process.
+
 ## Review record
 
 | Item | Record |

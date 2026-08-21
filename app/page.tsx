@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { UrlQuickstart } from "@/components/url-quickstart";
-import { reviewLabels } from "@/components/status-badge";
+import { ReviewBadge } from "@/components/status-badge";
 import { getAllCards } from "@/lib/opportunity/data";
 import type { OpportunityCard } from "@/lib/opportunity/schema";
 
@@ -17,7 +17,7 @@ function ExampleCard({ card }: { card: OpportunityCard }) {
     <article className="home-example-card">
       <div className="home-example-meta">
         <span>{value(card, "opportunity_category")}</span>
-        <span>{reviewLabels[card.reviewState]}</span>
+        <ReviewBadge state={card.reviewState} />
       </div>
       <h3>
         <Link href={`/opportunities/${card.slug}`}>
@@ -63,9 +63,9 @@ export default function HomePage() {
             </p>
             <UrlQuickstart />
             <div className="hero-reassurance">
-              <span>Creates an automated draft</span>
+              <span>AI checks related public pages</span>
               <span>Evidence stays attached</span>
-              <span>No rankings or verdicts</span>
+              <span>Gaps stay visible</span>
             </div>
             {examples[0] ? (
               <Link
@@ -129,7 +129,7 @@ export default function HomePage() {
         <div className="shell">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">Reviewed examples</p>
+              <p className="eyebrow">Reference examples</p>
               <h2>See the research, then bring your own link.</h2>
             </div>
             <p>
@@ -196,6 +196,11 @@ export default function HomePage() {
               </div>
             </li>
           </ol>
+          <div className="section-action">
+            <Link className="button-secondary" href="/how-it-works">
+              See how Opportunity Facts works
+            </Link>
+          </div>
         </div>
       </section>
     </main>

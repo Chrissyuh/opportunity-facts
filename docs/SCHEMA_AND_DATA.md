@@ -23,7 +23,8 @@ The schema and typed field registry are authoritative for repository JSON, rende
 | Opportunity helpers and public TypeScript imports | `lib/opportunity/index.ts` |
 | Fictional cards | `data/demo/*.json` |
 | Work in progress, never public | `data/drafts/*.json` |
-| Human-reviewed/organizer-confirmed cards | `data/opportunities/*.json` |
+| Publishable real cards (AI-audited, human-reviewed, or organizer-confirmed) | `data/opportunities/*.json` |
+| Active Human reviewed attestations | `data/reviews/*.human-review.json` |
 | Machine-readable JSON Schema | `public/schema/opportunity-card.schema.json` |
 | Downloadable public dataset | `public/data/opportunities.json` |
 | Exporter | `scripts/export-public-data.ts` / `npm run export:data` |
@@ -336,6 +337,26 @@ This is assessment coverage, never quality, legitimacy, safety, prestige, admiss
 
 AI-audited, human-reviewed, and organizer-confirmed cards require `reviewedAt`, modeled cycle identity, and assessed structured collections. Passing schema validation alone does not qualify a card for review attestation. Portable files cannot transfer any of those three attestations into a browser; import creates a new manual draft revision. Demo provenance remains visible.
 
+A repository card claiming `human_reviewed` additionally requires a sidecar under
+`data/reviews/<slug>.human-review.json`. The sidecar records a reviewer-entered
+identifier, review time, completed manifest item IDs, explicit human confirmation,
+and bindings to the exact opportunity ID, schema, card revision, reviewed-content
+digest, and generated checklist manifest. The content digest deliberately excludes
+only review-state metadata and the revision counter so the promotion itself can
+advance the revision; every source-backed fact, source record, structured claim,
+projection, conflict, and summary remains digest-bound. Repository validation
+fails if the sidecar is missing, incomplete, belongs to another revision, or is
+stale after a material edit.
+
+The local `/review` workspace is available only when
+`HUMAN_REVIEW_WORKSPACE_ENABLED=true` in a non-production process. It displays
+claim values, statuses, exact excerpts, source links, section progress, and final
+cross-record checks without requiring raw-JSON review. It downloads a review
+packet but cannot mutate repository files. The separate `review:promote` command
+requires an interactive terminal and exact confirmation before writing the card
+and attestation. The analyzer, public builder, portable import path, and production
+site cannot create a Human reviewed attestation.
+
 ## Conservative V1 import
 
 V1 compatibility is import-only. Repository and public artifact readers accept canonical V2 files; browser import dispatches by exact schema version.
@@ -378,7 +399,7 @@ The same input produces the same migrated draft. A V2 card cannot be migrated ag
    npm run build
    ```
 
-The exporter and validator fail closed on drafts in public data, filename/slug mismatch, duplicate public identity, invalid review state, stale artifacts, schema errors, and projection/reference drift. Structural validation still does not prove source alignment.
+The exporter and validator fail closed on drafts in public data, filename/slug mismatch, duplicate public identity, invalid review state, missing or stale Human reviewed attestations, stale artifacts, schema errors, and projection/reference drift. Structural validation still does not prove source alignment.
 
 ## Public exports and imports
 

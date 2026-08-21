@@ -113,6 +113,50 @@ const CATEGORY_ORDER: Record<AttentionCategory, number> = {
   other: 9,
 };
 
+const SELECTIVITY_MEASUREMENT_FIELDS = new Set<FieldId>([
+  "applicant_count",
+  "acceptance_count",
+  "acceptance_rate_claim",
+]);
+const SELECTIVITY_MEASUREMENT_LANGUAGE = /\b(?:applicant totals?|acceptance(?: totals?| counts?| rates?)?|numerical selectivity|selectivity (?:data|figure|figures|number|numbers)|quantif(?:y|ied|ication))\b/iu;
+
+function hasSharedReference(left: AttentionItem, right: AttentionItem): boolean {
+  const leftFields = new Set(left.fieldIds);
+  const leftClaims = new Set(left.claimIds);
+  return right.fieldIds.some((fieldId) => leftFields.has(fieldId)) ||
+    right.claimIds.some((claimId) => leftClaims.has(claimId));
+}
+
+function concernsSelectivityMeasurement(item: AttentionItem): boolean {
+  if (item.category !== "selection") return false;
+  return item.fieldIds.some((fieldId) => SELECTIVITY_MEASUREMENT_FIELDS.has(fieldId)) ||
+    SELECTIVITY_MEASUREMENT_LANGUAGE.test(`${item.title} ${item.explanation}`);
+}
+
+function overlapsExistingAttention(left: AttentionItem, right: AttentionItem): boolean {
+  if (left.id === right.id) return true;
+  if (left.category !== right.category) return false;
+  if (hasSharedReference(left, right)) return true;
+  return concernsSelectivityMeasurement(left) && concernsSelectivityMeasurement(right);
+}
+
+export function deduplicateAttentionItems(
+  items: readonly AttentionItem[],
+): AttentionItem[] {
+  const ordered = [...items].sort((left, right) =>
+    PRIORITY_ORDER[left.priority] - PRIORITY_ORDER[right.priority] ||
+    CATEGORY_ORDER[left.category] - CATEGORY_ORDER[right.category] ||
+    (left.origin === right.origin ? 0 : left.origin === "model_grounded" ? -1 : 1),
+  );
+  const deduplicated: AttentionItem[] = [];
+  for (const item of ordered) {
+    if (!deduplicated.some((existing) => overlapsExistingAttention(existing, item))) {
+      deduplicated.push(item);
+    }
+  }
+  return deduplicated;
+}
+
 function deterministicPriority(category: AttentionCategory, requested: AttentionPriority): AttentionPriority {
   if (["cost", "deadline", "eligibility", "organization_relationship"].includes(category)) return "high";
   if (requested === "high" && ["selection", "outcome", "refund", "source_coverage"].includes(category)) return "high";
@@ -282,15 +326,7 @@ export function groundAttentionCandidates(
       origin: "model_grounded",
     }];
   });
-  const deduplicated = new Map<string, AttentionItem>();
-  for (const item of [...grounded, ...deriveDeterministicAttention(card)]) {
-    const key = `${item.category}:${[...item.fieldIds].sort().join(",")}:${[...item.claimIds].sort().join(",")}`;
-    if (!deduplicated.has(key)) deduplicated.set(key, item);
-  }
-  return [...deduplicated.values()].sort((left, right) =>
-    PRIORITY_ORDER[left.priority] - PRIORITY_ORDER[right.priority] ||
-    CATEGORY_ORDER[left.category] - CATEGORY_ORDER[right.category],
-  );
+  return deduplicateAttentionItems([...grounded, ...deriveDeterministicAttention(card)]);
 }
 
 export function evidenceForAttentionItem(

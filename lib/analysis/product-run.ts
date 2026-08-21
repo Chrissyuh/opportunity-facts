@@ -189,13 +189,19 @@ export async function runProductAnalysis(
         pipelineOptions.onSourcesReady?.(sources, pageWarnings);
       },
     });
-    const sessionId = result.quality.outcome !== "insufficient_quality"
-      ? researchSessionStore.create({
+    let sessionId: string | null = null;
+    if (result.quality.outcome !== "insufficient_quality") {
+      try {
+        sessionId = await researchSessionStore.create({
           sources: acquiredSources,
           pageWarnings: acquisitionWarnings,
           normalResult: result,
-        })
-      : null;
+        });
+      } catch {
+        // A shared-session outage must never discard a successful normal result.
+        sessionId = null;
+      }
+    }
     const research: AnalysisResearchState = {
       depth: "normal",
       extendedAvailable: sessionId !== null,

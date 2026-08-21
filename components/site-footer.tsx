@@ -24,7 +24,8 @@ export function SiteFooter({
         </nav>
         <nav className="footer-links" aria-label="Project links">
           <span className="footer-label">Learn</span>
-          <Link href="/methodology">How it works & limitations</Link>
+          <Link href="/how-it-works">How it works</Link>
+          <Link href="/methodology">Methodology & limitations</Link>
           <Link href="/build">Manual card builder</Link>
           <Link href="/data">Schema & data</Link>
           <Link href="/research">Research</Link>

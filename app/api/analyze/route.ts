@@ -1,7 +1,12 @@
 import { ZodError } from "zod";
 import {
+  acquireSharedAnalysisAdmission,
+  analysisControlConfigurationStatus,
+  AnalysisUsageCostTracker,
   isAnalysisEnabled,
   tryAcquireAnalysisSlot,
+  type SharedAdmissionLease,
+  type SharedAdmissionRejection,
 } from "@/lib/analysis/admission-control";
 import { PageFetchError } from "@/lib/analysis/fetch";
 import {
@@ -12,7 +17,6 @@ import {
   analyzeRequestSchema,
 } from "@/lib/analysis/pipeline";
 import {
-  failureSuppressionDecision,
   runProductAnalysis,
   type AnalysisProductResult,
 } from "@/lib/analysis/product-run";
@@ -166,11 +170,25 @@ function safeAnalysisError(error: unknown): { code: string; message: string } {
   return { code: "ANALYSIS_FAILED", message: "The sources could not be analyzed. No submitted content was stored." };
 }
 
+function sharedAdmissionError(decision: SharedAdmissionRejection) {
+  const payload = decision.code === "RATE_LIMITED"
+    ? { code: "RATE_LIMITED", message: "This connection has reached the current analysis limit. Try again later." }
+    : decision.code === "ANALYSIS_BUSY"
+      ? { code: "ANALYSIS_BUSY", message: "The analysis service is at its current concurrency limit. Try again shortly." }
+      : decision.code === "DEMO_BUDGET_EXHAUSTED"
+        ? { code: "ANALYSIS_CAP_REACHED", message: "Automatic analysis has reached its current demo limit. Reviewed examples remain available." }
+        : { code: "ANALYSIS_CONTROLS_UNAVAILABLE", message: "Automatic analysis is temporarily unavailable." };
+  return json(payload, decision.code === "RATE_LIMITED" || decision.code === "ANALYSIS_BUSY" ? 429 : 503, {
+    "Retry-After": String(decision.retryAfterSeconds),
+  });
+}
+
 function streamedAnalysisResponse(
   input: Parameters<typeof runProductAnalysis>[0],
   request: Request,
   analysisController: AbortController,
   releaseSlot: () => void,
+  sharedLease: SharedAdmissionLease,
 ): Response {
   let streamClosed = false;
   const stream = new ReadableStream<Uint8Array>({
@@ -180,6 +198,8 @@ function streamedAnalysisResponse(
         if (!streamClosed) controller.enqueue(encodeAnalysisStreamMessage(message));
       };
       const progress = createSequencedProgressSink((event) => send({ type: "progress", event }));
+      const usage = new AnalysisUsageCostTracker();
+      let actualCost: number | null = null;
       progress({ type: "accepted" });
       const abort = () => analysisController.abort(request.signal.reason);
       if (request.signal.aborted) abort();
@@ -192,7 +212,9 @@ function streamedAnalysisResponse(
       void runProductAnalysis(input, {
         signal: analysisController.signal,
         onProgress: progress,
+        onTelemetry: usage.telemetry,
       }).then((result: AnalysisProductResult) => {
+        actualCost = result.kind === "quality_failure" && result.cached ? 0 : usage.estimatedMilliUsd();
         send({ type: "complete", result });
       }).catch((error: unknown) => {
         const payload = timedOut
@@ -201,11 +223,12 @@ function streamedAnalysisResponse(
             ? { code: "ANALYSIS_ABORTED", message: "The analysis request was cancelled." }
           : safeAnalysisError(error);
         send({ type: "error", ...payload });
-      }).finally(() => {
+      }).finally(async () => {
         clearTimeout(timeout);
         clearInterval(heartbeat);
         request.signal.removeEventListener("abort", abort);
         releaseSlot();
+        await sharedLease.release(actualCost);
         if (!streamClosed) {
           streamClosed = true;
           controller.close();
@@ -227,32 +250,22 @@ function streamedAnalysisResponse(
   });
 }
 
-export async function GET(request?: Request) {
-  const configured = isAnalysisEnabled() && Boolean(process.env.OPENAI_API_KEY?.trim());
-  const suppressionUrl = request ? new URL(request.url).searchParams.get("suppressionUrl") : null;
-  let failureSuppression;
-  if (suppressionUrl !== null) {
-    const parsed = analyzeRequestSchema.safeParse({ mode: "url", url: suppressionUrl });
-    if (!parsed.success) {
-      return json({ code: "INVALID_URL", message: "Enter a valid public opportunity URL." }, 400);
-    }
-    if (parsed.data.mode !== "url") {
-      return json({ code: "INVALID_URL", message: "Enter a valid public opportunity URL." }, 400);
-    }
-    failureSuppression = failureSuppressionDecision(parsed.data.url);
-  }
+export async function GET() {
+  const controlStatus = analysisControlConfigurationStatus();
+  const configured = isAnalysisEnabled() && Boolean(process.env.OPENAI_API_KEY?.trim()) && controlStatus.ready;
   return json({
     configured,
     analyzerVersion: ANALYZER_VERSION,
     model: configured
       ? process.env.OPENAI_MODEL?.trim() || "gpt-5.6-terra"
       : null,
-    ...(failureSuppression ? { failureSuppression } : {}),
   });
 }
 
 export async function POST(request: Request) {
   let releaseSlot: (() => void) | null = null;
+  let sharedLease: SharedAdmissionLease | null = null;
+  let actualCost: number | null = null;
   let analysisController: AbortController | null = null;
   let analysisTimeout: ReturnType<typeof setTimeout> | null = null;
   let analysisTimedOut = false;
@@ -347,19 +360,27 @@ export async function POST(request: Request) {
         503,
       );
     }
+    const sharedAdmission = await acquireSharedAnalysisAdmission(request, "normal");
+    if (!sharedAdmission.allowed) return sharedAdmissionError(sharedAdmission);
+    sharedLease = sharedAdmission;
     if (acceptsAnalysisStream(request)) {
       if (analysisTimeout !== null) clearTimeout(analysisTimeout);
       analysisTimeout = null;
       request.signal.removeEventListener("abort", abortAnalysis);
       const streamController = analysisController;
       const streamRelease = releaseSlot;
+      const streamSharedLease = sharedLease;
       analysisController = null;
       releaseSlot = null;
-      return streamedAnalysisResponse(parsedInput.data, request, streamController, streamRelease);
+      sharedLease = null;
+      return streamedAnalysisResponse(parsedInput.data, request, streamController, streamRelease, streamSharedLease);
     }
+    const usage = new AnalysisUsageCostTracker();
     const result = await runProductAnalysis(parsedInput.data, {
       signal: analysisController.signal,
+      onTelemetry: usage.telemetry,
     });
+    actualCost = result.kind === "quality_failure" && result.cached ? 0 : usage.estimatedMilliUsd();
     if (analysisTimedOut || request.signal.aborted) {
       throw new AnalysisRequestStoppedError();
     }
@@ -427,6 +448,7 @@ export async function POST(request: Request) {
     if (analysisTimeout !== null) clearTimeout(analysisTimeout);
     request.signal.removeEventListener("abort", abortAnalysis);
     releaseSlot?.();
+    await sharedLease?.release(actualCost);
   }
 }
 

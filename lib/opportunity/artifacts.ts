@@ -4,6 +4,7 @@ import path from "node:path";
 import { z } from "zod";
 
 import { isPublicReviewState, isReviewAttestationState } from "./fields";
+import { validateHumanReviewAttestation } from "../review/human-review";
 
 import {
   SCHEMA_VERSION,
@@ -76,6 +77,30 @@ export async function readRepositoryCards(root = process.cwd()): Promise<Opportu
     ),
   ]);
   const cards = [...demoCards, ...reviewedCards];
+  await Promise.all(
+    reviewedCards
+      .filter((card) => card.reviewState === "human_reviewed")
+      .map(async (card) => {
+        const attestationPath = path.join(
+          root,
+          "data",
+          "reviews",
+          `${card.slug}.human-review.json`,
+        );
+        let input: unknown;
+        try {
+          input = JSON.parse(await readFile(attestationPath, "utf8")) as unknown;
+        } catch (error) {
+          if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+            throw new Error(
+              `${card.slug} claims Human reviewed without ${attestationPath}.`,
+            );
+          }
+          throw error;
+        }
+        validateHumanReviewAttestation(card, input);
+      }),
+  );
   requireUniqueSlugs(cards, "Public repository cards");
   requireUniqueOpportunityCycles(cards, "Public repository cards");
   return cards.sort((left, right) => left.slug.localeCompare(right.slug));

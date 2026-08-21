@@ -35,7 +35,7 @@ export function UrlQuickstart() {
         />
         <button className="button" type="submit">Analyze</button>
       </div>
-      <p className="field-help">Do not use signed, private, account-only, application, or personal-data URLs.</p>
+      <p className="field-help">Use a public page you can open without signing in. Never paste an application or personal information.</p>
       {error ? <p className="action-message" role="alert">{error}</p> : null}
     </form>
   );

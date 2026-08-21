@@ -5,6 +5,8 @@ vi.mock("server-only", () => ({}));
 const mocks = vi.hoisted(() => ({ runExtendedResearch: vi.fn() }));
 vi.mock("@/lib/analysis/extended-research", () => ({
   ResearchSessionUnavailableError: class ResearchSessionUnavailableError extends Error {},
+  ResearchSessionInProgressError: class ResearchSessionInProgressError extends Error {},
+  ResearchSessionStorageUnavailableError: class ResearchSessionStorageUnavailableError extends Error {},
   runExtendedResearch: mocks.runExtendedResearch,
 }));
 

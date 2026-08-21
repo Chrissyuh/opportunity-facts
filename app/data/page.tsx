@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { reviewLabels } from "@/components/status-badge";
+import { getAllCards } from "@/lib/opportunity/data";
 
 export const metadata: Metadata = {
   title: "Schema & data",
@@ -8,6 +10,17 @@ export const metadata: Metadata = {
 };
 
 export default function DataPage() {
+  const cards = getAllCards();
+  const demos = cards.filter((card) => card.reviewState === "demo");
+  const realCards = cards.filter((card) => card.reviewState !== "demo");
+  const reviewCounts = Object.entries(reviewLabels)
+    .map(([state, label]) => ({
+      label,
+      count: realCards.filter((card) => card.reviewState === state).length,
+    }))
+    .filter(({ count }) => count > 0)
+    .map(({ label, count }) => `${count} ${label}`)
+    .join(" and ");
   return (
     <main id="main-content" className="page-main">
       <header className="page-header">
@@ -30,8 +43,9 @@ export default function DataPage() {
             <h2 id="downloads-title">Use the same records we do.</h2>
           </div>
           <p>
-            The current public dataset contains ten AI-audited real cards and
-            seven fictional demonstration cards. Each `.example` record remains
+            The current public dataset contains {realCards.length} real reference
+            cards ({reviewCounts}) and {demos.length} fictional demonstration cards.
+            Each `.example` record remains
             visibly labeled and exists to exercise the product—not to describe a real
             organization.
           </p>
@@ -92,11 +106,11 @@ export default function DataPage() {
             store.
           </p>
           <p>
-            Three reviewed cards formed the extraction development set. Seven more
+            Three reference cards formed the extraction development set. Seven more
             were selected before inference and evaluated once as a preregistered
-            out-of-sample set. Their current AI-audited cards are public records; the
-            automated outputs remain separate evaluation artifacts and never replace
-            them.
+            out-of-sample set. Their current review state is displayed from the
+            public card data; the automated outputs remain separate evaluation
+            artifacts and never replace them.
           </p>
           <div className="button-row no-print">
             <Link className="button" href="/build">

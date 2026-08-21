@@ -61,6 +61,21 @@ async function addCheckedPage(page: Parameters<typeof expectNoPageOverflow>[0]) 
   await expect(page.getByRole("status")).toContainText("Checked source page added");
 }
 
+test("the public builder cannot issue a Human reviewed attestation", async ({ page }) => {
+  await page.goto("/build");
+  await expect(page.getByRole("option", { name: "Human reviewed" })).toHaveCount(0);
+  await expect(page.getByText(/Human reviewed is issued only through the local repository review workflow/i)).toBeVisible();
+  await page.locator("#builder-review-state").evaluate((select) => {
+    const option = document.createElement("option");
+    option.value = "human_reviewed";
+    option.textContent = "Human reviewed";
+    select.append(option);
+    (select as HTMLSelectElement).value = "human_reviewed";
+  });
+  await page.getByRole("button", { name: "Save card metadata" }).click();
+  await expect(page.locator(".error-summary")).toContainText(/only by the local repository review workflow/i);
+});
+
 test("mapped summaries are read-only and a structured change autosaves its projection", async ({ page }) => {
   await page.goto("/build");
   await addCheckedPage(page);
@@ -146,7 +161,7 @@ test("a V1 import migrates deterministically but remains blocked on structured r
   );
   await expect(page.getByRole("button", { name: "Export JSON" })).toBeDisabled();
 
-  await page.getByLabel("Review state").selectOption("human_reviewed");
+  await page.getByLabel("Review state").selectOption("ai_audited");
   await page.getByRole("button", { name: "Save card metadata" }).click();
   await expect(page.locator(".error-summary")).toContainText("every field and structured section to be explicitly assessed");
 });
@@ -218,12 +233,12 @@ test("a populated real V2 card autosaves, survives reload, and remains usable at
   await expect(page.locator(".builder-preview")).toContainText("Diamond Challenge");
   await expectNoPageOverflow(page);
 
-  await page.getByLabel("Review state").selectOption("human_reviewed");
+  await page.getByLabel("Review state").selectOption("ai_audited");
   await page.getByRole("button", { name: "Save card metadata" }).click();
   const reviewed = opportunityCardSchema.parse(
     await page.evaluate((key) => JSON.parse(localStorage.getItem(key) ?? "null") as unknown, builderCardKey),
   );
-  expect(reviewed.reviewState).toBe("human_reviewed");
+  expect(reviewed.reviewState).toBe("ai_audited");
   expect(reviewed.reviewedAt).not.toBeNull();
 });
 
@@ -422,7 +437,7 @@ test("a source-scope change invalidates publication and autosaves the assessment
   expect(stored.reviewState).toBe("draft");
   expect(stored.sourcePagesChecked.some((source) => source.url === "https://builder-v2.example/program")).toBe(true);
 
-  await page.getByLabel("Review state").selectOption("human_reviewed");
+  await page.getByLabel("Review state").selectOption("ai_audited");
   await page.getByRole("button", { name: "Save card metadata" }).click();
   await expect(page.locator(".error-summary")).toContainText("every field and structured section to be explicitly assessed");
 });

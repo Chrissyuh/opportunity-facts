@@ -10,7 +10,14 @@ import {
   readRepositoryCards,
   readRepositoryDrafts,
 } from "../../lib/opportunity/artifacts";
-import { createEmptyCard } from "../../lib/opportunity/schema";
+import { createEmptyCard, opportunityCardSchema } from "../../lib/opportunity/schema";
+import {
+  HUMAN_REVIEW_CONFIRMATION,
+  buildHumanReviewManifest,
+  createHumanReviewAttestation,
+  promoteCardWithHumanReview,
+  type HumanReviewPacket,
+} from "../../lib/review/human-review";
 
 const temporaryRoots: string[] = [];
 
@@ -18,7 +25,7 @@ async function makeRepository(): Promise<string> {
   const root = await mkdtemp(path.join(tmpdir(), "opportunity-facts-artifacts-"));
   temporaryRoots.push(root);
   await Promise.all(
-    ["data/demo", "data/opportunities", "data/drafts", "public/data", "public/schema"].map(
+    ["data/demo", "data/opportunities", "data/drafts", "data/reviews", "public/data", "public/schema"].map(
       (directory) => mkdir(path.join(root, directory), { recursive: true }),
     ),
   );
@@ -83,5 +90,69 @@ describe("public artifact boundary", () => {
     ) as ReturnType<typeof createPublicDataset>;
     expect(exported).toEqual(createPublicDataset(cards));
     expect(exported.cards.map((card) => card.slug)).toEqual(["lantern-bay-robotics-field-lab"]);
+  });
+
+  it("rejects a Human reviewed repository card without its exact digest-bound attestation", async () => {
+    const root = await makeRepository();
+    const source = opportunityCardSchema.parse(JSON.parse(await readFile(
+      path.join(process.cwd(), "data", "opportunities", "mites-summer-2027.json"),
+      "utf8",
+    )) as unknown);
+    await writeFile(
+      path.join(root, "data", "opportunities", `${source.slug}.json`),
+      `${JSON.stringify({
+        ...source,
+        cardVersion: source.cardVersion + 1,
+        reviewState: "human_reviewed",
+        reviewedAt: "2026-08-20T12:30:00Z",
+      }, null, 2)}\n`,
+      "utf8",
+    );
+    await expect(readRepositoryCards(root)).rejects.toThrow(/claims Human reviewed without/i);
+  });
+
+  it("accepts a Human reviewed card only with a complete matching attestation", async () => {
+    const root = await makeRepository();
+    const source = opportunityCardSchema.parse(JSON.parse(await readFile(
+      path.join(process.cwd(), "data", "opportunities", "mites-summer-2027.json"),
+      "utf8",
+    )) as unknown);
+    const manifest = buildHumanReviewManifest(source);
+    const packet: HumanReviewPacket = {
+      kind: "human_review_packet",
+      formatVersion: "1.0.0",
+      slug: manifest.slug,
+      opportunityId: manifest.opportunityId,
+      schemaVersion: manifest.schemaVersion,
+      reviewedCardVersion: manifest.reviewedCardVersion,
+      targetCardVersion: manifest.targetCardVersion,
+      reviewedContentSha256: manifest.reviewedContentSha256,
+      manifestSha256: manifest.manifestSha256,
+      completedItemIds: [...manifest.expectedItemIds],
+      reviewer: "Christopher",
+      notes: null,
+      preparedAt: "2026-08-20T12:00:00Z",
+      reviewerConfirmedReview: true,
+    };
+    const attestation = createHumanReviewAttestation(source, packet, {
+      isInteractiveHuman: true,
+      confirmationText: HUMAN_REVIEW_CONFIRMATION,
+      reviewedAt: "2026-08-20T12:30:00Z",
+    });
+    const promoted = opportunityCardSchema.parse(promoteCardWithHumanReview(source, attestation));
+    await Promise.all([
+      writeFile(
+        path.join(root, "data", "opportunities", `${source.slug}.json`),
+        `${JSON.stringify(promoted, null, 2)}\n`,
+        "utf8",
+      ),
+      writeFile(
+        path.join(root, "data", "reviews", `${source.slug}.human-review.json`),
+        `${JSON.stringify(attestation, null, 2)}\n`,
+        "utf8",
+      ),
+    ]);
+    const cards = await readRepositoryCards(root);
+    expect(cards.find((candidate) => candidate.slug === source.slug)?.reviewState).toBe("human_reviewed");
   });
 });

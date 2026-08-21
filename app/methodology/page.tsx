@@ -172,9 +172,9 @@ export default function MethodologyPage() {
         </p>
         <p>
           The frozen development and out-of-sample reports retain the review-state
-          terminology used when they were written. The ten current reference cards
-          are now labeled AI-audited because their documented review was completed
-          by AI/Codex rather than a person. That provenance correction did not alter
+          terminology used when they were written. Current reference cards without
+          a documented person-led review are labeled AI-audited because their source
+          audit was completed by AI/Codex. That provenance correction did not alter
           their evidence or any historical benchmark result.
         </p>
 

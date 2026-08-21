@@ -22,7 +22,7 @@ The core meter leads with `X of Y applicable core facts disclosed`. Detail begin
 
 The 59 flat facts remain the compatibility and summary interface. Fields covered by structured data are deterministic projections with claim references. Edit the structured record, not the projected fact; validation rejects stale values, missing references, and projection drift.
 
-The generator writes to `data/drafts/`. After completing the review checklist, setting a truthful reviewed state and timestamp, and recording at least one checked page, move the file to `data/opportunities/`. The exporter rejects drafts in the public directory.
+The generator writes to `data/drafts/`. After completing the review checklist, setting a truthful publishable state and timestamp, and recording at least one checked page, move the file to `data/opportunities/`. The exporter rejects drafts in the public directory. A Human reviewed state is not selected in the public builder: use the local digest-bound workflow documented in [`docs/REVIEW_CHECKLIST.md`](../docs/REVIEW_CHECKLIST.md), which creates the required `data/reviews/<slug>.human-review.json` sidecar only after interactive human confirmation.
 
 Schema V1 imports are accepted only through conservative migration. They become a new draft V2 revision, keep the legacy facts/evidence, record the prior-card digest, and leave all new structured sections unassessed. Migration does not infer cycle identity, roles, scopes, pathways, recipient scope, or funding type; a reviewer must populate and re-attest those records before publication.
 

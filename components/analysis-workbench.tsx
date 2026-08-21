@@ -356,7 +356,10 @@ export function AnalysisWorkbench({
 
   async function allowsRememberedFailure(canonicalUrl: string): Promise<boolean> {
     try {
-      const response = await fetch(`/api/analyze?suppressionUrl=${encodeURIComponent(canonicalUrl)}`, {
+      const response = await fetch("/api/analyze/suppression", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mode: "url", url: canonicalUrl }),
         cache: "no-store",
       });
       if (!response.ok) return false;

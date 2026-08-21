@@ -6,6 +6,7 @@ import {
   MAX_REQUEST_BODY_READ_MS,
   POST,
 } from "@/app/api/analyze/route";
+import { POST as suppressionPOST } from "@/app/api/analyze/suppression/route";
 import { tryAcquireAnalysisSlot } from "@/lib/analysis/admission-control";
 
 const previousApiKey = process.env.OPENAI_API_KEY;
@@ -69,10 +70,26 @@ describe("analysis route boundary", () => {
 
   it("returns an authoritative failure-suppression decision without exposing the host list", async () => {
     process.env.ANALYSIS_FAILURE_CACHE_BYPASS_HOSTS = "program.example";
-    const response = await GET(new Request("http://localhost/api/analyze?suppressionUrl=https%3A%2F%2Fprogram.example%2Fapply"));
+    const response = await suppressionPOST(new Request("http://localhost/api/analyze/suppression", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ mode: "url", url: "https://program.example/apply" }),
+    }));
     const payload = await response.json();
     expect(payload.failureSuppression).toEqual({ bypass: true, allowLocalSuppression: false });
     expect(JSON.stringify(payload)).not.toContain("failureCacheBypassHosts");
+  });
+
+  it("keeps submitted opportunity URLs out of suppression query strings and rejects cross-origin checks", async () => {
+    const request = new Request("http://localhost/api/analyze/suppression", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Origin: "https://attacker.example" },
+      body: JSON.stringify({ mode: "url", url: "https://program.example/apply?cohort=fall" }),
+    });
+    expect(request.url).not.toContain("program.example");
+    const response = await suppressionPOST(request);
+    expect(response.status).toBe(403);
+    await expect(response.json()).resolves.toMatchObject({ code: "CROSS_ORIGIN_REQUEST" });
   });
 
   it("requires JSON and rejects browser requests from another origin", async () => {

@@ -11,6 +11,7 @@ const primaryRoutes = [
   { name: "comparison", path: "/compare" },
   { name: "manual builder", path: "/build" },
   { name: "analysis", path: "/analyze" },
+  { name: "how it works", path: "/how-it-works" },
   { name: "methodology", path: "/methodology" },
   { name: "data documentation", path: "/data" },
   { name: "research", path: "/research" },

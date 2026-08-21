@@ -15,11 +15,26 @@ import {
   type ResearchSessionStore,
 } from "./research-session";
 import type { AnalysisTelemetrySink } from "./telemetry";
+import { deduplicateAttentionItems } from "./attention";
 
 export class ResearchSessionUnavailableError extends Error {
   constructor() {
     super("The Extended Research handoff expired or is incompatible. Run Analyze again to create a fresh result.");
     this.name = "ResearchSessionUnavailableError";
+  }
+}
+
+export class ResearchSessionStorageUnavailableError extends Error {
+  constructor() {
+    super("Extended Research is temporarily unavailable. Your original result remains available.");
+    this.name = "ResearchSessionStorageUnavailableError";
+  }
+}
+
+export class ResearchSessionInProgressError extends Error {
+  constructor() {
+    super("Extended Research is already running for this result.");
+    this.name = "ResearchSessionInProgressError";
   }
 }
 
@@ -79,12 +94,7 @@ export function mergeExtendedAttention(
       JSON.stringify(normal.card.facts[fieldId]) === JSON.stringify(extended.card.facts[fieldId]),
     ) && item.claimIds.every((claimId) => extendedClaimIds.has(claimId)),
   );
-  const unique = new Map<string, (typeof extended.attentionItems)[number]>();
-  for (const item of [...stillApplies, ...extended.attentionItems]) {
-    const key = `${item.category}:${[...item.fieldIds].sort().join(",")}:${[...item.claimIds].sort().join(",")}`;
-    if (!unique.has(key)) unique.set(key, item);
-  }
-  return [...unique.values()].slice(0, 5);
+  return deduplicateAttentionItems([...stillApplies, ...extended.attentionItems]).slice(0, 5);
 }
 
 function asExtendedResult(
@@ -134,7 +144,8 @@ export async function runExtendedResearch(
   options: RunExtendedResearchOptions = {},
 ): Promise<ExtendedResearchResult> {
   const store = options.store ?? createResearchSessionStore();
-  const session = store.get(sessionId);
+  let session;
+  try { session = await store.get(sessionId); } catch { throw new ResearchSessionStorageUnavailableError(); }
   if (!session) throw new ResearchSessionUnavailableError();
   if (session.extendedResult !== null) {
     options.onProgress?.({ type: "extended_started" });
@@ -152,6 +163,10 @@ export async function runExtendedResearch(
   if (existing) return existing;
 
   const operation = (async () => {
+    let leaseToken: string | null;
+    try { leaseToken = await store.acquireLease(sessionId); } catch { throw new ResearchSessionStorageUnavailableError(); }
+    if (leaseToken === null) throw new ResearchSessionInProgressError();
+    try {
     const extractor = options.extractor ?? createOpenAIExtendedExtractor();
     let completedSections: readonly ("details" | "financial")[] = [];
     let failedSections: readonly ("details" | "financial")[] = [];
@@ -187,7 +202,7 @@ export async function runExtendedResearch(
       failedSections,
       false,
     );
-    store.saveExtended(sessionId, extended, completedSections, failedSections);
+    await store.saveExtended(sessionId, extended, completedSections, failedSections);
     options.onProgress?.({
       type: "extended_validation_complete",
       retained: extended.validationStats.retainedSupportedClaims,
@@ -197,6 +212,9 @@ export async function runExtendedResearch(
     });
     options.onProgress?.({ type: "extended_complete", partial: failedSections.length > 0 });
     return extended;
+    } finally {
+      try { await store.releaseLease(sessionId, leaseToken); } catch { /* Lease expiry is the final safety net. */ }
+    }
   })();
   inFlight.set(sessionId, operation);
   try {

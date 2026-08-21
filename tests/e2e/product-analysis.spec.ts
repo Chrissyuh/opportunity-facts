@@ -110,6 +110,10 @@ test("streamed research shows only observable work and validated preview facts",
 
 test("eligible minefield failures suppress cards and block an unchanged same-browser retry", async ({ page }) => {
   let posts = 0;
+  await page.route("**/api/analyze/suppression", (route) => route.fulfill({
+    contentType: "application/json",
+    body: JSON.stringify({ failureSuppression: { bypass: false, allowLocalSuppression: true } }),
+  }));
   await page.route("**/api/analyze", async (route) => {
     if (route.request().method() === "GET") {
         await route.fulfill({ contentType: "application/json", body: JSON.stringify({ configured: true, model: "browser-fixture", failureSuppression: { bypass: false, allowLocalSuppression: true } }) });
@@ -151,6 +155,10 @@ test("eligible minefield failures suppress cards and block an unchanged same-bro
 
 test("same-browser cooldown reuses an insufficient result even when durable caching is ineligible", async ({ page }) => {
   let posts = 0;
+  await page.route("**/api/analyze/suppression", (route) => route.fulfill({
+    contentType: "application/json",
+    body: JSON.stringify({ failureSuppression: { bypass: false, allowLocalSuppression: true } }),
+  }));
   await page.route("**/api/analyze", async (route) => {
     if (route.request().method() === "GET") {
       await route.fulfill({ contentType: "application/json", body: JSON.stringify({ configured: true, failureSuppression: { bypass: false, allowLocalSuppression: true } }) });

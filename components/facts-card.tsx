@@ -12,7 +12,12 @@ import { CardActions } from "./card-actions";
 import { CorrectionWorkflow } from "./correction-workflow";
 import { DisclosureMeter } from "./disclosure-meter";
 import { EvidenceList } from "./evidence-list";
-import { ReviewBadge, StatusBadge, reviewLabels } from "./status-badge";
+import {
+  ReviewBadge,
+  StatusBadge,
+  reviewDescriptions,
+  reviewLabels,
+} from "./status-badge";
 import { StructuredOpportunityDetails } from "./structured-opportunity-details";
 
 const sectionLabels: Record<OpportunitySection, string> = {
@@ -23,19 +28,6 @@ const sectionLabels: Record<OpportunitySection, string> = {
   selection: "Selection",
   outcomes: "Outcomes",
   terms: "Terms",
-};
-
-const reviewExplanations: Record<OpportunityCard["reviewState"], string> = {
-  demo: "Fictional data created to demonstrate the product. No real organization is described.",
-  draft: "A working card that has not completed human source review.",
-  automated_draft:
-    "AI-assisted research organized these sources into a draft. Check every important claim and evidence excerpt before relying on it.",
-  ai_audited:
-    "An independent AI-assisted audit checked that displayed values and excerpts align with the cited sources. No person has yet completed the full review.",
-  human_reviewed:
-    "A person independently checked the relevant displayed claims against their cited sources; the underlying organizer claims were not independently verified.",
-  organizer_confirmed:
-    "The organizer confirmed or supplied information. This is not independent verification.",
 };
 
 function displayFactValue(fact: Fact) {
@@ -161,7 +153,7 @@ export function FactsCard({
         <DisclosureMeter card={card} unassessedFields={unassessedFields} />
         <div className="review-explanation">
           <strong>{reviewLabels[card.reviewState]}:</strong>{" "}
-          {reviewExplanations[card.reviewState]}
+          {reviewDescriptions[card.reviewState]}
         </div>
         {!preview ? <CardActions card={card} /> : null}
       </header>

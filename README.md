@@ -29,7 +29,7 @@ Opportunity Facts is a Next.js App Router application with strict TypeScript, Re
 - Optional **Extended Research** reuses the normal result and the exact acquired source contexts through a bounded, opaque, 30-minute server session. Two independently salvageable requests then examine detailed process/relationships/terms and financial/outcome structure. A failed, cancelled, or partial extension never replaces the successful normal Overview.
 - Every request uses low reasoning effort, low text verbosity, `store: false`, no automatic retry, and bounded input/output. Deterministic post-processing still rejects unsupported excerpts, wrong subjects/recipients, historical-cycle mixing, sibling-program evidence, typed-value mismatches, unsafe relationship/scope upgrades, and incomplete prize flattening.
 - Analyzer results are split into a student-facing Overview and, after Extended Research or for repository examples, a research-record workspace. Needs Attention rows retain only grounded claim/status references, and a deterministic quality gate suppresses structurally unreliable cards without producing a trust score. The already-generated incomplete draft remains available behind an explicit amber override that performs no new model call.
-- API analysis responses are transient and marked `Cache-Control: no-store`. An optional durable store keeps only eligible insufficient-quality classifications, safe reasons, timestamps, analyzer version, and a source-text fingerprint for 14 days; it never stores the submitted page text or model draft. The application has no analytics or hidden telemetry.
+- API analysis responses are marked `Cache-Control: no-store`. The shared store keeps eligible insufficient-quality classifications and fingerprints for 14 days, and temporarily retains the bounded acquired-source context plus validated normal result behind an opaque Extended Research session for at most 30 minutes. It does not retain source text after that continuation window. The application has no analytics or hidden telemetry.
 
 See [`PROJECT_SPEC.md`](PROJECT_SPEC.md), [`docs/SCHEMA_AND_DATA.md`](docs/SCHEMA_AND_DATA.md), and [`docs/THREAT_MODEL.md`](docs/THREAT_MODEL.md) for the durable contract and security boundaries.
 
@@ -59,11 +59,22 @@ npm run start
 | `OPENAI_API_KEY` | No | Server-only key for automatic extraction. Never use a `NEXT_PUBLIC_` prefix. |
 | `OPENAI_MODEL` | No | Responses API model; defaults to `gpt-5.6-terra`. |
 | `ANALYSIS_ENABLED` | No | Fail-closed server switch; unset/false rejects paid analysis. Set `true` locally, or only after deployment controls are proven. |
-| `ANALYSIS_MAX_CONCURRENCY` | No | Best-effort simultaneous-analysis ceiling per Node.js process; defaults to `2` and does not replace distributed gateway controls. |
+| `ANALYSIS_MAX_CONCURRENCY` | No | Best-effort simultaneous-analysis ceiling per Node.js process; defaults to `2`. |
+| `ANALYSIS_SHARED_CONTROLS_REQUIRED` | Production | Fail-closed requirement for shared sessions, limits, concurrency, and spend control. Set `true` in production. |
+| `ANALYSIS_RATE_LIMIT_SECRET` | Production | Server-only HMAC secret (32+ characters) used to minimize request-address identifiers. |
+| `ANALYSIS_RATE_LIMIT_WINDOW_SECONDS` | No | Shared fixed-window duration; defaults to `3600`. |
+| `ANALYSIS_RATE_LIMIT_MAX_REQUESTS` | No | Normal Analyze requests per anonymous identifier/window; defaults to `6`. |
+| `ANALYSIS_EXTENDED_RATE_LIMIT_MAX_REQUESTS` | No | Extended Research requests per identifier/window; defaults to `3`. |
+| `ANALYSIS_GLOBAL_MAX_CONCURRENCY` | No | Shared provider-family slots; defaults to `2`. Extended Research consumes two. |
+| `ANALYSIS_GLOBAL_LEASE_SECONDS` | No | Crash-safe shared concurrency lease; defaults to `300`. |
+| `ANALYSIS_DAILY_BUDGET_USD`, `ANALYSIS_TOTAL_BUDGET_USD` | Production | Hard shared demo-budget ceilings. Values are never returned publicly. |
+| `ANALYSIS_NORMAL_RESERVE_USD`, `ANALYSIS_EXTENDED_RESERVE_USD` | Production | Conservative maximum-cost reservation made atomically before provider work. |
+| `ANALYSIS_BUDGET_EPOCH` | No | Explicit total-budget ledger version; changing it resets the total circuit breaker. |
+| `ANALYSIS_INPUT_USD_PER_MILLION`, `ANALYSIS_CACHED_INPUT_USD_PER_MILLION`, `ANALYSIS_OUTPUT_USD_PER_MILLION` | No | Optional configured pricing for token-usage reconciliation. Unknown usage retains the full reservation. |
 | `ANALYSIS_FAILURE_CACHE_BYPASS_HOSTS` | No | Comma-separated hosts that skip durable and same-browser failure suppression. It cannot alter acquisition, prompts, validation, thresholds, or result interpretation. |
 | `BATCH_ANALYSIS_ENABLED` | No | Server-side product flag for the existing five-URL batch surface. It defaults to `false` so batch does not compete with the competition-facing Analyze flow. |
-| `UPSTASH_REDIS_REST_URL` | No | Vercel-compatible durable store endpoint for 14-day deterministic quality-failure caching. Without both Upstash variables, cache operations fail open. |
-| `UPSTASH_REDIS_REST_TOKEN` | No | Server-only bearer token for the durable quality-failure store. Never use a `NEXT_PUBLIC_` prefix. |
+| `UPSTASH_REDIS_REST_URL` | Production | Shared store for 14-day stable failure caching, 30-minute Extended sessions, admission limits, and the spend breaker. |
+| `UPSTASH_REDIS_REST_TOKEN` | Production | Server-only bearer token for that shared store. Never use a `NEXT_PUBLIC_` prefix. |
 | `NEXT_PUBLIC_SITE_URL` | No | Canonical public origin; defaults to the local development URL. |
 | `NEXT_PUBLIC_GITHUB_REPO` | No | `owner/repository` used to offer a prefilled correction issue link. Corrections still export without it. |
 
@@ -117,11 +128,16 @@ The aggregate dataset is available at `/api/dataset` and `public/data/opportunit
 - Model extraction can omit or misunderstand disclosures. Exact excerpt matching proves text presence, not truth, authority, or correct interpretation; drafts still require human review.
 - The application rejects non-JSON and cross-origin browser analysis submissions, limits request bodies to 600 KB and ten seconds of read time, exposes a server-side kill switch, and applies a small per-process concurrency ceiling across body reading and analysis. These are defense in depth, not distributed rate limiting.
 - The analyzer has a 270-second total application deadline inside its 300-second Next.js route envelope; disconnects and deadline expiry cancel downstream fetch/model work and release local admission capacity.
-- Per-request and per-process controls do not replace deployment-level rate limits, distributed concurrency limits, provider spend caps/alerts, or outbound-network policy.
+- Production refuses paid work unless the shared per-identifier rate limit, weighted global concurrency lease, and daily/total spend reservation can be enforced. Provider-side caps/alerts and outbound-network policy remain additional defenses.
 
 ## Privacy behavior
 
-Submitted URLs and pasted text are processed transiently and are not written to an application database. If model extraction is configured, normalized public source text is sent to OpenAI with `store: false`; provider and hosting logs remain governed by their respective account settings and policies. Remote sites and DNS resolvers observe fetches. Drafts and comparison selections persist locally only when the user asks to save or compare, and downloads persist wherever the browser or device stores them.
+Submitted URLs and pasted text are processed transiently. When Extended Research is available, the bounded acquired-source context and validated normal result are held in the shared continuation store for no more than 30 minutes, then expire automatically. If model extraction is configured, normalized public source text is sent to OpenAI with `store: false`; provider and hosting logs remain governed by their respective account settings and policies. Remote sites and DNS resolvers observe fetches. Drafts and comparison selections persist locally only when the user asks to save or compare, and downloads persist wherever the browser or device stores them.
+
+Application code does not log request bodies, prompts, fetched text, evidence
+excerpts, authorization headers, or raw request addresses. Failure-suppression
+checks carry the submitted opportunity URL in a bounded JSON body, not an access-log
+query string.
 
 ## Deploying to Vercel
 
@@ -157,7 +173,8 @@ out-of-sample accuracy evidence.
 
 The subsequent [`OUT_OF_SAMPLE_EVALUATION.md`](./OUT_OF_SAMPLE_EVALUATION.md)
 preserves one frozen production run on each of seven preregistered opportunities.
-The public library now contains all ten independently assembled AI-audited
-cards plus seven clearly fictional demos. The evaluation found four critical
+At this release, the public library contains ten independently assembled cards,
+all still labeled AI-audited until a person completes the digest-bound review
+workflow, plus seven clearly fictional demos. The evaluation found four critical
 misleading automated claims, so automated output remains a draft requiring human
 source review; it is not suitable for unattended publication.

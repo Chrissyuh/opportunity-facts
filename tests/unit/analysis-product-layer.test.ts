@@ -72,6 +72,38 @@ describe("analysis product layer", () => {
     ]);
   });
 
+  it("deduplicates overlapping selection caveats without hiding distinct categories", () => {
+    const selectiveCard = structuredClone(card);
+    Object.assign(selectiveCard.facts.selection_process, {
+      status: "disclosed",
+      value: "Applications are reviewed and finalists interview.",
+      displayValue: "Applications are reviewed and finalists interview.",
+      sources: [{
+        id: "selection-source",
+        url: "https://mites.mit.edu/discover-mites/mites-summer/",
+        title: "MITES Summer",
+        pageType: "official_program_page",
+        excerpt: "Applications are reviewed and finalists interview.",
+        accessedAt: "2026-08-20T00:00:00.000Z",
+      }],
+      conflictingValues: [],
+    });
+    const items = groundAttentionCandidates(selectiveCard, [{
+      id: "selection-numbers-missing",
+      category: "selection",
+      priority: "medium",
+      title: "Numerical selectivity data is unavailable",
+      explanation: "The retained record does not contain applicant totals or acceptance rates.",
+      fieldIds: ["applicant_count", "acceptance_rate_claim"],
+      claimIds: [],
+    }]);
+
+    expect(items.filter((item) => item.category === "selection")).toEqual([
+      expect.objectContaining({ id: "selection-numbers-missing", origin: "model_grounded" }),
+    ]);
+    expect(items.some((item) => item.category === "cost")).toBe(true);
+  });
+
   it("gates an unresolved empty draft without treating ordinary caveats as a score", () => {
     const empty = structuredClone(card);
     for (const field of Object.values(empty.facts)) {

@@ -6,6 +6,7 @@ import { normalizePublicUrlHostname } from "@/lib/opportunity/public-url";
 import { parsePublicHttpUrl } from "./url-safety";
 import { ANALYZER_VERSION } from "./analyzer-version";
 import type { QualityReason } from "./quality-gate";
+import { createSharedRedis, type SharedRedis, UpstashRestRedis } from "./shared-redis";
 
 export const ANALYSIS_FAILURE_CACHE_TTL_SECONDS = 14 * 24 * 60 * 60;
 export const ANALYSIS_FAILURE_CACHE_TIMEOUT_MS = 1_500;
@@ -40,33 +41,19 @@ export class NoopAnalysisFailureCache implements AnalysisFailureCache {
   async delete(): Promise<void> {}
 }
 
-interface UpstashRestResponse { readonly result?: unknown; readonly error?: string }
-
 export class UpstashRestAnalysisFailureCache implements AnalysisFailureCache {
-  constructor(
-    private readonly url: string,
-    private readonly token: string,
-    private readonly fetchImpl: typeof fetch = fetch,
-  ) {}
+  private readonly redis: SharedRedis;
 
-  private async command(command: readonly unknown[], signal?: AbortSignal): Promise<unknown> {
-    const timeoutSignal = AbortSignal.timeout(ANALYSIS_FAILURE_CACHE_TIMEOUT_MS);
-    const combinedSignal = signal ? AbortSignal.any([signal, timeoutSignal]) : timeoutSignal;
-    const response = await this.fetchImpl(this.url, {
-      method: "POST",
-      headers: { Authorization: `Bearer ${this.token}`, "Content-Type": "application/json" },
-      body: JSON.stringify(command),
-      cache: "no-store",
-      signal: combinedSignal,
-    });
-    if (!response.ok) throw new Error("The durable analysis cache did not accept the request.");
-    const payload = await response.json() as UpstashRestResponse;
-    if (payload.error) throw new Error("The durable analysis cache returned an error.");
-    return payload.result;
+  constructor(redis: SharedRedis);
+  constructor(url: string, token: string, fetchImpl?: typeof fetch);
+  constructor(redisOrUrl: SharedRedis | string, token?: string, fetchImpl: typeof fetch = fetch) {
+    this.redis = typeof redisOrUrl === "string"
+      ? new UpstashRestRedis(redisOrUrl, token ?? "", fetchImpl, ANALYSIS_FAILURE_CACHE_TIMEOUT_MS)
+      : redisOrUrl;
   }
 
   async get(key: string, signal?: AbortSignal): Promise<CachedQualityFailure | null> {
-    const result = await this.command(["GET", key], signal);
+    const result = await this.redis.command(["GET", key], signal);
     if (result === null || result === undefined) return null;
     let parsedJson: unknown;
     try {
@@ -81,22 +68,20 @@ export class UpstashRestAnalysisFailureCache implements AnalysisFailureCache {
 
   async set(key: string, value: CachedQualityFailure, ttlSeconds: number, signal?: AbortSignal): Promise<void> {
     cachedQualityFailureSchema.parse(value);
-    await this.command(["SET", key, JSON.stringify(value), "EX", ttlSeconds], signal);
+    await this.redis.command(["SET", key, JSON.stringify(value), "EX", ttlSeconds], signal);
   }
 
   async delete(key: string, signal?: AbortSignal): Promise<void> {
-    await this.command(["DEL", key], signal);
+    await this.redis.command(["DEL", key], signal);
   }
 }
 
 export function createAnalysisFailureCache(
   environment: Readonly<Record<string, string | undefined>> = process.env,
 ): AnalysisFailureCache {
-  const url = environment.UPSTASH_REDIS_REST_URL?.trim();
-  const token = environment.UPSTASH_REDIS_REST_TOKEN?.trim();
-  return url && token
-    ? new UpstashRestAnalysisFailureCache(url, token)
-    : new NoopAnalysisFailureCache();
+  const redis = createSharedRedis(environment);
+  if (redis === null) return new NoopAnalysisFailureCache();
+  return new UpstashRestAnalysisFailureCache(redis);
 }
 
 export function canonicalAnalysisUrl(input: string): string {
