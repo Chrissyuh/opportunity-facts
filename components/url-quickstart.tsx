@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ANALYSIS_URL_HANDOFF_KEY } from "@/lib/opportunity/browser-storage";
+import { normalizeAnalysisUrlInput } from "@/lib/opportunity/url-input";
 
 export function UrlQuickstart() {
   const [error, setError] = useState("");
@@ -11,9 +12,13 @@ export function UrlQuickstart() {
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const url = String(data.get("url") ?? "").trim().slice(0, 2_048);
+    const normalized = normalizeAnalysisUrlInput(String(data.get("url") ?? ""));
+    if (!normalized.ok) {
+      setError(normalized.message);
+      return;
+    }
     try {
-      sessionStorage.setItem(ANALYSIS_URL_HANDOFF_KEY, url);
+      sessionStorage.setItem(ANALYSIS_URL_HANDOFF_KEY, normalized.url);
       router.push("/analyze");
     } catch {
       setError("This browser could not transfer the URL privately. Open Analyze and paste it there.");
@@ -27,10 +32,10 @@ export function UrlQuickstart() {
         <input
           id="homepage-url"
           name="url"
-          type="url"
+          type="text"
           inputMode="url"
           autoComplete="url"
-          placeholder="https://program.example/apply"
+          placeholder="program.org/apply"
           required
         />
         <button className="button" type="submit">Analyze</button>

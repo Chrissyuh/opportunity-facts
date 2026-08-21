@@ -1,15 +1,18 @@
 import { expect, expectNoPageOverflow, test } from "./support";
 
-test("How It Works explains the product before exposing methodology", async ({ page }) => {
+test("How It Works explains the product before exposing methodology", async ({ page }, testInfo) => {
   await page.goto("/how-it-works");
 
   await expect(page.getByRole("heading", { level: 1, name: "From one link to answers you can inspect." })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "Five steps, one practical result." })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 2, name: "Why not just ask an AI to summarize the website?" })).toBeVisible();
-  await expect(page.getByText("Mentor affiliation vs institutional partnership")).toHaveCount(0);
-  await expect(page.getByText(/mentor affiliation separate from institutional partnership/i)).toBeVisible();
-  await expect(page.getByRole("list", { name: "Opportunity Facts processing pipeline" }).getByRole("listitem")).toHaveCount(5);
-  await expect(page.getByRole("link", { name: /full methodology and limitations/i })).toHaveAttribute("href", "/methodology");
+  await expect(page.getByRole("heading", { level: 2, name: "Five steps. One practical result." })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Why not just summarize the website?" })).toBeVisible();
+  await expect(page.locator(".how-compact-steps > li")).toHaveCount(5);
+  await expect(page.getByRole("table")).toContainText("Exact retained excerpts beside supported claims");
+  await expect(page.getByRole("table")).toContainText("Scope, cycle, relationship, and recipient checks");
+  await expect(page.getByRole("link", { name: /Read the methodology/i })).toHaveAttribute("href", "/methodology");
+  if (testInfo.project.name === "desktop-chromium") {
+    expect(await page.locator(".how-compact-page").evaluate((element) => element.getBoundingClientRect().height)).toBeLessThanOrEqual(850);
+  }
   await expectNoPageOverflow(page);
 });
 
@@ -36,9 +39,11 @@ test("AI-audited explanations work with hover, keyboard focus, and tap", async (
   await expectNoPageOverflow(page);
 });
 
-test("homepage review provenance comes from the current card state", async ({ page }) => {
+test("homepage keeps the analyzer dominant and leaves examples out of primary navigation", async ({ page }) => {
   await page.goto("/");
-  const example = page.locator(".home-example-card").first();
-  await expect(example.locator("[data-review-state='ai_audited']")).toHaveCount(1);
-  await expect(example.getByText("AI-audited", { exact: true })).toBeVisible();
+  await expect(page.getByLabel("Paste a public opportunity URL")).toBeVisible();
+  await expect(page.getByRole("link", { name: "Try a sample" })).toHaveAttribute("href", "/analyze?sample=next");
+  await expect(page.getByRole("heading", { level: 2, name: "The answers that matter." })).toBeVisible();
+  await expect(page.getByRole("navigation", { name: "Main navigation" }).getByText("Examples", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("AI-audited", { exact: true })).toHaveCount(0);
 });

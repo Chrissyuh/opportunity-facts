@@ -1,0 +1,1567 @@
+{
+  "artifactVersion": "1.0.0",
+  "id": "yale-young-global-scholars",
+  "label": "Yale Young Global Scholars",
+  "category": "International residential academic program",
+  "submittedUrl": "https://globalscholars.yale.edu/",
+  "recordedAt": "2026-08-21T06:31:35.013Z",
+  "recordedDurationMs": 20554,
+  "captureKind": "compact_production",
+  "progressProvenance": "captured_stream",
+  "sourceArtifact": ".codex-runtime/sample-captures/yale-young-global-scholars.json",
+  "progress": [
+    {
+      "replayAtMs": 3,
+      "event": {
+        "type": "cache_checked",
+        "state": "unavailable",
+        "sequence": 1,
+        "elapsedMs": 3
+      }
+    },
+    {
+      "replayAtMs": 286,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-961ea664b8eaecd1",
+        "title": "Welcome | Yale Young Global Scholars",
+        "url": "https://globalscholars.yale.edu/",
+        "sequence": 2,
+        "elapsedMs": 286
+      }
+    },
+    {
+      "replayAtMs": 743,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-a634ed7e010dce55",
+        "title": "Rules & Regulations | Yale Young Global Scholars",
+        "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+        "sequence": 3,
+        "elapsedMs": 743
+      }
+    },
+    {
+      "replayAtMs": 882,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-2b34d534b6b35769",
+        "title": "Tuition & Aid | Yale Young Global Scholars",
+        "url": "https://globalscholars.yale.edu/tuition",
+        "sequence": 4,
+        "elapsedMs": 882
+      }
+    },
+    {
+      "replayAtMs": 1027,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-d298b51f9dc5c56a",
+        "title": "Eligibility | Yale Young Global Scholars",
+        "url": "https://globalscholars.yale.edu/eligibility",
+        "sequence": 5,
+        "elapsedMs": 1027
+      }
+    },
+    {
+      "replayAtMs": 1175,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-65e82225287610ae",
+        "title": "How to Apply | Yale Young Global Scholars",
+        "url": "https://globalscholars.yale.edu/how-to-apply",
+        "sequence": 6,
+        "elapsedMs": 1175
+      }
+    },
+    {
+      "replayAtMs": 1512,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-28bd2f589643105b",
+        "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+        "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+        "sequence": 7,
+        "elapsedMs": 1512
+      }
+    },
+    {
+      "replayAtMs": 1658,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-93ad204f05c2a653",
+        "title": "About | Yale Young Global Scholars",
+        "url": "https://globalscholars.yale.edu/about",
+        "sequence": 8,
+        "elapsedMs": 1658
+      }
+    },
+    {
+      "replayAtMs": 1658,
+      "event": {
+        "type": "source_set_complete",
+        "acquired": 7,
+        "failed": 0,
+        "sequence": 9,
+        "elapsedMs": 1658
+      }
+    },
+    {
+      "replayAtMs": 1684,
+      "event": {
+        "type": "cycle_resolved",
+        "status": "resolved",
+        "label": "Summer 2027",
+        "sequence": 10,
+        "elapsedMs": 1684
+      }
+    },
+    {
+      "replayAtMs": 1684,
+      "event": {
+        "type": "normal_model_started",
+        "sequence": 11,
+        "elapsedMs": 1684
+      }
+    },
+    {
+      "replayAtMs": 20384,
+      "event": {
+        "type": "normal_model_completed",
+        "sequence": 12,
+        "elapsedMs": 20384
+      }
+    },
+    {
+      "replayAtMs": 20545,
+      "event": {
+        "type": "validation_complete",
+        "retained": 19,
+        "withheld": 3,
+        "sequence": 13,
+        "elapsedMs": 20545
+      }
+    },
+    {
+      "replayAtMs": 20545,
+      "event": {
+        "type": "attention_ready",
+        "count": 2,
+        "sequence": 14,
+        "elapsedMs": 20545
+      }
+    },
+    {
+      "replayAtMs": 20550,
+      "event": {
+        "type": "validated_fact",
+        "fieldId": "opportunity_name",
+        "label": "opportunity name",
+        "displayValue": "Yale Young Global Scholars (YYGS)",
+        "evidenceCount": 1,
+        "sequence": 15,
+        "elapsedMs": 20550
+      }
+    },
+    {
+      "replayAtMs": 20550,
+      "event": {
+        "type": "validated_fact",
+        "fieldId": "participation_format",
+        "label": "participation format",
+        "displayValue": "Residential",
+        "evidenceCount": 1,
+        "sequence": 16,
+        "elapsedMs": 20550
+      }
+    },
+    {
+      "replayAtMs": 20550,
+      "event": {
+        "type": "validated_fact",
+        "fieldId": "other_benefits",
+        "label": "other benefits",
+        "displayValue": "YYGS Certificate of Participation",
+        "evidenceCount": 1,
+        "sequence": 17,
+        "elapsedMs": 20550
+      }
+    },
+    {
+      "replayAtMs": 20550,
+      "event": {
+        "type": "quality_complete",
+        "outcome": "usable_with_caveats",
+        "sequence": 18,
+        "elapsedMs": 20550
+      }
+    }
+  ],
+  "result": {
+    "card": {
+      "schemaVersion": "2.2.0",
+      "opportunityId": null,
+      "cycle": {
+        "status": "modeled",
+        "value": {
+          "id": "cycle-summer-2027",
+          "label": {
+            "claimId": "cycle-summer-2027-label",
+            "status": "disclosed",
+            "value": "Summer 2027",
+            "displayValue": "Summer 2027",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "page-961ea664b8eaecd1",
+                "url": "https://globalscholars.yale.edu/",
+                "title": "Welcome | Yale Young Global Scholars",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T06:31:35.252Z",
+                "excerpt": "SUMMER 2027 OFFERINGS:"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          "status": {
+            "claimId": "cycle-summer-2027-status",
+            "status": "unclear",
+            "value": null,
+            "displayValue": null,
+            "claimKind": null,
+            "sources": [
+              {
+                "id": "page-961ea664b8eaecd1",
+                "url": "https://globalscholars.yale.edu/",
+                "title": "Welcome | Yale Young Global Scholars",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T06:31:35.252Z",
+                "excerpt": "SUMMER 2027 OFFERINGS:"
+              }
+            ],
+            "note": "The source identifies the cycle but does not clearly state its current application status.",
+            "conflictingValues": []
+          },
+          "year": {
+            "claimId": "cycle-summer-2027-year",
+            "status": "disclosed",
+            "value": 2027,
+            "displayValue": "2027",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "page-961ea664b8eaecd1",
+                "url": "https://globalscholars.yale.edu/",
+                "title": "Welcome | Yale Young Global Scholars",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T06:31:35.252Z",
+                "excerpt": "SUMMER 2027 OFFERINGS:"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          "startYear": null,
+          "endYear": null,
+          "season": {
+            "claimId": "cycle-summer-2027-season",
+            "status": "disclosed",
+            "value": "summer",
+            "displayValue": "Summer",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "page-961ea664b8eaecd1",
+                "url": "https://globalscholars.yale.edu/",
+                "title": "Welcome | Yale Young Global Scholars",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T06:31:35.252Z",
+                "excerpt": "SUMMER 2027 OFFERINGS:"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          "cycleType": {
+            "claimId": "cycle-summer-2027-type",
+            "status": "disclosed",
+            "value": "seasonal",
+            "displayValue": "Seasonal cohort",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "page-961ea664b8eaecd1",
+                "url": "https://globalscholars.yale.edu/",
+                "title": "Welcome | Yale Young Global Scholars",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T06:31:35.252Z",
+                "excerpt": "SUMMER 2027 OFFERINGS:"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          "timingRefs": {
+            "opens": null,
+            "closes": null,
+            "coverageStart": null,
+            "coverageEnd": null
+          }
+        }
+      },
+      "cardVersion": 1,
+      "slug": "yale-young-global-scholars-yygs",
+      "summary": "Automated draft from 7 user-supplied source pages; review every value, excerpt, and attribution before use.",
+      "reviewState": "automated_draft",
+      "reviewedAt": null,
+      "sourcePagesChecked": [
+        {
+          "id": "page-961ea664b8eaecd1",
+          "url": "https://globalscholars.yale.edu/",
+          "title": "Welcome | Yale Young Global Scholars",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T06:31:35.252Z"
+        },
+        {
+          "id": "page-a634ed7e010dce55",
+          "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+          "title": "Rules & Regulations | Yale Young Global Scholars",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T06:31:35.738Z"
+        },
+        {
+          "id": "page-2b34d534b6b35769",
+          "url": "https://globalscholars.yale.edu/tuition",
+          "title": "Tuition & Aid | Yale Young Global Scholars",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T06:31:35.883Z"
+        },
+        {
+          "id": "page-d298b51f9dc5c56a",
+          "url": "https://globalscholars.yale.edu/eligibility",
+          "title": "Eligibility | Yale Young Global Scholars",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T06:31:36.031Z"
+        },
+        {
+          "id": "page-65e82225287610ae",
+          "url": "https://globalscholars.yale.edu/how-to-apply",
+          "title": "How to Apply | Yale Young Global Scholars",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T06:31:36.175Z"
+        },
+        {
+          "id": "page-28bd2f589643105b",
+          "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+          "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T06:31:36.514Z"
+        },
+        {
+          "id": "page-93ad204f05c2a653",
+          "url": "https://globalscholars.yale.edu/about",
+          "title": "About | Yale Young Global Scholars",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T06:31:36.662Z"
+        }
+      ],
+      "conflicts": [],
+      "organizations": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "organizationRoles": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "institutionRelationships": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "variants": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "stages": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "pathways": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "costItems": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "outcomes": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "facts": {
+        "opportunity_name": {
+          "status": "disclosed",
+          "value": "Yale Young Global Scholars (YYGS)",
+          "displayValue": "Yale Young Global Scholars (YYGS)",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Yale Young Global Scholars (YYGS)"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:35.252Z",
+              "excerpt": "Yale Young Global Scholars (YYGS) is an academic enrichment program"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "opportunity_category": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "official_url": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "operating_organization": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "organization_type": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "named_institution": {
+          "status": "disclosed",
+          "value": "Yale University",
+          "displayValue": "Yale University",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Yale University"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:35.252Z",
+              "excerpt": "Immerse yourself in a global learning community at Yale University."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "institution_relationship": {
+          "status": "disclosed",
+          "value": "hosted_at_institution",
+          "displayValue": "Hosted at Yale University",
+          "normalizedValue": {
+            "kind": "relationship",
+            "value": "hosted_at_institution"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:35.252Z",
+              "excerpt": "students from over 150 countries (including all 50 U.S. states) participate in one interdisciplinary, two-week session at Yale’s historic campus."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "relationship_explanation": {
+          "status": "disclosed",
+          "value": "Residential sessions take place on Yale's campus.",
+          "displayValue": "Residential sessions take place on Yale's campus.",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Residential sessions take place on Yale's campus."
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:35.252Z",
+              "excerpt": "students from over 150 countries (including all 50 U.S. states) participate in one interdisciplinary, two-week session at Yale’s historic campus."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "grade_levels": {
+          "status": "disclosed",
+          "value": [
+            "Current high school sophomore",
+            "Current high school junior",
+            "International equivalent"
+          ],
+          "displayValue": "Current high school sophomores or juniors (or international equivalent)",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Current high school sophomore",
+              "Current high school junior",
+              "International equivalent"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-d298b51f9dc5c56a",
+              "url": "https://globalscholars.yale.edu/eligibility",
+              "title": "Eligibility | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:36.031Z",
+              "excerpt": "Be a current high school sophomore or junior (or international equivalent)."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "ages": {
+          "status": "disclosed",
+          "value": "16–18 by July 19, 2027",
+          "displayValue": "16–18 by July 19, 2027",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "16-18 by July 19, 2027"
+          },
+          "sources": [
+            {
+              "id": "page-d298b51f9dc5c56a",
+              "url": "https://globalscholars.yale.edu/eligibility",
+              "title": "Eligibility | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:36.031Z",
+              "excerpt": "Be between the ages of 16-18 years old by July 19, 2027"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "geographic_restrictions": {
+          "status": "disclosed",
+          "value": "Applications accepted from all countries",
+          "displayValue": "Applications accepted from all countries",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Applications accepted from all countries"
+          },
+          "sources": [
+            {
+              "id": "page-d298b51f9dc5c56a",
+              "url": "https://globalscholars.yale.edu/eligibility",
+              "title": "Eligibility | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:36.031Z",
+              "excerpt": "YYGS accepts applications from ALL countries"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "citizenship_restrictions": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "prerequisite_skills": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "entry_format": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "sponsor_requirement": {
+          "status": "disclosed",
+          "value": "Submit contact information for a parent/guardian, teacher, and/or school official.",
+          "displayValue": "Parent/guardian, teacher, and/or school-official contact information required",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Submit contact information for a parent/guardian, teacher, and/or school official."
+          },
+          "sources": [
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:36.175Z",
+              "excerpt": "You will need to submit contact information for a parent/guardian, teacher, and/or official at your school."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_deadline": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "decision_date": {
+          "status": "disclosed",
+          "value": "Mid-December 2026 (Early Action); mid-March 2027 (Regular Decision)",
+          "displayValue": "Mid-December 2026 (Early Action); mid-March 2027 (Regular Decision)",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:36.175Z",
+              "excerpt": "Admissions decisions will be released by mid-December (for Early Action) and mid-March (for Regular Decision)."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "start_date": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "end_date": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "duration": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:35.252Z",
+              "excerpt": "participate in one interdisciplinary, two-week session"
+            }
+          ],
+          "note": "The displayed typed value was withheld because its duration does not match the cited excerpt and display value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "weekly_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "required_live_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "participation_format": {
+          "status": "disclosed",
+          "value": "residential",
+          "displayValue": "Residential",
+          "normalizedValue": {
+            "kind": "participation_format",
+            "value": "residential"
+          },
+          "sources": [
+            {
+              "id": "page-961ea664b8eaecd1",
+              "url": "https://globalscholars.yale.edu/",
+              "title": "Welcome | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:35.252Z",
+              "excerpt": "YYGS is excited to offer residential sessions for June & July 2027. We are not offering online sessions at this time."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "location": {
+          "status": "disclosed",
+          "value": "Yale campus, New Haven",
+          "displayValue": "Yale campus, New Haven",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Yale campus, New Haven"
+          },
+          "sources": [
+            {
+              "id": "page-a634ed7e010dce55",
+              "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+              "title": "Rules & Regulations | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:35.738Z",
+              "excerpt": "YYGS will always prioritize the health and well-being of each and every scholar during their time on Yale’s campus in New Haven."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_requirements": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_fee": {
+          "status": "disclosed",
+          "value": "$85 USD Early Action; $100 USD Regular Decision",
+          "displayValue": "$85 Early Action; $100 Regular Decision",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:36.175Z",
+              "excerpt": "pay the $85 USD Early Action fee or $100 USD Regular Decision fee"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "deposit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition": {
+          "status": "disclosed",
+          "value": 7500,
+          "displayValue": "$7,500 USD for one 2-week residential session",
+          "normalizedValue": {
+            "kind": "money",
+            "amount": 7500,
+            "currency": "USD",
+            "classification": "fee"
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:35.883Z",
+              "excerpt": "For YYGS Residential students, the full program tuition for one, 2-week session is $7,500 USD."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_mandatory_costs": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "estimated_total_mandatory_cost": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "lodging_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "meals_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "financial_aid": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-28bd2f589643105b",
+              "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+              "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:36.514Z",
+              "excerpt": "provides need-based financial aid equally to both domestic and international students, which is offered as a tuition discount (up to 100% of tuition)."
+            },
+            {
+              "id": "page-28bd2f589643105b",
+              "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+              "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:36.514Z",
+              "excerpt": "The application for financial aid is included within the online YYGS application."
+            }
+          ],
+          "note": "The cited page describes a different opportunity on the same organization site, so it cannot support this target-specific fact.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "refund_policy": {
+          "status": "disclosed",
+          "value": "Tuition payments are non-refundable except in extreme circumstances such as documented visa denial or family medical emergency; application fees are non-refundable.",
+          "displayValue": "Tuition generally non-refundable; limited documented exceptions",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Tuition payments are non-refundable except in extreme circumstances such as documented visa denial or family medical emergency; application fees are non-refundable."
+          },
+          "sources": [
+            {
+              "id": "page-2b34d534b6b35769",
+              "url": "https://globalscholars.yale.edu/tuition",
+              "title": "Tuition & Aid | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:35.883Z",
+              "excerpt": "any/all YYGS tuition payments made are non-refundable, except in extreme circumstances such as visa denial or family medical emergency where documentation can be provided to YYGS"
+            },
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:36.175Z",
+              "excerpt": "All YYGS application fees are non-refundable."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_policy": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_process": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-65e82225287610ae",
+              "url": "https://globalscholars.yale.edu/how-to-apply",
+              "title": "How to Apply | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:36.175Z",
+              "excerpt": "If your Fee Waiver Request is denied, then your application will not be reviewed until the YYGS application fee is paid."
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "applicant_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_rate_claim": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "calculated_acceptance_rate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_evidence": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cash_award": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "stipend": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition_waiver": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "program_seat": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "in_kind_value": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "certificate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "college_credit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "mentorship": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_benefits": {
+          "status": "disclosed",
+          "value": [
+            "YYGS Certificate of Participation"
+          ],
+          "displayValue": "YYGS Certificate of Participation",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "YYGS Certificate of Participation"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-a634ed7e010dce55",
+              "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+              "title": "Rules & Regulations | Yale Young Global Scholars",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T06:31:35.738Z",
+              "excerpt": "scholars must be present in every part of programming in order to receive a YYGS Certificate of Participation."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "personal_information": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "data_sharing": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_ownership": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_license": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "publicity_rights": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "confidentiality": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_rights": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "material_terms": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        }
+      },
+      "projectionRefs": {},
+      "migratedFrom": null
+    },
+    "reviewedPages": [
+      {
+        "id": "page-961ea664b8eaecd1",
+        "url": "https://globalscholars.yale.edu/",
+        "title": "Welcome | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T06:31:35.252Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-a634ed7e010dce55",
+        "url": "https://globalscholars.yale.edu/residential-rules-regulations",
+        "title": "Rules & Regulations | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T06:31:35.738Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-2b34d534b6b35769",
+        "url": "https://globalscholars.yale.edu/tuition",
+        "title": "Tuition & Aid | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T06:31:35.883Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-d298b51f9dc5c56a",
+        "url": "https://globalscholars.yale.edu/eligibility",
+        "title": "Eligibility | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T06:31:36.031Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-65e82225287610ae",
+        "url": "https://globalscholars.yale.edu/how-to-apply",
+        "title": "How to Apply | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T06:31:36.175Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-28bd2f589643105b",
+        "url": "https://globalscholars.yale.edu/tuition/financial-aid",
+        "title": "Need-Based Financial Aid | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T06:31:36.514Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-93ad204f05c2a653",
+        "url": "https://globalscholars.yale.edu/about",
+        "title": "About | Yale Young Global Scholars",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T06:31:36.662Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      }
+    ],
+    "pageWarnings": [],
+    "evidenceWarnings": [
+      {
+        "fieldId": "opportunity_category",
+        "sourceId": "page-961ea664b8eaecd1",
+        "message": "The cited excerpt was not found in the normalized source text."
+      }
+    ],
+    "attentionItems": [
+      {
+        "id": "mandatory-cost-incomplete",
+        "category": "cost",
+        "priority": "high",
+        "title": "Total mandatory cost cannot be established",
+        "explanation": "The retained cost record is incomplete or does not support one universal mandatory total. A listed tuition or fee should not be treated as the complete price.",
+        "fieldIds": [
+          "estimated_total_mandatory_cost",
+          "tuition",
+          "other_mandatory_costs"
+        ],
+        "claimIds": [],
+        "sourceIds": [],
+        "suggestedNextStep": "Check the official cost, travel, housing, materials, and deposit pages before budgeting.",
+        "origin": "deterministic_fallback"
+      },
+      {
+        "id": "deadline-unresolved",
+        "category": "deadline",
+        "priority": "high",
+        "title": "Application deadline is unresolved",
+        "explanation": "The reviewed material did not establish one applicable application deadline.",
+        "fieldIds": [
+          "application_deadline"
+        ],
+        "claimIds": [],
+        "sourceIds": [],
+        "suggestedNextStep": "Check the current application or schedule page for your exact cycle.",
+        "origin": "deterministic_fallback"
+      }
+    ],
+    "qualityOutcome": "usable_with_caveats",
+    "assessedFieldIds": [
+      "opportunity_name",
+      "opportunity_category",
+      "official_url",
+      "operating_organization",
+      "named_institution",
+      "institution_relationship",
+      "relationship_explanation",
+      "grade_levels",
+      "ages",
+      "geographic_restrictions",
+      "citizenship_restrictions",
+      "entry_format",
+      "sponsor_requirement",
+      "application_deadline",
+      "decision_date",
+      "start_date",
+      "end_date",
+      "duration",
+      "weekly_hours",
+      "participation_format",
+      "location",
+      "application_fee",
+      "tuition",
+      "estimated_total_mandatory_cost",
+      "financial_aid",
+      "refund_policy",
+      "selection_process",
+      "selection_evidence",
+      "applicant_count",
+      "acceptance_count",
+      "acceptance_rate_claim",
+      "cash_award",
+      "stipend",
+      "tuition_waiver",
+      "program_seat",
+      "in_kind_value",
+      "mentorship",
+      "other_benefits"
+    ]
+  }
+}

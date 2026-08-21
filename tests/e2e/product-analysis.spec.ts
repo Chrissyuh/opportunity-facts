@@ -79,7 +79,7 @@ test("streamed research shows only observable work and validated preview facts",
         { delay: 40, value: { type: "progress", event: { type: "source_acquired", sourceId: "program", title: "Current program page", url: "https://streamed.example/program", sequence: 2, elapsedMs: 40 } } },
         { delay: 90, value: { type: "progress", event: { type: "family_started", family: "facts", sequence: 3, elapsedMs: 90 } } },
         { delay: 380, value: { type: "progress", event: { type: "validated_fact", fieldId: "tuition", label: "Tuition", displayValue: "$450", evidenceCount: 1, sequence: 4, elapsedMs: 380 } } },
-        { delay: 760, value: { type: "complete", result: completedResult } },
+        { delay: 10_000, value: { type: "complete", result: completedResult } },
       ];
       return new Response(new ReadableStream({
         start(controller) {
@@ -99,7 +99,11 @@ test("streamed research shows only observable work and validated preview facts",
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
   await expect(page.getByText("Current program page reviewed")).toBeVisible();
   await expect(page.getByText("Reviewing facts")).toBeVisible();
-  await expect(page.getByText("Tuition: $450")).toBeVisible();
+  const validated = page.locator(".validated-fact-workspace");
+  await expect(validated.getByRole("heading", { name: "Research overview" })).toBeVisible();
+  await expect(validated.getByText("Cost", { exact: true })).toBeVisible();
+  await expect(validated.getByText("$450", { exact: true })).toHaveText("$450");
+  await expect(validated.getByText("1 source checked", { exact: true })).toHaveText("1 source checked");
   await expect(page.getByText("Unsupported candidate", { exact: false })).toHaveCount(0);
   await expect(page.getByRole("heading", { level: 3, name: "Streamed Student Research Draft" })).toBeVisible();
   await expect(page.locator(".attention-item")).toHaveCount(1);

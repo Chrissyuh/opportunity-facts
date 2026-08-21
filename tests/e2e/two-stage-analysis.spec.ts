@@ -119,7 +119,7 @@ test("normal analysis feels complete and Extended Research enriches it in place"
   await page.goto("/analyze");
   await page.getByLabel("Public opportunity URL").fill("https://two-stage.example/program");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
-  await expect(page.getByRole("heading", { name: "Your opportunity overview is ready." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Analysis complete" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Two-Stage Research Draft" })).toBeVisible();
   await expect(page.locator(".attention-item")).toHaveCount(3);
   await expect(page.getByRole("button", { name: "Download summary PDF" })).toBeVisible();
@@ -164,7 +164,7 @@ test("normal analysis renders a finished result without pretending all 59 fields
   await page.goto("/analyze");
   await page.getByLabel("Public opportunity URL").fill("https://two-stage.example/program");
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
-  await expect(page.getByRole("heading", { name: "Your opportunity overview is ready." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Analysis complete" })).toBeVisible();
   await expect(page.locator(".glance-fact")).toHaveCount(3);
   await expect(page.locator(".glance-fact").filter({ hasText: "Who can apply" })).toHaveCount(0);
   await expect(page.getByText("Not assessed by normal analysis", { exact: false })).toHaveCount(0);
@@ -216,7 +216,7 @@ test("Extended Research provider failure preserves the successful overview", asy
   await page.getByRole("button", { name: "Extended Research", exact: true }).click();
   await expect(page.getByText("The provider could not complete Extended Research.")).toBeVisible();
   await expect(page.getByRole("heading", { name: "Two-Stage Research Draft" })).toBeVisible();
-  await expect(page.getByText("Overview ready · Automated checks applied")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "Analysis complete" })).toBeVisible();
 });
 
 test("safe partial Extended Research retains completed sections and the original overview", async ({ page }) => {
@@ -324,7 +324,7 @@ test("server bypass authority clears stale local suppression without changing th
   await page.goto("/analyze");
   await page.getByLabel("Public opportunity URL").fill(canonical);
   await page.getByRole("button", { name: "Analyze", exact: true }).click();
-  await expect(page.getByRole("heading", { name: "Your opportunity overview is ready." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Analysis complete" })).toBeVisible();
   expect(posts).toBe(1);
   expect(submittedBody).toEqual({ mode: "url", url: canonical });
   const storageValue = await page.evaluate((key) => localStorage.getItem(key), `opportunity-facts:quality-failure:${ANALYZER_VERSION}:${canonical}`);

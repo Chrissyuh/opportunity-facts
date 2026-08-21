@@ -412,7 +412,7 @@ describe("bounded model-family reliability", () => {
     createResponse.mockResolvedValue(response("", "resp-empty"));
     await expect(createOpenAIExtractor()([source()])).rejects.toThrow(
       new ModelExtractionError(
-        "The provider did not complete any extraction section, so no partial draft was displayed. Try again later or use pasted public sources.",
+        "The provider did not complete any extraction section, so no partial draft was displayed. Try again later or start from another official page.",
       ),
     );
     expect(createResponse).toHaveBeenCalledTimes(4);

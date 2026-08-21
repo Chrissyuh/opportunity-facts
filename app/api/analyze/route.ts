@@ -355,7 +355,7 @@ export async function POST(request: Request) {
         {
           code: "MODEL_NOT_CONFIGURED",
           message:
-            "Automatic extraction is not configured here. Use the sample, manual builder, or save your pasted sources until a server key is available.",
+            "Automatic extraction is not configured here. Try a sample or return later.",
         },
         503,
       );

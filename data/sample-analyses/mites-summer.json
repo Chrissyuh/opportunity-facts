@@ -1,0 +1,1757 @@
+{
+  "artifactVersion": "1.0.0",
+  "id": "mites-summer",
+  "label": "MITES Summer",
+  "category": "Free residential STEM program",
+  "submittedUrl": "https://mites.mit.edu/discover-mites/mites-summer/",
+  "recordedAt": "2026-08-21T03:46:33.087Z",
+  "recordedDurationMs": 24280,
+  "captureKind": "compact_production",
+  "progressProvenance": "captured_stream",
+  "sourceArtifact": ".codex-runtime/production-mites-normal.ndjson",
+  "progress": [
+    {
+      "replayAtMs": 0,
+      "event": {
+        "type": "accepted",
+        "sequence": 1,
+        "elapsedMs": 0
+      }
+    },
+    {
+      "replayAtMs": 80,
+      "event": {
+        "type": "cache_checked",
+        "state": "miss",
+        "sequence": 2,
+        "elapsedMs": 80
+      }
+    },
+    {
+      "replayAtMs": 354,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-4d213a08ba96bd83",
+        "title": "MITES Summer – Mites",
+        "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+        "sequence": 3,
+        "elapsedMs": 354
+      }
+    },
+    {
+      "replayAtMs": 2434,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-c81495d9ca593c6f",
+        "title": "Apply to MITES Semester and MITES Summer – Mites",
+        "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+        "sequence": 4,
+        "elapsedMs": 2434
+      }
+    },
+    {
+      "replayAtMs": 2519,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-c961e5c5167078c7",
+        "title": "Privacy Statement – Mites",
+        "url": "https://mites.mit.edu/privacy-statement/",
+        "sequence": 5,
+        "elapsedMs": 2519
+      }
+    },
+    {
+      "replayAtMs": 4404,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-c0cf28636e542166",
+        "title": "MITES Semester and MITES Summer FAQs – Mites",
+        "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+        "sequence": 6,
+        "elapsedMs": 4404
+      }
+    },
+    {
+      "replayAtMs": 4493,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-41c0b37556f1cb9c",
+        "title": "About us – Mites",
+        "url": "https://mites.mit.edu/about-us/",
+        "sequence": 7,
+        "elapsedMs": 4493
+      }
+    },
+    {
+      "replayAtMs": 4602,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-f8d40763595a4111",
+        "title": "Discover MITES – Mites",
+        "url": "https://mites.mit.edu/discover-mites/",
+        "sequence": 8,
+        "elapsedMs": 4602
+      }
+    },
+    {
+      "replayAtMs": 4684,
+      "event": {
+        "type": "source_acquired",
+        "sourceId": "page-a0eee22821cf0d64",
+        "title": "Support MITES – Mites",
+        "url": "https://mites.mit.edu/support-mites/",
+        "sequence": 9,
+        "elapsedMs": 4684
+      }
+    },
+    {
+      "replayAtMs": 4693,
+      "event": {
+        "type": "source_set_complete",
+        "acquired": 7,
+        "failed": 0,
+        "sequence": 10,
+        "elapsedMs": 4693
+      }
+    },
+    {
+      "replayAtMs": 4743,
+      "event": {
+        "type": "cycle_resolved",
+        "status": "resolved",
+        "label": "Summer 2027",
+        "sequence": 11,
+        "elapsedMs": 4743
+      }
+    },
+    {
+      "replayAtMs": 4743,
+      "event": {
+        "type": "normal_model_started",
+        "sequence": 12,
+        "elapsedMs": 4743
+      }
+    },
+    {
+      "replayAtMs": 24160,
+      "event": {
+        "type": "normal_model_completed",
+        "sequence": 14,
+        "elapsedMs": 24160
+      }
+    },
+    {
+      "replayAtMs": 24279,
+      "event": {
+        "type": "validation_complete",
+        "retained": 20,
+        "withheld": 5,
+        "sequence": 15,
+        "elapsedMs": 24279
+      }
+    },
+    {
+      "replayAtMs": 24279,
+      "event": {
+        "type": "attention_ready",
+        "count": 4,
+        "sequence": 16,
+        "elapsedMs": 24279
+      }
+    },
+    {
+      "replayAtMs": 24280,
+      "event": {
+        "type": "validated_fact",
+        "fieldId": "opportunity_name",
+        "label": "opportunity name",
+        "displayValue": "MITES Summer",
+        "evidenceCount": 1,
+        "sequence": 17,
+        "elapsedMs": 24280
+      }
+    },
+    {
+      "replayAtMs": 24280,
+      "event": {
+        "type": "validated_fact",
+        "fieldId": "participation_format",
+        "label": "participation format",
+        "displayValue": "Residential",
+        "evidenceCount": 1,
+        "sequence": 18,
+        "elapsedMs": 24280
+      }
+    },
+    {
+      "replayAtMs": 24280,
+      "event": {
+        "type": "validated_fact",
+        "fieldId": "financial_aid",
+        "label": "financial aid",
+        "displayValue": "Program costs and room/board covered; transportation is student-paid",
+        "evidenceCount": 2,
+        "sequence": 19,
+        "elapsedMs": 24280
+      }
+    },
+    {
+      "replayAtMs": 24280,
+      "event": {
+        "type": "validated_fact",
+        "fieldId": "other_benefits",
+        "label": "other benefits",
+        "displayValue": "Courses, admissions/aid advice, instructor evaluation, Final Symposium",
+        "evidenceCount": 3,
+        "sequence": 20,
+        "elapsedMs": 24280
+      }
+    },
+    {
+      "replayAtMs": 24280,
+      "event": {
+        "type": "quality_complete",
+        "outcome": "usable_with_caveats",
+        "sequence": 21,
+        "elapsedMs": 24280
+      }
+    }
+  ],
+  "result": {
+    "card": {
+      "schemaVersion": "2.2.0",
+      "opportunityId": null,
+      "cycle": {
+        "status": "modeled",
+        "value": {
+          "id": "cycle-summer-2027",
+          "label": {
+            "claimId": "cycle-summer-2027-label",
+            "status": "disclosed",
+            "value": "Summer 2027",
+            "displayValue": "Summer 2027",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "page-c0cf28636e542166",
+                "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+                "title": "MITES Semester and MITES Summer FAQs – Mites",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T03:46:37.298Z",
+                "excerpt": "MITES Semester: June 22, 2026–December 6, 2026 (2027 Dates TBD)"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          "status": {
+            "claimId": "cycle-summer-2027-status",
+            "status": "unclear",
+            "value": null,
+            "displayValue": null,
+            "claimKind": null,
+            "sources": [
+              {
+                "id": "page-c0cf28636e542166",
+                "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+                "title": "MITES Semester and MITES Summer FAQs – Mites",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T03:46:37.298Z",
+                "excerpt": "MITES Semester: June 22, 2026–December 6, 2026 (2027 Dates TBD)"
+              }
+            ],
+            "note": "The source identifies the cycle but does not clearly state its current application status.",
+            "conflictingValues": []
+          },
+          "year": {
+            "claimId": "cycle-summer-2027-year",
+            "status": "disclosed",
+            "value": 2027,
+            "displayValue": "2027",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "page-c0cf28636e542166",
+                "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+                "title": "MITES Semester and MITES Summer FAQs – Mites",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T03:46:37.298Z",
+                "excerpt": "MITES Semester: June 22, 2026–December 6, 2026 (2027 Dates TBD)"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          "startYear": null,
+          "endYear": null,
+          "season": {
+            "claimId": "cycle-summer-2027-season",
+            "status": "disclosed",
+            "value": "summer",
+            "displayValue": "Summer",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "page-c0cf28636e542166",
+                "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+                "title": "MITES Semester and MITES Summer FAQs – Mites",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T03:46:37.298Z",
+                "excerpt": "MITES Semester: June 22, 2026–December 6, 2026 (2027 Dates TBD)"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          "cycleType": {
+            "claimId": "cycle-summer-2027-type",
+            "status": "disclosed",
+            "value": "seasonal",
+            "displayValue": "Seasonal cohort",
+            "claimKind": "source_stated",
+            "sources": [
+              {
+                "id": "page-c0cf28636e542166",
+                "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+                "title": "MITES Semester and MITES Summer FAQs – Mites",
+                "pageType": "user_supplied",
+                "accessedAt": "2026-08-21T03:46:37.298Z",
+                "excerpt": "MITES Semester: June 22, 2026–December 6, 2026 (2027 Dates TBD)"
+              }
+            ],
+            "note": null,
+            "conflictingValues": []
+          },
+          "timingRefs": {
+            "opens": null,
+            "closes": null,
+            "coverageStart": null,
+            "coverageEnd": null
+          }
+        }
+      },
+      "cardVersion": 1,
+      "slug": "mites-summer",
+      "summary": "Automated draft from 7 user-supplied source pages; review every value, excerpt, and attribution before use.",
+      "reviewState": "automated_draft",
+      "reviewedAt": null,
+      "sourcePagesChecked": [
+        {
+          "id": "page-4d213a08ba96bd83",
+          "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+          "title": "MITES Summer – Mites",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T03:46:33.087Z"
+        },
+        {
+          "id": "page-c81495d9ca593c6f",
+          "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+          "title": "Apply to MITES Semester and MITES Summer – Mites",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T03:46:35.287Z"
+        },
+        {
+          "id": "page-c961e5c5167078c7",
+          "url": "https://mites.mit.edu/privacy-statement/",
+          "title": "Privacy Statement – Mites",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T03:46:35.417Z"
+        },
+        {
+          "id": "page-c0cf28636e542166",
+          "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+          "title": "MITES Semester and MITES Summer FAQs – Mites",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T03:46:37.298Z"
+        },
+        {
+          "id": "page-41c0b37556f1cb9c",
+          "url": "https://mites.mit.edu/about-us/",
+          "title": "About us – Mites",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T03:46:37.392Z"
+        },
+        {
+          "id": "page-f8d40763595a4111",
+          "url": "https://mites.mit.edu/discover-mites/",
+          "title": "Discover MITES – Mites",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T03:46:37.488Z"
+        },
+        {
+          "id": "page-a0eee22821cf0d64",
+          "url": "https://mites.mit.edu/support-mites/",
+          "title": "Support MITES – Mites",
+          "pageType": "user_supplied",
+          "accessedAt": "2026-08-21T03:46:37.598Z"
+        }
+      ],
+      "conflicts": [],
+      "organizations": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "organizationRoles": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "institutionRelationships": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "variants": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "stages": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "pathways": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "costItems": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "outcomes": {
+        "status": "unassessed",
+        "records": [],
+        "note": null
+      },
+      "facts": {
+        "opportunity_name": {
+          "status": "disclosed",
+          "value": "MITES Summer",
+          "displayValue": "MITES Summer",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "MITES Summer"
+          },
+          "sources": [
+            {
+              "id": "page-4d213a08ba96bd83",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:33.087Z",
+              "excerpt": "MITES Summer"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "opportunity_category": {
+          "status": "disclosed",
+          "value": "Six-week residential STEM program",
+          "displayValue": "Six-week residential STEM program",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Six-week residential STEM program"
+          },
+          "sources": [
+            {
+              "id": "page-f8d40763595a4111",
+              "url": "https://mites.mit.edu/discover-mites/",
+              "title": "Discover MITES – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.488Z",
+              "excerpt": "Six-week, residential STEM experience for rising high school seniors"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "official_url": {
+          "status": "disclosed",
+          "value": "https://mites.mit.edu/discover-mites/mites-summer/",
+          "displayValue": "https://mites.mit.edu/discover-mites/mites-summer/",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "https://mites.mit.edu/discover-mites/mites-summer/"
+          },
+          "sources": [
+            {
+              "id": "page-4d213a08ba96bd83",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:33.087Z",
+              "excerpt": "MITES Summer"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "operating_organization": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-41c0b37556f1cb9c",
+              "url": "https://mites.mit.edu/about-us/",
+              "title": "About us – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.392Z",
+              "excerpt": "MITES (formerly MIT Office of Engineering Outreach Programs) provides cost-free, transformative STEM experiences"
+            }
+          ],
+          "note": "The excerpt names an organization or opportunity but does not explicitly support the primary operator role.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "organization_type": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "named_institution": {
+          "status": "disclosed",
+          "value": "Massachusetts Institute of Technology (MIT)",
+          "displayValue": "MIT",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Massachusetts Institute of Technology (MIT)"
+          },
+          "sources": [
+            {
+              "id": "page-41c0b37556f1cb9c",
+              "url": "https://mites.mit.edu/about-us/",
+              "title": "About us – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.392Z",
+              "excerpt": "An integral part of MIT’s School of Engineering, MITES offers students three ways to participate"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "institution_relationship": {
+          "status": "disclosed",
+          "value": "institution_operated",
+          "displayValue": "Integral part of MIT's School of Engineering",
+          "normalizedValue": {
+            "kind": "relationship",
+            "value": "institution_operated"
+          },
+          "sources": [
+            {
+              "id": "page-41c0b37556f1cb9c",
+              "url": "https://mites.mit.edu/about-us/",
+              "title": "About us – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.392Z",
+              "excerpt": "An integral part of MIT’s School of Engineering"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "relationship_explanation": {
+          "status": "disclosed",
+          "value": "MITES is described as an integral part of MIT's School of Engineering.",
+          "displayValue": "MITES is an integral part of MIT's School of Engineering.",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "MITES is described as an integral part of MIT's School of Engineering."
+          },
+          "sources": [
+            {
+              "id": "page-41c0b37556f1cb9c",
+              "url": "https://mites.mit.edu/about-us/",
+              "title": "About us – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.392Z",
+              "excerpt": "An integral part of MIT’s School of Engineering"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "grade_levels": {
+          "status": "disclosed",
+          "value": [
+            "11th grade",
+            "rising high school seniors"
+          ],
+          "displayValue": "11th grade; rising high school seniors",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "11th grade",
+              "rising high school seniors"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-c0cf28636e542166",
+              "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+              "title": "MITES Semester and MITES Summer FAQs – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.298Z",
+              "excerpt": "The MITES Summer and MITES Semester application is open to 11th graders."
+            },
+            {
+              "id": "page-c0cf28636e542166",
+              "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+              "title": "MITES Semester and MITES Summer FAQs – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.298Z",
+              "excerpt": "MITES Summer is a six-week residential program for rising high school seniors"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "ages": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "geographic_restrictions": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "citizenship_restrictions": {
+          "status": "disclosed",
+          "value": "U.S. citizens or permanent residents with a current U.S. green card; visas do not substitute.",
+          "displayValue": "U.S. citizens or permanent residents with a current U.S. green card; visas do not substitute.",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "U.S. citizens or permanent residents with a current U.S. green card; visas do not substitute."
+          },
+          "sources": [
+            {
+              "id": "page-c0cf28636e542166",
+              "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+              "title": "MITES Semester and MITES Summer FAQs – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.298Z",
+              "excerpt": "you must be a United States citizen or permanent resident with a current US green card. Visas of any type are not substitutes"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "prerequisite_skills": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "entry_format": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c81495d9ca593c6f",
+              "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+              "title": "Apply to MITES Semester and MITES Summer – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:35.287Z",
+              "excerpt": "applicants have the option to indicate whether they want to be considered for one or both national programs"
+            }
+          ],
+          "note": "The displayed typed value was withheld because individual entry is not explicitly stated by the cited excerpt.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "sponsor_requirement": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c0cf28636e542166",
+              "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+              "title": "MITES Semester and MITES Summer FAQs – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.298Z",
+              "excerpt": "The MITES Semester and MITES Summer application requires three recommendations that must be submitted via our online portal."
+            },
+            {
+              "id": "page-c0cf28636e542166",
+              "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+              "title": "MITES Semester and MITES Summer FAQs – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.298Z",
+              "excerpt": "One Math or Science teacher"
+            },
+            {
+              "id": "page-c0cf28636e542166",
+              "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+              "title": "MITES Semester and MITES Summer FAQs – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.298Z",
+              "excerpt": "One Humanities teacher"
+            }
+          ],
+          "note": "The displayed typed value was withheld because its school representative requirement is not stated by the cited excerpt.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_deadline": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c0cf28636e542166",
+              "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+              "title": "MITES Semester and MITES Summer FAQs – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.298Z",
+              "excerpt": "Applications are due on February 1 at 11:59 pm PST"
+            },
+            {
+              "id": "page-c81495d9ca593c6f",
+              "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+              "title": "Apply to MITES Semester and MITES Summer – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:35.287Z",
+              "excerpt": "The application typically opens in November and closes on February 1."
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "decision_date": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c0cf28636e542166",
+              "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+              "title": "MITES Semester and MITES Summer FAQs – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.298Z",
+              "excerpt": "Decisions are released in Mid to Late April."
+            }
+          ],
+          "note": "Relevant source text was identified, but automated extraction could not support one precise value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "start_date": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "end_date": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "duration": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-4d213a08ba96bd83",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:33.087Z",
+              "excerpt": "six-week, on-campus program"
+            }
+          ],
+          "note": "The displayed typed value was withheld because its duration does not match the cited excerpt and display value.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "weekly_hours": {
+          "status": "disclosed",
+          "value": "About 35 hours of scheduled weekday activities, plus reported homework.",
+          "displayValue": "About 35 scheduled hours/week, plus homework",
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-4d213a08ba96bd83",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:33.087Z",
+              "excerpt": "Classes, recitations, workshops, and tours on weekdays 9:00am to 5:00pm"
+            },
+            {
+              "id": "page-4d213a08ba96bd83",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:33.087Z",
+              "excerpt": "Students have reported spending an average of 6 hours per weekday and 4-6 hours per weekend day doing homework."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "required_live_hours": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "participation_format": {
+          "status": "disclosed",
+          "value": "residential",
+          "displayValue": "Residential",
+          "normalizedValue": {
+            "kind": "participation_format",
+            "value": "residential"
+          },
+          "sources": [
+            {
+              "id": "page-c0cf28636e542166",
+              "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+              "title": "MITES Semester and MITES Summer FAQs – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.298Z",
+              "excerpt": "MITES Summer is a six-week in-person residential experience that takes place on campus at MIT."
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "location": {
+          "status": "disclosed",
+          "value": "MIT campus, Greater Boston area",
+          "displayValue": "MIT campus, Greater Boston area",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "MIT campus, Greater Boston area"
+          },
+          "sources": [
+            {
+              "id": "page-c0cf28636e542166",
+              "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+              "title": "MITES Semester and MITES Summer FAQs – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.298Z",
+              "excerpt": "takes place on campus at MIT"
+            },
+            {
+              "id": "page-4d213a08ba96bd83",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:33.087Z",
+              "excerpt": "exploration of the Greater Boston area"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_requirements": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "application_fee": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "deposit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition": {
+          "status": "disclosed",
+          "value": 0,
+          "displayValue": "Free of charge",
+          "normalizedValue": {
+            "kind": "money",
+            "amount": 0,
+            "currency": "USD",
+            "classification": "fee"
+          },
+          "sources": [
+            {
+              "id": "page-4d213a08ba96bd83",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:33.087Z",
+              "excerpt": "Free of charge"
+            },
+            {
+              "id": "page-4d213a08ba96bd83",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:33.087Z",
+              "excerpt": "All program-related costs are covered"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_mandatory_costs": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "estimated_total_mandatory_cost": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "travel_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "lodging_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "meals_included": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "financial_aid": {
+          "status": "disclosed",
+          "value": "Program-related costs, including room and board, are covered; students pay transportation to and from MIT.",
+          "displayValue": "Program costs and room/board covered; transportation is student-paid",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Program-related costs, including room and board, are covered; students pay transportation to and from MIT."
+          },
+          "sources": [
+            {
+              "id": "page-4d213a08ba96bd83",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:33.087Z",
+              "excerpt": "All program-related costs are covered by generous individuals, foundations, corporations, and MIT. Students only pay for transportation to and from MIT."
+            },
+            {
+              "id": "page-4d213a08ba96bd83",
+              "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+              "title": "MITES Summer – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:33.087Z",
+              "excerpt": "Room and board provided free of charge"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "refund_policy": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_policy": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_process": {
+          "status": "unclear",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [
+            {
+              "id": "page-c81495d9ca593c6f",
+              "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+              "title": "Apply to MITES Semester and MITES Summer – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:35.287Z",
+              "excerpt": "application and selection process is holistic"
+            },
+            {
+              "id": "page-c81495d9ca593c6f",
+              "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+              "title": "Apply to MITES Semester and MITES Summer – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:35.287Z",
+              "excerpt": "We look for students with demonstrated interest in science and engineering and a strong academic record who are motivated, hard-working, and focused on growth and improvement."
+            }
+          ],
+          "note": "The cited wording describes the opportunity but does not establish an application, review, selection, or advancement process.",
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "applicant_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_count": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "acceptance_rate_claim": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "calculated_acceptance_rate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "selection_evidence": {
+          "status": "disclosed",
+          "value": "Descriptive selection criteria published; a 12% figure is stated only for MITES programs overall, not specifically MITES Summer or 2027.",
+          "displayValue": "Descriptive criteria; aggregate 12% claim",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Descriptive selection criteria published; a 12% figure is stated only for MITES programs overall, not specifically MITES Summer or 2027."
+          },
+          "sources": [
+            {
+              "id": "page-a0eee22821cf0d64",
+              "url": "https://mites.mit.edu/support-mites/",
+              "title": "Support MITES – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.598Z",
+              "excerpt": "we can only accept 12% of these students"
+            },
+            {
+              "id": "page-c81495d9ca593c6f",
+              "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+              "title": "Apply to MITES Semester and MITES Summer – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:35.287Z",
+              "excerpt": "application and selection process is holistic"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cash_award": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "stipend": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "tuition_waiver": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "program_seat": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "in_kind_value": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "certificate": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "college_credit": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "mentorship": {
+          "status": "disclosed",
+          "value": "Students receive mentorship from a current undergraduate student in a small peer group.",
+          "displayValue": "Small-group mentorship from a current undergraduate",
+          "normalizedValue": {
+            "kind": "text",
+            "value": "Students receive mentorship from a current undergraduate student in a small peer group."
+          },
+          "sources": [
+            {
+              "id": "page-c0cf28636e542166",
+              "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+              "title": "MITES Semester and MITES Summer FAQs – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.298Z",
+              "excerpt": "receive mentorship from a current undergraduate student"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "other_benefits": {
+          "status": "disclosed",
+          "value": [
+            "Five courses",
+            "Admissions and financial-aid advice",
+            "Instructor-written final evaluation",
+            "Final Symposium project presentation"
+          ],
+          "displayValue": "Courses, admissions/aid advice, instructor evaluation, Final Symposium",
+          "normalizedValue": {
+            "kind": "text_list",
+            "values": [
+              "Five courses",
+              "Admissions and financial-aid advice",
+              "Instructor-written final evaluation",
+              "Final Symposium project presentation"
+            ]
+          },
+          "sources": [
+            {
+              "id": "page-c0cf28636e542166",
+              "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+              "title": "MITES Semester and MITES Summer FAQs – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.298Z",
+              "excerpt": "students take five courses, receive admissions and financial aid advice"
+            },
+            {
+              "id": "page-c0cf28636e542166",
+              "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+              "title": "MITES Semester and MITES Summer FAQs – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.298Z",
+              "excerpt": "All students who participate in MITES Summer or MITES Semester will receive qualitative final evaluations from each instructor."
+            },
+            {
+              "id": "page-c0cf28636e542166",
+              "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+              "title": "MITES Semester and MITES Summer FAQs – Mites",
+              "pageType": "user_supplied",
+              "accessedAt": "2026-08-21T03:46:37.298Z",
+              "excerpt": "Final Symposium where students present their hands-on projects"
+            }
+          ],
+          "note": null,
+          "confidence": null,
+          "claimKind": "source_stated",
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "personal_information": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "data_sharing": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_ownership": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "project_license": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "publicity_rights": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "confidentiality": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "cancellation_rights": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        },
+        "material_terms": {
+          "status": "not_found",
+          "value": null,
+          "displayValue": null,
+          "normalizedValue": null,
+          "sources": [],
+          "note": null,
+          "confidence": null,
+          "claimKind": null,
+          "conflictingValues": [],
+          "calculation": null,
+          "projection": null
+        }
+      },
+      "projectionRefs": {},
+      "migratedFrom": null
+    },
+    "reviewedPages": [
+      {
+        "id": "page-4d213a08ba96bd83",
+        "url": "https://mites.mit.edu/discover-mites/mites-summer/",
+        "title": "MITES Summer – Mites",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T03:46:33.087Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-c81495d9ca593c6f",
+        "url": "https://mites.mit.edu/discover-mites/apply-to-mites/prepare-your-application-mites-summer-and-mites-semester/",
+        "title": "Apply to MITES Semester and MITES Summer – Mites",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T03:46:35.287Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-c961e5c5167078c7",
+        "url": "https://mites.mit.edu/privacy-statement/",
+        "title": "Privacy Statement – Mites",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T03:46:35.417Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-c0cf28636e542166",
+        "url": "https://mites.mit.edu/discover-mites/faq-for-prospective-students/faqs-mites-semester-and-mites-summer/",
+        "title": "MITES Semester and MITES Summer FAQs – Mites",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T03:46:37.298Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-41c0b37556f1cb9c",
+        "url": "https://mites.mit.edu/about-us/",
+        "title": "About us – Mites",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T03:46:37.392Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-f8d40763595a4111",
+        "url": "https://mites.mit.edu/discover-mites/",
+        "title": "Discover MITES – Mites",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T03:46:37.488Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      },
+      {
+        "id": "page-a0eee22821cf0d64",
+        "url": "https://mites.mit.edu/support-mites/",
+        "title": "Support MITES – Mites",
+        "pageType": "user_supplied",
+        "accessedAt": "2026-08-21T03:46:37.598Z",
+        "truncated": false,
+        "truncatedForModel": false,
+        "contentUnavailable": false
+      }
+    ],
+    "pageWarnings": [],
+    "evidenceWarnings": [
+      {
+        "fieldId": "structured.cycle",
+        "sourceId": "cycle-summer-2027-label",
+        "message": "A cycle claim was withheld because its evidence names a year outside the resolved target cycle."
+      },
+      {
+        "fieldId": "structured.cycle",
+        "sourceId": "cycle-summer-2027-status",
+        "message": "A cycle claim was withheld because its evidence names a year outside the resolved target cycle."
+      },
+      {
+        "fieldId": "structured.cycle",
+        "sourceId": "cycle-summer-2027-year",
+        "message": "A cycle claim was withheld because its evidence names a year outside the resolved target cycle."
+      },
+      {
+        "fieldId": "structured.cycle",
+        "sourceId": "cycle-summer-2027-season",
+        "message": "A cycle claim was withheld because its evidence names a year outside the resolved target cycle."
+      },
+      {
+        "fieldId": "structured.cycle",
+        "sourceId": "cycle-summer-2027-type",
+        "message": "A cycle claim was withheld because its evidence names a year outside the resolved target cycle."
+      }
+    ],
+    "attentionItems": [
+      {
+        "id": "mandatory-cost-incomplete",
+        "category": "cost",
+        "priority": "high",
+        "title": "Total mandatory cost cannot be established",
+        "explanation": "The retained cost record is incomplete or does not support one universal mandatory total. A listed tuition or fee should not be treated as the complete price.",
+        "fieldIds": [
+          "estimated_total_mandatory_cost",
+          "tuition",
+          "other_mandatory_costs"
+        ],
+        "claimIds": [],
+        "sourceIds": [],
+        "suggestedNextStep": "Check the official cost, travel, housing, materials, and deposit pages before budgeting.",
+        "origin": "deterministic_fallback"
+      },
+      {
+        "id": "deadline-unresolved",
+        "category": "deadline",
+        "priority": "high",
+        "title": "Application deadline is unresolved",
+        "explanation": "The reviewed material did not establish one applicable application deadline.",
+        "fieldIds": [
+          "application_deadline"
+        ],
+        "claimIds": [],
+        "sourceIds": [],
+        "suggestedNextStep": "Check the current application or schedule page for your exact cycle.",
+        "origin": "deterministic_fallback"
+      },
+      {
+        "id": "refund-unresolved",
+        "category": "refund",
+        "priority": "high",
+        "title": "Refund terms were not established",
+        "explanation": "The sources support a tuition or mandatory fee, but the retained record does not establish the applicable refund terms.",
+        "fieldIds": [
+          "refund_policy",
+          "tuition"
+        ],
+        "claimIds": [],
+        "sourceIds": [],
+        "suggestedNextStep": "Read the enrollment, cancellation, and payment terms before paying.",
+        "origin": "deterministic_fallback"
+      }
+    ],
+    "qualityOutcome": "good",
+    "assessedFieldIds": [
+      "opportunity_name",
+      "opportunity_category",
+      "official_url",
+      "operating_organization",
+      "named_institution",
+      "institution_relationship",
+      "relationship_explanation",
+      "grade_levels",
+      "ages",
+      "geographic_restrictions",
+      "citizenship_restrictions",
+      "entry_format",
+      "sponsor_requirement",
+      "application_deadline",
+      "decision_date",
+      "start_date",
+      "end_date",
+      "duration",
+      "weekly_hours",
+      "participation_format",
+      "location",
+      "application_fee",
+      "tuition",
+      "estimated_total_mandatory_cost",
+      "financial_aid",
+      "refund_policy",
+      "selection_process",
+      "selection_evidence",
+      "applicant_count",
+      "acceptance_count",
+      "acceptance_rate_claim",
+      "cash_award",
+      "stipend",
+      "tuition_waiver",
+      "program_seat",
+      "in_kind_value",
+      "mentorship",
+      "other_benefits"
+    ]
+  }
+}

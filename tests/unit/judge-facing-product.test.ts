@@ -13,14 +13,22 @@ describe("judge-facing product language", () => {
     expect(reviewDescriptions.ai_audited).toContain("No human review is claimed");
   });
 
-  it("renders homepage review provenance from data rather than a hard-coded label", () => {
+  it("keeps reference records and provenance out of the analyzer-first homepage", () => {
     const homepage = readFileSync("app/page.tsx", "utf8");
-    expect(homepage).toContain("<ReviewBadge state={card.reviewState} />");
-    expect(homepage).not.toContain('>AI-audited<');
+    expect(homepage).not.toContain("getAllCards");
+    expect(homepage).not.toContain("ReviewBadge");
+    expect(homepage).not.toContain("AI-audited");
+    expect(homepage).toContain("<SampleLauncher />");
+    const launcher = readFileSync("components/sample-launcher.tsx", "utf8");
+    expect(launcher).toContain('href="/analyze?sample=next"');
+    expect(launcher).toContain("Try another sample");
   });
 
   it("routes the primary How it works navigation to the accessible product explanation", () => {
     const header = readFileSync("components/site-header.tsx", "utf8");
     expect(header).toContain('{ href: "/how-it-works", label: "How it works" }');
+    expect(header).toContain('{ href: "/analyze", label: "Analyze" }');
+    expect(header).not.toContain('label: "Examples"');
+    expect(header).not.toContain("wordmark-mark");
   });
 });

@@ -1155,7 +1155,7 @@ export function createOpenAIExtractor(
     const failures = results.filter((result) => result.error !== null);
     if (failures.length === results.length) {
       throw new ModelExtractionError(
-        "The provider did not complete any extraction section, so no partial draft was displayed. Try again later or use pasted public sources.",
+        "The provider did not complete any extraction section, so no partial draft was displayed. Try again later or start from another official page.",
         { cause: new AggregateError(failures.map((failure) => failure.error)) },
       );
     }

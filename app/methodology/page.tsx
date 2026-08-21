@@ -125,8 +125,8 @@ export default function MethodologyPage() {
 
         <h2 id="automation">Where automation stops</h2>
         <p>
-          Automated extraction uses bounded summary and structured sections over fetched or
-          pasted source text. Source pages are treated as hostile data: instructions
+          Automated extraction uses bounded summary and structured sections over acquired
+          public page text. Source pages are treated as hostile data: instructions
           inside them cannot change the extraction job. No model decides whether an
           opportunity is legitimate, prestigious, worthwhile, safe, or likely to
           affect admission. Automatic drafts do not derive an acceptance rate because
@@ -142,7 +142,7 @@ export default function MethodologyPage() {
           limits time and bytes, avoids cookies and authentication, and never runs
           page scripts. Bounded allowlisted Schema.org course and FAQ metadata in a
           static response is treated as untrusted publisher text. JavaScript-only,
-          blocked, or inaccessible sites can instead be reviewed through pasted source text.
+          blocked, or inaccessible pages remain visible as acquisition gaps and can cause omissions.
         </p>
         <p>
           Automated results are drafts. Sources were collected automatically,

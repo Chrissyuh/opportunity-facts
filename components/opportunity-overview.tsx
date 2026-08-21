@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import type { FieldId } from "@/lib/opportunity/fields";
 import {
   evidenceForAttentionItem,
@@ -10,11 +11,7 @@ import type { Fact, OpportunityCard } from "@/lib/opportunity/schema";
 import { CardActions } from "./card-actions";
 import { EvidenceList } from "./evidence-list";
 import { PdfDownloadActions } from "./pdf/pdf-download-actions";
-import {
-  ReviewBadge,
-  StatusBadge,
-  reviewShortDescriptions,
-} from "./status-badge";
+import { ReviewBadge, StatusBadge } from "./status-badge";
 import {
   CostPanel,
   OrganizationRelationshipPanel,
@@ -92,6 +89,7 @@ export function OpportunityOverview({
   attentionLimit = 5,
   fullEvidenceAvailable = true,
   assessedFieldIds,
+  resultActions,
 }: {
   card: OpportunityCard;
   embedded?: boolean;
@@ -99,6 +97,7 @@ export function OpportunityOverview({
   attentionLimit?: number;
   fullEvidenceAvailable?: boolean;
   assessedFieldIds?: readonly FieldId[];
+  resultActions?: ReactNode;
 }) {
   const name = card.facts.opportunity_name.displayValue ?? card.slug;
   const cycle =
@@ -108,10 +107,10 @@ export function OpportunityOverview({
   ).slice(0, attentionLimit);
   const HeroHeading = embedded ? "h3" : "h1";
   const SectionHeading = embedded ? "h4" : "h2";
-  const stagePreview = `${card.stages.records.length} stage${card.stages.records.length === 1 ? "" : "s"} · ${card.pathways.records.length} path${card.pathways.records.length === 1 ? "" : "s"}`;
-  const costPreview = `${card.costItems.records.length} cost item${card.costItems.records.length === 1 ? "" : "s"}${card.costItems.status === "modeled" ? ` · ${card.costItems.completeness} inventory` : ""}`;
+  const stagePreview = `${card.stages.records.length} stage${card.stages.records.length === 1 ? "" : "s"} / ${card.pathways.records.length} path${card.pathways.records.length === 1 ? "" : "s"}`;
+  const costPreview = `${card.costItems.records.length} cost item${card.costItems.records.length === 1 ? "" : "s"}${card.costItems.status === "modeled" ? ` / ${card.costItems.completeness} inventory` : ""}`;
   const outcomePreview = `${card.outcomes.records.length} distinct outcome${card.outcomes.records.length === 1 ? "" : "s"}`;
-  const organizationPreview = `${card.organizations.records.length} organization${card.organizations.records.length === 1 ? "" : "s"} · ${card.institutionRelationships.records.length} institution relationship${card.institutionRelationships.records.length === 1 ? "" : "s"}`;
+  const organizationPreview = `${card.organizations.records.length} organization${card.organizations.records.length === 1 ? "" : "s"} / ${card.institutionRelationships.records.length} institution relationship${card.institutionRelationships.records.length === 1 ? "" : "s"}`;
   const variantPreview = card.variants.records.length
     ? `${card.variants.records.length} program or cohort variant${card.variants.records.length === 1 ? "" : "s"}`
     : "No separate program variants modeled";
@@ -132,32 +131,29 @@ export function OpportunityOverview({
     >
       <header className="overview-hero">
         <div className="overview-hero-copy">
-          <div className="overview-badges">
-            <ReviewBadge state={card.reviewState} />
+          <div className="overview-meta">
             {cycle ? <span className="cycle-label">{cycle}</span> : null}
+            {!embedded ? <ReviewBadge state={card.reviewState} /> : null}
           </div>
-          <p className="eyebrow">Opportunity overview</p>
           <HeroHeading>{name}</HeroHeading>
-          <p className="lede">{card.summary}</p>
-          <p className="overview-review-note">
-            {reviewShortDescriptions[card.reviewState]} Review state describes
-            the checking process, not whether an opportunity is good or
-            trustworthy.
-          </p>
+          {!embedded ? <p className="overview-summary">{card.summary}</p> : null}
         </div>
         <div className="overview-actions">
-          <CardActions
-            card={card}
-            compact
-            secondaryActions={!embedded ? <PdfDownloadActions card={card} attentionItems={attention} fullEvidenceAvailable={fullEvidenceAvailable} assessedFieldIds={assessedFieldIds} /> : undefined}
-          />
-          {embedded ? <PdfDownloadActions card={card} attentionItems={attention} fullEvidenceAvailable={fullEvidenceAvailable} assessedFieldIds={assessedFieldIds} /> : null}
+          {embedded ? (
+            <PdfDownloadActions card={card} attentionItems={attention} fullEvidenceAvailable={fullEvidenceAvailable} assessedFieldIds={assessedFieldIds} />
+          ) : (
+            <CardActions
+              card={card}
+              compact
+              secondaryActions={<PdfDownloadActions card={card} attentionItems={attention} fullEvidenceAvailable={fullEvidenceAvailable} assessedFieldIds={assessedFieldIds} />}
+            />
+          )}
           {!embedded ? (
             <Link
               className="record-link"
               href={`/opportunities/${card.slug}/record`}
             >
-              Open full research record <span aria-hidden="true">→</span>
+              Full Record <span aria-hidden="true">→</span>
             </Link>
           ) : null}
         </div>
@@ -168,13 +164,7 @@ export function OpportunityOverview({
         aria-labelledby={`${card.slug}-glance`}
       >
         <div className="overview-section-heading">
-          <div>
-            <p className="eyebrow">The practical questions</p>
-            <SectionHeading id={`${card.slug}-glance`}>
-              At a glance
-            </SectionHeading>
-          </div>
-          <p>Open evidence beside any answer to check the official wording.</p>
+          <SectionHeading id={`${card.slug}-glance`}>At a glance</SectionHeading>
         </div>
         <dl className="glance-grid">
           {visibleOverviewItems.map((item) => {
@@ -193,7 +183,7 @@ export function OpportunityOverview({
                       <strong>
                         <FactValue fact={fact} />
                       </strong>
-                      <StatusBadge status={fact.status} />
+                      {fact.status === "disclosed" ? null : <StatusBadge status={fact.status} />}
                       <EvidenceList
                         sources={fact.sources}
                         label="Check source"
@@ -216,13 +206,9 @@ export function OpportunityOverview({
           aria-labelledby={`${card.slug}-attention`}
         >
           <div className="overview-section-heading">
-            <div>
-              <p className="eyebrow">Important gaps and caveats</p>
-              <SectionHeading id={`${card.slug}-attention`}>
-                Needs attention
-              </SectionHeading>
-            </div>
-            <p>These are questions to verify, not risk scores or judgments.</p>
+            <SectionHeading id={`${card.slug}-attention`}>
+              Needs attention <span className="attention-count" aria-hidden="true">{attention.length}</span>
+            </SectionHeading>
           </div>
           <div className="attention-list">
             {attention.map((item) => (
@@ -232,7 +218,7 @@ export function OpportunityOverview({
                   <span
                     className={`attention-priority attention-${item.priority}`}
                   >
-                    {item.priority} priority
+                    {item.priority === "high" ? "Important" : item.priority}
                   </span>
                 </summary>
                 <div>
@@ -252,6 +238,8 @@ export function OpportunityOverview({
           </div>
         </section>
       ) : null}
+
+      {resultActions ? <div className="overview-result-actions no-print">{resultActions}</div> : null}
 
       {hasRichDetails ? <section className="overview-rich-sections" aria-label="Program details">
         {hasProcessDetails ? <details className="overview-rich-disclosure">
@@ -308,14 +296,8 @@ export function OpportunityOverview({
 
       {!embedded ? <section className="overview-next-step">
         <div>
-          <p className="eyebrow">Need every detail?</p>
-          <SectionHeading>
-            Inspect the complete source-backed record.
-          </SectionHeading>
-          <p>
-            The Full Record contains all projected facts, structured program
-            details, evidence excerpts, source inventory, and version metadata.
-          </p>
+          <SectionHeading>Full research record</SectionHeading>
+          <p>Inspect every retained fact, source, and evidence attachment.</p>
         </div>
         <Link
           className="button-secondary"

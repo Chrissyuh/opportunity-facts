@@ -11,25 +11,22 @@ export function SiteFooter({
         <div>
           <p className="footer-title">Opportunity Facts</p>
           <p className="footer-copy">
-            AI-assisted research for student opportunities. Supported answers keep
-            their source evidence, and uncertainty stays visible.
+            Source-backed research for student opportunities. Supported answers
+            keep their evidence, and uncertainty stays visible.
           </p>
         </div>
         <nav className="footer-links" aria-label="Product links">
           <span className="footer-label">Product</span>
-          <Link href="/analyze">Analyze an opportunity</Link>
+          <Link href="/analyze">Analyze</Link>
           {batchAnalysisEnabled ? <Link href="/analyze/batch">Batch analyze</Link> : null}
-          <Link href="/compare">Compare opportunities</Link>
-          <Link href="/opportunities">Reviewed examples</Link>
+          <Link href="/compare">Compare</Link>
+          <Link href="/how-it-works">How it works</Link>
         </nav>
         <nav className="footer-links" aria-label="Project links">
-          <span className="footer-label">Learn</span>
-          <Link href="/how-it-works">How it works</Link>
-          <Link href="/methodology">Methodology & limitations</Link>
-          <Link href="/build">Manual card builder</Link>
-          <Link href="/data">Schema & data</Link>
+          <span className="footer-label">Project</span>
+          <Link href="/methodology">Methodology</Link>
+          <Link href="/data">Data</Link>
           <Link href="/research">Research</Link>
-          <Link href="/methodology#corrections">Correction policy</Link>
         </nav>
       </div>
     </footer>

@@ -36,37 +36,55 @@ async function captureDocumentationScreenshot(
   }
 }
 
-test("homepage makes URL analysis primary and opens a real example", async ({ page }, testInfo) => {
+test("homepage makes URL analysis primary and explains the research path", async ({ page }, testInfo) => {
   await page.goto("/");
 
   await expect(page.getByRole("heading", { level: 1, name: /Know what you/ })).toBeVisible();
   await expect(page.getByLabel("Paste a public opportunity URL")).toBeVisible();
-  await expect(page.getByText("Real reference opportunities")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 2, name: "The answers that matter." })).toBeVisible();
+  await expect(page.getByText("Missing information kept visible")).toBeVisible();
   await expectNoPageOverflow(page);
   if (testInfo.project.name === "desktop-chromium") {
     await captureDocumentationScreenshot(page, "home-desktop.png");
   }
 
-  await page.getByRole("link", { name: /See an analyzed example/ }).click();
-
-  await expect(page).toHaveURL(/\/opportunities\//, { timeout: 30_000 });
-  await expect(page.getByRole("heading", { level: 2, name: "At a glance" })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Open full research record/ })).toBeVisible();
-  if (testInfo.project.name === "desktop-chromium") {
-    await captureDocumentationScreenshot(page, "sample-card-desktop.png");
-  }
-
+  await page.getByRole("link", { name: /See how the checks work/ }).click();
+  await expect(page).toHaveURL(/\/how-it-works$/);
+  await expect(page.getByRole("heading", { level: 1, name: "From one link to answers you can inspect." })).toBeVisible();
 });
 
-test("homepage hands an analysis URL off without putting it in browser history", async ({ page }) => {
+test("homepage normalizes a bare domain and immediately starts analysis without exposing it in history", async ({ page }) => {
+  let submittedUrl = "";
+  await page.route("**/api/analyze", async (route) => {
+    if (route.request().method() === "GET") {
+      await route.fulfill({ contentType: "application/json", body: JSON.stringify({ configured: true }) });
+      return;
+    }
+    submittedUrl = (route.request().postDataJSON() as { url?: string }).url ?? "";
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ controlledTestStop: true }),
+    });
+  });
   await page.goto("/");
-  const target = "https://program.example/apply?cycle=2027";
+  const target = "  www.program.example/apply?cycle=2027  ";
   await page.getByLabel("Paste a public opportunity URL").fill(target);
   await page.getByRole("button", { name: "Analyze" }).click();
 
   await expect(page).toHaveURL(/\/analyze$/);
   expect(page.url()).not.toContain("program.example");
-  await expect(page.getByLabel("Public opportunity URL")).toHaveValue(target);
+  await expect(page.getByLabel("Public opportunity URL")).toHaveValue("https://www.program.example/apply?cycle=2027");
+  await expect.poll(() => submittedUrl).toBe("https://www.program.example/apply?cycle=2027");
+});
+
+test("homepage reports a malformed opportunity URL without navigating", async ({ page }) => {
+  await page.goto("/");
+  await page.getByLabel("Paste a public opportunity URL").fill("not a domain");
+  await page.getByRole("button", { name: "Analyze" }).click();
+  await expect(page).toHaveURL(/\/$/);
+  await expect(page.getByRole("alert").filter({ hasText: "Enter a valid public opportunity URL" }))
+    .toHaveText("Enter a valid public opportunity URL, such as example.org/program.");
 });
 
 test("a source excerpt can be opened with the keyboard", async ({ page }) => {
@@ -503,10 +521,10 @@ test("missing analysis configuration provides useful local fallbacks", async ({ 
   await page.goto("/analyze");
 
   await expect(page.getByText("Extraction not configured", { exact: true })).toBeVisible();
-  await expect(page.getByRole("heading", { level: 3, name: "The public product still works." })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 3, name: "Live analysis is paused." })).toBeVisible();
   await expect(page.getByText("Your input has not been sent.")).toBeVisible();
-  await expect(page.getByRole("link", { name: "Open a reference example" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Create manually" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Try a sample" })).toBeVisible();
+  await expect(page.getByLabel("What the analysis includes").getByRole("link", { name: "How it works" })).toBeVisible();
 
   await expect(page.getByRole("button", { name: "Automatic extraction unavailable" })).toBeDisabled();
   expect(analysisPosts).toBe(0);
@@ -588,37 +606,35 @@ test("a mocked analysis response renders a validated draft card", async ({ page 
   await expect(page.getByRole("button", { name: "Cancel analysis" })).toBeVisible();
   await expect(page.getByText(/\d+ sec elapsed/)).toBeVisible();
   await expect(page.locator(".analysis-progress [data-state='active']")).toHaveCount(0);
-  const resultTitle = page.getByRole("heading", { level: 2, name: "Your opportunity overview is ready." });
+  const resultTitle = page.getByRole("heading", { level: 2, name: "Analysis complete" });
   await expect(resultTitle).toBeVisible();
   await expect(resultTitle).toBeFocused();
   const resultTop = async () => (await page.locator(".analysis-result").boundingBox())?.y ?? Number.POSITIVE_INFINITY;
   await expect.poll(resultTop).toBeGreaterThanOrEqual(0);
   await expect.poll(resultTop).toBeLessThan(40);
   await expect(page.getByRole("heading", { level: 3, name: "Mocked Analysis Draft" })).toBeVisible();
+  await page.locator("details.analysis-sources > summary").click();
   await expect(page.getByText("Mocked source page")).toBeVisible();
   await expect(page.getByRole("heading", { level: 3, name: "Overview ready" })).toBeVisible();
-  await expect(page.getByText("This is not human reviewed.", { exact: false })).toBeVisible();
-  await expect(page.getByText("Missing or inaccessible pages can cause omissions.", { exact: false })).toBeVisible();
-  await expect(page.getByText("Part of the automated extraction did not complete.", { exact: false })).toBeVisible();
-  await page.getByText("1 discovered page was not acquired").click();
+  await page.locator("details.analysis-draft-note > summary").click();
+  await expect(page.getByText("This is not human review or a verdict", { exact: false })).toBeVisible();
+  await expect(page.getByText("1 candidate warning withheld.", { exact: false })).toBeVisible();
+  await page.locator("details.page-warning-panel > summary").click();
   await expect(page.getByText("https://mocked-analysis.example/blocked-rules", { exact: true })).toBeVisible();
   await expect(page.getByText("The page did not respond before the fetch time limit.")).toBeVisible();
   await expect(page.getByText("do-not-show", { exact: false })).toHaveCount(0);
   await expect(page.getByText("private upstream diagnostic", { exact: false })).toHaveCount(0);
-  await page.getByRole("button", { name: "Paste text for failed pages" }).click();
-  await expect(page.getByRole("button", { name: "Paste source text" })).toHaveAttribute("aria-pressed", "true");
-  await expect(page.getByLabel("Source URL").first()).toHaveValue("https://mocked-analysis.example/blocked-rules");
-  await expect(page.getByRole("status").filter({ hasText: "Paste mode is ready" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Paste text for failed pages" })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Paste source text" })).toHaveCount(0);
   await expect(page.locator(".analysis-progress")).toHaveCSS("position", "static");
+  await page.locator("details.analysis-more-actions > summary").click();
   await expect(page.getByRole("button", { name: "Save locally" })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Edit in builder" })).toBeVisible();
-  await expect(
-    page.locator(".analysis-result-heading").getByRole("button", { name: "Export JSON" }),
-  ).toBeVisible();
+  await expect(page.getByRole("button", { name: "Edit draft" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Export JSON" })).toBeVisible();
   await page.getByRole("button", { name: "Save locally" }).click();
   await expect(page.getByRole("status").filter({ hasText: "made available in the manual builder" })).toBeVisible();
   await expect.poll(() => page.evaluate(() => localStorage.getItem("opportunity-facts:builder:v1"))).toContain("Mocked Analysis Draft");
-  await page.getByRole("button", { name: "Edit in builder" }).click();
+  await page.getByRole("button", { name: "Edit draft" }).click();
   await expect(page).toHaveURL(/\/build$/);
   await expect(page.locator(".builder-preview").getByRole("heading", { level: 3, name: "Mocked Analysis Draft" })).toBeVisible();
 });
@@ -663,8 +679,8 @@ test("mobile navigation opens, closes through navigation, and avoids page overfl
   await menu.click();
   await expect(page.getByRole("button", { name: "Close" })).toHaveAttribute("aria-expanded", "true");
   await expect(navigation).toBeVisible();
-    await navigation.getByRole("link", { name: "Examples" }).click();
-  await expect(page).toHaveURL(/\/opportunities$/);
+  await navigation.getByRole("link", { name: "How it works" }).click();
+  await expect(page).toHaveURL(/\/how-it-works$/);
   await expect(page.getByRole("button", { name: "Menu" })).toHaveAttribute("aria-expanded", "false");
   await expectNoPageOverflow(page);
 });

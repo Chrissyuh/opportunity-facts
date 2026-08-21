@@ -55,7 +55,7 @@ export function ReviewBadge({ state }: { state: ReviewState }) {
     <details className="review-state-explanation" data-review-state={state}>
       <summary
         className="review-badge"
-        data-description={`${reviewLabels[state]} — ${reviewDescriptions[state]}`}
+        data-description={`${reviewLabels[state]} - ${reviewDescriptions[state]}`}
       >
         <span>{reviewLabels[state]}</span>
         <span className="review-badge-help" aria-hidden="true">i</span>

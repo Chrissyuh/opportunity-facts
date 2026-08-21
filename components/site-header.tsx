@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const links = [
+  { href: "/analyze", label: "Analyze" },
   { href: "/compare", label: "Compare" },
-  { href: "/opportunities", label: "Examples" },
   { href: "/how-it-works", label: "How it works" },
 ];
 
@@ -18,9 +18,6 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="shell header-inner">
         <Link className="wordmark" href="/" aria-label="Opportunity Facts home">
-          <span className="wordmark-mark" aria-hidden="true">
-            OF
-          </span>
           <span>Opportunity Facts</span>
         </Link>
         <button
@@ -42,6 +39,7 @@ export function SiteHeader() {
             <Link
               key={link.href}
               href={link.href}
+              className={link.href === "/analyze" ? "nav-cta" : undefined}
               onClick={() => setOpen(false)}
               aria-current={
                 pathname === link.href || pathname.startsWith(`${link.href}/`)
@@ -52,9 +50,6 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <Link className="nav-cta" href="/analyze" onClick={() => setOpen(false)}>
-            Analyze an opportunity
-          </Link>
         </nav>
       </div>
     </header>

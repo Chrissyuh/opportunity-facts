@@ -1,206 +1,86 @@
 import Link from "next/link";
+import { SampleLauncher } from "@/components/sample-launcher";
 import { UrlQuickstart } from "@/components/url-quickstart";
-import { ReviewBadge } from "@/components/status-badge";
-import { getAllCards } from "@/lib/opportunity/data";
-import type { OpportunityCard } from "@/lib/opportunity/schema";
 
-function value(card: OpportunityCard, field: keyof OpportunityCard["facts"]) {
-  return card.facts[field].displayValue;
-}
-
-function ExampleCard({ card }: { card: OpportunityCard }) {
-  const cost =
-    value(card, "estimated_total_mandatory_cost") ??
-    value(card, "tuition") ??
-    "Not established";
-  return (
-    <article className="home-example-card">
-      <div className="home-example-meta">
-        <span>{value(card, "opportunity_category")}</span>
-        <ReviewBadge state={card.reviewState} />
-      </div>
-      <h3>
-        <Link href={`/opportunities/${card.slug}`}>
-          {value(card, "opportunity_name") ?? card.slug}
-        </Link>
-      </h3>
-      <dl>
-        <div>
-          <dt>Deadline</dt>
-          <dd>{value(card, "application_deadline") ?? "Not established"}</dd>
-        </div>
-        <div>
-          <dt>Cost</dt>
-          <dd>{cost}</dd>
-        </div>
-        <div>
-          <dt>Format</dt>
-          <dd>{value(card, "participation_format") ?? "Not established"}</dd>
-        </div>
-      </dl>
-      <p>
-        {value(card, "operating_organization") ?? "Operator not established"}
-      </p>
-    </article>
-  );
-}
+const resultQuestions = [
+  ["Who can apply?", "Eligibility"],
+  ["What does it cost?", "Cost + aid"],
+  ["When and where?", "Dates + format"],
+  ["Who runs it?", "Operator + relationships"],
+  ["What do you get?", "Outcomes"],
+  ["What is unclear?", "Needs Attention"],
+] as const;
 
 export default function HomePage() {
-  const realCards = getAllCards().filter((card) => card.reviewState !== "demo");
-  const examples = realCards.slice(0, 3);
   return (
-    <main id="main-content" className="page-main">
-      <section className="home-hero home-hero-product">
-        <div className="shell product-hero-grid">
-          <div className="hero-copy">
-            <p className="eyebrow">
-              AI-assisted research · source-backed results
-            </p>
-            <h1>Know what you’re applying to.</h1>
+    <main id="main-content" className="page-main home-page">
+      <section className="home-primary">
+        <div className="shell home-primary-grid">
+          <div className="home-primary-copy">
+            <p className="eyebrow">Research the opportunity, not just the page</p>
+            <h1>Know what you&apos;re applying to.</h1>
             <p className="lede">
-              See who runs it, what it costs, what you actually get, and what
-              the official pages leave unclear.
+              Paste a student opportunity. Get the practical facts, source
+              evidence, and important gaps before you apply.
             </p>
             <UrlQuickstart />
-            <div className="hero-reassurance">
-              <span>AI checks related public pages</span>
-              <span>Evidence stays attached</span>
-              <span>Gaps stay visible</span>
-            </div>
-            {examples[0] ? (
-              <Link
-                className="sample-text-link"
-                href={`/opportunities/${examples[0].slug}`}
-              >
-                See an analyzed example <span aria-hidden="true">→</span>
-              </Link>
-            ) : null}
-          </div>
-          <aside
-            className="hero-research-note"
-            aria-label="What the analysis checks"
-          >
-            <p className="eyebrow">One link, practical answers</p>
-            <h2>What you need before you apply.</h2>
-            <ul>
-              <li>Eligibility and deadlines</li>
-              <li>True cost and financial aid</li>
-              <li>Dates, format, and location</li>
-              <li>Operator and institution relationships</li>
-              <li>Selection process and outcomes</li>
-              <li>Missing or conflicting information</li>
+            <SampleLauncher />
+            <ul className="home-assurances" aria-label="What analysis provides">
+              <li>Related public pages</li>
+              <li>Evidence for supported claims</li>
+              <li>Missing information kept visible</li>
             </ul>
+          </div>
+
+          <aside className="home-result-preview" aria-labelledby="result-preview-title">
+            <div className="home-result-preview-heading">
+              <p className="eyebrow">One analysis</p>
+              <h2 id="result-preview-title">The answers that matter.</h2>
+            </div>
+            <dl>
+              {resultQuestions.map(([question, answer]) => (
+                <div key={question}>
+                  <dt>{question}</dt>
+                  <dd>{answer}</dd>
+                </div>
+              ))}
+            </dl>
           </aside>
         </div>
       </section>
-      <section className="home-proof">
-        <div
-          className="shell proof-row"
-          aria-label="Opportunity Facts principles"
-        >
-          <div>
-            <span className="proof-number">{realCards.length}</span>
-            <span>
-              <strong>Real reference opportunities</strong>
-              <small>See what a finished record can contain</small>
-            </span>
-          </div>
-          <div>
-            <span className="proof-icon" aria-hidden="true">
-              ↗
-            </span>
-            <span>
-              <strong>Evidence beside supported claims</strong>
-              <small>Official wording remains inspectable</small>
-            </span>
-          </div>
-          <div>
-            <span className="proof-icon" aria-hidden="true">
-              ?
-            </span>
-            <span>
-              <strong>Uncertainty stays visible</strong>
-              <small>Missing and conflicting facts are not smoothed away</small>
-            </span>
-          </div>
-        </div>
-      </section>
-      <section className="section home-examples-section">
-        <div className="shell">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">Reference examples</p>
-              <h2>See the research, then bring your own link.</h2>
-            </div>
-            <p>
-              These real reference records show the output without using an
-              analysis call.
-            </p>
-          </div>
-          <div className="home-example-grid">
-            {examples.map((card) => (
-              <ExampleCard key={card.slug} card={card} />
-            ))}
-          </div>
-          <div className="section-action">
-            <Link className="button-secondary" href="/opportunities">
-              Explore all examples
-            </Link>
-            <Link className="button-quiet" href="/compare">
-              Compare opportunities
+
+      <section className="home-research" aria-labelledby="research-title">
+        <div className="shell home-research-grid">
+          <div className="home-research-intro">
+            <p className="eyebrow">Beyond a one-page summary</p>
+            <h2 id="research-title">Research across the pages that matter.</h2>
+            <Link className="text-link" href="/how-it-works">
+              See how the checks work <span aria-hidden="true">→</span>
             </Link>
           </div>
-        </div>
-      </section>
-      <section className="section home-how">
-        <div className="shell">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">How it works</p>
-              <h2>Public pages become an inspectable draft.</h2>
-            </div>
-            <p>
-              AI organizes the research. Deterministic checks withhold
-              unsupported excerpts. You decide what the evidence means for you.
-            </p>
-          </div>
-          <ol className="home-steps">
+          <ol className="home-research-points">
             <li>
               <span>01</span>
               <div>
-                <h3>Paste the official page</h3>
-                <p>
-                  Opportunity Facts finds related public program, cost, rules,
-                  terms, and privacy pages.
-                </p>
+                <h3>Finds relevant pages</h3>
+                <p>Program details, costs, rules, terms, and other official sources.</p>
               </div>
             </li>
             <li>
               <span>02</span>
               <div>
-                <h3>Review supported answers</h3>
-                <p>
-                  Claims appear with their source excerpts. Missing access and
-                  unresolved facts stay visible.
-                </p>
+                <h3>Checks every claim</h3>
+                <p>Retained facts stay tied to exact evidence you can inspect.</p>
               </div>
             </li>
             <li>
               <span>03</span>
               <div>
-                <h3>Compare or inspect deeply</h3>
-                <p>
-                  Use the practical Overview first, then open the Full Record
-                  when every detail matters.
-                </p>
+                <h3>Shows the gaps</h3>
+                <p>Missing, unclear, and conflicting information remains visible.</p>
               </div>
             </li>
           </ol>
-          <div className="section-action">
-            <Link className="button-secondary" href="/how-it-works">
-              See how Opportunity Facts works
-            </Link>
-          </div>
         </div>
       </section>
     </main>

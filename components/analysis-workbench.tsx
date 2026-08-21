@@ -13,15 +13,15 @@ import {
   ANALYSIS_URL_HANDOFF_KEY,
   writeBuilderDraftStorage,
 } from "@/lib/opportunity/browser-storage";
-import type { PastedSourceInput, ReviewedPageSummary } from "@/lib/analysis/pipeline";
+import type { ReviewedPageSummary } from "@/lib/analysis/pipeline";
 import type { AnalysisProgressEvent } from "@/lib/analysis/progress";
 import { ANALYZER_VERSION } from "@/lib/analysis/analyzer-version";
+import { normalizeAnalysisUrlInput } from "@/lib/opportunity/url-input";
 import { OpportunityOverview } from "./opportunity-overview";
 
 const AnalyzedFullRecord = dynamic(() =>
   import("./analyzed-full-record").then((module) => module.AnalyzedFullRecord));
 
-type Mode = "url" | "text";
 type Phase = "idle" | "running" | "complete" | "insufficient" | "error" | "unconfigured";
 type ExtendedPhase = "idle" | "running" | "complete" | "error";
 type ResearchDepth = "normal" | "extended";
@@ -93,13 +93,6 @@ const researchSchema = z.object({
 const failureSuppressionSchema = z.strictObject({
   bypass: z.boolean(),
   allowLocalSuppression: z.boolean(),
-});
-
-const blankSource = (): PastedSourceInput => ({
-  title: "",
-  url: "",
-  pageType: "user_supplied",
-  text: "",
 });
 
 function downloadCard(card: OpportunityCard) {
@@ -270,9 +263,7 @@ export function AnalysisWorkbench({
   configured: boolean;
   initialUrl?: string;
 }) {
-  const [mode, setMode] = useState<Mode>(initialUrl ? "url" : "url");
   const [url, setUrl] = useState(initialUrl);
-  const [sources, setSources] = useState<PastedSourceInput[]>([blankSource()]);
   const [phase, setPhase] = useState<Phase>("idle");
   const [error, setError] = useState("");
   const [result, setResult] = useState<AnalysisResponse | null>(null);
@@ -290,6 +281,8 @@ export function AnalysisWorkbench({
   const [extendedStartedAt, setExtendedStartedAt] = useState<number | null>(null);
   const [extendedElapsedSeconds, setExtendedElapsedSeconds] = useState(0);
   const activeRequest = useRef<AbortController | null>(null);
+  const analysisForm = useRef<HTMLFormElement | null>(null);
+  const autoStartPending = useRef(false);
   const resultSection = useRef<HTMLElement | null>(null);
   const resultTitle = useRef<HTMLHeadingElement | null>(null);
   const router = useRouter();
@@ -297,7 +290,15 @@ export function AnalysisWorkbench({
   useEffect(() => {
     try {
       const handedOffUrl = sessionStorage.getItem(ANALYSIS_URL_HANDOFF_KEY);
-      if (handedOffUrl) queueMicrotask(() => setUrl(handedOffUrl.slice(0, 2_048)));
+      if (handedOffUrl) {
+        const normalized = normalizeAnalysisUrlInput(handedOffUrl);
+        if (normalized.ok) {
+          autoStartPending.current = true;
+          queueMicrotask(() => setUrl(normalized.url));
+        } else {
+          queueMicrotask(() => setError(normalized.message));
+        }
+      }
       sessionStorage.removeItem(ANALYSIS_URL_HANDOFF_KEY);
     } catch {
       // The URL field remains available when session storage is unavailable.
@@ -325,6 +326,12 @@ export function AnalysisWorkbench({
     })();
     return () => controller.abort();
   }, []);
+
+  useEffect(() => {
+    if (!autoStartPending.current || !isConfigured || !url || phase !== "idle") return;
+    autoStartPending.current = false;
+    analysisForm.current?.requestSubmit();
+  }, [isConfigured, phase, url]);
 
   useEffect(() => {
     if (phase !== "running" || requestStartedAt === null) return;
@@ -387,9 +394,17 @@ export function AnalysisWorkbench({
       setPhase("unconfigured");
       return;
     }
-    if (mode === "url") {
+    const normalized = normalizeAnalysisUrlInput(url);
+    if (!normalized.ok) {
+      setError(normalized.message);
+      setPhase("idle");
+      return;
+    }
+    const analysisUrl = normalized.url;
+    setUrl(analysisUrl);
+    {
       try {
-        const canonical = new URL(url).href;
+        const canonical = new URL(analysisUrl).href;
         const storageKey = `${LOCAL_QUALITY_PREFIX}${ANALYZER_VERSION}:${canonical}`;
         const stored = localStorage.getItem(storageKey);
         if (stored) {
@@ -419,7 +434,7 @@ export function AnalysisWorkbench({
         headers: { "Content-Type": "application/json", Accept: "application/x-ndjson" },
         cache: "no-store",
         signal: controller.signal,
-        body: JSON.stringify(mode === "url" ? { mode, url } : { mode, sources }),
+        body: JSON.stringify({ mode: "url", url: analysisUrl }),
       });
       const payload: unknown = await readAnalysisStream(response, (progressEvent) => {
         if (progressEvent.type !== "heartbeat") setProgressEvents((current) => [...current, progressEvent]);
@@ -435,8 +450,8 @@ export function AnalysisWorkbench({
       if (failure) {
         setQualityFailure(failure);
         setResult(failure.result);
-        if (mode === "url") {
-          const storageKey = `${LOCAL_QUALITY_PREFIX}${ANALYZER_VERSION}:${new URL(url).href}`;
+        {
+          const storageKey = `${LOCAL_QUALITY_PREFIX}${ANALYZER_VERSION}:${new URL(analysisUrl).href}`;
           try {
             if (failure.allowLocalSuppression) {
               const localExpiry = failure.cacheEligible
@@ -529,10 +544,6 @@ export function AnalysisWorkbench({
     activeRequest.current?.abort();
   }
 
-  function updateSource(index: number, patch: Partial<PastedSourceInput>) {
-    setSources((current) => current.map((source, sourceIndex) => sourceIndex === index ? { ...source, ...patch } : source));
-  }
-
   function saveDraft(openBuilder = false) {
     if (!result) return;
     if (
@@ -555,82 +566,32 @@ export function AnalysisWorkbench({
     setLocalMessage("The browser could not save this draft. Export the JSON instead.");
   }
 
-  function preparePastedFallback() {
-    if (!result?.pageWarnings.length) return;
-    const failedSources = Array.from(new Set(result.pageWarnings
-      .map((warning) => sanitizePageWarningUrl(warning.url))
-      .filter((warningUrl): warningUrl is string => warningUrl !== null)))
-      .slice(0, 7)
-      .map((warningUrl) => ({ ...blankSource(), url: warningUrl }));
-    setSources(failedSources.length ? failedSources : [blankSource()]);
-    setMode("text");
-    setLocalMessage("Paste mode is ready for the pages automatic acquisition missed.");
-    window.requestAnimationFrame(() => document.getElementById("source-title-0")?.focus());
-  }
-
   const resultIsVisible = result !== null && (phase !== "insufficient" || qualityOverride);
 
   return (
-    <div className="analysis-layout" data-has-result={resultIsVisible ? "true" : "false"}>
+    <div className="analysis-layout" data-has-result={resultIsVisible ? "true" : "false"} data-phase={phase} aria-busy={phase === "running"}>
       <section className="analysis-input panel" aria-labelledby="analysis-input-title">
         <div className="analysis-input-header">
           <p className="eyebrow">Source input</p>
-          <h2 id="analysis-input-title">Choose how to review the pages.</h2>
-          <div className="mode-switch" role="group" aria-label="Source input mode">
-            <button type="button" data-active={mode === "url"} aria-pressed={mode === "url"} onClick={() => setMode("url")}>Public URL</button>
-            <button type="button" data-active={mode === "text"} aria-pressed={mode === "text"} onClick={() => setMode("text")}>Paste source text</button>
-          </div>
+          <h2 id="analysis-input-title">Paste the opportunity page.</h2>
+          <p>Opportunity Facts will check this page and relevant public pages linked from it.</p>
         </div>
 
-        <form className="analysis-form stack" onSubmit={submit}>
-          {mode === "url" ? (
-            <div className="field">
-              <label htmlFor="analysis-url">Public opportunity URL</label>
-              <input
-                id="analysis-url"
-                type="url"
-                inputMode="url"
-                autoComplete="url"
-                placeholder="https://program.example/apply"
-                value={url}
-                onChange={(event) => setUrl(event.target.value)}
-                required
-              />
-              <details className="analysis-boundary"><summary>How URL analysis works</summary><p>The server reviews this page and up to six relevant links found on it. It normally stays on the same site; one application link may redirect to a public form host. Pages for a different named program are skipped. It does not run page scripts or crawl the wider web. Automated pages are labeled user supplied until a human verifies their provenance.</p></details>
-            </div>
-          ) : (
-            <div className="pasted-source-list">
-              {sources.map((source, index) => (
-                <fieldset className="pasted-source" key={index}>
-                  <legend>Source record {index + 1}</legend>
-                  <div className="field-grid">
-                    <div className="field">
-                      <label htmlFor={`source-title-${index}`}>Page title</label>
-                      <input id={`source-title-${index}`} value={source.title} onChange={(event) => updateSource(index, { title: event.target.value })} required />
-                    </div>
-                    <div className="field">
-                      <label htmlFor={`source-url-${index}`}>Source URL</label>
-                      <input id={`source-url-${index}`} type="url" inputMode="url" value={source.url} onChange={(event) => updateSource(index, { url: event.target.value })} required />
-                    </div>
-                  </div>
-                  <div className="notice">
-                    <strong>Source provenance: user supplied.</strong> Pasting a page does not establish that it is official; a human reviewer must verify source identity before changing the review state.
-                  </div>
-                  <div className="field">
-                    <label htmlFor={`source-text-${index}`}>Pasted visible text</label>
-                    <textarea id={`source-text-${index}`} value={source.text} onChange={(event) => updateSource(index, { text: event.target.value })} rows={10} required />
-                    <p className="field-help">Paste visible source wording only. Do not include student personal information.</p>
-                  </div>
-                  {sources.length > 1 ? (
-                    <button className="text-button" type="button" onClick={() => setSources((current) => current.filter((_, sourceIndex) => sourceIndex !== index))}>Remove source record {index + 1}</button>
-                  ) : null}
-                </fieldset>
-              ))}
-              {sources.length < 7 ? (
-                <button className="button-quiet" type="button" onClick={() => setSources((current) => [...current, blankSource()])}>Add another source page</button>
-              ) : null}
-            </div>
-          )}
+        <form ref={analysisForm} className="analysis-form stack" onSubmit={submit}>
+          <div className="field">
+            <label htmlFor="analysis-url">Public opportunity URL</label>
+            <input
+              id="analysis-url"
+              type="text"
+              inputMode="url"
+              autoComplete="url"
+              placeholder="program.org/apply"
+              value={url}
+              onChange={(event) => setUrl(event.target.value)}
+              required
+            />
+            <details className="analysis-boundary"><summary>How URL analysis works</summary><p>The server reviews this page and up to six relevant links found on it. It normally stays on the same site; one application link may redirect to a public form host. Pages for a different named program are skipped. It does not run page scripts or crawl the wider web.</p></details>
+          </div>
 
           {error ? <div className="error-summary" role="alert"><strong>Analysis did not complete.</strong> {error}</div> : null}
           <div className="button-row">
@@ -643,7 +604,7 @@ export function AnalysisWorkbench({
               </button>
             ) : null}
           </div>
-          <details className="analysis-boundary"><summary>Privacy and source boundaries</summary><p>Both URL and paste modes send supplied public source text to OpenAI for this response. Opportunity Facts does not intentionally retain it, but hosting, DNS/network, source-site, and OpenAI logs may exist. Do not submit signed or private URLs, application portals, personal information, or account-only content.</p></details>
+          <details className="analysis-boundary"><summary>Privacy and source boundaries</summary><p>Public page text is sent to OpenAI for this response. Opportunity Facts keeps a bounded continuation session for up to 30 minutes when Extended Research is available; hosting, DNS/network, source-site, and provider logs may also exist. Do not submit signed or private URLs, application portals, personal information, or account-only content.</p></details>
         </form>
       </section>
 
@@ -652,7 +613,7 @@ export function AnalysisWorkbench({
         <h2 id="analysis-progress-title">What the analysis includes</h2>
         <AnalysisRunStatus phase={phase} elapsedSeconds={elapsedSeconds} events={progressEvents} />
         <ol>
-          <PipelineStep number="01" title="Validate source boundary" text="Allow only bounded public HTTP(S) or explicitly pasted text." />
+          <PipelineStep number="01" title="Validate source boundary" text="Allow only bounded public HTTP(S) pages." />
           <PipelineStep number="02" title="Review relevant pages" text="Extract visible text and bounded page metadata; ignore executable scripts, boilerplate, and page instructions." />
           <PipelineStep number="03" title="Answer practical questions" text="Focus on the decision-useful facts a student needs first." />
           <PipelineStep number="04" title="Validate every excerpt" text="Match citations back to normalized source text before displaying support." />
@@ -660,11 +621,11 @@ export function AnalysisWorkbench({
         {!isConfigured || phase === "unconfigured" ? (
           <div className="configuration-notice">
             <span className="review-badge">Extraction not configured</span>
-            <h3>The public product still works.</h3>
-            <p>No server API key is available, so URL and pasted-text extraction are both paused. Your input has not been sent.</p>
+            <h3>Live analysis is paused.</h3>
+            <p>Your input has not been sent.</p>
             <div className="button-row">
-              <Link className="button-secondary" href="/opportunities/breakthrough-junior-challenge-2026">Open a reference example</Link>
-              <Link className="button-quiet" href="/build">Create manually</Link>
+              <Link className="button-secondary" href="/analyze?sample=next">Try a sample</Link>
+              <Link className="button-quiet" href="/how-it-works">How it works</Link>
             </div>
           </div>
         ) : null}
@@ -677,7 +638,6 @@ export function AnalysisWorkbench({
         {qualityFailure.cached ? <p><strong>We already checked this unchanged page.</strong> No new model analysis was started.</p> : null}
         <div className="button-row">
           <button className="button-secondary" type="button" onClick={() => { setQualityFailure(null); setResult(null); setPhase("idle"); document.getElementById("analysis-url")?.focus(); }}>Try another official page</button>
-          <button className="button-quiet" type="button" onClick={() => { setMode("text"); setQualityFailure(null); setResult(null); setPhase("idle"); }}>Add source text</button>
           <button className="button-quiet" type="button" onClick={() => { setUrl(""); setQualityFailure(null); setResult(null); setPhase("idle"); window.requestAnimationFrame(() => document.getElementById("analysis-url")?.focus()); }}>Analyze another opportunity</button>
           {qualityFailure.result ? <button className="button-quiet" type="button" onClick={() => setQualityOverrideConfirmation(true)}>{qualityFailure.cached ? "View previous incomplete result" : "View incomplete result anyway"}</button> : null}
         </div>
@@ -702,70 +662,10 @@ export function AnalysisWorkbench({
             </div>
           ) : null}
           <div className="analysis-result-heading">
-            <div>
-              <p className="eyebrow">{qualityOverride ? "Unfinished AI draft" : result.research.depth === "extended" ? "Extended Research complete" : "Overview ready · Automated checks applied"}</p>
-              <h2 ref={resultTitle} id="analysis-result-title" tabIndex={-1}>
-                {qualityOverride ? "Inspect this incomplete result carefully." : "Your opportunity overview is ready."}
-              </h2>
-            </div>
-            <div className="button-row no-print">
-              <button className="button" type="button" onClick={() => saveDraft()}>Save locally</button>
-              <button className="button-secondary" type="button" onClick={() => saveDraft(true)}>Edit in builder</button>
-              <button className="button-quiet" type="button" onClick={() => downloadCard(result.card)}>Export JSON</button>
-            </div>
-          </div>
-          <p className="action-message" role="status" aria-live="polite">{localMessage}</p>
-          <div className="notice">
-            <strong>This is not human reviewed.</strong> Automatic checks confirm that retained excerpts exist in the fetched text; they do not prove that every interpretation or scope is correct. Missing or inaccessible pages can cause omissions. Check the source identity, meaning, and attachment of every claim before changing the review state. This analysis does not establish truth, legitimacy, prestige, quality, or value.
-          </div>
-          {!qualityOverride && (result.research.extendedAvailable || extendedPhase !== "idle") ? (
-            <ExtendedResearchPanel
-              phase={extendedPhase}
-              elapsedSeconds={extendedElapsedSeconds}
-              events={extendedProgressEvents}
-              error={extendedError}
-              partial={Boolean(result.research.failedSections?.length)}
-              onStart={() => void runExtendedResearch()}
-              onCancel={cancelExtendedResearch}
-            />
-          ) : null}
-          <div className="reviewed-page-list">
-            <h3>Pages fetched for review</h3>
-            <ol>
-              {result.reviewedPages.map((page) => (
-                <li key={page.id}>
-                  <span>{page.pageType.replaceAll("_", " ")}</span>
-                  <a href={page.url} target="_blank" rel="noreferrer noopener">{page.title} <span aria-hidden="true">↗</span></a>
-                  {page.truncated ? <small>Visible text capped during page extraction</small> : null}
-                  {page.truncatedForModel ? <small>Text shortened for the shared model-input budget</small> : null}
-                  {page.contentUnavailable ? <small>No extractable visible text; absence claims were withheld</small> : null}
-                </li>
-              ))}
-            </ol>
-            {result.pageWarnings.length ? (
-              <div className="page-warning-panel">
-                <details>
-                  <summary>{result.pageWarnings.length} discovered page{result.pageWarnings.length === 1 ? " was" : "s were"} not acquired</summary>
-                  <p>The draft lists only pages actually checked. Query strings and fragments are removed below.</p>
-                  <ul>
-                    {result.pageWarnings.map((warning, index) => (
-                      <li key={`${warning.url}-${warning.code}-${index}`}>
-                        <strong>{sanitizePageWarningUrl(warning.url) ?? "Discovered page URL unavailable"}</strong>
-                        <span>{pageWarningReason(warning.code)}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </details>
-                <p>When a public page blocks automatic access, paste its visible wording instead. Do not paste account-only content or personal information.</p>
-                <button className="button-secondary" type="button" onClick={preparePastedFallback}>Paste text for failed pages</button>
-              </div>
-            ) : null}
-            {result.evidenceWarnings.some((warning) => warning.fieldId.startsWith("model.")) ? (
-              <div className="notice" role="status">
-                <strong>Part of the automated extraction did not complete.</strong> Independently completed sections were retained; the affected section remains missing or uncertain and needs manual review.
-              </div>
-            ) : null}
-            {result.evidenceWarnings.length ? <div className="notice"><strong>{result.evidenceWarnings.length} automated candidate warning{result.evidenceWarnings.length === 1 ? " was" : "s were"} recorded.</strong> Unsupported citations, mismatched subjects, and unsafe scopes were withheld; facts retain only other validated support or an explicit uncertainty state.</div> : null}
+            <span className="analysis-complete-mark" aria-hidden="true">✓</span>
+            <h2 ref={resultTitle} id="analysis-result-title" tabIndex={-1}>
+              {qualityOverride ? "Incomplete result" : result.research.depth === "extended" ? "Extended Research complete" : "Analysis complete"}
+            </h2>
           </div>
           <OpportunityOverview
             card={result.card}
@@ -774,7 +674,59 @@ export function AnalysisWorkbench({
             attentionLimit={result.research.depth === "extended" ? 5 : 3}
             fullEvidenceAvailable={result.research.depth === "extended"}
             assessedFieldIds={result.research.assessedFieldIds}
+            resultActions={!qualityOverride && (result.research.extendedAvailable || extendedPhase !== "idle") ? (
+              <ExtendedResearchPanel
+                phase={extendedPhase}
+                elapsedSeconds={extendedElapsedSeconds}
+                events={extendedProgressEvents}
+                error={extendedError}
+                partial={Boolean(result.research.failedSections?.length)}
+                onStart={() => void runExtendedResearch()}
+                onCancel={cancelExtendedResearch}
+              />
+            ) : undefined}
           />
+          <details className="analysis-sources">
+            <summary>
+              <span>Sources reviewed</span>
+              <span>{result.reviewedPages.length} page{result.reviewedPages.length === 1 ? "" : "s"}</span>
+            </summary>
+            {result.pageWarnings.length ? (
+              <details className="page-warning-panel">
+                <summary>{result.pageWarnings.length} relevant page{result.pageWarnings.length === 1 ? " couldn’t" : "s couldn’t"} be accessed</summary>
+                <ul>
+                  {result.pageWarnings.map((warning, index) => (
+                    <li key={`${warning.url}-${warning.code}-${index}`}>
+                      <strong>{sanitizePageWarningUrl(warning.url) ?? "Page URL unavailable"}</strong>
+                      <span>{pageWarningReason(warning.code)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ) : null}
+            <ol className="reviewed-page-list">
+              {result.reviewedPages.map((page) => (
+                <li key={page.id}>
+                  <a href={page.url} target="_blank" rel="noreferrer noopener">{page.title} <span aria-hidden="true">↗</span></a>
+                  {page.truncated || page.truncatedForModel || page.contentUnavailable ? <small>Only acquired, extractable text was assessed.</small> : null}
+                </li>
+              ))}
+            </ol>
+            {result.evidenceWarnings.length ? <p className="analysis-warning-note"><strong>{result.evidenceWarnings.length} candidate warning{result.evidenceWarnings.length === 1 ? "" : "s"} withheld.</strong> Only surviving source-backed claims appear above.</p> : null}
+            <details className="analysis-draft-note">
+              <summary>About this draft</summary>
+              <p>Automated checks matched retained excerpts to acquired source text. This is not human review or a verdict about the opportunity. Verify important claims against the linked sources.</p>
+            </details>
+          </details>
+          <details className="analysis-more-actions no-print">
+            <summary>Save or edit</summary>
+            <div className="button-row">
+              <button className="button-secondary" type="button" onClick={() => saveDraft()}>Save locally</button>
+              <button className="button-quiet" type="button" onClick={() => saveDraft(true)}>Edit draft</button>
+              <button className="button-quiet" type="button" onClick={() => downloadCard(result.card)}>Export JSON</button>
+            </div>
+            <p className="action-message" role="status" aria-live="polite">{localMessage}</p>
+          </details>
           {result.research.depth === "extended" ? (
             <details className="analysis-full-record">
               <summary>
@@ -827,6 +779,57 @@ function ResearchActivity({ events }: { events: AnalysisProgressEvent[] }) {
   );
 }
 
+const LIVE_RESEARCH_ROWS: ReadonlyArray<{
+  label: string;
+  fieldIds: readonly FieldId[];
+}> = [
+  { label: "Opportunity", fieldIds: ["opportunity_name", "operating_organization", "institution_relationship"] },
+  { label: "Eligibility", fieldIds: ["grade_levels", "ages", "geographic_restrictions", "citizenship_restrictions"] },
+  { label: "Deadline", fieldIds: ["application_deadline"] },
+  { label: "Dates / duration", fieldIds: ["start_date", "end_date", "duration", "weekly_hours", "required_live_hours"] },
+  { label: "Format / location", fieldIds: ["participation_format", "location"] },
+  { label: "Cost", fieldIds: ["estimated_total_mandatory_cost", "tuition", "application_fee"] },
+  { label: "Aid", fieldIds: ["financial_aid"] },
+  { label: "Selection", fieldIds: ["selection_process"] },
+  { label: "Outcomes", fieldIds: ["cash_award", "tuition_waiver", "program_seat", "other_benefits"] },
+];
+
+function ValidatedFactWorkspace({ events }: { events: AnalysisProgressEvent[] }) {
+  const facts = new Map<FieldId, Extract<AnalysisProgressEvent, { type: "validated_fact" }>>();
+  for (const event of events) {
+    if (event.type === "validated_fact") facts.set(event.fieldId, event);
+  }
+  return (
+    <section className="validated-fact-workspace" aria-labelledby="validated-facts-title" aria-live="polite">
+      <div className="validated-fact-heading">
+        <h3 id="validated-facts-title">Research overview</h3>
+        <small>{facts.size} source-backed fact{facts.size === 1 ? "" : "s"}</small>
+      </div>
+      <dl className="validated-fact-groups">
+        {LIVE_RESEARCH_ROWS.map((row) => {
+          const rowFacts = row.fieldIds.flatMap((fieldId) => {
+            const fact = facts.get(fieldId);
+            return fact ? [fact] : [];
+          });
+          return (
+            <div className="validated-fact-row" data-resolved={rowFacts.length ? "true" : "false"} key={row.label}>
+              <dt>{row.label}</dt>
+              <dd>
+                {rowFacts.length ? rowFacts.map((fact) => (
+                  <span key={fact.fieldId}>
+                    <strong>{fact.displayValue}</strong>
+                    <small>{fact.evidenceCount} source{fact.evidenceCount === 1 ? "" : "s"} checked</small>
+                  </span>
+                )) : <span className="validated-fact-pending">Checking sources...</span>}
+              </dd>
+            </div>
+          );
+        })}
+      </dl>
+    </section>
+  );
+}
+
 function ExtendedResearchPanel({
   phase,
   elapsedSeconds,
@@ -876,10 +879,10 @@ function AnalysisRunStatus({ phase, elapsedSeconds, events }: { phase: Phase; el
       : phase === "error"
         ? { title: "No draft returned", text: "The error above explains what stopped this attempt; incomplete output is not presented as a finished card." }
         : phase === "insufficient"
-          ? { title: "Reliable result withheld", text: "Use a stronger official page or add missing public source text." }
+          ? { title: "Reliable result withheld", text: "Try a stronger official page for this opportunity." }
         : phase === "unconfigured"
           ? { title: "Automatic extraction unavailable", text: "No source input has been sent." }
-          : { title: "Ready to analyze", text: "Start with a public page or paste visible source wording." };
+          : { title: "Ready to analyze", text: "Start with a public opportunity page." };
   return (
     <div className="analysis-run-status" data-state={phase}>
       <span className="analysis-run-indicator" aria-hidden="true" />
@@ -890,7 +893,12 @@ function AnalysisRunStatus({ phase, elapsedSeconds, events }: { phase: Phase; el
           <small aria-hidden="true">{formatElapsed(elapsedSeconds)}</small>
         ) : null}
       </div>
-      {phase === "running" ? <ResearchActivity events={events} /> : null}
+      {phase === "running" ? (
+        <div className="research-running-grid">
+          <ValidatedFactWorkspace events={events} />
+          <ResearchActivity events={events.filter((event) => event.type !== "validated_fact")} />
+        </div>
+      ) : null}
     </div>
   );
 }
